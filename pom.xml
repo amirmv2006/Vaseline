@@ -162,6 +162,11 @@
                 <artifactId>javax.el</artifactId>
                 <version>2.2.4</version>
             </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>1.1.0.Final</version>
+            </dependency>
             <!-- Hibernate Validation END -->
             <!-- CXF Start -->
             <dependency>

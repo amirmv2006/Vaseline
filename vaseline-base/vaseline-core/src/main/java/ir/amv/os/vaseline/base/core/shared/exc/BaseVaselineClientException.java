@@ -2,17 +2,17 @@ package ir.amv.os.vaseline.base.core.shared.exc;
 
 import java.io.Serializable;
 
-public class BaseClientException extends Exception implements
+public class BaseVaselineClientException extends Exception implements
 		Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	private String identifier;
 
-	public BaseClientException() {
+	public BaseVaselineClientException() {
 	}
 
-	public BaseClientException(String messageKey) {
+	public BaseVaselineClientException(String messageKey) {
 		super(messageKey);
 	}
 
