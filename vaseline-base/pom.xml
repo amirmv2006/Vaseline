@@ -16,6 +16,7 @@
         <module>vaseline-core</module>
         <module>vaseline-architecture</module>
         <module>vaseline-mapper</module>
+        <module>vaseline-json</module>
     </modules>
 
 
