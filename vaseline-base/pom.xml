@@ -17,6 +17,8 @@
         <module>vaseline-architecture</module>
         <module>vaseline-mapper</module>
         <module>vaseline-json</module>
+        <module>vaseline-hibernate-dao</module>
+        <module>vaseline-architecture-impl</module>
     </modules>
 
 

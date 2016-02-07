@@ -27,7 +27,6 @@ public interface IBaseCrudApi<E extends IBaseEntity<Id>, D extends IBaseDto<Id>,
     void delete(E entity) throws BaseVaselineServerException;
     void deleteBatch(List<E> entities) throws  BaseVaselineServerException;
     void delete(Id id) throws BaseVaselineServerException;
-    void deleteAll() throws BaseVaselineServerException;
     void preDelete(E entity) throws BaseVaselineServerException;
     void postDelete(E entity) throws BaseVaselineServerException;
 

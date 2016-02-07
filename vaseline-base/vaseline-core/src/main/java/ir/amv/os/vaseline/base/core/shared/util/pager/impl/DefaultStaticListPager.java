@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.base.core.shared.util.pager.impl;
 
-import ir.amv.tct.core.shared.pager.IBaseListPager;
+import ir.amv.os.vaseline.base.core.shared.util.pager.IBaseListPager;
 
 import java.util.List;
 

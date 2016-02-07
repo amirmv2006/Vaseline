@@ -25,8 +25,6 @@ public interface IBaseReadOnlyDao<E extends IBaseEntity<Id>, D extends IBaseDto<
     List<E> searchByExample(D example);
     List<E> searchByExample(D example, PagingDto pagingDto);
 
-    void evict(E entity);
-
     void setEntityClass(Class<E> entityClass);
     Class<E> getEntityClass();
 

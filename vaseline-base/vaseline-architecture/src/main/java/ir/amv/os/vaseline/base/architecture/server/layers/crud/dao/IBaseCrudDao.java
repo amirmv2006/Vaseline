@@ -19,6 +19,5 @@ public interface IBaseCrudDao<E extends IBaseEntity<Id>, D extends IBaseDto<Id>,
     void update(E entity);
 
     void delete(E entity);
-    void deleteAll();
 
 }

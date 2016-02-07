@@ -14,8 +14,8 @@ public interface IBaseCrudService<D extends IBaseDto<Id>, Id extends Serializabl
 
     Id save(D t) throws BaseVaselineClientException;
 
-    boolean update(D t) throws BaseVaselineClientException;
+    void update(D t) throws BaseVaselineClientException;
 
-    boolean delete(D id) throws BaseVaselineClientException;
-    boolean deleteById(Id id) throws BaseVaselineClientException;
+    void delete(D id) throws BaseVaselineClientException;
+    void deleteById(Id id) throws BaseVaselineClientException;
 }

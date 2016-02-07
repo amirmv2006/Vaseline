@@ -1,4 +1,4 @@
-package ir.amv.os.vaseline.base.architecture.server.layers.base.service.impl;
+package ir.amv.os.vaseline.base.architecture.impl.server.layers.base.service;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.base.service.IBaseService;
 import ir.amv.os.vaseline.base.core.server.base.exc.handler.ICoreExceptionHandler;
