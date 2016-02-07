@@ -1,4 +1,4 @@
-package ir.amv.os.vaseline.base.core.shared.exc;
+package ir.amv.os.vaseline.base.core.shared.base.exc;
 
 import java.io.Serializable;
 

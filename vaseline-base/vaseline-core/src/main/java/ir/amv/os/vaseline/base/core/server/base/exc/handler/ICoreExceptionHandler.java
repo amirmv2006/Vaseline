@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.base.core.server.base.exc.handler;
 
-import ir.amv.os.vaseline.base.core.shared.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.base.core.shared.base.exc.BaseVaselineClientException;
 
 public interface ICoreExceptionHandler {
 

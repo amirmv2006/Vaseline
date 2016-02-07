@@ -1,8 +1,8 @@
-package ir.amv.os.vaseline.base.architecture.server.layers.service.impl;
+package ir.amv.os.vaseline.base.architecture.server.layers.base.service.impl;
 
-import ir.amv.os.vaseline.base.architecture.server.layers.service.IBaseService;
+import ir.amv.os.vaseline.base.architecture.server.layers.base.service.IBaseService;
 import ir.amv.os.vaseline.base.core.server.base.exc.handler.ICoreExceptionHandler;
-import ir.amv.os.vaseline.base.core.shared.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.base.core.shared.base.exc.BaseVaselineClientException;
 import ir.amv.os.vaseline.base.mapper.server.exc.VaselineConvertException;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
