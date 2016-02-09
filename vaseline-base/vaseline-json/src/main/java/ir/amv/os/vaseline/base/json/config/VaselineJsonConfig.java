@@ -3,14 +3,14 @@ package ir.amv.os.vaseline.base.json.config;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.GsonBuilder;
+import ir.amv.os.vaseline.base.core.config.VaselineCoreConfig;
 import ir.amv.os.vaseline.base.json.server.annot.ExcludeFromJson;
 import ir.amv.os.vaseline.base.json.server.polymorphysm.GsonPolymorphysmSerializerAndDeserializer;
 import ir.amv.os.vaseline.base.json.server.polymorphysm.IVaselinePolymorphysmClassHolder;
+import ir.amv.os.vaseline.base.json.server.polymorphysm.impl.VaselinePolymorphysmClassHolderImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +19,8 @@ import java.util.List;
  * Created by AMV on 2/3/2016.
  */
 @Configuration
+@Import(VaselineCoreConfig.class)
+@ComponentScan("ir.amv.os.vaseline.base.json.server")
 public class VaselineJsonConfig {
 
     @Bean
@@ -30,7 +32,8 @@ public class VaselineJsonConfig {
         GsonPolymorphysmSerializerAndDeserializer polymorphysmSerializerAndDeserializer = childSerializerAndDeserializer();
         List<Class<?>> allParentClasses = new ArrayList<Class<?>>();
         for (IVaselinePolymorphysmClassHolder polymorphysmClassHolder : polymorphysmClassHolders) {
-            for (Class<?> parentClass : polymorphysmClassHolder.parentClasses()) {
+            List<Class<?>> parentClasses = polymorphysmClassHolder.parentClasses();
+            for (Class<?> parentClass : parentClasses) {
                 allParentClasses.add(parentClass);
                 gsonBuilder.registerTypeAdapter(parentClass,
                         polymorphysmSerializerAndDeserializer);
@@ -68,4 +71,8 @@ public class VaselineJsonConfig {
         return new GsonPolymorphysmSerializerAndDeserializer();
     }
 
+    @Bean
+    public IVaselinePolymorphysmClassHolder defaultVaselinePolymorphysmClassHolder() {
+        return new VaselinePolymorphysmClassHolderImpl(new ArrayList<Class<?>>());
+    }
 }

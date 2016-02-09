@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.crud.dao;
 
 import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.ro.dao.BaseReadOnlyHibernateDaoImpl;
-import ir.amv.os.vaseline.base.architecture.server.layers.crud.dao.IBaseCrudDao;
+import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.IBaseCrudDao;
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
 import org.hibernate.Session;

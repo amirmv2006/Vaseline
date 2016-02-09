@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import ir.amv.os.vaseline.base.architecture.impl.server.layers.base.dao.BaseDaoImpl;
+import ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.dao.BaseDaoImpl;
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.shared.util.date.DateUtil;
 import ir.amv.os.vaseline.base.core.shared.util.ds.KeyStartsWithMap;

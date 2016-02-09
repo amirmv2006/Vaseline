@@ -5,6 +5,7 @@ import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.Date;
 
 /**
  * Created by AMV on 2/9/2016.
@@ -13,15 +14,18 @@ import java.sql.Blob;
 @Table(name =  "FILE_BLOB")
 public class FileBlobEntity extends BaseEntityImpl<Long> implements IFileEntity {
 
-    private Blob fileContent;
     private String fileName;
     private Long fileSize;
     private String owner;
     private String category;
     private String contentType;
+    private Blob fileContent;
+    private Date createDate;
+    private Date modifyDate;
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
+    @Column(updatable = false)
     public Blob getFileContent() {
         return fileContent;
     }
@@ -80,4 +84,23 @@ public class FileBlobEntity extends BaseEntityImpl<Long> implements IFileEntity 
         this.contentType = contentType;
     }
 
+    @Override
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    @Override
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    @Override
+    public Date getModifyDate() {
+        return modifyDate;
+    }
+
+    @Override
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
+    }
 }

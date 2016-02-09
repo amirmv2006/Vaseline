@@ -14,7 +14,8 @@
     <dependencies>
         <dependency>
             <groupId>ir.amv.os.vaseline.file</groupId>
-            <artifactId>vaseline-file-api</artifactId>
+            <!-- Just to be able to Import config -->
+            <artifactId>vaseline-file-api-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.ro.dao;
 
-import ir.amv.os.vaseline.base.architecture.server.layers.ro.dao.IBaseReadOnlyDao;
+import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;

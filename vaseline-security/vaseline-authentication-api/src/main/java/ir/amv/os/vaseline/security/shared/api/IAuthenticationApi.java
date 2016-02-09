@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.shared.api;
 
-import ir.amv.os.vaseline.base.architecture.server.layers.base.api.IBaseApi;
+import ir.amv.os.vaseline.base.architecture.server.layers.parent.api.IBaseApi;
 
 /**
  * Created by AMV on 2/8/2016.
