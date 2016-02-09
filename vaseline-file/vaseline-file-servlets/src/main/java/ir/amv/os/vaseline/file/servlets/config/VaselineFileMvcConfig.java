@@ -8,5 +8,5 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan("ir.amv.os.vaseline.file.servlets.server")
-public class VaselineFileServletsConfig {
+public class VaselineFileMvcConfig {
 }
