@@ -14,8 +14,26 @@
     <dependencies>
         <dependency>
             <groupId>ir.amv.os.vaseline.base</groupId>
-            <artifactId>vaseline-core</artifactId>
+            <artifactId>vaseline-architecture-impl</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ir.amv.os.vaseline.base</groupId>
+            <artifactId>vaseline-json</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ir.amv.os.vaseline.security</groupId>
+            <artifactId>vaseline-authentication-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-fileupload</groupId>

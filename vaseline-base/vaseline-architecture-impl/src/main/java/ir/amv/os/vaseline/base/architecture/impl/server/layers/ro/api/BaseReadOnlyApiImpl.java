@@ -35,71 +35,43 @@ public class BaseReadOnlyApiImpl<E extends IBaseEntity<Id>, D extends IBaseDto<I
     @Override
     @Transactional(readOnly = true)
     public E getById(Id id) throws BaseVaselineServerException {
-        E findById = dao.getById(id);
-        postGet(findById);
-        return findById;
+        return BaseReadOnlyApiImplHelper.getById(this, getDao(), id);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Long countAll() throws BaseVaselineServerException {
-        Long countAll = dao.countAll();
-        return countAll;
+        return BaseReadOnlyApiImplHelper.countAll(this, getDao());
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<E> getAll() throws BaseVaselineServerException {
-        List<E> all = dao.getAll();
-        if (all != null) {
-            for (E entity : all) {
-                postGet(entity);
-            }
-        }
-        return all;
+        return BaseReadOnlyApiImplHelper.getAll(this, getDao());
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<E> getAll(PagingDto pagingDto) throws BaseVaselineServerException {
-        List<E> all = dao.getAll(pagingDto);
-        if (all != null) {
-            for (E entity : all) {
-                postGet(entity);
-            }
-        }
-        return all;
+        return BaseReadOnlyApiImplHelper.getAll(this, getDao(), pagingDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Long countByExample(D example) throws BaseVaselineServerException {
-        Long countByExample = dao.countByExample(example);
-        return countByExample;
+        return BaseReadOnlyApiImplHelper.countByExample(this, getDao(), example);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<E> searchByExample(D example) throws BaseVaselineServerException {
-        List<E> searchByExample = dao.searchByExample(example);
-        if (searchByExample != null) {
-            for (E entity : searchByExample) {
-                postGet(entity);
-            }
-        }
-        return searchByExample;
+        return BaseReadOnlyApiImplHelper.searchByExample(this, getDao(), example);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<E> searchByExample(D example, PagingDto pagingDto) throws BaseVaselineServerException {
-        List<E> searchByExample = dao.searchByExample(example, pagingDto);
-        if (searchByExample != null) {
-            for (E entity : searchByExample) {
-                postGet(entity);
-            }
-        }
-        return searchByExample;
+        return BaseReadOnlyApiImplHelper.searchByExample(this, getDao(), example, pagingDto);
     }
 
     @Override
@@ -113,5 +85,9 @@ public class BaseReadOnlyApiImpl<E extends IBaseEntity<Id>, D extends IBaseDto<I
     @Autowired
     public void setDao(DAO dao) {
         this.dao = dao;
+    }
+
+    public DAO getDao() {
+        return dao;
     }
 }
