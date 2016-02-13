@@ -23,6 +23,6 @@ public interface IBaseReadOnlyService<D extends IBaseDto<Id>, Id extends Seriali
 
     Long countByExample(D example) throws BaseVaselineClientException;
     List<D> searchByExample(D example) throws BaseVaselineClientException;
-    List<D> searchByExampleWithPaging(D example, PagingDto pagingDto) throws BaseVaselineClientException;
+    List<D> searchByExample(D example, PagingDto pagingDto) throws BaseVaselineClientException;
 
 }

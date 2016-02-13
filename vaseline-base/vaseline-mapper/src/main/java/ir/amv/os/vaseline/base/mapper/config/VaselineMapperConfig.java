@@ -1,6 +1,7 @@
 package ir.amv.os.vaseline.base.mapper.config;
 
 import ir.amv.os.vaseline.base.core.config.VaselineCoreConfig;
+import ir.amv.os.vaseline.base.mapper.config.hibernate.HibernateLazyFieldMapper;
 import org.dozer.CustomFieldMapper;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
@@ -29,4 +30,8 @@ public class VaselineMapperConfig {
         return dozerBeanMapper;
     }
 
+    @Bean
+    public CustomFieldMapper customFieldMapper() {
+        return new HibernateLazyFieldMapper();
+    }
 }

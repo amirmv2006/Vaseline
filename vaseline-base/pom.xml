@@ -19,6 +19,10 @@
         <module>vaseline-json</module>
         <module>vaseline-hibernate-dao</module>
         <module>vaseline-architecture-impl</module>
+        <module>vaseline-jdbc</module>
+        <module>vaseline-i18n</module>
+        <module>vaseline-validation</module>
+        <module>vaseline-caching</module>
     </modules>
 
 

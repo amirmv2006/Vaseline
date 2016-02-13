@@ -99,7 +99,7 @@ public class BaseReadOnlyServiceImpl<E extends IBaseEntity<Id>, D extends IBaseD
     }
 
     @Override
-    public List<D> searchByExampleWithPaging(D example, PagingDto pagingDto) throws BaseVaselineClientException {
+    public List<D> searchByExample(D example, PagingDto pagingDto) throws BaseVaselineClientException {
         try {
             List<E> searchByExample = api.searchByExample(example, pagingDto);
             List<D> result = convertEntityToDTO(searchByExample);
