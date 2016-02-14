@@ -1,11 +1,9 @@
 package ir.amv.os.vaseline.reporting.async.impl.server.base.parent.impl;
 
-import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
-import ir.amv.os.vaseline.base.architecture.server.layers.ent.ro.api.IBaseEntityReadOnlyApi;
-import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseCallback;
+import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseDoubleParameterCallback;
 import ir.amv.os.vaseline.base.core.shared.util.date.DateUtil;
 import ir.amv.os.vaseline.base.core.shared.util.pager.impl.DefaultAsyncListPager;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
@@ -28,16 +26,14 @@ public class BaseReportingAsyncApiImplHelper {
     private BaseReportingAsyncApiImplHelper() {
     }
 
-    public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable> Future<Long> genericReport(
-            IBaseEntityReadOnlyApi<E> api,
-            IBaseReadOnlyDao<E, D, Id> dao,
+    public static <E> Future<Long> genericReport(
             CreateReportRequest request,
             ICreateReportApi createReportApi,
             IAuthenticationApi authenticationApi,
             IFileApi fileApi,
             String reportFileCategory,
             IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback,
-            IBaseCallback<IBaseCallback<List<E>, Void>, Void> loadDataCallback)
+            IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback)
             throws BaseVaselineServerException {
         fillRepReq(request);
         final DefaultAsyncListPager<E> asyncListPager = new DefaultAsyncListPager<E>();
@@ -47,7 +43,7 @@ public class BaseReportingAsyncApiImplHelper {
         return doGenerateReport(createReportApi, authenticationApi, fileApi, reportFileCategory, request, dataSource);
     }
 
-    private static <E extends IBaseEntity<Id>, Id extends Serializable> Future<Long> doGenerateReport(
+    private static <E> Future<Long> doGenerateReport(
             ICreateReportApi createReportApi,
             IAuthenticationApi authenticationApi,
             IFileApi fileApi,

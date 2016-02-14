@@ -1,6 +1,8 @@
 package ir.amv.os.vaseline.base.core.shared.util.pager.impl;
 
+import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseCallback;
+import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseDoubleParameterCallback;
 import ir.amv.os.vaseline.base.core.shared.util.callback.impl.BaseCallbackImpl;
 import ir.amv.os.vaseline.base.core.shared.util.pager.IBaseAsyncListPager;
 
@@ -12,7 +14,7 @@ public class DefaultAsyncListPager<D> implements IBaseAsyncListPager<D> {
 	private int pageSize;
 	private int pageNo;
 	private List<D> currentPage;
-	private IBaseCallback<IBaseCallback<List<D>, Void>, Void> loadDataCallback;
+	private IBaseDoubleParameterCallback<IBaseCallback<List<D>, Void>, PagingDto, Void> loadDataCallback;
 	private IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback;
 	private boolean initialized = false;
 
@@ -97,7 +99,7 @@ public class DefaultAsyncListPager<D> implements IBaseAsyncListPager<D> {
 	}
 
 	@Override
-	public void setLoadDataCallback(IBaseCallback<IBaseCallback<List<D>, Void>, Void> loadDataCallback) {
+	public void setLoadDataCallback(IBaseDoubleParameterCallback<IBaseCallback<List<D>, Void>, PagingDto, Void> loadDataCallback) {
 		this.loadDataCallback = loadDataCallback;
 	}
 
@@ -112,7 +114,7 @@ public class DefaultAsyncListPager<D> implements IBaseAsyncListPager<D> {
 			public void onSuccess(List<D> result) {
 				currentPage = result;
 			}
-		});
+		}, new PagingDto(null, getCurrentPageNo(), getPageSize()));
 	}
 	
 	private void count() {

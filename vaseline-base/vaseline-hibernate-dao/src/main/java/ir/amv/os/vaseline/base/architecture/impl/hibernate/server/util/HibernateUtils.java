@@ -1,10 +1,9 @@
-package ir.amv.os.vaseline.base.mapper.config.hibernate;
+package ir.amv.os.vaseline.base.architecture.impl.hibernate.server.util;
 
 import org.hibernate.collection.internal.PersistentList;
 import org.hibernate.collection.internal.PersistentSet;
 import org.hibernate.proxy.HibernateProxy;
 
-//FIXME remove this
 public class HibernateUtils {
 
 	public static boolean isLazyObjectInitialized(Object value) {

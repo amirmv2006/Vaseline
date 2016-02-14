@@ -17,6 +17,6 @@ import java.util.concurrent.Future;
 public interface IBaseReportingReadOnlyAsyncApi<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
         extends IBaseReadOnlyApi<E, D, Id>, IBaseReportingAsyncApi<E> {
 
-    Future<Long> reportByExample(CreateReportRequest request, D example, PagingDto pagingDto) throws BaseVaselineServerException;
+    Future<Long> reportByExample(CreateReportRequest request, D example) throws BaseVaselineServerException;
 
 }

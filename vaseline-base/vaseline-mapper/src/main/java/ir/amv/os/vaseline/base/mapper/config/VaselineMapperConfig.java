@@ -1,14 +1,13 @@
 package ir.amv.os.vaseline.base.mapper.config;
 
 import ir.amv.os.vaseline.base.core.config.VaselineCoreConfig;
-import ir.amv.os.vaseline.base.mapper.config.hibernate.HibernateLazyFieldMapper;
+import ir.amv.os.vaseline.base.mapper.config.fieldmapper.VaselineCustomFieldMapper;
 import org.dozer.CustomFieldMapper;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.dozer.classmap.ClassMap;
+import org.dozer.fieldmap.FieldMap;
+import org.springframework.context.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +21,7 @@ import java.util.List;
 public class VaselineMapperConfig {
 
     @Bean
-    public Mapper dozerMapper(CustomFieldMapper customFieldMapper) {
+    public Mapper dozerMapper(VaselineCustomFieldMapper customFieldMapper) {
         DozerBeanMapper dozerBeanMapper = new DozerBeanMapper();
         List<String> mappingFileUrls = Arrays.asList("dozer-main-config.xml");
         dozerBeanMapper.setMappingFiles(mappingFileUrls);
@@ -31,7 +30,18 @@ public class VaselineMapperConfig {
     }
 
     @Bean
-    public CustomFieldMapper customFieldMapper() {
-        return new HibernateLazyFieldMapper();
+    @Conditional(NotExistingCustomFieldMapper.class)
+    public CustomFieldMapper dummyFieldMapper() {
+        return new CustomFieldMapper() {
+            @Override
+            public boolean mapField(Object source, Object destination, Object sourceFieldValue, ClassMap classMap, FieldMap fieldMapping) {
+                return false;
+            }
+        };
+    }
+
+    @Bean
+    public VaselineCustomFieldMapper customFieldMapper(List<CustomFieldMapper> customFieldMapper) {
+        return new VaselineCustomFieldMapper(customFieldMapper);
     }
 }

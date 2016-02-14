@@ -17,6 +17,7 @@
         <module>vaseline-reporting-async-impl</module>
         <module>vaseline-reporting-async-api</module>
         <module>vaseline-reporting-core-impl</module>
+        <module>vaseline-reporting-async-rest-impl</module>
     </modules>
 
 

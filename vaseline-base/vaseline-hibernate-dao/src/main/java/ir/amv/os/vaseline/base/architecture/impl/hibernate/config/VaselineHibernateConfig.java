@@ -5,6 +5,7 @@ import ir.amv.os.vaseline.base.jdbc.config.VaselineJdbcConfig;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
@@ -25,6 +26,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
+@ComponentScan("ir.amv.os.vaseline.base.architecture.impl.hibernate.server")
 @Import( {
         VaselineJdbcConfig.class,
         VaselineCachingConfig.class
