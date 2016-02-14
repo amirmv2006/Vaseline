@@ -152,6 +152,11 @@
                 <artifactId>cglib-nodep</artifactId>
                 <version>2.2</version>
             </dependency>
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>3.18.1-GA</version>
+            </dependency>
             <!-- Hibernate End -->
             <!-- Hibernate Validation Start -->
             <dependency>

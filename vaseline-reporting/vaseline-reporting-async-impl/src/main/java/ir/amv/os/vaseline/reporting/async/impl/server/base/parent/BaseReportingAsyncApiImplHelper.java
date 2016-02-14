@@ -1,5 +1,6 @@
-package ir.amv.os.vaseline.reporting.async.impl.server.base.parent.impl;
+package ir.amv.os.vaseline.reporting.async.impl.server.base.parent;
 
+import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseCallback;
@@ -11,6 +12,7 @@ import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
 import ir.amv.os.vaseline.reporting.api.server.datasource.BaseBeansDataSource;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequest;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
+import ir.amv.os.vaseline.reporting.async.api.server.base.parent.IBaseReportingAsyncApi;
 import ir.amv.os.vaseline.security.shared.api.IAuthenticationApi;
 import org.springframework.scheduling.annotation.AsyncResult;
 
@@ -72,7 +74,7 @@ public class BaseReportingAsyncApiImplHelper {
         return null;
     }
 
-    private static String getFileNameFor(
+    private static <Id extends Serializable, DAO extends IBaseReadOnlyDao<?, ?, Id>> String getFileNameFor(
             IAuthenticationApi authenticationApi,
             CreateReportRequest request) throws BaseVaselineServerException {
         StringBuffer fileName = new StringBuffer();
@@ -85,5 +87,9 @@ public class BaseReportingAsyncApiImplHelper {
     }
 
     private static void fillRepReq(CreateReportRequest request) {
+    }
+
+    public static <E> String getReportFileCategory(IBaseReportingAsyncApi<E> api, CreateReportRequest request) {
+        return "report";
     }
 }

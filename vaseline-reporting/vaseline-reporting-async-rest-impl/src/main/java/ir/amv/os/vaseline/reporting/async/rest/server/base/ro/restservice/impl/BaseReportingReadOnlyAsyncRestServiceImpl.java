@@ -1,6 +1,5 @@
 package ir.amv.os.vaseline.reporting.async.rest.server.base.ro.restservice.impl;
 
-import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.service.IBaseReadOnlyService;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequest;
@@ -9,6 +8,7 @@ import ir.amv.os.vaseline.reporting.async.rest.server.base.ro.service.IBaseRepor
 import ir.amv.os.vaseline.ws.rest.server.base.ro.impl.BaseReadOnlyRestServiceImpl;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  * Created by AMV on 2/14/2016.
@@ -18,7 +18,8 @@ public class BaseReportingReadOnlyAsyncRestServiceImpl<D extends IBaseDto<Id>, I
         implements IBaseReportingReadOnlyAsyncRestService<D, Id> {
 
     @Override
-    public Long reportByExample(CreateReportRequest request, D example) throws BaseVaselineServerException {
-        return service.reportByExample(request, example);
+    public Long reportByExample(Map<String, Object> map) throws BaseVaselineServerException {
+        return service.reportByExample((CreateReportRequest) map
+                .get("request"), (D) map.get("example"));
     }
 }

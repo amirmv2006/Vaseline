@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Set;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.dao.BaseDaoImpl;
-import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.base.core.shared.util.date.DateUtil;
 import ir.amv.os.vaseline.base.core.shared.util.ds.KeyStartsWithMap;
 import ir.amv.os.vaseline.base.core.shared.util.reflection.ReflectionInterceptor;
@@ -42,9 +42,9 @@ public class ExampleToCriteriaDaoImpl<D>
 		// interceptor too!
 		// pruneCriteriaBasedOnExampleNonRecursive(example, criteria, "",
 		// restrictions);
-		ReflectionInterceptor<IBaseEntity<?>> interceptor = new ReflectionInterceptor<IBaseEntity<?>>() {
+		ReflectionInterceptor<IBaseDto<?>> interceptor = new ReflectionInterceptor<IBaseDto<?>>() {
 			@Override
-			public IBaseEntity<?> intercept(IBaseEntity<?> object, String propertyTreeName) {
+			public IBaseDto<?> intercept(IBaseDto<?> object, String propertyTreeName) {
 				String propertyRefined = propertyTreeName.replaceAll("\\.", "_");
 				if (propertyTreeName.contains(".")) {
 					String parentName = getParentFromPTN(propertyTreeName);
@@ -59,7 +59,7 @@ public class ExampleToCriteriaDaoImpl<D>
 			}
 
 		};
-		ReflectionUtil.intercept(example, IBaseEntity.class, interceptor, "");
+		ReflectionUtil.intercept(example, IBaseDto.class, interceptor, "");
 		doPruneCriteria(criteria, criterionList, aliasMap, restrictions, aliasMaps);
 	}
 

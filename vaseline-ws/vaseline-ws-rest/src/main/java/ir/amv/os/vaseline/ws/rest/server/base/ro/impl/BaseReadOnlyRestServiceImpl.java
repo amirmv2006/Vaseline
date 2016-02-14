@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by AMV on 2/13/2016.
@@ -51,8 +52,8 @@ public class BaseReadOnlyRestServiceImpl<D extends IBaseDto<Id>, Id extends Seri
     }
 
     @Override
-    public List<D> searchByExample(D example, PagingDto pagingDto) throws BaseVaselineClientException {
-        return service.searchByExample(example, pagingDto);
+    public List<D> searchByExample(Map<String, Object> map) throws BaseVaselineClientException {
+        return service.searchByExample((D)map.get("example"), (PagingDto)map.get("pagingDto"));
     }
 
     @Autowired

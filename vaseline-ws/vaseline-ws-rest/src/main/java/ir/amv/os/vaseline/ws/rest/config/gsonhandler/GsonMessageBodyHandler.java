@@ -2,6 +2,9 @@ package ir.amv.os.vaseline.ws.rest.config.gsonhandler;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import ir.amv.os.vaseline.ws.rest.config.gsonhandler.classgenerator.JavassistClassGenerator;
+import ir.amv.os.vaseline.ws.rest.server.multiparam.annot.JsonMultParam;
+import ir.amv.os.vaseline.ws.rest.server.multiparam.annot.JsonParam;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -16,7 +19,10 @@ import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 import java.io.*;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.*;
 
 @Provider
 @Produces(MediaType.APPLICATION_JSON)
@@ -41,16 +47,36 @@ public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>,
 		InputStreamReader streamReader = null;
 		try {
 			streamReader = new InputStreamReader(entityStream, UTF_8);
-			Type jsonType;
+            if (annotations.length > 0) {
+                JsonMultParam jsonParam = null;
+                for (Annotation annotation : annotations) {
+                    if (annotation instanceof JsonMultParam) {
+                        jsonParam = (JsonMultParam) annotation;
+                    }
+                }
+                List<JsonParam> params = Arrays.asList(jsonParam.value());
+                Class<?> classForGson = JavassistClassGenerator.getClassForMultiParam(params);
+                Object o = gson().fromJson(streamReader, classForGson);
+                Map<String, Object> map = new HashMap<String, Object>(params.size());
+                for (JsonParam param : params) {
+                    String paramName = param.paramName();
+                    Field field = classForGson.getField(paramName);
+                    field.setAccessible(true);
+                    Object paramVal = field.get(o);
+                    map.put(paramName, paramVal);
+                }
+                return map;
+            }
+            Type jsonType;
 			if (type.equals(genericType)) {
 				jsonType = type;
 			} else {
 				jsonType = genericType;
 			}
 			return gson().fromJson(streamReader, jsonType);
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} finally {
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
 			try {
 				if (streamReader != null) {
 					streamReader.close();
