@@ -11,6 +11,7 @@ import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.async.api.server.base.parent.IBaseReportingAsyncApi;
 import ir.amv.os.vaseline.security.shared.api.IAuthenticationApi;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 
 import java.util.List;
 import java.util.concurrent.Future;
@@ -27,6 +28,7 @@ public class BaseReportingAsyncApiImpl<E>
     private IFileApi fileApi;
 
     @Override
+    @Async
     public Future<Long> genericReport(CreateReportRequest request, IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback, IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback) throws BaseVaselineServerException {
         return BaseReportingAsyncApiImplHelper.genericReport(request, createReportApi, authenticationApi, fileApi,
                 getReportFileCategory(request), countDataCallback, loadDataCallback);

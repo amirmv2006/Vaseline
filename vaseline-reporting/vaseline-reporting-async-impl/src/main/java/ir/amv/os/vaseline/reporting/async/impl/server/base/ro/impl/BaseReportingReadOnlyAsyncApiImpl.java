@@ -17,6 +17,7 @@ import ir.amv.os.vaseline.reporting.async.api.server.base.ro.IBaseReportingReadO
 import ir.amv.os.vaseline.reporting.async.impl.server.base.parent.impl.BaseReportingAsyncApiImplHelper;
 import ir.amv.os.vaseline.security.shared.api.IAuthenticationApi;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 
 import java.io.Serializable;
 import java.util.List;
@@ -40,6 +41,7 @@ public class BaseReportingReadOnlyAsyncApiImpl<E extends IBaseEntity<Id>, D exte
     }
 
     @Override
+    @Async
     public Future<Long> reportByExample(CreateReportRequest request, final D example) throws BaseVaselineServerException {
         return BaseReportingAsyncApiImplHelper.genericReport(request, createReportApi, authenticationApi, fileApi,
                 getReportFileCategory(request), new BaseCallbackImpl<IBaseCallback<Integer, Void>, Void>() {
