@@ -14,6 +14,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-authentication-api</module>
+        <module>vaseline-authentication-inapp</module>
     </modules>
 
 

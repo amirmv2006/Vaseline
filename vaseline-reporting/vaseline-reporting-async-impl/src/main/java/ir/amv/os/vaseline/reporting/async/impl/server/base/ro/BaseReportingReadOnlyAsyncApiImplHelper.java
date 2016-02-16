@@ -6,14 +6,13 @@ import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseCallback;
-import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseDoubleParameterCallback;
 import ir.amv.os.vaseline.base.core.shared.util.callback.impl.BaseCallbackImpl;
 import ir.amv.os.vaseline.base.core.shared.util.callback.impl.BaseDoubleParameterCallbackImpl;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequest;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.async.impl.server.base.parent.BaseReportingAsyncApiImplHelper;
-import ir.amv.os.vaseline.security.shared.api.IAuthenticationApi;
+import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
 
 import java.io.Serializable;
 import java.util.List;

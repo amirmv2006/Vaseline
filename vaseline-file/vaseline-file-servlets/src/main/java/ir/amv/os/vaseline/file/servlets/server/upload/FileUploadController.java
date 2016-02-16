@@ -2,7 +2,7 @@ package ir.amv.os.vaseline.file.servlets.server.upload;
 
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
-import ir.amv.os.vaseline.security.shared.api.IAuthenticationApi;
+import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;

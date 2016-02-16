@@ -13,7 +13,7 @@ import ir.amv.os.vaseline.reporting.api.server.datasource.BaseBeansDataSource;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequest;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.async.api.server.base.parent.IBaseReportingAsyncApi;
-import ir.amv.os.vaseline.security.shared.api.IAuthenticationApi;
+import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
 import org.springframework.scheduling.annotation.AsyncResult;
 
 import java.io.*;

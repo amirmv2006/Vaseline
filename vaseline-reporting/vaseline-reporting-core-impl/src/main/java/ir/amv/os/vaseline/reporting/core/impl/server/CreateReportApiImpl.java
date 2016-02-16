@@ -9,7 +9,7 @@ import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequest;
 import ir.amv.os.vaseline.reporting.api.server.model.IBaseReportSource;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.api.shared.enums.ReportOutputType;
-import ir.amv.os.vaseline.security.shared.api.IAuthenticationApi;
+import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.export.*;
 import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
