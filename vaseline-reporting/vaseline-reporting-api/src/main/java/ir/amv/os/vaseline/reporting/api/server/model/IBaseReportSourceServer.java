@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * Created by AMV on 2/10/2016.
  */
-public interface IBaseReportSource {
+public interface IBaseReportSourceServer {
 
     JasperReport compile() throws JRException;
 

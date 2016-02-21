@@ -6,7 +6,7 @@ import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseCallback;
 import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseDoubleParameterCallback;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
-import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequest;
+import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.async.api.server.base.parent.IBaseReportingAsyncApi;
 import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
@@ -29,12 +29,12 @@ public class BaseReportingAsyncApiImpl<E>
 
     @Override
     @Async
-    public Future<Long> genericReport(CreateReportRequest request, IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback, IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback) throws BaseVaselineServerException {
+    public Future<Long> genericReport(CreateReportRequestServer request, IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback, IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback) throws BaseVaselineServerException {
         return BaseReportingAsyncApiImplHelper.genericReport(request, createReportApi, authenticationApi, fileApi,
                 getReportFileCategory(request), countDataCallback, loadDataCallback);
     }
 
-    protected String getReportFileCategory(CreateReportRequest request) {
+    protected String getReportFileCategory(CreateReportRequestServer request) {
         return BaseReportingAsyncApiImplHelper.getReportFileCategory(this, request);
     }
 

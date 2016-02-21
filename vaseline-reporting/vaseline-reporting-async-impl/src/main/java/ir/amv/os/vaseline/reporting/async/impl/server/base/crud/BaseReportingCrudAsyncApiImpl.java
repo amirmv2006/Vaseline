@@ -9,7 +9,7 @@ import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseCallback;
 import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseDoubleParameterCallback;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
-import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequest;
+import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.async.api.server.base.crud.IBaseReportingCrudAsyncApi;
 import ir.amv.os.vaseline.reporting.async.impl.server.base.parent.BaseReportingAsyncApiImplHelper;
@@ -35,18 +35,18 @@ public class BaseReportingCrudAsyncApiImpl<E extends IBaseEntity<Id>, D extends 
 
     @Override
     @Async
-    public Future<Long> genericReport(CreateReportRequest request, IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback, IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback) throws BaseVaselineServerException {
+    public Future<Long> genericReport(CreateReportRequestServer request, IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback, IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback) throws BaseVaselineServerException {
         return BaseReportingAsyncApiImplHelper.genericReport(request, createReportApi, authenticationApi, fileApi,
                 getReportFileCategory(request), countDataCallback, loadDataCallback);
     }
 
     @Override
     @Async
-    public Future<Long> reportByExample(CreateReportRequest request, final D example) throws BaseVaselineServerException {
+    public Future<Long> reportByExample(CreateReportRequestServer request, final D example) throws BaseVaselineServerException {
         return BaseReportingReadOnlyAsyncApiImplHelper.reportByExample(this, request, example, createReportApi, authenticationApi, fileApi, getReportFileCategory(request));
     }
 
-    protected String getReportFileCategory(CreateReportRequest request) {
+    protected String getReportFileCategory(CreateReportRequestServer request) {
         return BaseReportingAsyncApiImplHelper.getReportFileCategory(this, request);
     }
 

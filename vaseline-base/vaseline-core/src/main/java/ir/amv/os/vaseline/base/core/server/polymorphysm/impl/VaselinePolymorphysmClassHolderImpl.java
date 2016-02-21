@@ -1,6 +1,6 @@
-package ir.amv.os.vaseline.base.json.server.polymorphysm.impl;
+package ir.amv.os.vaseline.base.core.server.polymorphysm.impl;
 
-import ir.amv.os.vaseline.base.json.server.polymorphysm.IVaselinePolymorphysmClassHolder;
+import ir.amv.os.vaseline.base.core.server.polymorphysm.IVaselinePolymorphysmClassHolder;
 
 import java.util.Arrays;
 import java.util.List;

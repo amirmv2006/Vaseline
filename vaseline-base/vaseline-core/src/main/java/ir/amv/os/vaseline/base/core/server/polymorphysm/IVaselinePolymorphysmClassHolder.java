@@ -1,4 +1,4 @@
-package ir.amv.os.vaseline.base.json.server.polymorphysm;
+package ir.amv.os.vaseline.base.core.server.polymorphysm;
 
 import java.util.List;
 

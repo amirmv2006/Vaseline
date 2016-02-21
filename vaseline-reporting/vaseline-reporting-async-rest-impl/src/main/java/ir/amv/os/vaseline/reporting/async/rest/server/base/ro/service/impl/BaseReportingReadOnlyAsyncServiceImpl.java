@@ -4,7 +4,8 @@ import ir.amv.os.vaseline.base.architecture.impl.server.layers.base.ro.service.B
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequest;
+import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
+import ir.amv.os.vaseline.reporting.api.shared.model.CreateReportRequestClient;
 import ir.amv.os.vaseline.reporting.async.api.server.base.ro.IBaseReportingReadOnlyAsyncApi;
 import ir.amv.os.vaseline.reporting.async.rest.server.base.ro.service.IBaseReportingReadOnlyAsyncService;
 
@@ -20,8 +21,9 @@ public class BaseReportingReadOnlyAsyncServiceImpl<E extends IBaseEntity<Id>, D 
         implements IBaseReportingReadOnlyAsyncService<D, Id>{
 
     @Override
-    public Long reportByExample(CreateReportRequest request, D example) throws BaseVaselineServerException {
-        Future<Long> longFuture = api.reportByExample(request, example);
+    public Long reportByExample(CreateReportRequestClient request, D example) throws BaseVaselineServerException {
+        CreateReportRequestServer requestServer = convert(request, CreateReportRequestServer.class);
+        Future<Long> longFuture = api.reportByExample(requestServer, example);
         try {
             return longFuture.get();
         } catch (InterruptedException e) {

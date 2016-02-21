@@ -6,8 +6,8 @@ import com.google.gson.GsonBuilder;
 import ir.amv.os.vaseline.base.core.config.VaselineCoreConfig;
 import ir.amv.os.vaseline.base.json.server.annot.ExcludeFromJson;
 import ir.amv.os.vaseline.base.json.server.polymorphysm.GsonPolymorphysmSerializerAndDeserializer;
-import ir.amv.os.vaseline.base.json.server.polymorphysm.IVaselinePolymorphysmClassHolder;
-import ir.amv.os.vaseline.base.json.server.polymorphysm.impl.VaselinePolymorphysmClassHolderImpl;
+import ir.amv.os.vaseline.base.core.server.polymorphysm.IVaselinePolymorphysmClassHolder;
+import ir.amv.os.vaseline.base.core.server.polymorphysm.impl.VaselinePolymorphysmClassHolderImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.*;
@@ -34,6 +34,9 @@ public class VaselineJsonConfig {
         for (IVaselinePolymorphysmClassHolder polymorphysmClassHolder : polymorphysmClassHolders) {
             List<Class<?>> parentClasses = polymorphysmClassHolder.parentClasses();
             for (Class<?> parentClass : parentClasses) {
+                if (parentClass.isAnnotationPresent(ExcludeFromJson.class)) {
+                    continue;
+                }
                 allParentClasses.add(parentClass);
                 gsonBuilder.registerTypeAdapter(parentClass,
                         polymorphysmSerializerAndDeserializer);

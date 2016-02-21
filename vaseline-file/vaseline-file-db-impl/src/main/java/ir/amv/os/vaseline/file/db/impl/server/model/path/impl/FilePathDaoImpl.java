@@ -39,6 +39,7 @@ public class FilePathDaoImpl
         IOUtils.copy(inputStream, fileOutputStream);
         fileOutputStream.flush();
         fileOutputStream.close();
+        filePathEntity.setFilePath(absoluteFilePath);
         return super.save(fileEntity);
     }
 

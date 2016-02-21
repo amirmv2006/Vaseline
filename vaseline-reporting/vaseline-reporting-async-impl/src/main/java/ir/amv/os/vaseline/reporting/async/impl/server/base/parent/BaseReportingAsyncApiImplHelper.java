@@ -10,7 +10,7 @@ import ir.amv.os.vaseline.base.core.shared.util.pager.impl.DefaultAsyncListPager
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
 import ir.amv.os.vaseline.reporting.api.server.datasource.BaseBeansDataSource;
-import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequest;
+import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.async.api.server.base.parent.IBaseReportingAsyncApi;
 import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
@@ -29,7 +29,7 @@ public class BaseReportingAsyncApiImplHelper {
     }
 
     public static <E> Future<Long> genericReport(
-            CreateReportRequest request,
+            CreateReportRequestServer request,
             ICreateReportApi createReportApi,
             IAuthenticationApi authenticationApi,
             IFileApi fileApi,
@@ -50,7 +50,7 @@ public class BaseReportingAsyncApiImplHelper {
             IAuthenticationApi authenticationApi,
             IFileApi fileApi,
             String reportFileCategory,
-            CreateReportRequest request,
+            CreateReportRequestServer request,
             BaseBeansDataSource<E> dataSource) throws BaseVaselineServerException {
         try {
             File repResTmpFile = File.createTempFile("reportOutput", ".tmp");
@@ -76,7 +76,7 @@ public class BaseReportingAsyncApiImplHelper {
 
     private static <Id extends Serializable, DAO extends IBaseReadOnlyDao<?, ?, Id>> String getFileNameFor(
             IAuthenticationApi authenticationApi,
-            CreateReportRequest request) throws BaseVaselineServerException {
+            CreateReportRequestServer request) throws BaseVaselineServerException {
         StringBuffer fileName = new StringBuffer();
         fileName.append(authenticationApi.getCurrentUsername());
         fileName.append("-");
@@ -86,10 +86,10 @@ public class BaseReportingAsyncApiImplHelper {
         return fileName.toString();
     }
 
-    private static void fillRepReq(CreateReportRequest request) {
+    private static void fillRepReq(CreateReportRequestServer request) {
     }
 
-    public static <E> String getReportFileCategory(IBaseReportingAsyncApi<E> api, CreateReportRequest request) {
+    public static <E> String getReportFileCategory(IBaseReportingAsyncApi<E> api, CreateReportRequestServer request) {
         return "report";
     }
 }

@@ -1,12 +1,11 @@
 package ir.amv.os.vaseline.reporting.async.rest.server.base.crud.service.impl;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.base.crud.service.BaseCrudServiceImpl;
-import ir.amv.os.vaseline.base.architecture.impl.server.layers.base.ro.service.BaseReadOnlyServiceImpl;
-import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.api.IBaseCrudApi;
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequest;
+import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
+import ir.amv.os.vaseline.reporting.api.shared.model.CreateReportRequestClient;
 import ir.amv.os.vaseline.reporting.async.api.server.base.crud.IBaseReportingCrudAsyncApi;
 import ir.amv.os.vaseline.reporting.async.rest.server.base.crud.service.IBaseReportingCrudAsyncService;
 
@@ -22,8 +21,9 @@ public class BaseReportingCrudAsyncServiceImpl<E extends IBaseEntity<Id>, D exte
         implements IBaseReportingCrudAsyncService<D, Id> {
 
     @Override
-    public Long reportByExample(CreateReportRequest request, D example) throws BaseVaselineServerException {
-        Future<Long> longFuture = api.reportByExample(request, example);
+    public Long reportByExample(CreateReportRequestClient request, D example) throws BaseVaselineServerException {
+        CreateReportRequestServer requestServer = convert(request, CreateReportRequestServer.class);
+        Future<Long> longFuture = api.reportByExample(requestServer, example);
         try {
             return longFuture.get();
         } catch (InterruptedException e) {

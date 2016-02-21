@@ -5,8 +5,8 @@ import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.base.core.shared.util.date.DateUtil;
 import ir.amv.os.vaseline.reporting.api.server.datasource.BaseBeansDataSource;
 import ir.amv.os.vaseline.reporting.api.server.fieldpostprocessor.impl.DefaultJasperFieldStringPostProcessor;
-import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequest;
-import ir.amv.os.vaseline.reporting.api.server.model.IBaseReportSource;
+import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
+import ir.amv.os.vaseline.reporting.api.server.model.IBaseReportSourceServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.api.shared.enums.ReportOutputType;
 import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
@@ -61,11 +61,11 @@ public class CreateReportApiImpl
     }
 
     @Override
-    public void generateReport(CreateReportRequest request, OutputStream outputStream, BaseBeansDataSource<?> dataSource) {
+    public void generateReport(CreateReportRequestServer request, OutputStream outputStream, BaseBeansDataSource<?> dataSource) {
         try {
             // get report design name and load report design file
             JasperReport jasperReport = null;
-            IBaseReportSource reportSource = request.getReportSource();
+            IBaseReportSourceServer reportSource = request.getReportSource();
             try {
                 jasperReport = reportSource.compile();
             } catch (Exception e) {

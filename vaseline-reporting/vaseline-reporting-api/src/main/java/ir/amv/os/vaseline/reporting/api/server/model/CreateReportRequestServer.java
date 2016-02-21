@@ -7,17 +7,17 @@ import java.util.Map;
 /**
  * Created by AMV on 2/10/2016.
  */
-public class CreateReportRequest {
+public class CreateReportRequestServer {
 
-    private IBaseReportSource reportSource;
+    private IBaseReportSourceServer reportSource;
     private ReportOutputType outputType;
     private Map<String, Object> argsMap;
 
-    public IBaseReportSource getReportSource() {
+    public IBaseReportSourceServer getReportSource() {
         return reportSource;
     }
 
-    public void setReportSource(IBaseReportSource reportSource) {
+    public void setReportSource(IBaseReportSourceServer reportSource) {
         this.reportSource = reportSource;
     }
 

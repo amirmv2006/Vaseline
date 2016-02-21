@@ -9,7 +9,7 @@ import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseCallback;
 import ir.amv.os.vaseline.base.core.shared.util.callback.impl.BaseCallbackImpl;
 import ir.amv.os.vaseline.base.core.shared.util.callback.impl.BaseDoubleParameterCallbackImpl;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
-import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequest;
+import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.async.impl.server.base.parent.BaseReportingAsyncApiImplHelper;
 import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
@@ -28,7 +28,7 @@ public class BaseReportingReadOnlyAsyncApiImplHelper {
 
     public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable> Future<Long> reportByExample(
             final IBaseReadOnlyApi<E, D, Id> api,
-            CreateReportRequest request,
+            CreateReportRequestServer request,
             final D example,
             ICreateReportApi createReportApi,
             IAuthenticationApi authenticationApi,
