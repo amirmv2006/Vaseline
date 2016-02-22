@@ -10,7 +10,7 @@ import java.util.UUID;
 /**
  * Created by AMV on 2/17/2016.
  */
-public class FileReportResourceImplServer
+public class FileReportSourceImplServer
         extends BaseInputStreamReportSourceImpl {
 
     private Long fileId;

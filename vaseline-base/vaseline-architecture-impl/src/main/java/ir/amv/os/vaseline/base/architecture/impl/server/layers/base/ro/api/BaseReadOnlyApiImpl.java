@@ -1,14 +1,12 @@
 package ir.amv.os.vaseline.base.architecture.impl.server.layers.base.ro.api;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.ent.ro.api.BaseEntityReadOnlyApiImpl;
-import ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.api.BaseApiImpl;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.api.IBaseReadOnlyApi;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.base.core.shared.util.reflection.ReflectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,15 +21,6 @@ public class BaseReadOnlyApiImpl<E extends IBaseEntity<Id>, D extends IBaseDto<I
         implements IBaseReadOnlyApi<E, D, Id> {
 
     protected DAO dao;
-
-    protected Class<E> entityClass;
-
-    public BaseReadOnlyApiImpl() {
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
-        if (genericArgumentClasses != null) {
-            setEntityClass((Class<E>) genericArgumentClasses[0]);
-        }
-    }
 
     @Override
     @Transactional(readOnly = true)
@@ -73,10 +62,6 @@ public class BaseReadOnlyApiImpl<E extends IBaseEntity<Id>, D extends IBaseDto<I
     @Transactional(readOnly = true)
     public List<E> searchByExample(D example, PagingDto pagingDto) throws BaseVaselineServerException {
         return BaseReadOnlyApiImplHelper.searchByExample(this, getDao(), example, pagingDto);
-    }
-
-    public void setEntityClass(Class<E> entityClass) {
-        this.entityClass = entityClass;
     }
 
     @Autowired

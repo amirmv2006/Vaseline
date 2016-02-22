@@ -2,29 +2,29 @@ package ir.amv.os.vaseline.reporting.async.rest.server.dozer;
 
 import ir.amv.os.vaseline.base.core.config.VaselineCoreConfig;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
-import ir.amv.os.vaseline.reporting.api.server.model.file.FileReportResourceImplServer;
-import ir.amv.os.vaseline.reporting.api.shared.model.file.FileReportResourceImplClient;
+import ir.amv.os.vaseline.reporting.api.server.model.file.FileReportSourceImplServer;
+import ir.amv.os.vaseline.reporting.api.shared.model.file.FileReportSourceImplClient;
 import org.dozer.DozerConverter;
 
 /**
  * Created by AMV on 2/17/2016.
  */
 public class VaselineFileReportSourceCustomConverter
-        extends DozerConverter<FileReportResourceImplServer, FileReportResourceImplClient> {
+        extends DozerConverter<FileReportSourceImplServer, FileReportSourceImplClient> {
 
     public VaselineFileReportSourceCustomConverter() {
-        super(FileReportResourceImplServer.class, FileReportResourceImplClient.class);
+        super(FileReportSourceImplServer.class, FileReportSourceImplClient.class);
     }
 
     @Override
-    public FileReportResourceImplClient convertTo(FileReportResourceImplServer source, FileReportResourceImplClient destination) {
+    public FileReportSourceImplClient convertTo(FileReportSourceImplServer source, FileReportSourceImplClient destination) {
         destination.setFileCategory(source.getFileCategory());
         destination.setFileId(source.getFileId());
         return destination;
     }
 
     @Override
-    public FileReportResourceImplServer convertFrom(FileReportResourceImplClient source, FileReportResourceImplServer destination) {
+    public FileReportSourceImplServer convertFrom(FileReportSourceImplClient source, FileReportSourceImplServer destination) {
         destination.setFileCategory(source.getFileCategory());
         destination.setFileId(source.getFileId());
         destination.setFileApi(VaselineCoreConfig.getBean(IFileApi.class));

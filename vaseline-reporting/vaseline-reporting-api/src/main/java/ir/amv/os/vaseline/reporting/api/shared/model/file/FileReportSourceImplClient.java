@@ -1,14 +1,14 @@
 package ir.amv.os.vaseline.reporting.api.shared.model.file;
 
 import ir.amv.os.vaseline.base.mapper.server.annot.VaselineMapTo;
-import ir.amv.os.vaseline.reporting.api.server.model.file.FileReportResourceImplServer;
+import ir.amv.os.vaseline.reporting.api.server.model.file.FileReportSourceImplServer;
 import ir.amv.os.vaseline.reporting.api.shared.model.IBaseReportSourceClient;
 
 /**
  * Created by AMV on 2/17/2016.
  */
-@VaselineMapTo(mapToServerClass = FileReportResourceImplServer.class)
-public class FileReportResourceImplClient implements IBaseReportSourceClient {
+@VaselineMapTo(mapToServerClass = FileReportSourceImplServer.class)
+public class FileReportSourceImplClient implements IBaseReportSourceClient {
 
     private Long fileId;
     private String fileCategory;

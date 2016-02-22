@@ -10,4 +10,6 @@ import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
 public interface IBaseEntityReadOnlyApi<E extends IBaseEntity<?>> extends IBaseApi {
 
     void postGet(E entity) throws BaseVaselineServerException;
+
+    Class<E> getEntityClass();
 }

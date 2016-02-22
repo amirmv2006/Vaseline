@@ -12,11 +12,13 @@ import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
 import ir.amv.os.vaseline.reporting.api.server.datasource.BaseBeansDataSource;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
+import ir.amv.os.vaseline.reporting.api.server.requestfiller.IBaseReportRequestFiller;
 import ir.amv.os.vaseline.reporting.async.api.server.base.parent.IBaseReportingAsyncApi;
 import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
 import org.springframework.scheduling.annotation.AsyncResult;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
 
@@ -37,7 +39,7 @@ public class BaseReportingAsyncApiImplHelper {
             IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback,
             IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback)
             throws BaseVaselineServerException {
-        fillRepReq(request);
+        request = fillRepReq(request, createReportApi);
         final DefaultAsyncListPager<E> asyncListPager = new DefaultAsyncListPager<E>();
         asyncListPager.setCountDataCallback(countDataCallback);
         asyncListPager.setLoadDataCallback(loadDataCallback);
@@ -86,10 +88,19 @@ public class BaseReportingAsyncApiImplHelper {
         return fileName.toString();
     }
 
-    private static void fillRepReq(CreateReportRequestServer request) {
+    private static CreateReportRequestServer fillRepReq(CreateReportRequestServer request, ICreateReportApi createReportApi) {
+        for (IBaseReportRequestFiller reportRequestFiller : reportRequestFillers) {
+            request = reportRequestFiller.fillReportRequest(request, createReportApi);
+        }
+        return request;
     }
 
     public static <E> String getReportFileCategory(IBaseReportingAsyncApi<E> api, CreateReportRequestServer request) {
         return "report";
+    }
+
+    private static List<IBaseReportRequestFiller> reportRequestFillers = new ArrayList<IBaseReportRequestFiller>();
+    public static void addReportRequestFiller(IBaseReportRequestFiller reportRequestFiller) {
+        reportRequestFillers.add(reportRequestFiller);
     }
 }

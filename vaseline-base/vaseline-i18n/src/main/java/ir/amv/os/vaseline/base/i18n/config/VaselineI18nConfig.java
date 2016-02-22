@@ -4,6 +4,7 @@ import ir.amv.os.vaseline.base.i18n.server.base.IVaselineI18nFileProvider;
 import ir.amv.os.vaseline.base.i18n.server.base.impl.VaselineClasspathI18nFileProviderImpl;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by AMV on 2/10/2016.
  */
 @Configuration
+@ComponentScan("ir.amv.os.vaseline.base.i18n.server")
 public class VaselineI18nConfig {
 
     @Bean
