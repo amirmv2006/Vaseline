@@ -18,4 +18,6 @@ public interface IBaseReportingAsyncApi<E> extends IBaseApi {
     Future<Long> genericReport(CreateReportRequestServer request,
                                IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback,
                                IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback) throws BaseVaselineServerException;
+
+    Class<E> getReportObjectClass();
 }

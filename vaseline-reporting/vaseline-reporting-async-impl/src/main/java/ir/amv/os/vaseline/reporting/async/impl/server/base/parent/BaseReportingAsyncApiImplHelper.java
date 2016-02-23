@@ -1,6 +1,7 @@
 package ir.amv.os.vaseline.reporting.async.impl.server.base.parent;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
+import ir.amv.os.vaseline.base.architecture.server.layers.parent.api.IBaseApi;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseCallback;
@@ -31,6 +32,7 @@ public class BaseReportingAsyncApiImplHelper {
     }
 
     public static <E> Future<Long> genericReport(
+            IBaseApi api,
             CreateReportRequestServer request,
             ICreateReportApi createReportApi,
             IAuthenticationApi authenticationApi,
@@ -39,7 +41,7 @@ public class BaseReportingAsyncApiImplHelper {
             IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback,
             IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback)
             throws BaseVaselineServerException {
-        request = fillRepReq(request, createReportApi);
+        request = fillRepReq(request, api);
         final DefaultAsyncListPager<E> asyncListPager = new DefaultAsyncListPager<E>();
         asyncListPager.setCountDataCallback(countDataCallback);
         asyncListPager.setLoadDataCallback(loadDataCallback);
@@ -88,9 +90,9 @@ public class BaseReportingAsyncApiImplHelper {
         return fileName.toString();
     }
 
-    private static CreateReportRequestServer fillRepReq(CreateReportRequestServer request, ICreateReportApi createReportApi) {
+    private static CreateReportRequestServer fillRepReq(CreateReportRequestServer request, IBaseApi api) {
         for (IBaseReportRequestFiller reportRequestFiller : reportRequestFillers) {
-            request = reportRequestFiller.fillReportRequest(request, createReportApi);
+            request = reportRequestFiller.fillReportRequest(request, api);
         }
         return request;
     }

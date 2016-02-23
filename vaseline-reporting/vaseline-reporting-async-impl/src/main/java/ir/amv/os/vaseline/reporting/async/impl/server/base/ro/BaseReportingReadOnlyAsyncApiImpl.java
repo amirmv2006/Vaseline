@@ -35,8 +35,13 @@ public class BaseReportingReadOnlyAsyncApiImpl<E extends IBaseEntity<Id>, D exte
     @Override
     @Async
     public Future<Long> genericReport(CreateReportRequestServer request, IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback, IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback) throws BaseVaselineServerException {
-        return BaseReportingAsyncApiImplHelper.genericReport(request, createReportApi, authenticationApi, fileApi,
+        return BaseReportingAsyncApiImplHelper.genericReport(this, request, createReportApi, authenticationApi, fileApi,
                 getReportFileCategory(request), countDataCallback, loadDataCallback);
+    }
+
+    @Override
+    public Class<E> getReportObjectClass() {
+        return getEntityClass();
     }
 
     @Override

@@ -37,6 +37,16 @@ public class VaselineJsonConfig {
                 if (parentClass.isAnnotationPresent(ExcludeFromJson.class)) {
                     continue;
                 }
+                boolean shouldSkip = false;
+                for (Class<?> allParentClass : allParentClasses) {
+                    if (allParentClass.isAssignableFrom(parentClass)) {
+                        shouldSkip = true;
+                        break;
+                    }
+                }
+                if (shouldSkip) {
+                    continue;
+                }
                 allParentClasses.add(parentClass);
                 gsonBuilder.registerTypeAdapter(parentClass,
                         polymorphysmSerializerAndDeserializer);

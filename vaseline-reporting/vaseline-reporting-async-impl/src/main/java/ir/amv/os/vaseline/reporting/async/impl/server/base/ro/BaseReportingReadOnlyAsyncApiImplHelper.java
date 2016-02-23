@@ -35,12 +35,12 @@ public class BaseReportingReadOnlyAsyncApiImplHelper {
             IFileApi fileApi,
             String reportFileCategory)
             throws BaseVaselineServerException {
-        return BaseReportingAsyncApiImplHelper.genericReport(request, createReportApi, authenticationApi, fileApi, reportFileCategory,
+        return BaseReportingAsyncApiImplHelper.genericReport(api, request, createReportApi, authenticationApi, fileApi, reportFileCategory,
                 new BaseCallbackImpl<IBaseCallback<Integer, Void>, Void>() {
                     @Override
                     public void onSuccess(IBaseCallback<Integer, Void> result) {
                         try {
-                            result.onSuccess(api.countByExample(example).intValue());
+                            result.onSuccess(((IBaseReadOnlyApi)api.getApiProxy()).countByExample(example).intValue());
                         } catch (BaseVaselineServerException e) {
                             e.printStackTrace();
                         }
@@ -49,7 +49,7 @@ public class BaseReportingReadOnlyAsyncApiImplHelper {
                     @Override
                     public void onSuccess(IBaseCallback<List<E>, Void> firstParam, PagingDto secondParameter) {
                         try {
-                            firstParam.onSuccess(api.searchByExample(example, secondParameter));
+                            firstParam.onSuccess(((IBaseReadOnlyApi)api.getApiProxy()).searchByExample(example, secondParameter));
                         } catch (BaseVaselineServerException e) {
                             e.printStackTrace();
                         }
