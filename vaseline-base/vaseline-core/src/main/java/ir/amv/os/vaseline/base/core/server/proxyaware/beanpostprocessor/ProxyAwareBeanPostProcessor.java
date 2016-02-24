@@ -1,6 +1,6 @@
-package ir.amv.os.vaseline.base.architecture.server.apiproxy;
+package ir.amv.os.vaseline.base.core.server.proxyaware.beanpostprocessor;
 
-import ir.amv.os.vaseline.base.architecture.server.layers.parent.api.IBaseApi;
+import ir.amv.os.vaseline.base.core.server.proxyaware.IProxyAware;
 import org.springframework.aop.TargetSource;
 import org.springframework.aop.framework.Advised;
 import org.springframework.beans.BeansException;
@@ -9,12 +9,12 @@ import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ApiProxyBeanPostProcessor implements BeanPostProcessor, Ordered {
+public class ProxyAwareBeanPostProcessor implements BeanPostProcessor, Ordered {
 
     private int order = Ordered.LOWEST_PRECEDENCE;
 
 
-    public ApiProxyBeanPostProcessor() {}
+    public ProxyAwareBeanPostProcessor() {}
 
 
     @Override
@@ -28,9 +28,9 @@ public class ApiProxyBeanPostProcessor implements BeanPostProcessor, Ordered {
 
         Object targetBean = getTargetBean(bean);
 
-        if (targetBean instanceof IBaseApi) {
-            IBaseApi baseApi = (IBaseApi) targetBean;
-            baseApi.setApiProxy(bean);
+        if (targetBean instanceof IProxyAware) {
+            IProxyAware baseApi = (IProxyAware) targetBean;
+            baseApi.setProxy(bean);
         }
 
         return bean;

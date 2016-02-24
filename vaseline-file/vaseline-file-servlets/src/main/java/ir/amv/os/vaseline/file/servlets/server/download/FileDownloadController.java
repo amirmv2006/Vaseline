@@ -27,7 +27,7 @@ public class FileDownloadController {
 	 * Upload single file using Spring Controller
 	 * 
 	 */
-	@RequestMapping(value = "/downloadFile", method = RequestMethod.GET)
+	@RequestMapping(value = "/file/downloadFile", method = RequestMethod.GET)
 	public void uploadFileHandler(
 			@RequestParam(value = "fileId") String fileIdStr,
 			@RequestParam(required = false, value = "category", defaultValue = IFileApi.DEFAULT_CATEGORY) String category,

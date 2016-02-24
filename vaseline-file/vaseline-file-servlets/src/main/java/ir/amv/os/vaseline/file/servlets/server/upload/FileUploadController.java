@@ -39,7 +39,7 @@ public class FileUploadController implements ApplicationContextAware {
 	 * 
 	 * @param category
 	 */
-	@RequestMapping(value = "/uploadFile.upload", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/file/uploadFile.upload", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String uploadFileHandler(
 			@RequestParam(required = false, value = "name", defaultValue = "") String name,
 			@RequestParam(required = false, value = "category", defaultValue = IFileApi.DEFAULT_CATEGORY) String category,

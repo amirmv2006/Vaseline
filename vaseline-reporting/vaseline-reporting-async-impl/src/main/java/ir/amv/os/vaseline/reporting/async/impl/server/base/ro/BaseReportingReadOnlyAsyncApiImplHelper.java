@@ -40,7 +40,7 @@ public class BaseReportingReadOnlyAsyncApiImplHelper {
                     @Override
                     public void onSuccess(IBaseCallback<Integer, Void> result) {
                         try {
-                            result.onSuccess(((IBaseReadOnlyApi)api.getApiProxy()).countByExample(example).intValue());
+                            result.onSuccess(api.getProxy(IBaseReadOnlyApi.class).countByExample(example).intValue());
                         } catch (BaseVaselineServerException e) {
                             e.printStackTrace();
                         }
@@ -49,7 +49,7 @@ public class BaseReportingReadOnlyAsyncApiImplHelper {
                     @Override
                     public void onSuccess(IBaseCallback<List<E>, Void> firstParam, PagingDto secondParameter) {
                         try {
-                            firstParam.onSuccess(((IBaseReadOnlyApi)api.getApiProxy()).searchByExample(example, secondParameter));
+                            firstParam.onSuccess(api.getProxy(IBaseReadOnlyApi.class).searchByExample(example, secondParameter));
                         } catch (BaseVaselineServerException e) {
                             e.printStackTrace();
                         }

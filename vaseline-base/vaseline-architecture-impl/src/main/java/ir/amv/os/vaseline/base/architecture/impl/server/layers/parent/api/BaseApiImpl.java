@@ -4,15 +4,16 @@ import ir.amv.os.vaseline.base.architecture.server.layers.parent.api.IBaseApi;
 
 public class BaseApiImpl implements IBaseApi {
 
-    private Object apiProxy;
+    private Object proxy;
 
     @Override
-    public <API> API getApiProxy() {
-        return (API) apiProxy;
+    public <Proxy> Proxy getProxy(Class<Proxy> proxyClass) {
+        return (Proxy) proxy;
     }
 
     @Override
-    public void setApiProxy(Object apiProxy) {
-        this.apiProxy = apiProxy;
+    public <Proxy> void setProxy(Proxy proxy) {
+        this.proxy = proxy;
     }
+
 }

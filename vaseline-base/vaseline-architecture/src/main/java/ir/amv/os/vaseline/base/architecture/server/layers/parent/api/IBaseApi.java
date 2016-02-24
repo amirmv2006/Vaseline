@@ -1,8 +1,7 @@
 package ir.amv.os.vaseline.base.architecture.server.layers.parent.api;
 
-public interface IBaseApi {
+import ir.amv.os.vaseline.base.core.server.proxyaware.IProxyAware;
 
-    <API> API getApiProxy();
-    <API> void setApiProxy(API apiProxy);
+public interface IBaseApi extends IProxyAware {
 
 }
