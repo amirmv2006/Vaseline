@@ -1,9 +1,8 @@
 package ir.amv.os.vaseline.base.json.config;
 
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 import ir.amv.os.vaseline.base.core.config.VaselineCoreConfig;
+import ir.amv.os.vaseline.base.core.shared.util.reflection.ReflectionUtil;
 import ir.amv.os.vaseline.base.json.server.annot.ExcludeFromJson;
 import ir.amv.os.vaseline.base.json.server.polymorphysm.GsonPolymorphysmSerializerAndDeserializer;
 import ir.amv.os.vaseline.base.core.server.polymorphysm.IVaselinePolymorphysmClassHolder;
@@ -14,6 +13,7 @@ import org.springframework.context.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by AMV on 2/3/2016.
@@ -27,7 +27,9 @@ public class VaselineJsonConfig {
     @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     @Autowired
     protected GsonBuilder gsonBuilder(
-            List<IVaselinePolymorphysmClassHolder> polymorphysmClassHolders) {
+            List<IVaselinePolymorphysmClassHolder> polymorphysmClassHolders,
+            Map<String, JsonSerializer<?>> gsonSerializers,
+            Map<String, JsonDeserializer<?>> gsonDeserializers) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         GsonPolymorphysmSerializerAndDeserializer polymorphysmSerializerAndDeserializer = childSerializerAndDeserializer();
         List<Class<?>> allParentClasses = new ArrayList<Class<?>>();
@@ -53,6 +55,25 @@ public class VaselineJsonConfig {
             }
         }
         polymorphysmSerializerAndDeserializer.setAllParentClasses(allParentClasses);
+
+        gsonSerializers.remove("vaselinePolymorphysmSerializerAndDeserializer");
+        gsonDeserializers.remove("vaselinePolymorphysmSerializerAndDeserializer");
+        for (String beanName : gsonSerializers.keySet()) {
+            gsonDeserializers.remove(beanName);
+        }
+        for (JsonSerializer<?> jsonSerializer : gsonSerializers.values()) {
+            Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(jsonSerializer.getClass(), JsonSerializer.class);
+            if (genericArgumentClasses != null) {
+                gsonBuilder.registerTypeAdapter(genericArgumentClasses[0], jsonSerializer);
+            }
+        }
+        for (JsonDeserializer<?> jsonDeserializer : gsonDeserializers.values()) {
+            Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(jsonDeserializer.getClass(), JsonDeserializer.class);
+            if (genericArgumentClasses != null) {
+                gsonBuilder.registerTypeAdapter(genericArgumentClasses[0], jsonDeserializer);
+            }
+        }
+
         gsonBuilder.addSerializationExclusionStrategy(new ExclusionStrategy() {
             @Override
             public boolean shouldSkipField(FieldAttributes f) {
@@ -79,7 +100,7 @@ public class VaselineJsonConfig {
         return gsonBuilder;
     }
 
-    @Bean
+    @Bean(name = "vaselinePolymorphysmSerializerAndDeserializer")
     public GsonPolymorphysmSerializerAndDeserializer childSerializerAndDeserializer() {
         return new GsonPolymorphysmSerializerAndDeserializer();
     }

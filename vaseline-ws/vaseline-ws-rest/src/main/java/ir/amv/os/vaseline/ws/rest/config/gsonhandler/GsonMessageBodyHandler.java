@@ -2,6 +2,7 @@ package ir.amv.os.vaseline.ws.rest.config.gsonhandler;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import ir.amv.os.vaseline.ws.rest.config.gsonhandler.annot.GsonIgnoreGenericType;
 import ir.amv.os.vaseline.ws.rest.config.gsonhandler.classgenerator.JavassistClassGenerator;
 import ir.amv.os.vaseline.ws.rest.server.multiparam.annot.JsonMultParam;
 import ir.amv.os.vaseline.ws.rest.server.multiparam.annot.JsonParam;
@@ -20,7 +21,6 @@ import javax.ws.rs.ext.Provider;
 import java.io.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.*;
 
@@ -118,7 +118,7 @@ public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>,
 		OutputStreamWriter writer = new OutputStreamWriter(entityStream, UTF_8);
 		try {
 			Type jsonType;
-			if (type.equals(genericType)) {
+			if (type.isAnnotationPresent(GsonIgnoreGenericType.class) || type.equals(genericType)) {
 				jsonType = type;
 			} else {
 				jsonType = genericType;

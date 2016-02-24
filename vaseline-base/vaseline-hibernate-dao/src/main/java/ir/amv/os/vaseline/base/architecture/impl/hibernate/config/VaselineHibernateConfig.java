@@ -1,5 +1,7 @@
 package ir.amv.os.vaseline.base.architecture.impl.hibernate.config;
 
+import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.ro.dao.DefaultPagingResultCreator;
+import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.ro.dao.IPagingResultCreator;
 import ir.amv.os.vaseline.base.caching.config.VaselineCachingConfig;
 import ir.amv.os.vaseline.base.jdbc.config.VaselineJdbcConfig;
 import org.hibernate.SessionFactory;
@@ -102,4 +104,8 @@ public class VaselineHibernateConfig {
         return properties;
     }
 
+    @Bean
+    public IPagingResultCreator pagingResultCreator() {
+        return new DefaultPagingResultCreator();
+    }
 }

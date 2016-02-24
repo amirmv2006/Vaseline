@@ -3,6 +3,7 @@ package ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.service;
 import ir.amv.os.vaseline.base.architecture.server.layers.parent.service.IBaseService;
 import ir.amv.os.vaseline.base.core.server.base.exc.handler.ICoreExceptionHandler;
 import ir.amv.os.vaseline.base.core.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.base.core.shared.util.ds.list.IVaselineConvertableList;
 import ir.amv.os.vaseline.base.mapper.server.exc.VaselineConvertException;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,14 @@ public class BaseServiceImpl implements IBaseService {
 		if (source == null) {
 			return null;
 		}
-		List<D> destList = new ArrayList<D>();
-		for (S s : source) {
+        List<D> destList;
+        if (source instanceof IVaselineConvertableList) {
+            IVaselineConvertableList convertableList = (IVaselineConvertableList) source;
+            destList = convertableList.createConvertedList();
+        } else {
+            destList = new ArrayList<D>();
+        }
+        for (S s : source) {
 			D convert = convert(s, destinationClass);
 			destList.add(convert);
 		}

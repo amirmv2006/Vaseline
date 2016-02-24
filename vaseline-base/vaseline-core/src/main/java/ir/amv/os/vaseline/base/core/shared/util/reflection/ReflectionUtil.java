@@ -373,23 +373,50 @@ public class ReflectionUtil {
         return null;
     }
 
-    public static Class<?>[] getGenericArgumentClasses(Class<?> genericClass) {
+    public static Class<?>[] getGenericArgumentClasses(Class<?> genericClass, Class<?>... parents) {
         if (genericClass.getGenericSuperclass() instanceof ParameterizedType) {
-            ParameterizedType genericSuperclass = (ParameterizedType) genericClass.getGenericSuperclass();
-            if (genericSuperclass != null && genericSuperclass.getActualTypeArguments() != null) {
-                Class<?>[] result = new Class<?>[genericSuperclass.getActualTypeArguments().length];
-                for (int i = 0; i < result.length; i++) {
-                    if (genericSuperclass.getActualTypeArguments()[i] instanceof Class) {
-                        result[i] = (Class<?>) genericSuperclass.getActualTypeArguments()[i];
-                    } else if (genericSuperclass.getActualTypeArguments()[i] instanceof ParameterizedType) {
-                        Type rawType = ((ParameterizedType) genericSuperclass.getActualTypeArguments()[i]).getRawType();
-                        if (rawType instanceof Class<?>) {
-                            result[i] = (Class<?>) rawType;
+            Class<?>[] result = getGenerics(genericClass.getGenericSuperclass());
+            return result;
+        } else {
+            Type[] genericInterfaces = genericClass.getGenericInterfaces();
+            if (genericInterfaces.length == 0) {
+                return null;
+            }
+            if (parents != null) {
+                for (Class<?> parent : parents) {
+                    for (Type anInterface : genericInterfaces) {
+                        Class rawType = Void.class;
+                        if (anInterface instanceof ParameterizedType) {
+                            ParameterizedType parameterizedType = (ParameterizedType) anInterface;
+                            rawType = (Class) parameterizedType.getRawType();
+                        } else if (anInterface instanceof Class) {
+                            rawType = (Class) anInterface;
+                        }
+                        if (parent.isAssignableFrom(rawType)) {
+                            return getGenerics(anInterface);
                         }
                     }
                 }
-                return result;
             }
+            return getGenerics(genericInterfaces[0]);
+        }
+    }
+
+    private static Class<?>[] getGenerics(Type genericClass) {
+        ParameterizedType genericSuperclass = (ParameterizedType) genericClass;
+        if (genericSuperclass != null && genericSuperclass.getActualTypeArguments() != null) {
+            Class<?>[] result = new Class<?>[genericSuperclass.getActualTypeArguments().length];
+            for (int i = 0; i < result.length; i++) {
+                if (genericSuperclass.getActualTypeArguments()[i] instanceof Class) {
+                    result[i] = (Class<?>) genericSuperclass.getActualTypeArguments()[i];
+                } else if (genericSuperclass.getActualTypeArguments()[i] instanceof ParameterizedType) {
+                    Type rawType = ((ParameterizedType) genericSuperclass.getActualTypeArguments()[i]).getRawType();
+                    if (rawType instanceof Class<?>) {
+                        result[i] = (Class<?>) rawType;
+                    }
+                }
+            }
+            return result;
         }
         return null;
     }

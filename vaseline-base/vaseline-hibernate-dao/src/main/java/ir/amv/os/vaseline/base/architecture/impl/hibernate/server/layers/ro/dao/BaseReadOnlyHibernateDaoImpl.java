@@ -5,6 +5,7 @@ import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.base.dto.sort.SortDto;
+import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseReturningCallback;
 import ir.amv.os.vaseline.base.core.shared.util.reflection.ReflectionUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -27,6 +28,7 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
 
     protected SessionFactory sessionFactory;
     private Class<E> entityClass;
+    protected IPagingResultCreator pagingResultCreator;
 
     public BaseReadOnlyHibernateDaoImpl() {
         Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
@@ -69,10 +71,12 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
 
     @Override
     public List<E> getAll(PagingDto pagingDto) {
-        DetachedCriteria detCriteria = createCriteria();
-        Criteria criteria = getCriteriaFromDetachedCriteria(detCriteria);
-        criteria = paginateCriteria(criteria, pagingDto);
-        List<E> listFromCriteria = getListFromCriteria(criteria);
+        List<E> listFromCriteria = pagingResultCreator.getPagingResult(this, new IBaseReturningCallback<DetachedCriteria>() {
+            @Override
+            public DetachedCriteria execute() {
+                return createCriteria();
+            }
+        }, pagingDto);
         return listFromCriteria;
     }
 
@@ -98,13 +102,16 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
     }
 
     @Override
-    public List<E> searchByExample(D example, PagingDto pagingDto) {
-        DetachedCriteria detachedCriteria = createCriteria();
-        pruneCriteriaBasedOnExampleRecursively(example, detachedCriteria,
-                new ArrayList<Criterion>(), new HashMap<String, String>());
-        Criteria criteria = getCriteriaFromDetachedCriteria(detachedCriteria);
-        criteria = paginateCriteria(criteria, pagingDto);
-        List<E> listFromCriteria = getListFromCriteria(criteria);
+    public List<E> searchByExample(final D example, PagingDto pagingDto) {
+        List<E> listFromCriteria = pagingResultCreator.getPagingResult(this, new IBaseReturningCallback<DetachedCriteria>() {
+            @Override
+            public DetachedCriteria execute() {
+                DetachedCriteria detachedCriteria = createCriteria();
+                pruneCriteriaBasedOnExampleRecursively(example, detachedCriteria,
+                        new ArrayList<Criterion>(), new HashMap<String, String>());
+                return detachedCriteria;
+            }
+        }, pagingDto);
         return listFromCriteria;
     }
 
@@ -114,7 +121,7 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
         return criteria;
     }
 
-    protected Criteria getCriteriaFromDetachedCriteria(
+    public Criteria getCriteriaFromDetachedCriteria(
             DetachedCriteria detCriteria) {
         Session currentSession = getCurrentSession();
         Criteria criteria = detCriteria.getExecutableCriteria(currentSession);
@@ -128,7 +135,7 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
         return entityClass.isAnnotationPresent(Cacheable.class);
     }
 
-    protected Criteria paginateCriteria(Criteria criteria,
+    public Criteria paginateCriteria(Criteria criteria,
                                         final PagingDto paginationObject) {
         List<SortDto> sortList = paginationObject.getSortList();
         if (sortList == null || sortList.isEmpty()) {
@@ -148,7 +155,7 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
         }
     }
 
-    protected Long getCountResult(Criteria criteria) {
+    public Long getCountResult(Criteria criteria) {
         Number uniqueResult = (Number) criteria.uniqueResult();
         if (uniqueResult == null) {
             return 0L;
@@ -156,21 +163,19 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
         return uniqueResult.longValue();
     }
 
-    @SuppressWarnings("unchecked")
-    protected E getEntityFromCriteria(Criteria criteria) {
+    public E getEntityFromCriteria(Criteria criteria) {
         Object uniqueResult = criteria.uniqueResult();
         return (E) uniqueResult;
     }
 
-    @SuppressWarnings("unchecked")
-    protected List<E> getListFromCriteria(Criteria criteria) {
+    public List<E> getListFromCriteria(Criteria criteria) {
         criteria = criteria
                 .setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
         List<?> list = criteria.list();
         return (List<E>) list;
     }
 
-    protected DetachedCriteria getCountCriteria(DetachedCriteria detCriteria) {
+    public DetachedCriteria getCountCriteria(DetachedCriteria detCriteria) {
         return detCriteria.setProjection(Projections.rowCount());
     }
 
@@ -192,5 +197,10 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
     @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
+    }
+
+    @Autowired
+    public void setPagingResultCreator(IPagingResultCreator pagingResultCreator) {
+        this.pagingResultCreator = pagingResultCreator;
     }
 }
