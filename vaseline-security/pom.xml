@@ -16,6 +16,8 @@
         <module>vaseline-authentication-api</module>
         <module>vaseline-authentication-inapp</module>
         <module>vaseline-authentication-spring-sec-impl</module>
+        <module>vaseline-authorization-api</module>
+        <module>vaseline-authorization-rbac-impl</module>
     </modules>
 
 
