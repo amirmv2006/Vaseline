@@ -42,7 +42,7 @@ public class BaseUserApiImpl
         BaseUserDto baseUserDto = new BaseUserDto();
         baseUserDto.setUsername(username);
         try {
-            List<BaseUserEntity> searchByExample = searchByExample(
+            List<BaseUserEntity> searchByExample = getProxy(IBaseUserApi.class).searchByExample(
                     baseUserDto, new PagingDto(null, 0, 1));
             if (searchByExample == null || searchByExample.isEmpty()) {
                 String message = "Specified User Not Found!!!";
@@ -79,7 +79,7 @@ public class BaseUserApiImpl
             String message = "Authentication Success";
 //            saveLogMessage(userName, message, LogLevel.info);
             user.setLastLoginTime(DateUtil.newDate());
-            update(user);
+            getProxy(IBaseUserApi.class).update(user);
             return new User(user.getUsername(), user.getPassword(), authorities);
         } catch (BaseVaselineServerException e) {
             String message = "نام کاربری/گذرواژه اشتباه است";
@@ -91,11 +91,7 @@ public class BaseUserApiImpl
         }
     }
 
-    @Autowired
-    public void setUserPermissionsProvider(IUserPermissionsProvider userPermissionsProvider) {
-        this.userPermissionsProvider = userPermissionsProvider;
-    }
-
+    // should not be called on update, on user login user is updated, and the password is hashed already!
     private void prepareToStoreUser(BaseUserEntity entity) {
         if (entity.getEnabled() == null) {
             entity.setEnabled(true);
@@ -111,9 +107,8 @@ public class BaseUserApiImpl
         super.preSave(entity);
     }
 
-    @Override
-    public void preUpdate(BaseUserEntity entity) throws BaseVaselineServerException {
-        prepareToStoreUser(entity);
-        super.preUpdate(entity);
+    @Autowired
+    public void setUserPermissionsProvider(IUserPermissionsProvider userPermissionsProvider) {
+        this.userPermissionsProvider = userPermissionsProvider;
     }
 }
