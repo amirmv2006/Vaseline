@@ -18,6 +18,7 @@
         <module>vaseline-authentication-spring-sec-impl</module>
         <module>vaseline-authorization-api</module>
         <module>vaseline-authorization-rbac-impl</module>
+        <module>vaseline-authorization-hibernate-impl</module>
     </modules>
 
 
