@@ -4,6 +4,7 @@ import ir.amv.os.vaseline.base.architecture.impl.server.layers.base.crud.api.Bas
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.util.date.DateUtil;
+import ir.amv.os.vaseline.base.core.shared.util.hash.HashUtil;
 import ir.amv.os.vaseline.security.authentication.spring.impl.config.permissions.IUserPermissionsProvider;
 import ir.amv.os.vaseline.security.authentication.spring.impl.server.model.user.BaseUserEntity;
 import ir.amv.os.vaseline.security.authentication.spring.impl.server.model.user.IBaseUserApi;
@@ -93,5 +94,26 @@ public class BaseUserApiImpl
     @Autowired
     public void setUserPermissionsProvider(IUserPermissionsProvider userPermissionsProvider) {
         this.userPermissionsProvider = userPermissionsProvider;
+    }
+
+    private void prepareToStoreUser(BaseUserEntity entity) {
+        if (entity.getEnabled() == null) {
+            entity.setEnabled(true);
+        }
+        if (entity.getPassword() != null && !entity.getPassword().equals("")) {
+            entity.setPassword(HashUtil.sha1Hash(entity.getPassword()));
+        }
+    }
+
+    @Override
+    public void preSave(BaseUserEntity entity) throws BaseVaselineServerException {
+        prepareToStoreUser(entity);
+        super.preSave(entity);
+    }
+
+    @Override
+    public void preUpdate(BaseUserEntity entity) throws BaseVaselineServerException {
+        prepareToStoreUser(entity);
+        super.preUpdate(entity);
     }
 }
