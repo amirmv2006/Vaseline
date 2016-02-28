@@ -4,6 +4,7 @@ import ir.amv.os.vaseline.security.authentication.spring.impl.config.external.IH
 import ir.amv.os.vaseline.security.authentication.spring.impl.config.permissions.IUserPermissionsProvider;
 import ir.amv.os.vaseline.security.authentication.spring.impl.config.permissions.condition.NotExistingUserPermissionProvider;
 import ir.amv.os.vaseline.security.authentication.spring.impl.config.permissions.impl.BasicUserPermissionsProvider;
+import ir.amv.os.vaseline.security.authentication.spring.impl.config.userdetailsservice.VaselineUserDetailsService;
 import ir.amv.os.vaseline.security.authentication.spring.impl.server.model.user.IBaseUserApi;
 import ir.amv.os.vaseline.security.authentication.spring.impl.server.model.user.impl.BaseUserApiImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.util.Collections;
@@ -40,7 +42,7 @@ public class VaselineAuthenticationImplConfig
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         // This is here to ensure that the static content (JavaScript, CSS, etc)
         // is accessible from the login page without authentication
-        auth.userDetailsService(userApi()).passwordEncoder(
+        auth.userDetailsService(userDetailsService()).passwordEncoder(
                 new ShaPasswordEncoder());
     }
 
@@ -112,15 +114,16 @@ public class VaselineAuthenticationImplConfig
         ;
     }
 
+    @Override
+    @Bean
+    protected UserDetailsService userDetailsService() {
+        return new VaselineUserDetailsService();
+    }
+
     @Bean
     @Conditional(NotExistingUserPermissionProvider.class)
     public IUserPermissionsProvider userPermissionsProvider() {
         return new BasicUserPermissionsProvider();
-    }
-
-    @Bean
-    public IBaseUserApi userApi() {
-        return new BaseUserApiImpl();
     }
 
     @Autowired

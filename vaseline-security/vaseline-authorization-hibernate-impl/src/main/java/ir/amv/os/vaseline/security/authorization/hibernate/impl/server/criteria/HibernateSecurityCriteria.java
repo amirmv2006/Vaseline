@@ -19,7 +19,9 @@ public class HibernateSecurityCriteria
 
     public HibernateSecurityCriteria(Map<String, String> aliasMap, Criterion... restrictions) {
         this.aliasMap = aliasMap;
-        this.restrictions = new ArrayList<Criterion>(Arrays.asList(restrictions));
+        if (restrictions != null) {
+            this.restrictions = new ArrayList<Criterion>(Arrays.asList(restrictions));
+        }
     }
 
     public Map<String, String> getAliasMap() {

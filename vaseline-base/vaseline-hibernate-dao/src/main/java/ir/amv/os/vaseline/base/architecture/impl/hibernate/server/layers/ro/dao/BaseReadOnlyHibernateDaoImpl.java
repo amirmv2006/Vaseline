@@ -117,7 +117,7 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
 
     // BASE METHODS
     protected DetachedCriteria createCriteria() {
-        DetachedCriteria criteria = DetachedCriteria.forClass(entityClass);
+        DetachedCriteria criteria = DetachedCriteria.forClass(getEntityClass());
         return criteria;
     }
 
@@ -132,7 +132,7 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
     }
 
     protected boolean cacheAllCriterias() {
-        return entityClass.isAnnotationPresent(Cacheable.class);
+        return getEntityClass().isAnnotationPresent(Cacheable.class);
     }
 
     public Criteria paginateCriteria(Criteria criteria,

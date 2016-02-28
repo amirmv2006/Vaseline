@@ -19,7 +19,7 @@ public interface IAuthorizationApi extends IBaseApi {
 
     List<String> getAuthorizedOperationTreeNames() throws BaseVaselineServerException;
 
-    List<String> getChildTreeNamesOfAuthorizedOperation(String baseOperationTN);
+    List<String> getChildTreeNamesOfAuthorizedOperation(String baseOperationTN) throws BaseVaselineServerException;
 
     List<String> getUsernamesWithPermissionToOperation(String operationTreeName) throws BaseVaselineServerException;
 

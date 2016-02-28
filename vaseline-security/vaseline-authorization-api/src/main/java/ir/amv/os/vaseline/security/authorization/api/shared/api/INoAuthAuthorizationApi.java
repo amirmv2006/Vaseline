@@ -17,9 +17,9 @@ public interface INoAuthAuthorizationApi extends IBaseApi {
 
     ISecurityCriteria getSecurityCriteria(String username, String operationTreeName) throws BaseVaselineServerException;
 
-    List<String> getAuthorizedOperationTreeNames(String currentUsername);
+    List<String> getAuthorizedOperationTreeNames(String currentUsername) throws BaseVaselineServerException;
 
-    List<String> getChildTreeNamesOfAuthorizedOperation(String baseOperationTN);
+    List<String> getChildTreeNamesOfAuthorizedOperation(String baseOperationTN) throws BaseVaselineServerException;
 
     List<String> getUsernamesWithPermissionToOperation(String operationTreeName) throws BaseVaselineServerException;
 
