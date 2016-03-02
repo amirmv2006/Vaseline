@@ -16,11 +16,12 @@ import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.api.server.requestfiller.IBaseReportRequestFiller;
 import ir.amv.os.vaseline.reporting.async.api.server.base.parent.IBaseReportingAsyncApi;
 import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
-import org.springframework.scheduling.annotation.AsyncResult;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
@@ -31,7 +32,7 @@ public class BaseReportingAsyncApiImplHelper {
     private BaseReportingAsyncApiImplHelper() {
     }
 
-    public static <E> Future<Long> genericReport(
+    public static <E> Long genericReport(
             IBaseApi api,
             CreateReportRequestServer request,
             ICreateReportApi createReportApi,
@@ -41,7 +42,7 @@ public class BaseReportingAsyncApiImplHelper {
             IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback,
             IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback)
             throws BaseVaselineServerException {
-        request = fillRepReq(request, api);
+        request = fillRepReq(request, api, authenticationApi);
         final DefaultAsyncListPager<E> asyncListPager = new DefaultAsyncListPager<E>();
         asyncListPager.setCountDataCallback(countDataCallback);
         asyncListPager.setLoadDataCallback(loadDataCallback);
@@ -49,7 +50,7 @@ public class BaseReportingAsyncApiImplHelper {
         return doGenerateReport(createReportApi, authenticationApi, fileApi, reportFileCategory, request, dataSource);
     }
 
-    private static <E> Future<Long> doGenerateReport(
+    private static <E> Long doGenerateReport(
             ICreateReportApi createReportApi,
             IAuthenticationApi authenticationApi,
             IFileApi fileApi,
@@ -58,9 +59,10 @@ public class BaseReportingAsyncApiImplHelper {
             BaseBeansDataSource<E> dataSource) throws BaseVaselineServerException {
         try {
             File repResTmpFile = File.createTempFile("reportOutput", ".tmp");
-            createReportApi.generateReport(request,
+            Future<Void> voidFuture = createReportApi.generateReport(request,
                     new FileOutputStream(repResTmpFile),
                     dataSource);
+            voidFuture.get();
             IFileEntity fileEntity = fileApi.createFile(reportFileCategory);
             fileEntity.setCategory(reportFileCategory);
             fileEntity.setContentType(request.getOutputType()
@@ -71,9 +73,13 @@ public class BaseReportingAsyncApiImplHelper {
             fileEntity.setFileSize((long) inputStream.available());
             Long fileId = fileApi.uploadFile(reportFileCategory, fileEntity, inputStream);
             inputStream.close();
-            return new AsyncResult<Long>(fileId);
-        } catch (IOException e1) {
-            e1.printStackTrace();
+            return fileId;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -90,7 +96,12 @@ public class BaseReportingAsyncApiImplHelper {
         return fileName.toString();
     }
 
-    private static CreateReportRequestServer fillRepReq(CreateReportRequestServer request, IBaseApi api) {
+    private static CreateReportRequestServer fillRepReq(CreateReportRequestServer request, IBaseApi api, IAuthenticationApi authenticationApi) throws BaseVaselineServerException {
+        String currentUsername = authenticationApi.getCurrentUsername();
+        if (request.getArgsMap() != null) {
+            request.setArgsMap(new HashMap<String, Object>());
+        }
+        request.getArgsMap().put("currentUser", currentUsername);
         for (IBaseReportRequestFiller reportRequestFiller : reportRequestFillers) {
             request = reportRequestFiller.fillReportRequest(request, api);
         }

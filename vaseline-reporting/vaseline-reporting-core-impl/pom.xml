@@ -23,8 +23,8 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ir.amv.os.vaseline.security</groupId>
-            <artifactId>vaseline-authentication-api</artifactId>
+            <groupId>ir.amv.os.vaseline.tasks</groupId>
+            <artifactId>vaseline-tasks-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

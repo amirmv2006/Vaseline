@@ -1,6 +1,7 @@
 package ir.amv.os.vaseline.reporting.api.server.datasource;
 
 import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseCallback;
 import ir.amv.os.vaseline.base.core.shared.util.pager.IBaseAsyncListPager;
 import ir.amv.os.vaseline.base.core.shared.util.pager.impl.DefaultStaticListPager;
 import ir.amv.os.vaseline.base.core.shared.util.reflection.ReflectionUtil;
@@ -88,4 +89,8 @@ public class BaseBeansDataSource<D> extends JRAbstractBeanDataSource {
 	public void addFieldPostProcessor(IBaseFieldPostProcessor<?> fieldPostProcessor) {
 		fieldsPostProcessors.add(fieldPostProcessor);
 	}
+
+	public IBaseCallback<IBaseCallback<Integer, Void>, Void> getCountCallback() {
+        return pager.getCountDataCallback();
+    }
 }

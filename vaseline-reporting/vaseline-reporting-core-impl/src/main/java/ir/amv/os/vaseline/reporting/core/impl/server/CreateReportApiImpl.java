@@ -9,7 +9,8 @@ import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.IBaseReportSourceServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.api.shared.enums.ReportOutputType;
-import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
+import ir.amv.os.vaseline.reporting.core.impl.server.priotorizer.VaselineReportPriotorizer;
+import ir.amv.os.vaseline.tasks.api.server.priority.annot.Prioritorized;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.export.*;
 import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
@@ -20,6 +21,8 @@ import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.ServletContextAware;
 
@@ -31,6 +34,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Future;
 
 /**
  * Created by AMV on 2/13/2016.
@@ -40,7 +44,6 @@ public class CreateReportApiImpl
         extends BaseApiImpl
         implements ICreateReportApi, ServletContextAware {
 
-    private IAuthenticationApi authenticationApi;
     @Autowired
     Environment environment;
     private ServletContext servletContext;
@@ -61,7 +64,9 @@ public class CreateReportApiImpl
     }
 
     @Override
-    public void generateReport(CreateReportRequestServer request, OutputStream outputStream, BaseBeansDataSource<?> dataSource) {
+    @Async("reportTaskExecutor")
+    @Prioritorized(prioritorizerClass = VaselineReportPriotorizer.class)
+    public Future<Void> generateReport(CreateReportRequestServer request, OutputStream outputStream, BaseBeansDataSource<?> dataSource) {
         try {
             // get report design name and load report design file
             JasperReport jasperReport = null;
@@ -118,6 +123,7 @@ public class CreateReportApiImpl
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return new AsyncResult<Void>(null);
     }
 
     protected JRAbstractExporter<?, ?, ?, ?> getJasperExporter(ReportOutputType outputType) {
@@ -150,17 +156,10 @@ public class CreateReportApiImpl
 
     private void setDefaultParameters(Map<String, Object> reportParameters) throws BaseVaselineServerException {
         DefaultJasperFieldStringPostProcessor fieldStringPostProcessor = new DefaultJasperFieldStringPostProcessor();
-        String currentUsername = authenticationApi.getCurrentUsername();
-        reportParameters.put("currentUser", fieldStringPostProcessor.postProcess(currentUsername));
         String currentShamsiDate = DateUtil.toString(DateUtil.newJalaliCalendar());
         reportParameters.put("currentShamsiDate", fieldStringPostProcessor.postProcess(currentShamsiDate));
         InputStream logoStream = servletContext.getResourceAsStream("/logo.jpg");
         reportParameters.put("logo", logoStream);
-    }
-
-    @Autowired
-    public void setAuthenticationApi(IAuthenticationApi authenticationApi) {
-        this.authenticationApi = authenticationApi;
     }
 
     @Override

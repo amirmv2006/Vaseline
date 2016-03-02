@@ -23,13 +23,6 @@ public class BaseReportingReadOnlyAsyncServiceImpl<E extends IBaseEntity<Id>, D 
     @Override
     public Long reportByExample(CreateReportRequestClient request, D example) throws BaseVaselineServerException {
         CreateReportRequestServer requestServer = convert(request, CreateReportRequestServer.class);
-        Future<Long> longFuture = api.reportByExample(requestServer, example);
-        try {
-            return longFuture.get();
-        } catch (InterruptedException e) {
-            throw new BaseVaselineServerException(e);
-        } catch (ExecutionException e) {
-            throw new BaseVaselineServerException(e);
-        }
+        return api.reportByExample(requestServer, example);
     }
 }

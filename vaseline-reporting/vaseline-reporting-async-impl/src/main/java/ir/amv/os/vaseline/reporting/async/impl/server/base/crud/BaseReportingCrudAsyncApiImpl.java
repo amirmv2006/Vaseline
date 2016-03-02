@@ -16,11 +16,9 @@ import ir.amv.os.vaseline.reporting.async.impl.server.base.parent.BaseReportingA
 import ir.amv.os.vaseline.reporting.async.impl.server.base.ro.BaseReportingReadOnlyAsyncApiImplHelper;
 import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.concurrent.Future;
 
 /**
  * Created by AMV on 2/14/2016.
@@ -34,8 +32,7 @@ public class BaseReportingCrudAsyncApiImpl<E extends IBaseEntity<Id>, D extends 
     private IFileApi fileApi;
 
     @Override
-    @Async
-    public Future<Long> genericReport(CreateReportRequestServer request, IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback, IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback) throws BaseVaselineServerException {
+    public Long genericReport(CreateReportRequestServer request, IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback, IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback) throws BaseVaselineServerException {
         return BaseReportingAsyncApiImplHelper.genericReport(this, request, createReportApi, authenticationApi, fileApi,
                 getReportFileCategory(request), countDataCallback, loadDataCallback);
     }
@@ -46,8 +43,7 @@ public class BaseReportingCrudAsyncApiImpl<E extends IBaseEntity<Id>, D extends 
     }
 
     @Override
-    @Async
-    public Future<Long> reportByExample(CreateReportRequestServer request, final D example) throws BaseVaselineServerException {
+    public Long reportByExample(CreateReportRequestServer request, final D example) throws BaseVaselineServerException {
         return BaseReportingReadOnlyAsyncApiImplHelper.reportByExample(this, request, example, createReportApi, authenticationApi, fileApi, getReportFileCategory(request));
     }
 

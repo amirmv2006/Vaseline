@@ -8,6 +8,7 @@ import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseCallback;
 import ir.amv.os.vaseline.base.core.shared.util.callback.impl.BaseCallbackImpl;
 import ir.amv.os.vaseline.base.core.shared.util.callback.impl.BaseDoubleParameterCallbackImpl;
+import ir.amv.os.vaseline.base.core.shared.util.callback.impl.CachingCallback;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
@@ -26,7 +27,7 @@ public class BaseReportingReadOnlyAsyncApiImplHelper {
     private BaseReportingReadOnlyAsyncApiImplHelper() {
     }
 
-    public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable> Future<Long> reportByExample(
+    public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable> Long reportByExample(
             final IBaseReadOnlyApi<E, D, Id> api,
             CreateReportRequestServer request,
             final D example,
@@ -36,14 +37,15 @@ public class BaseReportingReadOnlyAsyncApiImplHelper {
             String reportFileCategory)
             throws BaseVaselineServerException {
         return BaseReportingAsyncApiImplHelper.genericReport(api, request, createReportApi, authenticationApi, fileApi, reportFileCategory,
-                new BaseCallbackImpl<IBaseCallback<Integer, Void>, Void>() {
+                new CachingCallback<Integer>() {
                     @Override
-                    public void onSuccess(IBaseCallback<Integer, Void> result) {
+                    public Integer fetchValue() {
                         try {
-                            result.onSuccess(api.getProxy(IBaseReadOnlyApi.class).countByExample(example).intValue());
+                            return api.getProxy(IBaseReadOnlyApi.class).countByExample(example).intValue();
                         } catch (BaseVaselineServerException e) {
                             e.printStackTrace();
                         }
+                        return null;
                     }
                 }, new BaseDoubleParameterCallbackImpl<IBaseCallback<List<E>, Void>, PagingDto, Void>() {
                     @Override

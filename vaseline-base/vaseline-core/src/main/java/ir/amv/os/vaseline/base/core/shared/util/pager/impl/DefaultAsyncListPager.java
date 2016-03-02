@@ -104,8 +104,18 @@ public class DefaultAsyncListPager<D> implements IBaseAsyncListPager<D> {
 	}
 
 	@Override
+	public IBaseDoubleParameterCallback<IBaseCallback<List<D>, Void>, PagingDto, Void> getLoadDataCallback() {
+		return loadDataCallback;
+	}
+
+	@Override
 	public void setCountDataCallback(IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback) {
 		this.countDataCallback = countDataCallback;
+	}
+
+	@Override
+	public IBaseCallback<IBaseCallback<Integer, Void>, Void> getCountDataCallback() {
+		return countDataCallback;
 	}
 
 	private void loadData() {
