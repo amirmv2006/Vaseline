@@ -15,6 +15,7 @@
         <module>vaseline-reporting</module>
         <module>vaseline-tasks</module>
         <module>vaseline-ws</module>
+        <module>vaseline-bpm</module>
     </modules>
 
     <properties>
