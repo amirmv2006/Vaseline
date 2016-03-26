@@ -2,8 +2,13 @@
 ### Example user template
 
 # IntelliJ project files
-.idea
+.idea/
 *.iml
+*.iws
 out
 gen
 # Created by .ignore support plugin (hsz.mobi)
+# Maven
+log/
+target/
+
