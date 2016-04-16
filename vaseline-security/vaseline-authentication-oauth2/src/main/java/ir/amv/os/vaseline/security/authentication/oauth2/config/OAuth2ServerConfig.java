@@ -18,9 +18,7 @@ package ir.amv.os.vaseline.security.authentication.oauth2.config;
 import ir.amv.os.vaseline.security.authentication.spring.impl.config.VaselineAuthenticationImplConfig;
 import ir.amv.os.vaseline.security.authentication.spring.impl.config.external.IHttpSecurityConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
@@ -54,7 +52,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 })
 public class OAuth2ServerConfig {
 
-	private static final String SPARKLR_RESOURCE_ID = "sparklr";
+	private static final String APP_RESOURCE_ID = "sparklr";
 
     @Bean
     public IHttpSecurityConfigurer inAppConfigurer() {
@@ -98,7 +96,7 @@ public class OAuth2ServerConfig {
 
             @Override
             public ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry authorizeRequests(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry) {
-                return registry;
+                return registry.antMatchers("/oauth/**").permitAll();
             }
         };
     }
@@ -109,7 +107,7 @@ public class OAuth2ServerConfig {
 
 		@Override
 		public void configure(ResourceServerSecurityConfigurer resources) {
-			resources.resourceId(SPARKLR_RESOURCE_ID).stateless(false);
+			resources.resourceId(APP_RESOURCE_ID).stateless(false);
 		}
 
 		@Override
@@ -119,21 +117,11 @@ public class OAuth2ServerConfig {
 				// Since we want the protected resources to be accessible in the UI as well we need 
 				// session creation to be allowed (it's disabled by default in 2.0.6)
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-			.and()
-				.requestMatchers().antMatchers("/photos/**", "/oauth/users/**", "/oauth/clients/**","/me")
-			.and()
-				.authorizeRequests()
-					.antMatchers("/me").access("#oauth2.hasScope('read')")					
-					.antMatchers("/photos").access("#oauth2.hasScope('read') or (!#oauth2.isOAuth() and hasRole('ROLE_USER'))")                                        
-					.antMatchers("/photos/trusted/**").access("#oauth2.hasScope('trust')")
-					.antMatchers("/photos/user/**").access("#oauth2.hasScope('trust')")					
-					.antMatchers("/photos/**").access("#oauth2.hasScope('read') or (!#oauth2.isOAuth() and hasRole('ROLE_USER'))")
-					.regexMatchers(HttpMethod.DELETE, "/oauth/users/([^/].*?)/tokens/.*")
-						.access("#oauth2.clientHasRole('ROLE_CLIENT') and (hasRole('ROLE_USER') or #oauth2.isClient()) and #oauth2.hasScope('write')")
-					.regexMatchers(HttpMethod.GET, "/oauth/clients/([^/].*?)/users/.*")
-						.access("#oauth2.clientHasRole('ROLE_CLIENT') and (hasRole('ROLE_USER') or #oauth2.isClient()) and #oauth2.hasScope('read')")
-					.regexMatchers(HttpMethod.GET, "/oauth/clients/.*")
-						.access("#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isClient() and #oauth2.hasScope('read')");
+					.and()
+					.requestMatchers().antMatchers("/cxf/rest/**", "/cxf/soap/**")
+					.and()
+					.authorizeRequests()
+					.antMatchers("/cxf/rest/**", "/cxf/soap/**").access("#oauth2.hasScope('app') or (!#oauth2.isOAuth() and isAuthenticated())");
 			// @formatter:on
 		}
 
@@ -154,57 +142,60 @@ public class OAuth2ServerConfig {
 //		@Qualifier("authenticationManagerBean")
 		private AuthenticationManager authenticationManager;
 
-		@Value("${tonr.redirect:http://localhost:8080/tonr2/sparklr/redirect}")
-		private String tonrRedirectUri;
+//		@Value("${tonr.redirect:http://localhost:8080/tonr2/sparklr/redirect}")
+//		private String tonrRedirectUri;
 
 		@Override
 		public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
 			// @formatter:off
-			clients.inMemory().withClient("tonr")
-			 			.resourceIds(SPARKLR_RESOURCE_ID)
-			 			.authorizedGrantTypes("authorization_code", "implicit")
-			 			.authorities("ROLE_CLIENT")
-			 			.scopes("read", "write")
-			 			.secret("secret")
-			 		.and()
-			 		.withClient("tonr-with-redirect")
-			 			.resourceIds(SPARKLR_RESOURCE_ID)
-			 			.authorizedGrantTypes("authorization_code", "implicit")
-			 			.authorities("ROLE_CLIENT")
-			 			.scopes("read", "write")
-			 			.secret("secret")
-			 			.redirectUris(tonrRedirectUri)
-			 		.and()
-		 		    .withClient("my-client-with-registered-redirect")
-	 			        .resourceIds(SPARKLR_RESOURCE_ID)
-	 			        .authorizedGrantTypes("authorization_code", "client_credentials")
-	 			        .authorities("ROLE_CLIENT")
-	 			        .scopes("read", "trust")
-	 			        .redirectUris("http://anywhere?key=value")
-		 		    .and()
+			clients.inMemory()
+//					.withClient("mobile")
+//			 			.resourceIds(APP_RESOURCE_ID)
+//			 			.authorizedGrantTypes("authorization_code", "client credentials")
+//			 			.authorities("IS_AUTHENTICATED")
+//			 			.scopes("app")
+//			 			.secret("secret")
+//			 		.and()
+//			 		.withClient("tonr-with-redirect")
+//			 			.resourceIds(APP_RESOURCE_ID)
+//			 			.authorizedGrantTypes("authorization_code", "implicit")
+//			 			.authorities("ROLE_CLIENT")
+//			 			.scopes("read", "write")
+//			 			.secret("secret")
+//			 			.redirectUris(tonrRedirectUri)
+//			 		.and()
+//		 		    .withClient("my-client-with-registered-redirect")
+//	 			        .resourceIds(APP_RESOURCE_ID)
+//	 			        .authorizedGrantTypes("authorization_code", "client_credentials")
+//	 			        .authorities("ROLE_CLIENT")
+//	 			        .scopes("read", "trust")
+//	 			        .redirectUris("http://anywhere?key=value")
+//		 		    .and()
 	 		        .withClient("my-trusted-client")
  			            .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
- 			            .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
- 			            .scopes("read", "write", "trust")
+ 			            .authorities("IS_AUTHENTICATED")
+ 			            .scopes("app")
+                        .secret("secret")
  			            .accessTokenValiditySeconds(60)
-		 		    .and()
-	 		        .withClient("my-trusted-client-with-secret")
- 			            .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
- 			            .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
- 			            .scopes("read", "write", "trust")
- 			            .secret("somesecret")
-	 		        .and()
- 		            .withClient("my-less-trusted-client")
-			            .authorizedGrantTypes("authorization_code", "implicit")
-			            .authorities("ROLE_CLIENT")
-			            .scopes("read", "write", "trust")
-     		        .and()
-		            .withClient("my-less-trusted-autoapprove-client")
-		                .authorizedGrantTypes("implicit")
-		                .authorities("ROLE_CLIENT")
-		                .scopes("read", "write", "trust")
-		                .autoApprove(true);
+//		 		    .and()
+//	 		        .withClient("my-trusted-client-with-secret")
+// 			            .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
+// 			            .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
+// 			            .scopes("read", "write", "trust")
+// 			            .secret("somesecret")
+//	 		        .and()
+// 		            .withClient("my-less-trusted-client")
+//			            .authorizedGrantTypes("authorization_code", "implicit")
+//			            .authorities("ROLE_CLIENT")
+//			            .scopes("read", "write", "trust")
+//     		        .and()
+//		            .withClient("my-less-trusted-autoapprove-client")
+//		                .authorizedGrantTypes("implicit")
+//		                .authorities("ROLE_CLIENT")
+//		                .scopes("read", "write", "trust")
+//		                .autoApprove(true)
+					;
 			// @formatter:on
 		}
 
@@ -221,7 +212,8 @@ public class OAuth2ServerConfig {
 
 		@Override
 		public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-			oauthServer.realm("sparklr2/client");
+//			oauthServer.realm("sample-project/client");
+            oauthServer.allowFormAuthenticationForClients();
 		}
 
 	}
