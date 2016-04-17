@@ -25,6 +25,10 @@ public class ProxyAwareBeanPostProcessor implements BeanPostProcessor, Ordered {
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        //// FIXME: AMV 4/17/2016 remove this
+        if (beanName.equalsIgnoreCase("clientDetailsService")) {
+            return bean;
+        }
 
         Object targetBean = getTargetBean(bean);
 
