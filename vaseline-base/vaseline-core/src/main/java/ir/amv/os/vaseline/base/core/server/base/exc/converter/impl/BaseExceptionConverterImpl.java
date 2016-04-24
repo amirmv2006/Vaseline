@@ -16,13 +16,15 @@ public class BaseExceptionConverterImpl<E extends Exception, CE extends BaseVase
 	protected MessageSource messageSource;
 
 	@SuppressWarnings("unchecked")
-	public BaseExceptionConverterImpl(Class<E> exc, CoreExceptionHandlerImpl exceptionHandler) {
+	public BaseExceptionConverterImpl(CoreExceptionHandlerImpl exceptionHandler) {
         Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
         if (genericArgumentClasses != null) {
             exceptionClass = (Class<E>)genericArgumentClasses[0];
             clientExceptionClass = (Class<CE>)genericArgumentClasses[1];
-        }
-		exceptionHandler.registerHandler(exc, this);
+        } else {
+			throw new RuntimeException("Can not find the exception class, did you specify the generics for BaseExceptionConverterImpl?");
+		}
+		exceptionHandler.registerHandler(exceptionClass, this);
 	}
 
 	@Override
