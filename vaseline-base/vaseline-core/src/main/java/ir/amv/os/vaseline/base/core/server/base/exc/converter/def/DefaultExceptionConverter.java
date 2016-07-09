@@ -11,7 +11,7 @@ public class DefaultExceptionConverter extends BaseExceptionConverterImpl<Except
 
 	@Autowired
 	public DefaultExceptionConverter(CoreExceptionHandlerImpl exceptionHandler) {
-		super(Exception.class, exceptionHandler);
+		super(exceptionHandler);
 	}
 
 }
