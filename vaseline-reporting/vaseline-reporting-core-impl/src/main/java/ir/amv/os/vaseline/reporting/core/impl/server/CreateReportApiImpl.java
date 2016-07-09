@@ -52,15 +52,16 @@ public class CreateReportApiImpl
     public void initialize() {
         JasperReportsContext reportsContext = DefaultJasperReportsContext.getInstance();
         JRPropertiesUtil.getInstance(reportsContext).setProperty(JRStyledText.PROPERTY_AWT_IGNORE_MISSING_FONT, "true");
-        File fontDir = new File(environment.getProperty("report.fonts.dir", ""));
-        if (fontDir.exists() && fontDir.isDirectory()) {
-            for (String fileName : fontDir.list()) {
-                if (fileName.toLowerCase().endsWith(".ttf") || fileName.toLowerCase().endsWith(".fnt")) {
-                    JRPropertiesUtil.getInstance(reportsContext).setProperty(
-                            JRPdfExporter.PDF_FONT_FILES_PREFIX + fileName.substring(0, fileName.length() - 4), fontDir + File.separator + fileName);
-                }
-            }
-        }
+        // use jasper font extension instead
+//        File fontDir = new File(environment.getProperty("report.fonts.dir", ""));
+//        if (fontDir.exists() && fontDir.isDirectory()) {
+//            for (String fileName : fontDir.list()) {
+//                if (fileName.toLowerCase().endsWith(".ttf") || fileName.toLowerCase().endsWith(".fnt")) {
+//                    JRPropertiesUtil.getInstance(reportsContext).setProperty(
+//                            JRPdfExporter.PDF_FONT_FILES_PREFIX + fileName.substring(0, fileName.length() - 4), fontDir + File.separator + fileName);
+//                }
+//            }
+//        }
     }
 
     @Override

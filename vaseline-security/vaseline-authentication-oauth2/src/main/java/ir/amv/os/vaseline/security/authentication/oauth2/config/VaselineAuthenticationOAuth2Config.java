@@ -47,10 +47,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @Import({
         VaselineAuthenticationImplConfig.class,
-        OAuth2ServerConfig.ResourceServerConfiguration.class,
-        OAuth2ServerConfig.AuthorizationServerConfiguration.class
+        VaselineAuthenticationOAuth2Config.ResourceServerConfiguration.class,
+        VaselineAuthenticationOAuth2Config.AuthorizationServerConfiguration.class
 })
-public class OAuth2ServerConfig {
+public class VaselineAuthenticationOAuth2Config {
 
 	private static final String APP_RESOURCE_ID = "sparklr";
 
@@ -117,11 +117,12 @@ public class OAuth2ServerConfig {
 				// Since we want the protected resources to be accessible in the UI as well we need 
 				// session creation to be allowed (it's disabled by default in 2.0.6)
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+					// strange, but when comment these line 'login.do' is not registered :\
 					.and()
-					.requestMatchers().antMatchers("/cxf/rest/**", "/cxf/soap/**")
+					.requestMatchers().antMatchers("/cxf/rest/**", "/cxf/soap/**", "/file/**")
 					.and()
 					.authorizeRequests()
-					.antMatchers("/cxf/rest/**", "/cxf/soap/**").access("#oauth2.hasScope('app') or (!#oauth2.isOAuth() and isAuthenticated())");
+					.antMatchers("/cxf/rest/**", "/cxf/soap/**", "/file/**").access("#oauth2.hasScope('app') or (!#oauth2.isOAuth() and isAuthenticated())");
 			// @formatter:on
 		}
 
