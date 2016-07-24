@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.base.architecture.server.layers.base.ro.api;
 
+import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.base.architecture.server.layers.ent.ro.api.IBaseEntityReadOnlyApi;
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
@@ -17,12 +18,16 @@ public interface IBaseReadOnlyApi<E extends IBaseEntity<Id>, D extends IBaseDto<
 
     E getById(Id id) throws BaseVaselineServerException;
 
+    Long countAllApproximately() throws BaseVaselineServerException;
+
     Long countAll() throws BaseVaselineServerException;
     List<E> getAll() throws BaseVaselineServerException;
+    IVaselineDataScroller<E> scrollAll() throws BaseVaselineServerException;
     List<E> getAll(PagingDto pagingDto) throws BaseVaselineServerException;
 
     Long countByExample(D example) throws BaseVaselineServerException;
     List<E> searchByExample(D example) throws BaseVaselineServerException;
+    IVaselineDataScroller<E> scrollByExample(D example) throws BaseVaselineServerException;
     List<E> searchByExample(D example, PagingDto pagingDto)
             throws BaseVaselineServerException;
 

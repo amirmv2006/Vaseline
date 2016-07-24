@@ -1,10 +1,10 @@
 package ir.amv.os.vaseline.file.db.impl.server.model.blob.impl;
 
 import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.crud.dao.BaseCrudHibernateDaoImpl;
-import ir.amv.os.vaseline.file.api.server.model.base.IFileDao;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
 import ir.amv.os.vaseline.file.api.shared.model.base.IFileDto;
 import ir.amv.os.vaseline.file.db.impl.server.model.blob.FileBlobEntity;
+import ir.amv.os.vaseline.file.db.impl.server.model.blob.IFileBlobDao;
 import org.apache.commons.io.IOUtils;
 import org.hibernate.Criteria;
 import org.hibernate.LobHelper;
@@ -25,7 +25,7 @@ import java.sql.Blob;
 @Repository
 public class FileBlobDaoImpl
         extends BaseCrudHibernateDaoImpl<IFileEntity, IFileDto, Long>
-        implements IFileDao {
+        implements IFileBlobDao {
 
     @Override
     public IFileEntity createFile() {

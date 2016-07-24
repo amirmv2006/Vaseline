@@ -1,6 +1,7 @@
 package ir.amv.os.vaseline.security.authorization.hibernate.impl.server.base.dao.crud;
 
 import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.crud.dao.BaseCrudHibernateDaoImpl;
+import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
@@ -58,6 +59,13 @@ public class BaseSecuredCrudHibernateDaoImpl<E extends IBaseEntity<Id>, D extend
     }
 
     @Override
+    public IVaselineDataScroller<E> scrollAll(SecurityCriteria securityCriteria) {
+        DetachedCriteria detCriteria = createCriteria(securityCriteria);
+        Criteria criteria = getCriteriaFromDetachedCriteria(detCriteria);
+        return scrollCriteria(criteria);
+    }
+
+    @Override
     public List<E> getAll(PagingDto pagingDto, final SecurityCriteria securityCriteria) {
         List<E> listFromCriteria = pagingResultCreator.getPagingResult(this, new IBaseReturningCallback<DetachedCriteria>() {
             @Override
@@ -87,6 +95,15 @@ public class BaseSecuredCrudHibernateDaoImpl<E extends IBaseEntity<Id>, D extend
         Criteria criteria = getCriteriaFromDetachedCriteria(detachedCriteria);
         List<E> listFromCriteria = getListFromCriteria(criteria);
         return listFromCriteria;
+    }
+
+    @Override
+    public IVaselineDataScroller<E> scrollByExample(D example, SecurityCriteria securityCriteria) {
+        DetachedCriteria detCriteria = createCriteria(securityCriteria);
+        pruneCriteriaBasedOnExampleRecursively(example, detCriteria,
+                new ArrayList<Criterion>(), new HashMap<String, String>());
+        Criteria criteria = getCriteriaFromDetachedCriteria(detCriteria);
+        return scrollCriteria(criteria);
     }
 
     @Override

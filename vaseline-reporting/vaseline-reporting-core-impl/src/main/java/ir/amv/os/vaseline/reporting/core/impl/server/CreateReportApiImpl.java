@@ -3,7 +3,6 @@ package ir.amv.os.vaseline.reporting.core.impl.server;
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.api.BaseApiImpl;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.base.core.shared.util.date.DateUtil;
-import ir.amv.os.vaseline.reporting.api.server.datasource.BaseBeansDataSource;
 import ir.amv.os.vaseline.reporting.api.server.fieldpostprocessor.impl.DefaultJasperFieldStringPostProcessor;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.IBaseReportSourceServer;
@@ -28,7 +27,6 @@ import org.springframework.web.context.ServletContextAware;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
-import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -67,7 +65,7 @@ public class CreateReportApiImpl
     @Override
     @Async("reportTaskExecutor")
     @Prioritorized(prioritorizerClass = VaselineReportPriotorizer.class)
-    public Future<Void> generateReport(CreateReportRequestServer request, OutputStream outputStream, BaseBeansDataSource<?> dataSource) {
+    public Future<Void> generateReport(CreateReportRequestServer request, OutputStream outputStream, JRDataSource dataSource) {
         try {
             // get report design name and load report design file
             JasperReport jasperReport = null;

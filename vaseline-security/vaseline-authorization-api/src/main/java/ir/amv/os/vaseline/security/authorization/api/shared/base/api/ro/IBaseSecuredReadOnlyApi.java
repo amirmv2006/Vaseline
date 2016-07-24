@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.security.authorization.api.shared.base.api.ro;
 
+import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.api.IBaseReadOnlyApi;
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
@@ -21,10 +22,12 @@ public interface IBaseSecuredReadOnlyApi<E extends IBaseEntity<Id>, D extends IB
 
     Long countAllNotSecured() throws BaseVaselineServerException;
     List<E> getAllNotSecured() throws BaseVaselineServerException;
+    IVaselineDataScroller<E> scrollAllNotSecured() throws BaseVaselineServerException;
     List<E> getAllNotSecured(PagingDto pagingDto) throws BaseVaselineServerException;
 
     Long countByExampleNotSecured(D example) throws BaseVaselineServerException;
     List<E> searchByExampleNotSecured(D example) throws BaseVaselineServerException;
+    IVaselineDataScroller scrollByExampleNotSecured(D example) throws BaseVaselineServerException;
     List<E> searchByExampleNotSecured(D example, PagingDto pagingDto)
             throws BaseVaselineServerException;
 

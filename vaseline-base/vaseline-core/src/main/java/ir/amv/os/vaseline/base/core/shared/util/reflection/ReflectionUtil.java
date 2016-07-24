@@ -1,6 +1,7 @@
 package ir.amv.os.vaseline.base.core.shared.util.reflection;
 
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
 
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
@@ -32,6 +33,9 @@ public class ReflectionUtil {
 
     public static Class<?> getPropertyTypeByTreeName(Class<?> srcClass, String propertyTreeName) {
         try {
+            if (propertyTreeName.equals("id") && (IBaseEntity.class.isAssignableFrom(srcClass) || IBaseDto.class.isAssignableFrom(srcClass))) {
+                return getGenericArgumentClasses(srcClass, IBaseEntity.class, IBaseDto.class)[0];
+            }
             BeanInfo beanInfo = Introspector.getBeanInfo(srcClass);
             PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
             for (int i = 0; i < propertyDescriptors.length; i++) {

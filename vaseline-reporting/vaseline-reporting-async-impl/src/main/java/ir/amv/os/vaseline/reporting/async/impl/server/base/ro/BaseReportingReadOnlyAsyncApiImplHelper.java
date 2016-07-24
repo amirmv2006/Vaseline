@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.reporting.async.impl.server.base.ro;
 
+import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.api.IBaseReadOnlyApi;
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
@@ -41,17 +42,17 @@ public class BaseReportingReadOnlyAsyncApiImplHelper {
                     @Override
                     public Integer fetchValue() {
                         try {
-                            return api.getProxy(IBaseReadOnlyApi.class).countByExample(example).intValue();
+                            return api.getProxy(IBaseReadOnlyApi.class).countAllApproximately().intValue();
                         } catch (BaseVaselineServerException e) {
                             e.printStackTrace();
                         }
                         return null;
                     }
-                }, new BaseDoubleParameterCallbackImpl<IBaseCallback<List<E>, Void>, PagingDto, Void>() {
+                }, new BaseCallbackImpl<IBaseCallback<IVaselineDataScroller<D>,Void>, Void>() {
                     @Override
-                    public void onSuccess(IBaseCallback<List<E>, Void> firstParam, PagingDto secondParameter) {
+                    public void onSuccess(IBaseCallback<IVaselineDataScroller<D>, Void> result) {
                         try {
-                            firstParam.onSuccess(api.getProxy(IBaseReadOnlyApi.class).searchByExample(example, secondParameter));
+                            result.onSuccess(api.getProxy(IBaseReadOnlyApi.class).scrollByExample(example));
                         } catch (BaseVaselineServerException e) {
                             e.printStackTrace();
                         }

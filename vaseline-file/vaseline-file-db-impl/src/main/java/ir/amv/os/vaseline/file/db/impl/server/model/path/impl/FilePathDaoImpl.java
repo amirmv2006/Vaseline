@@ -1,10 +1,10 @@
 package ir.amv.os.vaseline.file.db.impl.server.model.path.impl;
 
 import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.crud.dao.BaseCrudHibernateDaoImpl;
-import ir.amv.os.vaseline.file.api.server.model.base.IFileDao;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
 import ir.amv.os.vaseline.file.api.shared.model.base.IFileDto;
 import ir.amv.os.vaseline.file.db.impl.server.model.path.FilePathEntity;
+import ir.amv.os.vaseline.file.db.impl.server.model.path.IFilePathDao;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -21,7 +21,7 @@ import java.io.OutputStream;
 @Repository
 public class FilePathDaoImpl
         extends BaseCrudHibernateDaoImpl<IFileEntity, IFileDto, Long>
-        implements IFileDao {
+        implements IFilePathDao {
 
     @Autowired
     Environment environment;

@@ -2,6 +2,7 @@ package ir.amv.os.vaseline.reporting.async.impl.server.base.crud;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.base.crud.api.BaseCrudApiImpl;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.IBaseCrudDao;
+import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
@@ -33,6 +34,12 @@ public class BaseReportingCrudAsyncApiImpl<E extends IBaseEntity<Id>, D extends 
 
     @Override
     public Long genericReport(CreateReportRequestServer request, IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback, IBaseDoubleParameterCallback<IBaseCallback<List<E>, Void>, PagingDto, Void> loadDataCallback) throws BaseVaselineServerException {
+        return BaseReportingAsyncApiImplHelper.genericReport(this, request, createReportApi, authenticationApi, fileApi,
+                getReportFileCategory(request), countDataCallback, loadDataCallback);
+    }
+
+    @Override
+    public Long genericReport(CreateReportRequestServer request, IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback, IBaseCallback<IBaseCallback<IVaselineDataScroller<E>, Void>, Void> loadDataCallback) throws BaseVaselineServerException {
         return BaseReportingAsyncApiImplHelper.genericReport(this, request, createReportApi, authenticationApi, fileApi,
                 getReportFileCategory(request), countDataCallback, loadDataCallback);
     }

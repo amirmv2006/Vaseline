@@ -2,7 +2,7 @@ package ir.amv.os.vaseline.reporting.core.impl.server.priotorizer;
 
 import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseCallback;
 import ir.amv.os.vaseline.base.core.shared.util.callback.impl.BaseCallbackImpl;
-import ir.amv.os.vaseline.reporting.api.server.datasource.BaseBeansDataSource;
+import ir.amv.os.vaseline.reporting.api.server.datasource.PaginatorDataSource;
 import ir.amv.os.vaseline.tasks.api.server.priority.prioritorizer.IBaseVaselineAsyncPrioritorizer;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.stereotype.Component;
@@ -19,9 +19,9 @@ public class VaselineReportPriotorizer
     public int getPriority(MethodInvocation methodInvocation) {
         Object[] arguments = methodInvocation.getArguments();
         for (Object argument : arguments) {
-            if (argument instanceof BaseBeansDataSource) {
+            if (argument instanceof PaginatorDataSource) {
                 final AtomicInteger countResult = new AtomicInteger(0);
-                BaseBeansDataSource dataSource = (BaseBeansDataSource) argument;
+                PaginatorDataSource dataSource = (PaginatorDataSource) argument;
                 IBaseCallback<IBaseCallback<Integer, Void>, Void> countCallback = dataSource.getCountCallback();
                 countCallback.onSuccess(new BaseCallbackImpl<Integer, Void>() {
                     @Override

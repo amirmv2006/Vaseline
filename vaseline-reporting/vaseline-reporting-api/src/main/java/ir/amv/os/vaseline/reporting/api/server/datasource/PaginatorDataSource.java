@@ -14,7 +14,7 @@ import net.sf.jasperreports.engine.data.JRAbstractBeanDataSource;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseBeansDataSource<D> extends JRAbstractBeanDataSource {
+public class PaginatorDataSource<D> extends JRAbstractBeanDataSource {
 
 	private static final int PAGE_SIZE = 10000;
 	private D currentRow;
@@ -22,7 +22,7 @@ public class BaseBeansDataSource<D> extends JRAbstractBeanDataSource {
 	private DefaultStaticListPager<D> currentPager;
 	private List<IBaseFieldPostProcessor<?>> fieldsPostProcessors = new ArrayList<IBaseFieldPostProcessor<?>>();
 	
-	public BaseBeansDataSource(IBaseAsyncListPager<D> pager) {
+	public PaginatorDataSource(IBaseAsyncListPager<D> pager) {
 		super(true);
 		this.pager = pager;
 		addFieldPostProcessor(new DefaultJasperFieldStringPostProcessor());

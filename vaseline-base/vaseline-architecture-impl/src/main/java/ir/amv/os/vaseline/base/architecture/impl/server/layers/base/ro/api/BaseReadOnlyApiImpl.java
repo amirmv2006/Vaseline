@@ -1,6 +1,7 @@
 package ir.amv.os.vaseline.base.architecture.impl.server.layers.base.ro.api;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.ent.ro.api.BaseEntityReadOnlyApiImpl;
+import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.api.IBaseReadOnlyApi;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
@@ -30,6 +31,12 @@ public class BaseReadOnlyApiImpl<E extends IBaseEntity<Id>, D extends IBaseDto<I
 
     @Override
     @Transactional(readOnly = true)
+    public Long countAllApproximately() throws BaseVaselineServerException {
+        return BaseReadOnlyApiImplHelper.countAllApproximately(this, getDao());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Long countAll() throws BaseVaselineServerException {
         return BaseReadOnlyApiImplHelper.countAll(this, getDao());
     }
@@ -38,6 +45,12 @@ public class BaseReadOnlyApiImpl<E extends IBaseEntity<Id>, D extends IBaseDto<I
     @Transactional(readOnly = true)
     public List<E> getAll() throws BaseVaselineServerException {
         return BaseReadOnlyApiImplHelper.getAll(this, getDao());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public IVaselineDataScroller<E> scrollAll() throws BaseVaselineServerException {
+        return BaseReadOnlyApiImplHelper.scrollAll(this, getDao());
     }
 
     @Override
@@ -56,6 +69,12 @@ public class BaseReadOnlyApiImpl<E extends IBaseEntity<Id>, D extends IBaseDto<I
     @Transactional(readOnly = true)
     public List<E> searchByExample(D example) throws BaseVaselineServerException {
         return BaseReadOnlyApiImplHelper.searchByExample(this, getDao(), example);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public IVaselineDataScroller<E> scrollByExample(D example) throws BaseVaselineServerException {
+        return BaseReadOnlyApiImplHelper.scrollByExample(this, getDao(), example);
     }
 
     @Override

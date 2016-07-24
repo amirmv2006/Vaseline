@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.reporting.async.impl.server.base.parent;
 
+import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.base.architecture.server.layers.parent.api.IBaseApi;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
@@ -10,12 +11,14 @@ import ir.amv.os.vaseline.base.core.shared.util.date.DateUtil;
 import ir.amv.os.vaseline.base.core.shared.util.pager.impl.DefaultAsyncListPager;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
-import ir.amv.os.vaseline.reporting.api.server.datasource.BaseBeansDataSource;
+import ir.amv.os.vaseline.reporting.api.server.datasource.PaginatorDataSource;
+import ir.amv.os.vaseline.reporting.api.server.datasource.ScrollerDataSource;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.api.server.requestfiller.IBaseReportRequestFiller;
 import ir.amv.os.vaseline.reporting.async.api.server.base.parent.IBaseReportingAsyncApi;
 import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
+import net.sf.jasperreports.engine.JRDataSource;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -46,7 +49,22 @@ public class BaseReportingAsyncApiImplHelper {
         final DefaultAsyncListPager<E> asyncListPager = new DefaultAsyncListPager<E>();
         asyncListPager.setCountDataCallback(countDataCallback);
         asyncListPager.setLoadDataCallback(loadDataCallback);
-        BaseBeansDataSource<E> dataSource = new BaseBeansDataSource<E>(asyncListPager);
+        PaginatorDataSource<E> dataSource = new PaginatorDataSource<E>(asyncListPager);
+        return doGenerateReport(createReportApi, authenticationApi, fileApi, reportFileCategory, request, dataSource);
+    }
+
+    public static <E> Long genericReport(
+            IBaseApi api,
+            CreateReportRequestServer request,
+            ICreateReportApi createReportApi,
+            IAuthenticationApi authenticationApi,
+            IFileApi fileApi,
+            String reportFileCategory,
+            IBaseCallback<IBaseCallback<Integer, Void>, Void> countDataCallback,
+            IBaseCallback<IBaseCallback<IVaselineDataScroller<E>, Void>, Void> loadDataCallback)
+            throws BaseVaselineServerException {
+        request = fillRepReq(request, api, authenticationApi);
+        ScrollerDataSource<E> dataSource = new ScrollerDataSource<E>(loadDataCallback, countDataCallback);
         return doGenerateReport(createReportApi, authenticationApi, fileApi, reportFileCategory, request, dataSource);
     }
 
@@ -56,7 +74,7 @@ public class BaseReportingAsyncApiImplHelper {
             IFileApi fileApi,
             String reportFileCategory,
             CreateReportRequestServer request,
-            BaseBeansDataSource<E> dataSource) throws BaseVaselineServerException {
+            JRDataSource dataSource) throws BaseVaselineServerException {
         try {
             File repResTmpFile = File.createTempFile("reportOutput", ".tmp");
             Future<Void> voidFuture = createReportApi.generateReport(request,

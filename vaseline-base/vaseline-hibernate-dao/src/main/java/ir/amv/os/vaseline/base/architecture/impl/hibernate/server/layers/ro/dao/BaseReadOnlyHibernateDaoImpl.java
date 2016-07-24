@@ -1,5 +1,7 @@
 package ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.ro.dao;
 
+import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.ro.dao.scroller.DefaultHibernateDataScroller;
+import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
@@ -7,13 +9,13 @@ import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseReturningCallback;
 import ir.amv.os.vaseline.base.core.shared.util.reflection.ReflectionUtil;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 import org.hibernate.criterion.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.Cacheable;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +31,8 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
     protected SessionFactory sessionFactory;
     private Class<E> entityClass;
     protected IPagingResultCreator pagingResultCreator;
+    @Value("#{environment['hibernate.connection.driver_class']}")
+    protected String jdbcDriver;
 
     public BaseReadOnlyHibernateDaoImpl() {
         Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
@@ -55,6 +59,20 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
     }
 
     @Override
+    public Long countAllApproximately() {
+        Session currentSession = getCurrentSession();
+        String query = "";
+        if (jdbcDriver.toLowerCase().contains("postgres")) {
+            query = "SELECT reltuples AS approximate_row_count FROM pg_class WHERE relname = ?";
+        }
+        SQLQuery sqlQuery = currentSession.createSQLQuery(query);
+        String tableName = entityClass.getAnnotation(Table.class).name();
+        sqlQuery.setString(0, tableName);
+        Number o = (Number) sqlQuery.uniqueResult();
+        return o == null ? 0 : o.longValue();
+    }
+
+    @Override
     public Long countAll() {
         DetachedCriteria detCriteria = createCriteria();
         detCriteria = getCountCriteria(detCriteria);
@@ -67,6 +85,13 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
         DetachedCriteria detCriteria = createCriteria();
         Criteria criteria = getCriteriaFromDetachedCriteria(detCriteria);
         return getListFromCriteria(criteria);
+    }
+
+    @Override
+    public IVaselineDataScroller<E> scrollAll() {
+        DetachedCriteria detCriteria = createCriteria();
+        Criteria criteria = getCriteriaFromDetachedCriteria(detCriteria);
+        return scrollCriteria(criteria);
     }
 
     @Override
@@ -99,6 +124,15 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
         Criteria criteria = getCriteriaFromDetachedCriteria(detachedCriteria);
         List<E> listFromCriteria = getListFromCriteria(criteria);
         return listFromCriteria;
+    }
+
+    @Override
+    public IVaselineDataScroller<E> scrollByExample(D example) {
+        DetachedCriteria detCriteria = createCriteria();
+        pruneCriteriaBasedOnExampleRecursively(example, detCriteria,
+                new ArrayList<Criterion>(), new HashMap<String, String>());
+        Criteria criteria = getCriteriaFromDetachedCriteria(detCriteria);
+        return scrollCriteria(criteria);
     }
 
     @Override
@@ -173,6 +207,11 @@ public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, D extends I
                 .setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
         List<?> list = criteria.list();
         return (List<E>) list;
+    }
+
+    public IVaselineDataScroller scrollCriteria(Criteria criteria) {
+        ScrollableResults scroll = criteria.setReadOnly(true).scroll(ScrollMode.SCROLL_INSENSITIVE);
+        return new DefaultHibernateDataScroller(scroll);
     }
 
     public DetachedCriteria getCountCriteria(DetachedCriteria detCriteria) {
