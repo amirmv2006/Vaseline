@@ -8,6 +8,28 @@
     <artifactId>vaseline-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <name>VaselineCore</name>
+    <description>An Open Source Framework for Enterprise Projects</description>
+    <url>https://github.com/amirmv2006/Vaseline</url>
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Amir</name>
+            <email>amirmv2006@gmail.com</email>
+            <organization>AMV</organization>
+            <organizationUrl>https://github.com/amirmv2006</organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <url>git@github.com:amirmv2006/Vaseline.git</url>
+        <connection>scm:git:git@github.com:amirmv2006/Vaseline.git</connection>
+        <developerConnection>scm:git:git@github.com:amirmv2006/Vaseline.git</developerConnection>
+    </scm>
     <modules>
         <module>vaseline-base</module>
         <module>vaseline-file</module>
@@ -335,6 +357,17 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>1.6.7</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <serverId>ossrh</serverId>
+                        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <configuration>
