@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ir.amv.os.vaseline</groupId>
+    <groupId>com.github.amirmv2006</groupId>
     <artifactId>vaseline-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -427,14 +427,14 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>releases</id>
-            <name>Local Repository</name>
-            <url>http://localhost:8081/nexus/content/repositories/releases/</url>
+            <id>oss</id>
+            <name>oss-releases</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
         <snapshotRepository>
-            <id>snapshots</id>
-            <name>Local Repository</name>
-            <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+            <id>oss</id>
+            <name>oss-snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
     <profiles>
