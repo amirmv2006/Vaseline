@@ -1,4 +1,4 @@
-package ir.amv.os.vaseline.base.core.shared.util.reflection;
+package ir.amv.os.vaseline.thirdparty.shared.util.reflection;
 
 public interface ReflectionInterceptor<Q> {
 

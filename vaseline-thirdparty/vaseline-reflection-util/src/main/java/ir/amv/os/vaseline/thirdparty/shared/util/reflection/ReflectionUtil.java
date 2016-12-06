@@ -1,7 +1,4 @@
-package ir.amv.os.vaseline.base.core.shared.util.reflection;
-
-import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
+package ir.amv.os.vaseline.thirdparty.shared.util.reflection;
 
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
@@ -16,14 +13,15 @@ import java.util.*;
 
 public class ReflectionUtil {
 
-    public static void setNonDtoPropsToNull(IBaseEntity<?> ent, final Class<?> dtoClass) throws IntrospectionException {
+    public static <E> void setNonDtoPropsToNull(E ent, final Class<?> dtoClass) throws IntrospectionException {
         if (ent == null) {
             return;
         }
-        intercept(ent, IBaseEntity.class, new ReflectionInterceptor<IBaseEntity<?>>() {
+        final Class<? extends E> objClass = (Class<? extends E>) ent.getClass();
+        intercept(ent, objClass, new ReflectionInterceptor<E>() {
             @Override
-            public IBaseEntity<?> intercept(IBaseEntity<?> object, String propertyTreeName) {
-                if (getPropertyTypeByTreeName(dtoClass, propertyTreeName) != null) {
+            public E intercept(E object, String propertyTreeName) {
+                if (getPropertyTypeByTreeName(dtoClass, propertyTreeName, objClass, dtoClass) != null) {
                     return object;
                 }
                 return null;
@@ -31,10 +29,14 @@ public class ReflectionUtil {
         }, "");
     }
 
-    public static Class<?> getPropertyTypeByTreeName(Class<?> srcClass, String propertyTreeName) {
+    public static Class<?> getPropertyTypeByTreeName(Class<?> srcClass, String propertyTreeName, Class<?>... parentClasses) {
         try {
-            if (propertyTreeName.equals("id") && (IBaseEntity.class.isAssignableFrom(srcClass) || IBaseDto.class.isAssignableFrom(srcClass))) {
-                return getGenericArgumentClasses(srcClass, IBaseEntity.class, IBaseDto.class)[0];
+            if (parentClasses != null) {
+                for (Class<?> parentClass : parentClasses) {
+                    if (propertyTreeName.equals("id") && parentClass.isAssignableFrom(srcClass)) {
+                        return getGenericArgumentClasses(srcClass, parentClass)[0];
+                    }
+                }
             }
             BeanInfo beanInfo = Introspector.getBeanInfo(srcClass);
             PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
@@ -66,7 +68,7 @@ public class ReflectionUtil {
                                 }
                             }
                         }
-                        return getPropertyTypeByTreeName(propertyClass, childPropTreeName);
+                        return getPropertyTypeByTreeName(propertyClass, childPropTreeName, parentClasses);
                     }
                 } else if (propertyTreeName.equals(propertyDescriptors[i].getName())) {
                     return propertyClass;

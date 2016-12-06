@@ -7,8 +7,8 @@ import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.base.exc.BaseVaselineClientException;
-import ir.amv.os.vaseline.base.core.shared.util.reflection.ReflectionUtil;
 import ir.amv.os.vaseline.base.mapper.server.exc.VaselineConvertException;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;

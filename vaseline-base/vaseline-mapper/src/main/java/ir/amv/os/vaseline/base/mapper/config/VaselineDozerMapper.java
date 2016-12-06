@@ -15,7 +15,7 @@
  */
 package ir.amv.os.vaseline.base.mapper.config;
 
-import ir.amv.os.vaseline.base.core.shared.util.reflection.ReflectionUtil;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.dozer.*;
 import org.dozer.cache.CacheManager;
 import org.dozer.cache.DozerCacheManager;

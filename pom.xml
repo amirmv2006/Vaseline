@@ -38,6 +38,7 @@
         <module>vaseline-tasks</module>
         <module>vaseline-ws</module>
         <module>vaseline-bpm</module>
+        <module>vaseline-thirdparty</module>
     </modules>
 
     <properties>
@@ -437,6 +438,14 @@
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<snapshotRepository>-->
+            <!--<id>dan</id>-->
+            <!--<name>dan-snapshots</name>-->
+            <!--<url>http://dan.djavafactory.com/artifactory/libs-snapshot-local</url>-->
+        <!--</snapshotRepository>-->
+    <!--</distributionManagement>-->
+
     <profiles>
         <profile>
             <id>vaseline-default-profile</id>

@@ -4,7 +4,7 @@ import ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.api.BaseAp
 import ir.amv.os.vaseline.base.architecture.server.layers.ent.ro.api.IBaseEntityReadOnlyApi;
 import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.base.core.shared.util.reflection.ReflectionUtil;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 
 import java.io.Serializable;
 

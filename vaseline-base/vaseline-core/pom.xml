@@ -40,6 +40,11 @@
             <groupId>ir.amv.thirdparties</groupId>
             <artifactId>all-calendar</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.thirdparty</groupId>
+            <artifactId>vaseline-reflection-util</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 

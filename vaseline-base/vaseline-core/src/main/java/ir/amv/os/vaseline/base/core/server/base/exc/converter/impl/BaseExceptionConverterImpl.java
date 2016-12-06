@@ -3,7 +3,7 @@ package ir.amv.os.vaseline.base.core.server.base.exc.converter.impl;
 import ir.amv.os.vaseline.base.core.server.base.exc.converter.IBaseExceptionConverter;
 import ir.amv.os.vaseline.base.core.server.base.exc.handler.impl.CoreExceptionHandlerImpl;
 import ir.amv.os.vaseline.base.core.shared.base.exc.BaseVaselineClientException;
-import ir.amv.os.vaseline.base.core.shared.util.reflection.ReflectionUtil;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 

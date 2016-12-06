@@ -8,7 +8,7 @@ import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseReturningCallback;
-import ir.amv.os.vaseline.base.core.shared.util.reflection.ReflectionUtil;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.hibernate.*;
 import org.hibernate.criterion.*;
 import org.springframework.beans.factory.annotation.Autowired;

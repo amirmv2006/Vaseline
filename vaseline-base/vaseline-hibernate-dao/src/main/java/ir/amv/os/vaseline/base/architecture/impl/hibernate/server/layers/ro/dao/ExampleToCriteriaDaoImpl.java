@@ -18,8 +18,8 @@ import ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.dao.BaseDa
 import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.base.core.shared.util.date.DateUtil;
 import ir.amv.os.vaseline.base.core.shared.util.ds.KeyStartsWithMap;
-import ir.amv.os.vaseline.base.core.shared.util.reflection.ReflectionInterceptor;
-import ir.amv.os.vaseline.base.core.shared.util.reflection.ReflectionUtil;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionInterceptor;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
