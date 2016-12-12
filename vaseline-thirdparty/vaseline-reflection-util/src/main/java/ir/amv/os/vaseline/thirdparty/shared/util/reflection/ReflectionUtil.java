@@ -31,6 +31,9 @@ public class ReflectionUtil {
 
     public static Class<?> getPropertyTypeByTreeName(Class<?> srcClass, String propertyTreeName, Class<?>... parentClasses) {
         try {
+            if (propertyTreeName.equals("")) {
+                return srcClass;
+            }
             if (parentClasses != null) {
                 for (Class<?> parentClass : parentClasses) {
                     if (propertyTreeName.equals("id") && parentClass.isAssignableFrom(srcClass)) {
