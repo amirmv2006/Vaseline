@@ -1,0 +1,99 @@
+package com.github.amirmv2006.base.classconverter.impl;
+
+import com.github.amirmv2006.base.fqnconverter.impl.FqnEntityToISOConverterImpl;
+import com.github.amirmv2006.base.fqnconverter.impl.FqnEntityToSOImplConverterImpl;
+import ir.amv.os.vaseline.base.advancedsearch.api.example.model.BaseSearchObjectImpl;
+import ir.amv.os.vaseline.base.advancedsearch.api.example.model.IBaseSearchObject;
+import org.jboss.forge.roaster.Roaster;
+import org.jboss.forge.roaster.model.Field;
+import org.jboss.forge.roaster.model.source.*;
+
+import java.util.List;
+
+/**
+ * Created by amv on 12/17/16.
+ */
+public class ClassEntityToSOImplConverterImpl
+        extends BaseClassConverterImpl<JavaClassSource, JavaClassSource> {
+
+    private FqnEntityToSOImplConverterImpl soImplConverter;
+    private FqnEntityToISOConverterImpl isoConverter;
+    private String entBasePackage;
+    private String isoBasePackage;
+
+    public ClassEntityToSOImplConverterImpl(String entBasePackage, String isoBasePackage, FqnEntityToISOConverterImpl isoConverter) {
+        this.entBasePackage = entBasePackage;
+        this.isoBasePackage = isoBasePackage;
+        soImplConverter = new FqnEntityToSOImplConverterImpl(entBasePackage, isoBasePackage);
+        this.isoConverter = isoConverter;
+    }
+
+    @Override
+    protected JavaClassSource convertInternal(JavaClassSource source) {
+        String destFqn = soImplConverter.convertFqn(source.getQualifiedName());
+        String pkg = packageFromFqn(destFqn);
+        String className = classNameFromFqn(destFqn);
+        JavaClassSource soi = Roaster.create(JavaClassSource.class);
+        setParentClass(source, soi);
+        soi.setPackage(pkg).setName(className);
+        List<TypeVariableSource<JavaClassSource>> typeVariables = source.getTypeVariables();
+        for (TypeVariableSource<JavaClassSource> typeVariable : typeVariables) {
+            soi.addTypeVariable(typeVariable.getName());
+        }
+        List<FieldSource<JavaClassSource>> fields = source.getFields();
+        for (Field<?> field : fields) {
+            addField(soi, field, isoConverter, entBasePackage);
+
+        }
+        if (isoConverter != null) {
+            String isoFqn = isoConverter.convertFqn(source.getQualifiedName());
+            if (!typeVariables.isEmpty()) {
+                isoFqn += "<";
+                for (TypeVariableSource<JavaClassSource> typeVariable : typeVariables) {
+                    isoFqn += typeVariable.getName() + ",";
+                }
+                isoFqn = isoFqn.substring(0, isoFqn.length() - 1) + ">";
+            }
+            soi.addInterface(isoFqn);
+        } else {
+            soi.addInterface(IBaseSearchObject.class);
+        }
+        List<Import> imports = soi.getImports();
+        for (Import anImport : imports) {
+            for (TypeVariableSource<JavaClassSource> typeVariable : typeVariables) {
+                if (typeVariable.getName().equals(anImport.getSimpleName())) {
+                    soi.removeImport(anImport);
+                }
+            }
+        }
+        return soi;
+    }
+
+    private void setParentClass(JavaClassSource source, JavaClassSource soi) {
+        String superType = source.getSuperType();
+        if (!superType.equals(Object.class.getName())) {
+            String superConverterd;
+            if (superType.contains("<")) {
+                superConverterd = soImplConverter.convertFqn(superType.substring(0, superType.lastIndexOf('<')));
+                superConverterd += superType.substring(superType.lastIndexOf('<'));
+            } else {
+                superConverterd = soImplConverter.convertFqn(superType);
+            }
+//            try {
+//                Class<?> sourceClass = Class.forName(source.getQualifiedName());
+//                Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(sourceClass, Class.forName(superType));
+//                superConverterd += "<";
+//                assert genericArgumentClasses != null;
+//                for (Class<?> genericArgumentClass : genericArgumentClasses) {
+//                    superConverterd += genericArgumentClass.getName() + ",";
+//                }
+//                superConverterd = superConverterd.substring(0, superConverterd.length() - 1) + ">";
+//            } catch (Exception ignored) {
+//            }
+            soi.setSuperType(superConverterd);
+        } else {
+            soi.setSuperType(BaseSearchObjectImpl.class);
+        }
+    }
+
+}

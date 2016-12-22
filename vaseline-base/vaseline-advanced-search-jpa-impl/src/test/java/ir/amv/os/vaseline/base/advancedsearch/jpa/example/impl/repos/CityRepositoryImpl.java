@@ -1,6 +1,10 @@
-package ir.amv.os.vaseline.base.advancedsearch.jpa.example.impl;
+package ir.amv.os.vaseline.base.advancedsearch.jpa.example.impl.repos;
 
+import ir.amv.os.vaseline.base.advancedsearch.jpa.example.impl.AdvancedSearchByExampleJPAProviderUtil;
+import ir.amv.os.vaseline.base.advancedsearch.jpa.example.impl.entity.TestCity;
+import ir.amv.os.vaseline.base.advancedsearch.jpa.example.impl.projection.IJpaCriteriaFromProvider;
 import ir.amv.os.vaseline.base.advancedsearch.jpa.example.impl.projection.ProjectionMapProvider;
+import ir.amv.os.vaseline.base.advancedsearch.jpa.example.impl.so.ITestCitySearchObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
@@ -21,15 +25,15 @@ public class CityRepositoryImpl
     EntityManager em;
 
     @Override
-    public List<City> search(ICitySearchObject citySearchObject) {
+    public List<TestCity> search(ITestCitySearchObject citySearchObject) {
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        final CriteriaQuery<City> query = criteriaBuilder.createQuery(City.class);
-        Map<String, Path<?>> map = new ProjectionMapProvider<City>(query, City.class);
+        final CriteriaQuery<TestCity> query = criteriaBuilder.createQuery(TestCity.class);
+        IJpaCriteriaFromProvider map = new ProjectionMapProvider<TestCity>(query, TestCity.class);
         Predicate rootCondition = AdvancedSearchByExampleJPAProviderUtil.getRootCondition(citySearchObject, criteriaBuilder, "", map);
         if (rootCondition != null) {
             query.where(rootCondition);
         }
-        List<City> resultList = em.createQuery(query).getResultList();
+        List<TestCity> resultList = em.createQuery(query).getResultList();
         return resultList;
     }
 }

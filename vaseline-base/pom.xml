@@ -24,6 +24,7 @@
         <module>vaseline-validation</module>
         <module>vaseline-caching</module>
         <module>vaseline-advanced-search-api</module>
+        <module>vaseline-advanced-search-maven-plugin</module>
         <module>vaseline-advanced-search-jpa-impl</module>
     </modules>
 

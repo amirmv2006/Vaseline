@@ -2,6 +2,7 @@ package ir.amv.os.vaseline.base.advancedsearch.jpa.example.impl;
 
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.IBasePropertyCondition;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.IBaseSearchObject;
+import ir.amv.os.vaseline.base.advancedsearch.api.example.model.SearchJoinType;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.func.BaseApplyFunctionConditionImpl;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.func.IBaseApplyFunctionCondition;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.logical.IMultiOperandLogicalCondition;
@@ -15,6 +16,7 @@ import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.noop.N
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.oneop.*;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.twoop.ITwoOperandComparableCondition;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.twoop.TwoOperandComparableConditionImpl;
+import ir.amv.os.vaseline.base.advancedsearch.jpa.example.impl.projection.IJpaCriteriaFromProvider;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionInterceptor;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 
@@ -31,14 +33,19 @@ import java.util.*;
  */
 public class AdvancedSearchByExampleJPAProviderUtil {
 
-    public static <T, SO> Predicate getRootCondition(final SO example, final CriteriaBuilder cb, String rootAlias, final Map<String, Path<?>> pathMap) {
+    public static <T, SO> Predicate getRootCondition(final SO example, final CriteriaBuilder cb, String rootAlias, final IJpaCriteriaFromProvider pathMap) {
         final MapList<String, Predicate> eachObject = new MapList<String, Predicate>();
-        pathMap.get(""); // make sure from is there in the query
+        pathMap.getFrom("", null); // make sure from is there in the query
         ReflectionUtil.intercept(example, IBaseSearchObject.class, new ReflectionInterceptor<IBaseSearchObject>() {
             @Override
             public IBaseSearchObject intercept(IBaseSearchObject object, String propertyTreeName) {
+                if (object == null) {
+                    return null;
+                }
                 HashMap<String, Object> map = getMapFromObjectNonRecursive(object);
-                Path propTNPath = pathMap.get(propertyTreeName);
+                map.remove("joinType");
+                SearchJoinType joinType = object.getJoinType();
+                Path propTNPath = pathMap.getFrom(propertyTreeName, joinType);
                 for (String key : map.keySet()) {
                     Expression<?> propExpr = propTNPath.get(key);
                     IBasePropertyCondition<?, ?> propValue = (IBasePropertyCondition<?, ?>) map.get(key);

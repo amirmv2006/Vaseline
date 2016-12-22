@@ -318,14 +318,17 @@ public class ReflectionUtil {
                             readMethod, query);
                     String propertyTreeName = (prefix == null || prefix.equals("")) ? propertyDescriptor.getName() : prefix + "." + propertyDescriptor.getName();
                     if (objectsFromMethod != null) {
-                        for (int j = 0; j < objectsFromMethod.length; j++) { // go for children recursively...
-                            intercept(objectsFromMethod[j], query, interceptor, objectsFromMethod.length > 1 ? propertyTreeName + j : propertyTreeName);
-                        }
+                        // caused children to be intercepted twice fix 1/2
+//                        for (int j = 0; j < objectsFromMethod.length; j++) { // go for children recursively...
+//                            intercept(objectsFromMethod[j], query, interceptor, objectsFromMethod.length > 1 ? propertyTreeName + j : propertyTreeName);
+//                        }
                         // intercept the properties now...
                         Object[] newObjects = new Object[objectsFromMethod.length];
                         for (int j = 0; j < objectsFromMethod.length; j++) {
-                            Q intercepted = interceptor
-                                    .intercept((Q) objectsFromMethod[j], objectsFromMethod.length > 1 ? propertyTreeName + j : propertyTreeName);
+                            // caused children to be intercepted twice fix 2/2
+//                            Q intercepted = interceptor
+//                                    .intercept((Q) objectsFromMethod[j], objectsFromMethod.length > 1 ? propertyTreeName + j : propertyTreeName);
+                            Q intercepted = intercept((Q)objectsFromMethod[j], query, interceptor, objectsFromMethod.length > 1 ? propertyTreeName + j : propertyTreeName);;
                             newObjects[j] = intercepted;
                         }
                         setObjectsToMethod(obj, readMethod, propertyDescriptor.getWriteMethod(), newObjects, objectsFromMethod);

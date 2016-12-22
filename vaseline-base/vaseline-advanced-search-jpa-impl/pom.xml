@@ -11,6 +11,31 @@
 
     <artifactId>vaseline-advanced-search-jpa-impl</artifactId>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.amirmv2006.base</groupId>
+                <artifactId>vaseline-advanced-search-maven-plugin</artifactId>
+                <version>${project.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-test-so</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>generate-so</goal>
+                        </goals>
+                        <configuration>
+                            <srcFolder>src/test/java</srcFolder>
+                            <srcEntitiesBasePackage>ir.amv.os.vaseline.base.advancedsearch.jpa.example.impl.entity</srcEntitiesBasePackage>
+                            <destFolder>src/test/java</destFolder>
+                            <destSearchObjectsBasePackage>ir.amv.os.vaseline.base.advancedsearch.jpa.example.impl.so</destSearchObjectsBasePackage>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.base</groupId>
