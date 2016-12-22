@@ -4,8 +4,13 @@ Vaseline is an Enterprise Application Framework which aims to minimize the codin
 The main goal is to have multiple reusable components that can be used in most of the project that most developers try to implement.
 
 **Main Technology Stack**
+
 `- Spring`
+
 `- Hibernate`
+
 `- CXF`
+
 `- Jasper`
+
 `- Activiti`
