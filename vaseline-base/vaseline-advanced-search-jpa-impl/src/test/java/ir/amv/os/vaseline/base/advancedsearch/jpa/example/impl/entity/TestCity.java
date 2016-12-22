@@ -7,8 +7,6 @@ import javax.persistence.ManyToOne;
 @Entity
 public class TestCity extends TestBaseEntity<Long> {
 
-	private static final long serialVersionUID = 1L;
-
 	@Column(nullable = false)
 	private String name;
 

@@ -93,13 +93,13 @@ public class AdvancedSearchByExampleJPAProviderUtilTest {
 
         ITestStateSearchObject stateEx = SearchObjectProxyFactory.proxy(ITestStateSearchObject.class);
         ITestCitySearchObject cities = SearchObjectProxyFactory.proxy(ITestCitySearchObject.class);
-        cities.setName(contains("mir"));
+        cities.setName(lower(equlas("amir")));
         cities.setJoinType(SearchJoinType.LEFT);
         stateEx.setCities(cities);
         stateEx.setStateName(contains("State"));
         ITestCountrySearchObject countryEx = SearchObjectProxyFactory.proxy(ITestCountrySearchObject.class);
         countryEx.setJoinType(SearchJoinType.INNER);
-        countryEx.setCountryName(contains("Country"));
+        countryEx.setCountryName(upper(equlas("COUNTRY")));
         stateEx.setCountry(countryEx);
         List<TestState> result = stateRepository.search(stateEx);
         assertEquals(1, result.size());
