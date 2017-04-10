@@ -19,22 +19,26 @@ public class BaseServiceImpl implements IBaseService {
 	protected Validator validator;
 	protected ICoreExceptionHandler coreExceptionHandler;
 	
-	protected <S, D> D convert(S source, Class<D> destinationClass) throws VaselineConvertException {
+	protected <S, D> D convert(S source, Class<D> destinationClass, Class<?>... validationGroups) throws VaselineConvertException {
 		// if (source instanceof BaseEntity<?> && hasLazyProp()) {
 		// BaseEntity<?> ent = (BaseEntity<?>) source;
 		// lazyProxyRemover.removeProxy(ent);
 		// }
-		if (source != null) {
-			Set<ConstraintViolation<S>> validate = validator.validate(source);
-			if (!validate.isEmpty()) {
-				throw new VaselineConvertException(new HashSet<ConstraintViolation<?>>(validate));
-			}
-		}
-		return source == null ? null : mapper.map(source, destinationClass);
+        validate(source, validationGroups);
+        return source == null ? null : mapper.map(source, destinationClass);
 	}
 
-	protected <S, D> List<D> convertList(Collection<S> source,
-			Class<D> destinationClass) throws VaselineConvertException {
+    protected <S> void validate(S source, Class<?>... validationGroups) throws VaselineConvertException {
+        if (source != null) {
+            Set<ConstraintViolation<S>> validate = validator.validate(source, validationGroups);
+            if (!validate.isEmpty()) {
+                throw new VaselineConvertException(new HashSet<ConstraintViolation<?>>(validate));
+            }
+        }
+    }
+
+    protected <S, D> List<D> convertList(Collection<S> source,
+			Class<D> destinationClass, Class<?>... validationGroups) throws VaselineConvertException {
 		if (source == null) {
 			return null;
 		}
@@ -46,7 +50,7 @@ public class BaseServiceImpl implements IBaseService {
             destList = new ArrayList<D>();
         }
         for (S s : source) {
-			D convert = convert(s, destinationClass);
+			D convert = convert(s, destinationClass, validationGroups);
 			destList.add(convert);
 		}
 		return destList;

@@ -1,5 +1,7 @@
 package ir.amv.os.vaseline.base.architecture.impl.server.layers.base.ro.service;
 
+import ir.amv.os.vaseline.base.core.shared.validation.IEntitySearchValidation;
+import ir.amv.os.vaseline.base.core.shared.validation.IEntityShowValidation;
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.service.BaseServiceImpl;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.api.IBaseReadOnlyApi;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.service.IBaseReadOnlyService;
@@ -38,7 +40,7 @@ public class BaseReadOnlyServiceImpl<E extends IBaseEntity<Id>, D extends IBaseD
     public D getById(Id id) throws BaseVaselineClientException {
         try {
             E byId = api.getById(id);
-            D result = convertEntityToDTO(byId);
+            D result = convertEntityToDTO(byId, validationGroupsForShow());
             return result;
         } catch (Exception e) {
             throw convertException(e);
@@ -59,7 +61,7 @@ public class BaseReadOnlyServiceImpl<E extends IBaseEntity<Id>, D extends IBaseD
     public List<D> getAll() throws BaseVaselineClientException {
         try {
             List<E> all = api.getAll();
-            List<D> result = convertEntityToDTO(all);
+            List<D> result = convertEntityToDTO(all, validationGroupsForShow());
             return result;
         } catch (Exception e) {
             throw convertException(e);
@@ -70,7 +72,7 @@ public class BaseReadOnlyServiceImpl<E extends IBaseEntity<Id>, D extends IBaseD
     public List<D> getAll(PagingDto pagingDto) throws BaseVaselineClientException {
         try {
             List<E> sortedPaged = api.getAll(pagingDto);
-            List<D> result = convertEntityToDTO(sortedPaged);
+            List<D> result = convertEntityToDTO(sortedPaged, validationGroupsForShow());
             return result;
         } catch (Exception e) {
             throw convertException(e);
@@ -90,8 +92,9 @@ public class BaseReadOnlyServiceImpl<E extends IBaseEntity<Id>, D extends IBaseD
     @Override
     public List<D> searchByExample(D example) throws BaseVaselineClientException {
         try {
+            validate(example, validationGroupsForSearch());
             List<E> searchByExample = api.searchByExample(example);
-            List<D> result = convertEntityToDTO(searchByExample);
+            List<D> result = convertEntityToDTO(searchByExample, validationGroupsForShow());
             return result;
         } catch (Exception e) {
             throw convertException(e);
@@ -101,8 +104,9 @@ public class BaseReadOnlyServiceImpl<E extends IBaseEntity<Id>, D extends IBaseD
     @Override
     public List<D> searchByExample(D example, PagingDto pagingDto) throws BaseVaselineClientException {
         try {
+            validate(example, validationGroupsForSearch());
             List<E> searchByExample = api.searchByExample(example, pagingDto);
-            List<D> result = convertEntityToDTO(searchByExample);
+            List<D> result = convertEntityToDTO(searchByExample, validationGroupsForShow());
             return result;
         } catch (Exception e) {
             throw convertException(e);
@@ -110,20 +114,20 @@ public class BaseReadOnlyServiceImpl<E extends IBaseEntity<Id>, D extends IBaseD
     }
 
     // BASE METHODS
-    public E convertDtoToEntity(D d) throws VaselineConvertException {
-        return convert(d, entityClass);
+    public E convertDtoToEntity(D d, Class<?>... validationGroups) throws VaselineConvertException {
+        return convert(d, entityClass, validationGroups);
     }
 
-    public List<E> convertDtoToEntity(Collection<D> list) throws VaselineConvertException {
-        return convertList(list, entityClass);
+    public List<E> convertDtoToEntity(Collection<D> list, Class<?>... validationGroups) throws VaselineConvertException {
+        return convertList(list, entityClass, validationGroups);
     }
 
-    public D convertEntityToDTO(E e) throws VaselineConvertException {
-        return convert(e, dtoClass);
+    public D convertEntityToDTO(E e, Class<?>... validationGroups) throws VaselineConvertException {
+        return convert(e, dtoClass, validationGroups);
     }
 
-    public List<D> convertEntityToDTO(Collection<E> list) throws VaselineConvertException {
-        return convertList(list, dtoClass);
+    public List<D> convertEntityToDTO(Collection<E> list, Class<?>... validationGroups) throws VaselineConvertException {
+        return convertList(list, dtoClass, validationGroups);
     }
 
     public void setEntityClass(Class<E> entityClass) {
@@ -134,6 +138,13 @@ public class BaseReadOnlyServiceImpl<E extends IBaseEntity<Id>, D extends IBaseD
         this.dtoClass = dtoClass;
     }
 
+    protected Class<?>[] validationGroupsForShow() {
+        return new Class<?>[]{IEntityShowValidation.class};
+    }
+
+    private Class<?>[] validationGroupsForSearch() {
+        return new Class<?>[]{IEntitySearchValidation.class};
+    }
     // Spring Dependencies
     @Autowired
     public void setApi(API api) {

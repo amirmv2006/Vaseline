@@ -48,11 +48,19 @@ public class GenerateSearchObjectMojo
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        String packagePath = srcEntitiesBasePackage.replaceAll("\\.", File.separator);
+        String packagePath = replaceDotWithFileSep(srcEntitiesBasePackage);
         String absolutePath = srcFolder.getAbsolutePath();
         File entitiesBaseFolder = new File(absolutePath + File.separator + packagePath);
         getLog().info("Checking " + entitiesBaseFolder + " recursively");
         generateRecursive(entitiesBaseFolder, "");
+    }
+
+    private String replaceDotWithFileSep(String pkg) {
+        String separator = File.separator;
+        if (separator.equals("\\")) {
+            separator = "\\\\";
+        }
+        return pkg.replaceAll("\\.", separator);
     }
 
     private void generateRecursive(File entitiesBaseFolder, String subPackage) {
@@ -101,7 +109,7 @@ public class GenerateSearchObjectMojo
 
     private void generateFile(JavaSource soi) throws IOException {
         FileUtils.writeStringToFile(new File(
-                destFolder.getAbsolutePath() + File.separator + soi.getPackage().replaceAll("\\.", File.separator) + File.separator + soi.getName() + ".java"
+                destFolder.getAbsolutePath() + File.separator + replaceDotWithFileSep(soi.getPackage()) + File.separator + soi.getName() + ".java"
         ), soi.toString().replaceAll("IBasePropertyCondition\\<", "IBasePropertyCondition<?, "), "UTF-8");
     }
 

@@ -10,8 +10,6 @@ import ir.amv.os.vaseline.reporting.async.api.server.base.ro.IBaseReportingReadO
 import ir.amv.os.vaseline.reporting.async.rest.server.base.ro.service.IBaseReportingReadOnlyAsyncService;
 
 import java.io.Serializable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 /**
  * Created by AMV on 2/14/2016.
@@ -22,7 +20,11 @@ public class BaseReportingReadOnlyAsyncServiceImpl<E extends IBaseEntity<Id>, D 
 
     @Override
     public Long reportByExample(CreateReportRequestClient request, D example) throws BaseVaselineServerException {
-        CreateReportRequestServer requestServer = convert(request, CreateReportRequestServer.class);
+        CreateReportRequestServer requestServer = convert(request, CreateReportRequestServer.class, validationGroupsForReportRequest());
         return api.reportByExample(requestServer, example);
+    }
+
+    protected Class<?>[] validationGroupsForReportRequest() {
+        return null;
     }
 }

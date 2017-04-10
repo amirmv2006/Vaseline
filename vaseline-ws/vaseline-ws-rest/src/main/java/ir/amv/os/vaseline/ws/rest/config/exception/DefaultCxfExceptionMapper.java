@@ -29,7 +29,7 @@ public class DefaultCxfExceptionMapper implements ExceptionMapper<Exception> {
 //	}
 	@Override
 	public Response toResponse(Exception exception) {
-		return Response.status(Response.Status.OK).entity(exception.getMessage()).build();
+		return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(exception).build();
 	}
 
 }
