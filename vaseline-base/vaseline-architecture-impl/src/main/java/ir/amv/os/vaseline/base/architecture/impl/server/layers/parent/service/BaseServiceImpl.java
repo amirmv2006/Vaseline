@@ -5,6 +5,7 @@ import ir.amv.os.vaseline.base.core.server.base.exc.handler.ICoreExceptionHandle
 import ir.amv.os.vaseline.base.core.shared.base.exc.BaseVaselineClientException;
 import ir.amv.os.vaseline.base.core.shared.util.ds.list.IVaselineConvertableList;
 import ir.amv.os.vaseline.base.mapper.server.exc.VaselineConvertException;
+import ir.amv.os.vaseline.base.validation.server.exc.VaselineValidationServerException;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,7 +20,7 @@ public class BaseServiceImpl implements IBaseService {
 	protected Validator validator;
 	protected ICoreExceptionHandler coreExceptionHandler;
 	
-	protected <S, D> D convert(S source, Class<D> destinationClass, Class<?>... validationGroups) throws VaselineConvertException {
+	protected <S, D> D convert(S source, Class<D> destinationClass, Class<?>... validationGroups) throws VaselineConvertException, VaselineValidationServerException {
 		// if (source instanceof BaseEntity<?> && hasLazyProp()) {
 		// BaseEntity<?> ent = (BaseEntity<?>) source;
 		// lazyProxyRemover.removeProxy(ent);
@@ -28,17 +29,17 @@ public class BaseServiceImpl implements IBaseService {
         return source == null ? null : mapper.map(source, destinationClass);
 	}
 
-    protected <S> void validate(S source, Class<?>... validationGroups) throws VaselineConvertException {
+    protected <S> void validate(S source, Class<?>... validationGroups) throws VaselineConvertException, VaselineValidationServerException {
         if (source != null) {
             Set<ConstraintViolation<S>> validate = validator.validate(source, validationGroups);
             if (!validate.isEmpty()) {
-                throw new VaselineConvertException(new HashSet<ConstraintViolation<?>>(validate));
+                throw new VaselineValidationServerException(new HashSet<ConstraintViolation<?>>(validate));
             }
         }
     }
 
     protected <S, D> List<D> convertList(Collection<S> source,
-			Class<D> destinationClass, Class<?>... validationGroups) throws VaselineConvertException {
+			Class<D> destinationClass, Class<?>... validationGroups) throws VaselineConvertException, VaselineValidationServerException {
 		if (source == null) {
 			return null;
 		}

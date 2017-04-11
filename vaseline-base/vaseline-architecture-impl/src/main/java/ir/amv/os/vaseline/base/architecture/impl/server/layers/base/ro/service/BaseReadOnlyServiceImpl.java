@@ -10,6 +10,7 @@ import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.base.core.shared.base.exc.BaseVaselineClientException;
 import ir.amv.os.vaseline.base.mapper.server.exc.VaselineConvertException;
+import ir.amv.os.vaseline.base.validation.server.exc.VaselineValidationServerException;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -114,19 +115,19 @@ public class BaseReadOnlyServiceImpl<E extends IBaseEntity<Id>, D extends IBaseD
     }
 
     // BASE METHODS
-    public E convertDtoToEntity(D d, Class<?>... validationGroups) throws VaselineConvertException {
+    public E convertDtoToEntity(D d, Class<?>... validationGroups) throws VaselineConvertException, VaselineValidationServerException {
         return convert(d, entityClass, validationGroups);
     }
 
-    public List<E> convertDtoToEntity(Collection<D> list, Class<?>... validationGroups) throws VaselineConvertException {
+    public List<E> convertDtoToEntity(Collection<D> list, Class<?>... validationGroups) throws VaselineConvertException, VaselineValidationServerException {
         return convertList(list, entityClass, validationGroups);
     }
 
-    public D convertEntityToDTO(E e, Class<?>... validationGroups) throws VaselineConvertException {
+    public D convertEntityToDTO(E e, Class<?>... validationGroups) throws VaselineConvertException, VaselineValidationServerException {
         return convert(e, dtoClass, validationGroups);
     }
 
-    public List<D> convertEntityToDTO(Collection<E> list, Class<?>... validationGroups) throws VaselineConvertException {
+    public List<D> convertEntityToDTO(Collection<E> list, Class<?>... validationGroups) throws VaselineConvertException, VaselineValidationServerException {
         return convertList(list, dtoClass, validationGroups);
     }
 
