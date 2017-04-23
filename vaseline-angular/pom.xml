@@ -15,6 +15,7 @@
     <modules>
         <module>vaseline-angular-js-gen</module>
         <module>vaseline-angular-base</module>
+        <module>vaseline-angular-crud</module>
     </modules>
 
 

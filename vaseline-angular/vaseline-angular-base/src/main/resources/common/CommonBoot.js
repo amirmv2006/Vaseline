@@ -1,0 +1,32 @@
+function bootCommon(afterCommonLoad) {
+    head.load(
+        // common
+        'vaseline/angular-base/vendor/jquery/2.1.4/jquery.js',
+        'vaseline/angular-base/vendor/datatables/1.10.13/jquery.dataTables.js',
+        'vaseline/angular-base/vendor/datatables/1.10.13/dataTables.bootstrap.js',
+        'vaseline/angular-base/vendor/angular/1.5.0-rc.0/angular.js',
+        'vaseline/angular-base/vendor/angular/1.5.0-rc.0/angular-messages.js',
+        'vaseline/angular-base/vendor/angular/1.5.0-rc.0/angular-route.js',
+        'vaseline/angular-base/vendor/angular/1.5.0-rc.0/angular-animate.js',
+        '//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js',
+        '//cdn.firebase.com/js/client/2.3.2/firebase.js',
+        '//cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js',
+        '//cdn.auth0.com/js/lock-7.min.js',
+        '//cdn.auth0.com/w2/auth0-angular-4.js',
+        'vaseline/angular-base/vendor/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls-2.5.0.js',
+        'vaseline/angular-base/vendor/angular-datatables/0.5.6/angular-datatables.js',
+        'vaseline/angular-base/vendor/angular/1.5.0-rc.0/angular-storage.js',
+        'vaseline/angular-base/vendor/angular/1.5.0-rc.0/angular-jwt.js',
+        'vaseline/angular-base/vendor/flot/0.8.3/jquery.flot.js',
+        'vaseline/angular-base/vendor/flot/0.8.3/jquery.flot.categories.js',
+        'vaseline/angular-base/vendor/sugar/1.4.1/sugar-1.4.1.min.js',
+        'vaseline/angular-base/common/Common.js',
+        'vaseline/angular-base/common/base/service/BaseService.js',
+        'vaseline/angular-base/common/base/page/controller/BasePageController.js',
+        'vaseline/angular-base/common/notification/service/NotificationService.js',
+        'vaseline/angular-base/common/notification/controller/NotificationController.js',
+        'vaseline/angular-base/common/navigation/service/NavigationService.js',
+        'vaseline/angular-base/common/navigation/controller/NavigationController.js',
+        afterCommonLoad
+    );
+}
