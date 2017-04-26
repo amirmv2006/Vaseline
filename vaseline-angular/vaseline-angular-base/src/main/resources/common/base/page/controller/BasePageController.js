@@ -2,6 +2,7 @@ angular.module('Common')
     .factory('BasePageController', function (NavigationService) {
         function BasePageController($scope, $location, $controller, pageName) {
             var page = NavigationService.findPage(pageName);
+            this.page = page;
             if (page === null) {
                 page = {
                     pageTitle:'Page Title Not Specified',
