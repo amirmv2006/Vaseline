@@ -93,7 +93,7 @@ angular.module('CRUD')
             baseListController.dtColumns = baseListController.table.getColumns();
 
             baseListController.edit = function (id) {
-                $location.path(pageBaseUrl + '/add').search({id: id});
+                $location.path(pageBaseUrl + '/edit').search({id: id});
             };
             baseListController.delete = function (id) {
                 var parentElem = angular.element($document[0].querySelector('.modal-demo'));
