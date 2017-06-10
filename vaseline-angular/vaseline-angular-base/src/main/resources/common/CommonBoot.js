@@ -8,6 +8,7 @@ function bootCommon(afterCommonLoad) {
         'vaseline/angular-base/vendor/angular/1.5.0-rc.0/angular-messages.js',
         'vaseline/angular-base/vendor/angular/1.5.0-rc.0/angular-route.js',
         'vaseline/angular-base/vendor/angular/1.5.0-rc.0/angular-animate.js',
+        'vaseline/angular-base/vendor/angular-ui-router/1.0.3/angular-ui-router.js',
         '//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js',
         '//cdn.firebase.com/js/client/2.3.2/firebase.js',
         '//cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js',

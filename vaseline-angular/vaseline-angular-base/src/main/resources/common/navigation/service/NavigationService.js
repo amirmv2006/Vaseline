@@ -1,15 +1,15 @@
 var common = angular.module('Common');
-common.service('NavigationService', function ($location, Page) {
+common.service('NavigationService', function ($state, Page) {
     var navigationService = this;
     navigationService.allPages = [];
 
-    navigationService.addMainPage = function(pageName, url, title) {
-        var page = new Page(pageName, url, title, null);
+    navigationService.addMainPage = function(pageName, pageState, title) {
+        var page = new Page(pageName, pageState, title, null);
         navigationService.allPages.push(page);
         return page;
     };
-    navigationService.addChildPage = function(pageName, url, title, parentPage) {
-        var page = new Page(pageName, url, title, parentPage);
+    navigationService.addChildPage = function(pageName, pageState, title, parentPage) {
+        var page = new Page(pageName, pageState, title, parentPage);
         navigationService.allPages.push(page);
         return page;
     };
@@ -44,7 +44,7 @@ common.service('NavigationService', function ($location, Page) {
     };
 
     navigationService.goBack = function () {
-        $location.path(navigationService.currentPage.parentPage.url);
+        $state.go(navigationService.currentPage.parentPage.pageState);
     };
 
     // current page

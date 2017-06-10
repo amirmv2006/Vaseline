@@ -1,5 +1,5 @@
 angular.module('Common')
-    .controller('NavigationCtrl', function ($scope, $location, $controller, NavigationService, Page, PageAction) {
+    .controller('NavigationCtrl', function ($scope, $state, $controller, NavigationService, Page, PageAction) {
         var navigationCtrl = this;
         navigationCtrl.rootPages = NavigationService.getRootPages();
         for (var i = 0; i < navigationCtrl.rootPages.length; i++) {
@@ -33,7 +33,7 @@ angular.module('Common')
         };
         navigationCtrl.openPage = function (page) {
             if (page.childPages.length === 0) {
-                $location.path(page.url);
+                $state.go(page.pageState);
             }
         };
     });
