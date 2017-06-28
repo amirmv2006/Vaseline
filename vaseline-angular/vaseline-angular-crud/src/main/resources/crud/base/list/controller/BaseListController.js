@@ -105,12 +105,12 @@ angular.module('CRUD')
                 return editPageModel;
             };
 
-            baseListController.edit = function (id) {
+            baseListController.edit = function (entityId) {
                 var editPageModel = baseListController.getEditPageModel();
-                editPageModel.pageParameters.id = id;
+                editPageModel.pageParameters.entityId = entityId;
                 NavigationService.openPage(editPageModel.pageState);
             };
-            baseListController.delete = function (id) {
+            baseListController.delete = function (entityId) {
                 var parentElem = angular.element($document[0].querySelector('.modal-demo'));
                 var modalInstance = $uibModal.open({
                     animation: true,
@@ -118,7 +118,7 @@ angular.module('CRUD')
                     resolve: {
                         del: function () {
                             return function () {
-                                service.deleteById(id, function (result) {
+                                service.deleteById(entityId, function (result) {
                                     baseListController.dtInstance._renderer.rerender();
                                 });
                             }
