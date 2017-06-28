@@ -22,6 +22,8 @@ function bootCommon(afterCommonLoad) {
         'vaseline/angular-base/vendor/flot/0.8.3/jquery.flot.categories.js',
         'vaseline/angular-base/vendor/sugar/1.4.1/sugar-1.4.1.min.js',
         'vaseline/angular-base/common/Common.js',
+        'vaseline/angular-base/common/base/page/model/PageAction.js',
+        'vaseline/angular-base/common/base/page/model/PageModel.js',
         'vaseline/angular-base/common/base/service/BaseService.js',
         'vaseline/angular-base/common/base/page/controller/BasePageController.js',
         'vaseline/angular-base/common/notification/service/NotificationService.js',

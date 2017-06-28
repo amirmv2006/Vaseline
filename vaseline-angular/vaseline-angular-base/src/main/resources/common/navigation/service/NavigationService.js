@@ -1,22 +1,22 @@
 var common = angular.module('Common');
-common.service('NavigationService', function ($state, Page) {
+common.service('NavigationService', function ($state, PageModel) {
     var navigationService = this;
     navigationService.allPages = [];
 
-    navigationService.addMainPage = function(pageName, pageState, title) {
-        var page = new Page(pageName, pageState, title, null);
-        navigationService.allPages.push(page);
-        return page;
+    navigationService.addMainPage = function(pageState, title) {
+        var pageModel = new PageModel(pageState, title, null);
+        navigationService.allPages.push(pageModel);
+        return pageModel;
     };
-    navigationService.addChildPage = function(pageName, pageState, title, parentPage) {
-        var page = new Page(pageName, pageState, title, parentPage);
-        navigationService.allPages.push(page);
-        return page;
+    navigationService.addChildPage = function(pageState, title, parentPage) {
+        var pageModel = new PageModel(pageState, title, parentPage);
+        navigationService.allPages.push(pageModel);
+        return pageModel;
     };
 
-    navigationService.findPage = function (pageName) {
+    navigationService.findPage = function (pageState) {
         for (var i = 0; i < navigationService.allPages.length; i++) {
-            if (navigationService.allPages[i].pageName === pageName) {
+            if (navigationService.allPages[i].pageState === pageState) {
                 return navigationService.allPages[i];
             }
         }
@@ -24,7 +24,11 @@ common.service('NavigationService', function ($state, Page) {
     navigationService.getRootPages = function () {
         var rootPages = [];
         for (var i = 0; i < navigationService.allPages.length; i++) {
-            if (!navigationService.allPages[i].menuPath.includes('.')) {
+            if (
+                navigationService.allPages[i].menuPath &&
+                navigationService.allPages[i].menuPath !== '' &&
+                !navigationService.allPages[i].menuPath.includes('.')
+            ) {
                 rootPages.push(navigationService.allPages[i]);
             }
         }
@@ -32,11 +36,20 @@ common.service('NavigationService', function ($state, Page) {
     };
     navigationService.getChildPages = function (parentPageName) {
         var childPages = [];
-        navigationService.allPages.forEach(function (page) {
-            if (page.menuPath.includes('.')) {
-                var lastIndexOfDot = page.menuPath.lastIndexOf(".");
-                if (page.menuPath.substring(0, lastIndexOfDot) === parentPageName) {
-                    childPages.push(page);
+        navigationService.allPages.forEach(function (pageModel) {
+            if (pageModel.parentPage && pageModel.parentPage.pageState === parentPageName) {
+                childPages.push(pageModel);
+            }
+        });
+        return childPages;
+    };
+    navigationService.getChildMenuPages = function (parentPageName) {
+        var childPages = [];
+        navigationService.allPages.forEach(function (pageModel) {
+            if (pageModel.menuPath.includes('.')) {
+                var lastIndexOfDot = pageModel.menuPath.lastIndexOf(".");
+                if (pageModel.menuPath.substring(0, lastIndexOfDot) === parentPageName) {
+                    childPages.push(pageModel);
                 }
             }
         });
@@ -44,13 +57,20 @@ common.service('NavigationService', function ($state, Page) {
     };
 
     navigationService.goBack = function () {
-        $state.go(navigationService.currentPage.parentPage.pageState);
+        if (navigationService.currentPage.parentPage){
+            navigationService.openPage(navigationService.currentPage.parentPage.pageState);
+        }
+    };
+
+    navigationService.openPage = function (pageState) {
+        var pageModel = navigationService.findPage(pageState);
+        $state.go(pageModel.pageState, pageModel.pageParameters);
     };
 
     // current page
     navigationService.currentPage = null;
-    navigationService.setCurrentPage = function (page) {
-        navigationService.currentPage = page;
+    navigationService.setCurrentPage = function (pageModel) {
+        navigationService.currentPage = pageModel;
     };
     navigationService.getCurrentPage = function () {
         return navigationService.currentPage;

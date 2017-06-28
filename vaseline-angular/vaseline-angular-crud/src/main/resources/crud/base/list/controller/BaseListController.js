@@ -3,13 +3,14 @@ angular.module('CRUD')
         $compile, $document,
         $uibModal,
         BasePageController,
+        NavigationService,
         PageAction
     ) {
-        function BaseListController($scope, $location, $controller,
+        function BaseListController($scope, $rootScope, $location, $state, $controller,
                                     DTOptionsBuilder, DTColumnBuilder,
-                                    pageName, pageBaseUrl, controllerAs, /*/book*/
+                                    pageState, controllerAs, /*/book*/
                                     service, Model) {
-            var baseListController = angular.extend(this, new BasePageController($scope, $location, $controller, pageName));
+            var baseListController = angular.extend(this, new BasePageController($scope, $rootScope, $location, $state, $controller, pageState));
 
             baseListController.table = {};
             baseListController.table.refresh = function () {
@@ -55,7 +56,7 @@ angular.module('CRUD')
 
             var baseListPage = baseListController.page;
             baseListPage.addAction(new PageAction("Add", "fa fa-plus", function () {
-                $location.path(pageBaseUrl + '/add');
+                baseListController.edit(null);
             }));
             baseListPage.addAction(new PageAction("Search", "fa fa-search", function () {
                 baseListController.table.refresh();
@@ -92,8 +93,22 @@ angular.module('CRUD')
 
             baseListController.dtColumns = baseListController.table.getColumns();
 
+            baseListController.getEditPageModel = function() {
+                var listPage = baseListController.page;
+                var childPages = NavigationService.getChildPages(listPage.pageState);
+                var editPageModel = null;
+                for (var i = 0; i < childPages.length; i++) {
+                    if (childPages[i].pageState.toLowerCase().includes("edit")) {
+                        editPageModel = childPages[i];
+                    }
+                }
+                return editPageModel;
+            };
+
             baseListController.edit = function (id) {
-                $location.path(pageBaseUrl + '/edit').search({id: id});
+                var editPageModel = baseListController.getEditPageModel();
+                editPageModel.pageParameters.id = id;
+                NavigationService.openPage(editPageModel.pageState);
             };
             baseListController.delete = function (id) {
                 var parentElem = angular.element($document[0].querySelector('.modal-demo'));

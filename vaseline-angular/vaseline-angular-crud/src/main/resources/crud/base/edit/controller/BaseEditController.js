@@ -4,11 +4,11 @@ angular.module('CRUD')
         BasePageController, NavigationService,
         PageAction
     ){
-        function BaseEditController($scope, $location, $controller,
-                                    pageName, pageBaseUrl, controllerAs, /*/book*/
+        function BaseEditController($scope, $rootScope, $location, $state, $controller,
+                                    pageState, controllerAs,
                                     service, Model
         ) {
-            var baseEditController = angular.extend(this, new BasePageController($scope, $location, $controller, pageName));
+            var baseEditController = angular.extend(this, new BasePageController($scope, $rootScope, $location, $state, $controller, pageState));
             var bookAddPage = baseEditController.page;
             bookAddPage.pageParameters = {
                 id:null

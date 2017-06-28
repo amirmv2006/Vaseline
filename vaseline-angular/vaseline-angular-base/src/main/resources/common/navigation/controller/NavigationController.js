@@ -1,10 +1,10 @@
 angular.module('Common')
-    .controller('NavigationCtrl', function ($scope, $state, $controller, NavigationService, Page, PageAction) {
+    .controller('NavigationCtrl', function ($scope, $state, $controller, NavigationService, PageModel, PageAction) {
         var navigationCtrl = this;
         navigationCtrl.rootPages = NavigationService.getRootPages();
         for (var i = 0; i < navigationCtrl.rootPages.length; i++) {
             navigationCtrl.rootPages[i].collapsedActiveClass = navigationCtrl.rootPages[i].isCollapsed ? '' : 'active';
-            navigationCtrl.rootPages[i].childPages = NavigationService.getChildPages(navigationCtrl.rootPages[i].pageName);
+            navigationCtrl.rootPages[i].childPages = NavigationService.getChildMenuPages(navigationCtrl.rootPages[i].pageState);
         }
 
         navigationCtrl.getCurrentPage = function () {
@@ -27,13 +27,14 @@ angular.module('Common')
             })
         };
 
-        navigationCtrl.toggleCollapse = function (page) {
-            page.isCollapsed = !page.isCollapsed;
-            page.collapsedActiveClass = page.isCollapsed ? '' : 'active';
+        navigationCtrl.toggleCollapse = function (pageModel) {
+            pageModel.isCollapsed = !pageModel.isCollapsed;
+            pageModel.collapsedActiveClass = pageModel.isCollapsed ? '' : 'active';
         };
-        navigationCtrl.openPage = function (page) {
-            if (page.childPages.length === 0) {
-                $state.go(page.pageState);
-            }
-        };
+        // this is on the NavigationService now... TO BE REMOVED
+        // navigationCtrl.openPage = function (pageModel) {
+        //     if (pageModel.childPages.length === 0) {
+        //         NavigationService.openPage(pageModel.pageState);
+        //     }
+        // };
     });
