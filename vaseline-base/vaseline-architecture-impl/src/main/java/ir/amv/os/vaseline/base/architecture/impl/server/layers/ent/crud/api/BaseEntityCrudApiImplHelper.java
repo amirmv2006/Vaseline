@@ -1,10 +1,10 @@
 package ir.amv.os.vaseline.base.architecture.impl.server.layers.ent.crud.api;
 
-import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.base.core.server.base.ent.hascreatedate.IBaseHasCreateDateEntity;
-import ir.amv.os.vaseline.base.core.server.base.ent.hasmodifydate.IBaseHasModifyDateEntity;
-import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.base.core.api.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.base.core.api.server.base.ent.hascreatedate.IBaseHasCreateDateEntity;
+import ir.amv.os.vaseline.base.core.api.server.base.ent.hasmodifydate.IBaseHasModifyDateEntity;
+import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.base.core.shared.util.date.DateUtil;
 
 import java.io.Serializable;

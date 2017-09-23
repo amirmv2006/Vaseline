@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.base.validation.shared;
 
-import ir.amv.os.vaseline.base.core.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.base.core.api.shared.base.exc.BaseVaselineClientException;
 
 /**
  * Created by AMV on 4/11/2017.

@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.base.mapper.config;
 
 import ir.amv.os.vaseline.base.core.config.VaselineCoreConfig;
-import ir.amv.os.vaseline.base.core.server.polymorphysm.IVaselinePolymorphysmClassHolder;
+import ir.amv.os.vaseline.base.core.api.server.polymorphysm.IVaselinePolymorphysmClassHolder;
 import ir.amv.os.vaseline.base.mapper.config.custconv.IVaselineCustomConverterClassHolder;
 import ir.amv.os.vaseline.base.mapper.config.fieldmapper.VaselineCustomFieldMapper;
 import ir.amv.os.vaseline.base.mapper.server.annot.ExcludeFromDozer;

@@ -5,9 +5,9 @@ import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.api.IBaseCru
 import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.IBaseCrudDao;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.base.architecture.server.layers.multidao.crud.IBaseMultiDaoCrudApi;
-import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.base.core.api.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.IBaseDto;
 
 import java.io.Serializable;
 import java.util.ArrayList;

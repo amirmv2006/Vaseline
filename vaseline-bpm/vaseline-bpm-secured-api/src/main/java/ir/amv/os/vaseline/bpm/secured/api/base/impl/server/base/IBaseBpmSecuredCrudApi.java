@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.bpm.secured.api.base.impl.server.base;
 
-import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.base.core.api.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.bpm.api.server.base.api.crud.IBaseBpmCrudApi;
 import ir.amv.os.vaseline.security.authorization.api.shared.base.api.crud.IBaseSecuredCrudApi;
 

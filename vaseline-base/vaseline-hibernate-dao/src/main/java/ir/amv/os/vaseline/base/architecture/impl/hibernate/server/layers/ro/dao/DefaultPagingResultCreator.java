@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.ro.dao;
 
-import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.base.core.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseReturningCallback;
+import ir.amv.os.vaseline.base.core.api.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.base.core.api.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.base.core.api.shared.util.callback.IBaseReturningCallback;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 

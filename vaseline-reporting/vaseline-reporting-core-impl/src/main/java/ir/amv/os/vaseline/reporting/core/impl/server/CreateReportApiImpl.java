@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.reporting.core.impl.server;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.api.BaseApiImpl;
-import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.base.core.shared.util.date.DateUtil;
 import ir.amv.os.vaseline.reporting.api.server.fieldpostprocessor.impl.DefaultJasperFieldStringPostProcessor;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;

@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.base.core.server.base.exc.converter.def;
 
+import ir.amv.os.vaseline.base.core.api.shared.base.exc.BaseVaselineClientException;
 import ir.amv.os.vaseline.base.core.server.base.exc.converter.impl.BaseExceptionConverterImpl;
 import ir.amv.os.vaseline.base.core.server.base.exc.handler.impl.CoreExceptionHandlerImpl;
-import ir.amv.os.vaseline.base.core.shared.base.exc.BaseVaselineClientException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

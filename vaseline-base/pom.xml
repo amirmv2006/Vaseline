@@ -13,6 +13,7 @@
     <artifactId>vaseline-base</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>vaseline-core-api</module>
         <module>vaseline-core</module>
         <module>vaseline-architecture</module>
         <module>vaseline-mapper</module>

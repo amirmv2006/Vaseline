@@ -1,9 +1,9 @@
 package ir.amv.os.vaseline.reporting.async.api.server.base.ro;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.api.IBaseReadOnlyApi;
-import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.base.core.api.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.async.api.server.base.parent.IBaseReportingAsyncApi;
 

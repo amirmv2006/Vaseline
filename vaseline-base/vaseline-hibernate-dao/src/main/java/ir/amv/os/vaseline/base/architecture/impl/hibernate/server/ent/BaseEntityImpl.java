@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.base.architecture.impl.hibernate.server.ent;
 
-import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.base.core.api.server.base.ent.IBaseEntity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.MappedSuperclass;

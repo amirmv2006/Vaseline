@@ -4,9 +4,9 @@ import ir.amv.os.vaseline.base.architecture.impl.server.layers.ent.crud.api.Base
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.multidao.ro.api.BaseMultiDaoReadOnlyApiImpl;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.IBaseCrudDao;
 import ir.amv.os.vaseline.base.architecture.server.layers.multidao.crud.IBaseMultiDaoCrudApi;
-import ir.amv.os.vaseline.base.core.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.base.core.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.base.core.api.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.IBaseDto;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;

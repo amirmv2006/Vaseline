@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.bpm.api.server.api.task;
 
-import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.bpm.api.server.model.compltask.CompleteTaskRequestServer;
 import ir.amv.os.vaseline.bpm.api.server.model.gotoform.GoToTaskFormReqServer;
 import ir.amv.os.vaseline.bpm.api.shared.model.gotoform.GoToTaskFormRespDto;

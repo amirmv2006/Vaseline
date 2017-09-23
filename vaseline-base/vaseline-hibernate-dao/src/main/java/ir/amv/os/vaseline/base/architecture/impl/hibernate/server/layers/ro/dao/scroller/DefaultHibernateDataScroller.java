@@ -2,7 +2,7 @@ package ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.ro.dao
 
 import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.ro.dao.IVaselineDbDataScroller;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.base.core.shared.util.callback.IBaseCallback;
+import ir.amv.os.vaseline.base.core.api.shared.util.callback.IBaseCallback;
 import org.hibernate.ScrollableResults;
 import org.hibernate.type.Type;
 

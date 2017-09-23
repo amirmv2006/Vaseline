@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.base.mapper.server.exc;
 
-import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
 import org.dozer.MappingException;
 
 /**

@@ -10,6 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>vaseline-mapper</artifactId>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <aries.osgi.basePackage>ir.amv.os.vaseline.base.mapper</aries.osgi.basePackage>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -19,8 +24,12 @@
         </dependency>
         <dependency>
             <groupId>net.sf.dozer</groupId>
-            <artifactId>dozer</artifactId>
+            <artifactId>dozer-osgi</artifactId>
             <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>

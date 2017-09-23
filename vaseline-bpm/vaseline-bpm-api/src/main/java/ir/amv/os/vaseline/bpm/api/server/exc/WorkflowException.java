@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.bpm.api.server.exc;
 
-import ir.amv.os.vaseline.base.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
 
 public class WorkflowException extends BaseVaselineServerException {
 

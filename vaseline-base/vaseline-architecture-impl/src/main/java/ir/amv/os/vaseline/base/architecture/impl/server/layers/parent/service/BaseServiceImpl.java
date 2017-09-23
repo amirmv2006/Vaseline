@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.service;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.parent.service.IBaseService;
-import ir.amv.os.vaseline.base.core.server.base.exc.handler.ICoreExceptionHandler;
-import ir.amv.os.vaseline.base.core.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.base.core.api.server.base.exc.handler.ICoreExceptionHandler;
+import ir.amv.os.vaseline.base.core.api.shared.base.exc.BaseVaselineClientException;
 import ir.amv.os.vaseline.base.core.shared.util.ds.list.IVaselineConvertableList;
 import ir.amv.os.vaseline.base.mapper.server.exc.VaselineConvertException;
 import ir.amv.os.vaseline.base.validation.server.exc.VaselineValidationServerException;

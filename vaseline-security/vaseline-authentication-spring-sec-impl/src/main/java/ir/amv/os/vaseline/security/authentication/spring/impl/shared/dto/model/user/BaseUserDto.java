@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.authentication.spring.impl.shared.dto.model.user;
 
-import ir.amv.os.vaseline.base.core.shared.base.dto.base.impl.BaseDtoImpl;
+import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.baseimpl.BaseDtoImpl;
 
 import java.util.Date;
 
