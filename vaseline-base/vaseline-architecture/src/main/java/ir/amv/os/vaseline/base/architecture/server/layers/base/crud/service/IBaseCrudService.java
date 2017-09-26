@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.base.architecture.server.layers.base.crud.service;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.service.IBaseReadOnlyService;
-import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.base.core.api.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.exc.BaseVaselineClientException;
 
 import java.io.Serializable;
 

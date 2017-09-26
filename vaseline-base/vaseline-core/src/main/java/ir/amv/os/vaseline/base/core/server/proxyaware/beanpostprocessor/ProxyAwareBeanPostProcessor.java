@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.base.core.server.proxyaware.beanpostprocessor;
 
-import ir.amv.os.vaseline.base.core.api.server.proxyaware.IProxyAware;
+import ir.amv.os.vaseline.basics.apis.core.api.server.proxyaware.IProxyAware;
 import org.springframework.aop.TargetSource;
 import org.springframework.aop.framework.Advised;
 import org.springframework.beans.BeansException;

@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.security.authorization.api.shared.api;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.parent.api.IBaseApi;
-import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.security.authorization.api.shared.criteria.ISecurityCriteria;
 
 import java.util.List;

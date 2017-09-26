@@ -1,26 +1,27 @@
 package ir.amv.os.vaseline.base.mapper.config;
 
 import ir.amv.os.vaseline.base.core.config.VaselineCoreConfig;
-import ir.amv.os.vaseline.base.core.api.server.polymorphysm.IVaselinePolymorphysmClassHolder;
 import ir.amv.os.vaseline.base.mapper.config.custconv.IVaselineCustomConverterClassHolder;
 import ir.amv.os.vaseline.base.mapper.config.fieldmapper.VaselineCustomFieldMapper;
-import ir.amv.os.vaseline.base.mapper.server.annot.ExcludeFromDozer;
-import ir.amv.os.vaseline.base.mapper.server.annot.VaselineMapTo;
-import org.dozer.CustomConverter;
+import ir.amv.os.vaseline.basics.apis.mapper.api.shared.annot.ExcludeFromDozer;
+import ir.amv.os.vaseline.basics.apis.mapper.api.shared.annot.VaselineMapTo;
+import ir.amv.os.vaseline.basics.apis.core.api.server.polymorphysm.IVaselinePolymorphysmClassHolder;
 import org.dozer.CustomFieldMapper;
-import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.dozer.classmap.ClassMap;
 import org.dozer.fieldmap.FieldMap;
 import org.dozer.loader.api.BeanMappingBuilder;
 import org.dozer.loader.api.TypeMappingOption;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Conditional;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by AMV on 2/3/2016.

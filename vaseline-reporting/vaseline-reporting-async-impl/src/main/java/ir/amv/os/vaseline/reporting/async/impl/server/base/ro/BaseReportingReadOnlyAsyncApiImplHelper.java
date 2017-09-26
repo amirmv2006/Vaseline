@@ -2,12 +2,12 @@ package ir.amv.os.vaseline.reporting.async.impl.server.base.ro;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.api.IBaseReadOnlyApi;
-import ir.amv.os.vaseline.base.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.base.core.api.shared.util.callback.IBaseCallback;
-import ir.amv.os.vaseline.base.core.api.shared.util.callback.defimpl.BaseCallbackImpl;
-import ir.amv.os.vaseline.base.core.api.shared.util.callback.defimpl.CachingCallback;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseCallback;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.defimpl.BaseCallbackImpl;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.defimpl.CachingCallback;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;

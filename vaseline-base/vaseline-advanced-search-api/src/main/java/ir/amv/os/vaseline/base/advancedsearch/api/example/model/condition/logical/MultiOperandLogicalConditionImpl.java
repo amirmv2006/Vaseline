@@ -1,7 +1,6 @@
 package ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.logical;
 
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.IBasePropertyCondition;
-import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.twoop.TwoOperandComparableConditionImpl;
 
 import java.util.Arrays;
 import java.util.Collection;

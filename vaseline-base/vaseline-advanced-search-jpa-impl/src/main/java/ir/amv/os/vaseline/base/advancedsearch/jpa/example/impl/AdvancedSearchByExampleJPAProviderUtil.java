@@ -13,20 +13,31 @@ import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.multio
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.multiop.MultiOperandGeneralConditionImpl;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.noop.INoOperandGeneralCondition;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.noop.NoOperandGeneralConditionImpl;
-import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.oneop.*;
+import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.oneop.IOneOperandComparableCondition;
+import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.oneop.IOneOperandGeneralCondition;
+import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.oneop.IOneOperandStringCondition;
+import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.oneop.OneOperandComparableConditionImpl;
+import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.oneop.OneOperandGeneralConditionImpl;
+import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.oneop.OneOperandStringConditionImpl;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.twoop.ITwoOperandComparableCondition;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.twoop.TwoOperandComparableConditionImpl;
 import ir.amv.os.vaseline.base.advancedsearch.jpa.example.impl.projection.IJpaCriteriaFromProvider;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionInterceptor;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.io.Serializable;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by amv on 12/8/16.

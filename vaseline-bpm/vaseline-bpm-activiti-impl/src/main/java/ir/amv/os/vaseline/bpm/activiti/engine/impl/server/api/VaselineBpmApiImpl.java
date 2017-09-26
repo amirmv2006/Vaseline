@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.bpm.activiti.engine.impl.server.api;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.api.BaseApiImpl;
-import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.base.core.api.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.bpm.activiti.engine.impl.server.api.taskbeanresolver.IBaseTaskBeanResolver;
 import ir.amv.os.vaseline.bpm.api.server.api.IVaselineBpmApi;
 import ir.amv.os.vaseline.bpm.api.server.api.task.ITaskBean;
@@ -25,13 +25,17 @@ import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.task.TaskQuery;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.InputStream;
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by AMV on 3/2/2016.

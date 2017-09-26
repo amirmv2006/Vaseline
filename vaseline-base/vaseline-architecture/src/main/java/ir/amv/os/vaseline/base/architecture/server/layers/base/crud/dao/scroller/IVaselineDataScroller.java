@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller;
 
-import ir.amv.os.vaseline.base.core.api.shared.util.callback.IBaseCallback;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseCallback;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

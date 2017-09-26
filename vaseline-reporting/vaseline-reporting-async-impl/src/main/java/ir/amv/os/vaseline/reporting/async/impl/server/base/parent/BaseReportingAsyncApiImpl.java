@@ -2,10 +2,10 @@ package ir.amv.os.vaseline.reporting.async.impl.server.base.parent;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.api.BaseApiImpl;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.base.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.base.core.api.shared.util.callback.IBaseCallback;
-import ir.amv.os.vaseline.base.core.api.shared.util.callback.IBaseDoubleParameterCallback;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseCallback;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseDoubleParameterCallback;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;

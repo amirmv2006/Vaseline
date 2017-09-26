@@ -10,10 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by amv on 12/12/16.

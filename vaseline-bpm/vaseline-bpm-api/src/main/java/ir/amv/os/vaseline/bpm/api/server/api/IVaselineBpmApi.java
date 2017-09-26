@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.bpm.api.server.api;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.parent.api.IBaseApi;
-import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.base.core.api.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.bpm.api.server.api.task.ITaskBean;
 import ir.amv.os.vaseline.bpm.api.server.model.compltask.CompleteTaskRequestServer;
 import ir.amv.os.vaseline.bpm.api.server.model.compltask.CompleteTaskResponseServer;

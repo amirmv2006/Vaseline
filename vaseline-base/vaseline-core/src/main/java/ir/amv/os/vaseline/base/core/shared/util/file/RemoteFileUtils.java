@@ -1,12 +1,30 @@
 package ir.amv.os.vaseline.base.core.shared.util.file;
 
-import com.jcraft.jsch.*;
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
+import com.jcraft.jsch.SftpException;
+import com.jcraft.jsch.UserInfo;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.vfs.*;
+import org.apache.commons.vfs.FileObject;
+import org.apache.commons.vfs.FileSystemException;
+import org.apache.commons.vfs.FileSystemManager;
+import org.apache.commons.vfs.FileSystemOptions;
+import org.apache.commons.vfs.Selectors;
+import org.apache.commons.vfs.UserAuthenticator;
+import org.apache.commons.vfs.VFS;
 import org.apache.commons.vfs.auth.StaticUserAuthenticator;
 import org.apache.commons.vfs.impl.DefaultFileSystemConfigBuilder;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * Created by AMV on 1/10/2016.

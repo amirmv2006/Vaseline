@@ -14,6 +14,7 @@
 
     <properties>
         <aries.osgi.export.pkg>!*.impl;ir.amv.os.vaseline.thirdparty.shared.util.reflection*</aries.osgi.export.pkg>
+        <include.resource></include.resource>
     </properties>
 
 </project>

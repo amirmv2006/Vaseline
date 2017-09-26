@@ -25,7 +25,6 @@ import org.springframework.aop.interceptor.AsyncExecutionAspectSupport;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.ApplicationContext;
 import org.springframework.core.BridgeMethodResolver;
 import org.springframework.core.Ordered;
 import org.springframework.core.task.AsyncListenableTaskExecutor;

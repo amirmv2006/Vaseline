@@ -1,10 +1,14 @@
 package ir.amv.os.vaseline.reporting.api.server.model.file;
 
-import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
 import ir.amv.os.vaseline.reporting.api.server.model.BaseInputStreamReportSourceImpl;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.UUID;
 
 /**

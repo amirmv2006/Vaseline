@@ -1,8 +1,7 @@
 package ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.ro.dao.scroller;
 
 import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.ro.dao.IVaselineDbDataScroller;
-import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.base.core.api.shared.util.callback.IBaseCallback;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseCallback;
 import org.hibernate.ScrollableResults;
 import org.hibernate.type.Type;
 
@@ -10,7 +9,12 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Blob;
 import java.sql.Clob;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Created by AMV on 7/17/2016.

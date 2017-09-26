@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.base.i18n.config;
 
-import ir.amv.os.vaseline.base.i18n.server.base.IVaselineI18nFileProvider;
 import ir.amv.os.vaseline.base.i18n.server.base.impl.VaselineClasspathI18nFileProviderImpl;
+import ir.amv.os.vaseline.basics.apis.i18n.api.server.file.resolver.IVaselineI18nFileProvider;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

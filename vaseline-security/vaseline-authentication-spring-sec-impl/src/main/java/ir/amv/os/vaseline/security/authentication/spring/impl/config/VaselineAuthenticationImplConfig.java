@@ -5,14 +5,11 @@ import ir.amv.os.vaseline.security.authentication.spring.impl.config.permissions
 import ir.amv.os.vaseline.security.authentication.spring.impl.config.permissions.condition.NotExistingUserPermissionProvider;
 import ir.amv.os.vaseline.security.authentication.spring.impl.config.permissions.impl.BasicUserPermissionsProvider;
 import ir.amv.os.vaseline.security.authentication.spring.impl.config.userdetailsservice.VaselineUserDetailsService;
-import ir.amv.os.vaseline.security.authentication.spring.impl.server.model.user.IBaseUserApi;
-import ir.amv.os.vaseline.security.authentication.spring.impl.server.model.user.impl.BaseUserApiImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -21,7 +18,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.util.Collections;
 import java.util.Comparator;

@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
-import ir.amv.os.vaseline.base.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
 
 import java.io.Serializable;
 

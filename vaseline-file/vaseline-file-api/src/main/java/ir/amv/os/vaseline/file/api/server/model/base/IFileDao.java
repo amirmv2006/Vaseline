@@ -5,7 +5,6 @@ import ir.amv.os.vaseline.file.api.shared.model.base.IFileDto;
 
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.SQLException;
 
 /**
  * Created by AMV on 2/8/2016.

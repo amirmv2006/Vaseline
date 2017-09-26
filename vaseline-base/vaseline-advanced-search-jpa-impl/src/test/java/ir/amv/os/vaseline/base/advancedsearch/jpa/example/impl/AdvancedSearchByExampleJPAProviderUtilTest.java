@@ -21,13 +21,13 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import static ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.PropertyConditions.*;
+import static ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.PropertyConditions.contains;
+import static ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.PropertyConditions.equlas;
+import static ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.PropertyConditions.lower;
+import static ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.PropertyConditions.upper;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by amv on 12/12/16.

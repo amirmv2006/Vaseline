@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.reporting.api.server.datasource;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.base.core.api.shared.util.callback.IBaseCallback;
-import ir.amv.os.vaseline.base.core.api.shared.util.callback.defimpl.BaseCallbackImpl;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseCallback;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.defimpl.BaseCallbackImpl;
 import ir.amv.os.vaseline.reporting.api.server.fieldpostprocessor.IBaseFieldPostProcessor;
 import ir.amv.os.vaseline.reporting.api.server.fieldpostprocessor.impl.DefaultJasperFieldStringPostProcessor;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;

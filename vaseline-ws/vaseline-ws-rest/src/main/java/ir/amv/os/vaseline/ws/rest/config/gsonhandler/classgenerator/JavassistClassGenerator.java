@@ -1,11 +1,15 @@
 package ir.amv.os.vaseline.ws.rest.config.gsonhandler.classgenerator;
 
 import ir.amv.os.vaseline.ws.rest.server.multiparam.annot.JsonParam;
-import javassist.*;
+import javassist.CannotCompileException;
+import javassist.ClassClassPath;
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtField;
+import javassist.Modifier;
+import javassist.NotFoundException;
 
 import java.io.IOException;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

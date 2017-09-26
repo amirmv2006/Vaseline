@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.reporting.api.shared.model.file;
 
-import ir.amv.os.vaseline.base.mapper.server.annot.VaselineMapTo;
+import ir.amv.os.vaseline.basics.apis.mapper.api.shared.annot.VaselineMapTo;
 import ir.amv.os.vaseline.reporting.api.server.model.file.FileReportSourceImplServer;
 import ir.amv.os.vaseline.reporting.api.shared.model.IBaseReportSourceClient;
 

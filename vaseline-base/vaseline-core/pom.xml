@@ -13,7 +13,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.amirmv2006.base</groupId>
+            <groupId>com.github.amirmv2006.basics.apis</groupId>
             <artifactId>vaseline-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>

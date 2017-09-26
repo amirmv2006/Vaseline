@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.authorization.api.shared.exc;
 
-import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
 
 /**
  * Created by AMV on 2/28/2016.

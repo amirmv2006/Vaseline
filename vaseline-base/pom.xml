@@ -13,11 +13,11 @@
     <artifactId>vaseline-base</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-core-api</module>
         <module>vaseline-core</module>
         <module>vaseline-architecture</module>
         <module>vaseline-mapper</module>
         <module>vaseline-json</module>
+        <!--<module>vaseline-search-by-example-api</module>-->
         <module>vaseline-hibernate-dao</module>
         <module>vaseline-architecture-impl</module>
         <module>vaseline-jdbc</module>

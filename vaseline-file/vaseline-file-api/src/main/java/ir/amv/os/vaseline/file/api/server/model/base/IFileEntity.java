@@ -1,8 +1,7 @@
 package ir.amv.os.vaseline.file.api.server.model.base;
 
-import ir.amv.os.vaseline.base.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.base.core.api.server.base.ent.hascreatedate.IBaseHasCreateDateEntity;
-import ir.amv.os.vaseline.base.core.api.server.base.ent.hasmodifydate.IBaseHasModifyDateEntity;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.hascreatedate.IBaseHasCreateDateEntity;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.hasmodifydate.IBaseHasModifyDateEntity;
 
 /**
  * Created by AMV on 2/8/2016.

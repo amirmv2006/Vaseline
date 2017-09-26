@@ -1,16 +1,16 @@
 package ir.amv.os.vaseline.base.architecture.impl.server.layers.base.ro.service;
 
-import ir.amv.os.vaseline.base.core.api.shared.validation.IEntitySearchValidation;
-import ir.amv.os.vaseline.base.core.api.shared.validation.IEntityShowValidation;
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.service.BaseServiceImpl;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.api.IBaseReadOnlyApi;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.service.IBaseReadOnlyService;
-import ir.amv.os.vaseline.base.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.base.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.base.core.api.shared.base.exc.BaseVaselineClientException;
 import ir.amv.os.vaseline.base.mapper.server.exc.VaselineConvertException;
 import ir.amv.os.vaseline.base.validation.server.exc.VaselineValidationServerException;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.validation.IEntitySearchValidation;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.validation.IEntityShowValidation;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 

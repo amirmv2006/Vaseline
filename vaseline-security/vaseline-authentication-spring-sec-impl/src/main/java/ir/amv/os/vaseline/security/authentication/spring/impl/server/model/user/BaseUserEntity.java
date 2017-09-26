@@ -1,10 +1,15 @@
 package ir.amv.os.vaseline.security.authentication.spring.impl.server.model.user;
 
-import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.ent.BaseEntityImpl;
+import ir.amv.os.vaseline.basics.apis.dao.api.server.ent.BaseEntityImpl;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.*;
+import javax.persistence.Cacheable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**

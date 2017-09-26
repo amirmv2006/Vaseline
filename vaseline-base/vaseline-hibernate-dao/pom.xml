@@ -18,6 +18,11 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.github.amirmv2006.basics.apis</groupId>
+            <artifactId>vaseline-entity-jpa-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.amirmv2006.base</groupId>
             <artifactId>vaseline-jdbc</artifactId>
             <version>${project.version}</version>

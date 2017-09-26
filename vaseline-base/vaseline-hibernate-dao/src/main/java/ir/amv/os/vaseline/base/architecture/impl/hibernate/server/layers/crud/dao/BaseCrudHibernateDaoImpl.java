@@ -2,8 +2,8 @@ package ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.crud.d
 
 import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.ro.dao.BaseReadOnlyHibernateDaoImpl;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.IBaseCrudDao;
-import ir.amv.os.vaseline.base.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
 import org.hibernate.Session;
 
 import java.io.Serializable;

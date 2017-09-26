@@ -1,7 +1,14 @@
 package ir.amv.os.vaseline.tasks.api.config.executor;
 
 import java.util.Comparator;
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.RunnableFuture;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class PriorityExecutor
         extends ThreadPoolExecutor {

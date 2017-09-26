@@ -3,7 +3,9 @@ package ir.amv.os.vaseline.base.advancedsearch.jpa.example.impl.projection;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.SearchJoinType;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.From;
+import javax.persistence.criteria.JoinType;
 import java.util.HashMap;
 
 /**

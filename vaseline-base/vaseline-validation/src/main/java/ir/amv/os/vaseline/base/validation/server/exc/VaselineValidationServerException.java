@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.base.validation.server.exc;
 
-import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
 
 import javax.validation.ConstraintViolation;
 import java.util.Set;

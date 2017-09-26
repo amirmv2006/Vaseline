@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.base.core.shared.util.file;
 
-import ir.amv.os.vaseline.base.core.api.shared.util.callback.IBaseCallback;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseCallback;
 
 import java.io.OutputStream;
 

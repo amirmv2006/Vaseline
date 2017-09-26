@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.file.api.shared.model.base;
 
-import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
 
 import java.util.Date;
 

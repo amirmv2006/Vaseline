@@ -1,9 +1,9 @@
 package ir.amv.os.vaseline.security.authorization.api.shared.base.api.crud;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.api.IBaseCrudApi;
-import ir.amv.os.vaseline.base.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.security.authorization.api.shared.base.api.ro.IBaseSecuredReadOnlyApi;
 
 import java.io.Serializable;

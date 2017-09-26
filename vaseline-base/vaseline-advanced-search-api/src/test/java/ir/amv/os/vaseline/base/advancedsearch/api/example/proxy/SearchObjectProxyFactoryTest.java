@@ -3,10 +3,12 @@ package ir.amv.os.vaseline.base.advancedsearch.api.example.proxy;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.IBasePropertyCondition;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.oneop.OneOperandComparableConditionImpl;
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.oneop.OneOperandGeneralConditionImpl;
-import ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.twoop.TwoOperandComparableConditionImpl;
 import org.junit.Test;
-import static ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.PropertyConditions.*;
-import static org.junit.Assert.*;
+
+import static ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.PropertyConditions.equlas;
+import static ir.amv.os.vaseline.base.advancedsearch.api.example.model.condition.PropertyConditions.greaterThan;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by amv on 12/8/16.

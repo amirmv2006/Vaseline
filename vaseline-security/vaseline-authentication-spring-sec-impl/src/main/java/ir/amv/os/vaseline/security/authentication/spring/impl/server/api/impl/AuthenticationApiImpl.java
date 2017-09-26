@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.security.authentication.spring.impl.server.api.impl;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.api.BaseApiImpl;
-import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -1,15 +1,23 @@
 package ir.amv.os.vaseline.base.json.config;
 
-import com.google.gson.*;
-import ir.amv.os.vaseline.base.core.api.server.polymorphysm.defimpl.VaselinePolymorphysmClassHolderImpl;
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonSerializer;
 import ir.amv.os.vaseline.base.core.config.VaselineCoreConfig;
-import ir.amv.os.vaseline.base.json.server.annot.ExcludeFromJson;
+import ir.amv.os.vaseline.basics.apis.json.api.shared.annot.ExcludeFromJson;
 import ir.amv.os.vaseline.base.json.server.polymorphysm.GsonPolymorphysmSerializerAndDeserializer;
-import ir.amv.os.vaseline.base.core.api.server.polymorphysm.IVaselinePolymorphysmClassHolder;
+import ir.amv.os.vaseline.basics.apis.core.api.server.polymorphysm.IVaselinePolymorphysmClassHolder;
+import ir.amv.os.vaseline.basics.apis.core.api.server.polymorphysm.defimpl.VaselinePolymorphysmClassHolderImpl;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Scope;
 
 import java.util.ArrayList;
 import java.util.List;

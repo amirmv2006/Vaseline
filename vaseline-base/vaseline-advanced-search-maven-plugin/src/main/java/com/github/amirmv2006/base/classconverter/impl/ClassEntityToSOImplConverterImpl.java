@@ -6,7 +6,10 @@ import ir.amv.os.vaseline.base.advancedsearch.api.example.model.BaseSearchObject
 import ir.amv.os.vaseline.base.advancedsearch.api.example.model.IBaseSearchObject;
 import org.jboss.forge.roaster.Roaster;
 import org.jboss.forge.roaster.model.Field;
-import org.jboss.forge.roaster.model.source.*;
+import org.jboss.forge.roaster.model.source.FieldSource;
+import org.jboss.forge.roaster.model.source.Import;
+import org.jboss.forge.roaster.model.source.JavaClassSource;
+import org.jboss.forge.roaster.model.source.TypeVariableSource;
 
 import java.util.List;
 

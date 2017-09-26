@@ -1,9 +1,9 @@
 package ir.amv.os.vaseline.reporting.api.server.datasource;
 
-import ir.amv.os.vaseline.base.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.base.core.api.shared.util.callback.IBaseCallback;
-import ir.amv.os.vaseline.base.core.api.shared.util.pager.IBaseAsyncListPager;
-import ir.amv.os.vaseline.base.core.api.shared.util.pager.defimpl.DefaultStaticListPager;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseCallback;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.pager.IBaseAsyncListPager;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.pager.defimpl.DefaultStaticListPager;
 import ir.amv.os.vaseline.reporting.api.server.fieldpostprocessor.IBaseFieldPostProcessor;
 import ir.amv.os.vaseline.reporting.api.server.fieldpostprocessor.impl.DefaultJasperFieldStringPostProcessor;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;

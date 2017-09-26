@@ -1,8 +1,7 @@
 package ir.amv.os.vaseline.reporting.async.rest.server.base.crud.restservice.impl;
 
-import ir.amv.os.vaseline.base.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.base.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
+import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.reporting.api.shared.model.CreateReportRequestClient;
 import ir.amv.os.vaseline.reporting.async.rest.server.base.crud.restservice.IBaseReportingCrudAsyncRestService;
 import ir.amv.os.vaseline.reporting.async.rest.server.base.crud.service.IBaseReportingCrudAsyncService;

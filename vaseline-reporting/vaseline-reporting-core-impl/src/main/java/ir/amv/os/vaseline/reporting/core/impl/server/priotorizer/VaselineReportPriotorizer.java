@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.reporting.core.impl.server.priotorizer;
 
-import ir.amv.os.vaseline.base.core.api.shared.util.callback.IBaseCallback;
-import ir.amv.os.vaseline.base.core.api.shared.util.callback.defimpl.BaseCallbackImpl;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseCallback;
+import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.defimpl.BaseCallbackImpl;
 import ir.amv.os.vaseline.reporting.api.server.datasource.PaginatorDataSource;
 import ir.amv.os.vaseline.tasks.api.server.priority.prioritorizer.IBaseVaselineAsyncPrioritorizer;
 import org.aopalliance.intercept.MethodInvocation;

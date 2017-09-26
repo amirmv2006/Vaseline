@@ -1,9 +1,14 @@
 package ir.amv.os.vaseline.file.db.impl.server.model.blob;
 
-import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.ent.BaseEntityImpl;
+import ir.amv.os.vaseline.basics.apis.dao.api.server.ent.BaseEntityImpl;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
+import javax.persistence.Table;
 import java.sql.Blob;
 import java.util.Date;
 

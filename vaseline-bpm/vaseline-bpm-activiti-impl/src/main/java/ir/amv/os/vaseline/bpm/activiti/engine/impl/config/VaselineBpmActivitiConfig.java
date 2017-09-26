@@ -1,7 +1,12 @@
 package ir.amv.os.vaseline.bpm.activiti.engine.impl.config;
 
 import ir.amv.os.vaseline.base.jdbc.config.VaselineJdbcConfig;
-import org.activiti.engine.*;
+import org.activiti.engine.HistoryService;
+import org.activiti.engine.ManagementService;
+import org.activiti.engine.ProcessEngine;
+import org.activiti.engine.RepositoryService;
+import org.activiti.engine.RuntimeService;
+import org.activiti.engine.TaskService;
 import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.impl.persistence.deploy.Deployer;
 import org.activiti.engine.impl.rules.RulesDeployer;
@@ -11,7 +16,11 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;

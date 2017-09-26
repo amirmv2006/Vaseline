@@ -16,7 +16,14 @@
 package ir.amv.os.vaseline.base.mapper.config;
 
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
-import org.dozer.*;
+import org.dozer.BeanFactory;
+import org.dozer.CustomConverter;
+import org.dozer.CustomFieldMapper;
+import org.dozer.DozerEventListener;
+import org.dozer.DozerInitializer;
+import org.dozer.Mapper;
+import org.dozer.MappingException;
+import org.dozer.MappingProcessor;
 import org.dozer.cache.CacheManager;
 import org.dozer.cache.DozerCacheManager;
 import org.dozer.cache.DozerCacheType;
@@ -38,7 +45,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Proxy;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
 
