@@ -18,8 +18,8 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.base</groupId>
-            <artifactId>vaseline-hibernate-dao</artifactId>
+            <groupId>com.github.amirmv2006.data.spring</groupId>
+            <artifactId>vaseline-dao-hibernate-spring</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

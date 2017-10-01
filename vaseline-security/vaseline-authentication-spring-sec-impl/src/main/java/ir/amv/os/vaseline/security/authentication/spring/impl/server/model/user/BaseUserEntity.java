@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.authentication.spring.impl.server.model.user;
 
-import ir.amv.os.vaseline.basics.apis.dao.api.server.ent.BaseEntityImpl;
+import ir.amv.os.vaseline.basics.apis.dao.server.ent.BaseEntityImpl;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 

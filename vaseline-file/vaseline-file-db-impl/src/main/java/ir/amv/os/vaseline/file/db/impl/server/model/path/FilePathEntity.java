@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.file.db.impl.server.model.path;
 
-import ir.amv.os.vaseline.basics.apis.dao.api.server.ent.BaseEntityImpl;
+import ir.amv.os.vaseline.basics.apis.dao.server.ent.BaseEntityImpl;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
 
 import javax.persistence.Entity;

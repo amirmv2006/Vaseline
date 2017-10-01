@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.reporting.async.rest.server.dozer;
 
-import ir.amv.os.vaseline.base.core.config.VaselineCoreConfig;
+import ir.amv.os.vaseline.basics.spring.core.config.VaselineCoreConfig;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
 import ir.amv.os.vaseline.reporting.api.server.model.file.FileReportSourceImplServer;
 import ir.amv.os.vaseline.reporting.api.shared.model.file.FileReportSourceImplClient;

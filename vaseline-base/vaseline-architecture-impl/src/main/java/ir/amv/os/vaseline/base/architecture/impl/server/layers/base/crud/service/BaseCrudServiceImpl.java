@@ -3,12 +3,12 @@ package ir.amv.os.vaseline.base.architecture.impl.server.layers.base.crud.servic
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.base.ro.service.BaseReadOnlyServiceImpl;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.api.IBaseCrudApi;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.service.IBaseCrudService;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.exc.BaseVaselineClientException;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.validation.IEntityDeleteValidation;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.validation.IEntitySaveValidation;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.validation.IEntityUpdateValidation;
+import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.apis.core.shared.validation.IEntityDeleteValidation;
+import ir.amv.os.vaseline.basics.apis.core.shared.validation.IEntitySaveValidation;
+import ir.amv.os.vaseline.basics.apis.core.shared.validation.IEntityUpdateValidation;
 
 import java.io.Serializable;
 

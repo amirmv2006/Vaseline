@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.reporting.api.server.model.file;
 
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
 import ir.amv.os.vaseline.reporting.api.server.model.BaseInputStreamReportSourceImpl;
 

@@ -1,5 +1,8 @@
 package ir.amv.os.vaseline.thirdparty.shared.util.reflection;
 
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.exc.InterceptionException;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.exc.InterceptionInterruptException;
+
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
@@ -304,8 +307,11 @@ public class ReflectionUtil {
             O obj = src;
             // check If the object itself should be intercepted!
             if (query.isAssignableFrom(objClass)) {
-                Q intercepted = interceptor.intercept((Q) src, prefix.trim().equals("") ? "" : prefix);
-                obj = (O) intercepted;
+                try {
+                    obj = (O) interceptor.intercept((Q) src, prefix.trim().equals("") ? "" : prefix);
+                } catch (InterceptionInterruptException e) { // should not intercept children
+                    return (O)(e.getKeepOriginalValue() ? src : e.getInterruptedValue());
+                }
             }
 
             BeanInfo beanInfo = Introspector.getBeanInfo(objClass);

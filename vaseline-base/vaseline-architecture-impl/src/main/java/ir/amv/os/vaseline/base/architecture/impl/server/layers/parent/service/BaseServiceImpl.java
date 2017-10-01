@@ -1,12 +1,12 @@
 package ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.service;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.parent.service.IBaseService;
-import ir.amv.os.vaseline.base.core.shared.util.ds.list.IVaselineConvertableList;
-import ir.amv.os.vaseline.base.mapper.server.exc.VaselineConvertException;
-import ir.amv.os.vaseline.base.validation.server.exc.VaselineValidationServerException;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.handler.ICoreExceptionHandler;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.exc.BaseVaselineClientException;
-import org.dozer.Mapper;
+import ir.amv.os.vaseline.basics.apis.core.shared.util.ds.list.IVaselineConvertableList;
+import ir.amv.os.vaseline.basics.apis.mapper.server.exc.VaselineConvertException;
+import ir.amv.os.vaseline.basics.apis.mapper.server.objmapper.IVaselineObjectMapper;
+import ir.amv.os.vaseline.basics.apis.validation.server.exc.VaselineValidationServerException;
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.handler.ICoreExceptionHandler;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.exc.BaseVaselineClientException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -20,7 +20,7 @@ import java.util.Set;
 
 public class BaseServiceImpl implements IBaseService {
 
-	protected Mapper mapper;
+	protected IVaselineObjectMapper mapper;
 	protected Validator validator;
 	protected ICoreExceptionHandler coreExceptionHandler;
 	
@@ -62,7 +62,7 @@ public class BaseServiceImpl implements IBaseService {
 	}
 
 	@Autowired
-	public void setMapper(Mapper mapper) {
+	public void setMapper(IVaselineObjectMapper mapper) {
 		this.mapper = mapper;
 	}
 	

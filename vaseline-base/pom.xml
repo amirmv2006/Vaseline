@@ -13,20 +13,8 @@
     <artifactId>vaseline-base</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-core</module>
         <module>vaseline-architecture</module>
-        <module>vaseline-mapper</module>
-        <module>vaseline-json</module>
-        <!--<module>vaseline-search-by-example-api</module>-->
-        <module>vaseline-hibernate-dao</module>
         <module>vaseline-architecture-impl</module>
-        <module>vaseline-jdbc</module>
-        <module>vaseline-i18n</module>
-        <module>vaseline-validation</module>
-        <module>vaseline-caching</module>
-        <module>vaseline-advanced-search-api</module>
-        <module>vaseline-advanced-search-maven-plugin</module>
-        <module>vaseline-advanced-search-jpa-impl</module>
     </modules>
 
 

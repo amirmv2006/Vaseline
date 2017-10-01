@@ -1,9 +1,9 @@
 package ir.amv.os.vaseline.reporting.async.rest.config;
 
-import ir.amv.os.vaseline.base.mapper.config.custconv.BaseVaselineCustomConverterClassHolderImpl;
-import ir.amv.os.vaseline.base.mapper.config.custconv.IVaselineCustomConverterClassHolder;
-import ir.amv.os.vaseline.basics.apis.core.api.server.polymorphysm.IVaselinePolymorphysmClassHolder;
-import ir.amv.os.vaseline.basics.apis.core.api.server.polymorphysm.defimpl.VaselinePolymorphysmClassHolderImpl;
+import ir.amv.os.vaseline.basics.spring.mapper.config.custconv.BaseVaselineCustomConverterClassHolderImpl;
+import ir.amv.os.vaseline.basics.spring.mapper.config.custconv.IVaselineCustomConverterClassHolder;
+import ir.amv.os.vaseline.basics.apis.core.server.polymorphysm.IVaselinePolymorphysmClassHolder;
+import ir.amv.os.vaseline.basics.apis.core.server.polymorphysm.defimpl.VaselinePolymorphysmClassHolderImpl;
 import ir.amv.os.vaseline.reporting.api.shared.model.IBaseReportSourceClient;
 import ir.amv.os.vaseline.reporting.async.rest.server.dozer.VaselineFileReportSourceCustomConverter;
 import ir.amv.os.vaseline.reporting.async.rest.server.dozer.VaselineProjectResourceReportSourceCustomConverter;

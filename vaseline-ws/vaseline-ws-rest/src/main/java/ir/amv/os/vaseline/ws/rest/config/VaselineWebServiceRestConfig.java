@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.ws.rest.config;
 
-import ir.amv.os.vaseline.base.json.config.VaselineJsonConfig;
+import ir.amv.os.vaseline.basics.spring.json.config.VaselineJsonConfig;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import ir.amv.os.vaseline.ws.common.config.VaselineWebServiceCommonConfig;
 import ir.amv.os.vaseline.ws.rest.config.application.JaxRestApplication;

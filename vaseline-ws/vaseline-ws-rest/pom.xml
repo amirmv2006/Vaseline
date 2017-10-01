@@ -23,8 +23,8 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.base</groupId>
-            <artifactId>vaseline-json</artifactId>
+            <groupId>com.github.amirmv2006.basics.spring</groupId>
+            <artifactId>vaseline-json-gson-spring</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

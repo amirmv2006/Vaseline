@@ -1,13 +1,13 @@
 package ir.amv.os.vaseline.base.architecture.impl.server.layers.base.ro.api;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.ent.ro.api.BaseEntityReadOnlyApiImpl;
-import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
+import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.api.IBaseReadOnlyApi;
-import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.data.apis.dao.server.ro.IBaseReadOnlyDao;
+import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by AMV on 2/8/2016.
  */
-public class BaseReadOnlyApiImpl<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable, DAO extends IBaseReadOnlyDao<E, D, Id>>
+public class BaseReadOnlyApiImpl<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable, DAO extends IBaseReadOnlyDao<E, Id>>
         extends BaseEntityReadOnlyApiImpl<E, Id>
         implements IBaseReadOnlyApi<E, D, Id> {
 

@@ -1,8 +1,7 @@
 package ir.amv.os.vaseline.reporting.core.impl.server;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.parent.api.BaseApiImpl;
-import ir.amv.os.vaseline.base.core.shared.util.date.DateUtil;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.reporting.api.server.fieldpostprocessor.impl.DefaultJasperFieldStringPostProcessor;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.IBaseReportSourceServer;
@@ -167,8 +166,9 @@ public class CreateReportApiImpl
 
     private void setDefaultParameters(Map<String, Object> reportParameters) throws BaseVaselineServerException {
         DefaultJasperFieldStringPostProcessor fieldStringPostProcessor = new DefaultJasperFieldStringPostProcessor();
-        String currentShamsiDate = DateUtil.toString(DateUtil.newJalaliCalendar());
-        reportParameters.put("currentShamsiDate", fieldStringPostProcessor.postProcess(currentShamsiDate));
+        // FIXME replace with locale based date
+        //        String currentShamsiDate = DateUtil.toString(DateUtil.newJalaliCalendar());
+//        reportParameters.put("currentShamsiDate", fieldStringPostProcessor.postProcess(currentShamsiDate));
         InputStream logoStream = servletContext.getResourceAsStream("/logo.jpg");
         reportParameters.put("logo", logoStream);
     }

@@ -1,14 +1,14 @@
 package ir.amv.os.vaseline.reporting.async.impl.server.base.ro;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.base.ro.api.BaseReadOnlyApiImpl;
-import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseCallback;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseDoubleParameterCallback;
+import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
+import ir.amv.os.vaseline.data.apis.dao.server.ro.IBaseReadOnlyDao;
+import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.IBaseCallback;
+import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.IBaseDoubleParameterCallback;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * Created by AMV on 2/13/2016.
  */
-public class BaseReportingReadOnlyAsyncApiImpl<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable, DAO extends IBaseReadOnlyDao<E, D, Id>>
+public class BaseReportingReadOnlyAsyncApiImpl<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable, DAO extends IBaseReadOnlyDao<E, Id>>
         extends BaseReadOnlyApiImpl<E, D, Id, DAO>
         implements IBaseReportingReadOnlyAsyncApi<E, D, Id> {
 

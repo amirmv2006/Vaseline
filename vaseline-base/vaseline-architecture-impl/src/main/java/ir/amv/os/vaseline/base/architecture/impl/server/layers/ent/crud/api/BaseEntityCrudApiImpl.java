@@ -2,8 +2,8 @@ package ir.amv.os.vaseline.base.architecture.impl.server.layers.ent.crud.api;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.ent.ro.api.BaseEntityReadOnlyApiImpl;
 import ir.amv.os.vaseline.base.architecture.server.layers.ent.crud.api.IBaseEntityCrudApi;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 
 import java.io.Serializable;
 

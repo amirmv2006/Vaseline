@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.base.architecture.server.layers.ent.crud.api;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.ent.ro.api.IBaseEntityReadOnlyApi;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 
 /**
  * Created by AMV on 2/9/2016.

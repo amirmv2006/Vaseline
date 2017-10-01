@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.file.api.server.model.base;
 
-import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.IBaseCrudDao;
+import ir.amv.os.vaseline.data.apis.dao.server.crud.IBaseCrudDao;
 import ir.amv.os.vaseline.file.api.shared.model.base.IFileDto;
 
 import java.io.InputStream;

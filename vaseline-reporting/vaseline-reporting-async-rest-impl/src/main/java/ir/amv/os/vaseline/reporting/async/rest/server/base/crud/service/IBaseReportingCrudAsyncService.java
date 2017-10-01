@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.reporting.async.rest.server.base.crud.service;
 
 import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.service.IBaseCrudService;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.reporting.async.rest.server.base.ro.service.IBaseReportingReadOnlyAsyncService;
 
 import java.io.Serializable;

@@ -1,11 +1,11 @@
 package ir.amv.os.vaseline.security.authorization.hibernate.impl.server.base.dao.crud;
 
-import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.crud.dao.BaseCrudHibernateDaoImpl;
-import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseReturningCallback;
+import ir.amv.os.vaseline.data.hibernate.apis.dao.server.crud.BaseCrudHibernateDaoImpl;
+import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
+import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.IBaseReturningCallback;
 import ir.amv.os.vaseline.security.authorization.api.shared.base.dao.crud.IBaseSecuredCrudDao;
 import ir.amv.os.vaseline.security.authorization.hibernate.impl.server.criteria.HibernateSecurityCriteria;
 import org.hibernate.Criteria;

@@ -1,13 +1,13 @@
 package ir.amv.os.vaseline.base.architecture.impl.server.layers.base.ro.api;
 
-import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
+import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
+import ir.amv.os.vaseline.data.apis.dao.server.ro.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.base.architecture.server.layers.ent.ro.api.IBaseEntityReadOnlyApi;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.defimpl.BaseCallbackImpl;
+import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.defimpl.BaseCallbackImpl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -23,7 +23,7 @@ public class BaseReadOnlyApiImplHelper {
     public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
             E getById(
             IBaseEntityReadOnlyApi<E> api,
-            IBaseReadOnlyDao<E, D, Id> dao,
+            IBaseReadOnlyDao<E, Id> dao,
             Id id)
             throws BaseVaselineServerException {
         E findById = dao.getById(id);
@@ -34,7 +34,7 @@ public class BaseReadOnlyApiImplHelper {
     public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
             Long countAllApproximately(
             IBaseEntityReadOnlyApi<E> api,
-            IBaseReadOnlyDao<E, D, Id> dao) {
+            IBaseReadOnlyDao<E, Id> dao) {
         Long countAllApproximately = dao.countAllApproximately();
         return countAllApproximately;
     }
@@ -42,7 +42,7 @@ public class BaseReadOnlyApiImplHelper {
     public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
             Long countAll(
             IBaseEntityReadOnlyApi<E> api,
-            IBaseReadOnlyDao<E, D, Id> dao)
+            IBaseReadOnlyDao<E, Id> dao)
             throws BaseVaselineServerException {
         Long countAll = dao.countAll();
         return countAll;
@@ -51,7 +51,7 @@ public class BaseReadOnlyApiImplHelper {
     public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
             List<E> getAll(
             IBaseEntityReadOnlyApi<E> api,
-            IBaseReadOnlyDao<E, D, Id> dao)
+            IBaseReadOnlyDao<E, Id> dao)
             throws BaseVaselineServerException {
         List<E> all = dao.getAll();
         if (all != null) {
@@ -65,7 +65,7 @@ public class BaseReadOnlyApiImplHelper {
     public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
             IVaselineDataScroller<E> scrollAll(
             final IBaseEntityReadOnlyApi<E> api,
-            IBaseReadOnlyDao<E, D, Id> dao) {
+            IBaseReadOnlyDao<E, Id> dao) {
         IVaselineDataScroller<E> scroller = dao.scrollAll();
         scroller.addAfterFetchObject(new BaseCallbackImpl<E, Void>() {
             @Override
@@ -83,7 +83,7 @@ public class BaseReadOnlyApiImplHelper {
     public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
             List<E> getAll(
             IBaseEntityReadOnlyApi<E> api,
-            IBaseReadOnlyDao<E, D, Id> dao,
+            IBaseReadOnlyDao<E, Id> dao,
             PagingDto pagingDto)
             throws BaseVaselineServerException {
         List<E> all = dao.getAll(pagingDto);
@@ -98,7 +98,7 @@ public class BaseReadOnlyApiImplHelper {
     public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
             Long countByExample(
             IBaseEntityReadOnlyApi<E> api,
-            IBaseReadOnlyDao<E, D, Id> dao,
+            IBaseReadOnlyDao<E, Id> dao,
             D example)
             throws BaseVaselineServerException {
         Long countByExample = dao.countByExample(example);
@@ -108,7 +108,7 @@ public class BaseReadOnlyApiImplHelper {
     public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
             List<E> searchByExample(
             IBaseEntityReadOnlyApi<E> api,
-            IBaseReadOnlyDao<E, D, Id> dao,
+            IBaseReadOnlyDao<E, Id> dao,
             D example)
             throws BaseVaselineServerException {
         List<E> searchByExample = dao.searchByExample(example);
@@ -123,7 +123,7 @@ public class BaseReadOnlyApiImplHelper {
     public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
             IVaselineDataScroller<E> scrollByExample(
             final IBaseEntityReadOnlyApi<E> api,
-            IBaseReadOnlyDao<E, D, Id> dao,
+            IBaseReadOnlyDao<E, Id> dao,
             D example) {
         IVaselineDataScroller<E> scroller = dao.scrollByExample(example);
         scroller.addAfterFetchObject(new BaseCallbackImpl<E, Void>() {
@@ -141,7 +141,7 @@ public class BaseReadOnlyApiImplHelper {
     public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
             List<E> searchByExample(
             IBaseEntityReadOnlyApi<E> api,
-            IBaseReadOnlyDao<E, D, Id> dao,
+            IBaseReadOnlyDao<E, Id> dao,
             D example,
             PagingDto pagingDto)
             throws BaseVaselineServerException {

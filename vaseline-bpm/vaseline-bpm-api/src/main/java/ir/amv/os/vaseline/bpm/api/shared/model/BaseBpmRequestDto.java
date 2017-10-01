@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.bpm.api.shared.model;
 
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.baseimpl.BaseEmptyDtoImpl;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.baseimpl.BaseEmptyDtoImpl;
 
 public class BaseBpmRequestDto extends BaseEmptyDtoImpl {
 

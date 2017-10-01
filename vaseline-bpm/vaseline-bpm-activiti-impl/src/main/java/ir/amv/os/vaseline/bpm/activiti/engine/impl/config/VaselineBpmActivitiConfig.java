@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.bpm.activiti.engine.impl.config;
 
-import ir.amv.os.vaseline.base.jdbc.config.VaselineJdbcConfig;
+import ir.amv.os.vaseline.data.spring.jdbc.config.VaselineJdbcConfig;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.ManagementService;
 import org.activiti.engine.ProcessEngine;

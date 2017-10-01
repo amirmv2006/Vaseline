@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.file.db.impl.server.model.path.impl;
 
-import ir.amv.os.vaseline.base.architecture.impl.hibernate.server.layers.crud.dao.BaseCrudHibernateDaoImpl;
+import ir.amv.os.vaseline.data.hibernate.apis.dao.server.crud.BaseCrudHibernateDaoImpl;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
 import ir.amv.os.vaseline.file.api.shared.model.base.IFileDto;
 import ir.amv.os.vaseline.file.db.impl.server.model.path.FilePathEntity;

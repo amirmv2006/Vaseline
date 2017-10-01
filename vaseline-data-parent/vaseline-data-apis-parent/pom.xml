@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>vaseline-data-parent</artifactId>
+        <groupId>com.github.amirmv2006.data</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.amirmv2006.data.apis</groupId>
+    <artifactId>vaseline-data-apis-parent</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>vaseline-dao-api</module>
+        <module>vaseline-simple-search-api</module>
+        <module>vaseline-advanced-search-api</module>
+        <module>vaseline-advanced-search-maven-plugin</module>
+    </modules>
+
+
+</project>

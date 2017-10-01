@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.reporting.async.rest.server.base.ro.restservice;
 
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.ws.rest.server.base.ro.IBaseReadOnlyRestService;
 
 import java.io.Serializable;

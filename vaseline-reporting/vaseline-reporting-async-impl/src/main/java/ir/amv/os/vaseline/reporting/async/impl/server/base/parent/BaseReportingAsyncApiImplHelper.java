@@ -1,14 +1,14 @@
 package ir.amv.os.vaseline.reporting.async.impl.server.base.parent;
 
-import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.dao.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
+import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
+import ir.amv.os.vaseline.data.apis.dao.server.ro.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.base.architecture.server.layers.parent.api.IBaseApi;
-import ir.amv.os.vaseline.base.core.shared.util.date.DateUtil;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseCallback;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.util.callback.IBaseDoubleParameterCallback;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.util.pager.defimpl.DefaultAsyncListPager;
+import ir.amv.os.vaseline.basics.apis.core.shared.util.date.DateUtil;
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.IBaseCallback;
+import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.IBaseDoubleParameterCallback;
+import ir.amv.os.vaseline.basics.apis.core.shared.util.pager.defimpl.DefaultAsyncListPager;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
 import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
 import ir.amv.os.vaseline.reporting.api.server.datasource.PaginatorDataSource;
@@ -107,7 +107,7 @@ public class BaseReportingAsyncApiImplHelper {
         return null;
     }
 
-    private static <Id extends Serializable, DAO extends IBaseReadOnlyDao<?, ?, Id>> String getFileNameFor(
+    private static <Id extends Serializable, DAO extends IBaseReadOnlyDao<?, Id>> String getFileNameFor(
             IAuthenticationApi authenticationApi,
             CreateReportRequestServer request) throws BaseVaselineServerException {
         StringBuffer fileName = new StringBuffer();

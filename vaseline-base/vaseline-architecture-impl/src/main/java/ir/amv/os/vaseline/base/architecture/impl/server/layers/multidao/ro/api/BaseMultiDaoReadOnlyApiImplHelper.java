@@ -1,12 +1,12 @@
 package ir.amv.os.vaseline.base.architecture.impl.server.layers.multidao.ro.api;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.base.ro.api.BaseReadOnlyApiImplHelper;
-import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.dao.IBaseReadOnlyDao;
+import ir.amv.os.vaseline.data.apis.dao.server.ro.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.base.architecture.server.layers.multidao.ro.IBaseMultiDaoReadOnlyApi;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.basics.apis.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.apis.core.api.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ public class BaseMultiDaoReadOnlyApiImplHelper {
             String coreId,
             Id id)
             throws BaseVaselineServerException {
-        IBaseReadOnlyDao<E, D, Id> dao = api.getDaoFor(coreId);
+        IBaseReadOnlyDao<E, Id> dao = api.getDaoFor(coreId);
         return BaseReadOnlyApiImplHelper.getById(api, dao, id);
     }
 
@@ -32,7 +32,7 @@ public class BaseMultiDaoReadOnlyApiImplHelper {
             IBaseMultiDaoReadOnlyApi<E, D, Id> api,
             String coreId)
             throws BaseVaselineServerException {
-        IBaseReadOnlyDao<E, D, Id> dao = api.getDaoFor(coreId);
+        IBaseReadOnlyDao<E, Id> dao = api.getDaoFor(coreId);
         return BaseReadOnlyApiImplHelper.countAll(api, dao);
     }
 
@@ -40,7 +40,7 @@ public class BaseMultiDaoReadOnlyApiImplHelper {
             IBaseMultiDaoReadOnlyApi<E, D, Id> api,
             String coreId)
             throws BaseVaselineServerException {
-        IBaseReadOnlyDao<E, D, Id> dao = api.getDaoFor(coreId);
+        IBaseReadOnlyDao<E, Id> dao = api.getDaoFor(coreId);
         return BaseReadOnlyApiImplHelper.getAll(api, dao);
     }
 
@@ -49,7 +49,7 @@ public class BaseMultiDaoReadOnlyApiImplHelper {
             String coreId,
             PagingDto pagingDto)
             throws BaseVaselineServerException {
-        IBaseReadOnlyDao<E, D, Id> dao = api.getDaoFor(coreId);
+        IBaseReadOnlyDao<E, Id> dao = api.getDaoFor(coreId);
         return BaseReadOnlyApiImplHelper.getAll(api, dao, pagingDto);
     }
 
@@ -58,7 +58,7 @@ public class BaseMultiDaoReadOnlyApiImplHelper {
             String coreId,
             D example)
             throws BaseVaselineServerException {
-        IBaseReadOnlyDao<E, D, Id> dao = api.getDaoFor(coreId);
+        IBaseReadOnlyDao<E, Id> dao = api.getDaoFor(coreId);
         return BaseReadOnlyApiImplHelper.countByExample(api, dao, example);
     }
 
@@ -67,7 +67,7 @@ public class BaseMultiDaoReadOnlyApiImplHelper {
             String coreId,
             D example)
             throws BaseVaselineServerException {
-        IBaseReadOnlyDao<E, D, Id> dao = api.getDaoFor(coreId);
+        IBaseReadOnlyDao<E, Id> dao = api.getDaoFor(coreId);
         return BaseReadOnlyApiImplHelper.searchByExample(api, dao, example);
     }
 
@@ -77,7 +77,7 @@ public class BaseMultiDaoReadOnlyApiImplHelper {
             D example,
             PagingDto pagingDto)
             throws BaseVaselineServerException {
-        IBaseReadOnlyDao<E, D, Id> dao = api.getDaoFor(coreId);
+        IBaseReadOnlyDao<E, Id> dao = api.getDaoFor(coreId);
         return BaseReadOnlyApiImplHelper.searchByExample(api, dao, example, pagingDto);
     }
 
