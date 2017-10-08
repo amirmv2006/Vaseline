@@ -1,11 +1,10 @@
 package ir.amv.os.vaseline.data.test.model.server.repository;
 
-import ir.amv.os.vaseline.data.test.model.server.entity.TestContinentEntity;
 import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  * Created by amv on 12/12/16.
  */
-public interface TestContinentRepository extends PagingAndSortingRepository<TestContinentEntity, Long> {
+public interface ITestCountryRepository extends PagingAndSortingRepository<TestCountryEntity, Long> {
 }

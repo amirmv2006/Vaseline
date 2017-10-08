@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 public class TestContinentEntity
         extends BaseEntityImpl<Long> {
 
-    @Column(name = "CONTINENT_NAME")
+    @Column(name = "CONTINENT_NAME", unique = true)
     private String continentName;
 
     public String getContinentName() {

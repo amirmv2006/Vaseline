@@ -2,6 +2,7 @@ package ir.amv.os.vaseline.data.test.model.server.entity;
 
 import ir.amv.os.vaseline.basics.apis.dao.server.ent.BaseEntityImpl;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -12,6 +13,7 @@ import java.util.Set;
 public class TestCountryEntity
         extends BaseEntityImpl<Long> {
 
+    @Column(unique = true)
     private String countryName;
     private Long population;
     private Boolean areRacist;
@@ -20,7 +22,7 @@ public class TestCountryEntity
     @ManyToOne
     private TestContinentEntity continent;
     @OneToMany
-    private Set<TestCityEntity> cities;
+    private Set<TestStateEntity> states;
 
     public String getCountryName() {
         return countryName;
@@ -62,11 +64,11 @@ public class TestCountryEntity
         this.continent = continent;
     }
 
-    public Set<TestCityEntity> getCities() {
-        return cities;
+    public Set<TestStateEntity> getStates() {
+        return states;
     }
 
-    public void setCities(Set<TestCityEntity> cities) {
-        this.cities = cities;
+    public void setStates(Set<TestStateEntity> states) {
+        this.states = states;
     }
 }
