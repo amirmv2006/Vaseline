@@ -64,7 +64,7 @@ public interface IBaseJpaReadOnlyDao<E extends IBaseEntity<Id>, Id extends Seria
 
     // Read Only Dao Methods
     default E getById(Id id) {
-        return new JpaFetchProviderFacade<>(jpaFetchProvider(), this, (criteriaBuilder, query, fromProvider) -> {
+        return new JpaFetchProviderFacade<E, Id>(jpaFetchProvider(), this, (criteriaBuilder, query, fromProvider) -> {
             applyRootCondition(criteriaBuilder, fromProvider, query, criteriaBuilder.equal(fromProvider.getCriteriaParentProjection("id", null), id));
         }).unique();
     }

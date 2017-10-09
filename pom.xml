@@ -58,7 +58,8 @@
         <org.springframework.sec.version>4.2.0.RELEASE</org.springframework.sec.version>
         <org.springframework.data.version>2.0.5.RELEASE</org.springframework.data.version>
         <org.apache.solr.version>4.10.4</org.apache.solr.version>
-        <org.hibernate.version>5.2.5.Final</org.hibernate.version>
+        <org.hibernate.version>5.0.12.Final</org.hibernate.version>
+        <org.hibernate.validator.version>5.3.5.Final</org.hibernate.validator.version>
         <net.sf.dozer.version>5.3.2</net.sf.dozer.version>
         <net.sf.jasperreports.version>6.1.0</net.sf.jasperreports.version>
         <net.sf.ehcache.version>2.4.3</net.sf.ehcache.version>
@@ -68,6 +69,8 @@
         <org.drools.version>5.3.1.Final</org.drools.version>
         <org.aspectj.version>1.6.12</org.aspectj.version>
         <org.eclipse.persistence.version>2.1.0</org.eclipse.persistence.version>
+        <validation-api.version>2.0.0.Final</validation-api.version>
+        <javax.el-api.version>2.2.4</javax.el-api.version>
     </properties>
 
     <dependencyManagement>
@@ -196,22 +199,22 @@
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-validator</artifactId>
-                <version>5.1.1.Final</version>
+                <version>${org.hibernate.validator.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.el</groupId>
                 <artifactId>javax.el-api</artifactId>
-                <version>2.2.4</version>
+                <version>${javax.el-api.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.glassfish.web</groupId>
                 <artifactId>javax.el</artifactId>
-                <version>2.2.4</version>
+                <version>${javax.el-api.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.validation</groupId>
                 <artifactId>validation-api</artifactId>
-                <version>1.1.0.Final</version>
+                <version>${validation-api.version}</version>
             </dependency>
             <!-- Hibernate Validation END -->
             <!-- CXF Start -->
@@ -371,7 +374,7 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.11</version>
+                <version>4.12</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

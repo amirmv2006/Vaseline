@@ -9,8 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.From;
 import javax.persistence.criteria.Order;
+import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,7 @@ public interface IBaseJpaDao
         } else {
             List<Order> orderList = new ArrayList<Order>(sortList.size());
             for (SortDto sortDto : sortList) {
-                From from = fromProvider.getCriteriaParentProjection(sortDto.getPropertyName(), null);
+                Path from = fromProvider.getCriteriaParentProjection(sortDto.getPropertyName(), null);
                 orderList.add(sortDto.getAscending() ? criteriaBuilder.asc(from) : criteriaBuilder.desc(from));
             }
             query.orderBy(orderList);

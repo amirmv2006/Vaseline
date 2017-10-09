@@ -16,6 +16,9 @@ import javax.inject.Inject;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -31,10 +34,10 @@ public class BaseDataModelTest {
     @Inject
     protected ITestCityRepository cityRepository;
 
-    protected Map<String, TestContinentEntity> continentsMap;
-    protected Map<String, TestCountryEntity> countriesMap;
-    protected Map<String, TestStateEntity> statesMap;
-    protected Map<String, TestCityEntity> citiesMap;
+    protected Map<String, TestContinentEntity> continentsMap = new HashMap<>();
+    protected Map<String, TestCountryEntity> countriesMap = new HashMap<>();
+    protected Map<String, TestStateEntity> statesMap = new HashMap<>();
+    protected Map<String, TestCityEntity> citiesMap = new HashMap<>();
 
     public void setupDataFromJson(InputStream is) {
         Gson gson = new Gson();
@@ -44,19 +47,21 @@ public class BaseDataModelTest {
             if (!continentsMap.containsKey(continent.getContinentName())) {
                 continentRepository.save(continent);
                 continentsMap.put(continent.getContinentName(), continent);
+            } else {
+                country.setContinent(continentsMap.get(continent.getContinentName()));
             }
             Set<TestStateEntity> states = country.getStates();
             for (TestStateEntity state : states) {
-                if (!statesMap.containsKey(state.getStateName())) {
-                    stateRepository.save(state);
-                    statesMap.put(state.getStateName(), state);
-                }
                 Set<TestCityEntity> cities = state.getCities();
                 for (TestCityEntity city : cities) {
                     if (!citiesMap.containsKey(city.getCityName())) {
                         cityRepository.save(city);
                         citiesMap.put(city.getCityName(), city);
                     }
+                }
+                if (!statesMap.containsKey(state.getStateName())) {
+                    stateRepository.save(state);
+                    statesMap.put(state.getStateName(), state);
                 }
             }
             if (!countriesMap.containsKey(country.getCountryName())) {
@@ -67,16 +72,15 @@ public class BaseDataModelTest {
     }
 
     public void tearDownAll() {
-        deleteMapItems(citiesMap, cityRepository);
-        deleteMapItems(statesMap, stateRepository);
         deleteMapItems(countriesMap, countryRepository);
         deleteMapItems(continentsMap, continentRepository);
+        deleteMapItems(statesMap, stateRepository);
+        deleteMapItems(citiesMap, cityRepository);
     }
 
     private <E> void deleteMapItems(Map<String, E> countriesMap, PagingAndSortingRepository<E, ?> countryRepository) {
-        Iterator<String> iterator = countriesMap.keySet().iterator();
-        while (iterator.hasNext()) {
-            String countryName = iterator.next();
+        Set<String> strings = new HashSet<>(countriesMap.keySet());
+        for (String countryName : strings) {
             E remove = countriesMap.remove(countryName);
             countryRepository.delete(remove);
         }

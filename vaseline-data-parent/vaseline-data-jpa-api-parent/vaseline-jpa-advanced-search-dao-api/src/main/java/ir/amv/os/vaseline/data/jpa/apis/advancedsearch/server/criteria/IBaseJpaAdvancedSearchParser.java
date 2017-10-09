@@ -25,8 +25,8 @@ import ir.amv.os.vaseline.data.apis.search.advanced.server.model.condition.twoop
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.exc.InterceptionInterruptException;
 
 import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.From;
+import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,7 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface IBaseJpaAdvancedSearchParser<SO extends IBaseSearchObject>
-        extends IBaseCriteriaAdvancedSearchParser<SO, CriteriaBuilder, Predicate, From> {
+        extends IBaseCriteriaAdvancedSearchParser<SO, CriteriaBuilder, Predicate, Path> {
 
     @Override
     default SearchJoinType getJoinTypeFromExample(SO object) {
@@ -48,7 +48,7 @@ public interface IBaseJpaAdvancedSearchParser<SO extends IBaseSearchObject>
 
     @Override
     default Predicate getPropertyCriterion(
-            From propertyAlias, Object propertyValue,
+            Path propertyAlias, Object propertyValue,
             CriteriaBuilder criteriaBuilder
     ) throws InterceptionInterruptException {
         if (propertyValue instanceof IBaseApplyFunctionCondition<?>) {
