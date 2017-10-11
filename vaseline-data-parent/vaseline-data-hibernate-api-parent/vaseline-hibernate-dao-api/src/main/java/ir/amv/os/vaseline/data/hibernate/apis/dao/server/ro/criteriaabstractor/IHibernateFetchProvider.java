@@ -2,6 +2,7 @@ package ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.criteriaabstractor;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.IBaseHibernateReadOnlyDao;
 import org.hibernate.Criteria;
@@ -35,10 +36,11 @@ public interface IHibernateFetchProvider<E extends IBaseEntity<Id>, Id extends S
         return dao.getListFromCriteria(criteria);
     }
 
-    default IVaselineDataScroller<E> scroll(IBaseHibernateReadOnlyDao<E, Id> dao, IDetachedCriteriaPrunerFunctionalInterface criteriaPruner) {
+    default IVaselineDataScroller<E> scroll(IBaseHibernateReadOnlyDao<E, Id> dao, IDetachedCriteriaPrunerFunctionalInterface criteriaPruner, List<SortDto> sortList) {
         DetachedCriteria detachedCriteria = dao.createCriteria();
         criteriaPruner.pruneCriteria(detachedCriteria);
         Criteria criteria = dao.getCriteriaFromDetachedCriteria(detachedCriteria);
+        dao.paginateCriteria(criteria, new PagingDto(sortList, null, null));
         return dao.scrollCriteria(criteria);
     }
 

@@ -3,6 +3,7 @@ package ir.amv.os.vaseline.data.hibernate.apis.simplesearch.server.dao;
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.apis.search.simple.server.ro.IBaseSimpleSearchDao;
 import ir.amv.os.vaseline.data.hibernate.apis.simplesearch.server.criteria.IBaseHibernateSimpleSearchParser;
@@ -27,7 +28,7 @@ public interface IBaseHibernateSimpleSearchDao<E extends IBaseEntity<Id>, D exte
 
     default HibernateFetchProviderFacade<E, Id> exampleHibernateFetchProviderFacade(D example) {
         return new HibernateFetchProviderFacade<>(hibernateFetchProvider(),this, detachedCriteria -> {
-            Criterion criterion = getSimpleSearchExampleParser(example).getCriteriaFromExampleRecursively(example, getDtoClass(), detachedCriteria,
+            Criterion criterion = getSimpleSearchExampleParser(example).getCriteriaFromExampleRecursively(example, IBaseDto.class, detachedCriteria,
                     new DefaultHibernateCriteriaProjectionProviderImpl(detachedCriteria), "");
             if (criterion != null) {
                 detachedCriteria.add(criterion);
@@ -48,8 +49,8 @@ public interface IBaseHibernateSimpleSearchDao<E extends IBaseEntity<Id>, D exte
     }
 
     @Override
-    default IVaselineDataScroller<E> scrollByExample(D example) {
-        return exampleHibernateFetchProviderFacade(example).scroll();
+    default IVaselineDataScroller<E> scrollByExample(D example, List<SortDto> sortList) {
+        return exampleHibernateFetchProviderFacade(example).scroll(sortList);
     }
 
     @Override

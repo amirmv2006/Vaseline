@@ -2,6 +2,7 @@ package ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.criteriaabstractor;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.projection.ProjectionMapProvider;
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.IBaseJpaReadOnlyDao;
@@ -29,7 +30,7 @@ public interface IJpaFetchProvider<E extends IBaseEntity<Id>, Id extends Seriali
         ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, dao.getEntityClass());
         fromProvider.getCriteriaParentProjection("", null); // make sure from Entity is in query
         criteriaPruner.pruneCriteria(criteriaBuilder, query, fromProvider);
-        TypedQuery<E> typedQuery = dao.getTypedQuery(query);
+        TypedQuery<E> typedQuery = dao.getTypedQuery(dao.getEntityManager(), query);
         return dao.getListFromCriteria(typedQuery);
     }
 
@@ -43,13 +44,13 @@ public interface IJpaFetchProvider<E extends IBaseEntity<Id>, Id extends Seriali
         return dao.getListFromCriteria(typedQuery);
     }
 
-    default IVaselineDataScroller<E> scroll(IBaseJpaReadOnlyDao<E, Id> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner) {
+    default IVaselineDataScroller<E> scroll(IBaseJpaReadOnlyDao<E, Id> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner, List<SortDto> sortList) {
         CriteriaBuilder criteriaBuilder = dao.createCriteriaBuilder();
         CriteriaQuery<E> query = dao.createQuery(criteriaBuilder, dao.getEntityClass());
         ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, dao.getEntityClass());
         fromProvider.getCriteriaParentProjection("", null); // make sure from Entity is in query
         criteriaPruner.pruneCriteria(criteriaBuilder, query, fromProvider);
-        TypedQuery<E> typedQuery = dao.getTypedQuery(query);
+        TypedQuery<E> typedQuery = dao.paginateCriteria(dao.getEntityManager(), criteriaBuilder, fromProvider, query, new PagingDto(sortList, null, null));
         return dao.scrollCriteria(typedQuery);
     }
 
@@ -59,7 +60,7 @@ public interface IJpaFetchProvider<E extends IBaseEntity<Id>, Id extends Seriali
         ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, dao.getEntityClass());
         fromProvider.getCriteriaParentProjection("", null); // make sure from Entity is in query
         criteriaPruner.pruneCriteria(criteriaBuilder, query, fromProvider);
-        TypedQuery<E> typedQuery = dao.getTypedQuery(query);
+        TypedQuery<E> typedQuery = dao.getTypedQuery(dao.getEntityManager(), query);
         return dao.getEntityFromCriteria(typedQuery);
     }
 }

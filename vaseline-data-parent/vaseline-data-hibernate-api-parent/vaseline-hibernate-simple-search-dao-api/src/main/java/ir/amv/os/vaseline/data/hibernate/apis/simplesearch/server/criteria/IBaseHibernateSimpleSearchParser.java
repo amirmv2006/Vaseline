@@ -45,7 +45,7 @@ public interface IBaseHibernateSimpleSearchParser<D extends IBaseDto<Id>, Id ext
     }
 
     @Override
-    default SearchJoinType getJoinTypeFromExample(D object) {
+    default SearchJoinType getJoinTypeFromExample(IBaseDto object) {
         return null;
     }
 

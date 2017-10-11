@@ -1,4 +1,4 @@
-package ir.amv.os.vaseline.data.jpa.apis.dao.server.ro;
+package ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro;
 
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
@@ -6,7 +6,6 @@ import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller
 import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
 import ir.amv.os.vaseline.data.test.model.test.BaseDataModelTest;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,14 +23,16 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestJpaDaoSpringConfig.class)
+@SpringBootTest(classes = TestHibernateDaoSpringConfig.class)
 @TestPropertySource(locations = "classpath:test.properties")
-public class BaseReadOnlyJpaDaoImplTest
+@Transactional
+public class TestBaseReadOnlyHibernateDaoImpl
         extends BaseDataModelTest {
 
-    @Value("classpath:jpaDaoTestData.json")
+    @Value("classpath:hibernateDaoTestData.json")
     private Resource testData;
 
     @Inject
@@ -88,7 +89,16 @@ public class BaseReadOnlyJpaDaoImplTest
 
     @Test
     public void testScrollAll() {
-
+        IVaselineDataScroller<TestCountryEntity> scroller = countryDao.scrollAll(Collections.singletonList(new SortDto("countryName", true)));
+        boolean next = scroller.next();
+        assertTrue(next);
+        assertEquals(countriesMap.get("Canada"), scroller.get()[0]);
+        next = scroller.next();
+        assertTrue(next);
+        assertEquals(countriesMap.get("Iran"), scroller.get()[0]);
+        next = scroller.next();
+        assertTrue(next);
+        assertEquals(countriesMap.get("Malaysia"), scroller.get()[0]);
     }
 
 }

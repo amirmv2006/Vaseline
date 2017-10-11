@@ -6,6 +6,6 @@ import ir.amv.os.vaseline.data.apis.dao.server.criteria.IBaseCriteriaExamplePars
 import java.io.Serializable;
 
 public interface IBaseCriteriaSimpleSearchParser<D extends IBaseDto<Id>, Id extends Serializable, CriteriaBuilder, Criterion, Projection>
-        extends IBaseCriteriaExampleParser<D, CriteriaBuilder, Criterion, Projection> {
+        extends IBaseCriteriaExampleParser<D, IBaseDto, CriteriaBuilder, Criterion, Projection> {
 
 }

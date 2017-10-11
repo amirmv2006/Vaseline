@@ -1,9 +1,9 @@
 package ir.amv.os.vaseline.data.apis.dao.server.ro;
 
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.apis.dao.server.base.IBaseDao;
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 
 import java.io.Serializable;
@@ -23,7 +23,7 @@ public interface IBaseReadOnlyDao<E extends IBaseEntity<Id>, Id extends Serializ
     Long countAll();
     List<E> getAll();
     List<E> getAll(PagingDto pagingDto);
-    IVaselineDataScroller<E> scrollAll();
+    IVaselineDataScroller<E> scrollAll(List<SortDto> sortList);
 
     // dev note: don't implement these in parent classes, otherwise will be coupled with IBaseEntity
     void setEntityClass(Class<E> entityClass);

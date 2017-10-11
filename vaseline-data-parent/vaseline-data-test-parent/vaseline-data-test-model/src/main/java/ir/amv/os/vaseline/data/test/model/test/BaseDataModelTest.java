@@ -6,20 +6,18 @@ import ir.amv.os.vaseline.data.test.model.server.entity.TestCityEntity;
 import ir.amv.os.vaseline.data.test.model.server.entity.TestContinentEntity;
 import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
 import ir.amv.os.vaseline.data.test.model.server.entity.TestStateEntity;
+import ir.amv.os.vaseline.data.test.model.server.repository.IBaseTestRepository;
 import ir.amv.os.vaseline.data.test.model.server.repository.ITestCityRepository;
 import ir.amv.os.vaseline.data.test.model.server.repository.ITestContinentRepository;
 import ir.amv.os.vaseline.data.test.model.server.repository.ITestCountryRepository;
 import ir.amv.os.vaseline.data.test.model.server.repository.ITestStateRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
 
 import javax.inject.Inject;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -78,7 +76,7 @@ public class BaseDataModelTest {
         deleteMapItems(citiesMap, cityRepository);
     }
 
-    private <E> void deleteMapItems(Map<String, E> countriesMap, PagingAndSortingRepository<E, ?> countryRepository) {
+    private <E> void deleteMapItems(Map<String, E> countriesMap, IBaseTestRepository<E> countryRepository) {
         Set<String> strings = new HashSet<>(countriesMap.keySet());
         for (String countryName : strings) {
             E remove = countriesMap.remove(countryName);

@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.From;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
+import java.beans.PropertyDescriptor;
 import java.util.HashMap;
 
 /**
@@ -27,6 +28,9 @@ public class ProjectionMapProvider<E, Q>
 
     @Override
     public Path getCriteriaParentProjection(String propTN, SearchJoinType joinType) {
+        if (propTN.matches(".*\\d.*")) {
+            propTN = propTN.replaceAll("\\d", "");
+        }
         Path path = super.get(propTN);
         if (path == null) {
             if (propTN.equals("")) {
@@ -51,8 +55,9 @@ public class ProjectionMapProvider<E, Q>
                             break;
                     }
                 }
-                Class<?> propertyType = ReflectionUtil.getPropertyTypeByTreeName(entityClass, propTN);
-                if (IBaseEntity.class.isAssignableFrom(propertyType)) {
+                PropertyDescriptor propertyDescriptor = ReflectionUtil.getPropertyDescriptorByTreeName(entityClass, propTN);
+                Class<?> propertyType = ReflectionUtil.searchMethodReturnType(propertyDescriptor.getReadMethod(), IBaseEntity.class);
+                if (propertyType != null) {
                     path = ((From) getCriteriaParentProjection(parent)).join(child, jpaJoinType);
                 } else {
                     path = getCriteriaParentProjection(parent).get(child);
@@ -63,4 +68,5 @@ public class ProjectionMapProvider<E, Q>
         }
         return path;
     }
+
 }

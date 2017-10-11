@@ -26,19 +26,19 @@ import java.util.Map;
  * @param <Criterion>
  * @param <Projection>
  */
-public interface IBaseCriteriaExampleParser<Example, CriteriaBuilder, Criterion, Projection> {
+public interface IBaseCriteriaExampleParser<Example, BaseExample, CriteriaBuilder, Criterion, Projection> {
 
-    SearchJoinType getJoinTypeFromExample(Example object);
+    SearchJoinType getJoinTypeFromExample(BaseExample object);
     Criterion getPropertyCriterion(Projection propertyAlias, Object propertyValue, CriteriaBuilder criteriaBuilder) throws InterceptionInterruptException;
     Criterion andAll(CriteriaBuilder criteriaBuilder, List<Criterion> criterionList);
     Criterion orAll(CriteriaBuilder criteriaBuilder, List<Criterion> criterionList);
 
-    default Criterion getCriteriaFromExampleRecursively(Example example, Class<Example> exampleClass, CriteriaBuilder criteriaBuilder, IBaseCriteriaFromProvider<Projection> fromProvider, String prefix) {
+    default Criterion getCriteriaFromExampleRecursively(Example example, Class<BaseExample> queryClass, CriteriaBuilder criteriaBuilder, IBaseCriteriaFromProvider<Projection> fromProvider, String prefix) {
         if (example == null) {
             return null;
         }
         final Map<String, Criterion> criterionListMap = new HashMap<>();
-        ReflectionInterceptor<Example> interceptor = (object, propertyTreeName) -> {
+        ReflectionInterceptor<BaseExample> interceptor = (object, propertyTreeName) -> {
             if (object != null) {
                 HashMap<String, Object> map = getMapFromObjectNonRecursive(object);
                 removeUnnecessaryKeysFromObjectMap(map);
@@ -49,7 +49,7 @@ public interface IBaseCriteriaExampleParser<Example, CriteriaBuilder, Criterion,
             }
             return object;
         };
-        ReflectionUtil.intercept(example, exampleClass, interceptor, prefix);
+        ReflectionUtil.intercept(example, queryClass, interceptor, prefix);
         return consolidatedCriterion(criteriaBuilder, criterionListMap, fromProvider);
     }
 
@@ -203,11 +203,8 @@ public interface IBaseCriteriaExampleParser<Example, CriteriaBuilder, Criterion,
             PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
             for (int i = 0; i < propertyDescriptors.length; i++) {
                 PropertyDescriptor propertyDescriptor = propertyDescriptors[i];
-                checkPropertyForClass(example, result, propertyDescriptor, Number.class);
-                checkPropertyForClass(example, result, propertyDescriptor, Date.class);
-                checkPropertyForClass(example, result, propertyDescriptor, String.class);
-                checkPropertyForClass(example, result, propertyDescriptor, Boolean.class);
-                checkPropertyForClass(example, result, propertyDescriptor, Enum.class);
+                List<Class<?>> classes = propertyClassesToBeIntercepted();
+                classes.forEach(c -> checkPropertyForClass(example, result, propertyDescriptor, c));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -215,6 +212,15 @@ public interface IBaseCriteriaExampleParser<Example, CriteriaBuilder, Criterion,
         return result;
     }
 
+    default List<Class<?>> propertyClassesToBeIntercepted() {
+        ArrayList<Class<?>> classes = new ArrayList<>();
+        classes.add(Number.class);
+        classes.add(Date.class);
+        classes.add(String.class);
+        classes.add(Boolean.class);
+        classes.add(Enum.class);
+        return classes;
+    }
     /**
      * searches a property descriptor for query class and puts its value on the
      * result map if found

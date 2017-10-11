@@ -2,6 +2,7 @@ package ir.amv.os.vaseline.data.hibernate.apis.advancedsearch.server.dao;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBaseSearchObject;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.ro.IBaseAdvancedSearchDao;
@@ -27,7 +28,7 @@ public interface IBaseHibernateAdvancedSearchDao<E extends IBaseEntity<Id>, SO e
 
     default HibernateFetchProviderFacade<E, Id> advancedSearchHibernateFetchProviderFacade(SO example) {
         return new HibernateFetchProviderFacade<>(hibernateFetchProvider(),this, detachedCriteria -> {
-            Criterion criterion = getAdvancedSearchExampleParser(example).getCriteriaFromExampleRecursively(example, getSearchObjectClass(), detachedCriteria,
+            Criterion criterion = getAdvancedSearchExampleParser(example).getCriteriaFromExampleRecursively(example, IBaseSearchObject.class, detachedCriteria,
                     new DefaultHibernateCriteriaProjectionProviderImpl(detachedCriteria), "");
             if (criterion != null) {
                 detachedCriteria.add(criterion);
@@ -48,8 +49,8 @@ public interface IBaseHibernateAdvancedSearchDao<E extends IBaseEntity<Id>, SO e
     }
 
     @Override
-    default IVaselineDataScroller<E> scrollBySearchObject(SO example) {
-        return advancedSearchHibernateFetchProviderFacade(example).scroll();
+    default IVaselineDataScroller<E> scrollBySearchObject(SO example, List<SortDto> sortList) {
+        return advancedSearchHibernateFetchProviderFacade(example).scroll(sortList);
     }
 
     @Override

@@ -66,7 +66,7 @@ public class BaseReadOnlyApiImplHelper {
             IVaselineDataScroller<E> scrollAll(
             final IBaseEntityReadOnlyApi<E> api,
             IBaseReadOnlyDao<E, Id> dao) {
-        IVaselineDataScroller<E> scroller = dao.scrollAll();
+        IVaselineDataScroller<E> scroller = dao.scrollAll(null);
         scroller.addAfterFetchObject(new BaseCallbackImpl<E, Void>() {
             @Override
             public void onSuccess(E result) {

@@ -2,6 +2,7 @@ package ir.amv.os.vaseline.data.jpa.apis.dao.server.ro;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.base.IBaseJpaDao;
@@ -11,6 +12,7 @@ import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.criteriaabstractor.IJpaFet
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.criteriaabstractor.JpaFetchProviderFacade;
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.vendorspecific.IVendorSpecificDaoHelper;
 
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -37,7 +39,7 @@ public interface IBaseJpaReadOnlyDao<E extends IBaseEntity<Id>, Id extends Seria
         }
     }
 
-    default <X> TypedQuery<X> getTypedQuery(CriteriaQuery<X> criteriaQuery) {
+    default <X> TypedQuery<X> getTypedQuery(EntityManager entityManager, CriteriaQuery<X> criteriaQuery) {
         return getEntityManager().createQuery(criteriaQuery);
     }
 
@@ -87,8 +89,8 @@ public interface IBaseJpaReadOnlyDao<E extends IBaseEntity<Id>, Id extends Seria
         return allJpaCriteriaBuilderAbstractor().page(pagingDto);
     }
 
-    default IVaselineDataScroller<E> scrollAll() {
-        return allJpaCriteriaBuilderAbstractor().scroll();
+    default IVaselineDataScroller<E> scrollAll(List<SortDto> sortList) {
+        return allJpaCriteriaBuilderAbstractor().scroll(sortList);
     }
 
     default JpaFetchProviderFacade<E, Id> allJpaCriteriaBuilderAbstractor() {

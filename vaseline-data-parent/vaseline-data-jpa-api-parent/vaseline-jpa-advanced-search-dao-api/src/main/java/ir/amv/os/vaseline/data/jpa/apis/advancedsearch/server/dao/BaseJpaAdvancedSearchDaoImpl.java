@@ -18,12 +18,8 @@ public class BaseJpaAdvancedSearchDaoImpl<E extends IBaseEntity<Id>, D extends I
         Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass(), IBaseJpaAdvancedSearchDao.class);
         if (genericArgumentClasses != null) {
             setEntityClass((Class<E>) genericArgumentClasses[0]);
-            searchObjectClass = (Class<SO>) genericArgumentClasses[1];
+            searchObjectClass = (Class<SO>) genericArgumentClasses[2];
         }
     }
 
-    @Override
-    public Class<SO> getSearchObjectClass() {
-        return searchObjectClass;
-    }
 }

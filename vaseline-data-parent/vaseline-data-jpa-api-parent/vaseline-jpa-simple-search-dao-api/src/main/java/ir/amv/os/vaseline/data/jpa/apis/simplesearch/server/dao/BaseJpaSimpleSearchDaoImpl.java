@@ -20,9 +20,4 @@ public class BaseJpaSimpleSearchDaoImpl<E extends IBaseEntity<Id>, D extends IBa
         }
     }
 
-    @Override
-    public Class<D> getDtoClass() {
-        return dtoClass;
-    }
-
 }

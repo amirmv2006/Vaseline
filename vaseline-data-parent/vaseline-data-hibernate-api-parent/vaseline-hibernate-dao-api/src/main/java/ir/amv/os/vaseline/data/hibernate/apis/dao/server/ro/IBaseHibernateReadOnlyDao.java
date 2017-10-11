@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.base.IBaseHibernateDao;
@@ -90,8 +90,8 @@ public interface IBaseHibernateReadOnlyDao<E extends IBaseEntity<Id>, Id extends
         return allHibernateCriteriaBuilderAbstractor().page(pagingDto);
     }
 
-    default IVaselineDataScroller<E> scrollAll() {
-        return allHibernateCriteriaBuilderAbstractor().scroll();
+    default IVaselineDataScroller<E> scrollAll(List<SortDto> sortList) {
+        return allHibernateCriteriaBuilderAbstractor().scroll(sortList);
     }
 
     default HibernateFetchProviderFacade<E, Id> allHibernateCriteriaBuilderAbstractor() {

@@ -11,4 +11,5 @@ public class TestJpaDaoSpringConfig {
     ITestCountryDao countryDao() {
         return new TestCountryDaoImpl();
     }
+
 }

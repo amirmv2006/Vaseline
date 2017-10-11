@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.data.hibernate.apis.advancedsearch.server.criteria;
 
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.data.apis.dao.server.from.SearchJoinType;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.criteria.IBaseCriteriaAdvancedSearchParser;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBasePropertyCondition;
@@ -38,7 +39,7 @@ public interface IBaseHibernateAdvancedSearchParser<SO extends IBaseSearchObject
         extends IBaseCriteriaAdvancedSearchParser<SO, DetachedCriteria, Criterion, String> {
 
     @Override
-    default SearchJoinType getJoinTypeFromExample(SO object) {
+    default SearchJoinType getJoinTypeFromExample(IBaseSearchObject object) {
         return object.getJoinType();
     }
 

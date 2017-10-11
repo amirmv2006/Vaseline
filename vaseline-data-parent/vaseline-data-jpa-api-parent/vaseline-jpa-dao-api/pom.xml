@@ -12,7 +12,7 @@
     <artifactId>vaseline-jpa-dao-api</artifactId>
     <packaging>bundle</packaging>
     <properties>
-        <aries.osgi.basePackage>ir.amv.os.vaseline.data.hibernate.apis.dao</aries.osgi.basePackage>
+        <aries.osgi.basePackage>ir.amv.os.vaseline.data.jpa.apis.dao</aries.osgi.basePackage>
     </properties>
 
     <dependencies>
@@ -46,15 +46,6 @@
             <artifactId>vaseline-data-test-model</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>javax.el</artifactId>
         </dependency>
     </dependencies>
 

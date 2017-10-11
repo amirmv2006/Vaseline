@@ -36,17 +36,17 @@
         <developerConnection>scm:git:git@github.com:amirmv2006/Vaseline.git</developerConnection>
     </scm>
     <modules>
+        <module>vaseline-thirdparty</module>
         <module>vaseline-base</module>
+        <module>vaseline-basics-parent</module>
+        <module>vaseline-data-parent</module>
         <module>vaseline-file</module>
         <module>vaseline-security</module>
         <module>vaseline-reporting</module>
         <module>vaseline-tasks</module>
         <module>vaseline-ws</module>
         <module>vaseline-bpm</module>
-        <module>vaseline-thirdparty</module>
         <module>vaseline-angular</module>
-        <module>vaseline-basics-parent</module>
-        <module>vaseline-data-parent</module>
     </modules>
 
     <properties>
@@ -409,7 +409,7 @@
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <configuration>
-                        <skipTests>true</skipTests>
+                        <!--<skipTests>true</skipTests>-->
                     </configuration>
                 </plugin>
                 <plugin>

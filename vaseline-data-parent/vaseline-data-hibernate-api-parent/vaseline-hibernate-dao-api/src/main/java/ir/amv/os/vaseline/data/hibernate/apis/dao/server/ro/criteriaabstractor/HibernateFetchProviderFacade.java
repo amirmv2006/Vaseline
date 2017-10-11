@@ -2,6 +2,7 @@ package ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.criteriaabstractor;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.IBaseHibernateReadOnlyDao;
 
@@ -35,8 +36,8 @@ public class HibernateFetchProviderFacade<E extends IBaseEntity<Id>, Id extends 
         return abstractor.page(dao, criteriaPruner, pagingDto);
     }
 
-    public IVaselineDataScroller<E> scroll() {
-        return abstractor.scroll(dao, criteriaPruner);
+    public IVaselineDataScroller<E> scroll(List<SortDto> sortList) {
+        return abstractor.scroll(dao, criteriaPruner, sortList);
     }
 
     public E unique() {

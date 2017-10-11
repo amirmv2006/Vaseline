@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.data.spring.hibernate.config;
 
+import ir.amv.os.vaseline.basics.spring.cache.config.VaselineCachingConfig;
 import ir.amv.os.vaseline.data.spring.hibernate.server.dozer.fieldmapper.HibernateLazyFieldMapper;
 import ir.amv.os.vaseline.data.spring.jdbc.config.VaselineJdbcConfig;
-import ir.amv.os.vaseline.basics.spring.caching.config.VaselineCachingConfig;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

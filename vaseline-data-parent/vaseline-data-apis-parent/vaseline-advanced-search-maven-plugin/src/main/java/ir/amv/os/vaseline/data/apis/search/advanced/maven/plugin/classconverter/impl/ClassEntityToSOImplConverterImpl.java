@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.data.apis.search.advanced.maven.plugin.classconverter.impl;
 
+import ir.amv.os.vaseline.basics.apis.dao.server.ent.BaseEntityImpl;
 import ir.amv.os.vaseline.data.apis.search.advanced.maven.plugin.fqnconverter.impl.FqnEntityToISOConverterImpl;
 import ir.amv.os.vaseline.data.apis.search.advanced.maven.plugin.fqnconverter.impl.FqnEntityToSOImplConverterImpl;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.model.BaseSearchObjectImpl;
@@ -74,7 +75,7 @@ public class ClassEntityToSOImplConverterImpl
 
     private void setParentClass(JavaClassSource source, JavaClassSource soi) {
         String superType = source.getSuperType();
-        if (!superType.equals(Object.class.getName())) {
+        if (!superType.equals(Object.class.getName()) && !superType.startsWith(BaseEntityImpl.class.getName())) { // startsWith cause it contains the generics
             String superConverterd;
             if (superType.contains("<")) {
                 superConverterd = soImplConverter.convertFqn(superType.substring(0, superType.lastIndexOf('<')));

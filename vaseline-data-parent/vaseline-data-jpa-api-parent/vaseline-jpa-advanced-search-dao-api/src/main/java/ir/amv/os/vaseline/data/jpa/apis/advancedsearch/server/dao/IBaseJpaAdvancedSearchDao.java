@@ -2,6 +2,7 @@ package ir.amv.os.vaseline.data.jpa.apis.advancedsearch.server.dao;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBaseSearchObject;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.ro.IBaseAdvancedSearchDao;
@@ -21,15 +22,13 @@ public interface IBaseJpaAdvancedSearchDao<E extends IBaseEntity<Id>, SO extends
         extends IBaseAdvancedSearchDao<E, SO>,
         IBaseJpaReadOnlyDao<E, Id> {
 
-    Class<SO> getSearchObjectClass();
-
     default IBaseJpaAdvancedSearchParser<SO> getAdvancedSearchExampleParser(SO example) {
         return new DefaultJpaAdvancedSearchParserImpl<>();
     }
 
     default JpaFetchProviderFacade<E, Id> advancedSearchJpaFetchProviderFacade(SO example) {
         return new JpaFetchProviderFacade<>(jpaFetchProvider(),this, (criteriaBuilder, query, fromProvider) -> {
-            Predicate criterion = getAdvancedSearchExampleParser(example).getCriteriaFromExampleRecursively(example, getSearchObjectClass(), criteriaBuilder,
+            Predicate criterion = getAdvancedSearchExampleParser(example).getCriteriaFromExampleRecursively(example, IBaseSearchObject.class, criteriaBuilder,
                     fromProvider, "");
             applyRootCondition(criteriaBuilder, fromProvider, query, criterion);
         });
@@ -48,8 +47,8 @@ public interface IBaseJpaAdvancedSearchDao<E extends IBaseEntity<Id>, SO extends
     }
 
     @Override
-    default IVaselineDataScroller<E> scrollBySearchObject(SO example) {
-        return advancedSearchJpaFetchProviderFacade(example).scroll();
+    default IVaselineDataScroller<E> scrollBySearchObject(SO example, List<SortDto> sortList) {
+        return advancedSearchJpaFetchProviderFacade(example).scroll(sortList);
     }
 
     @Override

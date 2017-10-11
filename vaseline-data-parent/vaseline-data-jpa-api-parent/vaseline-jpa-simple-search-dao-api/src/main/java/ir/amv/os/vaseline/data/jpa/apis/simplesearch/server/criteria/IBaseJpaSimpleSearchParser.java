@@ -9,7 +9,7 @@ import ir.amv.os.vaseline.thirdparty.shared.util.reflection.exc.InterceptionInte
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.From;
+import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import java.io.Serializable;
 import java.util.Date;
@@ -18,10 +18,10 @@ import java.util.List;
 import java.util.Map;
 
 public interface IBaseJpaSimpleSearchParser<D extends IBaseDto<Id>, Id extends Serializable>
-        extends IBaseCriteriaSimpleSearchParser<D, Id, CriteriaBuilder, Predicate, From> {
+        extends IBaseCriteriaSimpleSearchParser<D, Id, CriteriaBuilder, Predicate, Path> {
 
     @Override
-    default void addCriterionForProperty(CriteriaBuilder detachedCriteria, IBaseCriteriaFromProvider<From> fromProvider, Map<String, Predicate> criterionListMap, String parentPTN, String propertyName, HashMap<String, Object> map, SearchJoinType joinType) throws InterceptionInterruptException {
+    default void addCriterionForProperty(CriteriaBuilder detachedCriteria, IBaseCriteriaFromProvider<Path> fromProvider, Map<String, Predicate> criterionListMap, String parentPTN, String propertyName, HashMap<String, Object> map, SearchJoinType joinType) throws InterceptionInterruptException {
         if (map.containsKey("id")) { // handle id first, in simple search the process will be interrupted
             IBaseCriteriaSimpleSearchParser.super.addCriterionForProperty(detachedCriteria, fromProvider, criterionListMap, parentPTN, "id", map, joinType);
             throw new InterceptionInterruptException(); // stop intercepting children
@@ -30,7 +30,7 @@ public interface IBaseJpaSimpleSearchParser<D extends IBaseDto<Id>, Id extends S
     }
 
     @Override
-    default Predicate getPropertyCriterion(From propertyAlias, Object propertyValue, CriteriaBuilder criteriaBuilder) throws InterceptionInterruptException {
+    default Predicate getPropertyCriterion(Path propertyAlias, Object propertyValue, CriteriaBuilder criteriaBuilder) throws InterceptionInterruptException {
         Predicate expression;
         if (propertyValue instanceof String) {
             expression = criteriaBuilder.like((Expression<String>)propertyAlias, "%" + propertyValue + "%");
@@ -45,7 +45,7 @@ public interface IBaseJpaSimpleSearchParser<D extends IBaseDto<Id>, Id extends S
     }
 
     @Override
-    default SearchJoinType getJoinTypeFromExample(D object) {
+    default SearchJoinType getJoinTypeFromExample(IBaseDto object) {
         return null;
     }
 

@@ -52,5 +52,4 @@ public class VaselineCoreConfig implements ApplicationContextAware {
         return applicationContext.getBean(beanClass);
     }
 
-
 }

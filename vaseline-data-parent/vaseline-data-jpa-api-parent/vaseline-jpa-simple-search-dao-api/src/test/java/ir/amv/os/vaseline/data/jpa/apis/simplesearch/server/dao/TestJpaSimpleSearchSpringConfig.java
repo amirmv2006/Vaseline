@@ -1,0 +1,14 @@
+package ir.amv.os.vaseline.data.jpa.apis.simplesearch.server.dao;
+
+import ir.amv.os.vaseline.data.test.model.config.TestDataModelConfig;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
+
+@Import(TestDataModelConfig.class)
+public class TestJpaSimpleSearchSpringConfig {
+
+    @Bean
+    ITestCountryDao countryDao() {
+        return new TestCountryDaoImpl();
+    }
+}
