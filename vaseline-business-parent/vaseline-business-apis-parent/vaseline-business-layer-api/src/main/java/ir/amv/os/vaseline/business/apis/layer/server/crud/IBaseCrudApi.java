@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IBaseCrudApi<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
+public interface IBaseCrudApi<E extends IBaseEntity<Id>, Id extends Serializable>
         extends IBaseReadOnlyApi<E, Id>, IBaseEntityCrudApi<E> {
 
     Id save(E entity) throws BaseVaselineServerException;

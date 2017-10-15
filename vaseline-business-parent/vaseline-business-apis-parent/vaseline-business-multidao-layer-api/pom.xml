@@ -9,27 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>vaseline-buiness-simple-search-layerimpl-api</artifactId>
+    <artifactId>vaseline-business-multidao-layer-api</artifactId>
     <packaging>bundle</packaging>
 
     <properties>
-        <aries.osgi.basePackage>ir.amv.os.vaseline.business.apis.simplesearch.layerimpl</aries.osgi.basePackage>
+        <aries.osgi.basePackage>ir.amv.os.vaseline.business.apis.multidao.layer</aries.osgi.basePackage>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.business.apis</groupId>
-            <artifactId>vaseline-buiness-simple-search-layer-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.amirmv2006.business.apis</groupId>
-            <artifactId>vaseline-business-layerimpl-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.amirmv2006.data.apis</groupId>
-            <artifactId>vaseline-simple-search-dao-api</artifactId>
+            <artifactId>vaseline-business-layer-api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

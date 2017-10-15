@@ -8,7 +8,6 @@ import ir.amv.os.vaseline.basics.apis.core.shared.validation.IEntitySaveValidati
 import ir.amv.os.vaseline.basics.apis.core.shared.validation.IEntityUpdateValidation;
 import ir.amv.os.vaseline.business.apis.layer.server.crud.IBaseCrudApi;
 import ir.amv.os.vaseline.service.apis.layer.server.crud.IBaseCrudService;
-import ir.amv.os.vaseline.service.apis.layer.server.ro.IBaseReadOnlyService;
 import ir.amv.os.vaseline.service.apis.layerimpl.server.ro.IBaseImplementedReadOnlyService;
 
 import java.io.Serializable;
@@ -19,7 +18,7 @@ import java.io.Serializable;
 public interface IBaseImplementedCrudService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
         extends IBaseCrudService<D, Id>, IBaseImplementedReadOnlyService<E, D, Id> {
 
-    IBaseCrudApi<E, D, Id> getWriteApi();
+    IBaseCrudApi<E, Id> getWriteApi();
 
     @Override
     default Id save(D t) throws BaseVaselineClientException {

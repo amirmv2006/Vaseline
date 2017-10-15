@@ -29,7 +29,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.business.apis</groupId>
-            <artifactId>vaseline-buiness-simple-simple-search-layer-api</artifactId>
+            <artifactId>vaseline-buiness-simple-search-layer-api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

@@ -32,11 +32,7 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
 
     default List<E> getAll() throws BaseVaselineServerException {
         List<E> all = getReadDao().getAll();
-        if (all != null) {
-            for (E entity : all) {
-                postGet(entity);
-            }
-        }
+        postGetList(all);
         return all;
     }
 
@@ -53,12 +49,16 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
 
     default List<E> getAll(PagingDto pagingDto) throws BaseVaselineServerException {
         List<E> all = getReadDao().getAll(pagingDto);
-        if (all != null) {
-            for (E entity : all) {
+        postGetList(all);
+        return all;
+    }
+
+    default void postGetList(final List<E> list) throws BaseVaselineServerException {
+        if (list != null) {
+            for (E entity : list) {
                 postGet(entity);
             }
         }
-        return all;
     }
 
 }

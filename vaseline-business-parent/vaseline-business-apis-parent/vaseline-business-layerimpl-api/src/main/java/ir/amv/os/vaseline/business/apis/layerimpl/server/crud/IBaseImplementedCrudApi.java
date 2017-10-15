@@ -14,10 +14,10 @@ import java.util.List;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
-        extends IBaseCrudApi<E, D, Id>, IBaseImplementedEntityCrudApi<E>, IBaseImplementedReadOnlyApi<E, Id> {
+public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, Id extends Serializable>
+        extends IBaseCrudApi<E, Id>, IBaseImplementedEntityCrudApi<E>, IBaseImplementedReadOnlyApi<E, Id> {
 
-    IBaseCrudDao<E, D, Id> getWriteDao();
+    IBaseCrudDao<E, ?, Id> getWriteDao();
 
     default Id save(E entity) throws BaseVaselineServerException {
         preSave(entity);
@@ -27,7 +27,7 @@ public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, D extends IB
     }
 
     default List<Id> saveBatch(List<E> entities) throws BaseVaselineServerException {
-        List<Id> result = new ArrayList<Id>();
+        List<Id> result = new ArrayList<>();
         if (entities != null) {
             for (E entity : entities) {
                 Id id = save(entity);
