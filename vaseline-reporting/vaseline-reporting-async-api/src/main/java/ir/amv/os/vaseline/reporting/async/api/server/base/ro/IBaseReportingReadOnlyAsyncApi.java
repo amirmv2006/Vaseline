@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.reporting.async.api.server.base.ro;
 
-import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.api.IBaseReadOnlyApi;
+import ir.amv.os.vaseline.business.apis.layer.server.ro.IBaseReadOnlyApi;
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
@@ -13,7 +13,7 @@ import java.io.Serializable;
  * Created by AMV on 2/13/2016.
  */
 public interface IBaseReportingReadOnlyAsyncApi<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
-        extends IBaseReadOnlyApi<E, D, Id>, IBaseReportingAsyncApi<E> {
+        extends IBaseReadOnlyApi<E, Id>, IBaseReportingAsyncApi<E> {
 
     Long reportByExample(CreateReportRequestServer request, D example) throws BaseVaselineServerException;
 

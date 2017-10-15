@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.reporting.api.server.model;
 
-import ir.amv.os.vaseline.base.architecture.server.layers.parent.api.IBaseApi;
+import ir.amv.os.vaseline.business.apis.layer.server.base.IBaseApi;
 import net.sf.jasperreports.engine.JRDataSource;
 
 import java.io.OutputStream;

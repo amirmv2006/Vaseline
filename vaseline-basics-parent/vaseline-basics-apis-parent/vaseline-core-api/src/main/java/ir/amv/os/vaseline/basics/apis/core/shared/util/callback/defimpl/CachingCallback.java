@@ -11,7 +11,7 @@ public abstract class CachingCallback<T>
     private T value;
 
     @Override
-    public void onSuccess(IBaseCallback<T, Void> result) {
+    public void onSuccess(IBaseCallback<T, Void> result) throws Exception {
         result.onSuccess(getValue());
     }
 

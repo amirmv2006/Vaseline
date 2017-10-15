@@ -4,7 +4,7 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.IBaseJpaReadOnlyDao;
+import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.IBaseImplementedJpaReadOnlyDao;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,12 +12,12 @@ import java.util.List;
 public class JpaFetchProviderFacade<E extends IBaseEntity<Id>, Id extends Serializable> {
 
     private IJpaFetchProvider<E, Id> abstractor;
-    private IBaseJpaReadOnlyDao<E, Id> dao;
+    private IBaseImplementedJpaReadOnlyDao<E, Id> dao;
     private IJpaCriteriaPrunerFunctionalInterface criteriaPruner;
 
     public JpaFetchProviderFacade(
             IJpaFetchProvider<E, Id> fetchProvider,
-            IBaseJpaReadOnlyDao<E, Id> dao,
+            IBaseImplementedJpaReadOnlyDao<E, Id> dao,
             IJpaCriteriaPrunerFunctionalInterface criteriaPruner) {
         this.abstractor = fetchProvider;
         this.dao = dao;

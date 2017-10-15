@@ -2,7 +2,6 @@ package ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.data.apis.dao.server.base.defimpl.BaseDaoImpl;
-import ir.amv.os.vaseline.data.apis.dao.server.ro.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -16,7 +15,7 @@ import java.io.Serializable;
  */
 public class BaseReadOnlyHibernateDaoImpl<E extends IBaseEntity<Id>, Id extends Serializable>
         extends BaseDaoImpl
-        implements IBaseHibernateReadOnlyDao<E, Id>{
+        implements IBaseImplementedHibernateReadOnlyDao<E, Id> {
 
     private SessionFactory sessionFactory;
     private Class<E> entityClass;

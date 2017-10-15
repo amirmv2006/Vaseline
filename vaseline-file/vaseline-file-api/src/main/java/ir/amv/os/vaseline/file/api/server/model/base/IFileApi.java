@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.file.api.server.model.base;
 
-import ir.amv.os.vaseline.base.architecture.server.layers.multidao.crud.IBaseMultiDaoCrudApi;
+import ir.amv.os.vaseline.business.apis.multidao.server.crud.IBaseMultiDaoCrudApi;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.file.api.shared.model.base.IFileDto;
 

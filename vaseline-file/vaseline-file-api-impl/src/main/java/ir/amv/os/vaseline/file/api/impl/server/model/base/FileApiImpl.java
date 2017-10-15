@@ -53,9 +53,9 @@ public class FileApiImpl
     }
 
     @Override
-    public IFileDao getDaoFor(String coreId) throws BaseVaselineServerException {
+    public IFileDao getDaoFor(String category) throws BaseVaselineServerException {
         for (IFileDaoRegisterer daoRegisterer : daoRegisterers) {
-            IFileDao daoFor = daoRegisterer.getDaoFor(coreId, daoList);
+            IFileDao daoFor = daoRegisterer.getDaoFor(category, daoList);
             if (daoFor != null) {
                 return daoFor;
             }

@@ -37,9 +37,9 @@
     </scm>
     <modules>
         <module>vaseline-thirdparty</module>
-        <module>vaseline-base</module>
         <module>vaseline-basics-parent</module>
         <module>vaseline-data-parent</module>
+        <module>vaseline-business-parent</module>
         <module>vaseline-file</module>
         <module>vaseline-security</module>
         <module>vaseline-reporting</module>
@@ -47,6 +47,7 @@
         <module>vaseline-ws</module>
         <module>vaseline-bpm</module>
         <module>vaseline-angular</module>
+        <module>vaseline-service-parent</module>
     </modules>
 
     <properties>

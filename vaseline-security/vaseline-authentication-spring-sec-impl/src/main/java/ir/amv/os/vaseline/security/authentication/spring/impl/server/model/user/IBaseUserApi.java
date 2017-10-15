@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.authentication.spring.impl.server.model.user;
 
-import ir.amv.os.vaseline.base.architecture.server.layers.base.crud.api.IBaseCrudApi;
+import ir.amv.os.vaseline.business.apis.layer.server.crud.IBaseCrudApi;
 import ir.amv.os.vaseline.security.authentication.spring.impl.shared.dto.model.user.BaseUserDto;
 
 /**

@@ -29,12 +29,16 @@ public class ScrollerDataSource<D> extends JRAbstractBeanDataSource {
         super(true);
         this.countCallback = countCallback;
         addFieldPostProcessor(new DefaultJasperFieldStringPostProcessor());
-        fetchScrollerCallback.onSuccess(new BaseCallbackImpl<IVaselineDataScroller<D>, Void>() {
-            @Override
-            public void onSuccess(IVaselineDataScroller<D> result) {
-                vaselineDataScroller = result;
-            }
-        });
+        try {
+            fetchScrollerCallback.onSuccess(new BaseCallbackImpl<IVaselineDataScroller<D>, Void>() {
+                @Override
+                public void onSuccess(IVaselineDataScroller<D> result) throws Exception {
+                    vaselineDataScroller = result;
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

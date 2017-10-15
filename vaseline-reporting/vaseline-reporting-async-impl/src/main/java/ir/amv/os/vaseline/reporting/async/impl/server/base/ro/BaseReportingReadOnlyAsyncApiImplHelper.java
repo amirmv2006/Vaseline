@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.reporting.async.impl.server.base.ro;
 
 import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.base.architecture.server.layers.base.ro.api.IBaseReadOnlyApi;
+import ir.amv.os.vaseline.business.apis.layer.server.ro.IBaseReadOnlyApi;
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
@@ -25,7 +25,7 @@ public class BaseReportingReadOnlyAsyncApiImplHelper {
     }
 
     public static <E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable> Long reportByExample(
-            final IBaseReadOnlyApi<E, D, Id> api,
+            final IBaseReadOnlyApi<E, Id> api,
             CreateReportRequestServer request,
             final D example,
             ICreateReportApi createReportApi,
@@ -50,6 +50,8 @@ public class BaseReportingReadOnlyAsyncApiImplHelper {
                         try {
                             result.onSuccess(api.getProxy(IBaseReadOnlyApi.class).scrollByExample(example));
                         } catch (BaseVaselineServerException e) {
+                            e.printStackTrace();
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }

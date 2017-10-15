@@ -4,7 +4,7 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.IBaseHibernateReadOnlyDao;
+import ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.IBaseImplementedHibernateReadOnlyDao;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,12 +12,12 @@ import java.util.List;
 public class HibernateFetchProviderFacade<E extends IBaseEntity<Id>, Id extends Serializable> {
 
     private IHibernateFetchProvider<E, Id> abstractor;
-    private IBaseHibernateReadOnlyDao<E, Id> dao;
+    private IBaseImplementedHibernateReadOnlyDao<E, Id> dao;
     private IDetachedCriteriaPrunerFunctionalInterface criteriaPruner;
 
     public HibernateFetchProviderFacade(
             IHibernateFetchProvider<E, Id> fetchProvider,
-            IBaseHibernateReadOnlyDao<E, Id> dao,
+            IBaseImplementedHibernateReadOnlyDao<E, Id> dao,
             IDetachedCriteriaPrunerFunctionalInterface criteriaPruner) {
         this.abstractor = fetchProvider;
         this.dao = dao;

@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.reporting.async.api.server.base.parent;
 
 import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.base.architecture.server.layers.parent.api.IBaseApi;
+import ir.amv.os.vaseline.business.apis.layer.server.base.IBaseApi;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.IBaseCallback;

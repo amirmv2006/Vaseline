@@ -9,12 +9,12 @@ import java.io.Serializable;
 
 public class BaseJpaSimpleSearchDaoImpl<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
         extends BaseReadOnlyJpaDaoImpl<E, Id>
-        implements IBaseJpaSimpleSearchDao<E, D, Id> {
+        implements IBaseImplementedJpaSimpleSearchDao<E, D, Id> {
 
     private Class<D> dtoClass;
 
     public BaseJpaSimpleSearchDaoImpl() {
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass(), IBaseJpaSimpleSearchDao.class);
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass(), IBaseImplementedJpaSimpleSearchDao.class);
         if (genericArgumentClasses != null) {
             dtoClass = (Class<D>) genericArgumentClasses[1];
         }

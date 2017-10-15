@@ -24,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.data.apis</groupId>
-            <artifactId>vaseline-advanced-search-api</artifactId>
+            <artifactId>vaseline-advanced-search-dao-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

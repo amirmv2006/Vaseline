@@ -96,7 +96,11 @@ public class DefaultHibernateDataScroller<E>
         if (objects != null) {
             for (Object object : objects) {
                 for (IBaseCallback<E, Void> callback : callbacks) {
-                    callback.onSuccess((E) object);
+                    try {
+                        callback.onSuccess((E) object);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

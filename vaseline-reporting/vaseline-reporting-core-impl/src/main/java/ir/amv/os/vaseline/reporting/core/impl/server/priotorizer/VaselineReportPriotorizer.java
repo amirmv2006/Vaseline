@@ -23,12 +23,16 @@ public class VaselineReportPriotorizer
                 final AtomicInteger countResult = new AtomicInteger(0);
                 PaginatorDataSource dataSource = (PaginatorDataSource) argument;
                 IBaseCallback<IBaseCallback<Integer, Void>, Void> countCallback = dataSource.getCountCallback();
-                countCallback.onSuccess(new BaseCallbackImpl<Integer, Void>() {
-                    @Override
-                    public void onSuccess(Integer result) {
-                        countResult.set(result);
-                    }
-                });
+                try {
+                    countCallback.onSuccess(new BaseCallbackImpl<Integer, Void>() {
+                        @Override
+                        public void onSuccess(Integer result) throws Exception {
+                            countResult.set(result);
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 int count = countResult.get();
                 if (count / (100 * 1000) == 0) {
                     return 100;

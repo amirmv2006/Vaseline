@@ -15,7 +15,7 @@ import java.io.Serializable;
  */
 public class BaseReadOnlyJpaDaoImpl<E extends IBaseEntity<Id>, Id extends Serializable>
         extends BaseDaoImpl
-        implements IBaseJpaReadOnlyDao<E, Id> {
+        implements IBaseImplementedJpaReadOnlyDao<E, Id> {
 
     protected Class<E> entityClass;
     protected EntityManager em;

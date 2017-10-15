@@ -121,20 +121,24 @@ public class DefaultAsyncListPager<D> implements IBaseAsyncListPager<D> {
 	private void loadData() {
 		loadDataCallback.onSuccess(new BaseCallbackImpl<List<D>, Void>() {
 			@Override
-			public void onSuccess(List<D> result) {
+			public void onSuccess(List<D> result) throws Exception {
 				currentPage = result;
 			}
 		}, new PagingDto(null, getCurrentPageNo(), getPageSize()));
 	}
 	
 	private void count() {
-		countDataCallback.onSuccess(new BaseCallbackImpl<Integer, Void>() {
-			@Override
-			public void onSuccess(Integer result) {
-				setTotalCount(result);
-			}
-		});
-	}
+        try {
+            countDataCallback.onSuccess(new BaseCallbackImpl<Integer, Void>() {
+                @Override
+                public void onSuccess(Integer result) throws Exception {
+                    setTotalCount(result);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 	@Override
 	public boolean isInitialized() {

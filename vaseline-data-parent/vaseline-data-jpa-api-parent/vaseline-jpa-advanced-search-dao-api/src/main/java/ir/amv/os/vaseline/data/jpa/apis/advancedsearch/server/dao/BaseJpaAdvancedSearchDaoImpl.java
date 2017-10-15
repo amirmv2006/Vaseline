@@ -10,12 +10,12 @@ import java.io.Serializable;
 
 public class BaseJpaAdvancedSearchDaoImpl<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, SO extends IBaseSearchObject, Id extends Serializable>
         extends BaseJpaSimpleSearchDaoImpl<E, D ,Id>
-        implements IBaseJpaAdvancedSearchDao<E, SO, Id> {
+        implements IBaseImplementedJpaAdvancedSearchDao<E, SO, Id> {
 
     private Class<SO> searchObjectClass;
 
     public BaseJpaAdvancedSearchDaoImpl() {
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass(), IBaseJpaAdvancedSearchDao.class);
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass(), IBaseImplementedJpaAdvancedSearchDao.class);
         if (genericArgumentClasses != null) {
             setEntityClass((Class<E>) genericArgumentClasses[0]);
             searchObjectClass = (Class<SO>) genericArgumentClasses[2];
