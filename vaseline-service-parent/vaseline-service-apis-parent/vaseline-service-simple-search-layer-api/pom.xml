@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.service.apis</groupId>
-            <artifactId>vaseline-service-layer-api</artifactId>
+            <artifactId>vaseline-service-basic-layer-api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

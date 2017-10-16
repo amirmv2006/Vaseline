@@ -13,13 +13,13 @@
     <artifactId>vaseline-business-apis-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-business-layer-api</module>
+        <module>vaseline-business-basic-layer-api</module>
         <module>vaseline-business-multidao-layer-api</module>
-        <module>vaseline-business-layerimpl-api</module>
-        <module>vaseline-buiness-simple-search-layer-api</module>
-        <module>vaseline-buiness-simple-search-layerimpl-api</module>
-        <module>vaseline-buiness-advanced-search-layer-api</module>
-        <module>vaseline-buiness-advanced-search-layerimpl-api</module>
+        <module>vaseline-business-basic-layerimpl-api</module>
+        <module>vaseline-business-simple-search-layer-api</module>
+        <module>vaseline-business-simple-search-layerimpl-api</module>
+        <module>vaseline-business-advanced-search-layer-api</module>
+        <module>vaseline-business-advanced-search-layerimpl-api</module>
         <module>vaseline-business-multidao-layerimpl-api</module>
     </modules>
 

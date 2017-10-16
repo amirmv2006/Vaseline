@@ -24,18 +24,18 @@
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.business.apis</groupId>
-            <artifactId>vaseline-business-layerimpl-api</artifactId>
+            <artifactId>vaseline-business-basic-layerimpl-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.business.apis</groupId>
-            <artifactId>vaseline-buiness-simple-search-layerimpl-api</artifactId>
+            <artifactId>vaseline-business-simple-search-layerimpl-api</artifactId>
             <version>${project.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.business.apis</groupId>
-            <artifactId>vaseline-buiness-advanced-search-layerimpl-api</artifactId>
+            <artifactId>vaseline-business-advanced-search-layerimpl-api</artifactId>
             <version>${project.version}</version>
             <optional>true</optional>
         </dependency>

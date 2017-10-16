@@ -7,7 +7,7 @@ import ir.amv.os.vaseline.basics.apis.core.shared.base.exc.BaseVaselineClientExc
 import ir.amv.os.vaseline.business.apis.advancedsearch.layer.server.IBaseAdvancedSearchApi;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBaseSearchObject;
 import ir.amv.os.vaseline.service.apis.advancedsearch.layer.server.IBaseAdvancedSearchService;
-import ir.amv.os.vaseline.service.apis.layerimpl.server.ro.IBaseImplementedReadOnlyService;
+import ir.amv.os.vaseline.service.apis.basic.layerimpl.server.ro.IBaseImplementedReadOnlyService;
 
 import java.io.Serializable;
 import java.util.List;

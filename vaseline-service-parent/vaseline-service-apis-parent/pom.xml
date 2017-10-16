@@ -13,12 +13,14 @@
     <artifactId>vaseline-service-apis-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-service-layer-api</module>
-        <module>vaseline-service-layerimpl-api</module>
+        <module>vaseline-service-basic-layer-api</module>
+        <module>vaseline-service-basic-layerimpl-api</module>
         <module>vaseline-service-simple-search-layer-api</module>
         <module>vaseline-service-simple-search-layerimpl-api</module>
         <module>vaseline-service-advanced-search-layer-api</module>
         <module>vaseline-service-advanced-search-layerimpl-api</module>
+        <module>vaseline-service-multidao-layer-api</module>
+        <module>vaseline-service-multidao-layerimpl-api</module>
     </modules>
 
 

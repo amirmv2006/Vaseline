@@ -5,8 +5,7 @@ import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.exc.BaseVaselineClientException;
 import ir.amv.os.vaseline.business.apis.simplesearch.layer.server.IBaseSimpleSearchApi;
-import ir.amv.os.vaseline.service.apis.layer.server.ro.IBaseReadOnlyService;
-import ir.amv.os.vaseline.service.apis.layerimpl.server.ro.IBaseImplementedReadOnlyService;
+import ir.amv.os.vaseline.service.apis.basic.layerimpl.server.ro.IBaseImplementedReadOnlyService;
 import ir.amv.os.vaseline.service.apis.simplesearch.layer.server.IBaseSimpleSearchService;
 
 import java.io.Serializable;

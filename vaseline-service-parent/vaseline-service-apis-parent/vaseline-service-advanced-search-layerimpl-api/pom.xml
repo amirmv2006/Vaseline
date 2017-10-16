@@ -24,12 +24,12 @@
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.service.apis</groupId>
-            <artifactId>vaseline-service-layerimpl-api</artifactId>
+            <artifactId>vaseline-service-basic-layerimpl-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.business.apis</groupId>
-            <artifactId>vaseline-buiness-advanced-search-layer-api</artifactId>
+            <artifactId>vaseline-business-advanced-search-layer-api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

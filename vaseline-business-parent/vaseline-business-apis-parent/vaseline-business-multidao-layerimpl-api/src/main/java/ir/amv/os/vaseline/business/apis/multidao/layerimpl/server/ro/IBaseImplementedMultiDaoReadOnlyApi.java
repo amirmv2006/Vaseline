@@ -4,10 +4,12 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.notsupported.VaselineFeatureNotSupportedException;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.business.apis.layer.server.ro.IBaseReadOnlyApi;
-import ir.amv.os.vaseline.business.apis.layerimpl.server.ro.IBaseImplementedReadOnlyApi;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
+import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.defimpl.BaseCallbackImpl;
+import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.ro.IBaseImplementedReadOnlyApi;
 import ir.amv.os.vaseline.business.apis.multidao.layer.server.ro.IBaseMultiDaoReadOnlyApi;
 import ir.amv.os.vaseline.data.apis.dao.server.ro.IBaseReadOnlyDao;
+import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
 
 import java.io.Serializable;
 import java.util.List;
@@ -55,6 +57,23 @@ public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, 
         List<E> all = getReadDaoFor(category).getAll(pagingDto);
         postGetList(all);
         return all;
+    }
+
+    @Override
+    default IVaselineDataScroller<E> scrollAll(final List<SortDto> sortList) throws BaseVaselineServerException {
+        return IBaseMultiDaoReadOnlyApi.super.scrollAll(sortList);
+    }
+
+    @Override
+    default IVaselineDataScroller<E> scrollAll(Category category, List<SortDto> sortList) throws BaseVaselineServerException {
+        IVaselineDataScroller<E> scroller = getReadDaoFor(category).scrollAll(sortList);
+        scroller.addAfterFetchObject(new BaseCallbackImpl<E, Void>() {
+            @Override
+            public void onSuccess(E result) throws Exception {
+                postGet(result);
+            }
+        });
+        return scroller;
     }
 
     @Override

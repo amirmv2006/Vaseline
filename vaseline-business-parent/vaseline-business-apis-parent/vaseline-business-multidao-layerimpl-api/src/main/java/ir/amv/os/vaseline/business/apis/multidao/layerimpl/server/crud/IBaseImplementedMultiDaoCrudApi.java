@@ -3,7 +3,7 @@ package ir.amv.os.vaseline.business.apis.multidao.layerimpl.server.crud;
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.notsupported.VaselineFeatureNotSupportedException;
-import ir.amv.os.vaseline.business.apis.layerimpl.server.crud.IBaseImplementedCrudApi;
+import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.crud.IBaseImplementedCrudApi;
 import ir.amv.os.vaseline.business.apis.multidao.layerimpl.server.ro.IBaseImplementedMultiDaoReadOnlyApi;
 import ir.amv.os.vaseline.data.apis.dao.server.crud.IBaseCrudDao;
 
