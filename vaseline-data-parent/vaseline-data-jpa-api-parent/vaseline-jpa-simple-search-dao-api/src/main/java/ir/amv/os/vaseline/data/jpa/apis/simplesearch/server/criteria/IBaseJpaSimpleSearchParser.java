@@ -2,8 +2,8 @@ package ir.amv.os.vaseline.data.jpa.apis.simplesearch.server.criteria;
 
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.util.date.DateUtil;
-import ir.amv.os.vaseline.data.apis.dao.server.from.IBaseCriteriaFromProvider;
-import ir.amv.os.vaseline.data.apis.dao.server.from.SearchJoinType;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.from.IBaseCriteriaFromProvider;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.from.SearchJoinType;
 import ir.amv.os.vaseline.data.apis.search.simple.server.criteria.IBaseCriteriaSimpleSearchParser;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.exc.InterceptionInterruptException;
 

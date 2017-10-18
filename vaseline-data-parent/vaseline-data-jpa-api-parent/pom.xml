@@ -13,7 +13,7 @@
     <artifactId>vaseline-data-jpa-api-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-jpa-dao-api</module>
+        <module>vaseline-jpa-basic-dao-api</module>
         <module>vaseline-jpa-simple-search-dao-api</module>
         <module>vaseline-jpa-advanced-search-dao-api</module>
     </modules>

@@ -4,8 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
-import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
+import ir.amv.os.vaseline.file.apis.business.server.IFileApi;
+import ir.amv.os.vaseline.file.apis.model.server.base.IFileEntity;
 import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,8 +54,8 @@ public class FileUploadController implements ApplicationContextAware {
 				fileEntity.setFileName(name);
 				fileEntity.setFileSize(new Long(file.getSize()));
 				fileEntity.setOwner(authenticationApi.getCurrentUsername());
-				Long uploadFile = fileApi.uploadFile(category,
-						fileEntity, file.getInputStream());
+				Long uploadFile = fileApi.uploadFile(
+                        fileEntity, file.getInputStream());
 
 				result.add("success", new JsonPrimitive(true));
 				result.add("data", new JsonPrimitive(uploadFile));

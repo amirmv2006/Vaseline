@@ -13,7 +13,7 @@
     <artifactId>vaseline-data-hibernate-api-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-hibernate-dao-api</module>
+        <module>vaseline-hibernate-basic-dao-api</module>
         <module>vaseline-hibernate-simple-search-dao-api</module>
         <module>vaseline-hibernate-advanced-search-dao-api</module>
     </modules>

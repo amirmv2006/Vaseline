@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.security.authorization.hibernate.impl.server.base.dao.ro;
 
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.crud.BaseReadOnlyHibernateDaoImpl;
-import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;

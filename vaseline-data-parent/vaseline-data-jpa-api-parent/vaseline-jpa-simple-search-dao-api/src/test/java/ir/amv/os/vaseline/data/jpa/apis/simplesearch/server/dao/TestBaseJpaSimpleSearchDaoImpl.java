@@ -2,7 +2,6 @@ package ir.amv.os.vaseline.data.jpa.apis.simplesearch.server.dao;
 
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
-import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
 import ir.amv.os.vaseline.data.test.model.shared.dto.TestCityDto;
 import ir.amv.os.vaseline.data.test.model.shared.dto.TestContinentDto;
@@ -10,7 +9,6 @@ import ir.amv.os.vaseline.data.test.model.shared.dto.TestCountryDto;
 import ir.amv.os.vaseline.data.test.model.shared.dto.TestStateDto;
 import ir.amv.os.vaseline.data.test.model.test.BaseDataModelTest;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -2,11 +2,11 @@ package ir.amv.os.vaseline.file.api.impl.server.model.base;
 
 import ir.amv.os.vaseline.base.architecture.impl.server.layers.multidao.crud.api.BaseMultiDaoCrudApiImpl;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.file.api.server.daoregisterer.IFileDaoRegisterer;
-import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
-import ir.amv.os.vaseline.file.api.server.model.base.IFileDao;
-import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
-import ir.amv.os.vaseline.file.api.shared.model.base.IFileDto;
+import ir.amv.os.vaseline.file.apis.business.server.daofinder.IFileDaoRegisterer;
+import ir.amv.os.vaseline.file.apis.business.server.IFileApi;
+import ir.amv.os.vaseline.file.apis.dao.server.IFileDao;
+import ir.amv.os.vaseline.file.apis.model.server.base.IFileEntity;
+import ir.amv.os.vaseline.file.apis.model.shared.IFileDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +27,7 @@ public class FileApiImpl
     private List<IFileDaoRegisterer> daoRegisterers;
 
     @Override
-    public Long uploadFile(String coreId, IFileEntity fileEntity, InputStream inputStream) throws BaseVaselineServerException {
+    public Long uploadFile(IFileEntity fileEntity, InputStream inputStream) throws BaseVaselineServerException {
         preSave(fileEntity);
         try {
             Long fileId = getDaoFor(coreId).saveFileUsingStream(fileEntity, inputStream);
@@ -39,17 +39,17 @@ public class FileApiImpl
     }
 
     @Override
-    public void writeFileContent(String coreId, Long fileId, OutputStream outputStream) throws BaseVaselineServerException {
+    public void writeFileContent(String category, Long fileId, OutputStream outputStream) throws BaseVaselineServerException {
         try {
-            getDaoFor(coreId).writeFileContent(fileId, outputStream);
+            getDaoFor(category).writeFileContent(fileId, outputStream);
         } catch (Exception e) {
             throw new BaseVaselineServerException(e);
         }
     }
 
     @Override
-    public IFileEntity createFile(String coreId) throws BaseVaselineServerException {
-        return getDaoFor(coreId).createFile();
+    public IFileEntity createFile(String category) throws BaseVaselineServerException {
+        return getDaoFor(category).createFile();
     }
 
     @Override

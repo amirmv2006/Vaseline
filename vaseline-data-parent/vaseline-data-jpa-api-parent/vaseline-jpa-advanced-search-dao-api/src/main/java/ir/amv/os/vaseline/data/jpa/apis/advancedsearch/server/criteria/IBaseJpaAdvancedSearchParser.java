@@ -1,7 +1,6 @@
 package ir.amv.os.vaseline.data.jpa.apis.advancedsearch.server.criteria;
 
-import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.data.apis.dao.server.from.SearchJoinType;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.from.SearchJoinType;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.criteria.IBaseCriteriaAdvancedSearchParser;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBasePropertyCondition;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBaseSearchObject;

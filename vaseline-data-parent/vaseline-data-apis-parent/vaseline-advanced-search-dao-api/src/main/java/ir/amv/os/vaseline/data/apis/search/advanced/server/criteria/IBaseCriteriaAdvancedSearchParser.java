@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.apis.search.advanced.server.criteria;
 
-import ir.amv.os.vaseline.data.apis.dao.server.criteria.IBaseCriteriaExampleParser;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.criteria.IBaseCriteriaExampleParser;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBasePropertyCondition;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBaseSearchObject;
 

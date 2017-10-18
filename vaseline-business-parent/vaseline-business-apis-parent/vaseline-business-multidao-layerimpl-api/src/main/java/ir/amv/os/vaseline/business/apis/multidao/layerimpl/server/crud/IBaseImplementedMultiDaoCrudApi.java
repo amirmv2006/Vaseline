@@ -5,17 +5,18 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerExc
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.notsupported.VaselineFeatureNotSupportedException;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.crud.IBaseImplementedCrudApi;
 import ir.amv.os.vaseline.business.apis.multidao.layerimpl.server.ro.IBaseImplementedMultiDaoReadOnlyApi;
-import ir.amv.os.vaseline.data.apis.dao.server.crud.IBaseCrudDao;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.crud.IBaseCrudDao;
 
 import java.io.Serializable;
 
-public interface IBaseImplementedMultiDaoCrudApi<E extends IBaseEntity<Id>, Id extends Serializable, Category>
-        extends IBaseImplementedMultiDaoReadOnlyApi<E, Id, Category>, IBaseImplementedCrudApi<E, Id> {
+public interface IBaseImplementedMultiDaoCrudApi<E extends IBaseEntity<Id>, Id extends Serializable, Category,
+        Dao extends IBaseCrudDao<E, Id>>
+        extends IBaseImplementedMultiDaoReadOnlyApi<E, Id, Category, Dao>, IBaseImplementedCrudApi<E, Id, Dao> {
 
     @Override
     default Id save(E entity) throws BaseVaselineServerException {
         preSave(entity);
-        Id id = getWriteDaoFor(entity).save(entity);
+        Id id = getWriteDaoFor(getCategoryForEntity(entity)).save(entity);
         postSave(entity);
         return id;
     }
@@ -23,21 +24,26 @@ public interface IBaseImplementedMultiDaoCrudApi<E extends IBaseEntity<Id>, Id e
     @Override
     default void update(E entity) throws BaseVaselineServerException {
         preUpdate(entity);
-        getWriteDaoFor(entity).update(entity);
+        getWriteDaoFor(getCategoryForEntity(entity)).update(entity);
         postUpdate(entity);
     }
 
     @Override
     default void delete(E entity) throws BaseVaselineServerException {
         preDelete(entity);
-        getWriteDaoFor(entity).delete(entity);
+        getWriteDaoFor(getCategoryForEntity(entity)).delete(entity);
         postDelete(entity);
     }
 
+    /**
+     * @inheritDoc
+     * @deprecated use {@link #getWriteDaoFor(Object)}
+     */
     @Override
-    default IBaseCrudDao<E, ?, Id> getWriteDao() {
+    default Dao getWriteDao() {
         throw new VaselineFeatureNotSupportedException();
     }
 
-    IBaseCrudDao<E, ?, Id> getWriteDaoFor(E entity) throws BaseVaselineServerException;
+    Category getCategoryForEntity(final E entity) throws BaseVaselineServerException;
+    Dao getWriteDaoFor(Category category) throws BaseVaselineServerException;
 }

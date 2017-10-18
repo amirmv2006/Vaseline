@@ -8,8 +8,8 @@ import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.defimpl.BaseCallbackImpl;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.ro.IBaseImplementedReadOnlyApi;
 import ir.amv.os.vaseline.business.apis.multidao.layer.server.ro.IBaseMultiDaoReadOnlyApi;
-import ir.amv.os.vaseline.data.apis.dao.server.ro.IBaseReadOnlyDao;
-import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.IBaseReadOnlyDao;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.scroller.IVaselineDataScroller;
 
 import java.io.Serializable;
 import java.util.List;
@@ -17,8 +17,9 @@ import java.util.List;
 /**
  * Created by AMV on 2/9/2016.
  */
-public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, Id extends Serializable, Category>
-        extends IBaseMultiDaoReadOnlyApi<E, Id, Category>, IBaseImplementedReadOnlyApi<E, Id> {
+public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, Id extends Serializable, Category,
+        Dao extends IBaseReadOnlyDao<E, Id>>
+        extends IBaseMultiDaoReadOnlyApi<E, Id, Category>, IBaseImplementedReadOnlyApi<E, Id, Dao> {
 
     @Override
     default E getById(Id id) throws BaseVaselineServerException {
@@ -76,9 +77,13 @@ public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, 
         return scroller;
     }
 
+    /**
+     * @inheritDoc
+     * @deprecated use {@link #getReadDaoFor(Object)}
+     */
     @Override
-    default IBaseReadOnlyDao<E, Id> getReadDao() {
+    default Dao getReadDao() {
         throw new VaselineFeatureNotSupportedException();
     }
-    IBaseReadOnlyDao<E, Id> getReadDaoFor(Category category) throws BaseVaselineServerException;
+    Dao getReadDaoFor(Category category) throws BaseVaselineServerException;
 }

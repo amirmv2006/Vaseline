@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.data.hibernate</groupId>
-            <artifactId>vaseline-hibernate-dao-api</artifactId>
+            <artifactId>vaseline-hibernate-basic-dao-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

@@ -13,8 +13,7 @@
     <artifactId>vaseline-file-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-file-api</module>
-        <module>vaseline-file-db-impl</module>
+        <module>vaseline-file-apis-parent</module>
         <module>vaseline-file-servlets</module>
         <module>vaseline-file-api-impl</module>
     </modules>

@@ -4,7 +4,7 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.crud.IBaseCrudApi;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.ro.IBaseImplementedReadOnlyApi;
-import ir.amv.os.vaseline.data.apis.dao.server.crud.IBaseCrudDao;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.crud.IBaseCrudDao;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,10 +13,11 @@ import java.util.List;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends IBaseCrudApi<E, Id>, IBaseImplementedEntityCrudApi<E>, IBaseImplementedReadOnlyApi<E, Id> {
+public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, Id extends Serializable, Dao extends
+        IBaseCrudDao<E, Id>>
+        extends IBaseCrudApi<E, Id>, IBaseImplementedEntityCrudApi<E>, IBaseImplementedReadOnlyApi<E, Id, Dao> {
 
-    IBaseCrudDao<E, ?, Id> getWriteDao();
+    Dao getWriteDao();
 
     default Id save(E entity) throws BaseVaselineServerException {
         preSave(entity);

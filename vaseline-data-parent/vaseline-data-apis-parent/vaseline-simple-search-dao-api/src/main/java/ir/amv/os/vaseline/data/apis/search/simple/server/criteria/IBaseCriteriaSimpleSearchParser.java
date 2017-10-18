@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.data.apis.search.simple.server.criteria;
 
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.data.apis.dao.server.criteria.IBaseCriteriaExampleParser;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.criteria.IBaseCriteriaExampleParser;
 
 import java.io.Serializable;
 

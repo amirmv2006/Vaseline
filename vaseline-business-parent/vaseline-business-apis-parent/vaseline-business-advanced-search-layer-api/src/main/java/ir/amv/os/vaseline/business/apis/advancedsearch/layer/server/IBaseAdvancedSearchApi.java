@@ -5,7 +5,7 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerExc
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.ro.IBaseReadOnlyApi;
-import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBaseSearchObject;
 
 import java.io.Serializable;

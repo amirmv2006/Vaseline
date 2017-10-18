@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.file.servlets.server.download;
 
-import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
-import ir.amv.os.vaseline.file.api.server.model.base.IFileEntity;
+import ir.amv.os.vaseline.file.apis.business.server.IFileApi;
+import ir.amv.os.vaseline.file.apis.model.server.base.IFileEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
