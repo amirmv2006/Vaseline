@@ -16,30 +16,30 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
         IBaseReadOnlyDao<E, Id>>
         extends IBaseReadOnlyApi<E, Id>, IBaseImplementedEntityReadOnlyApi<E> {
 
-    Dao getReadDao();
+    Dao getDao();
 
     default E getById(Id id) throws BaseVaselineServerException {
-        E findById = getReadDao().getById(id);
+        E findById = getDao().getById(id);
         postGet(findById);
         return findById;
     }
 
     default Long countAllApproximately() throws BaseVaselineServerException {
-        return getReadDao().countAllApproximately();
+        return getDao().countAllApproximately();
     }
 
     default Long countAll() throws BaseVaselineServerException {
-        return getReadDao().countAll();
+        return getDao().countAll();
     }
 
     default List<E> getAll() throws BaseVaselineServerException {
-        List<E> all = getReadDao().getAll();
+        List<E> all = getDao().getAll();
         postGetList(all);
         return all;
     }
 
     default IVaselineDataScroller<E> scrollAll(final List<SortDto> sortList) throws BaseVaselineServerException {
-        IVaselineDataScroller<E> scroller = getReadDao().scrollAll(sortList);
+        IVaselineDataScroller<E> scroller = getDao().scrollAll(sortList);
         scroller.addAfterFetchObject(new BaseCallbackImpl<E, Void>() {
             @Override
             public void onSuccess(E result) throws Exception {
@@ -50,7 +50,7 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
     }
 
     default List<E> getAll(PagingDto pagingDto) throws BaseVaselineServerException {
-        List<E> all = getReadDao().getAll(pagingDto);
+        List<E> all = getDao().getAll(pagingDto);
         postGetList(all);
         return all;
     }

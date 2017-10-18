@@ -2,7 +2,6 @@ package ir.amv.os.vaseline.business.apis.multidao.layerimpl.server.advancedearch
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.basics.apis.core.server.base.exc.notsupported.VaselineFeatureNotSupportedException;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.defimpl.BaseCallbackImpl;
@@ -23,19 +22,19 @@ public interface IBaseImplementedMultiDaoAdvancedSearchApi<E extends IBaseEntity
 
     @Override
     default Long countBySearchObject(SO searchObject) throws BaseVaselineServerException {
-        return getReadDaoFor(getCategoryForSearchObject(searchObject)).countBySearchObject(searchObject);
+        return getDaoFor(getCategoryForSearchObject(searchObject)).countBySearchObject(searchObject);
     }
 
     @Override
     default List<E> searchBySearchObject(SO searchObject) throws BaseVaselineServerException {
-        List<E> list = getReadDaoFor(getCategoryForSearchObject(searchObject)).searchBySearchObject(searchObject);
+        List<E> list = getDaoFor(getCategoryForSearchObject(searchObject)).searchBySearchObject(searchObject);
         postGetList(list);
         return list;
     }
 
     @Override
     default List<E> searchBySearchObject(SO searchObject, PagingDto pagingDto) throws BaseVaselineServerException {
-        List<E> list = getReadDaoFor(getCategoryForSearchObject(searchObject)).searchBySearchObject(searchObject, pagingDto);
+        List<E> list = getDaoFor(getCategoryForSearchObject(searchObject)).searchBySearchObject(searchObject, pagingDto);
         postGetList(list);
         return list;
     }
@@ -43,7 +42,7 @@ public interface IBaseImplementedMultiDaoAdvancedSearchApi<E extends IBaseEntity
     @Override
     default IVaselineDataScroller<E> scrollBySearchObject(SO searchObject, List<SortDto> sortList) throws
             BaseVaselineServerException{
-        IVaselineDataScroller<E> scroller = getReadDaoFor(getCategoryForSearchObject(searchObject)).
+        IVaselineDataScroller<E> scroller = getDaoFor(getCategoryForSearchObject(searchObject)).
                 scrollBySearchObject(searchObject, sortList);
         scroller.addAfterFetchObject(new BaseCallbackImpl<E, Void>() {
             @Override

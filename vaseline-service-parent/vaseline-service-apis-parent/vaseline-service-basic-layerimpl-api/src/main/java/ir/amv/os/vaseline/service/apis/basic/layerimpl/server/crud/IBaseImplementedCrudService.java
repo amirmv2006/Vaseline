@@ -15,16 +15,15 @@ import java.io.Serializable;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IBaseImplementedCrudService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
-        extends IBaseCrudService<D, Id>, IBaseImplementedReadOnlyService<E, D, Id> {
-
-    IBaseCrudApi<E, Id> getWriteApi();
+public interface IBaseImplementedCrudService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends
+        Serializable, Api extends IBaseCrudApi<E, Id>>
+        extends IBaseCrudService<D, Id>, IBaseImplementedReadOnlyService<E, D, Id, Api> {
 
     @Override
     default Id save(D t) throws BaseVaselineClientException {
         try {
             E ent = convertDtoToEntity(t, validationGroupsForSave());
-            return getWriteApi().save(ent);
+            return getApi().save(ent);
         } catch (Exception e) {
             throw convertException(e);
         }
@@ -34,7 +33,7 @@ public interface IBaseImplementedCrudService<E extends IBaseEntity<Id>, D extend
     default void update(D t) throws BaseVaselineClientException {
         try {
             E entity = convertDtoToEntity(t, validationGroupsForUpdate());
-            getWriteApi().update(entity);
+            getApi().update(entity);
         } catch (Exception e) {
             throw convertException(e);
         }
@@ -44,7 +43,7 @@ public interface IBaseImplementedCrudService<E extends IBaseEntity<Id>, D extend
     default void delete(D id) throws BaseVaselineClientException {
         try {
             E entity = convertDtoToEntity(id, validationGroupsForDelete());
-            getWriteApi().delete(entity);
+            getApi().delete(entity);
         } catch (Exception e) {
             throw convertException(e);
         }
@@ -53,7 +52,7 @@ public interface IBaseImplementedCrudService<E extends IBaseEntity<Id>, D extend
     @Override
     default void deleteById(Id id) throws BaseVaselineClientException {
         try {
-            getWriteApi().delete(id);
+            getApi().delete(id);
         } catch (Exception e) {
             throw convertException(e);
         }

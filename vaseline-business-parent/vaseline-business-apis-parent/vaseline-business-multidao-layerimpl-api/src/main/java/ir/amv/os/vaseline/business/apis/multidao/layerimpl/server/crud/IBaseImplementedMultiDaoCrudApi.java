@@ -12,11 +12,12 @@ import java.io.Serializable;
 public interface IBaseImplementedMultiDaoCrudApi<E extends IBaseEntity<Id>, Id extends Serializable, Category,
         Dao extends IBaseCrudDao<E, Id>>
         extends IBaseImplementedMultiDaoReadOnlyApi<E, Id, Category, Dao>, IBaseImplementedCrudApi<E, Id, Dao> {
+    Category getCategoryForEntity(final E entity) throws BaseVaselineServerException;
 
     @Override
     default Id save(E entity) throws BaseVaselineServerException {
         preSave(entity);
-        Id id = getWriteDaoFor(getCategoryForEntity(entity)).save(entity);
+        Id id = getDaoFor(getCategoryForEntity(entity)).save(entity);
         postSave(entity);
         return id;
     }
@@ -24,26 +25,15 @@ public interface IBaseImplementedMultiDaoCrudApi<E extends IBaseEntity<Id>, Id e
     @Override
     default void update(E entity) throws BaseVaselineServerException {
         preUpdate(entity);
-        getWriteDaoFor(getCategoryForEntity(entity)).update(entity);
+        getDaoFor(getCategoryForEntity(entity)).update(entity);
         postUpdate(entity);
     }
 
     @Override
     default void delete(E entity) throws BaseVaselineServerException {
         preDelete(entity);
-        getWriteDaoFor(getCategoryForEntity(entity)).delete(entity);
+        getDaoFor(getCategoryForEntity(entity)).delete(entity);
         postDelete(entity);
     }
 
-    /**
-     * @inheritDoc
-     * @deprecated use {@link #getWriteDaoFor(Object)}
-     */
-    @Override
-    default Dao getWriteDao() {
-        throw new VaselineFeatureNotSupportedException();
-    }
-
-    Category getCategoryForEntity(final E entity) throws BaseVaselineServerException;
-    Dao getWriteDaoFor(Category category) throws BaseVaselineServerException;
 }

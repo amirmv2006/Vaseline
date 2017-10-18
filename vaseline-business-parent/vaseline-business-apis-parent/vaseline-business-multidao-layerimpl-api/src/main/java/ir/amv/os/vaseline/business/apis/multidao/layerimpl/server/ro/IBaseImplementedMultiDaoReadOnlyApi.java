@@ -26,7 +26,7 @@ public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, 
         return IBaseMultiDaoReadOnlyApi.super.getById(id);
     }
     default E getById(Category category, Id id) throws BaseVaselineServerException {
-        E byId = getReadDaoFor(category).getById(id);
+        E byId = getDaoFor(category).getById(id);
         postGet(byId);
         return byId;
     }
@@ -36,7 +36,7 @@ public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, 
         return IBaseMultiDaoReadOnlyApi.super.countAll();
     }
     default Long countAll(Category category) throws BaseVaselineServerException {
-        return getReadDaoFor(category).countAll();
+        return getDaoFor(category).countAll();
     }
 
     @Override
@@ -44,7 +44,7 @@ public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, 
         return IBaseMultiDaoReadOnlyApi.super.getAll();
     }
     default List<E> getAll(Category category) throws BaseVaselineServerException {
-        List<E> all = getReadDaoFor(category).getAll();
+        List<E> all = getDaoFor(category).getAll();
         postGetList(all);
         return all;
     }
@@ -55,7 +55,7 @@ public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, 
     }
     @Override
     default List<E> getAll(Category category, PagingDto pagingDto) throws BaseVaselineServerException {
-        List<E> all = getReadDaoFor(category).getAll(pagingDto);
+        List<E> all = getDaoFor(category).getAll(pagingDto);
         postGetList(all);
         return all;
     }
@@ -67,7 +67,7 @@ public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, 
 
     @Override
     default IVaselineDataScroller<E> scrollAll(Category category, List<SortDto> sortList) throws BaseVaselineServerException {
-        IVaselineDataScroller<E> scroller = getReadDaoFor(category).scrollAll(sortList);
+        IVaselineDataScroller<E> scroller = getDaoFor(category).scrollAll(sortList);
         scroller.addAfterFetchObject(new BaseCallbackImpl<E, Void>() {
             @Override
             public void onSuccess(E result) throws Exception {
@@ -79,11 +79,11 @@ public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, 
 
     /**
      * @inheritDoc
-     * @deprecated use {@link #getReadDaoFor(Object)}
+     * @deprecated use {@link #getDaoFor(Object)}
      */
     @Override
-    default Dao getReadDao() {
+    default Dao getDao() {
         throw new VaselineFeatureNotSupportedException();
     }
-    Dao getReadDaoFor(Category category) throws BaseVaselineServerException;
+    Dao getDaoFor(Category category) throws BaseVaselineServerException;
 }

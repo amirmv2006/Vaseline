@@ -13,15 +13,13 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface IBaseImplementedAdvancedSearchService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, SO extends
-        IBaseSearchObject, Id extends Serializable>
-        extends IBaseImplementedReadOnlyService<E, D, Id>, IBaseAdvancedSearchService<D, SO, Id> {
-
-    IBaseAdvancedSearchApi<E, SO, Id> getAdvancedSearchApi();
+        IBaseSearchObject, Id extends Serializable, Api extends IBaseAdvancedSearchApi<E, SO, Id>>
+        extends IBaseImplementedReadOnlyService<E, D, Id, Api>, IBaseAdvancedSearchService<D, SO, Id> {
 
     @Override
     default Long countBySearchObject(SO searchObject) throws BaseVaselineClientException {
         try {
-            return getAdvancedSearchApi().countBySearchObject(searchObject);
+            return getApi().countBySearchObject(searchObject);
         } catch (Exception e) {
             throw convertException(e);
         }
@@ -31,7 +29,7 @@ public interface IBaseImplementedAdvancedSearchService<E extends IBaseEntity<Id>
     default List<D> searchBySearchObject(SO searchObject) throws BaseVaselineClientException {
         try {
             validate(searchObject, validationGroupsForSearch());
-            List<E> searchBySearchObject = getAdvancedSearchApi().searchBySearchObject(searchObject);
+            List<E> searchBySearchObject = getApi().searchBySearchObject(searchObject);
             return convertEntityToDTO(searchBySearchObject, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);
@@ -42,7 +40,7 @@ public interface IBaseImplementedAdvancedSearchService<E extends IBaseEntity<Id>
     default List<D> searchBySearchObject(SO searchObject, PagingDto pagingDto) throws BaseVaselineClientException {
         try {
             validate(searchObject, validationGroupsForSearch());
-            List<E> searchBySearchObject = getAdvancedSearchApi().searchBySearchObject(searchObject, pagingDto);
+            List<E> searchBySearchObject = getApi().searchBySearchObject(searchObject, pagingDto);
             return convertEntityToDTO(searchBySearchObject, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);

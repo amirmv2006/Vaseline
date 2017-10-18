@@ -17,11 +17,9 @@ public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, Id extends S
         IBaseCrudDao<E, Id>>
         extends IBaseCrudApi<E, Id>, IBaseImplementedEntityCrudApi<E>, IBaseImplementedReadOnlyApi<E, Id, Dao> {
 
-    Dao getWriteDao();
-
     default Id save(E entity) throws BaseVaselineServerException {
         preSave(entity);
-        Id id = getWriteDao().save(entity);
+        Id id = getDao().save(entity);
         postSave(entity);
         return id;
     }
@@ -39,7 +37,7 @@ public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, Id extends S
 
     default void update(E entity) throws BaseVaselineServerException {
         preUpdate(entity);
-        getWriteDao().update(entity);
+        getDao().update(entity);
         postUpdate(entity);
     }
 
@@ -53,7 +51,7 @@ public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, Id extends S
 
     default void delete(E entity) throws BaseVaselineServerException {
         preDelete(entity);
-        getWriteDao().delete(entity);
+        getDao().delete(entity);
         postDelete(entity);
     }
 

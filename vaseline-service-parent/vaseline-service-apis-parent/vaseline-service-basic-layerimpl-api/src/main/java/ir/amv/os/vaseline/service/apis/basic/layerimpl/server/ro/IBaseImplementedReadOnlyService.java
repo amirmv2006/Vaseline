@@ -14,14 +14,15 @@ import java.util.List;
  * Created by AMV on 2/7/2016.
  */
 public interface IBaseImplementedReadOnlyService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends
-        Serializable>
+        Serializable, Api extends IBaseReadOnlyApi<E, Id>>
         extends IBaseReadOnlyService<D, Id>, IBaseImplementedEntityReadOnlyService<E, D, Id> {
-    IBaseReadOnlyApi<E, Id> getReadApi();
+
+    Api getApi();
 
     @Override
     default D getById(Id id) throws BaseVaselineClientException {
         try {
-            E byId = getReadApi().getById(id);
+            E byId = getApi().getById(id);
             return convertEntityToDTO(byId, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);
@@ -31,7 +32,7 @@ public interface IBaseImplementedReadOnlyService<E extends IBaseEntity<Id>, D ex
     @Override
     default Long countAll() throws BaseVaselineClientException {
         try {
-            return getReadApi().countAll();
+            return getApi().countAll();
         } catch (Exception e) {
             throw convertException(e);
         }
@@ -40,7 +41,7 @@ public interface IBaseImplementedReadOnlyService<E extends IBaseEntity<Id>, D ex
     @Override
     default List<D> getAll() throws BaseVaselineClientException {
         try {
-            List<E> all = getReadApi().getAll();
+            List<E> all = getApi().getAll();
             return convertEntityToDTO(all, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);
@@ -50,7 +51,7 @@ public interface IBaseImplementedReadOnlyService<E extends IBaseEntity<Id>, D ex
     @Override
     default List<D> getAll(PagingDto pagingDto) throws BaseVaselineClientException {
         try {
-            List<E> sortedPaged = getReadApi().getAll(pagingDto);
+            List<E> sortedPaged = getApi().getAll(pagingDto);
             return convertEntityToDTO(sortedPaged, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);

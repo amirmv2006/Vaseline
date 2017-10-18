@@ -12,14 +12,15 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface IBaseImplementedMultiDaoReadOnlyService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends
-        Serializable, Category>
+        Serializable, Category, Api extends IBaseMultiDaoReadOnlyApi<E, Id, Category>>
         extends IBaseMultiDaoReadOnlyService<D, Id, Category>, IBaseImplementedEntityReadOnlyService<E, D, Id> {
-    IBaseMultiDaoReadOnlyApi<E, Id, Category> getReadApi();
+
+    IBaseMultiDaoReadOnlyApi<E, Id, Category> getApi();
 
     @Override
     default D getById(Category category, Id id) throws BaseVaselineClientException {
         try {
-            E byId = getReadApi().getById(category, id);
+            E byId = getApi().getById(category, id);
             return convertEntityToDTO(byId, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);
@@ -28,7 +29,7 @@ public interface IBaseImplementedMultiDaoReadOnlyService<E extends IBaseEntity<I
 
     default Long countAll(Category category) throws BaseVaselineClientException {
         try {
-            return getReadApi().countAll(category);
+            return getApi().countAll(category);
         } catch (Exception e) {
             throw convertException(e);
         }
@@ -36,7 +37,7 @@ public interface IBaseImplementedMultiDaoReadOnlyService<E extends IBaseEntity<I
 
     default List<D> getAll(Category category) throws BaseVaselineClientException {
         try {
-            List<E> all = getReadApi().getAll(category);
+            List<E> all = getApi().getAll(category);
             return convertEntityToDTO(all, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);
@@ -45,7 +46,7 @@ public interface IBaseImplementedMultiDaoReadOnlyService<E extends IBaseEntity<I
 
     default List<D> getAll(Category category, PagingDto pagingDto) throws BaseVaselineClientException {
         try {
-            List<E> sortedPaged = getReadApi().getAll(category, pagingDto);
+            List<E> sortedPaged = getApi().getAll(category, pagingDto);
             return convertEntityToDTO(sortedPaged, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);

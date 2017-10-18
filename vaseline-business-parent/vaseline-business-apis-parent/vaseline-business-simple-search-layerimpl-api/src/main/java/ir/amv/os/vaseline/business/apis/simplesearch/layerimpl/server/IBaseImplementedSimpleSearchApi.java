@@ -19,11 +19,11 @@ public interface IBaseImplementedSimpleSearchApi<E extends IBaseEntity<Id>, D ex
         extends IBaseSimpleSearchApi<E, D, Id>, IBaseImplementedReadOnlyApi<E, Id, Dao> {
 
     default Long countByExample(D example) throws BaseVaselineServerException {
-        return getReadDao().countByExample(example);
+        return getDao().countByExample(example);
     }
 
     default List<E> searchByExample(D example) throws BaseVaselineServerException {
-        List<E> searchByExample = getReadDao().searchByExample(example);
+        List<E> searchByExample = getDao().searchByExample(example);
         if (searchByExample != null) {
             for (E entity : searchByExample) {
                 postGet(entity);
@@ -33,7 +33,7 @@ public interface IBaseImplementedSimpleSearchApi<E extends IBaseEntity<Id>, D ex
     }
 
     default IVaselineDataScroller<E> scrollByExample(D example, List<SortDto> sortList) throws BaseVaselineServerException {
-        IVaselineDataScroller<E> scroller = getReadDao().scrollByExample(example, sortList);
+        IVaselineDataScroller<E> scroller = getDao().scrollByExample(example, sortList);
         scroller.addAfterFetchObject(new BaseCallbackImpl<E, Void>() {
             @Override
             public void onSuccess(E result) throws Exception {
@@ -45,7 +45,7 @@ public interface IBaseImplementedSimpleSearchApi<E extends IBaseEntity<Id>, D ex
 
     default List<E> searchByExample(D example, PagingDto pagingDto)
             throws BaseVaselineServerException {
-        List<E> searchByExample = getReadDao().searchByExample(example, pagingDto);
+        List<E> searchByExample = getDao().searchByExample(example, pagingDto);
         if (searchByExample != null) {
             for (E entity : searchByExample) {
                 postGet(entity);

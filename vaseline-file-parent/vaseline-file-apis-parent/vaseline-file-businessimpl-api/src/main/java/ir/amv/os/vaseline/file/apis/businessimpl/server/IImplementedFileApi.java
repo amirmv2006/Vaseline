@@ -24,7 +24,7 @@ public interface IImplementedFileApi
     default Long uploadFile(IFileEntity fileEntity, InputStream inputStream) throws BaseVaselineServerException {
         preSave(fileEntity);
         try {
-            Long fileId = getWriteDaoFor(getCategoryForEntity(fileEntity)).saveFileUsingStream(fileEntity, inputStream);
+            Long fileId = this.getDaoFor(getCategoryForEntity(fileEntity)).saveFileUsingStream(fileEntity, inputStream);
             postSave(fileEntity);
             return fileId;
         } catch (Exception e) {
@@ -36,7 +36,7 @@ public interface IImplementedFileApi
     default void writeFileContent(String category, Long fileId, OutputStream outputStream) throws
             BaseVaselineServerException {
         try {
-            getWriteDaoFor(category).writeFileContent(fileId, outputStream);
+            this.getDaoFor(category).writeFileContent(fileId, outputStream);
         } catch (Exception e) {
             throw new BaseVaselineServerException(e);
         }
@@ -48,12 +48,12 @@ public interface IImplementedFileApi
     }
 
     @Override
-    default IFileDao<IFileEntity, IFileDto> getReadDaoFor(String category) throws BaseVaselineServerException {
+    default IFileDao<IFileEntity, IFileDto> getDaoFor(String category) throws BaseVaselineServerException {
         return getFileDaoForCategory(category);
     }
 
     @Override
-    default IFileDao<IFileEntity, IFileDto> getWriteDaoFor(String category) throws BaseVaselineServerException {
+    default IFileDao<IFileEntity, IFileDto> getDaoFor(String category) throws BaseVaselineServerException {
         return getFileDaoForCategory(category);
     }
 

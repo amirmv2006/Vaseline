@@ -2,7 +2,6 @@ package ir.amv.os.vaseline.business.apis.multidao.layerimpl.server.simplesearch;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.basics.apis.core.server.base.exc.notsupported.VaselineFeatureNotSupportedException;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
@@ -24,26 +23,26 @@ public interface IBaseImplementedMultiDaoSimpleSearchApi<E extends IBaseEntity<I
 
     @Override
     default Long countByExample(D example) throws BaseVaselineServerException {
-        return getReadDaoFor(getCategoryForDto(example)).countByExample(example);
+        return getDaoFor(getCategoryForDto(example)).countByExample(example);
     }
 
     @Override
     default List<E> searchByExample(D example) throws BaseVaselineServerException {
-        List<E> list = getReadDaoFor(getCategoryForDto(example)).searchByExample(example);
+        List<E> list = getDaoFor(getCategoryForDto(example)).searchByExample(example);
         postGetList(list);
         return list;
     }
 
     @Override
     default List<E> searchByExample(D example, PagingDto pagingDto) throws BaseVaselineServerException {
-        List<E> list = getReadDaoFor(getCategoryForDto(example)).searchByExample(example, pagingDto);
+        List<E> list = getDaoFor(getCategoryForDto(example)).searchByExample(example, pagingDto);
         postGetList(list);
         return list;
     }
 
     @Override
     default IVaselineDataScroller<E> scrollByExample(D example, List<SortDto> sortList) throws BaseVaselineServerException {
-        IVaselineDataScroller<E> scroller = getReadDaoFor(getCategoryForDto(example)).scrollByExample(example, sortList);
+        IVaselineDataScroller<E> scroller = getDaoFor(getCategoryForDto(example)).scrollByExample(example, sortList);
         scroller.addAfterFetchObject(new BaseCallbackImpl<E, Void>() {
             @Override
             public void onSuccess(E result) throws Exception {
