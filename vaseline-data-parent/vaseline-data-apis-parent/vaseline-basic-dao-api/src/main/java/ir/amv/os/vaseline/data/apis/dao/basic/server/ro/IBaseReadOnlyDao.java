@@ -25,7 +25,7 @@ public interface IBaseReadOnlyDao<E extends IBaseEntity<Id>, Id extends Serializ
     List<E> getAll(PagingDto pagingDto);
     IVaselineDataScroller<E> scrollAll(List<SortDto> sortList);
 
-    // dev note: don't implement these in parent classes, otherwise will be coupled with IBaseEntity
+    // dev note: don't implement these in parent classes, otherwise will be coupled with IBaseEntity -> I'm sorry, I have to ignore you to see the real problem...
     void setEntityClass(Class<E> entityClass);
     Class<E> getEntityClass();
 

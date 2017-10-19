@@ -16,4 +16,22 @@
         <aries.osgi.basePackage>ir.amv.os.vaseline.file.apis.daoimpl.jpa</aries.osgi.basePackage>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.amirmv2006.file.apis</groupId>
+            <artifactId>vaseline-file-dao-generic-jpa-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.data.jpa</groupId>
+            <artifactId>vaseline-jpa-basic-dao-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>javax.persistence</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
 </project>

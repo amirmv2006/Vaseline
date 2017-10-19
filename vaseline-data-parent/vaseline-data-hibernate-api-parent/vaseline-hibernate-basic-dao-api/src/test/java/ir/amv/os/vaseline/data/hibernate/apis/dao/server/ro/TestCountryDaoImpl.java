@@ -13,15 +13,6 @@ public class TestCountryDaoImpl
     private SessionFactory sessionFactory;
 
     @Override
-    public void setEntityClass(final Class<TestCountryEntity> entityClass) {
-    }
-
-    @Override
-    public Class<TestCountryEntity> getEntityClass() {
-        return TestCountryEntity.class;
-    }
-
-    @Override
     public SessionFactory getSessionFactory() {
         return sessionFactory;
     }

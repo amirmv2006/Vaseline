@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>vaseline-file-parent</artifactId>
+        <groupId>com.github.amirmv2006.file</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.amirmv2006.file.spring</groupId>
+    <artifactId>vaseline-file-spring-parent</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>vaseline-file-hibernate-basic-spring</module>
+        <module>vaseline-file-jpa-basic-spring</module>
+        <module>vaseline-file-layers-basic-spring</module>
+        <module>vaseline-file-controllers-spring</module>
+    </modules>
+
+
+</project>

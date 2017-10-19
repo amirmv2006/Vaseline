@@ -7,6 +7,7 @@ import ir.amv.os.vaseline.basics.apis.core.shared.validation.IEntityShowValidati
 import ir.amv.os.vaseline.basics.apis.mapper.server.exc.VaselineConvertException;
 import ir.amv.os.vaseline.basics.apis.validation.server.exc.VaselineValidationServerException;
 import ir.amv.os.vaseline.service.apis.basic.layerimpl.server.base.IBaseImplementedService;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -16,8 +17,29 @@ public interface IBaseImplementedEntityReadOnlyService<E extends IBaseEntity<Id>
         Serializable>
         extends IBaseImplementedService {
 
-    Class<E> getEntityClass();
-    Class<D> getDtoClass();
+    default Class<E> getEntityClass() {
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
+        if (genericArgumentClasses != null) {
+            for (Class<?> genericArgumentClass : genericArgumentClasses) {
+                if (IBaseEntity.class.isAssignableFrom(genericArgumentClass)) {
+                    return (Class<E>) genericArgumentClass;
+                }
+            }
+        }
+        return null;
+    }
+
+    default Class<D> getDtoClass() {
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
+        if (genericArgumentClasses != null) {
+            for (Class<?> genericArgumentClass : genericArgumentClasses) {
+                if (IBaseDto.class.isAssignableFrom(genericArgumentClass)) {
+                    return (Class<D>) genericArgumentClass;
+                }
+            }
+        }
+        return null;
+    }
 
     // BASE METHODS
     default E convertDtoToEntity(D d, Class<?>... validationGroups) throws VaselineConvertException,

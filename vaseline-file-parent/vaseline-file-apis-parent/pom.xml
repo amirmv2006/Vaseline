@@ -20,6 +20,8 @@
         <module>vaseline-file-dao-generic-jpa-api</module>
         <module>vaseline-file-business-api</module>
         <module>vaseline-file-businessimpl-api</module>
+        <module>vaseline-file-service-api</module>
+        <module>vaseline-file-serviceimpl-api</module>
     </modules>
 
 

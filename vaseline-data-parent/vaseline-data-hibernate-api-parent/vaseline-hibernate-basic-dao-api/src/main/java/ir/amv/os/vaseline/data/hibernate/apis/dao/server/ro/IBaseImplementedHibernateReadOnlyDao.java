@@ -11,6 +11,7 @@ import ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.criteriaabstractor.D
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.criteriaabstractor.HibernateFetchProviderFacade;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.criteriaabstractor.IHibernateFetchProvider;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.scroller.DefaultHibernateDataScroller;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
 import org.hibernate.ScrollMode;
@@ -126,4 +127,21 @@ public interface IBaseImplementedHibernateReadOnlyDao<E extends IBaseEntity<Id>,
         });
     }
 
+    @Override
+    default Class<E> getEntityClass() {
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
+        if (genericArgumentClasses != null) {
+            for (Class<?> genericArgumentClass : genericArgumentClasses) {
+                if (IBaseEntity.class.isAssignableFrom(genericArgumentClass)) {
+                    return (Class<E>) genericArgumentClass;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    default void setEntityClass(Class<E> entityClass) {
+        // no need for this, I'm finding the generics on my own :)
+    }
 }
