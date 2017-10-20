@@ -1,24 +1,43 @@
-package ir.amv.os.vaseline.file.apis.daogeneric.jpa.shared.model.path;
+package ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.model.base.blob;
 
-import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.baseimpl.BaseDtoImpl;
-import ir.amv.os.vaseline.file.apis.model.shared.IFileDto;
+import ir.amv.os.vaseline.basics.apis.dao.server.ent.BaseEntityImpl;
+import ir.amv.os.vaseline.file.apis.model.server.base.IVaselineFileEntity;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+import java.sql.Blob;
 import java.util.Date;
 
 /**
- * Created by AMV on 7/9/2016.
+ * Created by AMV on 2/9/2016.
  */
-public class FilePathDto
-        extends BaseDtoImpl<Long>
-        implements IFileDto {
+@Entity
+@Table(name =  "FILE_BLOB")
+public class VaselineFileBlobEntity extends BaseEntityImpl<Long> implements IVaselineFileEntity {
 
     private String fileName;
     private Long fileSize;
     private String owner;
     private String category;
     private String contentType;
+    private Blob fileContent;
     private Date createDate;
     private Date modifyDate;
+
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(updatable = false)
+    public Blob getFileContent() {
+        return fileContent;
+    }
+
+    public void setFileContent(Blob fileContent) {
+        this.fileContent = fileContent;
+    }
 
     @Override
     public String getFileName() {

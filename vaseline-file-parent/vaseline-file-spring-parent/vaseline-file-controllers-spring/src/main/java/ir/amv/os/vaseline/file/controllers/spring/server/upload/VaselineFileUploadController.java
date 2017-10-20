@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.file.controllers.spring.server.upload;
 
 import ir.amv.os.vaseline.basics.apis.json.server.converter.IVaselineJsonConverter;
-import ir.amv.os.vaseline.file.apis.service.server.IFileService;
+import ir.amv.os.vaseline.file.apis.service.server.IVaselineFileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class VaselineFileUploadController {
     private static final Logger logger = LoggerFactory
             .getLogger(VaselineFileUploadController.class);
 
-    private IFileService fileService;
+    private IVaselineFileService fileService;
     private IVaselineJsonConverter jsonConverter;
 
     /**
@@ -62,7 +62,7 @@ public class VaselineFileUploadController {
     }
 
     @Autowired
-    public void setFileService(IFileService fileService) {
+    public void setFileService(IVaselineFileService fileService) {
         this.fileService = fileService;
     }
 

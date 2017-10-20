@@ -1,9 +1,8 @@
 package ir.amv.os.vaseline.file.layers.spring.basic.server.api;
 
-import ir.amv.os.vaseline.file.apis.business.server.daofinder.IFileDaoFinder;
-import ir.amv.os.vaseline.file.apis.businessimpl.server.IImplementedFileApi;
-import ir.amv.os.vaseline.file.apis.dao.server.IFileDao;
-import ir.amv.os.vaseline.file.apis.model.server.base.IFileEntity;
+import ir.amv.os.vaseline.file.apis.business.server.daofinder.IVaselineFileDaoFinder;
+import ir.amv.os.vaseline.file.apis.businessimpl.server.IImplementedVaselineFileApi;
+import ir.amv.os.vaseline.file.apis.dao.server.IVaselineFileDao;
 import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,21 +11,21 @@ import java.util.List;
 /**
  * @author Amir
  */
-public class FileApiImpl
-        implements IImplementedFileApi{
+public class VaselineFileApiImpl
+        implements IImplementedVaselineFileApi {
 
     private IAuthenticationApi authenticationApi;
-    private List<IFileDao> fileDaoList;
-    private List<IFileDaoFinder> daoFinderList;
+    private List<IVaselineFileDao> fileDaoList;
+    private List<IVaselineFileDaoFinder> daoFinderList;
     private Object proxy;
 
     @Override
-    public List<IFileDaoFinder> getDaoFinderList() {
+    public List<IVaselineFileDaoFinder> getDaoFinderList() {
         return daoFinderList;
     }
 
     @Override
-    public List<IFileDao> getFileDaoList() {
+    public List<IVaselineFileDao> getFileDaoList() {
         return fileDaoList;
     }
 
@@ -46,12 +45,12 @@ public class FileApiImpl
     }
 
     @Autowired
-    public void setDaoFinderList(final List<IFileDaoFinder> daoFinderList) {
+    public void setDaoFinderList(final List<IVaselineFileDaoFinder> daoFinderList) {
         this.daoFinderList = daoFinderList;
     }
 
     @Autowired
-    public void setFileDaoList(final List<IFileDao> fileDaoList) {
+    public void setFileDaoList(final List<IVaselineFileDao> fileDaoList) {
         this.fileDaoList = fileDaoList;
     }
 

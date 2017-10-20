@@ -1,18 +1,16 @@
-package ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.model.base.path;
+package ir.amv.os.vaseline.file.apis.daogeneric.jpa.shared.model.path;
 
-import ir.amv.os.vaseline.basics.apis.dao.server.ent.BaseEntityImpl;
-import ir.amv.os.vaseline.file.apis.model.server.base.IFileEntity;
+import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.baseimpl.BaseDtoImpl;
+import ir.amv.os.vaseline.file.apis.model.shared.IVaselineFileDto;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * Created by AMV on 2/9/2016.
+ * Created by AMV on 7/9/2016.
  */
-@Entity
-@Table(name =  "FILE_PATH_STORED")
-public class FilePathEntity extends BaseEntityImpl<Long> implements IFileEntity {
+public class VaselineFilePathDto
+        extends BaseDtoImpl<Long>
+        implements IVaselineFileDto {
 
     private String fileName;
     private Long fileSize;
@@ -21,7 +19,6 @@ public class FilePathEntity extends BaseEntityImpl<Long> implements IFileEntity 
     private String contentType;
     private Date createDate;
     private Date modifyDate;
-    private String filePath;
 
     @Override
     public String getFileName() {
@@ -91,13 +88,5 @@ public class FilePathEntity extends BaseEntityImpl<Long> implements IFileEntity 
     @Override
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
     }
 }

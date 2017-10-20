@@ -1,9 +1,9 @@
 package ir.amv.os.vaseline.file.layers.spring.basic.config;
 
-import ir.amv.os.vaseline.file.apis.business.server.IFileApi;
-import ir.amv.os.vaseline.file.apis.service.server.IFileService;
-import ir.amv.os.vaseline.file.layers.spring.basic.server.api.FileApiImpl;
-import ir.amv.os.vaseline.file.layers.spring.basic.server.service.FileServiceImpl;
+import ir.amv.os.vaseline.file.apis.business.server.IVaselineFileApi;
+import ir.amv.os.vaseline.file.apis.service.server.IVaselineFileService;
+import ir.amv.os.vaseline.file.layers.spring.basic.server.api.VaselineFileApiImpl;
+import ir.amv.os.vaseline.file.layers.spring.basic.server.service.VaselineFileServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,12 +14,12 @@ import org.springframework.context.annotation.Configuration;
 public class VaselineFileBasicLayersConfig {
 
     @Bean
-    IFileApi fileApi() {
-        return new FileApiImpl();
+    IVaselineFileApi fileApi() {
+        return new VaselineFileApiImpl();
     }
 
     @Bean
-    IFileService fileService() {
-        return new FileServiceImpl();
+    IVaselineFileService fileService() {
+        return new VaselineFileServiceImpl();
     }
 }

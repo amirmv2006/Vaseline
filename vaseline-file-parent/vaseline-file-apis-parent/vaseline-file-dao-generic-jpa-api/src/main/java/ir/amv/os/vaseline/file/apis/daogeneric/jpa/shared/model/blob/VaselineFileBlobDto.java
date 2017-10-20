@@ -1,16 +1,16 @@
 package ir.amv.os.vaseline.file.apis.daogeneric.jpa.shared.model.blob;
 
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.baseimpl.BaseDtoImpl;
-import ir.amv.os.vaseline.file.apis.model.shared.IFileDto;
+import ir.amv.os.vaseline.file.apis.model.shared.IVaselineFileDto;
 
 import java.util.Date;
 
 /**
  * Created by AMV on 7/9/2016.
  */
-public class FileBlobDto
+public class VaselineFileBlobDto
         extends BaseDtoImpl<Long>
-        implements IFileDto {
+        implements IVaselineFileDto {
 
     private String fileName;
     private Long fileSize;

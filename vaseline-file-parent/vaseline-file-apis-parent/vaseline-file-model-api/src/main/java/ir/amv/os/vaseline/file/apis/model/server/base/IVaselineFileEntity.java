@@ -1,13 +1,12 @@
-package ir.amv.os.vaseline.file.apis.model.shared;
+package ir.amv.os.vaseline.file.apis.model.server.base;
 
-import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
-
-import java.util.Date;
+import ir.amv.os.vaseline.basics.apis.core.server.base.ent.hascreatedate.IBaseHasCreateDateEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.ent.hasmodifydate.IBaseHasModifyDateEntity;
 
 /**
  * Created by AMV on 2/8/2016.
  */
-public interface IFileDto extends IBaseDto<Long> {
+public interface IVaselineFileEntity extends IBaseHasCreateDateEntity<Long>, IBaseHasModifyDateEntity<Long> {
 
     String getFileName();
 
@@ -28,12 +27,4 @@ public interface IFileDto extends IBaseDto<Long> {
     String getContentType();
 
     void setContentType(String contentType);
-
-    Date getCreateDate();
-
-    void setCreateDate(Date createDate);
-
-    Date getModifyDate();
-
-    void setModifyDate(Date modifyDate);
 }

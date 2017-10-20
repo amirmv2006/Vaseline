@@ -2,9 +2,9 @@ package ir.amv.os.vaseline.file.apis.daoimpl.hibernate.server.base.blob;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.crud.IBaseImplementedHibernateCrudDao;
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.dao.base.blob.IFileBlobDao;
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.model.base.blob.FileBlobEntity;
-import ir.amv.os.vaseline.file.apis.model.server.base.IFileEntity;
+import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.dao.base.blob.IVaselineFileBlobDao;
+import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.model.base.blob.VaselineFileBlobEntity;
+import ir.amv.os.vaseline.file.apis.model.server.base.IVaselineFileEntity;
 import org.hibernate.Criteria;
 import org.hibernate.LobHelper;
 import org.hibernate.Session;
@@ -18,11 +18,11 @@ import java.sql.Blob;
 
 import static ir.amv.os.vaseline.basics.apis.core.shared.util.stream.StreamUtils.copyStreams;
 
-public interface IImplementedFileBlobHibernateDao
-        extends IBaseImplementedHibernateCrudDao<FileBlobEntity, Long>, IFileBlobDao {
+public interface IImplementedVaselineFileBlobHibernateDao
+        extends IBaseImplementedHibernateCrudDao<VaselineFileBlobEntity, Long>, IVaselineFileBlobDao {
 
     @Override
-    default Long saveFileUsingStream(FileBlobEntity fileEntity, InputStream inputStream) throws Exception {
+    default Long saveFileUsingStream(VaselineFileBlobEntity fileEntity, InputStream inputStream) throws Exception {
         long dataSize;
         dataSize = inputStream.available();
         Session session = getSessionFactory().openSession();
@@ -43,8 +43,8 @@ public interface IImplementedFileBlobHibernateDao
         Session session = getSessionFactory().openSession();
         session.beginTransaction();
         Criteria criteria = detCriteria.getExecutableCriteria(session);
-        IFileEntity entity = getEntityFromCriteria(criteria);
-        try (InputStream inputStream = ((FileBlobEntity) entity).getFileContent().getBinaryStream()){
+        IVaselineFileEntity entity = getEntityFromCriteria(criteria);
+        try (InputStream inputStream = ((VaselineFileBlobEntity) entity).getFileContent().getBinaryStream()){
             copyStreams(inputStream, outputStream);
             session.getTransaction().commit();
             session.close();
@@ -52,7 +52,7 @@ public interface IImplementedFileBlobHibernateDao
     }
 
     @Override
-    default IFileEntity createFile(String category) throws BaseVaselineServerException {
-        return new FileBlobEntity();
+    default IVaselineFileEntity createFile(String category) throws BaseVaselineServerException {
+        return new VaselineFileBlobEntity();
     }
 }

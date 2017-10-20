@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.file.controllers.spring.server.download;
 
-import ir.amv.os.vaseline.file.apis.model.shared.IFileDto;
-import ir.amv.os.vaseline.file.apis.service.server.IFileService;
+import ir.amv.os.vaseline.file.apis.model.shared.IVaselineFileDto;
+import ir.amv.os.vaseline.file.apis.service.server.IVaselineFileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class VaselineFileDownloadController {
 
 	private static final String CONTENT_DISPOSITION = "Content-Disposition";
 
-	private IFileService fileService;
+	private IVaselineFileService fileService;
 
 	/**
 	 * Upload single file using Spring Controller
@@ -34,7 +34,7 @@ public class VaselineFileDownloadController {
 			HttpServletResponse response) {
 		try {
 			final Long fileId = Long.parseLong(fileIdStr);
-			IFileDto byId = fileService.getById(category, fileId);
+			IVaselineFileDto byId = fileService.getById(category, fileId);
 
 			String contentType = byId.getContentType();
 			response.setContentType(contentType);
@@ -49,7 +49,7 @@ public class VaselineFileDownloadController {
 	}
 
 	@Autowired
-	public void setFileService(IFileService fileService) {
+	public void setFileService(IVaselineFileService fileService) {
 		this.fileService = fileService;
 	}
 }

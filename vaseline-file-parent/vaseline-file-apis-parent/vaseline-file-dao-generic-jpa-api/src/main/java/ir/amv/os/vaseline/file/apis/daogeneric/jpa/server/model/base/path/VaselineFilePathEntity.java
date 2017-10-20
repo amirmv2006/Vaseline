@@ -1,43 +1,27 @@
-package ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.model.base.blob;
+package ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.model.base.path;
 
 import ir.amv.os.vaseline.basics.apis.dao.server.ent.BaseEntityImpl;
-import ir.amv.os.vaseline.file.apis.model.server.base.IFileEntity;
+import ir.amv.os.vaseline.file.apis.model.server.base.IVaselineFileEntity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Lob;
 import javax.persistence.Table;
-import java.sql.Blob;
 import java.util.Date;
 
 /**
  * Created by AMV on 2/9/2016.
  */
 @Entity
-@Table(name =  "FILE_BLOB")
-public class FileBlobEntity extends BaseEntityImpl<Long> implements IFileEntity {
+@Table(name =  "FILE_PATH_STORED")
+public class VaselineFilePathEntity extends BaseEntityImpl<Long> implements IVaselineFileEntity {
 
     private String fileName;
     private Long fileSize;
     private String owner;
     private String category;
     private String contentType;
-    private Blob fileContent;
     private Date createDate;
     private Date modifyDate;
-
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    @Column(updatable = false)
-    public Blob getFileContent() {
-        return fileContent;
-    }
-
-    public void setFileContent(Blob fileContent) {
-        this.fileContent = fileContent;
-    }
+    private String filePath;
 
     @Override
     public String getFileName() {
@@ -107,5 +91,13 @@ public class FileBlobEntity extends BaseEntityImpl<Long> implements IFileEntity 
     @Override
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 }
