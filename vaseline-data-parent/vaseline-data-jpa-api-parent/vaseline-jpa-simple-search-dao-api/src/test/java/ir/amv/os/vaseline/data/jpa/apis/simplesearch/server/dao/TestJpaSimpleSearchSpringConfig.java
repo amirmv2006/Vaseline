@@ -1,10 +1,10 @@
 package ir.amv.os.vaseline.data.jpa.apis.simplesearch.server.dao;
 
-import ir.amv.os.vaseline.data.test.model.config.TestDataModelConfig;
+import ir.amv.os.vaseline.data.test.model.config.TestDataModelJpaConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
-@Import(TestDataModelConfig.class)
+@Import(TestDataModelJpaConfig.class)
 public class TestJpaSimpleSearchSpringConfig {
 
     @Bean

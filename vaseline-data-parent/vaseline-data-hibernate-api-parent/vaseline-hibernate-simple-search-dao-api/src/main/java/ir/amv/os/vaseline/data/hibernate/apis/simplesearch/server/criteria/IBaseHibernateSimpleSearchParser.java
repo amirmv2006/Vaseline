@@ -33,7 +33,7 @@ public interface IBaseHibernateSimpleSearchParser<D extends IBaseDto<Id>, Id ext
     default Criterion getPropertyCriterion(String propertyAlias, Object propertyValue, DetachedCriteria criteriaBuilder) throws InterceptionInterruptException {
         Criterion expression;
         if (propertyValue instanceof String) {
-            expression = Restrictions.like(propertyAlias, MatchMode.ANYWHERE);
+            expression = Restrictions.like(propertyAlias, (String) propertyValue, MatchMode.ANYWHERE);
         } else if (propertyValue instanceof Date) {
             Date date = (Date) propertyValue;
             expression = Restrictions.between(propertyAlias, DateUtil.getDayStart(date),

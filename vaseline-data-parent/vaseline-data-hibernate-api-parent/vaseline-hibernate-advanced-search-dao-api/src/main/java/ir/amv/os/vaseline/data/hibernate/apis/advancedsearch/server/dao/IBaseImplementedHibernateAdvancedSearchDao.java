@@ -29,7 +29,7 @@ public interface IBaseImplementedHibernateAdvancedSearchDao<E extends IBaseEntit
     default HibernateFetchProviderFacade<E, Id> advancedSearchHibernateFetchProviderFacade(SO example) {
         return new HibernateFetchProviderFacade<>(hibernateFetchProvider(),this, detachedCriteria -> {
             Criterion criterion = getAdvancedSearchExampleParser(example).getCriteriaFromExampleRecursively(example, IBaseSearchObject.class, detachedCriteria,
-                    new DefaultHibernateCriteriaProjectionProviderImpl(detachedCriteria), "");
+                    new DefaultHibernateCriteriaProjectionProviderImpl(detachedCriteria, getEntityClass()), "");
             if (criterion != null) {
                 detachedCriteria.add(criterion);
             }

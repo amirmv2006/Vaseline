@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableAutoConfiguration
 @EnableJpaRepositories(basePackages = "ir.amv.os.vaseline.data.test.model.server")
 @EntityScan(basePackages = "ir.amv.os.vaseline.data.test.model.server.entity")
-public class TestDataModelConfig {
+public class TestDataModelJpaConfig {
 }

@@ -11,6 +11,7 @@ import ir.amv.os.vaseline.data.hibernate.apis.simplesearch.server.criteria.defim
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.projection.DefaultHibernateCriteriaProjectionProviderImpl;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.IBaseImplementedHibernateReadOnlyDao;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.criteriaabstractor.HibernateFetchProviderFacade;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.hibernate.criterion.Criterion;
 
 import java.io.Serializable;
@@ -20,7 +21,17 @@ public interface IBaseImplementedHibernateSimpleSearchDao<E extends IBaseEntity<
         extends IBaseSimpleSearchDao<E, D, Id>,
         IBaseImplementedHibernateReadOnlyDao<E, Id> {
 
-    Class<D> getDtoClass();
+    default Class<D> getDtoClass() {
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
+        if (genericArgumentClasses != null) {
+            for (Class<?> genericArgumentClass : genericArgumentClasses) {
+                if (IBaseDto.class.isAssignableFrom(genericArgumentClass)) {
+                    return (Class<D>) genericArgumentClass;
+                }
+            }
+        }
+        return null;
+    }
 
     default IBaseHibernateSimpleSearchParser<D, Id> getSimpleSearchExampleParser(D example) {
         return new DefaultHibernateSimpleSearchParserImpl<>();
@@ -29,7 +40,7 @@ public interface IBaseImplementedHibernateSimpleSearchDao<E extends IBaseEntity<
     default HibernateFetchProviderFacade<E, Id> exampleHibernateFetchProviderFacade(D example) {
         return new HibernateFetchProviderFacade<>(hibernateFetchProvider(),this, detachedCriteria -> {
             Criterion criterion = getSimpleSearchExampleParser(example).getCriteriaFromExampleRecursively(example, IBaseDto.class, detachedCriteria,
-                    new DefaultHibernateCriteriaProjectionProviderImpl(detachedCriteria), "");
+                    new DefaultHibernateCriteriaProjectionProviderImpl(detachedCriteria, getEntityClass()), "");
             if (criterion != null) {
                 detachedCriteria.add(criterion);
             }
