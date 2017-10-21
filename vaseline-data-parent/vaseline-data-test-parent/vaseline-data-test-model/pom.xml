@@ -18,6 +18,16 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.github.amirmv2006.data.apis</groupId>
+            <artifactId>vaseline-simple-search-dao-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.data.apis</groupId>
+            <artifactId>vaseline-advanced-search-dao-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.amirmv2006.basics.apis</groupId>
             <artifactId>vaseline-entity-jpa-api</artifactId>
             <version>${project.version}</version>

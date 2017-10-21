@@ -423,7 +423,16 @@ public class ReflectionUtil {
                     }
                 }
             }
-            return getGenerics(genericInterfaces[0]);
+            for (Type genericInterface : genericInterfaces) {
+                if (genericInterface instanceof ParameterizedType) {
+                    ParameterizedType parameterizedType = (ParameterizedType) genericInterface;
+                    Class<?>[] generics = getGenerics(parameterizedType);
+                    if (generics != null && generics.length != 0) {
+                        return generics;
+                    }
+                }
+            }
+            return null;
         }
     }
 

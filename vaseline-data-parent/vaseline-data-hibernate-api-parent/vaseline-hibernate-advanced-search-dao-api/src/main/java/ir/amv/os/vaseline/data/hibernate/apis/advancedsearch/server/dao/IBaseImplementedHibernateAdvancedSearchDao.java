@@ -11,6 +11,7 @@ import ir.amv.os.vaseline.data.hibernate.apis.advancedsearch.server.criteria.def
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.projection.DefaultHibernateCriteriaProjectionProviderImpl;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.IBaseImplementedHibernateReadOnlyDao;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro.criteriaabstractor.HibernateFetchProviderFacade;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.hibernate.criterion.Criterion;
 
 import java.io.Serializable;
@@ -20,7 +21,17 @@ public interface IBaseImplementedHibernateAdvancedSearchDao<E extends IBaseEntit
         extends IBaseAdvancedSearchDao<E, SO, Id>,
         IBaseImplementedHibernateReadOnlyDao<E, Id> {
 
-    Class<SO> getSearchObjectClass();
+    default Class<SO> getSearchObjectClass() {
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
+        if (genericArgumentClasses != null) {
+            for (Class<?> genericArgumentClass : genericArgumentClasses) {
+                if (IBaseSearchObject.class.isAssignableFrom(genericArgumentClass)) {
+                    return (Class<SO>) genericArgumentClass;
+                }
+            }
+        }
+        return null;
+    }
 
     default IBaseHibernateAdvancedSearchParser<SO> getAdvancedSearchExampleParser(SO example) {
         return new DefaultHibernateAdvancedSearchParserImpl<>();

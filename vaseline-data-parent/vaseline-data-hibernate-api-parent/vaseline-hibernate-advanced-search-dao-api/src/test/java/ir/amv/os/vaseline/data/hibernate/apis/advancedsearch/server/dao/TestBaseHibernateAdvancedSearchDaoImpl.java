@@ -1,8 +1,9 @@
-package ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro;
+package ir.amv.os.vaseline.data.hibernate.apis.advancedsearch.server.dao;
 
-import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.IBaseReadOnlyDao;
+import ir.amv.os.vaseline.data.apis.search.advanced.server.ro.IBaseAdvancedSearchDao;
 import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
-import ir.amv.os.vaseline.data.test.model.test.AbstractReadOnlyTest;
+import ir.amv.os.vaseline.data.test.model.shared.searchobject.ITestCountrySearchObject;
+import ir.amv.os.vaseline.data.test.model.test.AbstractAdvancedSearchTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -13,20 +14,15 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestHibernateDaoSpringConfig.class)
+@SpringBootTest(classes = TestHibernateAdvancedSearchSpringConfig.class)
 @TestPropertySource(locations = "classpath:test.properties")
-@Transactional
-public class TestBaseReadOnlyHibernateDaoImpl
-        extends AbstractReadOnlyTest {
+public class TestBaseHibernateAdvancedSearchDaoImpl
+        extends AbstractAdvancedSearchTest {
 
-    @Value("classpath:hibernateDaoTestData.json")
+    @Value("classpath:hibernateAdvancedSearchTestData.json")
     private Resource testData;
 
     @Inject
@@ -42,10 +38,9 @@ public class TestBaseReadOnlyHibernateDaoImpl
         tearDownAll();
     }
 
+
     @Override
-    protected IBaseReadOnlyDao<TestCountryEntity, Long> getCountryDao() {
+    protected IBaseAdvancedSearchDao<TestCountryEntity, ITestCountrySearchObject, Long> getCountryDao() {
         return countryDao;
     }
-
-
 }
