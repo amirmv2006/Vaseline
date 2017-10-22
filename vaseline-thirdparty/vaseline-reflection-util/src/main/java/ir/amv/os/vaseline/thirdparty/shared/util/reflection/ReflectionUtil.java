@@ -418,7 +418,12 @@ public class ReflectionUtil {
                             rawType = (Class) anInterface;
                         }
                         if (parent.isAssignableFrom(rawType)) {
-                            return getGenerics(anInterface);
+                            if (anInterface instanceof ParameterizedType) {
+                                ParameterizedType parameterizedType = (ParameterizedType) anInterface;
+                                return getGenerics(parameterizedType);
+                            } else {
+                                return getGenericArgumentClasses((Class<?>)anInterface, parents);
+                            }
                         }
                     }
                 }

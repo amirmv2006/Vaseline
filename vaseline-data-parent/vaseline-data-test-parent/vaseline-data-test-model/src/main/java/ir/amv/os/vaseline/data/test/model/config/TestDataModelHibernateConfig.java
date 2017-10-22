@@ -8,30 +8,17 @@ import ir.amv.os.vaseline.data.test.model.server.repository.ITestCityRepository;
 import ir.amv.os.vaseline.data.test.model.server.repository.ITestContinentRepository;
 import ir.amv.os.vaseline.data.test.model.server.repository.ITestCountryRepository;
 import ir.amv.os.vaseline.data.test.model.server.repository.ITestStateRepository;
-import org.h2.jdbcx.JdbcDataSource;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
-import org.springframework.core.env.Environment;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.support.TransactionTemplate;
-
-import javax.sql.DataSource;
-import java.io.IOException;
-import java.util.Properties;
+import org.springframework.context.annotation.Import;
 
 /**
  * @author Amir
  */
 @Configuration
+@Import(TestDataModelHibernateBaseConfig.class)
 public class TestDataModelHibernateConfig {
-
-    @Autowired
-    Environment environment;
 
     @Bean
     public ITestContinentRepository testContinentRepository(SessionFactory sessionFactory) {
@@ -97,65 +84,4 @@ public class TestDataModelHibernateConfig {
         };
     }
 
-    @Bean
-    public DataSource dataSource() {
-        JdbcDataSource dataSource = new JdbcDataSource();
-        dataSource.setUrl(environment.getProperty("jdbc.url"));
-        return dataSource;
-    }
-
-    @Bean
-    public SessionFactory sessionFactory(DataSource dataSource) {
-        LocalSessionFactoryBean em = new LocalSessionFactoryBean();
-        em.setDataSource(dataSource);
-        em.setPackagesToScan("ir.amv");
-        em.setHibernateProperties(additionalProperties());
-        try {
-            em.afterPropertiesSet();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return em.getObject();
-    }
-
-    @Bean
-    @Autowired
-    @Order(1)
-    public PlatformTransactionManager transactionManager(DataSource dataSource,
-                                                         SessionFactory sessionFactory) {
-        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-        transactionManager.setDataSource(dataSource);
-        transactionManager.setSessionFactory(sessionFactory);
-        return transactionManager;
-    }
-
-    @Bean
-    @Autowired
-    public TransactionTemplate transactionTemplate(
-            PlatformTransactionManager transactionManager) {
-        TransactionTemplate transactionTemplate = new TransactionTemplate();
-        transactionTemplate.setTransactionManager(transactionManager);
-        return transactionTemplate;
-    }
-
-
-
-    private Properties additionalProperties() {
-        Properties properties = new Properties();
-        properties.put("hibernate.validator.apply_to_ddl", "false");
-        properties.put("hibernate.validator.autoregister_listeners", "false");
-        properties.put("hibernate.dialect",
-                environment.getProperty("hibernate.dialect"));
-        properties.put("hibernate.show_sql",
-                environment.getProperty("hibernate.show_sql"));
-        properties.put("hibernate.generate_statistics", "false");
-        properties.put("hibernate.use_sql_comments", "true");
-        properties.put("hibernate.format_sql", "true");
-        properties.put("hibernate.connection.autocommit", "false");
-        properties.put("hibernate.hbm2ddl.auto","create-drop");
-
-        properties.put("hibernate.cache.use_second_level_cache", "false");
-        properties.put("hibernate.cache.use_query_cache", "false");
-        return properties;
-    }
 }

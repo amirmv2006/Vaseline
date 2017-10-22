@@ -129,7 +129,7 @@ public interface IBaseImplementedHibernateReadOnlyDao<E extends IBaseEntity<Id>,
 
     @Override
     default Class<E> getEntityClass() {
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass(), IBaseReadOnlyDao.class);
         if (genericArgumentClasses != null) {
             for (Class<?> genericArgumentClass : genericArgumentClasses) {
                 if (IBaseEntity.class.isAssignableFrom(genericArgumentClass)) {
