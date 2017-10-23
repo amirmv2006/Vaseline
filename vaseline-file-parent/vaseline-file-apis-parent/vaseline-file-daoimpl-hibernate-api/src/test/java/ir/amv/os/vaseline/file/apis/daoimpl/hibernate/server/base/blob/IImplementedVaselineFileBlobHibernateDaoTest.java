@@ -3,7 +3,8 @@ package ir.amv.os.vaseline.file.apis.daoimpl.hibernate.server.base.blob;
 import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.dao.base.blob.IVaselineFileBlobDao;
 import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.model.base.blob.VaselineFileBlobEntity;
 import org.apache.commons.io.IOUtils;
-import org.junit.Assert;
+import org.junit.Assume;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +22,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestFileDaoHibernateConfig.class)
+@SpringBootTest(classes = TestFileDaoHibernateImplConfig.class)
 public class IImplementedVaselineFileBlobHibernateDaoTest {
 
 
@@ -31,6 +32,10 @@ public class IImplementedVaselineFileBlobHibernateDaoTest {
     @Inject
     IVaselineFileBlobDao fileBlobDao;
 
+    @BeforeClass
+    public static void checkIfDockerEnv() {
+        Assume.assumeTrue(System.getProperty("docker.available").equals("true"));
+    }
 
     @Test
     @Transactional

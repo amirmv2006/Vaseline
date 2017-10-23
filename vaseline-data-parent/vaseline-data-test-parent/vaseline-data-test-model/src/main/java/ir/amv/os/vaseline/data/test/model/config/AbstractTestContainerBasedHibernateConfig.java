@@ -1,36 +1,41 @@
-package ir.amv.os.vaseline.file.apis.daoimpl.hibernate.server.base.blob;
+package ir.amv.os.vaseline.data.test.model.config;
 
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.dao.base.blob.IVaselineFileBlobDao;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
-import org.hibernate.dialect.PostgreSQL94Dialect;
+import org.hibernate.dialect.Dialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
 import org.testcontainers.containers.JdbcDatabaseContainer;
-import org.testcontainers.containers.PostgreSQLContainer;
 
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Properties;
 
-public class TestFileDaoHibernateConfig extends AnnotationConfigContextLoader{
+/**
+ * @author Amir
+ */
+public abstract class AbstractTestContainerBasedHibernateConfig<P extends JdbcDatabaseContainer> {
 
     @Bean
-    public IVaselineFileBlobDao vaselineFileBlobDao() {
-        return new TestFileBlobDao();
-    }
-
-    @Bean
-    public JdbcDatabaseContainer<?> jdbcDatabaseContainer() {
-        PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer();
-        postgreSQLContainer.start();
-        return postgreSQLContainer;
+    public JdbcDatabaseContainer<?> jdbcDatabaseContainer() throws IllegalAccessException, InstantiationException {
+        Class<P> containerProviderClass = null;
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
+        if (genericArgumentClasses != null) {
+            for (Class<?> genericArgumentClass : genericArgumentClasses) {
+                if (JdbcDatabaseContainer.class.isAssignableFrom(genericArgumentClass)) {
+                    containerProviderClass = (Class<P>) genericArgumentClass;
+                }
+            }
+        }
+        P container = containerProviderClass.newInstance();
+        container.start();
+        return container;
     }
 
     @Bean
@@ -83,7 +88,7 @@ public class TestFileDaoHibernateConfig extends AnnotationConfigContextLoader{
         properties.put("hibernate.validator.apply_to_ddl", "false");
         properties.put("hibernate.validator.autoregister_listeners", "false");
         properties.put("hibernate.dialect",
-                PostgreSQL94Dialect.class.getName());
+                getDialectClass().getName());
         properties.put("hibernate.show_sql",
                 true);
         properties.put("hibernate.generate_statistics", "false");
@@ -97,4 +102,5 @@ public class TestFileDaoHibernateConfig extends AnnotationConfigContextLoader{
         return properties;
     }
 
+    protected abstract Class<? extends Dialect> getDialectClass();
 }

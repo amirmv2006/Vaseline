@@ -14,19 +14,25 @@ public class TestCountryDaoImpl
         IBaseImplementedJpaCrudDao<TestCountryEntity, Long> {
 
     private EntityManager em;
+    private IVendorSpecificDaoHelper vendorSpecificDaoHelper;
 
     @Inject
     public void setEntityManager(EntityManager em) {
         this.em = em;
     }
 
-    @Override
-    public IVendorSpecificDaoHelper getVendorSpecificDaoHelper() {
-        return null;
+    @Inject
+    public void setVendorSpecificDaoHelper(final IVendorSpecificDaoHelper vendorSpecificDaoHelper) {
+        this.vendorSpecificDaoHelper = vendorSpecificDaoHelper;
     }
 
     @Override
     public void setEntityClass(final Class<TestCountryEntity> entityClass) {
+    }
+
+    @Override
+    public IVendorSpecificDaoHelper getVendorSpecificDaoHelper() {
+        return vendorSpecificDaoHelper;
     }
 
     @Override

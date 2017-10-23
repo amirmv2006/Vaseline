@@ -14,15 +14,21 @@ public class TestCountryDaoImpl
         IBaseImplementedJpaAdvancedSearchDao<TestCountryEntity, ITestCountrySearchObject, Long>{
 
     private EntityManager em;
+    private IVendorSpecificDaoHelper vendorSpecificDaoHelper;
 
     @Inject
     public void setEntityManager(EntityManager em) {
         this.em = em;
     }
 
+    @Inject
+    public void setVendorSpecificDaoHelper(final IVendorSpecificDaoHelper vendorSpecificDaoHelper) {
+        this.vendorSpecificDaoHelper = vendorSpecificDaoHelper;
+    }
+
     @Override
     public IVendorSpecificDaoHelper getVendorSpecificDaoHelper() {
-        return null;
+        return vendorSpecificDaoHelper;
     }
 
     @Override

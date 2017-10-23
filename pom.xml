@@ -51,7 +51,10 @@
     </modules>
 
     <properties>
+        <!-- build properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- will be overwritten in profiles for windows to be false -->
+        <docker.available>true</docker.available>
         <!-- VERSIONS -->
         <org.springframework.boot.version>1.4.2.RELEASE</org.springframework.boot.version>
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
@@ -410,6 +413,9 @@
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <configuration>
+                        <systemProperties>
+                            <docker.available>${docker.available}</docker.available>
+                        </systemProperties>
                         <!--<skipTests>true</skipTests>-->
                     </configuration>
                 </plugin>
@@ -475,7 +481,9 @@
         <profile>
             <id>vaseline-default-profile</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>!skipDefaultProfile</name>
+                </property>
             </activation>
             <build>
                 <plugins>
@@ -487,6 +495,17 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+        <profile>
+            <id>running-on-windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <docker.available>false</docker.available>
+            </properties>
         </profile>
     </profiles>
     <repositories>
