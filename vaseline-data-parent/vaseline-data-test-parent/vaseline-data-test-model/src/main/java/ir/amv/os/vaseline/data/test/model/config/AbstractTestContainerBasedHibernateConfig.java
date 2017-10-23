@@ -1,6 +1,5 @@
 package ir.amv.os.vaseline.data.test.model.config;
 
-import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.hibernate.dialect.Dialect;
@@ -22,18 +21,12 @@ import java.util.Properties;
  */
 public abstract class AbstractTestContainerBasedHibernateConfig<P extends JdbcDatabaseContainer> {
 
+    protected abstract P createContainer();
+    protected abstract Class<? extends Dialect> getDialectClass();
+
     @Bean
-    public JdbcDatabaseContainer<?> jdbcDatabaseContainer() throws IllegalAccessException, InstantiationException {
-        Class<P> containerProviderClass = null;
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
-        if (genericArgumentClasses != null) {
-            for (Class<?> genericArgumentClass : genericArgumentClasses) {
-                if (JdbcDatabaseContainer.class.isAssignableFrom(genericArgumentClass)) {
-                    containerProviderClass = (Class<P>) genericArgumentClass;
-                }
-            }
-        }
-        P container = containerProviderClass.newInstance();
+    public JdbcDatabaseContainer<?> jdbcDatabaseContainer() {
+        P container = createContainer();
         container.start();
         return container;
     }
@@ -102,5 +95,4 @@ public abstract class AbstractTestContainerBasedHibernateConfig<P extends JdbcDa
         return properties;
     }
 
-    protected abstract Class<? extends Dialect> getDialectClass();
 }
