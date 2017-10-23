@@ -11,7 +11,7 @@ import java.util.Date;
  * Created by AMV on 2/9/2016.
  */
 @Entity
-@Table(name =  "FILE_PATH_STORED")
+@Table(name =  "VASELINE_FILE_PATH")
 public class VaselineFilePathEntity extends BaseEntityImpl<Long> implements IVaselineFileEntity {
 
     private String fileName;

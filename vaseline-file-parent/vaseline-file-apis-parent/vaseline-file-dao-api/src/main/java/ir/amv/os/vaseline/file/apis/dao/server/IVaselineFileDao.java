@@ -19,5 +19,5 @@ public interface IVaselineFileDao<E extends IVaselineFileEntity, D extends IVase
     void writeFileContent(Long fileId, OutputStream outputStream) throws Exception;
 
     // based on file category, the class to be used will be different
-    IVaselineFileEntity createFile(String category) throws BaseVaselineServerException;
+    E createFile(String category) throws BaseVaselineServerException;
 }

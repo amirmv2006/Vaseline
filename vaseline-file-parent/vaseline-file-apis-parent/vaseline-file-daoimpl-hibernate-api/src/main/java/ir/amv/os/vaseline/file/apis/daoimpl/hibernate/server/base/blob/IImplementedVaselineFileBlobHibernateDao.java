@@ -44,15 +44,14 @@ public interface IImplementedVaselineFileBlobHibernateDao
         session.beginTransaction();
         Criteria criteria = detCriteria.getExecutableCriteria(session);
         IVaselineFileEntity entity = getEntityFromCriteria(criteria);
-        try (InputStream inputStream = ((VaselineFileBlobEntity) entity).getFileContent().getBinaryStream()){
-            copyStreams(inputStream, outputStream);
-            session.getTransaction().commit();
-            session.close();
-        }
+        InputStream inputStream = ((VaselineFileBlobEntity) entity).getFileContent().getBinaryStream();
+        copyStreams(inputStream, outputStream);
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override
-    default IVaselineFileEntity createFile(String category) throws BaseVaselineServerException {
+    default VaselineFileBlobEntity createFile(String category) throws BaseVaselineServerException {
         return new VaselineFileBlobEntity();
     }
 }

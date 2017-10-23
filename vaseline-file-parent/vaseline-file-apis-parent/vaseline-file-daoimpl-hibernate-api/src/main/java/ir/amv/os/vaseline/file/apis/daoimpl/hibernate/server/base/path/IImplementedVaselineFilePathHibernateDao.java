@@ -1,15 +1,12 @@
 package ir.amv.os.vaseline.file.apis.daoimpl.hibernate.server.base.path;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.shared.util.file.FileUtils;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.crud.IBaseImplementedHibernateCrudDao;
 import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.dao.base.path.IVaselineFilePathDao;
 import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.model.base.path.VaselineFilePathEntity;
-import ir.amv.os.vaseline.file.apis.model.server.base.IVaselineFileEntity;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 import static ir.amv.os.vaseline.basics.apis.core.shared.util.stream.StreamUtils.copyStreams;
 
@@ -21,7 +18,7 @@ public interface IImplementedVaselineFilePathHibernateDao
     @Override
     default Long saveFileUsingStream(VaselineFilePathEntity fileEntity, InputStream inputStream) throws Exception {
         String absoluteFilePath = resolveFilePath(fileEntity);
-        FileOutputStream fileOutputStream = new FileOutputStream(absoluteFilePath);
+        FileOutputStream fileOutputStream = FileUtils.openOutputStream(new File(absoluteFilePath), false);
         copyStreams(inputStream, fileOutputStream);
         fileOutputStream.flush();
         fileOutputStream.close();
@@ -30,30 +27,28 @@ public interface IImplementedVaselineFilePathHibernateDao
     }
 
     default String resolveFilePath(VaselineFilePathEntity filePathEntity) {
-        String filePath = filePathEntity.getFilePath();
         String baseFilePath = getBaseFilePath();
-        String pathSeparator = System.getProperty("path.separator");
-        if (!baseFilePath.endsWith("/") || !baseFilePath.endsWith("\\")) {
+        String pathSeparator = File.separator;
+        if (!baseFilePath.endsWith(pathSeparator)) {
             baseFilePath += pathSeparator;
         }
-        baseFilePath += "vaseline" + pathSeparator;
-        if (filePath.startsWith("/") || filePath.startsWith("\\")) {
-            filePath = filePath.substring(1);
-        }
-        return baseFilePath + filePath;
+
+        String filePath = baseFilePath + filePathEntity.getCategory() + pathSeparator + filePathEntity.getFileName();
+        filePathEntity.setFilePath(filePath);
+        return filePath;
     }
 
     @Override
     default void writeFileContent(Long fileId, OutputStream outputStream) throws Exception {
         VaselineFilePathEntity fileEntity = getById(fileId);
-        String absoluteFilePath = resolveFilePath(fileEntity);
+        String absoluteFilePath = fileEntity.getFilePath();
         try (FileInputStream fileInputStream = new FileInputStream(absoluteFilePath)) {
             copyStreams(fileInputStream, outputStream);
         }
     }
 
     @Override
-    default IVaselineFileEntity createFile(String category) throws BaseVaselineServerException {
+    default VaselineFilePathEntity createFile(String category) throws BaseVaselineServerException {
         return new VaselineFilePathEntity();
     }
 }
