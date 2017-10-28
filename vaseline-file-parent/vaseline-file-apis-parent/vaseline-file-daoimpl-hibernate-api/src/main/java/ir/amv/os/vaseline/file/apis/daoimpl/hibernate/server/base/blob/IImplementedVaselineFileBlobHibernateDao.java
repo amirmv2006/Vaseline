@@ -2,8 +2,8 @@ package ir.amv.os.vaseline.file.apis.daoimpl.hibernate.server.base.blob;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.crud.IBaseImplementedHibernateCrudDao;
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.dao.base.blob.IVaselineFileBlobDao;
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.model.base.blob.VaselineFileBlobEntity;
+import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.blob.IVaselineFileBlobDao;
+import ir.amv.os.vaseline.file.apis.dao.jpa.server.model.base.blob.VaselineFileBlobEntity;
 import ir.amv.os.vaseline.file.apis.model.server.base.IVaselineFileEntity;
 import org.hibernate.Criteria;
 import org.hibernate.LobHelper;

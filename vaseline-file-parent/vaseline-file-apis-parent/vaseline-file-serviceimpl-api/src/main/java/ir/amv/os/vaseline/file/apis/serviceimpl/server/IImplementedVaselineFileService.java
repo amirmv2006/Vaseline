@@ -4,7 +4,7 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerExc
 import ir.amv.os.vaseline.basics.apis.core.shared.base.exc.BaseVaselineClientException;
 import ir.amv.os.vaseline.file.apis.business.server.IVaselineFileApi;
 import ir.amv.os.vaseline.file.apis.model.server.base.IVaselineFileEntity;
-import ir.amv.os.vaseline.file.apis.model.shared.IVaselineFileDto;
+import ir.amv.os.vaseline.file.apis.model.shared.base.IVaselineFileDto;
 import ir.amv.os.vaseline.file.apis.service.server.IVaselineFileService;
 import ir.amv.os.vaseline.service.apis.basic.layerimpl.server.crud.IBaseImplementedCrudService;
 import ir.amv.os.vaseline.service.apis.multidao.layerimpl.server.ro.IBaseImplementedMultiDaoReadOnlyService;

@@ -17,7 +17,7 @@ import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.api.server.requestfiller.IBaseReportRequestFiller;
 import ir.amv.os.vaseline.reporting.async.api.server.base.parent.IBaseReportingAsyncApi;
-import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
+import ir.amv.os.vaseline.security.apis.authentication.basic.server.IAuthenticationApi;
 import net.sf.jasperreports.engine.JRDataSource;
 
 import java.io.File;

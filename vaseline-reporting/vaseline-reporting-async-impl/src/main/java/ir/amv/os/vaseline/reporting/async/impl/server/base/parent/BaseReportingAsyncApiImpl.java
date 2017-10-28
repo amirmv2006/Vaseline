@@ -10,7 +10,7 @@ import ir.amv.os.vaseline.file.api.server.model.base.IFileApi;
 import ir.amv.os.vaseline.reporting.api.server.model.CreateReportRequestServer;
 import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.async.api.server.base.parent.IBaseReportingAsyncApi;
-import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
+import ir.amv.os.vaseline.security.apis.authentication.basic.server.IAuthenticationApi;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 

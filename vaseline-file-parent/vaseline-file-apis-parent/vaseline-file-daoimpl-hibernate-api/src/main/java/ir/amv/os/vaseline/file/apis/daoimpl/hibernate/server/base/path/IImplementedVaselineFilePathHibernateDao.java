@@ -3,8 +3,8 @@ package ir.amv.os.vaseline.file.apis.daoimpl.hibernate.server.base.path;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.apis.core.shared.util.file.FileUtils;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.crud.IBaseImplementedHibernateCrudDao;
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.dao.base.path.IVaselineFilePathDao;
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.model.base.path.VaselineFilePathEntity;
+import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.path.IVaselineFilePathDao;
+import ir.amv.os.vaseline.file.apis.dao.jpa.server.model.base.path.VaselineFilePathEntity;
 
 import java.io.*;
 

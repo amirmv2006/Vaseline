@@ -24,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.file.apis</groupId>
-            <artifactId>vaseline-file-dao-api</artifactId>
+            <artifactId>vaseline-file-dao-basic-api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

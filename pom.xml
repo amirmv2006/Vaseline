@@ -48,6 +48,7 @@
         <module>vaseline-ws</module>
         <module>vaseline-bpm</module>
         <module>vaseline-angular</module>
+        <module>vaseline-security-parent</module>
     </modules>
 
     <properties>

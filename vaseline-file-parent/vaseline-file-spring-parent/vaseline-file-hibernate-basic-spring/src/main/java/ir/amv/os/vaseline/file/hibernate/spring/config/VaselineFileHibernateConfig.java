@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.file.hibernate.spring.config;
 
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.dao.base.blob.IVaselineFileBlobDao;
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.dao.base.path.IVaselineFilePathDao;
+import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.blob.IVaselineFileBlobDao;
+import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.path.IVaselineFilePathDao;
 import ir.amv.os.vaseline.file.hibernate.spring.server.dao.base.VaselineFileBlobHibernateDaoImpl;
 import ir.amv.os.vaseline.file.hibernate.spring.server.dao.base.VaselineFilePathHibernateDaoImpl;
 import org.springframework.context.annotation.Bean;

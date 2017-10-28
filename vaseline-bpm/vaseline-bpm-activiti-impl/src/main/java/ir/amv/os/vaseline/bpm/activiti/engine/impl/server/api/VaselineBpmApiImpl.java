@@ -12,7 +12,7 @@ import ir.amv.os.vaseline.bpm.api.server.model.gotoform.GoToTaskFormReqServer;
 import ir.amv.os.vaseline.bpm.api.server.model.gotoform.GoToTaskFormRespServer;
 import ir.amv.os.vaseline.bpm.api.server.model.startproc.StartProcessReqServer;
 import ir.amv.os.vaseline.bpm.api.server.model.startproc.StartProcessResultServer;
-import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
+import ir.amv.os.vaseline.security.apis.authentication.basic.server.IAuthenticationApi;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.bpmn.model.ExclusiveGateway;
 import org.activiti.bpmn.model.SequenceFlow;

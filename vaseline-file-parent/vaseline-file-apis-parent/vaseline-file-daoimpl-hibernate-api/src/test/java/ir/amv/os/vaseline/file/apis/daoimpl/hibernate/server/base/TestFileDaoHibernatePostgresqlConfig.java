@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.file.apis.daoimpl.hibernate.server.base;
 
 import ir.amv.os.vaseline.data.test.model.config.AbstractTestContainerBasedHibernateConfig;
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.dao.base.blob.IVaselineFileBlobDao;
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.dao.base.path.IVaselineFilePathDao;
+import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.blob.IVaselineFileBlobDao;
+import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.path.IVaselineFilePathDao;
 import ir.amv.os.vaseline.file.apis.daoimpl.hibernate.server.base.blob.TestFileBlobDao;
 import ir.amv.os.vaseline.file.apis.daoimpl.hibernate.server.base.path.TestFilePathDao;
 import org.hibernate.dialect.Dialect;

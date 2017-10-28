@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>vaseline-security-apis-parent</artifactId>
+        <groupId>com.github.amirmv2006.security.apis</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>vaseline-security-authentication-daoimpl-hibernate-api</artifactId>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <aries.osgi.basePackage>ir.amv.os.vaseline.security.apis.authentication.daoimpl.hibernate</aries.osgi.basePackage>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.amirmv2006.security.apis</groupId>
+            <artifactId>vaseline-security-authentication-dao-basic-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.data.hibernate</groupId>
+            <artifactId>vaseline-hibernate-basic-dao-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>

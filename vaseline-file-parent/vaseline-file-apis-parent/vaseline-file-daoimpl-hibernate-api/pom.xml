@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.file.apis</groupId>
-            <artifactId>vaseline-file-dao-generic-jpa-api</artifactId>
+            <artifactId>vaseline-file-dao-jpa-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -48,7 +48,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.file.apis</groupId>
-            <artifactId>vaseline-file-dao-api</artifactId>
+            <artifactId>vaseline-file-dao-basic-api</artifactId>
             <version>${project.version}</version>
             <type>test-jar</type>
             <scope>test</scope>

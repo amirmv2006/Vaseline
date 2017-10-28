@@ -13,8 +13,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.amirmv2006.security</groupId>
-            <artifactId>vaseline-authentication-api</artifactId>
+            <groupId>com.github.amirmv2006.security.apis</groupId>
+            <artifactId>vaseline-security-authentication-basic-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

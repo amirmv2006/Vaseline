@@ -2,8 +2,8 @@ package ir.amv.os.vaseline.file.layers.spring.basic.server.api;
 
 import ir.amv.os.vaseline.file.apis.business.server.daofinder.IVaselineFileDaoFinder;
 import ir.amv.os.vaseline.file.apis.businessimpl.server.IImplementedVaselineFileApi;
-import ir.amv.os.vaseline.file.apis.dao.server.IVaselineFileDao;
-import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
+import ir.amv.os.vaseline.file.apis.dao.basic.server.IVaselineFileDao;
+import ir.amv.os.vaseline.security.apis.authentication.basic.server.IAuthenticationApi;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

@@ -15,7 +15,7 @@ import ir.amv.os.vaseline.reporting.api.server.model.ICreateReportApi;
 import ir.amv.os.vaseline.reporting.async.api.server.base.crud.IBaseReportingCrudAsyncApi;
 import ir.amv.os.vaseline.reporting.async.impl.server.base.parent.BaseReportingAsyncApiImplHelper;
 import ir.amv.os.vaseline.reporting.async.impl.server.base.ro.BaseReportingReadOnlyAsyncApiImplHelper;
-import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
+import ir.amv.os.vaseline.security.apis.authentication.basic.server.IAuthenticationApi;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;

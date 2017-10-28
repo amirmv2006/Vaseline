@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.file.apis.business.server.daofinder;
 
-import ir.amv.os.vaseline.file.apis.dao.server.IVaselineFileDao;
+import ir.amv.os.vaseline.file.apis.dao.basic.server.IVaselineFileDao;
 import ir.amv.os.vaseline.file.apis.model.server.base.IVaselineFileEntity;
-import ir.amv.os.vaseline.file.apis.model.shared.IVaselineFileDto;
+import ir.amv.os.vaseline.file.apis.model.shared.base.IVaselineFileDto;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.file.controllers.spring.server.download;
 
-import ir.amv.os.vaseline.file.apis.model.shared.IVaselineFileDto;
+import ir.amv.os.vaseline.file.apis.model.shared.base.IVaselineFileDto;
 import ir.amv.os.vaseline.file.apis.service.server.IVaselineFileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

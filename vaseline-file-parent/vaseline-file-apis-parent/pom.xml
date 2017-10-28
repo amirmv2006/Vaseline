@@ -14,10 +14,10 @@
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-file-model-api</module>
-        <module>vaseline-file-dao-api</module>
+        <module>vaseline-file-dao-basic-api</module>
         <module>vaseline-file-daoimpl-jpa-api</module>
         <module>vaseline-file-daoimpl-hibernate-api</module>
-        <module>vaseline-file-dao-generic-jpa-api</module>
+        <module>vaseline-file-dao-jpa-api</module>
         <module>vaseline-file-business-api</module>
         <module>vaseline-file-businessimpl-api</module>
         <module>vaseline-file-service-api</module>

@@ -1,10 +1,10 @@
 package ir.amv.os.vaseline.file.apis.daoimpl.hibernate.server.base.path;
 
-import ir.amv.os.vaseline.file.apis.dao.server.AbstractVaselineFileDaoTest;
-import ir.amv.os.vaseline.file.apis.dao.server.IVaselineFileDao;
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.dao.base.path.IVaselineFilePathDao;
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.server.model.base.path.VaselineFilePathEntity;
-import ir.amv.os.vaseline.file.apis.daogeneric.jpa.shared.model.path.VaselineFilePathDto;
+import ir.amv.os.vaseline.file.apis.dao.basic.server.AbstractVaselineFileDaoTest;
+import ir.amv.os.vaseline.file.apis.dao.basic.server.IVaselineFileDao;
+import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.path.IVaselineFilePathDao;
+import ir.amv.os.vaseline.file.apis.dao.jpa.server.model.base.path.VaselineFilePathEntity;
+import ir.amv.os.vaseline.file.apis.dao.jpa.shared.model.path.VaselineFilePathDto;
 import ir.amv.os.vaseline.file.apis.daoimpl.hibernate.server.base.TestFileDaoHibernatePostgresqlConfig;
 import org.junit.Assume;
 import org.junit.BeforeClass;

@@ -4,10 +4,10 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerExc
 import ir.amv.os.vaseline.business.apis.multidao.layerimpl.server.crud.IBaseImplementedMultiDaoCrudApi;
 import ir.amv.os.vaseline.file.apis.business.server.IVaselineFileApi;
 import ir.amv.os.vaseline.file.apis.business.server.daofinder.IVaselineFileDaoFinder;
-import ir.amv.os.vaseline.file.apis.dao.server.IVaselineFileDao;
+import ir.amv.os.vaseline.file.apis.dao.basic.server.IVaselineFileDao;
 import ir.amv.os.vaseline.file.apis.model.server.base.IVaselineFileEntity;
-import ir.amv.os.vaseline.file.apis.model.shared.IVaselineFileDto;
-import ir.amv.os.vaseline.security.authentication.api.shared.api.IAuthenticationApi;
+import ir.amv.os.vaseline.file.apis.model.shared.base.IVaselineFileDto;
+import ir.amv.os.vaseline.security.apis.authentication.basic.server.IAuthenticationApi;
 
 import java.io.InputStream;
 import java.io.OutputStream;
