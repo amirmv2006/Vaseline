@@ -1,11 +1,11 @@
 package ir.amv.os.vaseline.security.authorization.api.shared.base.api.ro;
 
-import ir.amv.os.vaseline.data.apis.dao.server.ro.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.business.apis.layer.server.ro.IBaseReadOnlyApi;
 import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.ro.IBaseReadOnlyApi;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.scroller.IVaselineDataScroller;
 
 import java.io.Serializable;
 import java.util.List;
