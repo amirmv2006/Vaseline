@@ -35,8 +35,7 @@ public class VaselineUserDetailsService
                     .getUserAuthorities(username);
             return new User(user.getUsername(), user.getPassword(), authorities);
         } catch (BaseVaselineClientException e) {
-            String message = "نام کاربری/گذرواژه اشتباه است";
-            UsernameNotFoundException usernameNotFoundException = new UsernameNotFoundException(message);
+            UsernameNotFoundException usernameNotFoundException = new UsernameNotFoundException(e.getMessage());
             ServletRequestAttributes currentRequestAttributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             currentRequestAttributes.getRequest().getSession(true).setAttribute("loginError", usernameNotFoundException);
             throw usernameNotFoundException;

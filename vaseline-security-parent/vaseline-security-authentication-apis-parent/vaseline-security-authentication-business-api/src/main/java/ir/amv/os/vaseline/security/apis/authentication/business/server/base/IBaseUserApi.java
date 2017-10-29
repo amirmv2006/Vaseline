@@ -10,5 +10,11 @@ import ir.amv.os.vaseline.security.apis.authentication.model.server.base.IBaseUs
 public interface IBaseUserApi<U extends IBaseUserEntity>
         extends IBaseReadOnlyApi<U, Long> {
 
+    /**
+     * method used for authentication loading the user with the given username
+     * @param username the username for the user
+     * @return the user with the specified username
+     * @throws BaseVaselineServerException if there are problems with loading the user
+     */
     U loadUserByUsername(String username) throws BaseVaselineServerException;
 }

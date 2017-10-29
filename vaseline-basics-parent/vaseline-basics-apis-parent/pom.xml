@@ -20,6 +20,7 @@
         <module>vaseline-mapper-api</module>
         <module>vaseline-validation-api</module>
         <module>vasline-jdbc-api</module>
+        <module>vaseline-basics-logging-api</module>
     </modules>
 
 
