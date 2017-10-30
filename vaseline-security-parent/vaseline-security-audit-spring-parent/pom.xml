@@ -9,13 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.amirmv2006.security.authentication.spring</groupId>
-    <artifactId>vaseline-security-authentication-spring-parent</artifactId>
+    <groupId>com.github.amirmv2006.security.audit.spring</groupId>
+    <artifactId>vaseline-security-audit-spring-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-security-authentication-inapp-spring</module>
-        <module>vaseline-security-authenticationimpl-spring-sec</module>
-        <module>vaseline-security-authentication-oauth2-spring-sec</module>
+        <module>vaseline-security-auditimpl-log-spring</module>
     </modules>
 
 

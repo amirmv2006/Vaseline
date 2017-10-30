@@ -17,6 +17,7 @@
         <module>vaseline-security-authentication-spring-parent</module>
         <module>vaseline-security-audit-apis-parent</module>
         <module>vaseline-security-authorization-apis-parent</module>
+        <module>vaseline-security-audit-spring-parent</module>
     </modules>
 
 
