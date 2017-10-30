@@ -1,4 +1,6 @@
-package ir.amv.os.vaseline.basics.apis.logging.server;
+package ir.amv.os.vaseline.basics.apis.logging.server.logger;
+
+import ir.amv.os.vaseline.basics.apis.logging.server.exc.LogException;
 
 /**
  * @author Amir
@@ -15,5 +17,7 @@ public interface IVaselineLogger {
      * @param formattedMessage the formatted log message (String.format), won't be formatted if args is null
      * @param args arguments for the formatted message
      */
-    void log(String source, String category, VaselineLogLevel logLevel, String formattedMessage, Object... args);
+    void log(String source, String category, VaselineLogLevel logLevel, String formattedMessage, Object... args) throws LogException;
+
+    String toLogString(Object object);
 }

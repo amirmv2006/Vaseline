@@ -1,4 +1,4 @@
-package ir.amv.os.vaseline.basics.apis.logging.server;
+package ir.amv.os.vaseline.basics.apis.logging.server.logger;
 
 /**
  * @author Amir

@@ -19,6 +19,7 @@
         <module>vaseline-json-gson-spring</module>
         <module>vaseline-validation-spring</module>
         <module>vaseline-caching-spring</module>
+        <module>vaseline-basics-logging-slf4j-spring</module>
     </modules>
 
 

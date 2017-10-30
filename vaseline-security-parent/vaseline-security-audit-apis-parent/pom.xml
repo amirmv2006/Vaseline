@@ -14,6 +14,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-security-audit-basic-api</module>
+        <module>vaseline-security-auditimpl-log-api</module>
     </modules>
 
 
