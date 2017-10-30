@@ -23,6 +23,11 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.github.amirmv2006.security.authentication.apis</groupId>
+            <artifactId>vaseline-security-authentication-businessimpl-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.amirmv2006.business.apis</groupId>
             <artifactId>vaseline-business-basic-layerimpl-api</artifactId>
             <version>${project.version}</version>

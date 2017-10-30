@@ -38,6 +38,12 @@ public class VaselineAuthenticationInAppConfig {
     //                .failureHandler(authenticationFailureRedirect())
                             .usernameParameter("username")
                             .passwordParameter("password")
+                            .successHandler(((httpServletRequest, httpServletResponse, authentication) -> {
+
+                            }))
+                            .failureHandler(((httpServletRequest, httpServletResponse, e) -> {
+
+                            }))
 
                             .and()
 

@@ -28,7 +28,7 @@ import java.util.List;
  */
 @Configuration
 @EnableWebMvcSecurity
-@ComponentScan(basePackages = "ir.amv.os.vaseline.security.authentication.spring.impl.server")
+@ComponentScan(basePackages = "ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.server")
 public class VaselineAuthenticationImplConfig
         extends WebSecurityConfigurerAdapter {
 

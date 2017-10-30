@@ -17,4 +17,8 @@ public interface IBaseUserApi<U extends IBaseUserEntity>
      * @throws BaseVaselineServerException if there are problems with loading the user
      */
     U loadUserByUsername(String username) throws BaseVaselineServerException;
+
+    void authenticationSuccessful(String username);
+
+    void authenticationFailure(String username);
 }
