@@ -13,7 +13,7 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <aries.osgi.basePackage>ir.amv.os.vaseline.service.apis.simplesearch.layerimpl</aries.osgi.basePackage>
+        <bundle.base.pkg>ir.amv.os.vaseline.service.apis.simplesearch.layerimpl</bundle.base.pkg>
     </properties>
 
     <dependencies>

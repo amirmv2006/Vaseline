@@ -13,15 +13,15 @@
     <artifactId>vaseline-basics-apis-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-core-api</module>
-        <module>vaseline-entity-jpa-api</module>
         <module>vaseline-i18n-api</module>
-        <module>vaseline-json-api</module>
-        <module>vaseline-mapper-api</module>
-        <module>vaseline-validation-api</module>
         <module>vasline-jdbc-api</module>
+        <module>vaseline-json-api</module>
         <module>vaseline-basics-logging-api</module>
         <module>vaseline-basics-loggingimpl-api</module>
+        <module>vaseline-core-api</module>
+        <module>vaseline-entity-jpa-api</module>
+        <module>vaseline-mapper-api</module>
+        <module>vaseline-validation-api</module>
     </modules>
 
 

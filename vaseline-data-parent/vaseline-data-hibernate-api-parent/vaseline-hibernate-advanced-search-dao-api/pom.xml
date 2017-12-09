@@ -13,7 +13,7 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <aries.osgi.basePackage>ir.amv.os.vaseline.data.hibernate.apis.advancedsearch</aries.osgi.basePackage>
+        <bundle.base.pkg>ir.amv.os.vaseline.data.hibernate.apis.advancedsearch</bundle.base.pkg>
     </properties>
 
     <dependencies>

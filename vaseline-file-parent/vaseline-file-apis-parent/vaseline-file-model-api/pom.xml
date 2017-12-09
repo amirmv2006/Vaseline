@@ -13,7 +13,7 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <aries.osgi.basePackage>ir.amv.os.vaseline.file.apis.model</aries.osgi.basePackage>
+        <bundle.base.pkg>ir.amv.os.vaseline.file.apis.model</bundle.base.pkg>
     </properties>
 
     <dependencies>

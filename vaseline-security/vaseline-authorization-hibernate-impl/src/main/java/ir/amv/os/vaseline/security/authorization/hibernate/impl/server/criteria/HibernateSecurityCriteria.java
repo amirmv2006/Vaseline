@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.security.authorization.hibernate.impl.server.criteria;
 
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.crud.CriteriaUtil;
-import ir.amv.os.vaseline.security.authorization.api.shared.criteria.ISecurityCriteria;
+import ir.amv.os.vaseline.security.apis.authorization.basic.server.criteria.ISecurityCriteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 

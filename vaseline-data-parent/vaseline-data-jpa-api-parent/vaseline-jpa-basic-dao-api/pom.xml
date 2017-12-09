@@ -12,7 +12,7 @@
     <artifactId>vaseline-jpa-basic-dao-api</artifactId>
     <packaging>bundle</packaging>
     <properties>
-        <aries.osgi.basePackage>ir.amv.os.vaseline.data.jpa.apis.dao</aries.osgi.basePackage>
+        <bundle.base.pkg>ir.amv.os.vaseline.data.jpa.apis.dao</bundle.base.pkg>
     </properties>
 
     <dependencies>

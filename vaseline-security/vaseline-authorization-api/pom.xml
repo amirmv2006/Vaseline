@@ -22,6 +22,12 @@
             <artifactId>vaseline-business-basic-layer-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.amirmv2006.security.authorization.apis</groupId>
+            <artifactId>vaseline-security-authorization-basic-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

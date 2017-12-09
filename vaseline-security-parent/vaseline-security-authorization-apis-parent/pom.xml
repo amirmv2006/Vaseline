@@ -11,6 +11,11 @@
 
     <groupId>com.github.amirmv2006.security.authorization.apis</groupId>
     <artifactId>vaseline-security-authorization-apis-parent</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>vaseline-security-authorization-basic-api</module>
+        <module>vaseline-security-authorization-model-api</module>
+    </modules>
 
 
 </project>

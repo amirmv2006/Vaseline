@@ -12,7 +12,7 @@
     <artifactId>vaseline-jpa-simple-search-dao-api</artifactId>
     <packaging>bundle</packaging>
     <properties>
-        <aries.osgi.basePackage>ir.amv.os.vaseline.data.jpa.apis.simplesearch</aries.osgi.basePackage>
+        <bundle.base.pkg>ir.amv.os.vaseline.data.jpa.apis.simplesearch</bundle.base.pkg>
     </properties>
 
     <dependencies>

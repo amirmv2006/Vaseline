@@ -13,7 +13,7 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <aries.osgi.basePackage>ir.amv.os.vaseline.security.apis.authentication.daoimpl.jpa</aries.osgi.basePackage>
+        <bundle.base.pkg>ir.amv.os.vaseline.security.apis.authentication.daoimpl.jpa</bundle.base.pkg>
     </properties>
 
     <dependencies>

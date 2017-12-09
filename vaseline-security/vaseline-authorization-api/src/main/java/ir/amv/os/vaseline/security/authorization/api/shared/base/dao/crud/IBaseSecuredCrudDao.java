@@ -4,7 +4,7 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.crud.IBaseCrudDao;
 import ir.amv.os.vaseline.security.authorization.api.shared.base.dao.ro.IBaseSecuredReadOnlyDao;
-import ir.amv.os.vaseline.security.authorization.api.shared.criteria.ISecurityCriteria;
+import ir.amv.os.vaseline.security.apis.authorization.basic.server.criteria.ISecurityCriteria;
 
 import java.io.Serializable;
 

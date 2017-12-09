@@ -15,6 +15,7 @@
     <modules>
         <module>vaseline-basics-apis-parent</module>
         <module>vaseline-basics-spring-parent</module>
+        <module>vaseline-basics-osgi-parent</module>
     </modules>
 
 

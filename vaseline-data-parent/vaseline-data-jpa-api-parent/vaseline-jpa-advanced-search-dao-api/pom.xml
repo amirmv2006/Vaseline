@@ -12,7 +12,7 @@
     <artifactId>vaseline-jpa-advanced-search-dao-api</artifactId>
     <packaging>bundle</packaging>
     <properties>
-        <aries.osgi.basePackage>ir.amv.os.vaseline.data.jpa.apis.advancedsearch</aries.osgi.basePackage>
+        <bundle.base.pkg>ir.amv.os.vaseline.data.jpa.apis.advancedsearch</bundle.base.pkg>
     </properties>
 
     <dependencies>
