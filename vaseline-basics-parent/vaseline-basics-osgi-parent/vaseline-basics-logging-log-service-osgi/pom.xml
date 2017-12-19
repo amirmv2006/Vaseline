@@ -9,13 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>vaseline-basics-logging-slf4j-osgi</artifactId>
+    <artifactId>vaseline-basics-logging-log-service-osgi</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.activator>ir.amv.os.vaseline.basics.osgi.logging.slf4j.activator.VaselineBasicLoggingSlf4jActivator</bundle.activator>
-        <bundle.base.pkg>ir.amv.os.vaseline.basics.osgi.logging.slf4j</bundle.base.pkg>
+        <bundle.activator>ir.amv.os.vaseline.basics.osgi.logging.osgiloggingservice.activator.VaselineBasicLoggingOsgiLogActivator</bundle.activator>
+        <bundle.base.pkg>ir.amv.os.vaseline.basics.osgi.logging.osgiloggingservice</bundle.base.pkg>
     </properties>
     <dependencies>
         <dependency>
@@ -28,8 +28,10 @@
             <artifactId>org.osgi.core</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.service.log</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
+
 </project>

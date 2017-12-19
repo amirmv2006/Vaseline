@@ -62,6 +62,7 @@ public class VaselineJsonConfig {
         }
         polymorphysmSerializerAndDeserializer.setAllParentClasses(allParentClasses);
 
+        // don't re-register type adapter
         gsonSerializers.remove("vaselinePolymorphysmSerializerAndDeserializer");
         gsonDeserializers.remove("vaselinePolymorphysmSerializerAndDeserializer");
         for (String beanName : gsonSerializers.keySet()) {

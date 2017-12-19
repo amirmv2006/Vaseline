@@ -8,7 +8,6 @@ import ir.amv.os.vaseline.basics.apis.logging.server.logger.IVaselineLogger;
 import ir.amv.os.vaseline.basics.apis.logging.server.logger.VaselineLogLevel;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -22,8 +21,18 @@ public interface IImplementedVaselineLogger
 
     String ELEMENT_SEPARATOR = ", ";
 
+    /**
+     * the service provides add and remove only, in this specific
+     * impl we use List
+     * @return
+     */
     List<IVaselineLogCategorizer> getLogCategorizers();
-    void doLog(String loggerName, final VaselineLogLevel logLevel, String log);
+
+    default void doLogWithCategory(String loggerName, String category, VaselineLogLevel logLevel, String logMessage) throws LogException{
+        doLog(loggerName, logLevel, logMessage);
+    }
+
+    void doLog(String loggerName, final VaselineLogLevel logLevel, String log) throws LogException;
 
     @Override
     default boolean isLogLevelEnabled(VaselineLogLevel logLevel) {
@@ -44,7 +53,7 @@ public interface IImplementedVaselineLogger
                 log = ignored.getLogMessage();
             }
             if (log != null) {
-                doLog(logCategorizer.getLoggerFor(source, category), logLevel, log);
+                doLogWithCategory(logCategorizer.getLoggerFor(source, category), category, logLevel, log);
             }
             if (interrupt) {
                 break;

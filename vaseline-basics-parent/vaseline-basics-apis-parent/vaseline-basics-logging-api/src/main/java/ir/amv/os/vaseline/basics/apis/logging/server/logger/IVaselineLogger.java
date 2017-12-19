@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.basics.apis.logging.server.logger;
 
+import ir.amv.os.vaseline.basics.apis.logging.server.categorizer.IVaselineLogCategorizer;
 import ir.amv.os.vaseline.basics.apis.logging.server.exc.LogException;
 
 /**
@@ -20,4 +21,7 @@ public interface IVaselineLogger {
     void log(String source, String category, VaselineLogLevel logLevel, String formattedMessage, Object... args) throws LogException;
 
     String toLogString(Object object);
+
+    void addLogCategorizer(IVaselineLogCategorizer categorizer);
+    void removeLogCategorizer(IVaselineLogCategorizer categorizer);
 }
