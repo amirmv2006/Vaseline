@@ -13,8 +13,7 @@
     <artifactId>vaseline-reflection-util</artifactId>
 
     <properties>
-        <aries.osgi.export.pkg>!*.impl;ir.amv.os.vaseline.thirdparty.shared.util.reflection*</aries.osgi.export.pkg>
-        <include.resource></include.resource>
+        <bundle.base.pkg>ir.amv.os.vaseline.thirdparty.shared.util.reflection</bundle.base.pkg>
     </properties>
 
 </project>

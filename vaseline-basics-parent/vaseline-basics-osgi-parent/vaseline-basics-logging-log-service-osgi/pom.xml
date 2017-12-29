@@ -32,6 +32,8 @@
             <artifactId>org.osgi.service.log</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!-- test deps -->
     </dependencies>
 
 </project>

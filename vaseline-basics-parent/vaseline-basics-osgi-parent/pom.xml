@@ -17,13 +17,14 @@
         <bundle.blueprint.annotation>true</bundle.blueprint.annotation>
     </properties>
     <modules>
-        <module>vaseline-basics-karaf-feature</module>
+        <module>vaseline-basics-ogsi-testing-util</module>
         <module>vaseline-basics-logging-slf4j-osgi</module>
         <module>vaseline-basics-core-osgi</module>
         <module>vaseline-basics-json-gson-osgi</module>
         <module>vaseline-basics-logging-log-service-osgi</module>
         <module>vaseline-basics-logging-common-osgi</module>
         <module>vaseline-basics-logging-pax-logging-osgi</module>
+        <module>vaseline-basics-karaf-feature</module>
     </modules>
 
     <dependencyManagement>
