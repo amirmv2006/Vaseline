@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.basics.osgi.logging.pax.logging.activator;
 
-import ir.amv.enterprise.osgi.bundle.base.api.activator.AbstractBundleActivator;
 import ir.amv.os.vaseline.basics.apis.logging.server.logger.IVaselineLogger;
+import ir.amv.os.vaseline.basics.osgi.base.AbstractBundleActivator;
 import ir.amv.os.vaseline.basics.osgi.logging.pax.logging.server.logger.VaselineLoggerPaxLogServiceImpl;
 import org.ops4j.pax.logging.PaxLoggingService;
 import org.osgi.framework.BundleContext;

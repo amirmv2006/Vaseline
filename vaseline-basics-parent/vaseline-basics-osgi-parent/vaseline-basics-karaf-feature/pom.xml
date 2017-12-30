@@ -172,7 +172,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*Integration*.java</exclude>
                     </excludes>
                     <systemProperties>
                         <org.apache.karaf.groupId>org.apache.karaf</org.apache.karaf.groupId>
@@ -195,7 +195,7 @@
                                 <exclude>none</exclude>
                             </excludes>
                             <includes>
-                                <include>**/*.*</include>
+                                <include>**/*Integration*.java</include>
                             </includes>
                         </configuration>
                     </execution>

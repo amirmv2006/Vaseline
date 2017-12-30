@@ -1,37 +1,34 @@
 package ir.amv.os.vaseline.basics.osgi.core.activator;
 
 import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.IProxyAware;
-import org.osgi.framework.BundleActivator;
+import ir.amv.os.vaseline.basics.osgi.base.AbstractBundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
 
 /**
  * @author Amir
  */
-public class VaselineBasicCoreActivator implements BundleActivator {
-
-    private ServiceListener serviceListener;
+public class VaselineBasicCoreActivator extends AbstractBundleActivator {
 
     @Override
-    public void start(final BundleContext context) throws Exception {
-        serviceListener = event -> {
+    protected void doStart(final BundleContext context) throws InvalidSyntaxException {
+        ServiceListener serviceListener = event -> {
             ServiceReference<? extends IProxyAware> serviceReference = (ServiceReference<? extends IProxyAware>) event.getServiceReference();
             IProxyAware service = context.getService(serviceReference);
             Object unwrapped = unwrapProxy(service);
             service.setProxy(unwrapped);
         };
-        context.addServiceListener(serviceListener, "(vaseline.layer=api)");
+        addServiceListener(serviceListener, "(vaseline.layer=api)");
+    }
+
+    @Override
+    protected void doStop(final BundleContext context) throws Exception {
     }
 
     private Object unwrapProxy(final IProxyAware service) {
         // TODO unwrap the main bean
         return service;
-    }
-
-    @Override
-    public void stop(final BundleContext context) throws Exception {
-        context.removeServiceListener(serviceListener);
-        serviceListener = null;
     }
 }

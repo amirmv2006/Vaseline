@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.basics.osgi.json.activator.tracker;
 
 import com.google.gson.JsonDeserializer;
-import ir.amv.enterprise.osgi.bundle.base.api.activator.defered.DeferedServiceTracker;
 import ir.amv.os.vaseline.basics.apis.logging.server.logger.VaselineLogLevel;
+import ir.amv.os.vaseline.basics.osgi.base.deferred.DeferredServiceTracker;
 import ir.amv.os.vaseline.basics.osgi.json.activator.GsonServiceRegistererDeferedTask;
 import ir.amv.os.vaseline.basics.osgi.json.activator.VaselineGsonServiceRegisterer;
 import ir.amv.os.vaseline.basics.osgi.logging.common.server.helper.LOGGER;
@@ -12,7 +12,7 @@ import org.osgi.framework.InvalidSyntaxException;
 /**
  * @author Amir
  */
-public class VaselineGsonIGsonDeserializerServiceTracker extends DeferedServiceTracker<JsonDeserializer<?>,
+public class VaselineGsonIGsonDeserializerServiceTracker extends DeferredServiceTracker<JsonDeserializer<?>,
         JsonDeserializer<?>> {
 
     public VaselineGsonIGsonDeserializerServiceTracker(final BundleContext context,

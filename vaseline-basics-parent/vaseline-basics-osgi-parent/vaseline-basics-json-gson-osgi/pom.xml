@@ -20,6 +20,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.github.amirmv2006.basics.osgi</groupId>
+            <artifactId>vaseline-basics-base-bundle-osgi</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.amirmv2006.basics.apis</groupId>
             <artifactId>vaseline-json-api</artifactId>
             <version>${project.version}</version>

@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.basics.osgi.logging.common.activator;
 
-import ir.amv.enterprise.osgi.bundle.base.api.activator.AbstractBundleActivator;
 import ir.amv.os.vaseline.basics.apis.logging.server.categorizer.IVaselineLogCategorizer;
+import ir.amv.os.vaseline.basics.osgi.base.AbstractBundleActivator;
 import ir.amv.os.vaseline.basics.osgi.logging.common.server.categorizer.DefaultVaselineLogCategorizerOsgiServiceImpl;
 import org.osgi.framework.BundleContext;
 

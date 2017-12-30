@@ -1,9 +1,6 @@
 package ir.amv.os.vaseline.basics.osgi.json.activator;
 
-import ir.amv.enterprise.osgi.bundle.base.api.activator.defered.IDeferedTask;
-import ir.amv.os.vaseline.basics.apis.logging.server.constants.LoggerConstants;
-import ir.amv.os.vaseline.basics.apis.logging.server.logger.VaselineLogLevel;
-import ir.amv.os.vaseline.basics.osgi.logging.common.server.helper.LOGGER;
+import ir.amv.os.vaseline.basics.osgi.base.deferred.IDeferredTask;
 
 import java.util.function.Consumer;
 
@@ -11,7 +8,7 @@ import java.util.function.Consumer;
  * @author Amir
  */
 
-public class GsonServiceRegistererDeferedTask<S> implements IDeferedTask<S> {
+public class GsonServiceRegistererDeferedTask<S> implements IDeferredTask<S> {
 
     private VaselineGsonServiceRegisterer gsonServiceRegisterer;
     private Consumer<S> consumer;

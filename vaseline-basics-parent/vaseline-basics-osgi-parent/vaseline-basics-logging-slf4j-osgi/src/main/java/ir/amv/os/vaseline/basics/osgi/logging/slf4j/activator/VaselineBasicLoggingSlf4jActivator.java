@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.basics.osgi.logging.slf4j.activator;
 
-import ir.amv.enterprise.osgi.bundle.base.api.activator.AbstractBundleActivator;
 import ir.amv.os.vaseline.basics.apis.logging.server.logger.IVaselineLogger;
+import ir.amv.os.vaseline.basics.osgi.base.AbstractBundleActivator;
 import ir.amv.os.vaseline.basics.osgi.logging.slf4j.server.logger.VaselineLoggerSlf4jImpl;
 import org.osgi.framework.BundleContext;
 

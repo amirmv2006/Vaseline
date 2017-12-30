@@ -21,9 +21,6 @@
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
 http://karaf.apache.org/xmlns/features/v1.0.0 ">
 
-    <feature name="bundle-base-api" version="1.0-SNAPSHOT">
-        <bundle>mvn:ir.amv.enterprise.osgi/bundle-base-api/1.0-SNAPSHOT</bundle>
-    </feature>
     <feature name="vaseline-reflection-util" version="${project.version}">
         <bundle dependency="true">mvn:com.github.amirmv2006.thirdparty/vaseline-reflection-util/${project.version}</bundle>
     </feature>
@@ -63,24 +60,36 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     </feature>
 
     <!-- impl features -->
-    <feature name="vaseline-basics-logging-common-osgi" version="${project.version}" start-level="20">
+    <feature name="vaseline-basics-base-bundle" version="1.0-SNAPSHOT">
+        <bundle dependency="true">mvn:${project.groupId}/vaseline-basics-base-bundle-osgi/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-basics-logging-common" version="${project.version}" start-level="20">
+        <feature>vaseline-basics-base-bundle</feature>
         <feature>vaseline-basics-loggingimpl-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-basics-logging-common-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-logger-slf4j" version="${project.version}" start-level="10">
+        <feature>vaseline-basics-base-bundle</feature>
+        <feature>vaseline-basics-loggingimpl-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-basics-logging-slf4j-osgi/${project.version}</bundle>
     </feature>
-    <feature name="vaseline-basics-logging-log-service-osgi" version="${project.version}" start-level="10">
+    <feature name="vaseline-basics-logging-log-service" version="${project.version}" start-level="10">
+        <feature>vaseline-basics-base-bundle</feature>
+        <feature>vaseline-basics-loggingimpl-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-basics-logging-log-service-osgi/${project.version}</bundle>
     </feature>
-    <feature name="vaseline-basics-logging-pax-logging-osgi" version="${project.version}" start-level="10">
+    <feature name="vaseline-basics-logging-pax-logging" version="${project.version}" start-level="10">
+        <feature>vaseline-basics-base-bundle</feature>
+        <feature>vaseline-basics-loggingimpl-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-basics-logging-pax-logging-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-core" version="${project.version}">
+        <feature>vaseline-basics-base-bundle</feature>
         <feature>vaseline-core-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-basics-core-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-json-gson" version="${project.version}">
+        <feature>vaseline-basics-base-bundle</feature>
         <feature>vaseline-json-api</feature>
         <feature>vaseline-core-api</feature>
         <bundle>mvn:com.google.code.gson/gson/2.3.1</bundle>
@@ -90,7 +99,6 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
         <details>${project.description}</details>
         <!-- api beans -->
-        <feature>bundle-base-api</feature>
         <feature>vaseline-reflection-util</feature>
         <feature>vaseline-i18n-api</feature>
         <feature>vasline-jdbc-api</feature>
@@ -103,8 +111,9 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-validation-api</feature>
 
         <!--impl beans-->
-        <feature>vaseline-basics-logging-pax-logging-osgi</feature>
-        <feature>vaseline-basics-logging-common-osgi</feature>
+        <feature>vaseline-basics-base-bundle</feature>
+        <feature>vaseline-basics-logging-pax-logging</feature>
+        <feature>vaseline-basics-logging-common</feature>
         <feature>vaseline-core</feature>
         <feature>vaseline-json-gson</feature>
     </feature>

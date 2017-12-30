@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.basics.osgi.json.activator;
 
-import ir.amv.enterprise.osgi.bundle.base.api.activator.AbstractBundleActivator;
 import ir.amv.os.vaseline.basics.apis.core.server.polymorphysm.IVaselinePolymorphysmClassHolder;
 import ir.amv.os.vaseline.basics.apis.core.server.polymorphysm.defimpl.VaselinePolymorphysmClassHolderImpl;
+import ir.amv.os.vaseline.basics.osgi.base.AbstractBundleActivator;
 import ir.amv.os.vaseline.basics.osgi.json.activator.tracker.VaselineGsonIGsonDeserializerServiceTracker;
 import ir.amv.os.vaseline.basics.osgi.json.activator.tracker.VaselineGsonIGsonSerializerServiceTracker;
 import ir.amv.os.vaseline.basics.osgi.json.activator.tracker.VaselineGsonIPolymorphysmClassHolderServiceTracker;

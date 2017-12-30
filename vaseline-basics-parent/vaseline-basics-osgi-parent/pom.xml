@@ -25,6 +25,7 @@
         <module>vaseline-basics-logging-common-osgi</module>
         <module>vaseline-basics-logging-pax-logging-osgi</module>
         <module>vaseline-basics-karaf-feature</module>
+        <module>vaseline-basics-base-bundle-osgi</module>
     </modules>
 
     <dependencyManagement>
