@@ -34,7 +34,7 @@ public class VaselineSlf4jLogFeatureIntegrationTest extends AbstractVaselineBasi
                 Collections.singletonList(IVaselineLogger.class), 5000));
 
         for (BundleServiceChecker serviceChecker : serviceCheckers) {
-            serviceChecker.checkForRegisteredServices(bundleContext);
+            serviceChecker.checkBundle(bundleContext);
         }
     }
 

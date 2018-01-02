@@ -22,6 +22,11 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.github.amirmv2006.data.apis</groupId>
+            <artifactId>vaseline-simple-search-dao-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
             <scope>provided</scope>

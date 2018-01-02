@@ -22,13 +22,13 @@
 http://karaf.apache.org/xmlns/features/v1.0.0 ">
 
     <feature name="vaseline-reflection-util" version="${project.version}">
-        <bundle dependency="true">mvn:com.github.amirmv2006.thirdparty/vaseline-reflection-util/${project.version}</bundle>
+        <bundle>mvn:com.github.amirmv2006.thirdparty/vaseline-reflection-util/${project.version}</bundle>
     </feature>
     <feature name="vaseline-i18n-api" version="${project.version}">
         <bundle>mvn:com.github.amirmv2006.basics.apis/vaseline-i18n-api/${project.version}</bundle>
     </feature>
-    <feature name="vasline-jdbc-api" version="${project.version}">
-        <bundle>mvn:com.github.amirmv2006.basics.apis/vasline-jdbc-api/${project.version}</bundle>
+    <feature name="vaseline-jdbc-api" version="${project.version}">
+        <bundle>mvn:com.github.amirmv2006.basics.apis/vaseline-jdbc-api/${project.version}</bundle>
     </feature>
     <feature name="vaseline-json-api" version="${project.version}">
         <bundle>mvn:com.github.amirmv2006.basics.apis/vaseline-json-api/${project.version}</bundle>
@@ -61,7 +61,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
 
     <!-- impl features -->
     <feature name="vaseline-basics-base-bundle" version="1.0-SNAPSHOT">
-        <bundle dependency="true">mvn:${project.groupId}/vaseline-basics-base-bundle-osgi/${project.version}</bundle>
+        <bundle>mvn:${project.groupId}/vaseline-basics-base-bundle-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-basics-logging-common" version="${project.version}" start-level="20">
         <feature>vaseline-basics-base-bundle</feature>
@@ -101,7 +101,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <!-- api beans -->
         <feature>vaseline-reflection-util</feature>
         <feature>vaseline-i18n-api</feature>
-        <feature>vasline-jdbc-api</feature>
+        <feature>vaseline-jdbc-api</feature>
         <feature>vaseline-json-api</feature>
         <feature>vaseline-basics-logging-api</feature>
         <feature>vaseline-basics-loggingimpl-api</feature>

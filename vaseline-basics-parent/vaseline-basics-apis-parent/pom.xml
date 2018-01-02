@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-i18n-api</module>
-        <module>vasline-jdbc-api</module>
+        <module>vaseline-jdbc-api</module>
         <module>vaseline-json-api</module>
         <module>vaseline-basics-logging-api</module>
         <module>vaseline-basics-loggingimpl-api</module>

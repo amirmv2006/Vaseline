@@ -4,7 +4,9 @@ import ir.amv.os.vaseline.basics.apis.core.server.polymorphysm.IVaselinePolymorp
 import ir.amv.os.vaseline.basics.apis.json.server.converter.IVaselineJsonConverter;
 import ir.amv.os.vaseline.basics.apis.logging.server.categorizer.IVaselineLogCategorizer;
 import ir.amv.os.vaseline.basics.apis.logging.server.logger.IVaselineLogger;
+import ir.amv.os.vaseline.basics.osgi.testing.util.AbstractBundleChecker;
 import ir.amv.os.vaseline.basics.osgi.testing.util.BundleServiceChecker;
+import ir.amv.os.vaseline.basics.osgi.testing.util.BundleStartedChecker;
 import org.junit.Test;
 import org.osgi.framework.InvalidSyntaxException;
 
@@ -23,16 +25,28 @@ public class VaselineBasicsFeatureIntegrationTest extends AbstractVaselineBasics
     @Test
     public void testGsonServiceRegister() throws InvalidSyntaxException, ClassNotFoundException, InterruptedException {
         assertNotNull(bundleContext);
-        List<BundleServiceChecker> serviceCheckers = new ArrayList<>();
-        serviceCheckers.add(new BundleServiceChecker("vaseline-basics-logging-pax-logging-osgi",
-                Collections.singletonList(IVaselineLogger.class), 5000));
-        serviceCheckers.add(new BundleServiceChecker("vaseline-basics-logging-common-osgi",
+        List<AbstractBundleChecker> bundleCheckers = new ArrayList<>();
+        bundleCheckers.add(new BundleStartedChecker("vaseline-reflection-util"));
+        bundleCheckers.add(new BundleStartedChecker("vaseline-i18n-api"));
+        bundleCheckers.add(new BundleStartedChecker("vaseline-jdbc-api"));
+        bundleCheckers.add(new BundleStartedChecker("vaseline-json-api"));
+        bundleCheckers.add(new BundleStartedChecker("vaseline-basics-logging-api"));
+        bundleCheckers.add(new BundleStartedChecker("vaseline-basics-loggingimpl-api"));
+        bundleCheckers.add(new BundleStartedChecker("vaseline-core-api"));
+        bundleCheckers.add(new BundleStartedChecker("vaseline-entity-jpa-api"));
+        bundleCheckers.add(new BundleStartedChecker("vaseline-mapper-api"));
+        bundleCheckers.add(new BundleStartedChecker("vaseline-validation-api"));
+        bundleCheckers.add(new BundleStartedChecker("vaseline-basics-base-bundle-osgi"));
+        bundleCheckers.add(new BundleStartedChecker("vaseline-basics-core-osgi"));
+        bundleCheckers.add(new BundleServiceChecker("vaseline-basics-logging-pax-logging-osgi",
+                Collections.singletonList(IVaselineLogger.class)));
+        bundleCheckers.add(new BundleServiceChecker("vaseline-basics-logging-common-osgi",
                 Collections.singletonList(IVaselineLogCategorizer.class), 5000));
-        serviceCheckers.add(new BundleServiceChecker("vaseline-basics-json-gson-osgi",
+        bundleCheckers.add(new BundleServiceChecker("vaseline-basics-json-gson-osgi",
                 Arrays.asList(IVaselinePolymorphysmClassHolder.class, IVaselineJsonConverter.class), 5000));
 
-        for (BundleServiceChecker serviceChecker : serviceCheckers) {
-            serviceChecker.checkForRegisteredServices(bundleContext);
+        for (AbstractBundleChecker bundleChecker : bundleCheckers) {
+            bundleChecker.checkBundle(bundleContext);
         }
     }
 

@@ -34,7 +34,6 @@
     <description>vaseline-basics-karaf-feature details</description>
 
     <properties>
-        <bundle.blueprint.annotation>false</bundle.blueprint.annotation>
         <pax-exam-junit4.version>4.11.0</pax-exam-junit4.version>
     </properties>
 
