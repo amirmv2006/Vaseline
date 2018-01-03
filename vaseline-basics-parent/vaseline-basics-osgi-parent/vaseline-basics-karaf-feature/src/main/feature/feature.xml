@@ -43,6 +43,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <feature name="vaseline-core-api" version="${project.version}">
         <feature>vaseline-reflection-util</feature>
         <feature>vaseline-i18n-api</feature>
+        <bundle>mvn:javax.validation/validation-api/2.0.0.Final</bundle>
         <bundle>mvn:joda-time/joda-time/2.1</bundle>
         <bundle>mvn:com.github.amirmv2006.basics.apis/vaseline-core-api/${project.version}</bundle>
     </feature>

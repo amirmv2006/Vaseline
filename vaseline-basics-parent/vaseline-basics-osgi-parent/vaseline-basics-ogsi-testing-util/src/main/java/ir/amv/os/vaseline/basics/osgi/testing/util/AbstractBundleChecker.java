@@ -23,9 +23,12 @@ public abstract class AbstractBundleChecker {
     }
 
     public void checkBundle(BundleContext bundleContext) throws InterruptedException {
+        long mainStartTime = System.currentTimeMillis();
         long startTime = System.currentTimeMillis();
         boolean bundleStarted = false;
-        while (!bundleStarted && System.currentTimeMillis() - startTime < timeout) {
+        while (!bundleStarted &&
+                System.currentTimeMillis() - startTime < timeout &&
+                System.currentTimeMillis() - mainStartTime < 180_000) { // 3 minutes
             Bundle[] bundles = bundleContext.getBundles();
             for (Bundle bundle : bundles) {
                 if (bundle.getSymbolicName().toLowerCase().contains(bundleSymbolicName)) {
@@ -35,8 +38,10 @@ public abstract class AbstractBundleChecker {
                 }
             }
             if (!bundleStarted) {
-                Thread.sleep(1000L);
+                startTime = System.currentTimeMillis(); // timeout should be calculated from the time bundle has
+                // actually started
             }
+            Thread.sleep(1000L);
         }
         logInfo(String.format("checking bundle %s startup took %s milliseconds", bundleSymbolicName, System
                 .currentTimeMillis() - startTime));

@@ -41,7 +41,7 @@ public class BundleServiceChecker extends AbstractBundleChecker {
                 logInfo(String.format("service %s is exported by %s", bundleService, bundleSymbolicName));
             } else {
                 logError(String.format("can not find service '%s'", bundleService));
-                throw new IllegalStateException("Can not find service " + bundleServices);
+                throw new IllegalStateException("Can not find service " + bundleService);
             }
         }
     }
