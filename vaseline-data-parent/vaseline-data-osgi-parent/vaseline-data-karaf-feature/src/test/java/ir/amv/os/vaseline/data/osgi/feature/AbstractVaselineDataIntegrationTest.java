@@ -59,11 +59,6 @@ public abstract class AbstractVaselineDataIntegrationTest {
                 keepRuntimeFolder(),
                 configureConsole().ignoreLocalConsole(),
                 mavenBundle()
-                        .groupId("javax.validation")
-                        .artifactId("validation-api")
-                        .version("2.0.0.Final")
-                        .start(),
-                mavenBundle()
                         .groupId("org.apache.geronimo.specs")
                         .artifactId("geronimo-jpa_2.1_spec")
                         .version("1.0-alpha-1")
