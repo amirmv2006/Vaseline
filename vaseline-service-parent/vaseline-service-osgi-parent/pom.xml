@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.github.amirmv2006.service.osgi</groupId>
     <artifactId>vaseline-service-osgi-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
