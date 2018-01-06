@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
+http://karaf.apache.org/xmlns/features/v1.0.0 ">
+    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:com.github.amirmv2006.business.osgi/vaseline-business-karaf-feature/${project.version}/xml/features</repository>
+
+    <!-- vaseline service api start -->
+    <feature name="vaseline-service-basic-layer-api" version="${project.version}">
+        <feature>vaseline-core-api</feature>
+        <bundle>mvn:com.github.amirmv2006.service.apis/vaseline-service-basic-layer-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-service-basic-layerimpl-api" version="${project.version}">
+        <feature>vaseline-mapper-api</feature>
+        <feature>vaseline-validation-api</feature>
+        <feature>vaseline-service-basic-layer-api</feature>
+        <feature>vaseline-business-basic-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.service.apis/vaseline-service-basic-layerimpl-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-service-simple-search-layer-api" version="${project.version}">
+        <feature>vaseline-service-basic-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.service.apis/vaseline-service-simple-search-layer-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-service-simple-search-layerimpl-api" version="${project.version}">
+        <feature>vaseline-service-basic-layerimpl-api</feature>
+        <feature>vaseline-business-simple-search-layer-api</feature>
+        <feature>vaseline-service-simple-search-layer-api</feature>
+        <bundle>
+            mvn:com.github.amirmv2006.service.apis/vaseline-service-simple-search-layerimpl-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-service-advanced-search-layer-api" version="${project.version}">
+        <feature>vaseline-service-basic-layer-api</feature>
+        <feature>vaseline-advanced-search-dao-api</feature>
+        <bundle>mvn:com.github.amirmv2006.service.apis/vaseline-service-advanced-search-layer-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-service-advanced-search-layerimpl-api" version="${project.version}">
+        <feature>vaseline-service-advanced-search-layer-api</feature>
+        <feature>vaseline-service-basic-layerimpl-api</feature>
+        <feature>vaseline-business-advanced-search-layer-api</feature>
+        <bundle>
+            mvn:com.github.amirmv2006.service.apis/vaseline-service-advanced-search-layerimpl-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-service-multidao-layer-api" version="${project.version}">
+        <feature>vaseline-service-basic-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.service.apis/vaseline-service-multidao-layer-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-service-multidao-layerimpl-api" version="${project.version}">
+        <feature>vaseline-service-multidao-layer-api</feature>
+        <feature>vaseline-service-basic-layerimpl-api</feature>
+        <feature>vaseline-business-multidao-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.service.apis/vaseline-service-multidao-layerimpl-api/${project.version}
+        </bundle>
+    </feature>
+    <!-- vaseline data api end -->
+    <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
+        <details>${project.description}</details>
+        <!-- api beans -->
+        <feature>vaseline-service-basic-layer-api</feature>
+        <feature>vaseline-service-basic-layerimpl-api</feature>
+        <feature>vaseline-service-simple-search-layer-api</feature>
+        <feature>vaseline-service-simple-search-layerimpl-api</feature>
+        <feature>vaseline-service-advanced-search-layer-api</feature>
+        <feature>vaseline-service-advanced-search-layerimpl-api</feature>
+        <feature>vaseline-service-multidao-layer-api</feature>
+        <feature>vaseline-service-multidao-layerimpl-api</feature>
+    </feature>
+
+</features>

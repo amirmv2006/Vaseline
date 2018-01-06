@@ -20,10 +20,8 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
 http://karaf.apache.org/xmlns/features/v1.0.0 ">
-    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features
-    </repository>
-    <repository>mvn:com.github.amirmv2006.data.osgi/vaseline-data-karaf-feature/${project.version}/xml/features
-    </repository>
+    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:com.github.amirmv2006.data.osgi/vaseline-data-karaf-feature/${project.version}/xml/features</repository>
 
     <!-- vaseline business api start -->
     <feature name="vaseline-business-basic-layer-api" version="${project.version}">
