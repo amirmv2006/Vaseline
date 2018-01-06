@@ -27,6 +27,11 @@
             <artifactId>vaseline-business-basic-layerimpl-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.data.apis</groupId>
+            <artifactId>vaseline-advanced-search-dao-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

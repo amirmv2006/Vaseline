@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
+http://karaf.apache.org/xmlns/features/v1.0.0 ">
+    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features
+    </repository>
+    <repository>mvn:com.github.amirmv2006.data.osgi/vaseline-data-karaf-feature/${project.version}/xml/features
+    </repository>
+
+    <!-- vaseline business api start -->
+    <feature name="vaseline-business-basic-layer-api" version="${project.version}">
+        <feature>vaseline-core-api</feature>
+        <feature>vaseline-basic-dao-api</feature>
+        <bundle>mvn:com.github.amirmv2006.business.apis/vaseline-business-basic-layer-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-business-basic-layerimpl-api" version="${project.version}">
+        <feature>vaseline-business-basic-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.business.apis/vaseline-business-basic-layerimpl-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-business-simple-search-layer-api" version="${project.version}">
+        <feature>vaseline-business-basic-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.business.apis/vaseline-business-simple-search-layer-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-business-simple-search-layerimpl-api" version="${project.version}">
+        <feature>vaseline-business-basic-layerimpl-api</feature>
+        <feature>vaseline-business-simple-search-layer-api</feature>
+        <feature>vaseline-simple-search-dao-api</feature>
+        <bundle>
+            mvn:com.github.amirmv2006.business.apis/vaseline-business-simple-search-layerimpl-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-business-advanced-search-layer-api" version="${project.version}">
+        <feature>vaseline-business-basic-layer-api</feature>
+        <feature>vaseline-advanced-search-dao-api</feature>
+        <bundle>mvn:com.github.amirmv2006.business.apis/vaseline-business-advanced-search-layer-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-business-advanced-search-layerimpl-api" version="${project.version}">
+        <feature>vaseline-business-basic-layerimpl-api</feature>
+        <feature>vaseline-business-advanced-search-layer-api</feature>
+        <feature>vaseline-advanced-search-dao-api</feature>
+        <bundle>
+            mvn:com.github.amirmv2006.business.apis/vaseline-business-advanced-search-layerimpl-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-business-multidao-layer-api" version="${project.version}">
+        <feature>vaseline-business-basic-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.business.apis/vaseline-business-multidao-layer-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-business-multidao-layerimpl-api" version="${project.version}">
+        <feature>vaseline-business-basic-layerimpl-api</feature>
+        <feature>vaseline-business-multidao-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.business.apis/vaseline-business-multidao-layerimpl-api/${project.version}
+        </bundle>
+    </feature>
+    <!-- vaseline data api end -->
+    <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
+        <details>${project.description}</details>
+        <!-- api beans -->
+        <feature>vaseline-business-basic-layer-api</feature>
+        <feature>vaseline-business-basic-layerimpl-api</feature>
+        <feature>vaseline-business-simple-search-layer-api</feature>
+        <feature>vaseline-business-simple-search-layerimpl-api</feature>
+        <feature>vaseline-business-advanced-search-layer-api</feature>
+        <feature>vaseline-business-advanced-search-layerimpl-api</feature>
+        <feature>vaseline-business-multidao-layer-api</feature>
+        <feature>vaseline-business-multidao-layerimpl-api</feature>
+    </feature>
+
+</features>
