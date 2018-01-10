@@ -38,7 +38,8 @@ public class CoreExceptionHandlerImpl implements ICoreExceptionHandler {
 		return UUID.randomUUID().toString();
 	}
 
-	public void registerHandler(Class<? extends Throwable> exceptionClass, IBaseExceptionConverter<?, ?> exceptionHandler) {
+	@Override
+	public void registerExceptionConverter(Class<? extends Throwable> exceptionClass, IBaseExceptionConverter<?, ?> exceptionHandler) {
 		exceptionHandlerMap.put(exceptionClass, exceptionHandler);
 	}
 

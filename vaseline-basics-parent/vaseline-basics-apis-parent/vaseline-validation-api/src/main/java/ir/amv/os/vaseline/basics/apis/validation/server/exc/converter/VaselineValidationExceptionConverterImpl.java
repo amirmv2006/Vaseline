@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.basics.apis.validation.server.exc.converter;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.exc.converter.defimpl.BaseExceptionConverterImpl;
-import ir.amv.os.vaseline.basics.apis.core.server.base.exc.handler.defimpl.CoreExceptionHandlerImpl;
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.converter.defimpl.IBaseImplementedExceptionConverter;
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.handler.ICoreExceptionHandler;
 import ir.amv.os.vaseline.basics.apis.i18n.server.message.translator.IVaselineMessageTranslator;
 import ir.amv.os.vaseline.basics.apis.validation.server.exc.VaselineValidationServerException;
 import ir.amv.os.vaseline.basics.apis.validation.shared.VaselineValidationClientException;
@@ -14,10 +14,28 @@ import java.util.Set;
  * Created by AMV on 4/11/2017.
  */
 public class VaselineValidationExceptionConverterImpl
-        extends BaseExceptionConverterImpl<VaselineValidationServerException, VaselineValidationClientException> {
+        implements IBaseImplementedExceptionConverter<VaselineValidationServerException, VaselineValidationClientException> {
 
-    public VaselineValidationExceptionConverterImpl(CoreExceptionHandlerImpl exceptionHandler) {
-        super(exceptionHandler);
+    private IVaselineMessageTranslator messageTranslator;
+
+    @Override
+    public IVaselineMessageTranslator getMessageTranslator() {
+        return messageTranslator;
+    }
+
+    @Override
+    public Class<VaselineValidationServerException> getExceptionClass() {
+        return VaselineValidationServerException.class;
+    }
+
+    @Override
+    public Class<VaselineValidationClientException> getClientExceptionClass() {
+        return VaselineValidationClientException.class;
+    }
+
+    @Override
+    public void setExceptionHandler(final ICoreExceptionHandler exceptionHandler) {
+        injectExceptionHandler(exceptionHandler);
     }
 
     @Override
@@ -27,17 +45,15 @@ public class VaselineValidationExceptionConverterImpl
         for (ConstraintViolation<?> contraintViolation : contraintViolations) {
             Path propertyPath = contraintViolation.getPropertyPath();
             Class<?> rootBeanClass = contraintViolation.getRootBeanClass();
-            String translatedProperty = messageTranslator.translateProperty(rootBeanClass, propertyPath.toString());
-            sb.append(translatedProperty + " " + contraintViolation.getMessage());
+            String translatedProperty = getMessageTranslator().translateProperty(rootBeanClass, propertyPath.toString());
+            sb.append(translatedProperty).append(" ").append(contraintViolation.getMessage());
             sb.append(System.getProperty("line.separator"));
         }
         return new VaselineValidationClientException(sb.toString());
     }
 
 
-    // to be injected
-    @Override
     public void setMessageTranslator(IVaselineMessageTranslator messageTranslator) {
-        injectMessageTranslator(messageTranslator);
+        this.messageTranslator = messageTranslator;
     }
 }

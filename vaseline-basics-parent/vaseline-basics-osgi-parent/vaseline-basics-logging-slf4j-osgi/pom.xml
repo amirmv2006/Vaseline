@@ -14,7 +14,6 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.activator>ir.amv.os.vaseline.basics.osgi.logging.slf4j.activator.VaselineBasicLoggingSlf4jActivator</bundle.activator>
         <bundle.base.pkg>ir.amv.os.vaseline.basics.osgi.logging.slf4j</bundle.base.pkg>
     </properties>
     <dependencies>
@@ -27,10 +26,6 @@
             <groupId>com.github.amirmv2006.basics.apis</groupId>
             <artifactId>vaseline-basics-loggingimpl-api</artifactId>
             <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

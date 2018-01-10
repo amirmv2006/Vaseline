@@ -27,7 +27,7 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 public class VaselineSlf4jLogFeatureIntegrationTest extends AbstractVaselineBasicsIntegrationTest {
 
     @Test
-    public void testGsonServiceRegister() throws InvalidSyntaxException, ClassNotFoundException, InterruptedException {
+    public void testSlf4jFeature() throws InvalidSyntaxException, ClassNotFoundException, InterruptedException {
         assertNotNull(bundleContext);
         List<BundleServiceChecker> serviceCheckers = new ArrayList<>();
         serviceCheckers.add(new BundleServiceChecker("vaseline-basics-logging-slf4j-osgi",
@@ -41,7 +41,8 @@ public class VaselineSlf4jLogFeatureIntegrationTest extends AbstractVaselineBasi
     @Override
     protected String[] getTestFeatures() {
         return new String[]{
-                "vaseline-logger-slf4j"
+                "vaseline-logger-slf4j",
+                "vaseline-basics-logging-common"
         };
     }
 }

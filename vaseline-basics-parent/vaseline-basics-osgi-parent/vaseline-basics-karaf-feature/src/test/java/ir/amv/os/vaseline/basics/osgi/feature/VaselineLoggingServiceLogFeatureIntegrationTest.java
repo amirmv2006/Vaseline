@@ -17,7 +17,8 @@ import static org.junit.Assert.assertNotNull;
 public class VaselineLoggingServiceLogFeatureIntegrationTest extends AbstractVaselineBasicsIntegrationTest {
 
     @Test
-    public void testGsonServiceRegister() throws InvalidSyntaxException, ClassNotFoundException, InterruptedException {
+    public void testLoggingServiceFeature() throws InvalidSyntaxException, ClassNotFoundException,
+            InterruptedException {
         assertNotNull(bundleContext);
         List<BundleServiceChecker> serviceCheckers = new ArrayList<>();
         serviceCheckers.add(new BundleServiceChecker("vaseline-basics-logging-log-service-osgi",
@@ -31,7 +32,8 @@ public class VaselineLoggingServiceLogFeatureIntegrationTest extends AbstractVas
     @Override
     protected String[] getTestFeatures() {
         return new String[]{
-                "vaseline-basics-logging-log-service"
+                "vaseline-basics-logging-log-service",
+                "vaseline-basics-logging-common"
         };
     }
 }

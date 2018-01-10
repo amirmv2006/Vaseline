@@ -4,19 +4,30 @@ import ir.amv.os.vaseline.basics.apis.logging.server.categorizer.IVaselineLogCat
 import ir.amv.os.vaseline.basics.apis.logging.server.logger.IVaselineLogger;
 import ir.amv.os.vaseline.basics.apis.logging.server.logger.VaselineLogLevel;
 import ir.amv.os.vaseline.basics.apis.loggingimpl.server.logger.IImplementedVaselineLogger;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.log.LogService;
-import org.osgi.util.tracker.ServiceTracker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Amir
  */
+@Component(
+        immediate = true,
+        service = IVaselineLogger.class
+)
 public class VaselineLoggerOsgiLogServiceImpl
-        implements IImplementedVaselineLogger {
+        implements IVaselineLogger, IImplementedVaselineLogger {
 
     private List<IVaselineLogCategorizer> logCategorizers;
-    private ServiceTracker<LogService, LogService> logServiceTracker;
+    private LogService logService;
+
+    public VaselineLoggerOsgiLogServiceImpl() {
+        logCategorizers = new ArrayList<>();
+    }
 
     @Override
     public void doLog(final String loggerName, final VaselineLogLevel logLevel, final String log) {
@@ -47,6 +58,9 @@ public class VaselineLoggerOsgiLogServiceImpl
     }
 
     @Override
+    @Reference(
+            cardinality = ReferenceCardinality.AT_LEAST_ONE
+    )
     public void addLogCategorizer(final IVaselineLogCategorizer categorizer) {
         logCategorizers.add(categorizer);
     }
@@ -56,15 +70,12 @@ public class VaselineLoggerOsgiLogServiceImpl
         logCategorizers.remove(categorizer);
     }
 
-    public void setLogCategorizers(final List<IVaselineLogCategorizer> logCategorizers) {
-        this.logCategorizers = logCategorizers;
-    }
-
-    public void setLogServiceTracker(final ServiceTracker<LogService, LogService> logServiceTracker) {
-        this.logServiceTracker = logServiceTracker;
+    @Reference
+    public void setLogService(final LogService logService) {
+        this.logService = logService;
     }
 
     public LogService getLogService() {
-        return logServiceTracker.getService();
+        return logService;
     }
 }

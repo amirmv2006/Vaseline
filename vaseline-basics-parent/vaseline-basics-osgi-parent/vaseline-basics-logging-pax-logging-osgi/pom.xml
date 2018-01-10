@@ -14,7 +14,6 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.activator>ir.amv.os.vaseline.basics.osgi.logging.pax.logging.activator.VaselineBasicLoggingPaxLoggerActivator</bundle.activator>
         <bundle.base.pkg>ir.amv.os.vaseline.basics.osgi.logging.pax.logging</bundle.base.pkg>
         <bundle.dynamic.import.pkg>*</bundle.dynamic.import.pkg>
     </properties>

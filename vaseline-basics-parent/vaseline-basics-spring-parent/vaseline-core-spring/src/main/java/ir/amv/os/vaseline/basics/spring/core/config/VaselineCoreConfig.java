@@ -36,7 +36,8 @@ public class VaselineCoreConfig implements ApplicationContextAware {
 
     @Bean
     public DefaultExceptionConverter defaultExceptionConverter(CoreExceptionHandlerImpl coreExceptionHandler, IVaselineMessageTranslator messageTranslator) {
-        DefaultExceptionConverter defaultExceptionConverter = new DefaultExceptionConverter(coreExceptionHandler);
+        DefaultExceptionConverter defaultExceptionConverter = new DefaultExceptionConverter();
+        defaultExceptionConverter.setExceptionHandler(coreExceptionHandler);
         defaultExceptionConverter.setMessageTranslator(messageTranslator);
         return defaultExceptionConverter;
     }

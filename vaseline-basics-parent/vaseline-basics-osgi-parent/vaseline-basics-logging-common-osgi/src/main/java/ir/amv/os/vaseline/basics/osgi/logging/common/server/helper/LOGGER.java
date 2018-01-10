@@ -19,9 +19,14 @@ public class LOGGER {
     private static IVaselineLogger vaselineLogger;
     private static Queue<LogMessage> logMessageQueue = new LinkedList<>();
 
+    private LOGGER() {
+    }
+
     public static synchronized void setVaselineLogger(final IVaselineLogger vaselineLogger) {
         LOGGER.vaselineLogger = vaselineLogger;
-        deque();
+        if (vaselineLogger != null) {
+            deque();
+        }
     }
 
     private static synchronized void deque() {

@@ -8,13 +8,25 @@ import ir.amv.os.vaseline.basics.apis.i18n.server.file.resolver.IVaselineI18nFil
 public class VaselineClasspathI18nFileProviderImpl implements IVaselineI18nFileProvider {
 
     private String filePath;
+    private ClassLoader classLoader;
 
     public VaselineClasspathI18nFileProviderImpl(String filePath) {
         this.filePath = filePath;
+        this.classLoader = getClass().getClassLoader();
+    }
+
+    public VaselineClasspathI18nFileProviderImpl(final String filePath, final ClassLoader classLoader) {
+        this.filePath = filePath;
+        this.classLoader = classLoader;
     }
 
     @Override
     public String fileBaseName() {
         return "classpath:" + filePath;
+    }
+
+    @Override
+    public ClassLoader getClassLoader() {
+        return classLoader;
     }
 }

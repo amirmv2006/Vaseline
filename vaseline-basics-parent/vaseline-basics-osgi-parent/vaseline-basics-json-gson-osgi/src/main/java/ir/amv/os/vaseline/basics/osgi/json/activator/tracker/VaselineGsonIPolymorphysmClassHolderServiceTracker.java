@@ -18,7 +18,7 @@ public class VaselineGsonIPolymorphysmClassHolderServiceTracker extends Deferred
     public VaselineGsonIPolymorphysmClassHolderServiceTracker(final BundleContext context,
                                                               final VaselineGsonServiceRegisterer gsonServiceRegisterer)
             throws InvalidSyntaxException {
-        super(context, context.createFilter("(objectClass=" + IVaselinePolymorphysmClassHolder.class.getName() + ")"), null,
+        super(context, IVaselinePolymorphysmClassHolder.class, null,
                 new GsonServiceRegistererDeferedTask<>(gsonServiceRegisterer,
                         polymorphysmClassHolder -> {
                             LOGGER.log(VaselineLogLevel.INFO, "adding polymorphism class holder %s", polymorphysmClassHolder);

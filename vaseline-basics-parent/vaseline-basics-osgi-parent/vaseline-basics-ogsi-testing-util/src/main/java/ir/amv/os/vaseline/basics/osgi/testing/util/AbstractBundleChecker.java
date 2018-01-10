@@ -40,6 +40,8 @@ public abstract class AbstractBundleChecker {
             if (!bundleStarted) {
                 startTime = System.currentTimeMillis(); // timeout should be calculated from the time bundle has
                 // actually started
+            } else {
+                break;
             }
             Thread.sleep(1000L);
         }

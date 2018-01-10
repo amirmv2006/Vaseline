@@ -20,6 +20,7 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
 http://karaf.apache.org/xmlns/features/v1.0.0 ">
+    <repository>mvn:org.hibernate.validator/hibernate-validator-osgi-karaf-features/6.0.7.Final/xml/features</repository>
 
     <feature name="vaseline-reflection-util" version="${project.version}">
         <bundle>mvn:com.github.amirmv2006.thirdparty/vaseline-reflection-util/${project.version}</bundle>
@@ -61,35 +62,61 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     </feature>
 
     <!-- impl features -->
-    <feature name="vaseline-basics-base-bundle" version="1.0-SNAPSHOT">
+    <feature name="vaseline-basics-base-bundle" version="${project.version}">
         <bundle>mvn:${project.groupId}/vaseline-basics-base-bundle-osgi/${project.version}</bundle>
     </feature>
+    <feature name="vaseline-basics-i18n" version="${project.version}">
+        <feature>scr</feature>
+        <feature>vaseline-i18n-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-basics-i18n-osgi/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-basics-validation-hibernate-validator" version="${project.version}">
+        <feature>hibernate-validator</feature>
+        <feature>vaseline-validation-api</feature>
+        <bundle>mvn:javax.annotation/javax.annotation-api/1.2</bundle>
+        <bundle>mvn:${project.groupId}/vaseline-basics-validation-hibernate-validator-osgi/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-basics-mapper-dozer" version="${project.version}">
+        <feature>scr</feature>
+        <feature>vaseline-mapper-api</feature>
+        <bundle>mvn:org.apache.commons/commons-lang3/3.5</bundle>
+        <bundle>mvn:commons-collections/commons-collections/3.2.2</bundle>
+        <bundle>mvn:commons-beanutils/commons-beanutils/1.9.3</bundle>
+        <bundle>mvn:com.github.dozermapper/dozer-core/6.1.0</bundle>
+        <bundle>mvn:${project.groupId}/vaseline-basics-mapper-dozer-osgi/${project.version}</bundle>
+    </feature>
     <feature name="vaseline-basics-logging-common" version="${project.version}" start-level="20">
+        <feature>scr</feature>
         <feature>vaseline-basics-base-bundle</feature>
         <feature>vaseline-basics-loggingimpl-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-basics-logging-common-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-logger-slf4j" version="${project.version}" start-level="10">
+        <feature>scr</feature>
         <feature>vaseline-basics-base-bundle</feature>
         <feature>vaseline-basics-loggingimpl-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-basics-logging-slf4j-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-basics-logging-log-service" version="${project.version}" start-level="10">
+        <feature>scr</feature>
         <feature>vaseline-basics-base-bundle</feature>
         <feature>vaseline-basics-loggingimpl-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-basics-logging-log-service-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-basics-logging-pax-logging" version="${project.version}" start-level="10">
+        <feature>scr</feature>
         <feature>vaseline-basics-base-bundle</feature>
         <feature>vaseline-basics-loggingimpl-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-basics-logging-pax-logging-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-core" version="${project.version}">
+        <feature>scr</feature>
         <feature>vaseline-basics-base-bundle</feature>
         <feature>vaseline-core-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-basics-core-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-json-gson" version="${project.version}">
+        <feature>scr</feature>
         <feature>vaseline-basics-base-bundle</feature>
         <feature>vaseline-json-api</feature>
         <feature>vaseline-core-api</feature>
@@ -100,19 +127,13 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
         <details>${project.description}</details>
         <!-- api beans -->
-        <feature>vaseline-reflection-util</feature>
-        <feature>vaseline-i18n-api</feature>
         <feature>vaseline-jdbc-api</feature>
-        <feature>vaseline-json-api</feature>
-        <feature>vaseline-basics-logging-api</feature>
-        <feature>vaseline-basics-loggingimpl-api</feature>
-        <feature>vaseline-core-api</feature>
         <feature>vaseline-entity-jpa-api</feature>
-        <feature>vaseline-mapper-api</feature>
-        <feature>vaseline-validation-api</feature>
 
         <!--impl beans-->
-        <feature>vaseline-basics-base-bundle</feature>
+        <feature>vaseline-basics-i18n</feature>
+        <feature>vaseline-basics-validation-hibernate-validator</feature>
+        <feature>vaseline-basics-mapper-dozer</feature>
         <feature>vaseline-basics-logging-pax-logging</feature>
         <feature>vaseline-basics-logging-common</feature>
         <feature>vaseline-core</feature>

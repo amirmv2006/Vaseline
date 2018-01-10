@@ -23,6 +23,9 @@
         <module>vaseline-basics-logging-pax-logging-osgi</module>
         <module>vaseline-basics-karaf-feature</module>
         <module>vaseline-basics-base-bundle-osgi</module>
+        <module>vaseline-basics-i18n-osgi</module>
+        <module>vaseline-basics-mapper-dozer-osgi</module>
+        <module>vaseline-basics-validation-hibernate-validator-osgi</module>
     </modules>
 
     <dependencyManagement>
@@ -41,5 +44,16 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

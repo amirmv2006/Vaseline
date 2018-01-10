@@ -77,6 +77,8 @@
         <validation-api.version>2.0.0.Final</validation-api.version>
         <javax.el-api.version>2.2.4</javax.el-api.version>
         <karaf.version>4.1.2</karaf.version>
+        <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>
+        <org.osgi.core.version>6.0.0</org.osgi.core.version>
     </properties>
 
     <dependencyManagement>
@@ -376,6 +378,18 @@
                 <artifactId>commons-vfs</artifactId>
                 <version>1.0</version>
             </dependency>
+            <!-- osgi start -->
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.compendium</artifactId>
+                <version>${org.osgi.compendium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.core</artifactId>
+                <version>${org.osgi.core.version}</version>
+            </dependency>
+            <!-- osgi end -->
 
             <dependency>
                 <groupId>junit</groupId>

@@ -18,7 +18,7 @@ public class VaselineGsonIGsonDeserializerServiceTracker extends DeferredService
     public VaselineGsonIGsonDeserializerServiceTracker(final BundleContext context,
                                                        final VaselineGsonServiceRegisterer gsonServiceRegisterer)
             throws InvalidSyntaxException {
-        super(context, context.createFilter("(objectClass=" + JsonDeserializer.class.getName() + ")"), null,
+        super(context, JsonDeserializer.class.getName(), null,
                 new GsonServiceRegistererDeferedTask<>(gsonServiceRegisterer, jsonDeserializer -> {
                     LOGGER.log(VaselineLogLevel.DEBUG, "adding json deserializer %s", jsonDeserializer);
                     gsonServiceRegisterer.addJsonDeserializer(jsonDeserializer);

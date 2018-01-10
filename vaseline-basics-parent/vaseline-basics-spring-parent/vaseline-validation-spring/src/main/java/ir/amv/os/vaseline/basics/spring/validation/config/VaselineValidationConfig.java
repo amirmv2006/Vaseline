@@ -8,7 +8,6 @@ import ir.amv.os.vaseline.basics.spring.i18n.config.VaselineI18nConfig;
 import ir.amv.os.vaseline.basics.spring.validation.config.weblogic.patch.JPAIgnoreTraversableResolver;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -43,7 +42,8 @@ public class VaselineValidationConfig {
             CoreExceptionHandlerImpl exceptionHandler,
             IVaselineMessageTranslator messageTranslator
     ) {
-        VaselineValidationExceptionConverterImpl exceptionConverter = new VaselineValidationExceptionConverterImpl(exceptionHandler);
+        VaselineValidationExceptionConverterImpl exceptionConverter = new VaselineValidationExceptionConverterImpl();
+        exceptionConverter.setExceptionHandler(exceptionHandler);
         exceptionConverter.setMessageTranslator(messageTranslator);
         return exceptionConverter;
     }

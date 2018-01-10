@@ -14,7 +14,6 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.activator>ir.amv.os.vaseline.basics.osgi.logging.osgiloggingservice.activator.VaselineBasicLoggingOsgiLogActivator</bundle.activator>
         <bundle.base.pkg>ir.amv.os.vaseline.basics.osgi.logging.osgiloggingservice</bundle.base.pkg>
     </properties>
     <dependencies>

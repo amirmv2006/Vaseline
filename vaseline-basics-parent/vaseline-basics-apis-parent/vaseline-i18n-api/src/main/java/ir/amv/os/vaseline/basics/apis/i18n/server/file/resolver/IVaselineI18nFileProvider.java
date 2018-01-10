@@ -6,4 +6,6 @@ package ir.amv.os.vaseline.basics.apis.i18n.server.file.resolver;
 public interface IVaselineI18nFileProvider {
 
     String fileBaseName();
+
+    ClassLoader getClassLoader();
 }

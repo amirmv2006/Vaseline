@@ -2,6 +2,7 @@ package ir.amv.os.vaseline.basics.osgi.logging.pax.logging.server.logger;
 
 import ir.amv.os.vaseline.basics.apis.logging.server.categorizer.IVaselineLogCategorizer;
 import ir.amv.os.vaseline.basics.apis.logging.server.exc.LogException;
+import ir.amv.os.vaseline.basics.apis.logging.server.logger.IVaselineLogger;
 import ir.amv.os.vaseline.basics.apis.logging.server.logger.VaselineLogLevel;
 import ir.amv.os.vaseline.basics.apis.loggingimpl.server.logger.IImplementedVaselineLogger;
 import org.ops4j.pax.logging.PaxLogger;
@@ -9,19 +10,31 @@ import org.ops4j.pax.logging.PaxLoggingService;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.log.LogService;
 import org.osgi.util.tracker.ServiceTracker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Amir
  */
+@Component(
+        immediate = true,
+        service = IVaselineLogger.class
+)
 public class VaselineLoggerPaxLogServiceImpl
-        implements IImplementedVaselineLogger {
+        implements IVaselineLogger, IImplementedVaselineLogger {
 
     private List<IVaselineLogCategorizer> logCategorizers;
-    private ServiceTracker<PaxLoggingService, PaxLoggingService> logServiceTracker;
+    private PaxLoggingService loggingService;
+
+    public VaselineLoggerPaxLogServiceImpl() {
+        logCategorizers = new ArrayList<>();
+    }
 
     @Override
     public void doLogWithCategory(final String loggerName, final String category, final VaselineLogLevel logLevel, final String
@@ -59,6 +72,9 @@ public class VaselineLoggerPaxLogServiceImpl
     }
 
     @Override
+    @Reference(
+            cardinality = ReferenceCardinality.AT_LEAST_ONE
+    )
     public void addLogCategorizer(final IVaselineLogCategorizer categorizer) {
         logCategorizers.add(categorizer);
     }
@@ -68,16 +84,12 @@ public class VaselineLoggerPaxLogServiceImpl
         logCategorizers.remove(categorizer);
     }
 
-    public void setLogCategorizers(final List<IVaselineLogCategorizer> logCategorizers) {
-        this.logCategorizers = logCategorizers;
-    }
-
-    public void setLogServiceTracker(final ServiceTracker<PaxLoggingService, PaxLoggingService> logServiceTracker) {
-        this.logServiceTracker = logServiceTracker;
+    @Reference
+    public void setLoggingService(final PaxLoggingService loggingService) {
+        this.loggingService = loggingService;
     }
 
     public PaxLogger getLogger(final String loggerName, final String category) {
-        PaxLoggingService loggingService = logServiceTracker.getService();
         Bundle bundle;
         String paxLogCategory;
         try {

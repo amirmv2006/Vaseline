@@ -40,8 +40,38 @@
     <dependencies>
         <!-- add the artifact that should be in the feature in the dependencies set -->
         <dependency>
+            <groupId>com.github.amirmv2006.basics.apis</groupId>
+            <artifactId>vaseline-jdbc-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.basics.apis</groupId>
+            <artifactId>vaseline-entity-jpa-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>vaseline-basics-logging-slf4j-osgi</artifactId>
+            <artifactId>vaseline-basics-i18n-osgi</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.basics.osgi</groupId>
+            <artifactId>vaseline-basics-validation-hibernate-validator-osgi</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.basics.osgi</groupId>
+            <artifactId>vaseline-basics-mapper-dozer-osgi</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.basics.osgi</groupId>
+            <artifactId>vaseline-basics-logging-pax-logging-osgi</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.basics.osgi</groupId>
+            <artifactId>vaseline-basics-logging-common-osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -54,22 +84,6 @@
             <artifactId>vaseline-basics-json-gson-osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>vaseline-basics-logging-log-service-osgi</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>vaseline-basics-logging-common-osgi</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>vaseline-basics-logging-pax-logging-osgi</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
         <!-- test deps -->
         <dependency>
             <groupId>com.github.amirmv2006.basics.osgi</groupId>
@@ -77,7 +91,6 @@
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- pax exam -->
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
@@ -162,7 +175,7 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
-                                    <file>target/feature/feature.xml</file>
+                                    <file>target/feature/vaseline-basics-feature.xml</file>
                                     <classifier>features</classifier>
                                     <type>xml</type>
                                 </artifact>
