@@ -17,6 +17,28 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.amirmv2006.data.osgi</groupId>
+            <artifactId>vaseline-data-karaf-feature</artifactId>
+            <version>${project.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.business.apis</groupId>
+            <artifactId>vaseline-business-simple-search-layerimpl-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.business.apis</groupId>
+            <artifactId>vaseline-business-advanced-search-layerimpl-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.business.apis</groupId>
+            <artifactId>vaseline-business-multidao-layerimpl-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!-- pax exam -->
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
@@ -108,7 +130,7 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
-                                    <file>target/feature/feature.xml</file>
+                                    <file>target/feature/vaseline-business-feature.xml</file>
                                     <classifier>features</classifier>
                                     <type>xml</type>
                                 </artifact>

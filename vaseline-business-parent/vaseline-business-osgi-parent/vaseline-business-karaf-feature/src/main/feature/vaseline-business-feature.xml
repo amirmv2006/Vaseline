@@ -75,13 +75,8 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
         <details>${project.description}</details>
         <!-- api beans -->
-        <feature>vaseline-business-basic-layer-api</feature>
-        <feature>vaseline-business-basic-layerimpl-api</feature>
-        <feature>vaseline-business-simple-search-layer-api</feature>
         <feature>vaseline-business-simple-search-layerimpl-api</feature>
-        <feature>vaseline-business-advanced-search-layer-api</feature>
         <feature>vaseline-business-advanced-search-layerimpl-api</feature>
-        <feature>vaseline-business-multidao-layer-api</feature>
         <feature>vaseline-business-multidao-layerimpl-api</feature>
     </feature>
 
