@@ -68,7 +68,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
 
     <!-- vaseline data hibernate api start -->
     <feature name="vaseline-hibernate-basic-dao-api" version="${project.version}">
-        <feature>hibernate-orm</feature>
+        <feature version="${org.hibernate.version}">hibernate-orm</feature>
         <feature>vaseline-jdbc-api</feature>
         <feature>vaseline-entity-jpa-api</feature>
         <feature>vaseline-basic-dao-api</feature>

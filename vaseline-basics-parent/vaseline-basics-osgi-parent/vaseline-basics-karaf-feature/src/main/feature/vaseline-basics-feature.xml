@@ -20,7 +20,7 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
 http://karaf.apache.org/xmlns/features/v1.0.0 ">
-    <repository>mvn:org.hibernate.validator/hibernate-validator-osgi-karaf-features/6.0.7.Final/xml/features</repository>
+    <repository>mvn:org.hibernate.validator/hibernate-validator-osgi-karaf-features/${org.hibernate.validator.version}/xml/features</repository>
 
     <feature name="vaseline-reflection-util" version="${project.version}">
         <bundle>mvn:com.github.amirmv2006.thirdparty/vaseline-reflection-util/${project.version}</bundle>
@@ -44,7 +44,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <feature name="vaseline-core-api" version="${project.version}">
         <feature>vaseline-reflection-util</feature>
         <feature>vaseline-i18n-api</feature>
-        <bundle>mvn:javax.validation/validation-api/2.0.0.Final</bundle>
+        <bundle>mvn:javax.validation/validation-api/2.0.1.Final</bundle>
         <bundle>mvn:joda-time/joda-time/2.1</bundle>
         <bundle>mvn:com.github.amirmv2006.basics.apis/vaseline-core-api/${project.version}</bundle>
     </feature>
@@ -71,7 +71,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <bundle>mvn:${project.groupId}/vaseline-basics-i18n-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-basics-validation-hibernate-validator" version="${project.version}">
-        <feature>hibernate-validator</feature>
+        <feature version="${org.hibernate.validator.version}">hibernate-validator</feature>
         <feature>vaseline-validation-api</feature>
         <bundle>mvn:javax.annotation/javax.annotation-api/1.2</bundle>
         <bundle>mvn:${project.groupId}/vaseline-basics-validation-hibernate-validator-osgi/${project.version}</bundle>
@@ -132,12 +132,12 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
 
         <!--impl beans-->
         <feature>vaseline-basics-i18n</feature>
-        <feature>vaseline-basics-validation-hibernate-validator</feature>
         <feature>vaseline-basics-mapper-dozer</feature>
         <feature>vaseline-basics-logging-pax-logging</feature>
         <feature>vaseline-basics-logging-common</feature>
         <feature>vaseline-core</feature>
         <feature>vaseline-json-gson</feature>
+        <feature>vaseline-basics-validation-hibernate-validator</feature>
     </feature>
 
 </features>
