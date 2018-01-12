@@ -49,6 +49,7 @@
         <module>vaseline-bpm</module>
         <module>vaseline-angular</module>
         <module>vaseline-security-parent</module>
+        <module>vaseline-commonosgi-parent</module>
     </modules>
 
     <properties>
