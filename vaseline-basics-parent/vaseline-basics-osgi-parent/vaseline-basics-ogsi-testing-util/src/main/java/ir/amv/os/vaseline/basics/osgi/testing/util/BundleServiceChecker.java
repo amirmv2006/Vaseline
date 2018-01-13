@@ -34,7 +34,7 @@ public class BundleServiceChecker extends AbstractBundleChecker {
             logInfo(String.format("checking if service '%s' is registered", bundleService));
             boolean found = false;
             for (int i = 0; i < retryCount; i++) {
-                logInfo(String.format("Attempty %d to find %s", i+1, bundleService));
+                logInfo(String.format("Attempt %d to find %s", i+1, bundleService));
                 ServiceReference<?>[] registeredServices = bundle.getRegisteredServices();
                 for (ServiceReference<?> registeredService : registeredServices) {
                     String[] objectClasses = (String[]) registeredService.getProperty("objectClass");

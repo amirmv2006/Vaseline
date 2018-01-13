@@ -14,6 +14,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-bundle-parent</module>
+        <module>vaseline-karaf-feature-parent</module>
     </modules>
 
 

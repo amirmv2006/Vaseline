@@ -75,15 +75,15 @@ public abstract class AbstractVaselineBusinessIntegrationTest {
     }
 
     protected String getFeaturesVersion() {
-        return System.getProperty("vasline.business.features.version", "1.0-SNAPSHOT");
+        return System.getProperty("vasline.feature.under.test.version", "1.0-SNAPSHOT");
     }
 
     protected String getFeaturesArtifactId() {
-        return System.getProperty("vasline.business.features.artifactId", "vaseline-business-karaf-feature");
+        return System.getProperty("vasline.feature.under.test.artifactId", "vaseline-business-karaf-feature");
     }
 
     protected String getFeaturesGroupId() {
-        return System.getProperty("vasline.business.features.groupId", "com.github.amirmv2006.business.osgi");
+        return System.getProperty("vasline.feature.under.test.groupId", "com.github.amirmv2006.business.osgi");
     }
 
     protected String getKarafVersion() {

@@ -75,15 +75,15 @@ public abstract class AbstractVaselineDataIntegrationTest {
     }
 
     protected String getFeaturesVersion() {
-        return System.getProperty("vasline.data.features.version", "1.0-SNAPSHOT");
+        return System.getProperty("vasline.feature.under.test.version", "1.0-SNAPSHOT");
     }
 
     protected String getFeaturesArtifactId() {
-        return System.getProperty("vasline.data.features.artifactId", "vaseline-data-karaf-feature");
+        return System.getProperty("vasline.feature.under.test.artifactId", "vaseline-data-karaf-feature");
     }
 
     protected String getFeaturesGroupId() {
-        return System.getProperty("vasline.data.features.groupId", "com.github.amirmv2006.data.osgi");
+        return System.getProperty("vasline.feature.under.test.groupId", "com.github.amirmv2006.data.osgi");
     }
 
     protected String getKarafVersion() {
