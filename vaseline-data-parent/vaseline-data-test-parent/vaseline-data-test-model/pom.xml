@@ -63,6 +63,10 @@
                     <artifactId>el-api</artifactId>
                     <groupId>javax.el</groupId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>hibernate-entitymanager</artifactId>
+                    <groupId>org.hibernate</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>

@@ -29,8 +29,8 @@
         <bundle.private.pkg>${project.artifactId}*.impl</bundle.private.pkg>
         <bundle.dynamic.import.pkg />
 
-        <bundle.export.pkg>!*.impl;${bundle.basePackage}*;-noimport:=true</bundle.export.pkg>
-        <bundle.basePackage>${project.artifactId}</bundle.basePackage>
+        <bundle.export.pkg>!*.impl;${bundle.base.pkg}*;-noimport:=true</bundle.export.pkg>
+        <bundle.base.pkg>${project.artifactId}</bundle.base.pkg>
 
         <bundle.include.resource>{maven-resources}</bundle.include.resource>
         <bundle.remove.headers>Ignore-Package,Include-Resource,Private-Package,Bundle-DocURL</bundle.remove.headers>

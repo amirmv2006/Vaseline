@@ -2,11 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <groupId>ir.amv.enterprise.osgi</groupId>
-        <artifactId>bundle-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.amirmv2006</groupId>
@@ -36,6 +31,7 @@
         <developerConnection>scm:git:git@github.com:amirmv2006/Vaseline.git</developerConnection>
     </scm>
     <modules>
+        <module>vaseline-commonosgi-parent</module>
         <module>vaseline-thirdparty</module>
         <module>vaseline-basics-parent</module>
         <module>vaseline-data-parent</module>
@@ -49,7 +45,6 @@
         <module>vaseline-bpm</module>
         <module>vaseline-angular</module>
         <module>vaseline-security-parent</module>
-        <module>vaseline-commonosgi-parent</module>
     </modules>
 
     <properties>
@@ -59,12 +54,11 @@
         <docker.available>true</docker.available>
         <!-- VERSIONS -->
         <org.springframework.boot.version>1.4.2.RELEASE</org.springframework.boot.version>
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
-        <org.springframework.osgi.version>4.3.4.RELEASE</org.springframework.osgi.version>
+        <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
         <org.springframework.sec.version>4.2.0.RELEASE</org.springframework.sec.version>
         <org.springframework.data.version>2.0.5.RELEASE</org.springframework.data.version>
         <org.apache.solr.version>4.10.4</org.apache.solr.version>
-        <org.hibernate.version>5.2.10.Final</org.hibernate.version>
+        <org.hibernate.version>5.2.4.Final</org.hibernate.version>
         <org.hibernate.validator.version>6.0.7.Final</org.hibernate.validator.version>
         <net.sf.dozer.version>5.3.2</net.sf.dozer.version>
         <net.sf.jasperreports.version>6.1.0</net.sf.jasperreports.version>
@@ -76,7 +70,7 @@
         <org.aspectj.version>1.6.12</org.aspectj.version>
         <org.eclipse.persistence.version>2.1.0</org.eclipse.persistence.version>
         <validation-api.version>2.0.0.Final</validation-api.version>
-        <javax.el-api.version>2.2.4</javax.el-api.version>
+        <javax.el-api.version>3.0.0</javax.el-api.version>
         <karaf.version>4.1.2</karaf.version>
         <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>
         <org.osgi.core.version>6.0.0</org.osgi.core.version>
@@ -216,7 +210,7 @@
                 <version>${javax.el-api.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.glassfish.web</groupId>
+                <groupId>org.glassfish</groupId>
                 <artifactId>javax.el</artifactId>
                 <version>${javax.el-api.version}</version>
             </dependency>
