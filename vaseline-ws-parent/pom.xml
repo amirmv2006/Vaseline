@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.amirmv2006.ws</groupId>
-    <artifactId>vaseline-ws</artifactId>
+    <artifactId>vaseline-ws-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-ws-rest</module>
