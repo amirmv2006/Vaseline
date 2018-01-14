@@ -27,8 +27,8 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <feature name="vaseline-core-api" version="${project.version}">
         <feature>vaseline-reflection-util</feature>
         <feature>vaseline-i18n-api</feature>
-        <bundle>mvn:javax.validation/validation-api/2.0.1.Final</bundle>
-        <bundle>mvn:joda-time/joda-time/2.1</bundle>
+        <bundle dependency="true">mvn:javax.validation/validation-api/2.0.1.Final</bundle>
+        <bundle dependency="true">mvn:joda-time/joda-time/2.1</bundle>
         <bundle>mvn:com.github.amirmv2006.basics.apis/vaseline-core-api/${project.version}</bundle>
     </feature>
     <feature name="vaseline-entity-jpa-api" version="${project.version}">
@@ -56,16 +56,16 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <feature name="vaseline-basics-validation-hibernate-validator" version="${project.version}">
         <feature version="${org.hibernate.validator.version}">hibernate-validator</feature>
         <feature>vaseline-validation-api</feature>
-        <bundle>mvn:javax.annotation/javax.annotation-api/1.2</bundle>
+        <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/1.2</bundle>
         <bundle>mvn:${project.groupId}/vaseline-basics-validation-hibernate-validator-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-basics-mapper-dozer" version="${project.version}">
         <feature>scr</feature>
         <feature>vaseline-mapper-api</feature>
-        <bundle>mvn:org.apache.commons/commons-lang3/3.5</bundle>
-        <bundle>mvn:commons-collections/commons-collections/3.2.2</bundle>
-        <bundle>mvn:commons-beanutils/commons-beanutils/1.9.3</bundle>
-        <bundle>mvn:com.github.dozermapper/dozer-core/6.1.0</bundle>
+        <bundle dependency="true">mvn:org.apache.commons/commons-lang3/3.5</bundle>
+        <bundle dependency="true">mvn:commons-collections/commons-collections/3.2.2</bundle>
+        <bundle dependency="true">mvn:commons-beanutils/commons-beanutils/1.9.3</bundle>
+        <bundle dependency="true">mvn:com.github.dozermapper/dozer-core/6.1.0</bundle>
         <bundle>mvn:${project.groupId}/vaseline-basics-mapper-dozer-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-basics-logging-common" version="${project.version}" start-level="20">
@@ -103,7 +103,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-basics-base-bundle</feature>
         <feature>vaseline-json-api</feature>
         <feature>vaseline-core-api</feature>
-        <bundle>mvn:com.google.code.gson/gson/2.3.1</bundle>
+        <bundle dependency="true">mvn:com.google.code.gson/gson/2.3.1</bundle>
         <bundle>mvn:${project.groupId}/vaseline-basics-json-gson-osgi/${project.version}</bundle>
     </feature>
 
