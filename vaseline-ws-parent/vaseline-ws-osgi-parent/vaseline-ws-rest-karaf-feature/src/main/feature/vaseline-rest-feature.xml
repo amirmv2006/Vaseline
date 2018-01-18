@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
+http://karaf.apache.org/xmlns/features/v1.0.0 ">
+    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:com.github.amirmv2006.service.osgi/vaseline-service-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:com.eclipsesource.jaxrs/features/${jersey.version}/xml/features</repository>
+
+    <!-- vaseline ws common api start -->
+    <feature name="vaseline-ws-common-basic-layer-api" version="${project.version}">
+        <feature>vaseline-core-api</feature>
+        <bundle>mvn:com.github.amirmv2006.ws.common.api/vaseline-ws-common-basic-layer-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-ws-common-basic-layerimpl-api" version="${project.version}">
+        <feature>vaseline-ws-common-basic-layer-api</feature>
+        <feature>vaseline-service-basic-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.ws.common.api/vaseline-ws-common-basic-layerimpl-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-ws-common-simple-search-layer-api" version="${project.version}">
+        <feature>vaseline-ws-common-basic-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.ws.common.api/vaseline-ws-common-simple-search-layer-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-ws-common-simple-search-layerimpl-api" version="${project.version}">
+        <feature>vaseline-ws-common-basic-layerimpl-api</feature>
+        <feature>vaseline-ws-common-simple-search-layer-api</feature>
+        <feature>vaseline-service-simple-search-layer-api</feature>
+        <bundle>
+            mvn:com.github.amirmv2006.ws.common.api/vaseline-ws-common-simple-search-layerimpl-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-ws-common-advanced-search-layer-api" version="${project.version}">
+        <feature>vaseline-ws-common-basic-layer-api</feature>
+        <feature>vaseline-advanced-search-dao-api</feature>
+        <bundle>mvn:com.github.amirmv2006.ws.common.api/vaseline-ws-common-advanced-search-layer-api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="vaseline-ws-common-advanced-search-layerimpl-api" version="${project.version}">
+        <feature>vaseline-ws-common-advanced-search-layer-api</feature>
+        <feature>vaseline-ws-common-basic-layerimpl-api</feature>
+        <feature>vaseline-service-advanced-search-layer-api</feature>
+        <bundle>
+            mvn:com.github.amirmv2006.ws.common.api/vaseline-ws-common-advanced-search-layerimpl-api/${project.version}
+        </bundle>
+    </feature>
+    <!-- vaseline ws common end -->
+
+    <!-- vaseline ws rest start -->
+    <feature name="vaseline-ws-rest-basic-layer-api" version="${project.version}">
+        <feature>vaseline-ws-common-basic-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.ws.rest.api/vaseline-ws-rest-basic-layer-api/${project.version}</bundle>
+    </feature>
+    <!-- vaseline ws rest end -->
+
+    <!-- vaseline ws rest impl start -->
+    <feature name="vaseline-ws-rest-jersey" version="${project.version}">
+        <feature>jax-rs-connector</feature>
+        <feature>jax-rs-provider-gson</feature>
+        <feature>vaseline-ws-rest-basic-layer-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-ws-rest-jersey-osgi/${project.version}</bundle>
+    </feature>
+    <!-- vaseline ws rest impl end -->
+
+    <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
+        <details>${project.description}</details>
+        <!-- api beans -->
+        <feature>vaseline-ws-common-simple-search-layerimpl-api</feature>
+        <feature>vaseline-ws-common-advanced-search-layerimpl-api</feature>
+        <feature>vaseline-ws-rest-basic-layer-api</feature>
+
+        <feature>vaseline-ws-rest-jersey</feature>
+    </feature>
+
+</features>

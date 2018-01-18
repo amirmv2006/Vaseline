@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>vaseline-bundle-parent</artifactId>
+        <groupId>com.github.amirmv2006.commonosgi.bundles</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../../vaseline-commonosgi-parent/vaseline-commonosgi-bundles-parent/vaseline-bundle-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.amirmv2006.ws.common.api</groupId>
+    <artifactId>vaseline-ws-common-api-parent</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>vaseline-ws-common-basic-layer-api</module>
+        <module>vaseline-ws-common-simple-search-layer-api</module>
+        <module>vaseline-ws-common-advanced-search-layer-api</module>
+        <module>vaseline-ws-common-basic-layerimpl-api</module>
+        <module>vaseline-ws-common-simple-search-layerimpl-api</module>
+        <module>vaseline-ws-common-advanced-search-layerimpl-api</module>
+    </modules>
+
+</project>

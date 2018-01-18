@@ -41,7 +41,7 @@
         <module>vaseline-file-parent</module><!-- file business uses authentication api-->
         <module>vaseline-reporting</module>
         <module>vaseline-tasks</module>
-        <module>vaseline-ws</module>
+        <module>vaseline-ws-parent</module>
         <module>vaseline-bpm</module>
         <module>vaseline-angular</module>
         <module>vaseline-security-parent</module>
@@ -74,6 +74,8 @@
         <karaf.version>4.1.2</karaf.version>
         <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>
         <org.osgi.core.version>6.0.0</org.osgi.core.version>
+        <javax.ws.rs-api.version>2.0.1</javax.ws.rs-api.version>
+        <jersey.version>5.3</jersey.version>
     </properties>
 
     <dependencyManagement>
@@ -220,6 +222,20 @@
                 <version>${validation-api.version}</version>
             </dependency>
             <!-- Hibernate Validation END -->
+            <!-- rest Start -->
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>${javax.ws.rs-api.version}</version>
+            </dependency>
+            <!-- rest End -->
+            <!-- jersey Start -->
+            <dependency>
+                <groupId>com.eclipsesource.jaxrs</groupId>
+                <artifactId>consumer</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <!-- jersey End -->
             <!-- CXF Start -->
             <dependency>
                 <groupId>org.apache.cxf</groupId>
