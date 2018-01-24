@@ -13,6 +13,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.github.amirmv2006.business.spring</groupId>
+            <artifactId>vaseline-business-executor-spring</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.amirmv2006.file.apis</groupId>
             <artifactId>vaseline-file-serviceimpl-api</artifactId>
             <version>${project.version}</version>

@@ -54,13 +54,27 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <bundle>mvn:com.github.amirmv2006.business.apis/vaseline-business-multidao-layerimpl-api/${project.version}
         </bundle>
     </feature>
-    <!-- vaseline data api end -->
+    <!-- vaseline business api end -->
+    <!-- vaseline business impl start-->
+    <feature name="vaseline-business-executor" version="${project.version}">
+        <feature>vaseline-business-basic-layerimpl-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-business-executor-osgi/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-businesss-aries-tx" version="${project.version}">
+        <feature>vaseline-basics-logging-common</feature>
+        <feature>vaseline-business-basic-layer-api</feature>
+        <feature>transaction</feature>
+        <bundle>mvn:${project.groupId}/vaseline-businesss-aries-tx-osgi/${project.version}</bundle>
+    </feature>
+    <!-- vaseline business impl end-->
     <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
         <details>${project.description}</details>
         <!-- api beans -->
         <feature>vaseline-business-simple-search-layerimpl-api</feature>
         <feature>vaseline-business-advanced-search-layerimpl-api</feature>
         <feature>vaseline-business-multidao-layerimpl-api</feature>
+        <feature>vaseline-business-executor</feature>
+        <feature>vaseline-businesss-aries-tx</feature>
     </feature>
 
 </features>

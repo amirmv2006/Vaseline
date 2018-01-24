@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.security.apis.auditimpl.log.server.basic;
 
+import ir.amv.os.vaseline.basics.apis.logging.server.exc.LogException;
 import ir.amv.os.vaseline.basics.apis.logging.server.logger.IVaselineLogger;
 import ir.amv.os.vaseline.basics.apis.logging.server.logger.VaselineLogLevel;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.base.IBaseImplementedApi;
@@ -18,7 +19,7 @@ public interface IImplementedAuditLogApi
     IVaselineLogger getVaselineLogger();
     @Override
     default void auditBusinessAction(String user, String action, String result, Map<String, Object> metadata, Object...
-            params) {
+            params) { // not a business action
         IVaselineLogger vaselineLogger = getVaselineLogger();
 
         StringBuilder logMessage = new StringBuilder("Business Action");
@@ -42,7 +43,7 @@ public interface IImplementedAuditLogApi
         try {
             vaselineLogger.log(IAuditApi.class.getName(), AUDIT_LOG_CATEGORY, getBusinessLogLevel(action), logMessage
                     .toString());
-        } catch (ir.amv.os.vaseline.basics.apis.logging.server.exc.LogException e) {
+        } catch (LogException e) {
             e.printStackTrace();
         }
     }

@@ -401,6 +401,11 @@
                 <version>${org.osgi.core.version}</version>
             </dependency>
             <!-- osgi end -->
+            <dependency>
+                <groupId>javax.transaction</groupId>
+                <artifactId>javax.transaction-api</artifactId>
+                <version>1.2</version>
+            </dependency>
 
             <dependency>
                 <groupId>junit</groupId>

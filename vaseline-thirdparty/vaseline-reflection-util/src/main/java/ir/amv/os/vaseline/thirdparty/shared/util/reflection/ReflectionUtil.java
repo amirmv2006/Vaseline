@@ -1,6 +1,5 @@
 package ir.amv.os.vaseline.thirdparty.shared.util.reflection;
 
-import ir.amv.os.vaseline.thirdparty.shared.util.reflection.exc.InterceptionException;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.exc.InterceptionInterruptException;
 
 import java.beans.BeanInfo;
@@ -310,7 +309,7 @@ public class ReflectionUtil {
                 try {
                     obj = (O) interceptor.intercept((Q) src, prefix.trim().equals("") ? "" : prefix);
                 } catch (InterceptionInterruptException e) { // should not intercept children
-                    return (O)(e.getKeepOriginalValue() ? src : e.getInterruptedValue());
+                    return (O) (e.getKeepOriginalValue() ? src : e.getInterruptedValue());
                 }
             }
 
@@ -341,7 +340,8 @@ public class ReflectionUtil {
                             // caused children to be intercepted twice fix 2/2
 //                            Q intercepted = interceptor
 //                                    .intercept((Q) objectsFromMethod[j], objectsFromMethod.length > 1 ? propertyTreeName + j : propertyTreeName);
-                            Q intercepted = intercept((Q)objectsFromMethod[j], query, interceptor, objectsFromMethod.length > 1 ? propertyTreeName + j : propertyTreeName);;
+                            Q intercepted = intercept((Q) objectsFromMethod[j], query, interceptor, objectsFromMethod.length > 1 ? propertyTreeName + j : propertyTreeName);
+                            ;
                             newObjects[j] = intercepted;
                         }
                         setObjectsToMethod(obj, readMethod, propertyDescriptor.getWriteMethod(), newObjects, objectsFromMethod);
@@ -372,6 +372,33 @@ public class ReflectionUtil {
         PropertyDescriptor propertyDescriptorByTreeName = getPropertyDescriptorByTreeName(targetClass, fieldName);
         A annotation = propertyDescriptorByTreeName.getReadMethod().getAnnotation(annotationClass);
         return annotation;
+    }
+
+    public static <A extends Annotation> A getMethodAnnotationInHierarchy(Class<A>
+            annotationClass, Class targetClass, String methodName, Class<?>[] paramsTypes) {
+        if (targetClass == null) {
+            return null;
+        }
+        try {
+            Method targetMethod = targetClass.getDeclaredMethod(methodName, paramsTypes);
+            A annotation = targetMethod.getAnnotation(annotationClass);
+            if (annotation != null) {
+                return annotation;
+            }
+        } catch (NoSuchMethodException ignored) {
+        }
+        if (!targetClass.equals(Object.class)) {
+            Class<?> superclass = targetClass.getSuperclass();
+            A superMethodAnnot = getMethodAnnotationInHierarchy(annotationClass, superclass, methodName, paramsTypes);
+            if (superMethodAnnot != null) return superMethodAnnot;
+            Class<?>[] interfaces = targetClass.getInterfaces();
+            for (Class<?> anInterface : interfaces) {
+                A intMethodAnnot = getMethodAnnotationInHierarchy(annotationClass, anInterface, methodName,
+                        paramsTypes);
+                if (intMethodAnnot != null) return intMethodAnnot;
+            }
+        }
+        return null;
     }
 
     public static <A extends Annotation> A getAnnotationInHierarchy(Class<?> targetClass, Class<A> annotationClass) {
@@ -422,7 +449,7 @@ public class ReflectionUtil {
                                 ParameterizedType parameterizedType = (ParameterizedType) anInterface;
                                 return getGenerics(parameterizedType);
                             } else {
-                                return getGenericArgumentClasses((Class<?>)anInterface, parents);
+                                return getGenericArgumentClasses((Class<?>) anInterface, parents);
                             }
                         }
                     }

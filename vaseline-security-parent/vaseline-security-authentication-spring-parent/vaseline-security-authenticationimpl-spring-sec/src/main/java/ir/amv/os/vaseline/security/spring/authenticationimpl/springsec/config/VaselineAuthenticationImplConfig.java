@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config;
 
+import ir.amv.os.vaseline.business.spring.executor.config.VaselineBusinessExecutorConfig;
 import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.external.IHttpSecurityConfigurer;
 import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.permissions.IUserPermissionsProvider;
 import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.permissions.condition.NotExistingUserPermissionProvider;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -29,6 +31,7 @@ import java.util.List;
 @Configuration
 @EnableWebMvcSecurity
 @ComponentScan(basePackages = "ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.server")
+@Import(VaselineBusinessExecutorConfig.class)
 public class VaselineAuthenticationImplConfig
         extends WebSecurityConfigurerAdapter {
 

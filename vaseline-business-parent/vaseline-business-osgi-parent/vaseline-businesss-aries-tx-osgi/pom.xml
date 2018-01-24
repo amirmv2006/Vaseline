@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>vaseline-business-osgi-parent</artifactId>
+        <groupId>com.github.amirmv2006.business.osgi</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>vaseline-businesss-aries-tx-osgi</artifactId>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <bundle.base.pkg>ir.amv.os.vaseline.business.osgi.tx.aries</bundle.base.pkg>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.amirmv2006.basics.osgi</groupId>
+            <artifactId>vaseline-basics-logging-common-osgi</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.business.apis</groupId>
+            <artifactId>vaseline-business-basic-layer-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>javax.transaction-api</artifactId>
+            <version>1.2</version>
+        </dependency>
+    </dependencies>
+</project>

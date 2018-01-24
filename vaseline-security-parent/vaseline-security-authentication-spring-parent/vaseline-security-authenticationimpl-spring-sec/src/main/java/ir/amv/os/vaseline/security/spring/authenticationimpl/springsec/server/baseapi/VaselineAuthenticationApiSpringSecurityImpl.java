@@ -1,9 +1,11 @@
 package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.server.baseapi;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.base.IBaseImplementedApi;
 import ir.amv.os.vaseline.security.apis.authentication.basic.server.IAuthenticationApi;
 import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.server.util.SpringSecurityAuthenticationUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +17,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class VaselineAuthenticationApiSpringSecurityImpl
         implements IBaseImplementedApi, IAuthenticationApi {
+    private IVaselineBusinessActionExecutor businessActionExecutor;
+
     @Override
     public String getCurrentUsername() throws BaseVaselineServerException {
         Authentication authentication = SecurityContextHolder.getContext()
@@ -34,5 +38,15 @@ public class VaselineAuthenticationApiSpringSecurityImpl
     @Override
     public <Proxy> void setProxy(final Proxy proxy) {
 
+    }
+
+    @Override
+    public IVaselineBusinessActionExecutor getBusinessActionExecutor() {
+        return businessActionExecutor;
+    }
+
+    @Autowired
+    public void setBusinessActionExecutor(final IVaselineBusinessActionExecutor businessActionExecutor) {
+        this.businessActionExecutor = businessActionExecutor;
     }
 }

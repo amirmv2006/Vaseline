@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.file.layers.spring.basic.server.api;
 
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
 import ir.amv.os.vaseline.file.apis.business.server.daofinder.IVaselineFileDaoFinder;
 import ir.amv.os.vaseline.file.apis.businessimpl.server.IImplementedVaselineFileApi;
 import ir.amv.os.vaseline.file.apis.dao.basic.server.IVaselineFileDao;
@@ -18,6 +19,7 @@ public class VaselineFileApiImpl
     private List<IVaselineFileDao> fileDaoList;
     private List<IVaselineFileDaoFinder> daoFinderList;
     private Object proxy;
+    private IVaselineBusinessActionExecutor businessActionExecutor;
 
     @Override
     public List<IVaselineFileDaoFinder> getDaoFinderList() {
@@ -44,6 +46,11 @@ public class VaselineFileApiImpl
         this.proxy = proxy;
     }
 
+    @Override
+    public IVaselineBusinessActionExecutor getBusinessActionExecutor() {
+        return businessActionExecutor;
+    }
+
     @Autowired
     public void setDaoFinderList(final List<IVaselineFileDaoFinder> daoFinderList) {
         this.daoFinderList = daoFinderList;
@@ -57,5 +64,10 @@ public class VaselineFileApiImpl
     @Autowired
     public void setAuthenticationApi(final IAuthenticationApi authenticationApi) {
         this.authenticationApi = authenticationApi;
+    }
+
+    @Autowired
+    public void setBusinessActionExecutor(final IVaselineBusinessActionExecutor businessActionExecutor) {
+        this.businessActionExecutor = businessActionExecutor;
     }
 }
