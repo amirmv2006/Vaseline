@@ -52,13 +52,42 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-ws-common-basic-layer-api</feature>
         <bundle>mvn:com.github.amirmv2006.ws.rest.api/vaseline-ws-rest-basic-layer-api/${project.version}</bundle>
     </feature>
+    <feature name="vaseline-ws-rest-basic-layerimpl-api" version="${project.version}">
+        <feature>vaseline-ws-rest-basic-layer-api</feature>
+        <feature>vaseline-ws-common-basic-layerimpl-api</feature>
+        <bundle>mvn:com.github.amirmv2006.ws.rest.api/vaseline-ws-rest-basic-layerimpl-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-ws-rest-simple-search-layer-api" version="${project.version}">
+        <feature>vaseline-ws-rest-basic-layer-api</feature>
+        <feature>vaseline-ws-common-simple-search-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.ws.rest.api/vaseline-ws-rest-simple-search-layer-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-ws-rest-simple-search-layerimpl-api" version="${project.version}">
+        <feature>vaseline-ws-rest-simple-search-layer-api</feature>
+        <feature>vaseline-ws-rest-basic-layerimpl-api</feature>
+        <feature>vaseline-ws-common-simple-search-layerimpl-api</feature>
+        <bundle>mvn:com.github.amirmv2006.ws.rest.api/vaseline-ws-rest-simple-search-layerimpl-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-ws-rest-advanced-search-layer-api" version="${project.version}">
+        <feature>vaseline-ws-rest-basic-layer-api</feature>
+        <feature>vaseline-ws-common-advanced-search-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.ws.rest.api/vaseline-ws-rest-advanced-search-layer-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-ws-rest-advanced-search-layerimpl-api" version="${project.version}">
+        <feature>vaseline-ws-rest-advanced-search-layer-api</feature>
+        <feature>vaseline-ws-rest-basic-layerimpl-api</feature>
+        <feature>vaseline-ws-common-advanced-search-layerimpl-api</feature>
+        <bundle>mvn:com.github.amirmv2006.ws.rest.api/vaseline-ws-rest-advanced-search-layerimpl-api/${project.version}</bundle>
+    </feature>
     <!-- vaseline ws rest end -->
 
     <!-- vaseline ws rest impl start -->
     <feature name="vaseline-ws-rest-jersey" version="${project.version}">
         <feature>jax-rs-connector</feature>
         <feature>jax-rs-provider-gson</feature>
-        <feature>vaseline-ws-rest-basic-layer-api</feature>
+        <feature>vaseline-ws-rest-basic-layerimpl-api</feature>
+        <feature>vaseline-ws-rest-simple-search-layerimpl-api</feature>
+        <feature>vaseline-ws-rest-advanced-search-layerimpl-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-ws-rest-jersey-osgi/${project.version}</bundle>
     </feature>
     <!-- vaseline ws rest impl end -->

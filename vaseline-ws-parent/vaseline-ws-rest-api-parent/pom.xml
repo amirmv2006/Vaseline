@@ -15,6 +15,11 @@
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-ws-rest-basic-layer-api</module>
+        <module>vaseline-ws-rest-basic-layerimpl-api</module>
+        <module>vaseline-ws-rest-simple-search-layer-api</module>
+        <module>vaseline-ws-rest-simple-search-layerimpl-api</module>
+        <module>vaseline-ws-rest-advanced-search-layer-api</module>
+        <module>vaseline-ws-rest-advanced-search-layerimpl-api</module>
     </modules>
 
 
