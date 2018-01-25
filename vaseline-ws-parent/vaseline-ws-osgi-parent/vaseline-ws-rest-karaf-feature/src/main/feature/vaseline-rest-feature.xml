@@ -82,12 +82,18 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <!-- vaseline ws rest end -->
 
     <!-- vaseline ws rest impl start -->
+    <feature name="vaseline-ws-rest-gson-extension" version="${project.version}">
+        <feature>vaseline-ws-rest-basic-layer-api</feature>
+        <feature>vaseline-json-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-ws-rest-gson-extension-osgi/${project.version}</bundle>
+    </feature>
     <feature name="vaseline-ws-rest-jersey" version="${project.version}">
         <feature>jax-rs-connector</feature>
         <feature>jax-rs-provider-gson</feature>
         <feature>vaseline-ws-rest-basic-layerimpl-api</feature>
         <feature>vaseline-ws-rest-simple-search-layerimpl-api</feature>
         <feature>vaseline-ws-rest-advanced-search-layerimpl-api</feature>
+        <feature>vaseline-ws-rest-gson-extension</feature>
         <bundle>mvn:${project.groupId}/vaseline-ws-rest-jersey-osgi/${project.version}</bundle>
     </feature>
     <!-- vaseline ws rest impl end -->
