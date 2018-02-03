@@ -17,11 +17,15 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-security-audit-basic-api</feature>
         <bundle>mvn:com.github.amirmv2006.security.audit.apis/vaseline-security-auditimpl-log-api/${project.version}</bundle>
     </feature>
+    <!-- vaseline-security-audit-apis end -->
+
+    <feature name="vaseline-security-audit-log" version="${project.version}">
+        <feature>vaseline-security-auditimpl-log-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-security-audit-log-osgi/${project.version}</bundle>
+    </feature>
     <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
         <details>${project.description}</details>
         <!-- api beans -->
-        <feature>vaseline-security-audit-basic-api</feature>
-        <feature>vaseline-security-auditimpl-log-api</feature>
+        <feature>vaseline-security-audit-log</feature>
     </feature>
-    <!-- vaseline-security-audit-apis end -->
 </features>

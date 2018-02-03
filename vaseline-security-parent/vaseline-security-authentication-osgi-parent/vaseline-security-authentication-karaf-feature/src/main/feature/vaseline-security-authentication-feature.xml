@@ -25,6 +25,11 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-core-api</feature>
         <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-model-api/${project.version}</bundle>
     </feature>
+    <feature name="vaseline-security-authentication-modelimpl-api" version="${project.version}">
+        <feature>vaseline-entity-jpa-api</feature>
+        <feature>vaseline-security-authentication-model-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-modelimpl-api/${project.version}</bundle>
+    </feature>
     <feature name="vaseline-security-authentication-dao-jpa-api" version="${project.version}">
         <feature>vaseline-entity-jpa-api</feature>
         <feature>vaseline-security-authentication-model-api</feature>
@@ -79,6 +84,21 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     </feature>
     <!-- vaseline-security-authentication-apis end -->
 
+    <feature name="vaseline-security-authentication-dao-jpa" version="${project.version}">
+        <feature>vaseline-security-authentication-modelimpl-api</feature>
+        <feature>vaseline-security-authentication-daoimpl-jpa-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-security-authentication-dao-jpa-osgi/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authentication-business" version="${project.version}">
+        <feature>vaseline-security-authentication-dao-jpa</feature>
+        <feature>vaseline-security-authentication-businessimpl-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-security-authentication-business-osgi/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authentication-service" version="${project.version}">
+        <feature>vaseline-security-authentication-business</feature>
+        <feature>vaseline-security-authentication-serviceimpl-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-security-authentication-service-osgi/${project.version}</bundle>
+    </feature>
     <feature name="vaseline-security-authentication-spring-security" version="${project.version}">
         <feature>vaseline-security-authentication-spring-securityimpl-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-security-authentication-spring-security-osgi/${project.version}</bundle>
@@ -87,9 +107,9 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <details>${project.description} APIs</details>
         <!-- api beans -->
         <feature>vaseline-security-authentication-basic-api</feature>
-        <feature>vaseline-security-authentication-dao-jpa-api</feature>
-        <feature>vaseline-security-authentication-businessimpl-api</feature>
-        <feature>vaseline-security-authentication-serviceimpl-api</feature>
+        <feature>vaseline-security-authentication-dao-jpa</feature>
+        <feature>vaseline-security-authentication-business</feature>
+        <feature>vaseline-security-authentication-service</feature>
     </feature>
     <feature name='${project.artifactId}-jpa' description='${project.name}' version='${project.version}'>
         <details>${project.description} in JPA</details>
