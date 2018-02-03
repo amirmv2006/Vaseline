@@ -1,7 +1,6 @@
 package ir.amv.os.vaseline.security.osgi.authentication.spring.sec.server;
 
 import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.IHttpSecurityConfigurer;
-import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.ISecuredServletContextHolder;
 import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.ISpringApplicationContext;
 import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.IUserPermissionsProvider;
 import ir.amv.os.vaseline.security.osgi.authentication.spring.sec.config.SpringOsgiBridge;
@@ -25,17 +24,16 @@ import java.util.List;
 public class SpringLoaderComponent implements ISpringApplicationContext {
 
     private AnnotationConfigWebApplicationContext context;
-    private ISecuredServletContextHolder servletContextHolder;
     private UserDetailsService userDetailsService;
     private List<IHttpSecurityConfigurer> securityConfigurerList = new ArrayList<>();
     private IUserPermissionsProvider userPermissionsProvider;
 
-    private void loadSpring() {
+    private void loadSpring(final ServletContext servletContext) {
         initBridge();
         context = new AnnotationConfigWebApplicationContext();
         context.setClassLoader(getClass().getClassLoader());
         context.register(VaselineSpringSecurityConfig.class);
-        context.setServletContext(servletContextHolder.getServletContext());
+        context.setServletContext(servletContext);
         context.refresh();
     }
 
@@ -43,11 +41,6 @@ public class SpringLoaderComponent implements ISpringApplicationContext {
         SpringOsgiBridge.getInstance().setSecurityConfigurerList(securityConfigurerList);
         SpringOsgiBridge.getInstance().setUserDetailsService(userDetailsService);
         SpringOsgiBridge.getInstance().setUserPermissionsProvider(userPermissionsProvider);
-    }
-
-    @Reference
-    public void setServletContextHolder(final ISecuredServletContextHolder servletContextHolder) {
-        this.servletContextHolder = servletContextHolder;
     }
 
     @Reference
@@ -68,9 +61,9 @@ public class SpringLoaderComponent implements ISpringApplicationContext {
     }
 
     @Override
-    public synchronized <T> T getBean(final Class<T> tClass) {
+    public synchronized <T> T getBean(final Class<T> tClass, final ServletContext servletContext) {
         if (context == null) {
-            loadSpring();
+            loadSpring(servletContext);
         }
         return context.getBean(tClass);
     }
