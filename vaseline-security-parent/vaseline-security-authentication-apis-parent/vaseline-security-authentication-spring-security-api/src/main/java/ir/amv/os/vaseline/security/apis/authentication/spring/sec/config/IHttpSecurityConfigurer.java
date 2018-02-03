@@ -1,4 +1,4 @@
-package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.external;
+package ir.amv.os.vaseline.security.apis.authentication.spring.sec.config;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;

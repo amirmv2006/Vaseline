@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.server.resourcesauth;
 
-import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.external.IHttpSecurityConfigurer;
+import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.IHttpSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.stereotype.Component;

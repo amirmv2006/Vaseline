@@ -24,6 +24,8 @@
         <module>vaseline-security-authentication-businessimpl-api</module>
         <module>vaseline-security-authentication-service-api</module>
         <module>vaseline-security-authentication-serviceimpl-api</module>
+        <module>vaseline-security-authentication-spring-security-api</module>
+        <module>vaseline-security-authentication-spring-securityimpl-api</module>
     </modules>
 
 

@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config;
 
 import ir.amv.os.vaseline.business.spring.executor.config.VaselineBusinessExecutorConfig;
-import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.external.IHttpSecurityConfigurer;
-import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.permissions.IUserPermissionsProvider;
+import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.IHttpSecurityConfigurer;
+import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.IUserPermissionsProvider;
 import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.permissions.condition.NotExistingUserPermissionProvider;
 import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.permissions.defimpl.DefaultUserPermissionsProviderImpl;
 import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.userdetails.VaselineUserDetailsService;

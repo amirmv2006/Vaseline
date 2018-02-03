@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.server.listener;
 
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.security.apis.authentication.business.server.base.IBaseUserApi;
 import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.server.util.SpringSecurityAuthenticationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,16 @@ public class VaselineSpringSecAuthenticationListener
     public void onApplicationEvent(final AbstractAuthenticationEvent event) {
         Authentication authentication = event.getAuthentication();
         String username = SpringSecurityAuthenticationUtil.getUsernameFromAuthentication(authentication);
-        if (event instanceof InteractiveAuthenticationSuccessEvent) {
-            baseUserApi.authenticationSuccessful(username);
-        } else if (event instanceof AuthenticationSuccessEvent) {
-            baseUserApi.authenticationSuccessful(username);
-        } else if (event instanceof AbstractAuthenticationFailureEvent) {
-            baseUserApi.authenticationFailure(username);
+        try {
+            if (event instanceof InteractiveAuthenticationSuccessEvent) {
+                baseUserApi.authenticationSuccessful(username);
+            } else if (event instanceof AuthenticationSuccessEvent) {
+                baseUserApi.authenticationSuccessful(username);
+            } else if (event instanceof AbstractAuthenticationFailureEvent) {
+                baseUserApi.authenticationFailure(username);
+            }
+        } catch (BaseVaselineServerException e) {
+            e.printStackTrace();
         }
     }
 

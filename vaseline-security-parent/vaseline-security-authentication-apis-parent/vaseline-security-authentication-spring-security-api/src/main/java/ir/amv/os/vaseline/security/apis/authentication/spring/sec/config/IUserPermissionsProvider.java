@@ -1,4 +1,4 @@
-package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.permissions;
+package ir.amv.os.vaseline.security.apis.authentication.spring.sec.config;
 
 import org.springframework.security.core.GrantedAuthority;
 

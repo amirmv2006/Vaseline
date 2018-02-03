@@ -23,8 +23,8 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.file.apis</groupId>
-            <artifactId>vaseline-file-dao-jpa-api</artifactId>
+            <groupId>com.github.amirmv2006.basics.apis</groupId>
+            <artifactId>vaseline-entity-jpa-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.permissions.defimpl;
 
-import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.permissions.IUserPermissionsProvider;
+import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.IUserPermissionsProvider;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.ArrayList;

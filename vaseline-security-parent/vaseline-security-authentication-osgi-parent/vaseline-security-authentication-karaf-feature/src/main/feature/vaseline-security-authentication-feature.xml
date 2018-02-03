@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
+http://karaf.apache.org/xmlns/features/v1.0.0 ">
+    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:com.github.amirmv2006.data.osgi/vaseline-data-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:com.github.amirmv2006.business.osgi/vaseline-business-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:com.github.amirmv2006.security.audit.osgi/vaseline-security-audit-karaf-feature/${project.version}/xml/features</repository>
+
+    <feature name="spring-security" version="4.2.3.RELEASE_1">
+        <feature>spring</feature>
+        <feature>spring-web</feature>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-security-core/4.2.3.RELEASE_1</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-security-config/4.2.3.RELEASE_2</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-security-web/4.2.3.RELEASE_1</bundle>
+    </feature>
+
+    <!-- vaseline-security-authentication-apis start -->
+    <feature name="vaseline-security-authentication-basic-api" version="${project.version}">
+        <feature>vaseline-business-basic-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-basic-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authentication-model-api" version="${project.version}">
+        <feature>vaseline-core-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-model-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authentication-dao-jpa-api" version="${project.version}">
+        <feature>vaseline-entity-jpa-api</feature>
+        <feature>vaseline-security-authentication-model-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-dao-jpa-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authentication-dao-basic-api" version="${project.version}">
+        <feature>vaseline-basic-dao-api</feature>
+        <feature>vaseline-security-authentication-model-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-dao-basic-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authentication-daoimpl-hibernate-api" version="${project.version}">
+        <feature>vaseline-hibernate-basic-dao-api</feature>
+        <feature>vaseline-security-authentication-dao-basic-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-daoimpl-hibernate-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authentication-daoimpl-jpa-api" version="${project.version}">
+        <feature>vaseline-jpa-basic-dao-api</feature>
+        <feature>vaseline-security-authentication-dao-basic-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-daoimpl-jpa-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authentication-business-api" version="${project.version}">
+        <feature>vaseline-business-basic-layer-api</feature>
+        <feature>vaseline-security-authentication-model-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-business-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authentication-businessimpl-api" version="${project.version}">
+        <feature>vaseline-business-basic-layerimpl-api</feature>
+        <feature>vaseline-security-audit-basic-api</feature>
+        <feature>vaseline-security-authentication-dao-basic-api</feature>
+        <feature>vaseline-security-authentication-business-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-businessimpl-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authentication-service-api" version="${project.version}">
+        <feature>vaseline-service-basic-layer-api</feature>
+        <feature>vaseline-security-authentication-model-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-service-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authentication-serviceimpl-api" version="${project.version}">
+        <feature>vaseline-service-basic-layerimpl-api</feature>
+        <feature>vaseline-security-authentication-business-api</feature>
+        <feature>vaseline-security-authentication-service-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-serviceimpl-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authentication-spring-security-api" version="${project.version}">
+        <feature>spring-security</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-spring-security-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authentication-spring-securityimpl-api" version="${project.version}">
+        <feature>vaseline-security-authentication-service-api</feature>
+        <feature>vaseline-security-authentication-spring-security-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-spring-securityimpl-api/${project.version}</bundle>
+    </feature>
+    <!-- vaseline-security-authentication-apis end -->
+
+    <feature name="vaseline-security-authentication-spring-security" version="${project.version}">
+        <feature>vaseline-security-authentication-spring-securityimpl-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-security-authentication-spring-security-osgi/${project.version}</bundle>
+    </feature>
+    <feature name='${project.artifactId}-api' description='${project.name}' version='${project.version}'>
+        <details>${project.description} APIs</details>
+        <!-- api beans -->
+        <feature>vaseline-security-authentication-basic-api</feature>
+        <feature>vaseline-security-authentication-dao-jpa-api</feature>
+        <feature>vaseline-security-authentication-businessimpl-api</feature>
+        <feature>vaseline-security-authentication-serviceimpl-api</feature>
+    </feature>
+    <feature name='${project.artifactId}-jpa' description='${project.name}' version='${project.version}'>
+        <details>${project.description} in JPA</details>
+        <!-- api beans -->
+        <feature>vaseline-security-authentication-daoimpl-jpa-api</feature>
+        <feature>${project.artifactId}-api</feature>
+    </feature>
+    <feature name='${project.artifactId}-hibernate' description='${project.name}' version='${project.version}'>
+        <details>${project.description} in Hibernate</details>
+        <!-- api beans -->
+        <feature>vaseline-security-authentication-daoimpl-hibernate-api</feature>
+        <feature>${project.artifactId}-api</feature>
+    </feature>
+</features>

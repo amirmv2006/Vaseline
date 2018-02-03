@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.security.spring.authentication.inapp.config;
 
 import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.VaselineAuthenticationImplConfig;
-import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.external.IHttpSecurityConfigurer;
+import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.IHttpSecurityConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

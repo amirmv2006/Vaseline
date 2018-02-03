@@ -3,7 +3,8 @@ package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.u
 import ir.amv.os.vaseline.basics.apis.core.shared.base.exc.BaseVaselineClientException;
 import ir.amv.os.vaseline.security.apis.authentication.model.shared.base.IBaseUserDto;
 import ir.amv.os.vaseline.security.apis.authentication.service.server.base.IBaseUserService;
-import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.permissions.IUserPermissionsProvider;
+import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.IUserPermissionsProvider;
+import ir.amv.os.vaseline.security.apis.authentication.spring.secimpl.IImplementedUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -19,7 +20,7 @@ import java.util.List;
  * Created by AMV on 2/28/2016.
  */
 public class VaselineUserDetailsService
-        implements UserDetailsService {
+        implements IImplementedUserDetailsService {
 
     @Autowired
     IBaseUserService baseUserService;
@@ -28,17 +29,13 @@ public class VaselineUserDetailsService
     IUserPermissionsProvider userPermissionsProvider;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        try {
-            IBaseUserDto user = baseUserService.loadUserByUsername(username);
-            List<GrantedAuthority> authorities = userPermissionsProvider
-                    .getUserAuthorities(username);
-            return new User(user.getUsername(), user.getPassword(), authorities);
-        } catch (BaseVaselineClientException e) {
-            UsernameNotFoundException usernameNotFoundException = new UsernameNotFoundException(e.getMessage());
-            ServletRequestAttributes currentRequestAttributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-            currentRequestAttributes.getRequest().getSession(true).setAttribute("loginError", usernameNotFoundException);
-            throw usernameNotFoundException;
-        }
+    public IBaseUserService getBaseUserService() {
+        return baseUserService;
     }
+
+    @Override
+    public IUserPermissionsProvider getUserPermissionsProvider() {
+        return userPermissionsProvider;
+    }
+
 }

@@ -28,7 +28,6 @@ public class BaseUserEntityImpl
         return username;
     }
 
-    @Override
     public void setUsername(final String username) {
         this.username = username;
     }
@@ -38,7 +37,6 @@ public class BaseUserEntityImpl
         return password;
     }
 
-    @Override
     public void setPassword(final String password) {
         this.password = password;
     }

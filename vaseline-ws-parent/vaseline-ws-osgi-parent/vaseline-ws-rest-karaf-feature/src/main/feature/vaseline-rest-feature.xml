@@ -6,6 +6,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
     <repository>mvn:com.github.amirmv2006.service.osgi/vaseline-service-karaf-feature/${project.version}/xml/features</repository>
     <repository>mvn:com.eclipsesource.jaxrs/features/${jersey.version}/xml/features</repository>
+    <repository>mvn:com.github.amirmv2006.security.authentication.osgi/vaseline-security-authentication-karaf-feature/${project.version}/xml/features</repository>
 
     <!-- vaseline ws common api start -->
     <feature name="vaseline-ws-common-basic-layer-api" version="${project.version}">
@@ -96,6 +97,10 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-ws-rest-gson-extension</feature>
         <bundle>mvn:${project.groupId}/vaseline-ws-rest-jersey-osgi/${project.version}</bundle>
     </feature>
+    <feature name="vaseline-ws-rest-secured" version="${project.version}">
+        <feature>vaseline-security-authentication-spring-security</feature>
+        <bundle>mvn:${project.groupId}/vaseline-ws-rest-secured-osgi/${project.version}</bundle>
+    </feature>
     <!-- vaseline ws rest impl end -->
 
     <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
@@ -106,6 +111,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-ws-rest-basic-layer-api</feature>
 
         <feature>vaseline-ws-rest-jersey</feature>
+        <feature>vaseline-ws-rest-secured</feature>
     </feature>
 
 </features>

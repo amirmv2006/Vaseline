@@ -14,6 +14,11 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.security.authentication.apis</groupId>
+            <artifactId>vaseline-security-authentication-spring-securityimpl-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.security.authentication.apis</groupId>
             <artifactId>vaseline-security-authentication-service-api</artifactId>
             <version>${project.version}</version>
         </dependency>
