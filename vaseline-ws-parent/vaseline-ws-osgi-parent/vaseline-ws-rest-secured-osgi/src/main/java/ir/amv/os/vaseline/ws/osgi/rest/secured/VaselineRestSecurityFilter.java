@@ -9,9 +9,11 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
@@ -52,7 +54,11 @@ public class VaselineRestSecurityFilter implements ContainerRequestFilter {
             cause.set(e);
         }
         if (!authenticationSuccess.get()) {
-            requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
+            Response.ResponseBuilder rb = Response.status(Response.Status.UNAUTHORIZED);
+            if (servletResponse.getStatus() == 302) {
+                rb.header(HttpHeaders.WWW_AUTHENTICATE, servletResponse.getHeader("Location"));
+            }
+            throw new WebApplicationException(rb.build());
         }
     }
 

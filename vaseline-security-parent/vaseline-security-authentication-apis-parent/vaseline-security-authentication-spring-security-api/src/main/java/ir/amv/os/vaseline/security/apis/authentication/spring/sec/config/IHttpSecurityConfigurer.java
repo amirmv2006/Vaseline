@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 public interface IHttpSecurityConfigurer {
 
     Integer priority();
-    HttpSecurity configure(HttpSecurity http);
+    HttpSecurity configure(HttpSecurity http) throws Exception;
     ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry authorizeRequests(
             ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry);
 }
