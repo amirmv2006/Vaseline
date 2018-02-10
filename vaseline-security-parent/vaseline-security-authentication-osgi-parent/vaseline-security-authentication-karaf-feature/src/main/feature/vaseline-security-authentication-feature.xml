@@ -11,9 +11,9 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
 
     <feature name="spring-security" version="4.2.3.RELEASE_1">
         <feature version="4.3.10.RELEASE_1">spring</feature>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-security-core/4.2.3.RELEASE_1</bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-security-config/4.2.3.RELEASE_2</bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-security-web/4.2.3.RELEASE_1</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-security-core/${org.apache.servicemix.bundles.spring.sec.version}_1</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-security-config/${org.apache.servicemix.bundles.spring.sec.version}_2</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-security-web/${org.apache.servicemix.bundles.spring.sec.version}_1</bundle>
     </feature>
 
     <!-- vaseline-security-authentication-apis start -->
