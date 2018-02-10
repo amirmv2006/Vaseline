@@ -12,7 +12,10 @@ import org.osgi.service.component.annotations.ReferencePolicyOption;
 
 import javax.persistence.EntityManager;
 import javax.persistence.metamodel.EntityType;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 /**
  * @author Amir
@@ -26,7 +29,8 @@ import java.util.Set;
 )
 public class VaselineBaseUserDaoJpa
         implements IVaselineBaseUserDao, IImplementedBaseUserJpaDao<VaselineBaseUserEntity> {
-    private EntityManager em;
+    // list didn't work because remove will call equals which needs a tx :\
+    private Map<String, EntityManager> emMap = new HashMap<>();
     private IVendorSpecificDaoHelper vendorSpecificDaoHelper;
 
     @Override
@@ -45,7 +49,12 @@ public class VaselineBaseUserDaoJpa
 
     @Override
     public EntityManager getEntityManager() {
-        return em;
+        for (EntityManager entityManager : emMap.values()) {
+            if (isBaseUserEM(entityManager)) {
+                return entityManager;
+            }
+        }
+        return null;
     }
 
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
@@ -58,17 +67,25 @@ public class VaselineBaseUserDaoJpa
             policyOption = ReferencePolicyOption.GREEDY
     )
     public void addEm(final EntityManager em) {
-        if (isBaseUserEM(em)) {
-            this.em = em;
-        }
+        emMap.put(UUID.randomUUID().toString(), em);
     }
 
     public void removeEm(final EntityManager em) {
-        if (isBaseUserEM(em)) {
-            this.em = null;
+        String keyToBeRemoved = null;
+        for (Map.Entry<String, EntityManager> entry : emMap.entrySet()) {
+            if (entry.getValue() == em) {
+                keyToBeRemoved = entry.getKey();
+            }
         }
+        emMap.remove(keyToBeRemoved);
     }
 
+    /**
+     * checks if BaseUser is managed by the em
+     * note: needs active transaction
+     * @param em the em
+     * @return whether BaseUser is managed by the em
+     */
     private boolean isBaseUserEM(final EntityManager em) {
         Set<EntityType<?>> entities = em.getMetamodel().getEntities();
         for (EntityType<?> entity : entities) {
