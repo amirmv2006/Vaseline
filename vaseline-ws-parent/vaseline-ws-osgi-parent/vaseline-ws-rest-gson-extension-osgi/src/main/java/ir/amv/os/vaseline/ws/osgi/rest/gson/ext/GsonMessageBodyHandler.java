@@ -6,6 +6,8 @@ import ir.amv.os.vaseline.ws.rest.apis.basic.layer.base.multiparam.annot.JsonMul
 import ir.amv.os.vaseline.ws.rest.apis.basic.layer.base.multiparam.annot.JsonParam;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicyOption;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
@@ -131,7 +133,10 @@ public class GsonMessageBodyHandler implements MessageBodyWriter<Object>,
         }
     }
 
-    @Reference
+    @Reference(
+            cardinality = ReferenceCardinality.OPTIONAL,
+            policyOption = ReferencePolicyOption.GREEDY
+    )
     public void setVaselineJsonConverter(final IVaselineJsonConverter vaselineJsonConverter) {
         this.vaselineJsonConverter = vaselineJsonConverter;
     }

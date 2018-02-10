@@ -9,6 +9,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
 
     <!-- vaseline data api start -->
     <feature name="vaseline-basic-dao-api" version="${project.version}">
+        <feature>aries-blueprint</feature>
         <feature>vaseline-core-api</feature>
         <bundle>mvn:com.github.amirmv2006.data.apis/vaseline-basic-dao-api/${project.version}</bundle>
     </feature>

@@ -98,6 +98,8 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <bundle>mvn:${project.groupId}/vaseline-ws-rest-jersey-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-ws-rest-secured" version="${project.version}">
+        <feature>spring</feature>
+        <feature>spring-web</feature>
         <feature>vaseline-security-authentication-spring-security</feature>
         <feature>jax-rs-provider-security</feature>
         <bundle>mvn:${project.groupId}/vaseline-ws-rest-secured-osgi/${project.version}</bundle>
