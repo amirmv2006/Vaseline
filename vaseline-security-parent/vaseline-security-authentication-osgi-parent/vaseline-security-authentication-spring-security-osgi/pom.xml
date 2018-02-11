@@ -14,6 +14,7 @@
 
     <properties>
         <bundle.base.pkg>ir.amv.os.vaseline.security.osgi.authentication.spring.sec</bundle.base.pkg>
+        <bundle.dynamic.import.pkg>*</bundle.dynamic.import.pkg>
     </properties>
 
     <dependencies>
@@ -53,20 +54,4 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <version>3.3.0</version>
-                <extensions>true</extensions>
-                <inherited>true</inherited>
-                <configuration>
-                    <instructions>
-                        <DynamicImport-Package>*</DynamicImport-Package>
-                    </instructions>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

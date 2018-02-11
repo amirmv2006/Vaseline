@@ -14,6 +14,7 @@ import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.criteriaabstractor.JpaFetc
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.vendorspecific.IVendorSpecificDaoHelper;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.persistence.TypedQuery;
@@ -47,7 +48,11 @@ public interface IBaseImplementedJpaReadOnlyDao<E extends IBaseEntity<Id>, Id ex
     }
 
     default E getEntityFromCriteria(TypedQuery<E> query) {
-        return query.getSingleResult();
+        List<E> resultList = query.getResultList();
+        if (resultList.size() > 1) {
+            throw new NonUniqueResultException("Multiple results");
+        }
+        return resultList.size() == 0 ? null : resultList.get(0);
     }
 
     default List<E> getListFromCriteria(TypedQuery<E> query) {

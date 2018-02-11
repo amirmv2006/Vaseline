@@ -14,6 +14,7 @@
 
     <properties>
         <bundle.base.pkg>ir.amv.os.vaseline.security.apis.authentication.modelimpl</bundle.base.pkg>
+        <bundle.dynamic.import.pkg>org.hibernate.proxy;javassist.util.proxy</bundle.dynamic.import.pkg>
     </properties>
 
     <dependencies>
