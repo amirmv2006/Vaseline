@@ -16,15 +16,10 @@
         <bundle.base.pkg>ir.amv.os.vaseline.basics.osgi.cache.hazelcast</bundle.base.pkg>
         <bundle.import.additional>
             javax.cache;version="[1.1,2)",
-            javax.cache.annotation;version="[1.1,2)",
             javax.cache.configuration;version="[1.1,2)",
-            javax.cache.event;version="[1.1,2)",
             javax.cache.integration;version="[1.1,2)",
-            javax.cache.management;version="[1.1,2)",
-            javax.cache.processor;version="[1.1,2)",
-            javax.cache.spi;version="[1.1,2)"
+            javax.cache.processor;version="[1.1,2)"
         </bundle.import.additional>
-        <bundle.dynamic.import.pkg>*</bundle.dynamic.import.pkg>
     </properties>
 
     <dependencies>
