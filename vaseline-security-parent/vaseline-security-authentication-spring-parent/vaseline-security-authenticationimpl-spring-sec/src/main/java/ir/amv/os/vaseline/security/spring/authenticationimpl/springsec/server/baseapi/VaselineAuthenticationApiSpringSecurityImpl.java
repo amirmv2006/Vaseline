@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 public class VaselineAuthenticationApiSpringSecurityImpl
         implements IBaseImplementedApi, IAuthenticationApi {
     private IVaselineBusinessActionExecutor businessActionExecutor;
+    private Object proxy;
 
     @Override
     public String getCurrentUsername() throws BaseVaselineServerException {
@@ -32,12 +33,12 @@ public class VaselineAuthenticationApiSpringSecurityImpl
 
     @Override
     public <Proxy> Proxy getProxy(final Class<Proxy> proxyClass) {
-        return null;
+        return (Proxy) proxy;
     }
 
     @Override
     public <Proxy> void setProxy(final Proxy proxy) {
-
+        this.proxy = proxy;
     }
 
     @Override

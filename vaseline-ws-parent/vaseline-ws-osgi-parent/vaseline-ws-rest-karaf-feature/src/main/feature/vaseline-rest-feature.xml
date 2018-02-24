@@ -97,12 +97,27 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-ws-rest-gson-extension</feature>
         <bundle>mvn:${project.groupId}/vaseline-ws-rest-jersey-osgi/${project.version}</bundle>
     </feature>
-    <feature name="vaseline-ws-rest-secured" version="${project.version}">
+    <feature name="vaseline-ws-rest-secured-spring-sec" version="${project.version}">
         <feature>spring</feature>
         <feature>spring-web</feature>
         <feature>vaseline-security-authentication-spring-security</feature>
         <feature>jax-rs-provider-security</feature>
-        <bundle>mvn:${project.groupId}/vaseline-ws-rest-secured-osgi/${project.version}</bundle>
+        <bundle>mvn:${project.groupId}/vaseline-ws-rest-secured-spring-sec-osgi/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-ws-rest-secured-oauth2" version="${project.version}">
+        <feature>vaseline-cache-api</feature>
+        <feature>jax-rs-provider-security</feature>
+        <bundle>mvn:${project.groupId}/vaseline-ws-rest-secured-oauth2-osgi/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-ws-rest-secured-oauth2-cache-hazelcast" version="${project.version}">
+        <config name="ir.amv.os.vaseline.ws.osgi.rest.secured.oauth2">tokenUrl=http://localhost:8888/auth/oauth/token
+            checkTokenUrl=http://localhost:8888/auth/oauth/check_token
+            clientId=SampleClientId
+            clientSecret=secret
+        </config>
+        <feature>vaseline-ws-rest-secured-oauth2</feature>
+        <feature>vaseline-basics-cache-hazelcast</feature>
+        <bundle>mvn:${project.groupId}/vaseline-ws-rest-secured-oauth2-cache-hazelcast-osgi/${project.version}</bundle>
     </feature>
     <!-- vaseline ws rest impl end -->
 
@@ -114,7 +129,9 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-ws-rest-basic-layer-api</feature>
 
         <feature>vaseline-ws-rest-jersey</feature>
-        <feature>vaseline-ws-rest-secured</feature>
+        <feature>vaseline-ws-rest-secured-oauth2</feature>
+        <feature>vaseline-ws-rest-secured-oauth2-cache-hazelcast</feature>
+        <!--<feature>vaseline-ws-rest-secured-spring-sec</feature>-->
     </feature>
 
 </features>

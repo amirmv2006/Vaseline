@@ -1,5 +1,8 @@
 package ir.amv.os.vaseline.file.apis.businessimpl.server;
 
+import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.IBusinessAction;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
 import ir.amv.os.vaseline.file.apis.business.server.daofinder.IVaselineFileDaoFinder;
 import ir.amv.os.vaseline.file.apis.dao.basic.server.IVaselineFileDao;
 import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.blob.IVaselineFileBlobDao;
@@ -47,6 +50,11 @@ public class TestVaselineFileApiImpl
     public IAuthenticationApi getAuthenticationApi() {
         return new IAuthenticationApi() {
             @Override
+            public <R> R doBusinessAction(final IBusinessAction<R> businessAction) throws BaseVaselineServerException {
+                return null;
+            }
+
+            @Override
             public <Proxy> Proxy getProxy(Class<Proxy> proxyClass) {
                 return null;
             }
@@ -76,5 +84,10 @@ public class TestVaselineFileApiImpl
     @Inject
     public void setFileDaoList(List<IVaselineFileDao> fileDaoList) {
         this.fileDaoList = fileDaoList;
+    }
+
+    @Override
+    public IVaselineBusinessActionExecutor getBusinessActionExecutor() {
+        return null;
     }
 }

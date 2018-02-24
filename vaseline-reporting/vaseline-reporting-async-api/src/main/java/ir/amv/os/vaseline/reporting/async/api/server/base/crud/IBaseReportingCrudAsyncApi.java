@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.reporting.async.api.server.base.crud;
 
 import ir.amv.os.vaseline.business.apis.layer.server.crud.IBaseCrudApi;
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.reporting.async.api.server.base.ro.IBaseReportingReadOnlyAsyncApi;
 

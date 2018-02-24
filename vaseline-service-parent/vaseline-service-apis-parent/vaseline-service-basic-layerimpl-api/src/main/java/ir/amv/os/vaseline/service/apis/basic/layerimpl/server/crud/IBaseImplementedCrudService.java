@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.service.apis.basic.layerimpl.server.crud;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.exc.BaseVaselineClientException;
 import ir.amv.os.vaseline.basics.apis.core.shared.validation.IEntityDeleteValidation;
@@ -23,7 +23,7 @@ public interface IBaseImplementedCrudService<E extends IBaseEntity<Id>, D extend
     default Id save(D t) throws BaseVaselineClientException {
         try {
             E ent = convertDtoToEntity(t, validationGroupsForSave());
-            return getApi().save(ent);
+            return getApiProxy().save(ent);
         } catch (Exception e) {
             throw convertException(e);
         }
@@ -33,7 +33,7 @@ public interface IBaseImplementedCrudService<E extends IBaseEntity<Id>, D extend
     default void update(D t) throws BaseVaselineClientException {
         try {
             E entity = convertDtoToEntity(t, validationGroupsForUpdate());
-            getApi().update(entity);
+            getApiProxy().update(entity);
         } catch (Exception e) {
             throw convertException(e);
         }
@@ -43,7 +43,7 @@ public interface IBaseImplementedCrudService<E extends IBaseEntity<Id>, D extend
     default void delete(D id) throws BaseVaselineClientException {
         try {
             E entity = convertDtoToEntity(id, validationGroupsForDelete());
-            getApi().delete(entity);
+            getApiProxy().delete(entity);
         } catch (Exception e) {
             throw convertException(e);
         }
@@ -52,7 +52,7 @@ public interface IBaseImplementedCrudService<E extends IBaseEntity<Id>, D extend
     @Override
     default void deleteById(Id id) throws BaseVaselineClientException {
         try {
-            getApi().delete(id);
+            getApiProxy().delete(id);
         } catch (Exception e) {
             throw convertException(e);
         }

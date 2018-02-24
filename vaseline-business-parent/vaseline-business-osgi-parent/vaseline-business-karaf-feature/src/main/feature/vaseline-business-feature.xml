@@ -13,6 +13,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <bundle>mvn:com.github.amirmv2006.business.apis/vaseline-business-basic-layer-api/${project.version}</bundle>
     </feature>
     <feature name="vaseline-business-basic-layerimpl-api" version="${project.version}">
+        <feature>transaction-api</feature>
         <feature>vaseline-business-basic-layer-api</feature>
         <bundle>mvn:com.github.amirmv2006.business.apis/vaseline-business-basic-layerimpl-api/${project.version}
         </bundle>
@@ -57,13 +58,14 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <!-- vaseline business api end -->
     <!-- vaseline business impl start-->
     <feature name="vaseline-business-executor" version="${project.version}">
+        <feature>aries-proxy</feature>
         <feature>vaseline-business-basic-layerimpl-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-business-executor-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-businesss-aries-tx" version="${project.version}">
+        <feature>transaction</feature>
         <feature>vaseline-basics-logging-common</feature>
         <feature>vaseline-business-basic-layer-api</feature>
-        <feature>transaction</feature>
         <bundle>mvn:${project.groupId}/vaseline-businesss-aries-tx-osgi/${project.version}</bundle>
     </feature>
     <!-- vaseline business impl end-->

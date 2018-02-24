@@ -22,11 +22,12 @@
         <module>vaseline-basics-logging-log-service-osgi</module>
         <module>vaseline-basics-logging-common-osgi</module>
         <module>vaseline-basics-logging-pax-logging-osgi</module>
-        <module>vaseline-basics-karaf-feature</module>
         <module>vaseline-basics-base-bundle-osgi</module>
         <module>vaseline-basics-i18n-osgi</module>
         <module>vaseline-basics-mapper-dozer-osgi</module>
         <module>vaseline-basics-validation-hibernate-validator-osgi</module>
+        <module>vaseline-basics-cache-hazelcast-osgi</module>
+        <module>vaseline-basics-karaf-feature</module>
     </modules>
 
     <dependencyManagement>

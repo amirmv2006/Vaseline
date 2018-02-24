@@ -15,7 +15,6 @@
  */
 package ir.amv.os.vaseline.basics.spring.mapper.config;
 
-import ir.amv.os.vaseline.basics.apis.mapper.server.objmapper.IVaselineObjectMapper;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.dozer.BeanFactory;
 import org.dozer.CustomConverter;
@@ -230,7 +229,7 @@ public class VaselineDozerMapper implements Mapper {
         this.customMappings = loadMappingsResult.getCustomMappings();
         // add custom converters here
         for (Class<?> customConvertersClass : customConvertersClasses) {
-            Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(customConvertersClass);
+            Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(customConvertersClass);
             CustomConverterDescription customConverterDesc = new CustomConverterDescription();
             customConverterDesc.setClassA(genericArgumentClasses[0]);
             customConverterDesc.setClassB(genericArgumentClasses[1]);

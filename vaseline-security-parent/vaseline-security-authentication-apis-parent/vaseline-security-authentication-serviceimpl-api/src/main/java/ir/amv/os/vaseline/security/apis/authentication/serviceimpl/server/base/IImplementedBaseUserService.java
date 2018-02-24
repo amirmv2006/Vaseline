@@ -17,7 +17,7 @@ public interface IImplementedBaseUserService<U extends IBaseUserEntity, UD exten
     @Override
     default UD loadUserByUsername(String username) throws BaseVaselineClientException {
         try {
-            U byId = getApi().loadUserByUsername(username);
+            U byId = getApiProxy().loadUserByUsername(username);
             return convertEntityToDTO(byId, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);

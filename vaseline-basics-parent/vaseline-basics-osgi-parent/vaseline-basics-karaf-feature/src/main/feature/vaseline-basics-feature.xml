@@ -4,9 +4,14 @@
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
 http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <repository>mvn:org.hibernate.validator/hibernate-validator-osgi-karaf-features/${org.hibernate.validator.version}/xml/features</repository>
+    <!--<repository>mvn:org.apache.karaf.cellar/apache-karaf-cellar/4.0.0/xml/features</repository>-->
 
     <feature name="vaseline-reflection-util" version="${project.version}">
         <bundle>mvn:com.github.amirmv2006.thirdparty/vaseline-reflection-util/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-cache-api" version="${project.version}">
+        <bundle>mvn:javax.cache/cache-api/1.1.0</bundle>
+        <bundle>mvn:com.github.amirmv2006.basics.apis/vaseline-cache-api/${project.version}</bundle>
     </feature>
     <feature name="vaseline-i18n-api" version="${project.version}">
         <bundle>mvn:com.github.amirmv2006.basics.apis/vaseline-i18n-api/${project.version}</bundle>
@@ -44,9 +49,21 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <bundle>mvn:com.github.amirmv2006.basics.apis/vaseline-validation-api/${project.version}</bundle>
     </feature>
 
+    <feature name="hazelcast" description="In memory data grid" version="3.8.5">
+        <!--<configfile finalname="/etc/hazelcast.xml">mvn:org.apache.karaf.cellar/apache-karaf-cellar/4.1.1/xml/hazelcast</configfile>-->
+        <bundle>mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1</bundle>
+        <bundle>mvn:com.eclipsesource.minimal-json/minimal-json/0.9.2</bundle>
+        <bundle>mvn:com.hazelcast/hazelcast-all/3.8.5</bundle>
+    </feature>
+
     <!-- impl features -->
     <feature name="vaseline-basics-base-bundle" version="${project.version}">
         <bundle>mvn:${project.groupId}/vaseline-basics-base-bundle-osgi/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-basics-cache-hazelcast" version="${project.version}">
+        <feature>hazelcast</feature>
+        <feature>vaseline-cache-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-basics-cache-hazelcast-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-basics-i18n" version="${project.version}">
         <feature>scr</feature>
@@ -113,7 +130,9 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-jdbc-api</feature>
         <feature>vaseline-entity-jpa-api</feature>
 
+        <feature version="3.8.5">hazelcast</feature>
         <!--impl beans-->
+        <feature>vaseline-basics-cache-hazelcast</feature>
         <feature>vaseline-basics-i18n</feature>
         <feature>vaseline-basics-mapper-dozer</feature>
         <feature>vaseline-basics-logging-pax-logging</feature>

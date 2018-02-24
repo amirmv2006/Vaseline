@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.business.apis.basic.layer.server.crud;
 
 import ir.amv.os.vaseline.business.apis.basic.layer.server.ro.IBaseEntityReadOnlyApi;
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 
 /**

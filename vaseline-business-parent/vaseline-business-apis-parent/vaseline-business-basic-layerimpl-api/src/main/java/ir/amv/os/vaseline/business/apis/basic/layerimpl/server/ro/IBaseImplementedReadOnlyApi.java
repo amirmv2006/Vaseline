@@ -1,20 +1,18 @@
 package ir.amv.os.vaseline.business.apis.basic.layerimpl.server.ro;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
-import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.defimpl.BaseCallbackImpl;
-import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineDbOpMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineAllBuinessMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineBuinessMetadata;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.ro.IBaseReadOnlyApi;
-import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.BusinessFunctionOneImpl;
-import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.BusinessFunctionZeroImpl;
+import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.function.IBusinessFunctionZero;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.scroller.IVaselineDataScroller;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;
-import java.lang.reflect.Method;
 import java.util.List;
 
 public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id extends Serializable, Dao extends
@@ -24,68 +22,67 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
     Dao getDao();
 
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default E getById(Id id) throws BaseVaselineServerException {
-        Method getByIdMethod = getDeclaredMethod(IBaseImplementedReadOnlyApi.class, "getById", Serializable.class);
-        return doBusinessAction(new BusinessFunctionOneImpl<>(
-                        getClass(), getByIdMethod, id, id1 -> {
-                    E findById = getDao().getById(id1);
-                    postGet(findById);
-                    return findById;
-                }, VaselineDbOpMetadata.READ_ONLY)
-        );
+        return doBusinessAction((IBusinessFunctionZero<E>) () -> {
+            E findById = getDao().getById(id);
+            postGet(findById);
+            return findById;
+        });
     }
 
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default Long countAllApproximately() throws BaseVaselineServerException {
-        Method countAllApproximatelyMethod = getDeclaredMethod(IBaseImplementedReadOnlyApi.class, "countAllApproximately");
-        return doBusinessAction(new BusinessFunctionZeroImpl<>(
-                getClass(), countAllApproximatelyMethod, () -> getDao().countAllApproximately(),
-                VaselineDbOpMetadata.READ_ONLY
-        ));
+        return doBusinessAction((IBusinessFunctionZero<Long>) () -> getDao().countAllApproximately());
     }
 
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default Long countAll() throws BaseVaselineServerException {
-        Method countAllMethod = getDeclaredMethod(IBaseImplementedReadOnlyApi.class, "countAll");
-        return doBusinessAction(new BusinessFunctionZeroImpl<>(
-                getClass(), countAllMethod, () -> getDao().countAll(), VaselineDbOpMetadata.READ_ONLY
-        ));
+        return doBusinessAction((IBusinessFunctionZero<Long>) () -> getDao().countAll());
     }
 
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default List<E> getAll() throws BaseVaselineServerException {
-        Method getAllMethod = getDeclaredMethod(IBaseImplementedReadOnlyApi.class, "getAll");
-        return doBusinessAction(new BusinessFunctionZeroImpl<>(
-                getClass(), getAllMethod, () -> {
+        return doBusinessAction((IBusinessFunctionZero<List<E>>) () -> {
             List<E> all = getDao().getAll();
             postGetList(all);
             return all;
-        }, VaselineDbOpMetadata.READ_ONLY)
-        );
+        });
     }
 
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default IVaselineDataScroller<E> scrollAll(final List<SortDto> sortList) throws BaseVaselineServerException {
-        Method scrollAllMethod = getDeclaredMethod(IBaseImplementedReadOnlyApi.class, "scrollAll", List.class);
-        return doBusinessAction(new BusinessFunctionOneImpl<>(
-                        getClass(), scrollAllMethod, sortList, (sl) -> {
-                    IVaselineDataScroller<E> scroller = getDao().scrollAll(sl);
-                    scroller.addAfterFetchObject(this::postGet);
-                    return scroller;
-                }, VaselineDbOpMetadata.READ_ONLY)
-        );
+        return doBusinessAction((IBusinessFunctionZero<IVaselineDataScroller<E>>) () -> {
+            IVaselineDataScroller<E> scroller = getDao().scrollAll(sortList);
+            scroller.addAfterFetchObject(this::postGet);
+            return scroller;
+        });
     }
 
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default List<E> getAll(PagingDto pagingDto) throws BaseVaselineServerException {
-        Method getAllPagedMethod = getDeclaredMethod(IBaseImplementedReadOnlyApi.class, "getAll", PagingDto.class);
-        return doBusinessAction(new BusinessFunctionOneImpl<>(
-                        getClass(), getAllPagedMethod, pagingDto, (pd) -> {
-                    List<E> all = getDao().getAll(pd);
-                    postGetList(all);
-                    return all;
-                }, VaselineDbOpMetadata.READ_ONLY)
-        );
+        return doBusinessAction((IBusinessFunctionZero<List<E>>) () -> {
+            List<E> all = getDao().getAll(pagingDto);
+            postGetList(all);
+            return all;
+        });
     }
 
     default void postGetList(final List<E> list) throws BaseVaselineServerException {

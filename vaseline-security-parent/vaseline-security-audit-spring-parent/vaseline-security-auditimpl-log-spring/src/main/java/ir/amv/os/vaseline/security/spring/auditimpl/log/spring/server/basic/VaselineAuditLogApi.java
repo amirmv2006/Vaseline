@@ -15,6 +15,7 @@ public class VaselineAuditLogApi
 
     private IVaselineLogger vaselineLogger;
     private IVaselineBusinessActionExecutor businessActionExecutor;
+    private Object proxy;
 
     @Override
     public IVaselineLogger getVaselineLogger() {
@@ -28,12 +29,12 @@ public class VaselineAuditLogApi
 
     @Override
     public <Proxy> Proxy getProxy(final Class<Proxy> proxyClass) {
-        return null;
+        return (Proxy) proxy;
     }
 
     @Override
     public <Proxy> void setProxy(final Proxy proxy) {
-
+        this.proxy = proxy;
     }
 
     @Override

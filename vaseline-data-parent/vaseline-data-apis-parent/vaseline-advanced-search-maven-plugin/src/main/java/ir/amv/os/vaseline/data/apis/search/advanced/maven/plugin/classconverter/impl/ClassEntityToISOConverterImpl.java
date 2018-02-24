@@ -70,7 +70,7 @@ public class ClassEntityToISOConverterImpl
             // no need in version 2.19.4.Final
 //            try {
 //                Class<?> sourceClass = Class.forName(source.getQualifiedName());
-//                Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(sourceClass, Class.forName(superType));
+//                Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(sourceClass, Class.forName(superType));
 //                superConverterd += "<";
 //                assert genericArgumentClasses != null;
 //                for (Class<?> genericArgumentClass : genericArgumentClasses) {

@@ -1,14 +1,13 @@
 package ir.amv.os.vaseline.business.apis.advancedsearch.layerimpl.server;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
-import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.defimpl.BaseCallbackImpl;
 import ir.amv.os.vaseline.business.apis.advancedsearch.layer.server.IBaseAdvancedSearchApi;
-import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineDbOpMetadata;
-import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.BusinessFunctionOneImpl;
-import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.BusinessFunctionTwoImpl;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineAllBuinessMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineBuinessMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.function.IBusinessFunctionZero;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.ro.IBaseImplementedReadOnlyApi;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBaseSearchObject;
@@ -16,7 +15,6 @@ import ir.amv.os.vaseline.data.apis.search.advanced.server.ro.IBaseAdvancedSearc
 
 import javax.transaction.Transactional;
 import java.io.Serializable;
-import java.lang.reflect.Method;
 import java.util.List;
 
 public interface IBaseImplementedAdvancedSearchApi<E extends IBaseEntity<Id>, SO extends IBaseSearchObject,
@@ -24,49 +22,48 @@ public interface IBaseImplementedAdvancedSearchApi<E extends IBaseEntity<Id>, SO
         extends IBaseAdvancedSearchApi<E, SO, Id>, IBaseImplementedReadOnlyApi<E, Id, Dao> {
 
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default Long countBySearchObject(SO searchObject) throws BaseVaselineServerException {
-        Method countBySearchObjectMethod = getDeclaredMethod(IBaseImplementedAdvancedSearchApi.class, "countBySearchObject",
-                IBaseSearchObject.class);
-        return doBusinessAction(new BusinessFunctionOneImpl<>(
-                getClass(), countBySearchObjectMethod, searchObject, so -> getDao().countBySearchObject(so)
-                , VaselineDbOpMetadata.READ_ONLY));
+        return doBusinessAction((IBusinessFunctionZero<Long>) () -> getDao().countBySearchObject(searchObject));
     }
 
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default List<E> searchBySearchObject(SO searchObject) throws BaseVaselineServerException {
-        Method searchBySearchObjectMethod = getDeclaredMethod(IBaseImplementedAdvancedSearchApi.class, "searchBySearchObject",
-                IBaseSearchObject.class);
-        return doBusinessAction(new BusinessFunctionOneImpl<>(
-                getClass(), searchBySearchObjectMethod, searchObject, so -> {
-            List<E> searchByExample = getDao().searchBySearchObject(so);
+        return doBusinessAction((IBusinessFunctionZero<List<E>>) () -> {
+            List<E> searchByExample = getDao().searchBySearchObject(searchObject);
             postGetList(searchByExample);
             return searchByExample;
-        }, VaselineDbOpMetadata.READ_ONLY));
+        });
     }
 
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default IVaselineDataScroller<E> scrollBySearchObject(SO searchObject, List<SortDto> sortList) throws
             BaseVaselineServerException {
-        Method scrollBySearchObjectMethod = getDeclaredMethod(IBaseImplementedAdvancedSearchApi.class, "scrollBySearchObject",
-                IBaseSearchObject.class, List.class);
-        return doBusinessAction(new BusinessFunctionTwoImpl<>(
-                getClass(), scrollBySearchObjectMethod, searchObject, sortList, (so, sl) -> {
-            IVaselineDataScroller<E> scroller = getDao().scrollBySearchObject(so, sl);
+        return doBusinessAction((IBusinessFunctionZero<IVaselineDataScroller<E>>)() -> {
+            IVaselineDataScroller<E> scroller = getDao().scrollBySearchObject(searchObject, sortList);
             scroller.addAfterFetchObject(this::postGet);
             return scroller;
-        }, VaselineDbOpMetadata.READ_ONLY));
+        });
     }
 
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default List<E> searchBySearchObject(SO searchObject, PagingDto pagingDto)
             throws BaseVaselineServerException {
-        Method searchBySearchObjectMethod = getDeclaredMethod(IBaseImplementedAdvancedSearchApi.class, "searchBySearchObject",
-                IBaseSearchObject.class, PagingDto.class);
-        return doBusinessAction(new BusinessFunctionTwoImpl<>(
-                getClass(), searchBySearchObjectMethod, searchObject, pagingDto, (so, pd) -> {
-            List<E> searchByExample = getDao().searchBySearchObject(so, pd);
+        return doBusinessAction((IBusinessFunctionZero<List<E>>) () -> {
+            List<E> searchByExample = getDao().searchBySearchObject(searchObject, pagingDto);
             postGetList(searchByExample);
             return searchByExample;
-        }, VaselineDbOpMetadata.READ_ONLY));
+        });
     }
 }

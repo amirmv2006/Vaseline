@@ -1,14 +1,13 @@
 package ir.amv.os.vaseline.business.apis.multidao.layerimpl.server.ro;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.notsupported.VaselineFeatureNotSupportedException;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
-import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.defimpl.BaseCallbackImpl;
-import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineDbOpMetadata;
-import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.BusinessFunctionOneImpl;
-import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.BusinessFunctionTwoImpl;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineAllBuinessMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineBuinessMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.function.IBusinessFunctionZero;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.ro.IBaseImplementedReadOnlyApi;
 import ir.amv.os.vaseline.business.apis.multidao.layer.server.ro.IBaseMultiDaoReadOnlyApi;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.IBaseReadOnlyDao;
@@ -16,7 +15,6 @@ import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.scroller.IVaselineDataSc
 
 import javax.transaction.Transactional;
 import java.io.Serializable;
-import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -33,16 +31,15 @@ public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, 
 
     @Override
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default E getById(Category category, Id id) throws BaseVaselineServerException {
-        Method getByIdMethod = getDeclaredMethod(IBaseImplementedMultiDaoReadOnlyApi.class, "getById",
-                Object.class, Serializable.class);
-        return doBusinessAction(new BusinessFunctionTwoImpl<>(
-                getClass(), getByIdMethod, category, id, (c, i) -> {
-            E byId = getDaoFor(c).getById(i);
+        return doBusinessAction((IBusinessFunctionZero<E>) () -> {
+            E byId = getDaoFor(category).getById(id);
             postGet(byId);
             return byId;
-        }, VaselineDbOpMetadata.READ_ONLY
-        ));
+        });
 
     }
 
@@ -52,11 +49,11 @@ public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, 
     }
     @Override
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default Long countAll(Category category) throws BaseVaselineServerException {
-        Method countAllMethod = getDeclaredMethod(IBaseImplementedMultiDaoReadOnlyApi.class, "countAll", Object.class);
-        return doBusinessAction(new BusinessFunctionOneImpl<>(
-                getClass(), countAllMethod, category, c -> getDaoFor(c).countAll(), VaselineDbOpMetadata.READ_ONLY
-        ));
+        return doBusinessAction((IBusinessFunctionZero<Long>) () -> getDaoFor(category).countAll());
     }
 
     @Override
@@ -65,15 +62,15 @@ public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, 
     }
     @Override
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default List<E> getAll(Category category) throws BaseVaselineServerException {
-        Method getAllMethod = getDeclaredMethod(IBaseImplementedMultiDaoReadOnlyApi.class, "getAll", Object.class);
-        return doBusinessAction(new BusinessFunctionOneImpl<>(
-                getClass(), getAllMethod, category, c -> {
-            List<E> all = getDaoFor(c).getAll();
+        return doBusinessAction((IBusinessFunctionZero<List<E>>) () -> {
+            List<E> all = getDaoFor(category).getAll();
             postGetList(all);
             return all;
-        }, VaselineDbOpMetadata.READ_ONLY
-        ));
+        });
     }
 
     @Override
@@ -82,16 +79,15 @@ public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, 
     }
     @Override
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default List<E> getAll(Category category, PagingDto pagingDto) throws BaseVaselineServerException {
-        Method getAllMethod = getDeclaredMethod(IBaseImplementedMultiDaoReadOnlyApi.class, "getAll", Object.class,
-                PagingDto.class);
-        return doBusinessAction(new BusinessFunctionTwoImpl<>(
-                getClass(), getAllMethod, category, pagingDto, (c, p) -> {
-            List<E> all = getDaoFor(c).getAll(p);
+        return doBusinessAction((IBusinessFunctionZero<List<E>>) () -> {
+            List<E> all = getDaoFor(category).getAll(pagingDto);
             postGetList(all);
             return all;
-        }, VaselineDbOpMetadata.READ_ONLY
-        ));
+        });
     }
 
     @Override
@@ -101,16 +97,15 @@ public interface IBaseImplementedMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, 
 
     @Override
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default IVaselineDataScroller<E> scrollAll(Category category, List<SortDto> sortList) throws BaseVaselineServerException {
-        Method scrollAllMethod = getDeclaredMethod(IBaseImplementedMultiDaoReadOnlyApi.class, "scrollAll", Object
-                .class, List.class);
-        return doBusinessAction(new BusinessFunctionTwoImpl<>(
-                getClass(), scrollAllMethod, category, sortList, (c, sl) -> {
-            IVaselineDataScroller<E> scroller = getDaoFor(c).scrollAll(sl);
+        return doBusinessAction((IBusinessFunctionZero<IVaselineDataScroller<E>>) () -> {
+            IVaselineDataScroller<E> scroller = getDaoFor(category).scrollAll(sortList);
             scroller.addAfterFetchObject(this::postGet);
             return scroller;
-        }, VaselineDbOpMetadata.READ_ONLY
-        ));
+        });
     }
 
     /**

@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.service.apis.basic.layerimpl.server.ro;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.exc.BaseVaselineClientException;
@@ -15,14 +15,12 @@ import java.util.List;
  */
 public interface IBaseImplementedReadOnlyService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends
         Serializable, Api extends IBaseReadOnlyApi<E, Id>>
-        extends IBaseReadOnlyService<D, Id>, IBaseImplementedEntityReadOnlyService<E, D, Id> {
-
-    Api getApi();
+        extends IBaseReadOnlyService<D, Id>, IBaseImplementedEntityReadOnlyService<E, D, Id, Api> {
 
     @Override
     default D getById(Id id) throws BaseVaselineClientException {
         try {
-            E byId = getApi().getById(id);
+            E byId = getApiProxy().getById(id);
             return convertEntityToDTO(byId, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);
@@ -32,7 +30,7 @@ public interface IBaseImplementedReadOnlyService<E extends IBaseEntity<Id>, D ex
     @Override
     default Long countAll() throws BaseVaselineClientException {
         try {
-            return getApi().countAll();
+            return getApiProxy().countAll();
         } catch (Exception e) {
             throw convertException(e);
         }
@@ -41,7 +39,7 @@ public interface IBaseImplementedReadOnlyService<E extends IBaseEntity<Id>, D ex
     @Override
     default List<D> getAll() throws BaseVaselineClientException {
         try {
-            List<E> all = getApi().getAll();
+            List<E> all = getApiProxy().getAll();
             return convertEntityToDTO(all, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);
@@ -51,7 +49,7 @@ public interface IBaseImplementedReadOnlyService<E extends IBaseEntity<Id>, D ex
     @Override
     default List<D> getAll(PagingDto pagingDto) throws BaseVaselineClientException {
         try {
-            List<E> sortedPaged = getApi().getAll(pagingDto);
+            List<E> sortedPaged = getApiProxy().getAll(pagingDto);
             return convertEntityToDTO(sortedPaged, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);

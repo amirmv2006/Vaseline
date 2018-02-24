@@ -46,6 +46,11 @@
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.basics.osgi</groupId>
+            <artifactId>vaseline-basics-cache-hazelcast-osgi</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.basics.osgi</groupId>
             <artifactId>vaseline-basics-mapper-dozer-osgi</artifactId>
             <version>${project.version}</version>
         </dependency>

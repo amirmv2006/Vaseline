@@ -69,13 +69,13 @@ public class VaselineJsonConfig {
             gsonDeserializers.remove(beanName);
         }
         for (JsonSerializer<?> jsonSerializer : gsonSerializers.values()) {
-            Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(jsonSerializer.getClass(), JsonSerializer.class);
+            Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(jsonSerializer.getClass(), JsonSerializer.class);
             if (genericArgumentClasses != null) {
                 gsonBuilder.registerTypeAdapter(genericArgumentClasses[0], jsonSerializer);
             }
         }
         for (JsonDeserializer<?> jsonDeserializer : gsonDeserializers.values()) {
-            Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(jsonDeserializer.getClass(), JsonDeserializer.class);
+            Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(jsonDeserializer.getClass(), JsonDeserializer.class);
             if (genericArgumentClasses != null) {
                 gsonBuilder.registerTypeAdapter(genericArgumentClasses[0], jsonDeserializer);
             }

@@ -17,9 +17,9 @@
         <module>vaseline-security-authentication-osgi-parent</module>
         <module>vaseline-security-authentication-spring-parent</module>
         <module>vaseline-security-audit-apis-parent</module>
-        <module>vaseline-security-authorization-apis-parent</module>
-        <module>vaseline-security-audit-spring-parent</module>
         <module>vaseline-security-audit-osgi-parent</module>
+        <module>vaseline-security-audit-spring-parent</module>
+        <module>vaseline-security-authorization-apis-parent</module>
     </modules>
 
 

@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.business.apis.basic.layerimpl.server.crud;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.hascreatedate.IBaseHasCreateDateEntity;
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.hasmodifydate.IBaseHasModifyDateEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.hascreatedate.IBaseHasCreateDateEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.hasmodifydate.IBaseHasModifyDateEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.apis.core.shared.util.date.DateUtil;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.crud.IBaseEntityCrudApi;

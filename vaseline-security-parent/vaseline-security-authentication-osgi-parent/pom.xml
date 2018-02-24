@@ -18,6 +18,8 @@
         <module>vaseline-security-authentication-dao-jpa-osgi</module>
         <module>vaseline-security-authentication-business-osgi</module>
         <module>vaseline-security-authentication-service-osgi</module>
+        <module>vaseline-security-authentication-oauth2-spring-security-osgi</module>
+        <module>vaseline-security-authentication-oauth2-jersey-client</module>
         <module>vaseline-security-authentication-karaf-feature</module>
     </modules>
 

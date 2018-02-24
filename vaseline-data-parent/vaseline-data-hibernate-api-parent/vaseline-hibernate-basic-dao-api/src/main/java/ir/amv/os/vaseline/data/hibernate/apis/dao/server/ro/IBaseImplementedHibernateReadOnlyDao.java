@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.hibernate.apis.dao.server.ro;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.basics.apis.jdbc.dialect.IVaselineJdbcDialect;
@@ -129,7 +129,7 @@ public interface IBaseImplementedHibernateReadOnlyDao<E extends IBaseEntity<Id>,
 
     @Override
     default Class<E> getEntityClass() {
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass(), IBaseReadOnlyDao.class);
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(getClass(), IBaseReadOnlyDao.class);
         if (genericArgumentClasses != null) {
             for (Class<?> genericArgumentClass : genericArgumentClasses) {
                 if (IBaseEntity.class.isAssignableFrom(genericArgumentClass)) {

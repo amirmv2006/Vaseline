@@ -1,5 +1,7 @@
 package ir.amv.os.vaseline.basics.osgi.feature;
 
+import ir.amv.os.vaseline.basics.apis.cache.server.IVaselineCacheApi;
+import ir.amv.os.vaseline.basics.apis.cache.server.IVaselineCacheConfigurer;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.converter.IBaseExceptionConverter;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.handler.ICoreExceptionHandler;
 import ir.amv.os.vaseline.basics.apis.core.server.polymorphysm.IVaselinePolymorphysmClassHolder;
@@ -43,6 +45,8 @@ public class VaselineBasicsFeatureIntegrationTest extends AbstractVaselineBasics
         bundleCheckers.add(new BundleStartedChecker("vaseline-mapper-api"));
         bundleCheckers.add(new BundleStartedChecker("vaseline-validation-api"));
         bundleCheckers.add(new BundleStartedChecker("vaseline-basics-base-bundle-osgi"));
+        bundleCheckers.add(new BundleServiceChecker("vaseline-basics-cache-hazelcast-osgi",
+                Arrays.asList(IVaselineCacheApi.class, IVaselineCacheConfigurer.class)));
         bundleCheckers.add(new BundleServiceChecker("vaseline-basics-core-osgi",
                 Arrays.asList(ICoreExceptionHandler.class, IBaseExceptionConverter.class)));
         bundleCheckers.add(new BundleServiceChecker("vaseline-basics-i18n-osgi",

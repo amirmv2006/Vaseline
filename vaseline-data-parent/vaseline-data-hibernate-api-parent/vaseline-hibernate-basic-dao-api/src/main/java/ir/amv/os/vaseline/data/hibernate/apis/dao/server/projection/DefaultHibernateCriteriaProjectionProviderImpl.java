@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.hibernate.apis.dao.server.projection;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.from.SearchJoinType;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.hibernate.criterion.DetachedCriteria;

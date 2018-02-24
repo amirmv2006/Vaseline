@@ -38,13 +38,13 @@
         <module>vaseline-business-parent</module>
         <module>vaseline-service-parent</module>
         <module>vaseline-security</module>
+        <module>vaseline-security-parent</module>
+        <module>vaseline-ws-parent</module>
         <module>vaseline-file-parent</module><!-- file business uses authentication api-->
         <module>vaseline-reporting</module>
         <module>vaseline-tasks</module>
-        <module>vaseline-ws-parent</module>
         <module>vaseline-bpm</module>
         <module>vaseline-angular</module>
-        <module>vaseline-security-parent</module>
     </modules>
 
     <properties>

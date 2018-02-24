@@ -1,21 +1,19 @@
 package ir.amv.os.vaseline.business.apis.multidao.layerimpl.server.simplesearch;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
-import ir.amv.os.vaseline.basics.apis.core.shared.util.callback.defimpl.BaseCallbackImpl;
-import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineDbOpMetadata;
-import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.BusinessFunctionOneImpl;
-import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.BusinessFunctionTwoImpl;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineAllBuinessMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineBuinessMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.function.IBusinessFunctionZero;
 import ir.amv.os.vaseline.business.apis.multidao.layerimpl.server.ro.IBaseImplementedMultiDaoReadOnlyApi;
 import ir.amv.os.vaseline.business.apis.simplesearch.layerimpl.server.IBaseImplementedSimpleSearchApi;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.apis.search.simple.server.ro.IBaseSimpleSearchDao;
 
 import java.io.Serializable;
-import java.lang.reflect.Method;
 import java.util.List;
 
 public interface IBaseImplementedMultiDaoSimpleSearchApi<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends
@@ -26,52 +24,47 @@ public interface IBaseImplementedMultiDaoSimpleSearchApi<E extends IBaseEntity<I
     Category getCategoryForDto(D dto);
 
     @Override
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default Long countByExample(D example) throws BaseVaselineServerException {
-        Method countByExampleMethod = getDeclaredMethod(IBaseImplementedMultiDaoSimpleSearchApi.class,
-                "countByExample", IBaseDto.class);
-        return doBusinessAction(new BusinessFunctionOneImpl<>(
-                getClass(), countByExampleMethod, example,
-                ex -> getDaoFor(getCategoryForDto(ex)).countByExample(ex),
-                VaselineDbOpMetadata.READ_ONLY
-        ));
+        return doBusinessAction((IBusinessFunctionZero<Long>) () -> getDaoFor(getCategoryForDto(example)).countByExample
+                (example));
     }
 
     @Override
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default List<E> searchByExample(D example) throws BaseVaselineServerException {
-        Method searchByExampleMethod = getDeclaredMethod(IBaseImplementedMultiDaoSimpleSearchApi.class,
-                "searchByExample", IBaseDto.class);
-        return doBusinessAction(new BusinessFunctionOneImpl<>(
-                getClass(), searchByExampleMethod, example, ex -> {
-            List<E> list = getDaoFor(getCategoryForDto(ex)).searchByExample(ex);
+        return doBusinessAction((IBusinessFunctionZero<List<E>>) () -> {
+            List<E> list = getDaoFor(getCategoryForDto(example)).searchByExample(example);
             postGetList(list);
             return list;
-        }, VaselineDbOpMetadata.READ_ONLY
-        ));
+        });
     }
 
     @Override
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default List<E> searchByExample(D example, PagingDto pagingDto) throws BaseVaselineServerException {
-        Method searchByExampleMethod = getDeclaredMethod(IBaseImplementedMultiDaoSimpleSearchApi.class,
-                "searchByExample", IBaseDto.class, PagingDto.class);
-        return doBusinessAction(new BusinessFunctionTwoImpl<>(
-                getClass(), searchByExampleMethod, example, pagingDto, (e, p) -> {
-            List<E> list = getDaoFor(getCategoryForDto(e)).searchByExample(e, p);
+        return doBusinessAction((IBusinessFunctionZero<List<E>>) () -> {
+            List<E> list = getDaoFor(getCategoryForDto(example)).searchByExample(example, pagingDto);
             postGetList(list);
             return list;
-        }, VaselineDbOpMetadata.READ_ONLY
-        ));
+        });
     }
 
     @Override
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    })
     default IVaselineDataScroller<E> scrollByExample(D example, List<SortDto> sortList) throws BaseVaselineServerException {
-        Method scrollByExampleMethod = getDeclaredMethod(IBaseImplementedMultiDaoSimpleSearchApi.class, "scrollByExample", IBaseDto
-                .class, List.class);
-        return doBusinessAction(new BusinessFunctionTwoImpl<>(
-                getClass(), scrollByExampleMethod, example, sortList, (ex, sl) -> {
-            IVaselineDataScroller<E> scroller = getDaoFor(getCategoryForDto(ex)).scrollByExample(ex, sl);
+        return doBusinessAction((IBusinessFunctionZero<IVaselineDataScroller<E>>) () -> {
+            IVaselineDataScroller<E> scroller = getDaoFor(getCategoryForDto(example)).scrollByExample(example, sortList);
             scroller.addAfterFetchObject(this::postGet);
             return scroller;
-        }, VaselineDbOpMetadata.READ_ONLY
-        ));
+        });
     }
 }

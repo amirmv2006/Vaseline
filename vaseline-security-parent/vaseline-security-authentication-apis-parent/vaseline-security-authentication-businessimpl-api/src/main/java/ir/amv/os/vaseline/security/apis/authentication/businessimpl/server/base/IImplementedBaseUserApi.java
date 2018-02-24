@@ -1,8 +1,10 @@
 package ir.amv.os.vaseline.security.apis.authentication.businessimpl.server.base;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineAllBuinessMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineBuinessMetadata;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineDbOpMetadata;
-import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.BusinessFunctionOneImpl;
+import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.function.IBusinessFunctionZero;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.ro.IBaseImplementedReadOnlyApi;
 import ir.amv.os.vaseline.security.apis.audit.basic.server.IAuditApi;
 import ir.amv.os.vaseline.security.apis.authentication.business.server.base.IBaseUserApi;
@@ -22,15 +24,15 @@ public interface IImplementedBaseUserApi<U extends IBaseUserEntity, Dao extends 
 
     @Override
     @Transactional
+    @VaselineBuinessMetadata(
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    )
     default U loadUserByUsername(String username) throws BaseVaselineServerException {
-        Method loadUserByUsernameMethod = getDeclaredMethod(IImplementedBaseUserApi.class, "loadUserByUsername",
-                String.class);
-        return doBusinessAction(new BusinessFunctionOneImpl<>(
-                getClass(), loadUserByUsernameMethod, username, un -> {
-            U user = getDao().getUserByUsername(un);
+        return doBusinessAction((IBusinessFunctionZero<U>)() -> {
+            U user = getDao().getUserByUsername(username);
             postGet(user);
             return user;
-        }, VaselineDbOpMetadata.READ_ONLY));
+        });
 //        try {
 //            IBaseUserDto user = baseUserApi.loadUserByUsername(username);
 //            if (user == null) {
@@ -75,25 +77,25 @@ public interface IImplementedBaseUserApi<U extends IBaseUserEntity, Dao extends 
     }
 
     @Override
+    @VaselineBuinessMetadata(
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    )
     default void authenticationSuccessful(String username) throws BaseVaselineServerException {
-        Method authenticationSuccessfulMethod = getDeclaredMethod(IImplementedBaseUserApi.class,
-                "authenticationSuccessful", String.class);
-        doBusinessAction(new BusinessFunctionOneImpl<>(
-                getClass(), authenticationSuccessfulMethod, username, un -> {
-            getAuditApi().auditBusinessAction(un, "Authentication", "SUCCESS", null);
+        doBusinessAction((IBusinessFunctionZero<Void>)() -> {
+            getAuditApi().auditBusinessAction(username, "Authentication", "SUCCESS", null);
             return null;
-        }));
+        });
     }
 
     @Override
+    @VaselineBuinessMetadata(
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
+    )
     default void authenticationFailure(String username) throws BaseVaselineServerException {
-        Method authenticationFailureMethod = getDeclaredMethod(IImplementedBaseUserApi.class
-                    , "authenticationFailure", String.class);
-        doBusinessAction(new BusinessFunctionOneImpl<>(
-                getClass(), authenticationFailureMethod, username, un -> {
-            getAuditApi().auditBusinessAction(un, "Authentication", "FAIL", null);
+        doBusinessAction((IBusinessFunctionZero<U>)() -> {
+            getAuditApi().auditBusinessAction(username, "Authentication", "FAIL", null);
             return null;
-        }));
+        });
 
     }
 }

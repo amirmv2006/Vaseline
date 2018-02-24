@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.jpa.apis.dao.server.crud;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.crud.IBaseCrudDao;
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.IBaseImplementedJpaReadOnlyDao;
 

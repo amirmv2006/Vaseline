@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.security.osgi.authentication.dao.jpa.defimpl;
 
+import ir.amv.os.vaseline.data.jpa.apis.dao.server.crud.IBaseImplementedJpaCrudDao;
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.vendorspecific.IVendorSpecificDaoHelper;
 import ir.amv.os.vaseline.security.apis.authentication.dao.basic.server.base.IBaseUserDao;
 import ir.amv.os.vaseline.security.apis.authentication.daoimpl.jpa.server.base.IImplementedBaseUserJpaDao;
@@ -28,7 +29,9 @@ import java.util.UUID;
         }
 )
 public class VaselineBaseUserDaoJpa
-        implements IVaselineBaseUserDao, IImplementedBaseUserJpaDao<VaselineBaseUserEntity> {
+        implements IVaselineBaseUserDao,
+        IImplementedBaseUserJpaDao<VaselineBaseUserEntity>,
+        IBaseImplementedJpaCrudDao<VaselineBaseUserEntity, Long> {
     // list didn't work because remove will call equals which needs a tx :\
     private Map<String, EntityManager> emMap = new HashMap<>();
     private IVendorSpecificDaoHelper vendorSpecificDaoHelper;

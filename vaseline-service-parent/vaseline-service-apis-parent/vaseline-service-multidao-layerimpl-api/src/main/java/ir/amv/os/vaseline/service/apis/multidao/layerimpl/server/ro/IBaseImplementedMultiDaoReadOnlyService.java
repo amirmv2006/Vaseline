@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.service.apis.multidao.layerimpl.server.ro;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.exc.BaseVaselineClientException;
@@ -13,14 +13,12 @@ import java.util.List;
 
 public interface IBaseImplementedMultiDaoReadOnlyService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends
         Serializable, Category, Api extends IBaseMultiDaoReadOnlyApi<E, Id, Category>>
-        extends IBaseMultiDaoReadOnlyService<D, Id, Category>, IBaseImplementedEntityReadOnlyService<E, D, Id> {
-
-    IBaseMultiDaoReadOnlyApi<E, Id, Category> getApi();
+        extends IBaseMultiDaoReadOnlyService<D, Id, Category>, IBaseImplementedEntityReadOnlyService<E, D, Id, Api> {
 
     @Override
     default D getById(Category category, Id id) throws BaseVaselineClientException {
         try {
-            E byId = getApi().getById(category, id);
+            E byId = getApiProxy().getById(category, id);
             return convertEntityToDTO(byId, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);
@@ -29,7 +27,7 @@ public interface IBaseImplementedMultiDaoReadOnlyService<E extends IBaseEntity<I
 
     default Long countAll(Category category) throws BaseVaselineClientException {
         try {
-            return getApi().countAll(category);
+            return getApiProxy().countAll(category);
         } catch (Exception e) {
             throw convertException(e);
         }
@@ -37,7 +35,7 @@ public interface IBaseImplementedMultiDaoReadOnlyService<E extends IBaseEntity<I
 
     default List<D> getAll(Category category) throws BaseVaselineClientException {
         try {
-            List<E> all = getApi().getAll(category);
+            List<E> all = getApiProxy().getAll(category);
             return convertEntityToDTO(all, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);
@@ -46,7 +44,7 @@ public interface IBaseImplementedMultiDaoReadOnlyService<E extends IBaseEntity<I
 
     default List<D> getAll(Category category, PagingDto pagingDto) throws BaseVaselineClientException {
         try {
-            List<E> sortedPaged = getApi().getAll(category, pagingDto);
+            List<E> sortedPaged = getApiProxy().getAll(category, pagingDto);
             return convertEntityToDTO(sortedPaged, validationGroupsForShow());
         } catch (Exception e) {
             throw convertException(e);

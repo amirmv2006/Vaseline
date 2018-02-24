@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.hibernate.apis.advancedsearch.server.dao;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.scroller.IVaselineDataScroller;
@@ -22,7 +22,7 @@ public interface IBaseImplementedHibernateAdvancedSearchDao<E extends IBaseEntit
         IBaseImplementedHibernateReadOnlyDao<E, Id> {
 
     default Class<SO> getSearchObjectClass() {
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(getClass());
         if (genericArgumentClasses != null) {
             for (Class<?> genericArgumentClass : genericArgumentClasses) {
                 if (IBaseSearchObject.class.isAssignableFrom(genericArgumentClass)) {

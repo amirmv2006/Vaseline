@@ -20,7 +20,7 @@ public interface IImplementedVaselineFileService
     @Override
     default Long uploadFile(final String fileName, final String fileCategory, final Long fileSize, final String contentType, InputStream inputStream) throws BaseVaselineClientException {
         try {
-            return getApi().uploadFile(fileName, fileCategory, fileSize, contentType, inputStream);
+            return getApiProxy().uploadFile(fileName, fileCategory, fileSize, contentType, inputStream);
         } catch (BaseVaselineServerException e) {
             throw convertException(e);
         }
@@ -30,7 +30,7 @@ public interface IImplementedVaselineFileService
     default void writeFileContent(String category, Long fileId, OutputStream outputStream) throws
             BaseVaselineClientException {
         try {
-            getApi().writeFileContent(category, fileId, outputStream);
+            getApiProxy().writeFileContent(category, fileId, outputStream);
         } catch (BaseVaselineServerException e) {
             throw convertException(e);
         }

@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.hibernate.apis.simplesearch.server.dao;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
@@ -22,7 +22,7 @@ public interface IBaseImplementedHibernateSimpleSearchDao<E extends IBaseEntity<
         IBaseImplementedHibernateReadOnlyDao<E, Id> {
 
     default Class<D> getDtoClass() {
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(getClass());
         if (genericArgumentClasses != null) {
             for (Class<?> genericArgumentClass : genericArgumentClasses) {
                 if (IBaseDto.class.isAssignableFrom(genericArgumentClass)) {

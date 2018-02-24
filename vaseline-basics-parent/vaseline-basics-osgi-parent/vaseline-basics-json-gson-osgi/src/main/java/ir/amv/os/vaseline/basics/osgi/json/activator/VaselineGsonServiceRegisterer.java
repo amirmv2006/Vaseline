@@ -100,13 +100,13 @@ public class VaselineGsonServiceRegisterer {
             deserializers.remove(serializer); // remove duplicates
         }
         for (JsonSerializer<?> jsonSerializer : serializers) {
-            Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(jsonSerializer.getClass(), JsonSerializer.class);
+            Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(jsonSerializer.getClass(), JsonSerializer.class);
             if (genericArgumentClasses != null) {
                 gsonBuilder.registerTypeAdapter(genericArgumentClasses[0], jsonSerializer);
             }
         }
         for (JsonDeserializer<?> jsonDeserializer : deserializers) {
-            Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(jsonDeserializer.getClass(), JsonDeserializer.class);
+            Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(jsonDeserializer.getClass(), JsonDeserializer.class);
             if (genericArgumentClasses != null) {
                 gsonBuilder.registerTypeAdapter(genericArgumentClasses[0], jsonDeserializer);
             }

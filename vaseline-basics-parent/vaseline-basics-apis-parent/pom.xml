@@ -14,6 +14,7 @@
     <artifactId>vaseline-basics-apis-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>vaseline-cache-api</module>
         <module>vaseline-i18n-api</module>
         <module>vaseline-jdbc-api</module>
         <module>vaseline-json-api</module>

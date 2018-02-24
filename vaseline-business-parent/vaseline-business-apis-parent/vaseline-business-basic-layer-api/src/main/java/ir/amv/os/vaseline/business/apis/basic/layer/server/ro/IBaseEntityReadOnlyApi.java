@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.business.apis.basic.layer.server.ro;
 
 import ir.amv.os.vaseline.business.apis.basic.layer.server.base.IBaseApi;
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 
@@ -13,7 +13,7 @@ public interface IBaseEntityReadOnlyApi<E extends IBaseEntity<?>> extends IBaseA
     void postGet(E entity) throws BaseVaselineServerException;
 
     default Class<E> getEntityClass() {
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(getClass());
         if (genericArgumentClasses != null) {
             for (Class<?> genericArgumentClass : genericArgumentClasses) {
                 if (IBaseEntity.class.isAssignableFrom(genericArgumentClass)) {

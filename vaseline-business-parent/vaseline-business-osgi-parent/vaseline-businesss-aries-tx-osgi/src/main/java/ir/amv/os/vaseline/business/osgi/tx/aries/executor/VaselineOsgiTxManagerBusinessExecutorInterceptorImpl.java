@@ -6,6 +6,7 @@ import ir.amv.os.vaseline.basics.osgi.logging.common.server.helper.LOGGER;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.IBusinessAction;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessExecutorInterceptor;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.IBusinessMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineAllBuinessMetadata;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineDbOpMetadata;
 import ir.amv.os.vaseline.business.osgi.tx.aries.executor.txblueprint.TransactionAttribute;
 import ir.amv.os.vaseline.business.osgi.tx.aries.executor.txblueprint.TransactionToken;
@@ -38,7 +39,8 @@ public class VaselineOsgiTxManagerBusinessExecutorInterceptorImpl
         IBusinessMetadata[] businessMetadata = businessAction.getBusinessMetadata();
         if (businessMetadata != null) {
             for (IBusinessMetadata businessMetadatum : businessMetadata) {
-                if (businessMetadatum instanceof VaselineDbOpMetadata) {
+                if (businessMetadatum.equals(VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY) ||
+                        businessMetadatum.equals(VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE)) {
                     return true;
                 }
             }
@@ -121,6 +123,11 @@ public class VaselineOsgiTxManagerBusinessExecutorInterceptorImpl
         } catch (Exception e) {
             throw new BaseVaselineServerException("Can not rollback", e);
         }
+    }
+
+    @Override
+    public Class<TransactionToken> tokenClass() {
+        return TransactionToken.class;
     }
 
     private void safeEndCoordination(final TransactionToken token) {

@@ -29,7 +29,7 @@ public class BaseReportingAsyncApiImpl<E>
     private Class<E> reportObjectClass;
 
     public BaseReportingAsyncApiImpl() {
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass());
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(getClass());
         if (genericArgumentClasses != null) {
             reportObjectClass = (Class<E>) genericArgumentClasses[0];
         }

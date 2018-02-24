@@ -16,7 +16,10 @@
     <modules>
         <module>vaseline-ws-rest-jersey-osgi</module>
         <module>vaseline-ws-rest-gson-extension-osgi</module>
-        <module>vaseline-ws-rest-secured-osgi</module>
+        <module>vaseline-ws-rest-secured-spring-sec-osgi</module>
+        <module>vaseline-ws-rest-secured-oauth2-osgi</module>
+        <module>vaseline-ws-rest-client-jersey-osgi</module>
+        <module>vaseline-ws-rest-secured-oauth2-cache-hazelcast-osgi</module>
         <module>vaseline-ws-rest-karaf-feature</module>
     </modules>
 

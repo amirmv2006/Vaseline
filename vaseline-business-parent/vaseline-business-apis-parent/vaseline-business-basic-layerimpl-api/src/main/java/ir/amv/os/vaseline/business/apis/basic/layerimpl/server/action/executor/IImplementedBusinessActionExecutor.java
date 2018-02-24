@@ -29,13 +29,17 @@ public interface IImplementedBusinessActionExecutor
         }
         R result;
         try {
-            result = action.execute();
+            result = action.execute(this);
             for (IVaselineBusinessExecutorInterceptor interceptor : preCallMap.keySet()) {
-                interceptor.postExecuteSuccessfully(action, result, preCallMap.get(interceptor));
+                if (interceptor.appliesTo(action)) {
+                    interceptor.postExecuteSuccessfully(action, result, preCallMap.get(interceptor));
+                }
             }
         } catch (Throwable t) {
             for (IVaselineBusinessExecutorInterceptor interceptor : preCallMap.keySet()) {
-                interceptor.postExecuteException(action, t, preCallMap.get(interceptor));
+                if (interceptor.appliesTo(action)) {
+                    interceptor.postExecuteException(action, t, preCallMap.get(interceptor));
+                }
             }
             if (t instanceof BaseVaselineServerException) {
                 BaseVaselineServerException serverException = (BaseVaselineServerException) t;

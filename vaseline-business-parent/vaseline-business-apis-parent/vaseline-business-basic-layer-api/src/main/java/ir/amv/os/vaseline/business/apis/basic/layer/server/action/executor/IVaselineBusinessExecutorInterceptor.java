@@ -15,4 +15,6 @@ public interface IVaselineBusinessExecutorInterceptor<T> {
             preExecResult) throws BaseVaselineServerException;
     <R> void postExecuteException(final IBusinessAction<R> businessAction, Throwable t, final T preExecResult) throws
             BaseVaselineServerException;
+
+    Class<T> tokenClass();
 }

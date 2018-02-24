@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.basics.apis.dao.server.ent;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.MappedSuperclass;

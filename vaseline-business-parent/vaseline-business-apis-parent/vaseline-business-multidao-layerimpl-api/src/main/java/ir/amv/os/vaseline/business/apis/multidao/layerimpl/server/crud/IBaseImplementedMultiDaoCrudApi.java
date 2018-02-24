@@ -1,16 +1,15 @@
 package ir.amv.os.vaseline.business.apis.multidao.layerimpl.server.crud;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.basics.apis.core.server.base.exc.notsupported.VaselineFeatureNotSupportedException;
-import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineDbOpMetadata;
-import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.BusinessFunctionOneImpl;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineAllBuinessMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineBuinessMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.function.IBusinessFunctionZero;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.crud.IBaseImplementedCrudApi;
 import ir.amv.os.vaseline.business.apis.multidao.layerimpl.server.ro.IBaseImplementedMultiDaoReadOnlyApi;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.crud.IBaseCrudDao;
 
 import java.io.Serializable;
-import java.lang.reflect.Method;
 
 public interface IBaseImplementedMultiDaoCrudApi<E extends IBaseEntity<Id>, Id extends Serializable, Category,
         Dao extends IBaseCrudDao<E, Id>>
@@ -18,39 +17,42 @@ public interface IBaseImplementedMultiDaoCrudApi<E extends IBaseEntity<Id>, Id e
     Category getCategoryForEntity(final E entity) throws BaseVaselineServerException;
 
     @Override
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
+    })
     default Id save(E entity) throws BaseVaselineServerException {
-        Method saveMethod = getDeclaredMethod(IBaseImplementedMultiDaoCrudApi.class, "save", IBaseEntity.class);
-        return doBusinessAction(new BusinessFunctionOneImpl<>(
-                getClass(), saveMethod, entity, e -> {
-            preSave(e);
-            Id id = getDaoFor(getCategoryForEntity(e)).save(e);
-            postSave(e);
+        return doBusinessAction((IBusinessFunctionZero<Id>) () -> {
+            preSave(entity);
+            Id id = getDaoFor(getCategoryForEntity(entity)).save(entity);
+            postSave(entity);
             return id;
-        }, VaselineDbOpMetadata.WRITE));
+        });
     }
 
     @Override
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
+    })
     default void update(E entity) throws BaseVaselineServerException {
-        Method updateMethod = getDeclaredMethod(IBaseImplementedMultiDaoCrudApi.class, "update", IBaseEntity.class);
-        doBusinessAction(new BusinessFunctionOneImpl<>(
-                getClass(), updateMethod, entity, e -> {
-            preUpdate(e);
-            getDaoFor(getCategoryForEntity(e)).update(e);
-            postUpdate(e);
+        doBusinessAction((IBusinessFunctionZero<Void>) () -> {
+            preUpdate(entity);
+            getDaoFor(getCategoryForEntity(entity)).update(entity);
+            postUpdate(entity);
             return null;
-        }, VaselineDbOpMetadata.WRITE));
+        });
     }
 
     @Override
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
+    })
     default void delete(E entity) throws BaseVaselineServerException {
-        Method deleteMethod = getDeclaredMethod(IBaseImplementedMultiDaoCrudApi.class, "delete", IBaseEntity.class);
-        doBusinessAction(new BusinessFunctionOneImpl<>(
-                getClass(), deleteMethod, entity, e -> {
-            preDelete(e);
-            getDaoFor(getCategoryForEntity(e)).delete(e);
-            postDelete(e);
+        doBusinessAction((IBusinessFunctionZero<Void>) () -> {
+            preDelete(entity);
+            getDaoFor(getCategoryForEntity(entity)).delete(entity);
+            postDelete(entity);
             return null;
-        }, VaselineDbOpMetadata.WRITE));
+        });
     }
 
 }

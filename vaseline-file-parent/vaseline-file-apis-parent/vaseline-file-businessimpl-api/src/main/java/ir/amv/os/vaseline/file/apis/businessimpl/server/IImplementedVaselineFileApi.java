@@ -1,8 +1,9 @@
 package ir.amv.os.vaseline.file.apis.businessimpl.server;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineDbOpMetadata;
-import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.BusinessFunctionThreeImpl;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineAllBuinessMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layer.server.action.metadata.VaselineBuinessMetadata;
+import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.action.function.IBusinessFunctionZero;
 import ir.amv.os.vaseline.business.apis.multidao.layerimpl.server.crud.IBaseImplementedMultiDaoCrudApi;
 import ir.amv.os.vaseline.file.apis.business.server.IVaselineFileApi;
 import ir.amv.os.vaseline.file.apis.business.server.daofinder.IVaselineFileDaoFinder;
@@ -14,7 +15,6 @@ import ir.amv.os.vaseline.security.apis.authentication.basic.server.IAuthenticat
 import javax.transaction.Transactional;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -32,24 +32,16 @@ public interface IImplementedVaselineFileApi
 
     @Override
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
+    })
     default Long uploadFile(
             final String fileName,
             final String fileCategory,
             final Long fileSize,
             final String contentType,
             final InputStream inputStream) throws BaseVaselineServerException {
-        Method uploadFileMethod = getDeclaredMethod(IImplementedVaselineFileApi.class,
-                    "uploadFile", String.class, String.class, Long.class, String.class, InputStream.class);
-        return doBusinessAction(new UploadFileBusinessFunctionImpl(
-                getClass(), uploadFileMethod, fileName, fileCategory, fileSize, contentType, inputStream, VaselineDbOpMetadata
-                .WRITE) {
-            @Override
-            protected Long innerExecute(
-                    final String fileName,
-                    final String fileCategory,
-                    final Long fileSize,
-                    final String contentType,
-                    final InputStream inputStream) throws BaseVaselineServerException {
+        return doBusinessAction((IBusinessFunctionZero<Long>) () -> {
                 String category = ((fileCategory == null) || fileCategory.trim().equals("")) ? DEFAULT_CATEGORY : fileCategory;
                 IVaselineFileDao<IVaselineFileEntity, IVaselineFileDto> dao = getDaoFor(category);
                 IVaselineFileEntity file = dao.createFile(category);
@@ -67,25 +59,24 @@ public interface IImplementedVaselineFileApi
                 }
                 postSave(file);
                 return fileId;
-            }
-        });
+            });
     }
 
     @Override
     @Transactional
+    @VaselineBuinessMetadata({
+            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
+    })
     default void writeFileContent(String category, Long fileId, OutputStream outputStream) throws
             BaseVaselineServerException {
-        Method writeFileContentMethod = getDeclaredMethod(IImplementedVaselineFileApi.class,
-                    "writeFileContent", String.class, Long.class, OutputStream.class);
-        doBusinessAction(new BusinessFunctionThreeImpl<>(
-                getClass(), writeFileContentMethod, category, fileId, outputStream, (cat, fId, os)-> {
+        doBusinessAction((IBusinessFunctionZero<Void>) ()-> {
             try {
-                this.getDaoFor(cat).writeFileContent(fId, os);
+                this.getDaoFor(category).writeFileContent(fileId, outputStream);
                 return (Void) null;
             } catch (Exception e) {
                 throw new BaseVaselineServerException(e);
             }
-        }, VaselineDbOpMetadata.WRITE));
+        });
     }
 
     @Override

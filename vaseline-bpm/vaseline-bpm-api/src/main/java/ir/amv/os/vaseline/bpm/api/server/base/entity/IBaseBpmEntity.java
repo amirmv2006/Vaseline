@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.bpm.api.server.base.entity;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.ent.IBaseEntity;
+import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 
 import java.io.Serializable;
 

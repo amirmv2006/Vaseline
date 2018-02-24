@@ -8,6 +8,7 @@ import ir.amv.os.vaseline.security.apis.authentication.service.server.base.IBase
 import ir.amv.os.vaseline.security.apis.authentication.serviceimpl.server.base.IImplementedBaseUserService;
 import ir.amv.os.vaseline.security.osgi.authentication.business.IVaselineBaseUserApi;
 import ir.amv.os.vaseline.security.osgi.authentication.service.IVaselineBaseUserService;
+import ir.amv.os.vaseline.service.apis.basic.layerimpl.server.crud.IBaseImplementedCrudService;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -25,7 +26,8 @@ import javax.validation.Validator;
 )
 public class VaselineBaseUserServiceImpl
         implements IVaselineBaseUserService,
-                    IImplementedBaseUserService<VaselineBaseUserEntity, VaselineBaseUserDto, IVaselineBaseUserApi>{
+        IImplementedBaseUserService<VaselineBaseUserEntity, VaselineBaseUserDto, IVaselineBaseUserApi>,
+        IBaseImplementedCrudService<VaselineBaseUserEntity, VaselineBaseUserDto, Long, IVaselineBaseUserApi>{
     private IVaselineBaseUserApi api;
     private IVaselineObjectMapper mapper;
     private Validator validator;
