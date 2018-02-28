@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 /**
  * @author Amir
  */
-@Path("/oauth")
+@Path("oauth")
 public interface IOAuthService {
 
     @POST
@@ -26,5 +26,20 @@ public interface IOAuthService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/validateToken")
-    OAuthToken validateToken(@QueryParam("token") String token, @QueryParam("state") String state);
+    OAuthToken validateToken(
+            @QueryParam("token") final String token,
+            @QueryParam("state") final String state);
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/authCodeInit")
+    Response authCodeInit(@QueryParam("scope") String scope);
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/authCodeCallback")
+    OAuthToken authCodeCallback(
+            @QueryParam("code") final String authCode,
+            @QueryParam("state") final String state
+            );
 }

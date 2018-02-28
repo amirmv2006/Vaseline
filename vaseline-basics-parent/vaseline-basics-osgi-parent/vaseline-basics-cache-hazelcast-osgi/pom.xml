@@ -20,6 +20,7 @@
             javax.cache.integration;version="[1.1,2)",
             javax.cache.processor;version="[1.1,2)"
         </bundle.import.additional>
+        <bundle.dynamic.import.pkg>*</bundle.dynamic.import.pkg>
     </properties>
 
     <dependencies>

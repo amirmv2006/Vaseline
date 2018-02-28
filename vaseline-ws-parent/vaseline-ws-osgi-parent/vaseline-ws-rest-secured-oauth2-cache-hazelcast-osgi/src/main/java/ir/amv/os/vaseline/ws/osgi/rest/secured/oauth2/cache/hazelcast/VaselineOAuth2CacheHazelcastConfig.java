@@ -34,7 +34,7 @@ public class VaselineOAuth2CacheHazelcastConfig {
         Configuration configuration = confAdmin.createFactoryConfiguration(VaselineCacheConfigurerImpl
                 .VASELINE_CACHE_HAZELCAST_PID, null);
         Dictionary<String, Object> config = new Hashtable<>();
-        config.put(ModuleHazelcastCacheBasket.MODULE_NAME, "vaseline-oauth");
+        config.put(ModuleHazelcastCacheBasket.MODULE_NAME, IVaselineOAuthConfig.AUTHENTICATION_CACHE_GROUP);
         config.put(ModuleHazelcastCacheBasket.CACHE_NAME, IVaselineOAuthConfig.TOKEN_CACHE_NAME);
 //        CacheSimpleConfig tokenCacheConf = new CacheSimpleConfig();
 //        tokenCacheConf.setBackupCount(1);

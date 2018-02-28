@@ -110,9 +110,11 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <bundle>mvn:${project.groupId}/vaseline-ws-rest-secured-oauth2-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-ws-rest-secured-oauth2-cache-hazelcast" version="${project.version}">
-        <config name="ir.amv.os.vaseline.ws.osgi.rest.secured.oauth2">tokenUrl=http://localhost:8888/auth/oauth/token
-            checkTokenUrl=http://localhost:8888/auth/oauth/check_token
-            clientId=SampleClientId
+        <config
+                name="ir.amv.os.vaseline.ws.osgi.rest.secured.oauth2">tokenUrl=http://localhost:8088/spring-security-oauth-server/oauth/token
+            authorizeUrl=http://localhost:8088/spring-security-oauth-server/oauth/authorize
+            checkTokenUrl=http://localhost:8088/spring-security-oauth-server/oauth/check_token
+            clientId=fooClientIdPassword
             clientSecret=secret
         </config>
         <feature>vaseline-ws-rest-secured-oauth2</feature>

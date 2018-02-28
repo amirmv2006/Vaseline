@@ -18,6 +18,7 @@ import java.util.Dictionary;
 public class VaselineOAuthConfigImpl
         implements ManagedService, IVaselineOAuthConfig {
     private String tokenUrl;
+    private String authorizeUrl;
     private String clientId;
     private String clientSecret;
     private String checkTokenUrl;
@@ -28,6 +29,7 @@ public class VaselineOAuthConfigImpl
         clientId = (String) properties.get("clientId");
         clientSecret = (String) properties.get("clientSecret");
         checkTokenUrl = (String) properties.get("checkTokenUrl");
+        authorizeUrl = (String) properties.get("authorizeUrl");
     }
 
     @Override
@@ -48,5 +50,10 @@ public class VaselineOAuthConfigImpl
     @Override
     public String getCheckTokenUrl() {
         return checkTokenUrl;
+    }
+
+    @Override
+    public String getAuthorizeUrl() {
+        return authorizeUrl;
     }
 }

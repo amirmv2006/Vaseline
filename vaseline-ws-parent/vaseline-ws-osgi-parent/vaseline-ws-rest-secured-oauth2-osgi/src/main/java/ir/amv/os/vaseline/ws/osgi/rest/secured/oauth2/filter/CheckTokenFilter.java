@@ -30,7 +30,7 @@ public class CheckTokenFilter implements AuthenticationHandler, AuthorizationHan
     @Override
     public Principal authenticate(final ContainerRequestContext requestContext) {
         String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
-        if (authorizationHeader != null) {
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             String token = authorizationHeader.substring("Bearer ".length());
             OAuthToken oAuthToken = oAuthService.validateToken(token, null);
             return () -> oAuthToken.getUser_name();

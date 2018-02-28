@@ -23,6 +23,12 @@ public class VaselineCacheHazelcastImpl implements IVaselineCacheApi {
     private IVaselineCacheConfigurer<ICache> vaselineCacheConfigurer;
 
     @Override
+    public <K, V> V cacheGet(final String cacheName, final K entryKey) {
+        ICache<Object, Object> cache = getCache(cacheName);
+        return (V) cache.get(entryKey);
+    }
+
+    @Override
     public <K, V> void cachePut(final String cacheName, final K entryKey, final V value, final ExpiryPolicy
             expiryPolicy) {
         ICache<K, V> cache = getCache(cacheName);
