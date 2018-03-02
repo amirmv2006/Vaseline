@@ -16,6 +16,7 @@
     <modules>
         <module>vaseline-security-authorization-basic-api</module>
         <module>vaseline-security-authorization-model-api</module>
+        <module>vaseline-security-authorization-basicimpl-api</module>
     </modules>
 
 

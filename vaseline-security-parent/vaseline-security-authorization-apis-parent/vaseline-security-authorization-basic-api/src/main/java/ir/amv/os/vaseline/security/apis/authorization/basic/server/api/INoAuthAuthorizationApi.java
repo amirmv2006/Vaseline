@@ -14,7 +14,7 @@ public interface INoAuthAuthorizationApi extends IBaseApi {
 
     List<String> getAuthorizedActionTreeNames(String currentUsername) throws VaselineAuthorizationException;
 
-    List<String> getChildTreeNamesOfAuthorizedAction(String baseActionTN) throws VaselineAuthorizationException;
+    List<String> getChildTreeNamesOfAction(String baseActionTN) throws VaselineAuthorizationException;
 
     List<String> getUsernamesWithPermissionToAction(String actionTreeName) throws VaselineAuthorizationException;
 

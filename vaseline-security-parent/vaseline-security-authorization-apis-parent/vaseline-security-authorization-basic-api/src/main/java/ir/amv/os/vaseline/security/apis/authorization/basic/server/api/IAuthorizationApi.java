@@ -14,8 +14,4 @@ public interface IAuthorizationApi extends IBaseApi {
 
     List<String> getAuthorizedActionTreeNames() throws VaselineAuthorizationException;
 
-    List<String> getChildTreeNamesOfAuthorizedAction(String baseActionTN) throws VaselineAuthorizationException;
-
-    List<String> getUsernamesWithPermissionToAction(String actionTreeName) throws VaselineAuthorizationException;
-
 }
