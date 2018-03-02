@@ -15,7 +15,6 @@
  */
 package ir.amv.os.vaseline.security.osgi.authentication.oauth2.spring.sec;
 
-import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.VaselineAuthenticationImplConfig;
 import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.IHttpSecurityConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -51,7 +50,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  */
 @Configuration
 @Import({
-        VaselineAuthenticationImplConfig.class,
+//        VaselineAuthenticationImplConfig.class,
         VaselineAuthenticationOAuth2Config.ResourceServerConfiguration.class,
         VaselineAuthenticationOAuth2Config.AuthorizationServerConfiguration.class
 })

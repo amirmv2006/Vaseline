@@ -106,6 +106,8 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     </feature>
     <feature name="vaseline-ws-rest-secured-oauth2" version="${project.version}">
         <feature>vaseline-cache-api</feature>
+        <feature>vaseline-security-authentication-basicimpl-api</feature>
+        <feature>vaseline-security-authentication-basic</feature>
         <feature>jax-rs-provider-security</feature>
         <bundle>mvn:${project.groupId}/vaseline-ws-rest-secured-oauth2-osgi/${project.version}</bundle>
     </feature>

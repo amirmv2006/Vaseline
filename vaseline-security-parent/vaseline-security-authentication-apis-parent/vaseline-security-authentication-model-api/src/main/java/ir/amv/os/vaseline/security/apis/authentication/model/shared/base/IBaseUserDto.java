@@ -11,7 +11,4 @@ public interface IBaseUserDto
     String getUsername();
     void setUsername(String username);
 
-    String getPassword();
-    void setPassword(String password);
-
 }

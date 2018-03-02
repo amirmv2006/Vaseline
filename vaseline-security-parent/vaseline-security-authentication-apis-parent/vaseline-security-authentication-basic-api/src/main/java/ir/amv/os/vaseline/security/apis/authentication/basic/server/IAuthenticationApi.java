@@ -8,5 +8,7 @@ import ir.amv.os.vaseline.business.apis.basic.layer.server.base.IBaseApi;
  */
 public interface IAuthenticationApi extends IBaseApi {
 
+    String IS_AUTHENTICATED = "IS_AUTHENTICATED";
+
     String getCurrentUsername() throws BaseVaselineServerException;
 }

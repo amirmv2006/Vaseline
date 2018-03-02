@@ -8,5 +8,4 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 public interface IBaseUserEntity
         extends IBaseEntity<Long> {
     String getUsername();
-    String getPassword();
 }

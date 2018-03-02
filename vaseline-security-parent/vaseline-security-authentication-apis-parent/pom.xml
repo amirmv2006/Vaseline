@@ -15,6 +15,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-security-authentication-basic-api</module>
+        <module>vaseline-security-authentication-basicimpl-api</module>
         <module>vaseline-security-authentication-model-api</module>
         <module>vaseline-security-authentication-dao-jpa-api</module>
         <module>vaseline-security-authentication-dao-basic-api</module>

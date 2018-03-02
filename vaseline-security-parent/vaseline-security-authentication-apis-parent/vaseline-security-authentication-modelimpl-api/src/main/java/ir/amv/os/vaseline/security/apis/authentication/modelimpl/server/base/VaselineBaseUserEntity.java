@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.security.apis.authentication.modelimpl.server.base;
 
 import ir.amv.os.vaseline.basics.apis.dao.server.ent.BaseEntityImpl;
-import ir.amv.os.vaseline.security.apis.authentication.model.server.base.IBaseUserEntity;
+import ir.amv.os.vaseline.security.apis.authentication.model.server.base.IBaseHasPasswordUserEntity;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "SEC_VASELINE_BASE_USER")
 @Access(AccessType.FIELD)
 public class VaselineBaseUserEntity extends BaseEntityImpl<Long>
-        implements IBaseUserEntity {
+        implements IBaseHasPasswordUserEntity {
     @Column(name = "USERNAME", unique = true)
     private String username;
     @Column(name = "PASSWORD")

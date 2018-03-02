@@ -9,18 +9,23 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>vaseline-security-authentication-oauth2-jersey-client</artifactId>
+    <artifactId>vaseline-security-authentication-basic-osgi</artifactId>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.base.pkg>ir.amv.os.vaseline.security.osgi.authentication.oauth2.jersey.client</bundle.base.pkg>
+        <bundle.base.pkg>ir.amv.os.vaseline.security.osgi.authentication.basic</bundle.base.pkg>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.eclipsesource.jaxrs</groupId>
-            <artifactId>provider-security</artifactId>
-            <version>2.2</version>
+            <groupId>com.github.amirmv2006.security.authentication.apis</groupId>
+            <artifactId>vaseline-security-authentication-basicimpl-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
         </dependency>
     </dependencies>
+
 </project>
