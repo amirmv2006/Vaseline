@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.ws.rest.server.base.crud.impl;
 
-import ir.amv.os.vaseline.service.apis.layer.server.crud.IBaseCrudService;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.service.apis.basic.layer.server.crud.IBaseCrudService;
 import ir.amv.os.vaseline.ws.rest.server.base.crud.IBaseCrudRestService;
 import ir.amv.os.vaseline.ws.rest.server.base.ro.impl.BaseReadOnlyRestServiceImpl;
 

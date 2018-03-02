@@ -18,8 +18,8 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.base</groupId>
-            <artifactId>vaseline-architecture</artifactId>
+            <groupId>com.github.amirmv2006.service.apis</groupId>
+            <artifactId>vaseline-service-basic-layer-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

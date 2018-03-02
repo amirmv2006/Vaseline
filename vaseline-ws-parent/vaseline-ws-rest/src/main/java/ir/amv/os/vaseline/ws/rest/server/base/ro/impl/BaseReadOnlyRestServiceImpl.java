@@ -1,9 +1,9 @@
 package ir.amv.os.vaseline.ws.rest.server.base.ro.impl;
 
-import ir.amv.os.vaseline.service.apis.layer.server.ro.IBaseReadOnlyService;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.service.apis.basic.layer.server.ro.IBaseReadOnlyService;
 import ir.amv.os.vaseline.ws.rest.server.base.parent.impl.BaseRestServiceImpl;
 import ir.amv.os.vaseline.ws.rest.server.base.ro.IBaseReadOnlyRestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,21 +39,6 @@ public class BaseReadOnlyRestServiceImpl<D extends IBaseDto<Id>, Id extends Seri
     @Override
     public List<D> getAll(PagingDto pagingDto) throws BaseVaselineClientException {
         return service.getAll(pagingDto);
-    }
-
-    @Override
-    public Long countByExample(D example) throws BaseVaselineClientException {
-        return service.countByExample(example);
-    }
-
-    @Override
-    public List<D> searchByExample(D example) throws BaseVaselineClientException {
-        return service.searchByExample(example);
-    }
-
-    @Override
-    public List<D> searchByExample(Map<String, Object> map) throws BaseVaselineClientException {
-        return service.searchByExample((D)map.get("example"), (PagingDto)map.get("pagingDto"));
     }
 
     @Autowired
