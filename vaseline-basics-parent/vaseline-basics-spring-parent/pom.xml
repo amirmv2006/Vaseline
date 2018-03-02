@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>vaseline-basics-parent</artifactId>
+        <groupId>com.github.amirmv2006.basics</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.amirmv2006.basics.spring</groupId>
+    <artifactId>vaseline-basics-spring-parent</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>vaseline-core-spring</module>
+        <module>vaseline-mapper-dozer-spring</module>
+        <module>vaseline-i18n-spring</module>
+        <module>vaseline-json-gson-spring</module>
+        <module>vaseline-validation-spring</module>
+        <module>vaseline-caching-spring</module>
+        <module>vaseline-basics-logging-slf4j-spring</module>
+    </modules>
+
+
+</project>

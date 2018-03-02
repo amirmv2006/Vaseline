@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
+http://karaf.apache.org/xmlns/features/v1.0.0 ">
+    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:com.github.amirmv2006.business.osgi/vaseline-business-karaf-feature/${project.version}/xml/features</repository>
+
+    <!-- vaseline-security-audit-apis start -->
+    <feature name="vaseline-security-audit-basic-api" version="${project.version}">
+        <feature>vaseline-business-basic-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.audit.apis/vaseline-security-audit-basic-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-auditimpl-log-api" version="${project.version}">
+        <feature>vaseline-basics-loggingimpl-api</feature>
+        <feature>vaseline-business-basic-layerimpl-api</feature>
+        <feature>vaseline-security-audit-basic-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.audit.apis/vaseline-security-auditimpl-log-api/${project.version}</bundle>
+    </feature>
+    <!-- vaseline-security-audit-apis end -->
+
+    <feature name="vaseline-security-audit-log" version="${project.version}">
+        <feature>vaseline-security-auditimpl-log-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-security-audit-log-osgi/${project.version}</bundle>
+    </feature>
+    <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
+        <details>${project.description}</details>
+        <!-- api beans -->
+        <feature>vaseline-security-audit-log</feature>
+    </feature>
+</features>

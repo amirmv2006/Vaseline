@@ -31,26 +31,32 @@
         <developerConnection>scm:git:git@github.com:amirmv2006/Vaseline.git</developerConnection>
     </scm>
     <modules>
-        <module>vaseline-base</module>
-        <module>vaseline-file</module>
-        <module>vaseline-security</module>
-        <module>vaseline-reporting</module>
-        <module>vaseline-tasks</module>
-        <module>vaseline-ws</module>
-        <module>vaseline-bpm</module>
+        <module>vaseline-commonosgi-parent</module>
         <module>vaseline-thirdparty</module>
-        <module>vaseline-angular</module>
+        <module>vaseline-basics-parent</module>
+        <module>vaseline-data-parent</module>
+        <module>vaseline-business-parent</module>
+        <module>vaseline-service-parent</module>
+        <module>vaseline-security-parent</module>
+        <module>vaseline-ws-parent</module>
+        <module>vaseline-file-parent</module><!-- file business uses authentication api-->
     </modules>
 
     <properties>
+        <!-- build properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- will be overwritten in profiles for windows to be false -->
+        <docker.available>true</docker.available>
         <!-- VERSIONS -->
         <org.springframework.boot.version>1.4.2.RELEASE</org.springframework.boot.version>
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
+        <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
+        <org.apache.servicemix.bundles.spring.version>4.3.10.RELEASE_1</org.apache.servicemix.bundles.spring.version>
+        <org.apache.servicemix.bundles.spring.sec.version>4.2.3.RELEASE</org.apache.servicemix.bundles.spring.sec.version>
         <org.springframework.sec.version>4.2.0.RELEASE</org.springframework.sec.version>
         <org.springframework.data.version>2.0.5.RELEASE</org.springframework.data.version>
         <org.apache.solr.version>4.10.4</org.apache.solr.version>
-        <org.hibernate.version>5.2.5.Final</org.hibernate.version>
+        <org.hibernate.version>5.2.8.Final</org.hibernate.version>
+        <org.hibernate.validator.version>6.0.7.Final</org.hibernate.validator.version>
         <net.sf.dozer.version>5.3.2</net.sf.dozer.version>
         <net.sf.jasperreports.version>6.1.0</net.sf.jasperreports.version>
         <net.sf.ehcache.version>2.4.3</net.sf.ehcache.version>
@@ -59,6 +65,14 @@
         <org.activiti.version>5.14</org.activiti.version>
         <org.drools.version>5.3.1.Final</org.drools.version>
         <org.aspectj.version>1.6.12</org.aspectj.version>
+        <org.eclipse.persistence.version>2.1.0</org.eclipse.persistence.version>
+        <validation-api.version>2.0.0.Final</validation-api.version>
+        <javax.el-api.version>3.0.0</javax.el-api.version>
+        <karaf.version>4.1.2</karaf.version>
+        <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>
+        <org.osgi.core.version>6.0.0</org.osgi.core.version>
+        <javax.ws.rs-api.version>2.0.1</javax.ws.rs-api.version>
+        <jersey.version>5.3</jersey.version>
     </properties>
 
     <dependencyManagement>
@@ -187,24 +201,38 @@
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-validator</artifactId>
-                <version>5.1.1.Final</version>
+                <version>${org.hibernate.validator.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.el</groupId>
                 <artifactId>javax.el-api</artifactId>
-                <version>2.2.4</version>
+                <version>${javax.el-api.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.glassfish.web</groupId>
+                <groupId>org.glassfish</groupId>
                 <artifactId>javax.el</artifactId>
-                <version>2.2.4</version>
+                <version>${javax.el-api.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.validation</groupId>
                 <artifactId>validation-api</artifactId>
-                <version>1.1.0.Final</version>
+                <version>${validation-api.version}</version>
             </dependency>
             <!-- Hibernate Validation END -->
+            <!-- rest Start -->
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>${javax.ws.rs-api.version}</version>
+            </dependency>
+            <!-- rest End -->
+            <!-- jersey Start -->
+            <dependency>
+                <groupId>com.eclipsesource.jaxrs</groupId>
+                <artifactId>consumer</artifactId>
+                <version>${jersey.version}</version>
+            </dependency>
+            <!-- jersey End -->
             <!-- CXF Start -->
             <dependency>
                 <groupId>org.apache.cxf</groupId>
@@ -259,6 +287,12 @@
                 <version>${net.sf.dozer.version}</version>
                 <type>jar</type>
             </dependency>
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer-osgi</artifactId>
+                <version>${net.sf.dozer.version}</version>
+                <type>jar</type>
+            </dependency>
 
             <dependency>
                 <groupId>com.google.code.gson</groupId>
@@ -296,6 +330,11 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>1.3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.persistence</groupId>
+                <artifactId>javax.persistence</artifactId>
+                <version>${org.eclipse.persistence.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.hibernate</groupId>
@@ -347,11 +386,28 @@
                 <artifactId>commons-vfs</artifactId>
                 <version>1.0</version>
             </dependency>
+            <!-- osgi start -->
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.compendium</artifactId>
+                <version>${org.osgi.compendium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.core</artifactId>
+                <version>${org.osgi.core.version}</version>
+            </dependency>
+            <!-- osgi end -->
+            <dependency>
+                <groupId>javax.transaction</groupId>
+                <artifactId>javax.transaction-api</artifactId>
+                <version>1.2</version>
+            </dependency>
 
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.11</version>
+                <version>4.12</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -386,22 +442,26 @@
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <configuration>
-                        <skipTests>true</skipTests>
+                        <systemProperties>
+                            <docker.available>${docker.available}</docker.available>
+                        </systemProperties>
+                        <!--<skipTests>true</skipTests>-->
                     </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.0</version>
                     <inherited>true</inherited>
+                    <version>3.7.0</version>
                     <configuration>
-                        <source>1.6</source>
-                        <target>1.6</target>
+                        <source>1.8</source>
+                        <target>1.8</target>
                     </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.1</version>
                     <inherited>true</inherited>
                     <executions>
                         <execution>
@@ -415,6 +475,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.0.0</version>
                     <executions>
                         <execution>
                             <id>attach-javadocs</id>
@@ -451,7 +512,9 @@
         <profile>
             <id>vaseline-default-profile</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>!skipDefaultProfile</name>
+                </property>
             </activation>
             <build>
                 <plugins>
@@ -463,6 +526,17 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+        <profile>
+            <id>running-on-windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <docker.available>false</docker.available>
+            </properties>
         </profile>
     </profiles>
     <repositories>

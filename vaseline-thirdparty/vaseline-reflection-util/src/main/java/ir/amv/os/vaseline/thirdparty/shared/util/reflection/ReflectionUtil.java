@@ -1,5 +1,7 @@
 package ir.amv.os.vaseline.thirdparty.shared.util.reflection;
 
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.exc.InterceptionInterruptException;
+
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
@@ -9,7 +11,15 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.*;
+import java.lang.reflect.TypeVariable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class ReflectionUtil {
 
@@ -37,7 +47,7 @@ public class ReflectionUtil {
             if (parentClasses != null) {
                 for (Class<?> parentClass : parentClasses) {
                     if (propertyTreeName.equals("id") && parentClass.isAssignableFrom(srcClass)) {
-                        return getGenericArgumentClasses(srcClass, parentClass)[0];
+                        return getGenericArgumentClassesDeprecated(srcClass, parentClass)[0];
                     }
                 }
             }
@@ -297,8 +307,11 @@ public class ReflectionUtil {
             O obj = src;
             // check If the object itself should be intercepted!
             if (query.isAssignableFrom(objClass)) {
-                Q intercepted = interceptor.intercept((Q) src, prefix.trim().equals("") ? "" : prefix);
-                obj = (O) intercepted;
+                try {
+                    obj = (O) interceptor.intercept((Q) src, prefix.trim().equals("") ? "" : prefix);
+                } catch (InterceptionInterruptException e) { // should not intercept children
+                    return (O) (e.getKeepOriginalValue() ? src : e.getInterruptedValue());
+                }
             }
 
             BeanInfo beanInfo = Introspector.getBeanInfo(objClass);
@@ -328,7 +341,8 @@ public class ReflectionUtil {
                             // caused children to be intercepted twice fix 2/2
 //                            Q intercepted = interceptor
 //                                    .intercept((Q) objectsFromMethod[j], objectsFromMethod.length > 1 ? propertyTreeName + j : propertyTreeName);
-                            Q intercepted = intercept((Q)objectsFromMethod[j], query, interceptor, objectsFromMethod.length > 1 ? propertyTreeName + j : propertyTreeName);;
+                            Q intercepted = intercept((Q) objectsFromMethod[j], query, interceptor, objectsFromMethod.length > 1 ? propertyTreeName + j : propertyTreeName);
+                            ;
                             newObjects[j] = intercepted;
                         }
                         setObjectsToMethod(obj, readMethod, propertyDescriptor.getWriteMethod(), newObjects, objectsFromMethod);
@@ -361,6 +375,36 @@ public class ReflectionUtil {
         return annotation;
     }
 
+    public static <A extends Annotation> A getMethodAnnotationInHierarchy(
+            Class<A> annotationClass,
+            Class targetClass,
+            String methodName,
+            Class<?>[] paramsTypes) {
+        if (targetClass == null) {
+            return null;
+        }
+        try {
+            Method targetMethod = targetClass.getDeclaredMethod(methodName, paramsTypes);
+            A annotation = targetMethod.getAnnotation(annotationClass);
+            if (annotation != null) {
+                return annotation;
+            }
+        } catch (NoSuchMethodException ignored) {
+        }
+        if (!targetClass.equals(Object.class)) {
+            Class<?> superclass = targetClass.getSuperclass();
+            A superMethodAnnot = getMethodAnnotationInHierarchy(annotationClass, superclass, methodName, paramsTypes);
+            if (superMethodAnnot != null) return superMethodAnnot;
+            Class<?>[] interfaces = targetClass.getInterfaces();
+            for (Class<?> anInterface : interfaces) {
+                A intMethodAnnot = getMethodAnnotationInHierarchy(annotationClass, anInterface, methodName,
+                        paramsTypes);
+                if (intMethodAnnot != null) return intMethodAnnot;
+            }
+        }
+        return null;
+    }
+
     public static <A extends Annotation> A getAnnotationInHierarchy(Class<?> targetClass, Class<A> annotationClass) {
         if (targetClass == null || annotationClass == null) {
             return null;
@@ -385,9 +429,46 @@ public class ReflectionUtil {
         return null;
     }
 
-    public static Class<?>[] getGenericArgumentClasses(Class<?> genericClass, Class<?>... parents) {
+    public static Class<?>[] getGenericArgumentClasses(Type genericClass, Class<?> parent) {
+        return innerRecGetGenericArgumentClasses(genericClass, null, (Class<?>) genericClass, parent, new ArrayList<>())
+                .toArray(new Class[0]);
+    }
+
+    public static List<Class<?>> innerRecGetGenericArgumentClasses(Type genericClass, Type previousType, Class<?>
+            theClass, Class<?> parent, List<Class<?>> generics) {
+        getGenerics(genericClass, previousType, generics);
+        Type superclass = theClass.getGenericSuperclass();
+        if (fillGenericsIfRightParent(superclass, genericClass, parent, generics)) return generics;
+        Type[] genericInterfaces = theClass.getGenericInterfaces();
+        for (Type genericInterface : genericInterfaces) {
+            if (fillGenericsIfRightParent(genericInterface, genericClass, parent, generics)) return generics;
+        }
+        return generics;
+    }
+
+    private static boolean fillGenericsIfRightParent(final Type superType, final Type type, final Class<?> parent,
+                                                     final List<Class<?>> generics) {
+        Class<?> superRawType = getaRawType(superType);
+        if (parent.isAssignableFrom(superRawType)) {
+            if (superRawType.equals(parent)) {
+//                generics.clear();
+            }
+            innerRecGetGenericArgumentClasses(superType, type, superRawType, parent, generics);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param genericClass
+     * @param parents
+     * @return
+     * @deprecated use {@link #getGenericArgumentClasses}
+     */
+    public static Class<?>[] getGenericArgumentClassesDeprecated(Class<?> genericClass, Class<?>... parents) {
         if (genericClass.getGenericSuperclass() instanceof ParameterizedType) {
-            Class<?>[] result = getGenerics(genericClass.getGenericSuperclass());
+            Class<?>[] result = getGenerics((ParameterizedType) genericClass.getGenericSuperclass(), null, new ArrayList<>
+                    ()).toArray(new Class[0]);
             return result;
         } else {
             Type[] genericInterfaces = genericClass.getGenericInterfaces();
@@ -397,40 +478,72 @@ public class ReflectionUtil {
             if (parents != null) {
                 for (Class<?> parent : parents) {
                     for (Type anInterface : genericInterfaces) {
-                        Class rawType = Void.class;
-                        if (anInterface instanceof ParameterizedType) {
-                            ParameterizedType parameterizedType = (ParameterizedType) anInterface;
-                            rawType = (Class) parameterizedType.getRawType();
-                        } else if (anInterface instanceof Class) {
-                            rawType = (Class) anInterface;
-                        }
+                        Class rawType = getaRawType(anInterface);
                         if (parent.isAssignableFrom(rawType)) {
-                            return getGenerics(anInterface);
+                            if (anInterface instanceof ParameterizedType) {
+                                ParameterizedType parameterizedType = (ParameterizedType) anInterface;
+                                return getGenerics(parameterizedType, null, new ArrayList<>()).toArray(new Class[0]);
+                            } else {
+                                return getGenericArgumentClassesDeprecated((Class<?>) anInterface, parents);
+                            }
                         }
                     }
                 }
             }
-            return getGenerics(genericInterfaces[0]);
+            for (Type genericInterface : genericInterfaces) {
+                if (genericInterface instanceof ParameterizedType) {
+                    ParameterizedType parameterizedType = (ParameterizedType) genericInterface;
+                    Class<?>[] generics = getGenerics(parameterizedType, null, new ArrayList<>()).toArray(new Class[0]);
+                    if (generics != null && generics.length != 0) {
+                        return generics;
+                    }
+                }
+            }
+            return null;
         }
     }
 
-    private static Class<?>[] getGenerics(Type genericClass) {
-        ParameterizedType genericSuperclass = (ParameterizedType) genericClass;
-        if (genericSuperclass != null && genericSuperclass.getActualTypeArguments() != null) {
-            Class<?>[] result = new Class<?>[genericSuperclass.getActualTypeArguments().length];
-            for (int i = 0; i < result.length; i++) {
-                if (genericSuperclass.getActualTypeArguments()[i] instanceof Class) {
-                    result[i] = (Class<?>) genericSuperclass.getActualTypeArguments()[i];
-                } else if (genericSuperclass.getActualTypeArguments()[i] instanceof ParameterizedType) {
-                    Type rawType = ((ParameterizedType) genericSuperclass.getActualTypeArguments()[i]).getRawType();
-                    if (rawType instanceof Class<?>) {
-                        result[i] = (Class<?>) rawType;
+    private static Class getaRawType(final Type anInterface) {
+        Class rawType = Void.class;
+        if (anInterface instanceof ParameterizedType) {
+            ParameterizedType parameterizedType = (ParameterizedType) anInterface;
+            rawType = (Class) parameterizedType.getRawType();
+        } else if (anInterface instanceof Class) {
+            rawType = (Class) anInterface;
+        }
+        return rawType;
+    }
+
+    private static List<Class<?>> getGenerics(Type genericClass, Type childType, final List<Class<?>> generics) {
+        if (genericClass instanceof ParameterizedType) {
+            ParameterizedType genericType = (ParameterizedType) genericClass;
+            if (genericType.getActualTypeArguments() != null) {
+                for (int i = 0; i < genericType.getActualTypeArguments().length; i++) {
+                    if (genericType.getActualTypeArguments()[i] instanceof Class) {
+                        generics.add((Class<?>) genericType.getActualTypeArguments()[i]);
+                    } else if (genericType.getActualTypeArguments()[i] instanceof ParameterizedType) {
+                        Type rawType = ((ParameterizedType) genericType.getActualTypeArguments()[i]).getRawType();
+                        if (rawType instanceof Class<?>) {
+                            generics.add((Class<?>) rawType);
+                        }
+                    } else if (genericType.getActualTypeArguments()[i] instanceof TypeVariable) {
+                        TypeVariable typeVariable = (TypeVariable) genericType.getActualTypeArguments()[i];
+                        Type[] bounds = typeVariable.getBounds();
+                        ArrayList<Class<?>> genericsCopy = new ArrayList<>(generics);
+                        generics.clear();
+                        for (Type bound : bounds) {
+                            Class boundRawType = getaRawType(bound);
+                            for (Class<?> generic : genericsCopy) {
+                                if (boundRawType.isAssignableFrom(generic)) {
+                                    generics.add(generic);
+                                }
+                            }
+                        }
                     }
                 }
             }
-            return result;
         }
-        return null;
+        return generics;
     }
 
     public static List<PropertyDescriptor> getPropertyDescriptors(

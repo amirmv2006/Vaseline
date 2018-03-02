@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>vaseline-bundle-parent</artifactId>
+        <groupId>com.github.amirmv2006.commonosgi.bundles</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../../vaseline-commonosgi-parent/vaseline-commonosgi-bundles-parent/vaseline-bundle-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.amirmv2006.security.authentication.apis</groupId>
+    <artifactId>vaseline-security-authentication-apis-parent</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>vaseline-security-authentication-basic-api</module>
+        <module>vaseline-security-authentication-basicimpl-api</module>
+        <module>vaseline-security-authentication-model-api</module>
+        <module>vaseline-security-authentication-dao-jpa-api</module>
+        <module>vaseline-security-authentication-dao-basic-api</module>
+        <module>vaseline-security-authentication-daoimpl-hibernate-api</module>
+        <module>vaseline-security-authentication-daoimpl-jpa-api</module>
+        <module>vaseline-security-authentication-business-api</module>
+        <module>vaseline-security-authentication-businessimpl-api</module>
+        <module>vaseline-security-authentication-service-api</module>
+        <module>vaseline-security-authentication-serviceimpl-api</module>
+        <module>vaseline-security-authentication-spring-security-api</module>
+        <module>vaseline-security-authentication-spring-securityimpl-api</module>
+        <module>vaseline-security-authentication-modelimpl-api</module>
+    </modules>
+
+
+</project>
