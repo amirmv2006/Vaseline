@@ -14,9 +14,9 @@
     <artifactId>vaseline-business-osgi-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-business-karaf-feature</module>
-        <module>vaseline-businesss-aries-tx-osgi</module>
         <module>vaseline-business-executor-osgi</module>
+        <module>vaseline-businesss-aries-tx-osgi</module>
+        <module>vaseline-business-karaf-feature</module>
     </modules>
 
 
