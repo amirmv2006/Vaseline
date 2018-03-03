@@ -440,7 +440,7 @@
                         <systemProperties>
                             <docker.available>${docker.available}</docker.available>
                         </systemProperties>
-                        <!--<skipTests>true</skipTests>-->
+                        <skipTests>true</skipTests>
                     </configuration>
                 </plugin>
                 <plugin>
