@@ -16,6 +16,8 @@ import java.util.List;
 public class TestVaselineFileApiImpl
         implements IImplementedVaselineFileApi {
     private List<IVaselineFileDao> fileDaoList;
+    private Object proxy;
+    private IVaselineBusinessActionExecutor businessActionExecutor;
 
     @Override
     public List<IVaselineFileDaoFinder> getDaoFinderList() {
@@ -49,6 +51,8 @@ public class TestVaselineFileApiImpl
     @Override
     public IAuthenticationApi getAuthenticationApi() {
         return new IAuthenticationApi() {
+            private Object proxy;
+
             @Override
             public <R> R doBusinessAction(final IBusinessAction<R> businessAction) throws BaseVaselineServerException {
                 return null;
@@ -56,12 +60,12 @@ public class TestVaselineFileApiImpl
 
             @Override
             public <Proxy> Proxy getProxy(Class<Proxy> proxyClass) {
-                return null;
+                return (Proxy) proxy;
             }
 
             @Override
             public <Proxy> void setProxy(Proxy proxy) {
-
+                this.proxy = proxy;
             }
 
             @Override
@@ -73,12 +77,12 @@ public class TestVaselineFileApiImpl
 
     @Override
     public <Proxy> Proxy getProxy(Class<Proxy> proxyClass) {
-        return null;
+        return (Proxy) proxy;
     }
 
     @Override
     public <Proxy> void setProxy(Proxy proxy) {
-
+        this.proxy = proxy;
     }
 
     @Inject
@@ -88,6 +92,11 @@ public class TestVaselineFileApiImpl
 
     @Override
     public IVaselineBusinessActionExecutor getBusinessActionExecutor() {
-        return null;
+        return businessActionExecutor;
+    }
+
+    @Inject
+    public void setBusinessActionExecutor(final IVaselineBusinessActionExecutor businessActionExecutor) {
+        this.businessActionExecutor = businessActionExecutor;
     }
 }
