@@ -17,7 +17,7 @@ import java.io.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class BaseVaselineFileApiTest {
+public abstract class BaseVaselineFileApiTest {
 
     @Value("classpath:blob.data")
     private Resource blobData;
