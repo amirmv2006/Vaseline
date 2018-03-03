@@ -9,11 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>vaseline-security-authorization-model-api</artifactId>
+    <artifactId>vaseline-security-authorization-rbac-model-api</artifactId>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.base.pkg>ir.amv.os.vaseline.security.apis.authorization.model</bundle.base.pkg>
+        <bundle.base.pkg>ir.amv.os.vaseline.security.apis.authorization.rbac.model</bundle.base.pkg>
     </properties>
 
     <dependencies>

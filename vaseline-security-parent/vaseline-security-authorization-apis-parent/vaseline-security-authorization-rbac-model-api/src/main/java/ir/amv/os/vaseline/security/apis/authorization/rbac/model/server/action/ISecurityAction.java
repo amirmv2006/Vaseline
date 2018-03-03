@@ -1,4 +1,4 @@
-package ir.amv.os.vaseline.security.apis.authorization.basic.server.model;
+package ir.amv.os.vaseline.security.apis.authorization.rbac.model.server.action;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 
