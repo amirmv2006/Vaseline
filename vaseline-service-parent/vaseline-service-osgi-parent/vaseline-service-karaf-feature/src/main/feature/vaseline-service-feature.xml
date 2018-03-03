@@ -16,6 +16,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-validation-api</feature>
         <feature>vaseline-service-basic-layer-api</feature>
         <feature>vaseline-business-basic-layer-api</feature>
+        <feature>vaseline-basics-logging-common</feature>
         <bundle>mvn:com.github.amirmv2006.service.apis/vaseline-service-basic-layerimpl-api/${project.version}
         </bundle>
     </feature>
