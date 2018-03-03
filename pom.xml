@@ -46,7 +46,7 @@
         <!-- build properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- will be overwritten in profiles for windows to be false -->
-        <docker.available>true</docker.available>
+        <docker.available>false</docker.available>
         <!-- VERSIONS -->
         <org.springframework.boot.version>1.4.2.RELEASE</org.springframework.boot.version>
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
