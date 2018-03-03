@@ -18,8 +18,8 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.security</groupId>
-            <artifactId>vaseline-authentication-spring-sec-impl</artifactId>
+            <groupId>com.github.amirmv2006.security.authentication.spring</groupId>
+            <artifactId>vaseline-security-authenticationimpl-spring-sec</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
