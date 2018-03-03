@@ -37,11 +37,11 @@ public interface IImplementedNoAuthAuthorizationApi
 
     @Override
     default List<String> getChildTreeNamesOfAction(String baseActionTN) {
-        return getAuthorizationActionApi().getActionChildTreeNames();
+        return getAuthorizationActionApi().getActionChildTreeNames(baseActionTN);
     }
 
     @Override
     default List<String> getUsernamesWithPermissionToAction(String actionTreeName) {
-        return getAuthorizationUserApi().getUsernamesWithAccessToActionTreeName();
+        return getAuthorizationUserApi().getUsernamesWithAccessToActionTreeName(actionTreeName);
     }
 }

@@ -5,10 +5,10 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 /**
  * @author Amir
  */
-public interface ISecurityAction<SA extends ISecurityAction>
+public interface ISecurityAction<A extends ISecurityAction>
         extends IBaseEntity<Long> {
 
     String getActionTreeName();
-    SA getParent();
+    A getParent();
 }
 

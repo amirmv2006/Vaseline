@@ -10,15 +10,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.amirmv2006.security.authorization.apis</groupId>
-    <artifactId>vaseline-security-authorization-apis-parent</artifactId>
+    <groupId>com.github.amirmv2006.security.osgi</groupId>
+    <artifactId>vaseline-security-authorization-osgi-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-security-authorization-basic-api</module>
-        <module>vaseline-security-authorization-rbac-model-api</module>
-        <module>vaseline-security-authorization-basicimpl-api</module>
-        <module>vaseline-security-authorization-rbac-modelimpl-api</module>
-        <module>vaseline-security-authorization-rbac-dao-api</module>
+        <module>vaseline-security-authorization-basic-osgi</module>
     </modules>
 
 
