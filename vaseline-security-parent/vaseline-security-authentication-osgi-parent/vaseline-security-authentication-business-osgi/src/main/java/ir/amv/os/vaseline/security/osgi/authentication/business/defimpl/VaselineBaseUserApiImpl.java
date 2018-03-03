@@ -1,6 +1,7 @@
 package ir.amv.os.vaseline.security.osgi.authentication.business.defimpl;
 
 import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.IProxyAware;
+import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.PorxyAwareImpl;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.crud.IBaseImplementedCrudApi;
 import ir.amv.os.vaseline.security.apis.audit.basic.server.IAuditApi;
@@ -24,13 +25,14 @@ import org.osgi.service.component.annotations.Reference;
         }
 )
 public class VaselineBaseUserApiImpl
+        extends PorxyAwareImpl
         implements IVaselineBaseUserApi,
         IImplementedBaseUserApi<VaselineBaseUserEntity,IVaselineBaseUserDao>,
         IBaseImplementedCrudApi<VaselineBaseUserEntity, Long, IVaselineBaseUserDao> {
+
     private IAuditApi auditApi;
     private IVaselineBaseUserDao dao;
     private IVaselineBusinessActionExecutor businessActionExecutor;
-    private Object proxy;
 
     @Override
     public IAuditApi getAuditApi() {
@@ -45,16 +47,6 @@ public class VaselineBaseUserApiImpl
     @Override
     public IVaselineBusinessActionExecutor getBusinessActionExecutor() {
         return businessActionExecutor;
-    }
-
-    @Override
-    public <Proxy> Proxy getProxy(final Class<Proxy> proxyClass) {
-        return (Proxy) proxy;
-    }
-
-    @Override
-    public <Proxy> void setProxy(final Proxy proxy) {
-        this.proxy = proxy;
     }
 
     @Reference

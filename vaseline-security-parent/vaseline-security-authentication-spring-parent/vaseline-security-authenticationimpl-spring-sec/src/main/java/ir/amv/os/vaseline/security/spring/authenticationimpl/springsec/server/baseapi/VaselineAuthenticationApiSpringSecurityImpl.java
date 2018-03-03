@@ -1,6 +1,7 @@
 package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.server.baseapi;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.PorxyAwareImpl;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.base.IBaseImplementedApi;
 import ir.amv.os.vaseline.security.apis.authentication.basic.server.IAuthenticationApi;
@@ -16,9 +17,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class VaselineAuthenticationApiSpringSecurityImpl
+        extends PorxyAwareImpl
         implements IBaseImplementedApi, IAuthenticationApi {
     private IVaselineBusinessActionExecutor businessActionExecutor;
-    private Object proxy;
 
     @Override
     public String getCurrentUsername() throws BaseVaselineServerException {
@@ -29,16 +30,6 @@ public class VaselineAuthenticationApiSpringSecurityImpl
             return username;
         }
         throw new BaseVaselineServerException("current user is null.");
-    }
-
-    @Override
-    public <Proxy> Proxy getProxy(final Class<Proxy> proxyClass) {
-        return (Proxy) proxy;
-    }
-
-    @Override
-    public <Proxy> void setProxy(final Proxy proxy) {
-        this.proxy = proxy;
     }
 
     @Override

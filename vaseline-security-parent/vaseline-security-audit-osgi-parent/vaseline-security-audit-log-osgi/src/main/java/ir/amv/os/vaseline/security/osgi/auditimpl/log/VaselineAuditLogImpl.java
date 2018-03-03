@@ -1,6 +1,7 @@
 package ir.amv.os.vaseline.security.osgi.auditimpl.log;
 
 import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.IProxyAware;
+import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.PorxyAwareImpl;
 import ir.amv.os.vaseline.basics.apis.logging.server.logger.IVaselineLogger;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
 import ir.amv.os.vaseline.security.apis.audit.basic.server.IAuditApi;
@@ -19,11 +20,11 @@ import org.osgi.service.component.annotations.Reference;
         }
 )
 public class VaselineAuditLogImpl
+        extends PorxyAwareImpl
         implements IAuditApi, IImplementedAuditLogApi{
 
     private IVaselineLogger vaselineLogger;
     private IVaselineBusinessActionExecutor businessActionExecutor;
-    private Object proxy;
 
     @Override
     public IVaselineLogger getVaselineLogger() {
@@ -33,16 +34,6 @@ public class VaselineAuditLogImpl
     @Override
     public IVaselineBusinessActionExecutor getBusinessActionExecutor() {
         return businessActionExecutor;
-    }
-
-    @Override
-    public <Proxy> Proxy getProxy(final Class<Proxy> proxyClass) {
-        return (Proxy) proxy;
-    }
-
-    @Override
-    public <Proxy> void setProxy(final Proxy proxy) {
-        this.proxy = proxy;
     }
 
     @Reference

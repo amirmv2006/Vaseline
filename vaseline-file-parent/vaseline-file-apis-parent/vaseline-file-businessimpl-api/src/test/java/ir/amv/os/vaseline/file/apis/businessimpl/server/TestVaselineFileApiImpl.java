@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.file.apis.businessimpl.server;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.business.apis.basic.layer.server.action.IBusinessAction;
+import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.PorxyAwareImpl;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
+import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.base.IBaseImplementedApi;
 import ir.amv.os.vaseline.file.apis.business.server.daofinder.IVaselineFileDaoFinder;
 import ir.amv.os.vaseline.file.apis.dao.basic.server.IVaselineFileDao;
 import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.blob.IVaselineFileBlobDao;
@@ -14,9 +14,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TestVaselineFileApiImpl
+        extends PorxyAwareImpl
         implements IImplementedVaselineFileApi {
     private List<IVaselineFileDao> fileDaoList;
-    private Object proxy;
     private IVaselineBusinessActionExecutor businessActionExecutor;
 
     @Override
@@ -48,41 +48,23 @@ public class TestVaselineFileApiImpl
         return fileDaoList;
     }
 
+    private static class AuthenticationApiMock
+            extends PorxyAwareImpl
+            implements IBaseImplementedApi, IAuthenticationApi {
+        @Override
+        public String getCurrentUsername() {
+            return "testUser";
+        }
+
+        @Override
+        public IVaselineBusinessActionExecutor getBusinessActionExecutor() {
+            return null;
+        }
+    }
+
     @Override
     public IAuthenticationApi getAuthenticationApi() {
-        return new IAuthenticationApi() {
-            private Object proxy;
-
-            @Override
-            public <R> R doBusinessAction(final IBusinessAction<R> businessAction) throws BaseVaselineServerException {
-                return null;
-            }
-
-            @Override
-            public <Proxy> Proxy getProxy(Class<Proxy> proxyClass) {
-                return (Proxy) proxy;
-            }
-
-            @Override
-            public <Proxy> void setProxy(Proxy proxy) {
-                this.proxy = proxy;
-            }
-
-            @Override
-            public String getCurrentUsername() {
-                return "testUser";
-            }
-        };
-    }
-
-    @Override
-    public <Proxy> Proxy getProxy(Class<Proxy> proxyClass) {
-        return (Proxy) proxy;
-    }
-
-    @Override
-    public <Proxy> void setProxy(Proxy proxy) {
-        this.proxy = proxy;
+        return new AuthenticationApiMock();
     }
 
     @Inject

@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.security.spring.auditimpl.log.spring.server.basic;
 
+import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.PorxyAwareImpl;
 import ir.amv.os.vaseline.basics.apis.logging.server.logger.IVaselineLogger;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
 import ir.amv.os.vaseline.security.apis.auditimpl.log.server.basic.IImplementedAuditLogApi;
@@ -11,11 +12,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class VaselineAuditLogApi
+        extends PorxyAwareImpl
         implements IImplementedAuditLogApi {
 
     private IVaselineLogger vaselineLogger;
     private IVaselineBusinessActionExecutor businessActionExecutor;
-    private Object proxy;
 
     @Override
     public IVaselineLogger getVaselineLogger() {
@@ -25,16 +26,6 @@ public class VaselineAuditLogApi
     @Autowired
     public void setVaselineLogger(final IVaselineLogger vaselineLogger) {
         this.vaselineLogger = vaselineLogger;
-    }
-
-    @Override
-    public <Proxy> Proxy getProxy(final Class<Proxy> proxyClass) {
-        return (Proxy) proxy;
-    }
-
-    @Override
-    public <Proxy> void setProxy(final Proxy proxy) {
-        this.proxy = proxy;
     }
 
     @Override
