@@ -11,5 +11,5 @@ public interface ISecurityUserDao<U extends ISecurityUserWithRoleEntity<?>> {
 
     List<String> getUserActionTreeNames(String username);
 
-    List<String> getUsernamesWithAccessToActionTreeName(final String actionTreeName);
+    List<String> getUsernamesWithAccessToActionTreeName(final String... actionTreeNames);
 }
