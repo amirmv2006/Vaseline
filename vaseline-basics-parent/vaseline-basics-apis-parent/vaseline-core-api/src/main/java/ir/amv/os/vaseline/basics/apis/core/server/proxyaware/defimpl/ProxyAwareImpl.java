@@ -5,7 +5,7 @@ import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.IProxyAware;
 /**
  * @author Amir
  */
-public class PorxyAwareImpl
+public class ProxyAwareImpl
         implements IProxyAware {
     private Object proxy;
 

@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.osgi.authentication.basic;
 
-import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.PorxyAwareImpl;
+import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.ProxyAwareImpl;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
 import ir.amv.os.vaseline.security.apis.authentication.basic.server.IAuthenticationApi;
 import ir.amv.os.vaseline.security.apis.authentication.basicimpl.IImplementedThreadLocalAuthenticationApi;
@@ -19,7 +19,7 @@ import org.osgi.service.component.annotations.Reference;
         }
 )
 public class VaselineThreadLocalAuthenticationApiImpl
-        extends PorxyAwareImpl
+        extends ProxyAwareImpl
         implements IImplementedThreadLocalAuthenticationApi, IAuthenticationApi {
 
     private IVaselineBusinessActionExecutor businessActionExecutor;

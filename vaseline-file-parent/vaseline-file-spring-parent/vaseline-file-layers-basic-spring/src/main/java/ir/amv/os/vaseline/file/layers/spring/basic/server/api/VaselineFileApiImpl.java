@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.file.layers.spring.basic.server.api;
 
-import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.PorxyAwareImpl;
+import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.ProxyAwareImpl;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
 import ir.amv.os.vaseline.file.apis.business.server.daofinder.IVaselineFileDaoFinder;
 import ir.amv.os.vaseline.file.apis.businessimpl.server.IImplementedVaselineFileApi;
@@ -14,7 +14,7 @@ import java.util.List;
  * @author Amir
  */
 public class VaselineFileApiImpl
-        extends PorxyAwareImpl
+        extends ProxyAwareImpl
         implements IImplementedVaselineFileApi {
 
     private IAuthenticationApi authenticationApi;

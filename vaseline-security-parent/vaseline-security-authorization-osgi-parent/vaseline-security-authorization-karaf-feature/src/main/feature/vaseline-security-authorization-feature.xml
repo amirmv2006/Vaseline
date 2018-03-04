@@ -72,23 +72,22 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-security-authorization-basic-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-security-authorization-basic-layer-osgi/${project.version}</bundle>
     </feature>
+    <feature name="vaseline-security-authorization-rbac-dao-jpa" version="${project.version}">
+        <feature>vaseline-security-authentication-daoimpl-jpa-api</feature>
+        <feature>vaseline-security-authorization-rbac-modelimpl-api</feature>
+        <feature>vaseline-security-authorization-rbac-daoimpl-jpa-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-security-authorization-rbac-dao-jpa-osgi/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authorization-rbac-business" version="${project.version}">
+        <feature>vaseline-security-authorization-rbac-businessimpl-api</feature>
+        <feature>vaseline-security-authorization-rbac-dao-jpa</feature>
+        <bundle>mvn:${project.groupId}/vaseline-security-authorization-rbac-business-osgi/${project.version}</bundle>
+    </feature>
     <feature name='${project.artifactId}-api' description='${project.name}' version='${project.version}'>
         <details>${project.description} APIs</details>
         <!-- api beans -->
-        <feature>vaseline-security-authorization-basic-api</feature>
-        <feature>vaseline-security-authorization-rbac-dao</feature>
         <feature>vaseline-security-authorization-rbac-business</feature>
-    </feature>
-    <feature name='${project.artifactId}-jpa' description='${project.name}' version='${project.version}'>
-        <details>${project.description} in JPA</details>
-        <!-- api beans -->
-        <feature>vaseline-security-authentication-daoimpl-jpa-api</feature>
-        <feature>${project.artifactId}-api</feature>
-    </feature>
-    <feature name='${project.artifactId}-hibernate' description='${project.name}' version='${project.version}'>
-        <details>${project.description} in Hibernate</details>
-        <!-- api beans -->
-        <feature>vaseline-security-authentication-daoimpl-hibernate-api</feature>
-        <feature>${project.artifactId}-api</feature>
+        <feature>vaseline-security-authorization-basic</feature>
+        <feature>vaseline-security-authorization-basic-layer</feature>
     </feature>
 </features>

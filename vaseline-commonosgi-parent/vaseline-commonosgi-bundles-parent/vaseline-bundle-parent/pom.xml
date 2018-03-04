@@ -70,6 +70,7 @@
                             <_failok>${bundle.failok}</_failok>
                             <_consumer-policy>${bundle.import.default.version}</_consumer-policy>
                             <_provider-policy>$&lt;range;[==,=+)&gt;</_provider-policy>
+                            <_dsannotations-options>inherit</_dsannotations-options>
                         </instructions>
                     </configuration>
                 </plugin>
@@ -79,7 +80,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.5.0</version>
                 <extensions>true</extensions>
                 <inherited>true</inherited>
             </plugin>

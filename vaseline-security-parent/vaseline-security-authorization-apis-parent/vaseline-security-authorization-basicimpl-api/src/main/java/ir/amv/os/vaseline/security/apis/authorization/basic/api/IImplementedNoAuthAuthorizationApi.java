@@ -32,7 +32,13 @@ public interface IImplementedNoAuthAuthorizationApi
 
     @Override
     default List<String> getAuthorizedActionTreeNames(String currentUsername) throws VaselineAuthorizationException {
-        return getAuthorizationUserApi().getUserActionTreeNames(currentUsername);
+        try {
+            return getAuthorizationUserApi().getUserActionTreeNames(currentUsername);
+        } catch (VaselineAuthorizationException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new VaselineAuthorizationException(e);
+        }
     }
 
     @Override
@@ -41,7 +47,13 @@ public interface IImplementedNoAuthAuthorizationApi
     }
 
     @Override
-    default List<String> getUsernamesWithPermissionToAction(String actionTreeName) {
-        return getAuthorizationUserApi().getUsernamesWithAccessToActionTreeName(actionTreeName);
+    default List<String> getUsernamesWithPermissionToAction(String actionTreeName) throws VaselineAuthorizationException {
+        try {
+            return getAuthorizationUserApi().getUsernamesWithAccessToActionTreeName(actionTreeName);
+        } catch (VaselineAuthorizationException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new VaselineAuthorizationException(e);
+        }
     }
 }

@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.file.apis.businessimpl.server;
 
-import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.PorxyAwareImpl;
+import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.ProxyAwareImpl;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.base.IBaseImplementedApi;
 import ir.amv.os.vaseline.file.apis.business.server.daofinder.IVaselineFileDaoFinder;
@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TestVaselineFileApiImpl
-        extends PorxyAwareImpl
+        extends ProxyAwareImpl
         implements IImplementedVaselineFileApi {
     private List<IVaselineFileDao> fileDaoList;
     private IVaselineBusinessActionExecutor businessActionExecutor;
@@ -49,7 +49,7 @@ public class TestVaselineFileApiImpl
     }
 
     private static class AuthenticationApiMock
-            extends PorxyAwareImpl
+            extends ProxyAwareImpl
             implements IBaseImplementedApi, IAuthenticationApi {
         @Override
         public String getCurrentUsername() {
