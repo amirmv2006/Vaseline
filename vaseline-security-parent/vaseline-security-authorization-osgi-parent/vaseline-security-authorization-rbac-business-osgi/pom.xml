@@ -9,17 +9,22 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>vaseline-security-authorization-basic-osgi</artifactId>
+    <artifactId>vaseline-security-authorization-rbac-business-osgi</artifactId>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.base.pkg>ir.amv.os.vaseline.security.osgi.authorization.basic</bundle.base.pkg>
+        <bundle.base.pkg>ir.amv.os.vaseline.security.osgi.authorization.rbac.business</bundle.base.pkg>
     </properties>
 
     <dependencies>
         <dependency>
+            <groupId>com.github.amirmv2006.security.authorization.osgi</groupId>
+            <artifactId>vaseline-security-authorization-rbac-dao-jpa-osgi</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.amirmv2006.security.authorization.apis</groupId>
-            <artifactId>vaseline-security-authorization-basicimpl-api</artifactId>
+            <artifactId>vaseline-security-authorization-rbac-businessimpl-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

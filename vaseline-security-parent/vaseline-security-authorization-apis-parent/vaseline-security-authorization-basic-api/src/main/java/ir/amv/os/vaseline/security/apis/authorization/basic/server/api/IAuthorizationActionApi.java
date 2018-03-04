@@ -8,5 +8,7 @@ import java.util.List;
  * @author Amir
  */
 public interface IAuthorizationActionApi extends IBaseApi {
+    String ACTION_TREE_NAME_SPLITTER = ":";
+
     List<String> getActionChildTreeNames(final String baseActionTN);
 }

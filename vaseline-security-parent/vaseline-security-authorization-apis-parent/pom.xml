@@ -21,6 +21,8 @@
         <module>vaseline-security-authorization-rbac-dao-api</module>
         <module>vaseline-security-authorization-rbac-daoimpl-jpa-api</module>
         <module>vaseline-security-authorization-rbac-daoimpl-hibernate-api</module>
+        <module>vaseline-security-authorization-rbac-business-api</module>
+        <module>vaseline-security-authorization-rbac-businessimpl-api</module>
     </modules>
 
 

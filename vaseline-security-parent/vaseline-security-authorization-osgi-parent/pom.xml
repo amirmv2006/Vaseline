@@ -10,11 +10,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.amirmv2006.security.osgi</groupId>
+    <groupId>com.github.amirmv2006.security.authorization.osgi</groupId>
     <artifactId>vaseline-security-authorization-osgi-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-security-authorization-basic-osgi</module>
+        <module>vaseline-security-authorization-basic-layer-osgi</module>
+        <module>vaseline-security-authorization-karaf-feature</module>
+        <module>vaseline-security-authorization-rbac-dao-jpa-osgi</module>
+        <module>vaseline-security-authorization-rbac-business-osgi</module>
     </modules>
 
 

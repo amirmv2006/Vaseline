@@ -9,29 +9,37 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>vaseline-security-authorization-rbac-dao-api</artifactId>
+    <artifactId>vaseline-security-authorization-rbac-businessimpl-api</artifactId>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.base.pkg>ir.amv.os.vaseline.security.apis.authorization.rbac.dao</bundle.base.pkg>
+        <bundle.base.pkg>ir.amv.os.vaseline.security.apis.authorization.rbac.businessimpl</bundle.base.pkg>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.security.authorization.apis</groupId>
-            <artifactId>vaseline-security-authorization-rbac-model-api</artifactId>
+            <artifactId>vaseline-security-authorization-rbac-business-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.data.apis</groupId>
-            <artifactId>vaseline-basic-dao-api</artifactId>
+            <groupId>com.github.amirmv2006.security.authorization.apis</groupId>
+            <artifactId>vaseline-security-authorization-rbac-dao-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.business.apis</groupId>
+            <artifactId>vaseline-business-basic-layerimpl-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.security.authentication.apis</groupId>
-            <artifactId>vaseline-security-authentication-dao-basic-api</artifactId>
+            <artifactId>vaseline-security-authentication-businessimpl-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>javax.transaction-api</artifactId>
+        </dependency>
     </dependencies>
-
 </project>

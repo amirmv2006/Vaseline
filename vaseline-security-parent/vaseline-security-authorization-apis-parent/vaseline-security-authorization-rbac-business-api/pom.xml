@@ -9,27 +9,32 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>vaseline-security-authorization-rbac-dao-api</artifactId>
+    <artifactId>vaseline-security-authorization-rbac-business-api</artifactId>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.base.pkg>ir.amv.os.vaseline.security.apis.authorization.rbac.dao</bundle.base.pkg>
+        <bundle.base.pkg>ir.amv.os.vaseline.security.apis.authorization.rbac.business</bundle.base.pkg>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.amirmv2006.security.authorization.apis</groupId>
+            <artifactId>vaseline-security-authorization-basic-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.security.authorization.apis</groupId>
             <artifactId>vaseline-security-authorization-rbac-model-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.data.apis</groupId>
-            <artifactId>vaseline-basic-dao-api</artifactId>
+            <groupId>com.github.amirmv2006.business.apis</groupId>
+            <artifactId>vaseline-business-basic-layer-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.security.authentication.apis</groupId>
-            <artifactId>vaseline-security-authentication-dao-basic-api</artifactId>
+            <artifactId>vaseline-security-authentication-business-api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

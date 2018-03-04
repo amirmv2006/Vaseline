@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
+http://karaf.apache.org/xmlns/features/v1.0.0 ">
+    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:com.github.amirmv2006.data.osgi/vaseline-data-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:com.github.amirmv2006.business.osgi/vaseline-business-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:com.github.amirmv2006.security.audit.osgi/vaseline-security-audit-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:com.github.amirmv2006.security.authentication.osgi/vaseline-security-authentication-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</repository>
+
+    <!-- vaseline-security-authorization-apis start -->
+    <feature name="vaseline-security-authorization-basic-api" version="${project.version}">
+        <feature>vaseline-business-basic-layer-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/vaseline-security-authorization-basic-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authorization-basicimpl-api" version="${project.version}">
+        <feature>vaseline-business-basic-layerimpl-api</feature>
+        <feature>vaseline-security-authentication-basic-api</feature>
+        <feature>vaseline-security-authorization-basic-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/vaseline-security-authorization-basicimpl-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authorization-rbac-model-api" version="${project.version}">
+        <feature>vaseline-security-authentication-model-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/vaseline-security-authorization-rbac-model-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authorization-rbac-modelimpl-api" version="${project.version}">
+        <feature>vaseline-entity-jpa-api</feature>
+        <feature>vaseline-security-authentication-modelimpl-api</feature>
+        <feature>vaseline-security-authorization-rbac-model-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/vaseline-security-authorization-rbac-modelimpl-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authorization-rbac-dao-api" version="${project.version}">
+        <feature>vaseline-basic-dao-api</feature>
+        <feature>vaseline-security-authentication-dao-basic-api</feature>
+        <feature>vaseline-security-authorization-rbac-model-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/vaseline-security-authorization-rbac-dao-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authorization-rbac-daoimpl-hibernate-api" version="${project.version}">
+        <feature>vaseline-hibernate-basic-dao-api</feature>
+        <feature>vaseline-security-authorization-rbac-dao-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/vaseline-security-authorization-rbac-daoimpl-hibernate-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authorization-rbac-daoimpl-jpa-api" version="${project.version}">
+        <feature>vaseline-jpa-basic-dao-api</feature>
+        <feature>vaseline-security-authorization-rbac-dao-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/vaseline-security-authorization-rbac-daoimpl-jpa-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authorization-rbac-business-api" version="${project.version}">
+        <feature>vaseline-business-basic-layer-api</feature>
+        <feature>vaseline-security-authentication-business-api</feature>
+        <feature>vaseline-security-authorization-rbac-model-api</feature>
+        <feature>vaseline-security-authorization-basic-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/vaseline-security-authorization-rbac-business-api/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authorization-rbac-businessimpl-api" version="${project.version}">
+        <feature>transaction-api</feature>
+        <feature>vaseline-business-basic-layerimpl-api</feature>
+        <feature>vaseline-security-authentication-businessimpl-api</feature>
+        <feature>vaseline-security-authorization-rbac-dao-api</feature>
+        <feature>vaseline-security-authorization-rbac-business-api</feature>
+        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/vaseline-security-authorization-rbac-businessimpl-api/${project.version}</bundle>
+    </feature>
+    <!-- vaseline-security-authentication-apis end -->
+
+    <feature name="vaseline-security-authorization-basic" version="${project.version}">
+        <feature>vaseline-security-authorization-basicimpl-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-security-authorization-basic-osgi/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-security-authorization-basic-layer" version="${project.version}">
+        <feature>vaseline-security-authorization-basic-api</feature>
+        <bundle>mvn:${project.groupId}/vaseline-security-authorization-basic-layer-osgi/${project.version}</bundle>
+    </feature>
+    <feature name='${project.artifactId}-api' description='${project.name}' version='${project.version}'>
+        <details>${project.description} APIs</details>
+        <!-- api beans -->
+        <feature>vaseline-security-authorization-basic-api</feature>
+        <feature>vaseline-security-authorization-rbac-dao</feature>
+        <feature>vaseline-security-authorization-rbac-business</feature>
+    </feature>
+    <feature name='${project.artifactId}-jpa' description='${project.name}' version='${project.version}'>
+        <details>${project.description} in JPA</details>
+        <!-- api beans -->
+        <feature>vaseline-security-authentication-daoimpl-jpa-api</feature>
+        <feature>${project.artifactId}-api</feature>
+    </feature>
+    <feature name='${project.artifactId}-hibernate' description='${project.name}' version='${project.version}'>
+        <details>${project.description} in Hibernate</details>
+        <!-- api beans -->
+        <feature>vaseline-security-authentication-daoimpl-hibernate-api</feature>
+        <feature>${project.artifactId}-api</feature>
+    </feature>
+</features>
