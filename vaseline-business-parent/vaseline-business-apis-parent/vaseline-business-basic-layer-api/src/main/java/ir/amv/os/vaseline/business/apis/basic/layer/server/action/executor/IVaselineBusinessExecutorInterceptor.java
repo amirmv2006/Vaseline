@@ -8,6 +8,10 @@ import ir.amv.os.vaseline.business.apis.basic.layer.server.action.IBusinessActio
  */
 public interface IVaselineBusinessExecutorInterceptor<T> {
 
+    default int priority() {
+        return 0;
+    }
+
     <R> boolean appliesTo(IBusinessAction<R> businessAction);
 
     <R> T preExecute(IBusinessAction<R> businessAction) throws BaseVaselineServerException;

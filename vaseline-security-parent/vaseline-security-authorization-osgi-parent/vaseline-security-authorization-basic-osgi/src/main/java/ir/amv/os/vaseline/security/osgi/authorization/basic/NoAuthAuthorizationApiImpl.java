@@ -8,6 +8,7 @@ import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
 import org.osgi.util.tracker.ServiceTracker;
 
 import java.util.Timer;
@@ -24,44 +25,26 @@ public class NoAuthAuthorizationApiImpl
         implements IImplementedNoAuthAuthorizationApi,
         INoAuthAuthorizationApi {
     // avoiding cycle -> these api use crud apis which depend on authorization api
-    private ServiceTracker<IAuthorizationUserApi, IAuthorizationUserApi> authorizationUserApiTracker;
-    private ServiceTracker<IAuthorizationActionApi, IAuthorizationActionApi> authorizationActionApiTracker;
-
-    @Activate
-    public void init(ComponentContext componentContext) {
-        authorizationActionApiTracker = new ServiceTracker<IAuthorizationActionApi, IAuthorizationActionApi>(
-                componentContext.getBundleContext(),
-                IAuthorizationActionApi.class,
-                null
-        );
-        authorizationUserApiTracker = new ServiceTracker<IAuthorizationUserApi, IAuthorizationUserApi>(
-                componentContext.getBundleContext(),
-                IAuthorizationUserApi.class,
-                null
-        );
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                authorizationActionApiTracker.open();
-                authorizationUserApiTracker.open();
-            }
-        }, 1000);
-    }
-
-    @Deactivate
-    public void destroy() {
-        authorizationActionApiTracker.close();
-        authorizationUserApiTracker.close();
-    }
+    private IAuthorizationUserApi authorizationUserApiTracker;
+    private IAuthorizationActionApi authorizationActionApiTracker;
 
     @Override
     public IAuthorizationUserApi getAuthorizationUserApi() {
-        return authorizationUserApiTracker.getService();
+        return authorizationUserApiTracker;
     }
 
     @Override
     public IAuthorizationActionApi getAuthorizationActionApi() {
-        return authorizationActionApiTracker.getService();
+        return authorizationActionApiTracker;
     }
 
+    @Reference
+    public void setAuthorizationActionApiTracker(final IAuthorizationActionApi authorizationActionApiTracker) {
+        this.authorizationActionApiTracker = authorizationActionApiTracker;
+    }
+
+    @Reference
+    public void setAuthorizationUserApiTracker(final IAuthorizationUserApi authorizationUserApiTracker) {
+        this.authorizationUserApiTracker = authorizationUserApiTracker;
+    }
 }

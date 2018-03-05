@@ -32,6 +32,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -111,6 +112,8 @@ public class VaselineBusinessActionExecutorImpl
     public void addBusinessInterceptor(final IVaselineBusinessExecutorInterceptor interceptor) {
         if (!interceptors.contains(interceptor)) {
             interceptors.add(interceptor);
+            interceptors.sort(Comparator.<IVaselineBusinessExecutorInterceptor, Integer>
+                    comparing(IVaselineBusinessExecutorInterceptor::priority).reversed());
         }
     }
 
