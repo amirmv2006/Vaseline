@@ -13,7 +13,7 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.base.pkg>ir.amv.os.vaseline.security.apis.authorization.basic</bundle.base.pkg>
+        <bundle.base.pkg>ir.amv.os.vaseline.security.apis.authorization.basicimpl</bundle.base.pkg>
     </properties>
 
     <dependencies>

@@ -1,7 +1,5 @@
 package ir.amv.os.vaseline.security.osgi.authorization.rbac.business.action.defimpl;
 
-import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.IProxyAware;
-import ir.amv.os.vaseline.security.apis.authorization.basic.server.api.IAuthorizationActionApi;
 import ir.amv.os.vaseline.security.apis.authorization.rbac.businessimpl.action.IImplementedSecurityActionApi;
 import ir.amv.os.vaseline.security.apis.authorization.rbac.modelimpl.server.action.SecurityActionEntity;
 import ir.amv.os.vaseline.security.osgi.authorization.rbac.business.BaseApiImpl;
@@ -16,8 +14,7 @@ import org.osgi.service.component.annotations.Reference;
 @Component(
         immediate = true,
         service = {
-                IVaselineSecurityActionApi.class,
-                IProxyAware.class
+                IVaselineSecurityActionApi.class
         }
 )
 public class VaselineSecurityActionApiImpl

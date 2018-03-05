@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by AMV on 2/25/2016.
  */
-public interface INoAuthAuthorizationApi extends IBaseApi {
+public interface INoAuthAuthorizationApi {
 
     void checkAuthorization(String username, String actionTreeName) throws VaselineAuthorizationException;
 

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author Amir
  */
-public interface IAuthorizationUserApi extends IBaseApi {
+public interface IAuthorizationUserApi {
 
     boolean hasUserAccessToAction(String username, String actionTreeName) throws BaseVaselineServerException;
 

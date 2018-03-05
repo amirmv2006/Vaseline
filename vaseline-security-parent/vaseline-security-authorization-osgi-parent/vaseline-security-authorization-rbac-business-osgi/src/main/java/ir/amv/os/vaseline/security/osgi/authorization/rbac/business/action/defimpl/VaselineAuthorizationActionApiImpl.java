@@ -1,18 +1,11 @@
 package ir.amv.os.vaseline.security.osgi.authorization.rbac.business.action.defimpl;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.ProxyAwareImpl;
-import ir.amv.os.vaseline.business.apis.basic.layer.server.action.IBusinessAction;
 import ir.amv.os.vaseline.security.apis.authorization.basic.server.api.IAuthorizationActionApi;
-import ir.amv.os.vaseline.security.osgi.authorization.rbac.business.action.IVaselineSecurityActionApi;
-import org.osgi.service.component.ComponentContext;
-import org.osgi.service.component.annotations.Activate;
+import ir.amv.os.vaseline.security.apis.authorization.rbac.businessimpl.action.IImplementedAuthorizationActionApi;
+import ir.amv.os.vaseline.security.apis.authorization.rbac.dao.action.ISecurityActionDao;
+import ir.amv.os.vaseline.security.osgi.authorization.rbac.dao.jpa.action.IVaselineSecurityActionDao;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.util.tracker.ServiceTracker;
-
-import java.util.List;
 
 /**
  * @author Amir
@@ -22,34 +15,17 @@ import java.util.List;
         service = IAuthorizationActionApi.class
 )
 public class VaselineAuthorizationActionApiImpl
-        extends ProxyAwareImpl
-        implements IAuthorizationActionApi {
-
-    private ServiceTracker<IVaselineSecurityActionApi, IVaselineSecurityActionApi> actionApiTracker;
-
-    @Activate
-    public void initialize(ComponentContext componentContext) {
-        actionApiTracker = new ServiceTracker<IVaselineSecurityActionApi, IVaselineSecurityActionApi>(
-                componentContext.getBundleContext(),
-                IVaselineSecurityActionApi.class,
-                null
-                );
-        actionApiTracker.open();
-    }
-
-    @Deactivate
-    public void finish() {
-        actionApiTracker.close();
-    }
+        implements IImplementedAuthorizationActionApi,
+        IAuthorizationActionApi {
+    private IVaselineSecurityActionDao dao;
 
     @Override
-    public List<String> getActionChildTreeNames(final String baseActionTN) {
-        return actionApiTracker.getService().getActionChildTreeNames(baseActionTN);
+    public ISecurityActionDao<?> getDao() {
+        return dao;
     }
 
-    @Override
-    public <R> R doBusinessAction(final IBusinessAction<R> businessAction) throws BaseVaselineServerException {
-        throw new BaseVaselineServerException("Not supported");
+    @Reference
+    public void setDao(final IVaselineSecurityActionDao dao) {
+        this.dao = dao;
     }
-
 }

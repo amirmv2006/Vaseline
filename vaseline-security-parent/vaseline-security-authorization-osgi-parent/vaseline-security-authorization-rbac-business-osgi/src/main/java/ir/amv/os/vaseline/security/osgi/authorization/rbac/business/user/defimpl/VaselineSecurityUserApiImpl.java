@@ -18,8 +18,7 @@ import org.osgi.service.component.annotations.Reference;
 @Component(
         immediate = true,
         service = {
-                IVaselineSecurityUserApi.class,
-                IProxyAware.class
+                IVaselineSecurityUserApi.class
         }
 )
 public class VaselineSecurityUserApiImpl

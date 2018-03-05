@@ -1,4 +1,4 @@
-package ir.amv.os.vaseline.security.apis.authorization.basic.api;
+package ir.amv.os.vaseline.security.apis.authorization.basicimpl.server;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.base.IBaseImplementedApi;
@@ -13,7 +13,7 @@ import java.util.List;
  * @author Amir
  */
 public interface IImplementedAuthorizationApi
-        extends IAuthorizationApi, IBaseImplementedApi {
+        extends IAuthorizationApi {
 
     IAuthenticationApi getAuthenticationApi();
     INoAuthAuthorizationApi getNoAuthAuthorizationApi();

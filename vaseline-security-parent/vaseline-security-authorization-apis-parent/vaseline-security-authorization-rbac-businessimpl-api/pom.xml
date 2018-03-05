@@ -41,5 +41,9 @@
             <groupId>javax.transaction</groupId>
             <artifactId>javax.transaction-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
     </dependencies>
 </project>

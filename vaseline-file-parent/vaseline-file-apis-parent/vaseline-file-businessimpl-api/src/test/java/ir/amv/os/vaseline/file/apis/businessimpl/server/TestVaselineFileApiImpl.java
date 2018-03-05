@@ -2,7 +2,6 @@ package ir.amv.os.vaseline.file.apis.businessimpl.server;
 
 import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.ProxyAwareImpl;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
-import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.base.IBaseImplementedApi;
 import ir.amv.os.vaseline.file.apis.business.server.daofinder.IVaselineFileDaoFinder;
 import ir.amv.os.vaseline.file.apis.dao.basic.server.IVaselineFileDao;
 import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.blob.IVaselineFileBlobDao;
@@ -49,16 +48,10 @@ public class TestVaselineFileApiImpl
     }
 
     private static class AuthenticationApiMock
-            extends ProxyAwareImpl
-            implements IBaseImplementedApi, IAuthenticationApi {
+            implements IAuthenticationApi {
         @Override
         public String getCurrentUsername() {
             return "testUser";
-        }
-
-        @Override
-        public IVaselineBusinessActionExecutor getBusinessActionExecutor() {
-            return null;
         }
     }
 
