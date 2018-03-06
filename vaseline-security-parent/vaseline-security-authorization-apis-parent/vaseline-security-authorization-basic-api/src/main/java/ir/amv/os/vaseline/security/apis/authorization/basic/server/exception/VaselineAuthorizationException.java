@@ -7,4 +7,11 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerExc
  */
 public class VaselineAuthorizationException
         extends BaseVaselineServerException {
+
+    public VaselineAuthorizationException() {
+    }
+
+    public VaselineAuthorizationException(final Exception e) {
+        super(e);
+    }
 }

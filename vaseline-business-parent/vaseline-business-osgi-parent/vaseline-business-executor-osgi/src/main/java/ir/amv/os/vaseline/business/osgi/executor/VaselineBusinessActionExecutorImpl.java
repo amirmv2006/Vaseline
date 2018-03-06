@@ -2,6 +2,7 @@ package ir.amv.os.vaseline.business.osgi.executor;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.IProxyAware;
+import ir.amv.os.vaseline.basics.apis.logging.server.logger.VaselineLogLevel;
 import ir.amv.os.vaseline.basics.osgi.logging.common.server.helper.LOGGER;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.AbstractBusinessActionImpl;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.IBusinessAction;
@@ -31,11 +32,14 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 
 /**
@@ -61,15 +65,25 @@ public class VaselineBusinessActionExecutorImpl
             @Override
             public IProxyAware addingService(final ServiceReference<IProxyAware> reference) {
                 IProxyAware proxyAware = super.addingService(reference);
-                try {
-                    proxy(proxyAware, reference.getBundle());
-                } catch (UnableToProxyException e) {
-                    e.printStackTrace();
+                if (proxyAware == null) {
+                    LOGGER.log(VaselineLogLevel.ERROR, "problem with service reference %s", reference);
+                } else {
+                    LOGGER.log(VaselineLogLevel.INFO, "proxying service with reference %s", reference);
+                    try {
+                        proxy(proxyAware, reference.getBundle());
+                    } catch (UnableToProxyException e) {
+                        LOGGER.log(VaselineLogLevel.ERROR, "unable to proxy service with reference %s", reference);
+                    }
                 }
                 return proxyAware;
             }
         };
-        serviceTracker.open();
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                serviceTracker.open();
+            }
+        }, 2000);
     }
 
     @Deactivate
@@ -98,6 +112,8 @@ public class VaselineBusinessActionExecutorImpl
     public void addBusinessInterceptor(final IVaselineBusinessExecutorInterceptor interceptor) {
         if (!interceptors.contains(interceptor)) {
             interceptors.add(interceptor);
+            interceptors.sort(Comparator.<IVaselineBusinessExecutorInterceptor, Integer>
+                    comparing(IVaselineBusinessExecutorInterceptor::priority).reversed());
         }
     }
 

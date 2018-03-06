@@ -8,7 +8,7 @@ import ir.amv.os.vaseline.security.apis.authentication.basic.server.IAuthenticat
  * @author Amir
  */
 public interface IImplementedThreadLocalAuthenticationApi
-        extends IAuthenticationApi, ISetAuthenticationApi, IBaseImplementedApi {
+        extends IAuthenticationApi, ISetAuthenticationApi {
 
     ThreadLocal<String> getCurrentUsernameThreadLocal();
 

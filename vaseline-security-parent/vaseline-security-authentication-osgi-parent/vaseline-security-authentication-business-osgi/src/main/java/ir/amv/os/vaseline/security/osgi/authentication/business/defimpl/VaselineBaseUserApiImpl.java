@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.security.osgi.authentication.business.defimpl;
 
 import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.IProxyAware;
-import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.PorxyAwareImpl;
+import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.ProxyAwareImpl;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
 import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.crud.IBaseImplementedCrudApi;
 import ir.amv.os.vaseline.security.apis.audit.basic.server.IAuditApi;
@@ -25,7 +25,7 @@ import org.osgi.service.component.annotations.Reference;
         }
 )
 public class VaselineBaseUserApiImpl
-        extends PorxyAwareImpl
+        extends ProxyAwareImpl
         implements IVaselineBaseUserApi,
         IImplementedBaseUserApi<VaselineBaseUserEntity,IVaselineBaseUserDao>,
         IBaseImplementedCrudApi<VaselineBaseUserEntity, Long, IVaselineBaseUserDao> {

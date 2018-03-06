@@ -35,11 +35,6 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-security-authentication-model-api</feature>
         <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-modelimpl-api/${project.version}</bundle>
     </feature>
-    <feature name="vaseline-security-authentication-dao-jpa-api" version="${project.version}">
-        <feature>vaseline-entity-jpa-api</feature>
-        <feature>vaseline-security-authentication-model-api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.authentication.apis/vaseline-security-authentication-dao-jpa-api/${project.version}</bundle>
-    </feature>
     <feature name="vaseline-security-authentication-dao-basic-api" version="${project.version}">
         <feature>vaseline-basic-dao-api</feature>
         <feature>vaseline-security-authentication-model-api</feature>

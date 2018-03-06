@@ -6,7 +6,7 @@ import ir.amv.os.vaseline.business.apis.basic.layer.server.base.IBaseApi;
 /**
  * Created by AMV on 2/8/2016.
  */
-public interface IAuthenticationApi extends IBaseApi {
+public interface IAuthenticationApi {
 
     String IS_AUTHENTICATED = "IS_AUTHENTICATED";
 

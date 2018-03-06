@@ -35,6 +35,11 @@ public class VaselineOsgiTxManagerBusinessExecutorInterceptorImpl
     private Coordinator coordinator;
 
     @Override
+    public int priority() {
+        return Integer.MAX_VALUE - 100;
+    }
+
+    @Override
     public <R> boolean appliesTo(final IBusinessAction<R> businessAction) {
         IBusinessMetadata[] businessMetadata = businessAction.getBusinessMetadata();
         if (businessMetadata != null) {

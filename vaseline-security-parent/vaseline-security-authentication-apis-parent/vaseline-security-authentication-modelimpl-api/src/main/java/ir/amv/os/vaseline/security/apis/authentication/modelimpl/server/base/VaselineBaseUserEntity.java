@@ -5,8 +5,11 @@ import ir.amv.os.vaseline.security.apis.authentication.model.server.base.IBaseHa
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 /**
@@ -15,6 +18,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "SEC_VASELINE_BASE_USER")
 @Access(AccessType.FIELD)
+@Inheritance(strategy = InheritanceType.JOINED)
+@Cacheable
 public class VaselineBaseUserEntity extends BaseEntityImpl<Long>
         implements IBaseHasPasswordUserEntity {
     @Column(name = "USERNAME", unique = true)
