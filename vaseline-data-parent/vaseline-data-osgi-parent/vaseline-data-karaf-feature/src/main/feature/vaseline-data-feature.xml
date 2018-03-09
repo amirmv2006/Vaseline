@@ -41,7 +41,8 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-advanced-search-dao-api</feature>
         <bundle>mvn:com.github.amirmv2006.data.jpa/vaseline-jpa-advanced-search-dao-api/${project.version}</bundle>
     </feature>
-    <feature name='${project.artifactId}-jpa' description='${project.name}' version='${project.version}'>
+    <feature name='${project.artifactId}-jpa' description='${project.name}' version='${project.version}'
+             start-level="60">
         <details>${project.description} (JPA)</details>
         <!-- api beans -->
         <feature>vaseline-jpa-basic-dao-api</feature>
@@ -68,7 +69,8 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-advanced-search-dao-api</feature>
         <bundle>mvn:com.github.amirmv2006.data.hibernate/vaseline-hibernate-advanced-search-dao-api/${project.version}</bundle>
     </feature>
-    <feature name='${project.artifactId}-hibernate' description='${project.name}' version='${project.version}'>
+    <feature name='${project.artifactId}-hibernate' description='${project.name}' version='${project.version}'
+             start-level="60">
         <details>${project.description} (Hibernate)</details>
         <!-- api beans -->
         <feature>vaseline-hibernate-basic-dao-api</feature>

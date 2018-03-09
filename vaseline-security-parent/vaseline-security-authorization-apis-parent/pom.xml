@@ -15,6 +15,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-security-authorization-basic-api</module>
+        <module>vaseline-security-authorization-business-layer-api</module>
+        <module>vaseline-security-authorization-business-layerimpl-api</module>
         <module>vaseline-security-authorization-rbac-model-api</module>
         <module>vaseline-security-authorization-basicimpl-api</module>
         <module>vaseline-security-authorization-rbac-modelimpl-api</module>

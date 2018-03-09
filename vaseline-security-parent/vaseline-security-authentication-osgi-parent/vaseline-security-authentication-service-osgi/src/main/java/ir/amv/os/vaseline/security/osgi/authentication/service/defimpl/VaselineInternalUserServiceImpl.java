@@ -2,12 +2,12 @@ package ir.amv.os.vaseline.security.osgi.authentication.service.defimpl;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.exc.handler.ICoreExceptionHandler;
 import ir.amv.os.vaseline.basics.apis.mapper.server.objmapper.IVaselineObjectMapper;
-import ir.amv.os.vaseline.security.apis.authentication.modelimpl.server.base.VaselineBaseUserEntity;
-import ir.amv.os.vaseline.security.apis.authentication.modelimpl.shared.base.VaselineBaseUserDto;
+import ir.amv.os.vaseline.security.apis.authentication.modelimpl.server.base.VaselineInternalUserEntity;
+import ir.amv.os.vaseline.security.apis.authentication.modelimpl.shared.base.VaselineInternalUserDto;
 import ir.amv.os.vaseline.security.apis.authentication.service.server.base.IBaseUserService;
 import ir.amv.os.vaseline.security.apis.authentication.serviceimpl.server.base.IImplementedBaseUserService;
-import ir.amv.os.vaseline.security.osgi.authentication.business.IVaselineBaseUserApi;
-import ir.amv.os.vaseline.security.osgi.authentication.service.IVaselineBaseUserService;
+import ir.amv.os.vaseline.security.osgi.authentication.business.IVaselineInternalUserApi;
+import ir.amv.os.vaseline.security.osgi.authentication.service.IVaselineInternalUserService;
 import ir.amv.os.vaseline.service.apis.basic.layerimpl.server.crud.IBaseImplementedCrudService;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -20,21 +20,21 @@ import javax.validation.Validator;
 @Component(
         immediate = true,
         service = {
-                IVaselineBaseUserService.class,
+                IVaselineInternalUserService.class,
                 IBaseUserService.class
         }
 )
-public class VaselineBaseUserServiceImpl
-        implements IVaselineBaseUserService,
-        IImplementedBaseUserService<VaselineBaseUserEntity, VaselineBaseUserDto, IVaselineBaseUserApi>,
-        IBaseImplementedCrudService<VaselineBaseUserEntity, VaselineBaseUserDto, Long, IVaselineBaseUserApi>{
-    private IVaselineBaseUserApi api;
+public class VaselineInternalUserServiceImpl
+        implements IVaselineInternalUserService,
+        IImplementedBaseUserService<VaselineInternalUserEntity, VaselineInternalUserDto, IVaselineInternalUserApi>,
+        IBaseImplementedCrudService<VaselineInternalUserEntity, VaselineInternalUserDto, Long, IVaselineInternalUserApi>{
+    private IVaselineInternalUserApi api;
     private IVaselineObjectMapper mapper;
     private Validator validator;
     private ICoreExceptionHandler coreExceptionHandler;
 
     @Override
-    public IVaselineBaseUserApi getApi() {
+    public IVaselineInternalUserApi getApi() {
         return api;
     }
 
@@ -69,7 +69,7 @@ public class VaselineBaseUserServiceImpl
     }
 
     @Reference
-    public void setApi(final IVaselineBaseUserApi api) {
+    public void setApi(final IVaselineInternalUserApi api) {
         this.api = api;
     }
 }

@@ -375,6 +375,15 @@ public class ReflectionUtil {
         return annotation;
     }
 
+    /**
+     * @apiNote do no search class annots cause we are searching on interfaces too, will get complicated
+     * @param annotationClass
+     * @param targetClass
+     * @param methodName
+     * @param paramsTypes
+     * @param <A>
+     * @return
+     */
     public static <A extends Annotation> A getMethodAnnotationInHierarchy(
             Class<A> annotationClass,
             Class targetClass,

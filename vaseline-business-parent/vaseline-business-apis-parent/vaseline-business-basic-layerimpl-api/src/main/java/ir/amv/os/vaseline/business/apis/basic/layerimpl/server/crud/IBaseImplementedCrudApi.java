@@ -21,6 +21,7 @@ public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, Id extends S
         IBaseCrudDao<E, Id>>
         extends IBaseCrudApi<E, Id>, IBaseImplementedEntityCrudApi<E>, IBaseImplementedReadOnlyApi<E, Id, Dao> {
 
+    @Override
     @Transactional
     @VaselineBuinessMetadata({
             VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
@@ -34,6 +35,7 @@ public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, Id extends S
         });
     }
 
+    @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     @VaselineBuinessMetadata({
             VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
@@ -51,6 +53,7 @@ public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, Id extends S
         });
     }
 
+    @Override
     @Transactional
     @VaselineBuinessMetadata({
             VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
@@ -64,6 +67,7 @@ public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, Id extends S
         });
     }
 
+    @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     @VaselineBuinessMetadata({
             VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
@@ -79,6 +83,7 @@ public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, Id extends S
         });
     }
 
+    @Override
     @Transactional
     @VaselineBuinessMetadata({
             VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
@@ -92,6 +97,7 @@ public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, Id extends S
         });
     }
 
+    @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     @VaselineBuinessMetadata({
             VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
@@ -107,6 +113,7 @@ public interface IBaseImplementedCrudApi<E extends IBaseEntity<Id>, Id extends S
         });
     }
 
+    @Override
     @Transactional
     @VaselineBuinessMetadata({
             VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE

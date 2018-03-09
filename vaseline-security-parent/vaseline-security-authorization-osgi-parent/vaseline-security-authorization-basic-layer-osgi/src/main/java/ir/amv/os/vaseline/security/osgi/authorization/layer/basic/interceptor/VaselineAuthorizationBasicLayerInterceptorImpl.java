@@ -1,11 +1,17 @@
 package ir.amv.os.vaseline.security.osgi.authorization.layer.basic.interceptor;
 
+import ir.amv.os.vaseline.basics.apis.logging.server.logger.VaselineLogLevel;
+import ir.amv.os.vaseline.basics.osgi.logging.common.server.helper.LOGGER;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.action.IBusinessAction;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.crud.IBaseCrudApi;
 import ir.amv.os.vaseline.business.apis.basic.layer.server.ro.IBaseReadOnlyApi;
+import ir.amv.os.vaseline.security.apis.authorization.basic.server.api.IAuthorizationActionApi;
 import ir.amv.os.vaseline.security.apis.authorization.basic.server.api.action.IBusinessActionSecurityChecker;
+import ir.amv.os.vaseline.security.apis.authorization.basic.server.api.annot.ActionTreeName;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.osgi.service.component.annotations.Component;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
@@ -31,13 +37,26 @@ public class VaselineAuthorizationBasicLayerInterceptorImpl
 
     @Override
     public <R> String getActionTreeName(final IBusinessAction<R> businessAction) {
+        ActionTreeName baseActionTreeNameAnnot = ReflectionUtil.getAnnotationInHierarchy(businessAction
+                        .getRunningClass(),
+                ActionTreeName.class);
+        String baseActionTreeName;
+        if (baseActionTreeNameAnnot == null) {
+            LOGGER.log(VaselineLogLevel.WARNING,
+                    "can not get base action tree name for %s, did you forget to annotate your business class with " +
+                            "@ActionTreeName?",
+                    businessAction.getRunningClass());
+            baseActionTreeName = "unknown";
+        } else {
+            baseActionTreeName = baseActionTreeNameAnnot.value();
+        }
         String actionTreeName = getActionTreeName(IBaseReadOnlyApi.class, businessAction.getDeclaredMethod());
         if (actionTreeName != null) {
-            return actionTreeName;
+            return baseActionTreeName + IAuthorizationActionApi.ACTION_TREE_NAME_SPLITTER + actionTreeName;
         }
         actionTreeName = getActionTreeName(IBaseCrudApi.class, businessAction.getDeclaredMethod());
         if (actionTreeName != null) {
-            return actionTreeName;
+            return baseActionTreeName + IAuthorizationActionApi.ACTION_TREE_NAME_SPLITTER + actionTreeName;
         }
         return null;
     }

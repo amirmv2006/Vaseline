@@ -69,7 +69,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <bundle>mvn:${project.groupId}/vaseline-businesss-aries-tx-osgi/${project.version}</bundle>
     </feature>
     <!-- vaseline business impl end-->
-    <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
+    <feature name='${project.artifactId}' description='${project.name}' version='${project.version}' start-level="70">
         <details>${project.description}</details>
         <!-- api beans -->
         <feature>vaseline-business-simple-search-layerimpl-api</feature>

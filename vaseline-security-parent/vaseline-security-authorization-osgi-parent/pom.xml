@@ -18,6 +18,8 @@
         <module>vaseline-security-authorization-basic-layer-osgi</module>
         <module>vaseline-security-authorization-rbac-dao-jpa-osgi</module>
         <module>vaseline-security-authorization-rbac-business-osgi</module>
+        <module>vaseline-security-authorization-rbac-auto-user-adder-osgi</module>
+        <module>vaseline-security-authorization-rbac-auto-user-annot-osgi</module>
         <module>vaseline-security-authorization-karaf-feature</module>
     </modules>
 

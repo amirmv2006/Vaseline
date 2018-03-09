@@ -7,9 +7,9 @@ import ir.amv.os.vaseline.business.apis.basic.layerimpl.server.crud.IBaseImpleme
 import ir.amv.os.vaseline.security.apis.audit.basic.server.IAuditApi;
 import ir.amv.os.vaseline.security.apis.authentication.business.server.base.IBaseUserApi;
 import ir.amv.os.vaseline.security.apis.authentication.businessimpl.server.base.IImplementedBaseUserApi;
-import ir.amv.os.vaseline.security.apis.authentication.modelimpl.server.base.VaselineBaseUserEntity;
-import ir.amv.os.vaseline.security.osgi.authentication.business.IVaselineBaseUserApi;
-import ir.amv.os.vaseline.security.osgi.authentication.dao.jpa.IVaselineBaseUserDao;
+import ir.amv.os.vaseline.security.apis.authentication.modelimpl.server.base.VaselineInternalUserEntity;
+import ir.amv.os.vaseline.security.osgi.authentication.business.IVaselineInternalUserApi;
+import ir.amv.os.vaseline.security.osgi.authentication.dao.jpa.IVaselineInternalUserDao;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -19,19 +19,19 @@ import org.osgi.service.component.annotations.Reference;
 @Component(
         immediate = true,
         service = {
-                IVaselineBaseUserApi.class,
+                IVaselineInternalUserApi.class,
                 IBaseUserApi.class,
                 IProxyAware.class
         }
 )
-public class VaselineBaseUserApiImpl
+public class VaselineInternalUserApiImpl
         extends ProxyAwareImpl
-        implements IVaselineBaseUserApi,
-        IImplementedBaseUserApi<VaselineBaseUserEntity,IVaselineBaseUserDao>,
-        IBaseImplementedCrudApi<VaselineBaseUserEntity, Long, IVaselineBaseUserDao> {
+        implements IVaselineInternalUserApi,
+        IImplementedBaseUserApi<VaselineInternalUserEntity,IVaselineInternalUserDao>,
+        IBaseImplementedCrudApi<VaselineInternalUserEntity, Long, IVaselineInternalUserDao> {
 
     private IAuditApi auditApi;
-    private IVaselineBaseUserDao dao;
+    private IVaselineInternalUserDao dao;
     private IVaselineBusinessActionExecutor businessActionExecutor;
 
     @Override
@@ -40,7 +40,7 @@ public class VaselineBaseUserApiImpl
     }
 
     @Override
-    public IVaselineBaseUserDao getDao() {
+    public IVaselineInternalUserDao getDao() {
         return dao;
     }
 
@@ -60,7 +60,7 @@ public class VaselineBaseUserApiImpl
     }
 
     @Reference
-    public void setDao(final IVaselineBaseUserDao dao) {
+    public void setDao(final IVaselineInternalUserDao dao) {
         this.dao = dao;
     }
 }
