@@ -159,7 +159,7 @@ public class VaselineBusinessActionExecutorImpl
         }
         return new AbstractBusinessActionImpl<Object>(
                 UUID.randomUUID().toString(),
-                method.getDeclaringClass(),
+                proxy.getClass(),
                 method,
                 args,
                 metadata,

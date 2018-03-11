@@ -124,7 +124,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <bundle>mvn:${project.groupId}/vaseline-basics-json-gson-osgi/${project.version}</bundle>
     </feature>
 
-    <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
+    <feature name='${project.artifactId}' description='${project.name}' version='${project.version}' start-level="50">
         <details>${project.description}</details>
         <!-- api beans -->
         <feature>vaseline-jdbc-api</feature>

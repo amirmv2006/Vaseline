@@ -21,6 +21,7 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
 
     Dao getDao();
 
+    @Override
     @Transactional
     @VaselineBuinessMetadata({
             VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
@@ -33,6 +34,7 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
         });
     }
 
+    @Override
     @Transactional
     @VaselineBuinessMetadata({
             VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
@@ -41,6 +43,7 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
         return doBusinessAction((IBusinessFunctionZero<Long>) () -> getDao().countAllApproximately());
     }
 
+    @Override
     @Transactional
     @VaselineBuinessMetadata({
             VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
@@ -49,6 +52,7 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
         return doBusinessAction((IBusinessFunctionZero<Long>) () -> getDao().countAll());
     }
 
+    @Override
     @Transactional
     @VaselineBuinessMetadata({
             VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
@@ -61,6 +65,7 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
         });
     }
 
+    @Override
     @Transactional
     @VaselineBuinessMetadata({
             VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
@@ -73,6 +78,7 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
         });
     }
 
+    @Override
     @Transactional
     @VaselineBuinessMetadata({
             VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY

@@ -8,6 +8,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
@@ -24,7 +25,7 @@ public class SecurityRoleEntity
 
     @Column(unique = true)
     private String roleName;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<SecurityActionEntity> actions;
 
     @Override

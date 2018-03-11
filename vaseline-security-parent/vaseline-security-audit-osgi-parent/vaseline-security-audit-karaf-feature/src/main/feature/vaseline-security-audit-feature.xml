@@ -19,11 +19,11 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     </feature>
     <!-- vaseline-security-audit-apis end -->
 
-    <feature name="vaseline-security-audit-log" version="${project.version}">
+    <feature name="vaseline-security-audit-log" version="${project.version}" start-level="72">
         <feature>vaseline-security-auditimpl-log-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-security-audit-log-osgi/${project.version}</bundle>
     </feature>
-    <feature name='${project.artifactId}' description='${project.name}' version='${project.version}'>
+    <feature name='${project.artifactId}' description='${project.name}' version='${project.version}' start-level="72">
         <details>${project.description}</details>
         <!-- api beans -->
         <feature>vaseline-security-audit-log</feature>

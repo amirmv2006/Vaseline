@@ -8,6 +8,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Cacheable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
@@ -23,7 +24,7 @@ public class SecurityUserEntity
         extends VaselineBaseUserEntity
         implements ISecurityUserWithRoleEntity<SecurityRoleEntity> {
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<SecurityRoleEntity> roles;
 
     @Override

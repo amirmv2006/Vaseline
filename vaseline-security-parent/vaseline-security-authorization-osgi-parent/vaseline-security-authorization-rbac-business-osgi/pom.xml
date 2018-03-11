@@ -18,6 +18,16 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.github.amirmv2006.security.authorization.apis</groupId>
+            <artifactId>vaseline-security-authorization-business-layer-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.security.authorization.apis</groupId>
+            <artifactId>vaseline-security-authorization-business-layerimpl-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.amirmv2006.security.authorization.osgi</groupId>
             <artifactId>vaseline-security-authorization-rbac-dao-jpa-osgi</artifactId>
             <version>${project.version}</version>
