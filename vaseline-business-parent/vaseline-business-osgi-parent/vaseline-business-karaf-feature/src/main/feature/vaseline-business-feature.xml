@@ -7,6 +7,10 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <repository>mvn:com.github.amirmv2006.data.osgi/vaseline-data-karaf-feature/${project.version}/xml/features</repository>
 
     <!-- vaseline business api start -->
+    <feature name="vaseline-business-tx-api" version="${project.version}">
+        <feature>vaseline-core-api</feature>
+        <bundle>mvn:com.github.amirmv2006.business.apis/vaseline-business-tx-api/${project.version}</bundle>
+    </feature>
     <feature name="vaseline-business-basic-layer-api" version="${project.version}">
         <feature>vaseline-core-api</feature>
         <feature>vaseline-basic-dao-api</feature>
@@ -66,6 +70,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>transaction</feature>
         <feature>vaseline-basics-logging-common</feature>
         <feature>vaseline-business-basic-layer-api</feature>
+        <feature>vaseline-business-tx-api</feature>
         <bundle>mvn:${project.groupId}/vaseline-businesss-aries-tx-osgi/${project.version}</bundle>
     </feature>
     <!-- vaseline business impl end-->

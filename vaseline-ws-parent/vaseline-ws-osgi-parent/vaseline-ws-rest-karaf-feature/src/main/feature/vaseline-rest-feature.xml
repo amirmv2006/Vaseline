@@ -126,6 +126,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     </feature>
     <feature name="vaseline-ws-rest-authorization-basic" version="${project.version}">
         <feature>vaseline-basics-base-bundle</feature>
+        <feature>vaseline-business-tx-api</feature>
         <feature>vaseline-security-authorization-basic-api</feature>
         <feature>jax-rs-provider-security</feature>
         <feature>vaseline-ws-rest-secured-oauth2</feature>
