@@ -38,7 +38,8 @@ public interface IBaseImplementedExceptionConverter<E extends Exception, CE exte
             String translatedMessage = message;
             try {
                 Locale locale = getCurrentLocale();
-                translatedMessage = getMessageTranslator().getMessage(message, new Object[]{}, locale);
+                translatedMessage = getMessageTranslator().getMessage(message, getInternationalizationArgs(exception),
+                        locale);
             } catch (Exception e) {
             }
             CE newInstance = getClientExceptionClass().getConstructor(String.class).newInstance(translatedMessage);
@@ -47,6 +48,10 @@ public interface IBaseImplementedExceptionConverter<E extends Exception, CE exte
             e.printStackTrace();
         }
         return null;
+    }
+
+    default Object[] getInternationalizationArgs(final E exception) {
+        return new Object[]{};
     }
 
     default Locale getCurrentLocale() {

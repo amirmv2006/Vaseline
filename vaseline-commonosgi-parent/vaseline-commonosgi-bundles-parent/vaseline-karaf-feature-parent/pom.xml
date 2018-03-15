@@ -73,6 +73,9 @@
                             </goals>
                         </execution>
                     </executions>
+                    <configuration>
+                        <escapeString>\</escapeString>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>

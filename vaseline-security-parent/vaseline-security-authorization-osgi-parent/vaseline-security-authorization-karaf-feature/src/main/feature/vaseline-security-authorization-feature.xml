@@ -96,6 +96,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <bundle>mvn:${project.groupId}/vaseline-security-authorization-rbac-business-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-security-authorization-rbac-auto-user-adder" version="${project.version}">
+        <feature>vaseline-basics-base-bundle</feature>
         <feature>vaseline-basics-logging-common</feature>
         <feature>vaseline-security-authentication-basicimpl-api</feature>
         <feature>vaseline-security-authorization-rbac-business</feature>

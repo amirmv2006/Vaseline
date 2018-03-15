@@ -20,7 +20,7 @@ public interface IImplementedNoAuthAuthorizationApi
     default void checkAuthorization(String username, String actionTreeName) throws VaselineAuthorizationException {
         try {
             if (!getAuthorizationUserApi().hasUserAccessToAction(username, actionTreeName)) {
-                throw new VaselineAccessDeniedException();
+                throw new VaselineAccessDeniedException(username, actionTreeName);
             }
         } catch (VaselineAuthorizationException e) {
             throw e;

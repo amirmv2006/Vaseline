@@ -6,12 +6,17 @@ import ir.amv.os.vaseline.security.apis.authentication.basic.server.IAuthenticat
 import ir.amv.os.vaseline.security.apis.authentication.basicimpl.server.ISetAuthenticationApi;
 import ir.amv.os.vaseline.ws.osgi.rest.secured.oauth2.IOAuthService;
 import ir.amv.os.vaseline.ws.osgi.rest.secured.oauth2.OAuthToken;
+import ir.amv.os.vaseline.ws.osgi.rest.secured.oauth2.authorization.IRestPartialAuthorizationHandler;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicyOption;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.HttpHeaders;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Amir
@@ -27,6 +32,7 @@ public class CheckTokenFilter implements AuthenticationHandler, AuthorizationHan
 
     private IOAuthService oAuthService;
     private ISetAuthenticationApi setAuthenticationApi;
+    private List<IRestPartialAuthorizationHandler> partialAuthorizationHandlers = new ArrayList<>();
 
     @Override
     public Principal authenticate(final ContainerRequestContext requestContext) {
@@ -55,8 +61,28 @@ public class CheckTokenFilter implements AuthenticationHandler, AuthorizationHan
         this.setAuthenticationApi = setAuthenticationApi;
     }
 
+
+    @Reference(
+            cardinality = ReferenceCardinality.AT_LEAST_ONE,
+            policyOption = ReferencePolicyOption.GREEDY
+    )
+    public void addPartialAuthorizationHandlers(final IRestPartialAuthorizationHandler
+                                                      partialAuthorizationHandler) {
+        partialAuthorizationHandlers.add(partialAuthorizationHandler);
+    }
+
+    public void removePartialAuthorizationHandlers(final IRestPartialAuthorizationHandler
+                                                      partialAuthorizationHandler) {
+        partialAuthorizationHandlers.remove(partialAuthorizationHandler);
+    }
+
     @Override
     public boolean isUserInRole(final Principal user, final String role) {
-        return user != null && user.getName() != null && role.equals(IAuthenticationApi.IS_AUTHENTICATED);
+        for (IRestPartialAuthorizationHandler partialAuthorizationHandler : partialAuthorizationHandlers) {
+            if (partialAuthorizationHandler.isUserInRole(user, role)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

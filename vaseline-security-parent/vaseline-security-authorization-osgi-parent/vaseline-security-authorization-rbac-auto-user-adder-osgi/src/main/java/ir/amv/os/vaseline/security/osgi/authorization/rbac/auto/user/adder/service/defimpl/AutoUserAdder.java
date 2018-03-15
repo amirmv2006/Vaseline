@@ -83,11 +83,11 @@ public class AutoUserAdder implements ManagedService, IAuthoUserAdder {
 
     private void extractDefaultUsers(final Dictionary<String, ?> properties) throws BaseVaselineServerException {
         String userBaseKey = DEFAULT_USER_KEY_PREFIX;
-        String defaultUserName = (String) properties.get(userBaseKey);
+        String defaultUserName = getConfig(userBaseKey, properties, null);
         int i = 0;
         if (defaultUserName == null) {
             userBaseKey = DEFAULT_USER_KEY_PREFIX + "." + i;
-            defaultUserName = (String) properties.get(userBaseKey);
+            defaultUserName = getConfig(userBaseKey, properties, null);
         }
         while (defaultUserName != null) {
             SecurityUserEntity defaultUser = getUserApi().loadUserByUsername(defaultUserName);
@@ -101,7 +101,7 @@ public class AutoUserAdder implements ManagedService, IAuthoUserAdder {
             }
             i++;
             userBaseKey = DEFAULT_USER_KEY_PREFIX + "." + i;
-            defaultUserName = (String) properties.get(userBaseKey);
+            defaultUserName = getConfig(userBaseKey, properties, null);
         }
     }
 
@@ -110,11 +110,11 @@ public class AutoUserAdder implements ManagedService, IAuthoUserAdder {
             final Dictionary<String, ?> properties) throws BaseVaselineServerException {
         Set<SecurityRoleEntity> roles = new HashSet<>();
         String roleBaseKeyCnt = roleBaseKey;
-        String defaultRoleName = (String) properties.get(roleBaseKeyCnt);
+        String defaultRoleName = getConfig(roleBaseKeyCnt, properties, null);
         int i = 0;
         if (defaultRoleName == null) {
             roleBaseKeyCnt = DEFAULT_ROLE_KEY_PREFIX + "." + i;
-            defaultRoleName = (String) properties.get(roleBaseKeyCnt);
+            defaultRoleName = getConfig(roleBaseKeyCnt, properties, null);
         }
         while (defaultRoleName != null) {
             SecurityRoleEntity defaultRole = getRoleApi().getRoleByName(defaultRoleName);
@@ -128,7 +128,7 @@ public class AutoUserAdder implements ManagedService, IAuthoUserAdder {
             roles.add(defaultRole);
             i++;
             roleBaseKeyCnt = DEFAULT_ROLE_KEY_PREFIX + "." + i;
-            defaultRoleName = (String) properties.get(roleBaseKeyCnt);
+            defaultRoleName = getConfig(roleBaseKeyCnt, properties, null);
         }
         return roles;
     }
@@ -138,11 +138,11 @@ public class AutoUserAdder implements ManagedService, IAuthoUserAdder {
             final SecurityRoleEntity defaultRole,
             final Dictionary<String, ?> properties) throws BaseVaselineServerException {
         String actionBaseKeyCnt = actionBaseKey;
-        String actionTreeName = (String) properties.get(actionBaseKeyCnt);
+        String actionTreeName = getConfig(actionBaseKeyCnt, properties, null);
         int i = 0;
         if (actionTreeName == null) {
             actionBaseKeyCnt = actionBaseKey + "." + i;
-            actionTreeName = (String) properties.get(actionBaseKeyCnt);
+            actionTreeName = getConfig(actionBaseKeyCnt, properties, null);
         }
         while (actionTreeName != null) {
             SecurityActionEntity action = getActionApi().getActionByTreeName(actionTreeName);
@@ -165,7 +165,7 @@ public class AutoUserAdder implements ManagedService, IAuthoUserAdder {
             }
             i++;
             actionBaseKeyCnt = actionBaseKey + "." + i;
-            actionTreeName = (String) properties.get(actionBaseKeyCnt);
+            actionTreeName = getConfig(actionBaseKeyCnt, properties, null);
         }
     }
 

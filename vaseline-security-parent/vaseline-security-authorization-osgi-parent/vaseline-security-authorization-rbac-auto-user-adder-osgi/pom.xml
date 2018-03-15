@@ -18,6 +18,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.github.amirmv2006.basics.osgi</groupId>
+            <artifactId>vaseline-basics-base-bundle-osgi</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.amirmv2006.security.authentication.apis</groupId>
             <artifactId>vaseline-security-authentication-basicimpl-api</artifactId>
             <version>${project.version}</version>

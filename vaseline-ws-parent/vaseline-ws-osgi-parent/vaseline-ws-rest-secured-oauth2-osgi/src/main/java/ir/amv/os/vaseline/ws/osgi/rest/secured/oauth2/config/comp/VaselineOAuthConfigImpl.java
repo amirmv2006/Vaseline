@@ -25,11 +25,11 @@ public class VaselineOAuthConfigImpl
 
     @Override
     public void updated(final Dictionary<String, ?> properties) throws ConfigurationException {
-        tokenUrl = (String) properties.get("tokenUrl");
-        clientId = (String) properties.get("clientId");
-        clientSecret = (String) properties.get("clientSecret");
-        checkTokenUrl = (String) properties.get("checkTokenUrl");
-        authorizeUrl = (String) properties.get("authorizeUrl");
+        tokenUrl = getConfig("tokenUrl", properties, null);
+        clientId = getConfig("clientId", properties, null);
+        clientSecret = getConfig("clientSecret", properties, null);
+        checkTokenUrl = getConfig("checkTokenUrl", properties, null);
+        authorizeUrl = getConfig("authorizeUrl", properties, null);
     }
 
     @Override

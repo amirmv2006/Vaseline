@@ -9,8 +9,14 @@ public class BaseVaselineClientException extends Exception implements
 	
 	private String identifier;
 
-	public BaseVaselineClientException() {
-	}
+    /*
+    planning to make all client exceptions have one constructor only cause that's what
+    ir.amv.os.vaseline.basics.apis.core.server.base.exc.converter.defimpl.IBaseImplementedExceptionConverter.createClientException
+    is using anyway
+    */
+	//	@Deprecated
+//	public BaseVaselineClientException() {
+//	}
 
 	public BaseVaselineClientException(String messageKey) {
 		super(messageKey);

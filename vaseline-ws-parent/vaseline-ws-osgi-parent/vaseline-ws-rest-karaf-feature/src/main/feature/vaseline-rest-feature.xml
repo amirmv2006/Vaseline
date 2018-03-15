@@ -105,6 +105,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <bundle>mvn:${project.groupId}/vaseline-ws-rest-secured-spring-sec-osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-ws-rest-secured-oauth2" version="${project.version}">
+        <feature>vaseline-basics-base-bundle</feature>
         <feature>vaseline-cache-api</feature>
         <feature>vaseline-security-authentication-basicimpl-api</feature>
         <feature>vaseline-security-authentication-basic</feature>
@@ -113,15 +114,22 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     </feature>
     <feature name="vaseline-ws-rest-secured-oauth2-cache-hazelcast" version="${project.version}">
         <config
-                name="ir.amv.os.vaseline.ws.osgi.rest.secured.oauth2">tokenUrl=http://localhost:8088/spring-security-oauth-server/oauth/token
-            authorizeUrl=http://localhost:8088/spring-security-oauth-server/oauth/authorize
-            checkTokenUrl=http://localhost:8088/spring-security-oauth-server/oauth/check_token
-            clientId=fooClientIdPassword
-            clientSecret=secret
+                name="ir.amv.os.vaseline.ws.osgi.rest.secured.oauth2">tokenUrl=\${env:SSO_OAUTH_URL}/token
+            authorizeUrl=\${env:SSO_OAUTH_URL}/authorize
+            checkTokenUrl=\${env:SSO_OAUTH_URL}/check_token
+            clientId=\${env:SSO_OAUTH_CLIENT_ID}
+            clientSecret=\${env:SSO_OAUTH_SECRET}
         </config>
         <feature>vaseline-ws-rest-secured-oauth2</feature>
         <feature>vaseline-basics-cache-hazelcast</feature>
         <bundle>mvn:${project.groupId}/vaseline-ws-rest-secured-oauth2-cache-hazelcast-osgi/${project.version}</bundle>
+    </feature>
+    <feature name="vaseline-ws-rest-authorization-basic" version="${project.version}">
+        <feature>vaseline-basics-base-bundle</feature>
+        <feature>vaseline-security-authorization-basic-api</feature>
+        <feature>jax-rs-provider-security</feature>
+        <feature>vaseline-ws-rest-secured-oauth2</feature>
+        <bundle>mvn:${project.groupId}/vaseline-ws-rest-authorization-basic-osgi/${project.version}</bundle>
     </feature>
     <!-- vaseline ws rest impl end -->
 
@@ -135,6 +143,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>vaseline-ws-rest-jersey</feature>
         <feature>vaseline-ws-rest-secured-oauth2</feature>
         <feature>vaseline-ws-rest-secured-oauth2-cache-hazelcast</feature>
+        <feature>vaseline-ws-rest-authorization-basic</feature>
         <!--<feature>vaseline-ws-rest-secured-spring-sec</feature>-->
     </feature>
 
