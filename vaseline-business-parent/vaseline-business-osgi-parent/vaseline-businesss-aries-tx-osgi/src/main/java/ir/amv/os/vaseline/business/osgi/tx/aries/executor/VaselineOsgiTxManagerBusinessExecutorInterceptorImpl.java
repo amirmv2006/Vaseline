@@ -177,7 +177,7 @@ public class VaselineOsgiTxManagerBusinessExecutorInterceptorImpl
         return false;
     }
 
-    private static boolean isUncheckedException(Throwable ex) {
+    public static boolean isUncheckedException(Throwable ex) {
         return ex instanceof RuntimeException || ex instanceof Error;
     }
 

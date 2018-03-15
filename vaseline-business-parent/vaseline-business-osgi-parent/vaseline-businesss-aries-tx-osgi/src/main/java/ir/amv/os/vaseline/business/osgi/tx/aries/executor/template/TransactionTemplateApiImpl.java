@@ -4,6 +4,7 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerExc
 import ir.amv.os.vaseline.basics.apis.logging.server.logger.VaselineLogLevel;
 import ir.amv.os.vaseline.basics.osgi.logging.common.server.helper.LOGGER;
 import ir.amv.os.vaseline.business.apis.tx.ITransactionTemplateApi;
+import ir.amv.os.vaseline.business.osgi.tx.aries.executor.VaselineOsgiTxManagerBusinessExecutorInterceptorImpl;
 import ir.amv.os.vaseline.business.osgi.tx.aries.executor.txblueprint.TransactionAttribute;
 import ir.amv.os.vaseline.business.osgi.tx.aries.executor.txblueprint.TransactionToken;
 import org.osgi.service.component.annotations.Component;
@@ -40,7 +41,8 @@ public class TransactionTemplateApiImpl
             token.setCoordination(coord);
             return transactionalAction.get();
         } catch (Exception e) {
-            if (token != null && token.getActiveTransaction() != null) {
+            if (token != null && token.getActiveTransaction() != null &&
+                    VaselineOsgiTxManagerBusinessExecutorInterceptorImpl.isUncheckedException(e)) {
                 try {
                     LOGGER.log(VaselineLogLevel.DEBUG, "Setting transaction to rollback only because of exception ", e);
                     token.getActiveTransaction().setRollbackOnly();
