@@ -23,4 +23,6 @@ public interface IBaseEntityReadOnlyApi<E extends IBaseEntity<?>> extends IBaseA
         }
         return null;
     }
+
+    E newEntity() throws BaseVaselineServerException;
 }

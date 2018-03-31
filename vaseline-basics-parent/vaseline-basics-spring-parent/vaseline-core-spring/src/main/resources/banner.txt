@@ -1,0 +1,7 @@
+    ${AnsiColor.GREEN}  ___    __                      ___________
+    ${AnsiColor.GREEN}  __ |  / /______ ______________ ___  /___(_)_______ _____
+    ${AnsiColor.GREEN}  __ | / / _  __ `/__  ___/_  _ \__  / __  / __  __ \_  _ \
+    ${AnsiColor.GREEN}  __ |/ /  / /_/ / _(__  ) /  __/_  /  _  /  _  / / //  __/
+    ${AnsiColor.GREEN}  _____/   \__,_/  /____/  \___/ /_/   /_/   /_/ /_/ \___/
+
+    ${AnsiColor.BRIGHT_BLUE}    Engineered By AMV (v${project.version})

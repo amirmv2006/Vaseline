@@ -13,6 +13,11 @@ public interface IBaseImplementedGenericReadOnlyDao<E extends IBaseEntity<Id>, I
         extends IBaseReadOnlyDao<E, Id> {
 
     @Override
+    default E newEntity() throws IllegalAccessException, InstantiationException {
+        return getEntityClass().newInstance();
+    }
+
+    @Override
     default Class<E> getEntityClass() {
         Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(getClass(), IBaseReadOnlyDao.class);
         if (genericArgumentClasses != null) {

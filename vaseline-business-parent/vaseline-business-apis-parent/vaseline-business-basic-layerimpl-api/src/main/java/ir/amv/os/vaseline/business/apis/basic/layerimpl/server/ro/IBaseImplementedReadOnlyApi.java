@@ -99,4 +99,12 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
         }
     }
 
+    @Override
+    default E newEntity() throws BaseVaselineServerException {
+        try {
+            return getDao().newEntity();
+        } catch (Exception e) {
+            throw new BaseVaselineServerException("Can not instantiate Entity", e);
+        }
+    }
 }
