@@ -100,6 +100,11 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
     }
 
     @Override
+    default Class<E> getEntityClass() {
+        return getDao().getEntityClass();
+    }
+
+    @Override
     default E newEntity() throws BaseVaselineServerException {
         try {
             return getDao().newEntity();

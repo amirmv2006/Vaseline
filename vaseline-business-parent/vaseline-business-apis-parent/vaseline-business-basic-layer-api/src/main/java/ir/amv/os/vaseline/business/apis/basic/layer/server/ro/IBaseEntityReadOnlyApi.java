@@ -12,17 +12,7 @@ public interface IBaseEntityReadOnlyApi<E extends IBaseEntity<?>> extends IBaseA
 
     void postGet(E entity) throws BaseVaselineServerException;
 
-    default Class<E> getEntityClass() {
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(getClass());
-        if (genericArgumentClasses != null) {
-            for (Class<?> genericArgumentClass : genericArgumentClasses) {
-                if (IBaseEntity.class.isAssignableFrom(genericArgumentClass)) {
-                    return (Class<E>) genericArgumentClass;
-                }
-            }
-        }
-        return null;
-    }
+    Class<E> getEntityClass();
 
     E newEntity() throws BaseVaselineServerException;
 }
