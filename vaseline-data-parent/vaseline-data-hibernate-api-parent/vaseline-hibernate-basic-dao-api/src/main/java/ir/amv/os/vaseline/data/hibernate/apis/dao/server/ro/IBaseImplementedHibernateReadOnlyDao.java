@@ -4,6 +4,7 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.basics.apis.jdbc.dialect.IVaselineJdbcDialect;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.IBaseImplementedGenericReadOnlyDao;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.hibernate.apis.dao.server.base.IBaseHibernateDao;
@@ -30,7 +31,8 @@ import java.util.List;
 // useless, a better idea would be to put the parent classes in the child project itself based on the feature set
 // that the child project is using
 public interface IBaseImplementedHibernateReadOnlyDao<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends IBaseReadOnlyDao<E, Id>, IBaseHibernateDao {
+        extends IBaseImplementedGenericReadOnlyDao<E, Id>,
+        IBaseReadOnlyDao<E, Id>, IBaseHibernateDao {
 
     default boolean cacheAllCriterias() {
         return getEntityClass().isAnnotationPresent(Cacheable.class);
@@ -127,21 +129,4 @@ public interface IBaseImplementedHibernateReadOnlyDao<E extends IBaseEntity<Id>,
         });
     }
 
-    @Override
-    default Class<E> getEntityClass() {
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(getClass(), IBaseReadOnlyDao.class);
-        if (genericArgumentClasses != null) {
-            for (Class<?> genericArgumentClass : genericArgumentClasses) {
-                if (IBaseEntity.class.isAssignableFrom(genericArgumentClass)) {
-                    return (Class<E>) genericArgumentClass;
-                }
-            }
-        }
-        return null;
-    }
-
-    @Override
-    default void setEntityClass(Class<E> entityClass) {
-        // no need for this, I'm finding the generics on my own :)
-    }
 }

@@ -4,7 +4,7 @@ import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.criteriaabstractor.IJpaCri
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.criteriaabstractor.JpaFetchProviderFacade;
 import ir.amv.os.vaseline.security.apis.authorization.rbac.daoimpl.jpa.action.IImplementedSecurityActionJpaDao;
 import ir.amv.os.vaseline.security.apis.authorization.rbac.modelimpl.server.action.SecurityActionEntity;
-import ir.amv.os.vaseline.security.osgi.authorization.rbac.dao.jpa.BaseDaoImpl;
+import ir.amv.os.vaseline.security.osgi.authorization.rbac.dao.jpa.BaseOsgiCrudDaoImpl;
 import ir.amv.os.vaseline.security.osgi.authorization.rbac.dao.jpa.action.IVaselineSecurityActionDao;
 import org.osgi.service.component.annotations.Component;
 
@@ -15,8 +15,8 @@ import org.osgi.service.component.annotations.Component;
         immediate = true,
         service = IVaselineSecurityActionDao.class
 )
-public class VaselineSecurityActionDaoImpl
-        extends BaseDaoImpl<SecurityActionEntity>
+public class VaselineSecurityActionOsgiCrudDaoImpl
+        extends BaseOsgiCrudDaoImpl<SecurityActionEntity>
         implements IImplementedSecurityActionJpaDao<SecurityActionEntity>,
         IVaselineSecurityActionDao {
 

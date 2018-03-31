@@ -26,10 +26,10 @@
             ${bundle.import.additional},
             *
         </bundle.import.pkg>
-        <bundle.private.pkg>${project.artifactId}*.impl</bundle.private.pkg>
+        <bundle.private.pkg>${project.artifactId}*.prv</bundle.private.pkg>
         <bundle.dynamic.import.pkg />
 
-        <bundle.export.pkg>!*.impl;${bundle.base.pkg}*;-noimport:=true</bundle.export.pkg>
+        <bundle.export.pkg>!*.prv;${bundle.base.pkg}*;-noimport:=true</bundle.export.pkg>
         <bundle.base.pkg>${project.artifactId}</bundle.base.pkg>
 
         <bundle.include.resource>{maven-resources}</bundle.include.resource>

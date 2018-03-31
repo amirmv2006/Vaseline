@@ -10,6 +10,7 @@ import org.hibernate.ScrollableResults;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 @Import(TestDataModelJpaConfig.class)
@@ -24,7 +25,7 @@ public class TestJpaAdvancedSearchSpringConfig {
     IVendorSpecificDaoHelper vendorSpecificDaoHelper() {
         return new IVendorSpecificDaoHelper() {
             @Override
-            public <E extends IBaseEntity<?>> IVaselineDataScroller<E> scrollQuery(final TypedQuery<E> typedQuery) {
+            public <E extends IBaseEntity<?>> IVaselineDataScroller<E> scrollQuery(final EntityManager em, final TypedQuery<E> typedQuery) {
                 Query hibQuery = typedQuery.unwrap(Query.class);
                 ScrollableResults scroll = hibQuery.scroll();
                 return new TestHibernateDataScroller<>(scroll);

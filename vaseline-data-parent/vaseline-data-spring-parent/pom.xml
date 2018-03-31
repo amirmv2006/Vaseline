@@ -15,6 +15,7 @@
     <modules>
         <module>vaseline-jdbc-dbcp-spring</module>
         <module>vaseline-dao-hibernate-spring</module>
+        <module>vaseline-dao-jpa-spring</module>
     </modules>
 
 

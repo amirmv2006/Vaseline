@@ -4,6 +4,7 @@ import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
 import ir.amv.os.vaseline.basics.apis.jdbc.dialect.IVaselineJdbcDialect;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.IBaseImplementedGenericReadOnlyDao;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.base.IBaseJpaDao;
@@ -25,7 +26,8 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface IBaseImplementedJpaReadOnlyDao<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends IBaseReadOnlyDao<E, Id>, IBaseJpaDao {
+        extends IBaseImplementedGenericReadOnlyDao<E, Id>,
+        IBaseReadOnlyDao<E, Id>, IBaseJpaDao {
 
     IVendorSpecificDaoHelper getVendorSpecificDaoHelper();
 
@@ -61,7 +63,7 @@ public interface IBaseImplementedJpaReadOnlyDao<E extends IBaseEntity<Id>, Id ex
 
     default IVaselineDataScroller<E> scrollCriteria(TypedQuery<E> query) {
         IVendorSpecificDaoHelper vendorSpecificDaoHelper = getVendorSpecificDaoHelper();
-        return vendorSpecificDaoHelper.scrollQuery(query);
+        return vendorSpecificDaoHelper.scrollQuery(getEntityManager(), query);
     }
 
     default <QueryResult> CriteriaQuery<QueryResult> createQuery(CriteriaBuilder criteriaBuilder, Class<QueryResult> queryResultClass) {
@@ -126,4 +128,5 @@ public interface IBaseImplementedJpaReadOnlyDao<E extends IBaseEntity<Id>, Id ex
             applyRootCondition(criteriaBuilder, fromProvider, query, null);
         });
     }
+
 }

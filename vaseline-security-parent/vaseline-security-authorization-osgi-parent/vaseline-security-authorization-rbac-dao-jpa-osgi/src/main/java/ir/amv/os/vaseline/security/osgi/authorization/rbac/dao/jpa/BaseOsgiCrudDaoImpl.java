@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.security.osgi.authorization.rbac.dao.jpa;
 
 import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
+import ir.amv.os.vaseline.data.apis.dao.basic.server.base.defimpl.BaseDaoImpl;
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.crud.IBaseImplementedJpaCrudDao;
-import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.IBaseImplementedJpaReadOnlyDao;
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.vendorspecific.IVendorSpecificDaoHelper;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.osgi.service.component.annotations.Reference;
@@ -19,7 +19,8 @@ import java.util.UUID;
 /**
  * @author Amir
  */
-public class BaseDaoImpl<E extends IBaseEntity<Long>>
+public class BaseOsgiCrudDaoImpl<E extends IBaseEntity<Long>>
+        extends BaseDaoImpl
         implements IBaseImplementedJpaCrudDao<E, Long> {
 
     // list didn't work because remove will call equals which needs a tx :\
@@ -27,8 +28,8 @@ public class BaseDaoImpl<E extends IBaseEntity<Long>>
     private IVendorSpecificDaoHelper vendorSpecificDaoHelper;
     private Class<E> entityClass;
 
-    public BaseDaoImpl() {
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass(), BaseDaoImpl.class);
+    public BaseOsgiCrudDaoImpl() {
+        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClasses(getClass(), BaseOsgiCrudDaoImpl.class);
         if (genericArgumentClasses != null) {
             entityClass = (Class<E>) genericArgumentClasses[0];
         }
