@@ -1,12 +1,10 @@
 package ir.amv.os.vaseline.data.spring.jpa.config;
 
-import ir.amv.os.vaseline.basics.spring.cache.config.VaselineCachingConfig;
-import ir.amv.os.vaseline.data.spring.jdbc.config.VaselineJdbcConfig;
 import ir.amv.os.vaseline.data.spring.jpa.server.dozer.fieldmapper.JpaLazyFieldMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -18,22 +16,20 @@ import org.springframework.transaction.support.TransactionTemplate;
  */
 @Configuration
 @EnableTransactionManagement
-@Import( {
-        VaselineJdbcConfig.class,
-        VaselineCachingConfig.class
-})
 public class VaselineJpaConfig {
 
     @Autowired
     Environment environment;
 
     @Bean
+    @ConditionalOnMissingBean(name = "exceptionTranslation")
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
     @Bean
     @Autowired
+    @ConditionalOnMissingBean(TransactionTemplate.class)
     public TransactionTemplate transactionTemplate(
             PlatformTransactionManager transactionManager) {
         TransactionTemplate transactionTemplate = new TransactionTemplate();
@@ -44,6 +40,7 @@ public class VaselineJpaConfig {
 
 
     @Bean
+    @ConditionalOnMissingBean(name = "hibernateLazyFieldMapper")
     public JpaLazyFieldMapper hibernateLazyFieldMapper() {
         return new JpaLazyFieldMapper();
     }

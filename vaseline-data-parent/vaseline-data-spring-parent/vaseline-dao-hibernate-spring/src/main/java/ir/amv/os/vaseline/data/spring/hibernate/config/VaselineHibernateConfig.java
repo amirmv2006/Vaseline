@@ -1,13 +1,11 @@
 package ir.amv.os.vaseline.data.spring.hibernate.config;
 
-import ir.amv.os.vaseline.basics.spring.cache.config.VaselineCachingConfig;
 import ir.amv.os.vaseline.data.spring.hibernate.server.dozer.fieldmapper.HibernateLazyFieldMapper;
-import ir.amv.os.vaseline.data.spring.jdbc.config.VaselineJdbcConfig;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -26,21 +24,19 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-@Import( {
-        VaselineJdbcConfig.class,
-        VaselineCachingConfig.class
-})
 public class VaselineHibernateConfig {
 
     @Autowired
     Environment environment;
 
     @Bean
+    @ConditionalOnMissingBean(name = "exceptionTranslation")
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
     @Bean
+    @ConditionalOnMissingBean(SessionFactory.class)
     public SessionFactory sessionFactory(DataSource dataSource) {
         LocalSessionFactoryBean em = new LocalSessionFactoryBean();
         em.setDataSource(dataSource);
@@ -57,6 +53,7 @@ public class VaselineHibernateConfig {
     @Bean
     @Autowired
     @Order(1)
+    @ConditionalOnMissingBean(PlatformTransactionManager.class)
     public PlatformTransactionManager transactionManager(DataSource dataSource,
                                                          SessionFactory sessionFactory) {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
@@ -67,6 +64,7 @@ public class VaselineHibernateConfig {
 
     @Bean
     @Autowired
+    @ConditionalOnMissingBean(TransactionTemplate.class)
     public TransactionTemplate transactionTemplate(
             PlatformTransactionManager transactionManager) {
         TransactionTemplate transactionTemplate = new TransactionTemplate();
@@ -102,6 +100,7 @@ public class VaselineHibernateConfig {
     }
 
     @Bean
+    @ConditionalOnMissingBean(name = "hibernateLazyFieldMapper")
     public HibernateLazyFieldMapper hibernateLazyFieldMapper() {
         return new HibernateLazyFieldMapper();
     }

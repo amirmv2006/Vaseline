@@ -27,6 +27,6 @@ public interface IBaseReadOnlyDao<E extends IBaseEntity<Id>, Id extends Serializ
 
     // dev note: don't implement these in parent classes, otherwise will be coupled with IBaseEntity -> I'm sorry, I have to ignore you to see the real problem...
     void setEntityClass(Class<E> entityClass);
-    Class<E> getEntityClass();
+    Class<? extends E> getEntityClass();
     E newEntity() throws IllegalAccessException, InstantiationException;
 }

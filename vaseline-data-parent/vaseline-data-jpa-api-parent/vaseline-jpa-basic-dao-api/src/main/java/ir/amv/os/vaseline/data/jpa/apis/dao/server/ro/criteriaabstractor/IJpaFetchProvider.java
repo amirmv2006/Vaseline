@@ -18,7 +18,7 @@ public interface IJpaFetchProvider<E extends IBaseEntity<Id>, Id extends Seriali
     default Long count(IBaseImplementedJpaReadOnlyDao<E, Id> dao, IJpaCriteriaPrunerFunctionalInterface<Number> criteriaPruner) {
         CriteriaBuilder criteriaBuilder = dao.createCriteriaBuilder();
         CriteriaQuery<Number> query = dao.createQuery(criteriaBuilder, Number.class);
-        ProjectionMapProvider<E, Number> fromProvider = new ProjectionMapProvider<>(query, dao.getEntityClass());
+        ProjectionMapProvider<E, Number> fromProvider = new ProjectionMapProvider<>(query, (Class<E>)dao.getEntityClass());
         query.select(criteriaBuilder.count(fromProvider.getCriteriaParentProjection("", null)));
         criteriaPruner.pruneCriteria(criteriaBuilder, query, fromProvider);
         return dao.getCountResult(query);
@@ -26,8 +26,8 @@ public interface IJpaFetchProvider<E extends IBaseEntity<Id>, Id extends Seriali
 
     default List<E> list(IBaseImplementedJpaReadOnlyDao<E, Id> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner) {
         CriteriaBuilder criteriaBuilder = dao.createCriteriaBuilder();
-        CriteriaQuery<E> query = dao.createQuery(criteriaBuilder, dao.getEntityClass());
-        ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, dao.getEntityClass());
+        CriteriaQuery<E> query = dao.createQuery(criteriaBuilder, (Class<E>)dao.getEntityClass());
+        ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, (Class<E>)dao.getEntityClass());
         fromProvider.getCriteriaParentProjection("", null); // make sure from Entity is in query
         criteriaPruner.pruneCriteria(criteriaBuilder, query, fromProvider);
         TypedQuery<E> typedQuery = dao.getTypedQuery(dao.getEntityManager(), query);
@@ -36,8 +36,8 @@ public interface IJpaFetchProvider<E extends IBaseEntity<Id>, Id extends Seriali
 
     default List<E> page(IBaseImplementedJpaReadOnlyDao<E, Id> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner, PagingDto pagingDto) {
         CriteriaBuilder criteriaBuilder = dao.createCriteriaBuilder();
-        CriteriaQuery<E> query = dao.createQuery(criteriaBuilder, dao.getEntityClass());
-        ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, dao.getEntityClass());
+        CriteriaQuery<E> query = dao.createQuery(criteriaBuilder, (Class<E>)dao.getEntityClass());
+        ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, (Class<E>)dao.getEntityClass());
         fromProvider.getCriteriaParentProjection("", null); // make sure from Entity is in query
         criteriaPruner.pruneCriteria(criteriaBuilder, query, fromProvider);
         TypedQuery<E> typedQuery = dao.paginateCriteria(dao.getEntityManager(), criteriaBuilder, fromProvider, query, pagingDto);
@@ -46,8 +46,8 @@ public interface IJpaFetchProvider<E extends IBaseEntity<Id>, Id extends Seriali
 
     default IVaselineDataScroller<E> scroll(IBaseImplementedJpaReadOnlyDao<E, Id> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner, List<SortDto> sortList) {
         CriteriaBuilder criteriaBuilder = dao.createCriteriaBuilder();
-        CriteriaQuery<E> query = dao.createQuery(criteriaBuilder, dao.getEntityClass());
-        ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, dao.getEntityClass());
+        CriteriaQuery<E> query = dao.createQuery(criteriaBuilder, (Class<E>)dao.getEntityClass());
+        ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, (Class<E>)dao.getEntityClass());
         fromProvider.getCriteriaParentProjection("", null); // make sure from Entity is in query
         criteriaPruner.pruneCriteria(criteriaBuilder, query, fromProvider);
         TypedQuery<E> typedQuery = dao.paginateCriteria(dao.getEntityManager(), criteriaBuilder, fromProvider, query, new PagingDto(sortList, null, null));
@@ -56,8 +56,8 @@ public interface IJpaFetchProvider<E extends IBaseEntity<Id>, Id extends Seriali
 
     default E unique(IBaseImplementedJpaReadOnlyDao<E, Id> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner) {
         CriteriaBuilder criteriaBuilder = dao.createCriteriaBuilder();
-        CriteriaQuery<E> query = dao.createQuery(criteriaBuilder, dao.getEntityClass());
-        ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, dao.getEntityClass());
+        CriteriaQuery<E> query = dao.createQuery(criteriaBuilder, (Class<E>)dao.getEntityClass());
+        ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, (Class<E>)dao.getEntityClass());
         fromProvider.getCriteriaParentProjection("", null); // make sure from Entity is in query
         criteriaPruner.pruneCriteria(criteriaBuilder, query, fromProvider);
         TypedQuery<E> typedQuery = dao.getTypedQuery(dao.getEntityManager(), query);

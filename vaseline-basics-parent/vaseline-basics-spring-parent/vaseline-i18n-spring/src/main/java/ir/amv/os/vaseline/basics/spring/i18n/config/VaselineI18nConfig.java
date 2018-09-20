@@ -1,14 +1,14 @@
 package ir.amv.os.vaseline.basics.spring.i18n.config;
 
 import ir.amv.os.vaseline.basics.apis.i18n.server.exc.NoSuchMessageI18nException;
-import ir.amv.os.vaseline.basics.apis.i18n.server.message.translator.defimpl.BaseVaselineMessageTranslatorImpl;
-import ir.amv.os.vaseline.basics.apis.i18n.server.message.translator.IVaselineMessageTranslator;
-import ir.amv.os.vaseline.basics.spring.i18n.server.base.impl.VaselineClasspathI18nFileProviderImpl;
 import ir.amv.os.vaseline.basics.apis.i18n.server.file.resolver.IVaselineI18nFileProvider;
+import ir.amv.os.vaseline.basics.apis.i18n.server.message.translator.IVaselineMessageTranslator;
+import ir.amv.os.vaseline.basics.apis.i18n.server.message.translator.defimpl.BaseVaselineMessageTranslatorImpl;
+import ir.amv.os.vaseline.basics.spring.i18n.server.base.impl.VaselineClasspathI18nFileProviderImpl;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.NoSuchMessageException;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
@@ -19,7 +19,6 @@ import java.util.Locale;
  * Created by AMV on 2/10/2016.
  */
 @Configuration
-@ComponentScan("ir.amv.os.vaseline.basics.spring.i18n.server")
 public class VaselineI18nConfig {
 
     @Bean
@@ -41,6 +40,7 @@ public class VaselineI18nConfig {
     }
 
     @Bean
+    @ConditionalOnMissingBean(IVaselineMessageTranslator.class)
     public IVaselineMessageTranslator messageTranslator(final MessageSource messageSource) {
         return new BaseVaselineMessageTranslatorImpl() {
             @Override

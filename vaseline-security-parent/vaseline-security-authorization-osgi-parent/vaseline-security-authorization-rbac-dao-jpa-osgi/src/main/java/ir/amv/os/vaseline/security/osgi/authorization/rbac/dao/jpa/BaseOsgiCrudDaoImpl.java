@@ -46,7 +46,7 @@ public class BaseOsgiCrudDaoImpl<E extends IBaseEntity<Long>>
     }
 
     @Override
-    public Class<E> getEntityClass() {
+    public Class<? extends E> getEntityClass() {
         return entityClass;
     }
 

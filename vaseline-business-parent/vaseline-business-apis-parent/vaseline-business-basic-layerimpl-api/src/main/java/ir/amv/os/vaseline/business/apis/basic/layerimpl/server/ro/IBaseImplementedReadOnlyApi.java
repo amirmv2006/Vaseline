@@ -100,7 +100,7 @@ public interface IBaseImplementedReadOnlyApi<E extends IBaseEntity<Id>, Id exten
     }
 
     @Override
-    default Class<E> getEntityClass() {
+    default Class<? extends E> getEntityClass() {
         return getDao().getEntityClass();
     }
 

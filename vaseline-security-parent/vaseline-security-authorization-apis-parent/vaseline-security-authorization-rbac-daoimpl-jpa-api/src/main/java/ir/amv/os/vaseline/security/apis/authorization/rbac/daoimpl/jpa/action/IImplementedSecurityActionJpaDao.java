@@ -24,7 +24,7 @@ public interface IImplementedSecurityActionJpaDao<A extends ISecurityAction<A>>
     default List<String> getActionChildTreeNames(final String baseActionTN) {
         CriteriaBuilder criteriaBuilder = createCriteriaBuilder();
         CriteriaQuery<String> query = createQuery(criteriaBuilder, String.class); // querying action tree names
-        ProjectionMapProvider<A, String> fromProvider = new ProjectionMapProvider<>(query, getEntityClass());
+        ProjectionMapProvider<A, String> fromProvider = new ProjectionMapProvider<>(query, (Class<A>)getEntityClass());
         Path parent = fromProvider.getCriteriaParentProjection("parent", SearchJoinType.INNER);
         query.where(criteriaBuilder.equal(parent.get("actionTreeName"), baseActionTN)).
                 select(fromProvider.getCriteriaParentProjection("actionTreeName"));

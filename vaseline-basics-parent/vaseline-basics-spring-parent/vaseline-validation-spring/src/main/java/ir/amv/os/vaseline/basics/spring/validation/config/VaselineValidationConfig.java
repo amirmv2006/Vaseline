@@ -6,28 +6,30 @@ import ir.amv.os.vaseline.basics.apis.validation.server.exc.converter.VaselineVa
 import ir.amv.os.vaseline.basics.spring.core.config.VaselineCoreConfig;
 import ir.amv.os.vaseline.basics.spring.i18n.config.VaselineI18nConfig;
 import ir.amv.os.vaseline.basics.spring.validation.config.weblogic.patch.JPAIgnoreTraversableResolver;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+
+import javax.validation.Validator;
 
 /**
  * Created by AMV on 2/10/2016.
  */
 @Configuration
-@Import({
-        VaselineCoreConfig.class,
-        VaselineI18nConfig.class
-})
 public class VaselineValidationConfig {
 
     @Bean
+//    @Profile("weblogic")
     public JPAIgnoreTraversableResolver traversableResolver() {
         return new JPAIgnoreTraversableResolver();
     }
 
     @Bean
+    @ConditionalOnMissingBean(Validator.class)
     public LocalValidatorFactoryBean getValidatorFactory(MessageSource messageSource) {
         LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
         localValidatorFactoryBean.setTraversableResolver(traversableResolver());

@@ -22,5 +22,12 @@
         <module>vaseline-basics-logging-slf4j-spring</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>${org.springframework.boot.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

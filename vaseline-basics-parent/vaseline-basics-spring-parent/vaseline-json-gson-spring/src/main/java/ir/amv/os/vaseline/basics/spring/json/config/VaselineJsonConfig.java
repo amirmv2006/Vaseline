@@ -7,15 +7,16 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonSerializer;
 import ir.amv.os.vaseline.basics.apis.core.server.polymorphysm.IVaselinePolymorphysmClassHolder;
 import ir.amv.os.vaseline.basics.apis.core.server.polymorphysm.defimpl.VaselinePolymorphysmClassHolderImpl;
+import ir.amv.os.vaseline.basics.apis.json.server.converter.IVaselineJsonConverter;
 import ir.amv.os.vaseline.basics.apis.json.shared.annot.ExcludeFromJson;
-import ir.amv.os.vaseline.basics.spring.core.config.VaselineCoreConfig;
+import ir.amv.os.vaseline.basics.spring.json.server.converter.VaselineJsonConverterGsonImpl;
 import ir.amv.os.vaseline.basics.spring.json.server.polymorphysm.GsonPolymorphysmSerializerAndDeserializer;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Scope;
 
 import java.util.ArrayList;
@@ -23,10 +24,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * TODO check this config
  * Created by AMV on 2/3/2016.
  */
 @Configuration
-@Import(VaselineCoreConfig.class)
 public class VaselineJsonConfig {
 
     @Bean
@@ -105,6 +106,12 @@ public class VaselineJsonConfig {
         // gsonBuilder.registerTypeHierarchyAdapter(PersistentList.class,
         // gsonLazySerializer);
         return gsonBuilder;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(IVaselineJsonConverter.class)
+    public IVaselineJsonConverter vaselineJsonConverter() {
+        return new VaselineJsonConverterGsonImpl();
     }
 
     @Bean(name = "vaselinePolymorphysmSerializerAndDeserializer")

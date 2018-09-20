@@ -6,9 +6,7 @@ import org.springframework.aop.framework.Advised;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.Ordered;
-import org.springframework.stereotype.Component;
 
-@Component
 public class ProxyAwareBeanPostProcessor implements BeanPostProcessor, Ordered {
 
     private int order = Ordered.LOWEST_PRECEDENCE;

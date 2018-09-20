@@ -1,6 +1,5 @@
 package ir.amv.os.vaseline.data.jpa.apis.dao.server.ro;
 
-import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.crud.IBaseImplementedJpaCrudDao;
 import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.vendorspecific.IVendorSpecificDaoHelper;
 import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
@@ -34,7 +33,7 @@ public class TestCountryDaoImpl
     }
 
     @Override
-    public Class<TestCountryEntity> getEntityClass() {
+    public Class<? extends TestCountryEntity> getEntityClass() {
         return TestCountryEntity.class;
     }
 

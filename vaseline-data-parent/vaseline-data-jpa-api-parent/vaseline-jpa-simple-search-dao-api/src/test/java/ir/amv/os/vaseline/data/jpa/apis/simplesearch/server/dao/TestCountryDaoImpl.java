@@ -36,7 +36,7 @@ public class TestCountryDaoImpl
     }
 
     @Override
-    public Class<TestCountryEntity> getEntityClass() {
+    public Class<? extends TestCountryEntity> getEntityClass() {
         return TestCountryEntity.class;
     }
 

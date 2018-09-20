@@ -15,6 +15,7 @@ import org.dozer.classmap.ClassMap;
 import org.dozer.fieldmap.FieldMap;
 import org.dozer.loader.api.BeanMappingBuilder;
 import org.dozer.loader.api.TypeMappingOption;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Conditional;
@@ -30,10 +31,10 @@ import java.util.List;
  * Created by AMV on 2/3/2016.
  */
 @Configuration
-@Import(VaselineCoreConfig.class)
 public class VaselineMapperConfig {
 
     @Bean
+    @ConditionalOnMissingBean(IVaselineObjectMapper.class)
     public IVaselineObjectMapper vaselineObjectMapper(
             VaselineCustomFieldMapper customFieldMapper,
             List<IVaselinePolymorphysmClassHolder> polymorphysmClassHolders,
@@ -110,14 +111,9 @@ public class VaselineMapperConfig {
     }
 
     @Bean
-    @Conditional(NotExistingCustomFieldMapper.class)
+    @ConditionalOnMissingBean(CustomFieldMapper.class)
     public CustomFieldMapper dummyFieldMapper() {
-        return new CustomFieldMapper() {
-            @Override
-            public boolean mapField(Object source, Object destination, Object sourceFieldValue, ClassMap classMap, FieldMap fieldMapping) {
-                return false;
-            }
-        };
+        return (source, destination, sourceFieldValue, classMap, fieldMapping) -> false;
     }
 
     @Bean

@@ -25,7 +25,7 @@ public interface IImplementedSecurityUserJpaDao<U extends ISecurityUserWithRoleE
     default List<String> getUserActionTreeNames(String username) {
         CriteriaBuilder criteriaBuilder = createCriteriaBuilder();
         CriteriaQuery<String> query = createQuery(criteriaBuilder, String.class); // querying action tree names
-        ProjectionMapProvider<U, String> fromProvider = new ProjectionMapProvider<>(query, getEntityClass());
+        ProjectionMapProvider<U, String> fromProvider = new ProjectionMapProvider<>(query, (Class<U>)getEntityClass());
         Path action = fromProvider.getCriteriaParentProjection("roles.actions", SearchJoinType.INNER);
         query.where(criteriaBuilder.equal(fromProvider.getCriteriaParentProjection("username"), username))
                 .select(action.get("actionTreeName"));
@@ -40,7 +40,7 @@ public interface IImplementedSecurityUserJpaDao<U extends ISecurityUserWithRoleE
         }
         CriteriaBuilder criteriaBuilder = createCriteriaBuilder();
         CriteriaQuery<String> query = createQuery(criteriaBuilder, String.class); // querying action tree names
-        ProjectionMapProvider<U, String> fromProvider = new ProjectionMapProvider<>(query, getEntityClass());
+        ProjectionMapProvider<U, String> fromProvider = new ProjectionMapProvider<>(query, (Class<U>)getEntityClass());
         Path action = fromProvider.getCriteriaParentProjection("roles.actions", SearchJoinType.INNER);
         List<Predicate> actionTreeNameConds = new ArrayList<>();
         for (String actionTreeName : actionTreeNames) {

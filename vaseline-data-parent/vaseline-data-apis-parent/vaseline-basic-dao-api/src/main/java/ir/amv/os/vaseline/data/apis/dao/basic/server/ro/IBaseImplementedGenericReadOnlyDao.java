@@ -18,7 +18,7 @@ public interface IBaseImplementedGenericReadOnlyDao<E extends IBaseEntity<Id>, I
     }
 
     @Override
-    default Class<E> getEntityClass() {
+    default Class<? extends E> getEntityClass() {
         Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(getClass(), IBaseReadOnlyDao.class);
         if (genericArgumentClasses != null) {
             for (Class<?> genericArgumentClass : genericArgumentClasses) {

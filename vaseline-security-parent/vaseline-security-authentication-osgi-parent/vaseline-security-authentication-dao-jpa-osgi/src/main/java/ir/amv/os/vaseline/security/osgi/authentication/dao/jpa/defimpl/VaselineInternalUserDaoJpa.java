@@ -46,7 +46,7 @@ public class VaselineInternalUserDaoJpa
     }
 
     @Override
-    public Class<VaselineInternalUserEntity> getEntityClass() {
+    public Class<? extends VaselineInternalUserEntity> getEntityClass() {
         return VaselineInternalUserEntity.class;
     }
 

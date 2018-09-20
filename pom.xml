@@ -39,7 +39,8 @@
         <module>vaseline-service-parent</module>
         <module>vaseline-security-parent</module>
         <module>vaseline-ws-parent</module>
-        <module>vaseline-file-parent</module><!-- file business uses authentication api-->
+        <module>vaseline-file-parent</module>
+        <module>vaseline-aggregator-parent</module><!-- file business uses authentication api-->
     </modules>
 
     <properties>

@@ -6,14 +6,12 @@ import ir.amv.os.vaseline.basics.apis.loggingimpl.server.logger.IImplementedVase
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * @author Amir
  */
-@Component
 public class VaselineLoggerSlf4jImpl
         implements IImplementedVaselineLogger {
 
