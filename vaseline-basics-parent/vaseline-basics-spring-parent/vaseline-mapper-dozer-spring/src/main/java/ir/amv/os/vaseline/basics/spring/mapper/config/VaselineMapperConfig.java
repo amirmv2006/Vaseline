@@ -1,8 +1,10 @@
 package ir.amv.os.vaseline.basics.spring.mapper.config;
 
+import ir.amv.os.vaseline.basics.apis.core.server.polymorphysm.defimpl.VaselinePolymorphysmClassHolderImpl;
 import ir.amv.os.vaseline.basics.apis.mapper.server.exc.VaselineConvertException;
 import ir.amv.os.vaseline.basics.apis.mapper.server.objmapper.IVaselineObjectMapper;
 import ir.amv.os.vaseline.basics.spring.core.config.VaselineCoreConfig;
+import ir.amv.os.vaseline.basics.spring.mapper.config.custconv.BaseVaselineCustomConverterClassHolderImpl;
 import ir.amv.os.vaseline.basics.spring.mapper.config.custconv.IVaselineCustomConverterClassHolder;
 import ir.amv.os.vaseline.basics.spring.mapper.config.fieldmapper.VaselineCustomFieldMapper;
 import ir.amv.os.vaseline.basics.apis.mapper.shared.annot.ExcludeFromDozer;
@@ -119,5 +121,22 @@ public class VaselineMapperConfig {
     @Bean
     public VaselineCustomFieldMapper customFieldMapper(List<CustomFieldMapper> customFieldMapper) {
         return new VaselineCustomFieldMapper(customFieldMapper);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(IVaselineCustomConverterClassHolder.class)
+    public IVaselineCustomConverterClassHolder customConverterClassHolder() {
+        return new BaseVaselineCustomConverterClassHolderImpl() {
+            @Override
+            public Class<?>[] customConverterClasses() {
+                return new Class[0];
+            }
+        };
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(IVaselinePolymorphysmClassHolder.class)
+    public IVaselinePolymorphysmClassHolder polymorphysmClassHolder() {
+        return new VaselinePolymorphysmClassHolderImpl();
     }
 }

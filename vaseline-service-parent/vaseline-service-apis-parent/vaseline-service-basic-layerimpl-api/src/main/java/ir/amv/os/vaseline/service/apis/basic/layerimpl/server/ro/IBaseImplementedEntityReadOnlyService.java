@@ -53,18 +53,14 @@ public interface IBaseImplementedEntityReadOnlyService<E extends IBaseEntity<Id>
         } catch (Exception e) {
             throw convertException(e);
         }
-    };
+    }
 
-    default Class<E> getEntityClass() {
-        Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(getClass());
-        if (genericArgumentClasses != null) {
-            for (Class<?> genericArgumentClass : genericArgumentClasses) {
-                if (IBaseEntity.class.isAssignableFrom(genericArgumentClass)) {
-                    return (Class<E>) genericArgumentClass;
-                }
-            }
+    default Class<? extends E> getEntityClass() {
+        try {
+            return getApiProxy().getEntityClass();
+        } catch (BaseVaselineClientException e) {
+            return null;
         }
-        return null;
     }
 
     default Class<D> getDtoClass() {
@@ -87,7 +83,7 @@ public interface IBaseImplementedEntityReadOnlyService<E extends IBaseEntity<Id>
 
     default List<E> convertDtoToEntity(Collection<D> list, Class<?>... validationGroups) throws
             VaselineConvertException, VaselineValidationServerException {
-        return convertList(list, getEntityClass(), validationGroups);
+        return convertList(list, (Class<E>)getEntityClass(), validationGroups);
     }
 
     default D convertEntityToDTO(E e, Class<?>... validationGroups) throws VaselineConvertException, VaselineValidationServerException {
