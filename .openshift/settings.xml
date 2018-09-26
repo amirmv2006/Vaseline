@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <servers>
+    <server>
+      <username>jenkins</username>
+      <password>jenkins</password>
+      <id>releases</id>
+    </server>
+    <server>
+      <username>jenkins</username>
+      <password>jenkins</password>
+      <id>snapshots</id>
+    </server>
+  </servers>
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>central</name>
+          <url>http://nexus.tools.svc/repository/maven-public/</url>
+        </repository>
+		<repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>releases</id>
+          <name>libs-release</name>
+          <url>http://nexus.tools.svc/repository/maven-releases/</url>
+        </repository>
+        <repository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>http://nexus.tools.svc/repository/maven-snapshots/</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>libs-release</name>
+          <url>http://nexus.tools.svc/repository/maven-releases/</url>
+        </pluginRepository>
+        <pluginRepository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>http://nexus.tools.svc/repository/maven-snapshots/</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>openshift</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>openshift</activeProfile>
+  </activeProfiles>
+</settings>
