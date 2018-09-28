@@ -24,20 +24,6 @@
           <name>central</name>
           <url>http://nexus.tools.svc:8081/repository/maven-public/</url>
         </repository>
-		<repository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>releases</id>
-          <name>libs-release</name>
-          <url>http://nexus.tools.svc:8081/repository/maven-releases/</url>
-        </repository>
-        <repository>
-          <snapshots />
-          <id>snapshots</id>
-          <name>libs-snapshot</name>
-          <url>http://nexus.tools.svc:8081/repository/maven-snapshots/</url>
-        </repository>
       </repositories>
       <pluginRepositories>
         <pluginRepository>
@@ -47,20 +33,6 @@
           <id>central</id>
           <name>central</name>
           <url>http://nexus.tools.svc:8081/repository/maven-public/</url>
-        </pluginRepository>
-		<pluginRepository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>libs-release</name>
-          <url>http://nexus.tools.svc:8081/repository/maven-releases/</url>
-        </pluginRepository>
-        <pluginRepository>
-          <snapshots />
-          <id>snapshots</id>
-          <name>libs-snapshot</name>
-          <url>http://nexus.tools.svc:8081/repository/maven-snapshots/</url>
         </pluginRepository>
       </pluginRepositories>
       <id>openshift</id>
