@@ -45,6 +45,14 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
+          <name>central</name>
+          <url>http://nexus.tools.svc:8081/repository/maven-public/</url>
+        </pluginRepository>
+		<pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
           <name>libs-release</name>
           <url>http://nexus.tools.svc:8081/repository/maven-releases/</url>
         </pluginRepository>
