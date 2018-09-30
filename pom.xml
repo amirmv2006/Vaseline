@@ -484,26 +484,6 @@
             </plugins>
         </pluginManagement>
     </build>
-    <distributionManagement>
-        <repository>
-            <id>oss</id>
-            <name>oss-releases</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
-        <snapshotRepository>
-            <id>oss</id>
-            <name>oss-snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-    <!--<distributionManagement>-->
-        <!--<snapshotRepository>-->
-            <!--<id>dan</id>-->
-            <!--<name>dan-snapshots</name>-->
-            <!--<url>http://dan.djavafactory.com/artifactory/libs-snapshot-local</url>-->
-        <!--</snapshotRepository>-->
-    <!--</distributionManagement>-->
-
     <profiles>
         <profile>
             <id>vaseline-default-profile</id>
@@ -533,6 +513,21 @@
             <properties>
                 <docker.available>false</docker.available>
             </properties>
+        </profile>
+        <profile>
+            <id>openshift</id>
+            <distributionManagement>
+                <repository>
+                    <id>releases</id>
+                    <name>releases</name>
+                    <url>http://nexus.tools.svc:8081/repository/maven-releases/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>snapshots</id>
+                    <name>snapshots</name>
+                    <url>http://nexus.tools.svc:8081/repository/maven-snapshots/</url>
+                </snapshotRepository>
+            </distributionManagement>
         </profile>
     </profiles>
     <repositories>
