@@ -515,17 +515,17 @@
             </properties>
         </profile>
         <profile>
-            <id>openshift</id>
+            <id>deploy</id>
             <distributionManagement>
                 <repository>
                     <id>releases</id>
                     <name>releases</name>
-                    <url>http://nexus.tools.svc:8081/repository/maven-releases/</url>
+                    <url>http://${env.MAVEN_REPO_BASE_URL}/${env.MAVEN_RELEASES_REPO}/</url>
                 </repository>
                 <snapshotRepository>
                     <id>snapshots</id>
                     <name>snapshots</name>
-                    <url>http://nexus.tools.svc:8081/repository/maven-snapshots/</url>
+                    <url>http://${env.MAVEN_REPO_BASE_URL}/${env.MAVEN_SNAPSHOTS_REPO}/</url>
                 </snapshotRepository>
             </distributionManagement>
         </profile>
