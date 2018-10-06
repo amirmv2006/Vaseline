@@ -1,2 +1,3 @@
 @Library('laas-jenkins-lib') _
-buildMavenProject()
+import ir.amv.enterprise.laas.tools.jenkins.lib.MavenHelper
+new MavenHelper().getPipeline()
