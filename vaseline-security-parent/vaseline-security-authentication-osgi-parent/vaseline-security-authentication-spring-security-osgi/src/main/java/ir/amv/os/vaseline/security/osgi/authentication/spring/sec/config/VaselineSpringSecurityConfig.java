@@ -5,13 +5,13 @@ import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.IUserPe
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
@@ -35,7 +35,7 @@ public class VaselineSpringSecurityConfig extends WebSecurityConfigurerAdapter {
         // This is here to ensure that the static content (JavaScript, CSS, etc)
         // is accessible from the login page without authentication
         auth.userDetailsService(userDetailsService()).passwordEncoder(
-                new ShaPasswordEncoder());
+                new BCryptPasswordEncoder());
     }
 
     @Override
