@@ -11,7 +11,20 @@
 
     <artifactId>vaseline-core-spring</artifactId>
 
-
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.jcraft</groupId>
+                <artifactId>jsch</artifactId>
+                <version>0.1.53</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-vfs</groupId>
+                <artifactId>commons-vfs</artifactId>
+                <version>1.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.basics.apis</groupId>

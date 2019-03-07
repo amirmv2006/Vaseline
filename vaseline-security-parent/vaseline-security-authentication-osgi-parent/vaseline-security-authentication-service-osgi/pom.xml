@@ -27,10 +27,6 @@
             <artifactId>vaseline-security-authentication-serviceimpl-api</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
     </dependencies>
 
 </project>

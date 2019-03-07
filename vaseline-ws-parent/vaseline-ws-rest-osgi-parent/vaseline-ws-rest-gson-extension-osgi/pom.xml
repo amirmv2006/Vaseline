@@ -32,13 +32,8 @@
             <artifactId>javax.ws.rs-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.eclipsesource.jaxrs</groupId>
             <artifactId>publisher</artifactId>
-            <version>5.3</version>
         </dependency>
     </dependencies>
 </project>

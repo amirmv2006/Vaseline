@@ -11,14 +11,20 @@
 
     <artifactId>vaseline-ws-common</artifactId>
 
+    <properties>
+        <org.springframework.version>5.1.5.RELEASE</org.springframework.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>${org.springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-core</artifactId>
+            <version>${org.apache.cxf.version}</version>
         </dependency>
     </dependencies>
 </project>

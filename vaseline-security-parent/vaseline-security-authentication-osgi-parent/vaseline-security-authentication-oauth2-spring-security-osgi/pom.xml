@@ -15,6 +15,15 @@
     <properties>
         <bundle.base.pkg>ir.amv.os.vaseline.security.osgi.authentication.oauth2.spring.sec</bundle.base.pkg>
     </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>2.0.6.RELEASE</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -25,7 +34,6 @@
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
-            <version>2.0.6.RELEASE</version>
         </dependency>
     </dependencies>
 

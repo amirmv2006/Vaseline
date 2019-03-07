@@ -1,3 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration = \
-  ir.amv.os.vaseline.basics.spring.validation.config.VaselineValidationConfig,\
-  ir.amv.os.vaseline.basics.spring.mapper.config.VaselineMapperConfig

@@ -6,6 +6,7 @@ import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.blob.IVaselineFileBl
 import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.path.IVaselineFilePathDao;
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -17,6 +18,7 @@ import java.io.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+@Ignore
 public abstract class BaseVaselineFileApiTest {
 
     @Value("classpath:blob.data")

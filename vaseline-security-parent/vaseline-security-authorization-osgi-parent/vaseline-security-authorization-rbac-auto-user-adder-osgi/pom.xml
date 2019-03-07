@@ -37,14 +37,6 @@
             <artifactId>vaseline-basics-logging-common-osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
     </dependencies>
 
 </project>

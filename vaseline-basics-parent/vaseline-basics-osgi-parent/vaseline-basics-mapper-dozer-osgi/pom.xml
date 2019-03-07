@@ -25,7 +25,6 @@
         <dependency>
             <groupId>com.github.dozermapper</groupId>
             <artifactId>dozer-core</artifactId>
-            <version>6.1.0</version>
         </dependency>
     </dependencies>
 

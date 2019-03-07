@@ -26,13 +26,5 @@
             <groupId>com.eclipsesource.jaxrs</groupId>
             <artifactId>consumer</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
     </dependencies>
 </project>

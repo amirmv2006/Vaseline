@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>vaseline-ws-spring-parent</artifactId>
+        <groupId>com.github.amirmv2006.ws.spring</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <artifactId>vaseline-ws-rest-spring-aggregator</artifactId>
+
+    <dependencies>
+        <!-- basics -->
+<!--        <dependency>-->
+<!--            <groupId>com.github.amirmv2006.basics.spring</groupId>-->
+<!--            <artifactId>vaseline-basics-spring-aggregator</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--            <type>pom</type>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.github.amirmv2006.basics.apis</groupId>
+            <artifactId>vaseline-entity-jpa-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.basics.spring</groupId>
+            <artifactId>vaseline-mapper-dozer-spring</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.basics.spring</groupId>
+            <artifactId>vaseline-json-gson-spring</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- data -->
+        <dependency>
+            <groupId>com.github.amirmv2006.data.spring</groupId>
+            <artifactId>vaseline-dao-jpa-spring</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- business -->
+        <dependency>
+            <groupId>com.github.amirmv2006.business.spring</groupId>
+            <artifactId>vaseline-business-executor-spring</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.business.apis</groupId>
+            <artifactId>vaseline-business-basic-layerimpl-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- service -->
+        <dependency>
+            <groupId>com.github.amirmv2006.service.apis</groupId>
+            <artifactId>vaseline-service-basic-layerimpl-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- rest -->
+        <dependency>
+            <groupId>com.github.amirmv2006.ws.spring</groupId>
+            <artifactId>vaseline-ws-rest-jersey-spring</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jersey</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

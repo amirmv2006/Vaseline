@@ -87,7 +87,7 @@ public abstract class AbstractVaselineServiceIntegrationTest {
     }
 
     protected String getKarafVersion() {
-        return System.getProperty("org.apache.karaf.version", "4.2.0.M1");
+        return System.getProperty("org.apache.karaf.version", "4.2.3");
     }
 
     protected String getKarafArtifactId() {

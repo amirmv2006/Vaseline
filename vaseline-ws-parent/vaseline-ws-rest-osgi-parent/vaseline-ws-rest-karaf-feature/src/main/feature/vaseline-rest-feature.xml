@@ -5,7 +5,7 @@
 http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
     <repository>mvn:com.github.amirmv2006.service.osgi/vaseline-service-karaf-feature/${project.version}/xml/features</repository>
-    <repository>mvn:com.eclipsesource.jaxrs/features/${jersey.version}/xml/features</repository>
+    <repository>mvn:com.eclipsesource.jaxrs/features/${com.eclipsesource.jaxrs.publisher.version}/xml/features</repository>
     <repository>mvn:com.github.amirmv2006.security.authentication.osgi/vaseline-security-authentication-karaf-feature/${project.version}/xml/features</repository>
 
     <!-- vaseline ws common api start -->

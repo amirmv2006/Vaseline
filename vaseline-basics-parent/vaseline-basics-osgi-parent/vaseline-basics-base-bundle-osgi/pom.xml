@@ -16,11 +16,4 @@
         <bundle.base.pkg>ir.amv.os.vaseline.basics.osgi.base</bundle.base.pkg>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-    </dependencies>
-
 </project>
