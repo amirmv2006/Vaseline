@@ -168,6 +168,9 @@
         </profile>
         <profile>
             <id>deploy</id>
+            <properties>
+                <docker.available>false</docker.available>
+            </properties>
             <distributionManagement>
                 <repository>
                     <id>releases</id>
