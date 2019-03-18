@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
+http://karaf.apache.org/xmlns/features/v1.0.0 ">
+    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:com.github.amirmv2006.business.osgi/vaseline-business-karaf-feature/${project.version}/xml/features</repository>
+
+    <!-- vaseline service api start -->
+    <feature name="ir.amv.os.vaseline.service.basic.api" version="${project.version}">
+        <feature>ir.amv.os.vaseline.basics.core.api</feature>
+        <bundle>mvn:com.github.amirmv2006.service.apis/ir.amv.os.vaseline.service.basic.api/${project.version}</bundle>
+    </feature>
+    <feature name="ir.amv.os.vaseline.service.basic.def" version="${project.version}">
+        <feature>ir.amv.os.vaseline.basics.mapper.api</feature>
+        <feature>ir.amv.os.vaseline.basics.validation.api</feature>
+        <feature>ir.amv.os.vaseline.service.basic.api</feature>
+        <feature>ir.amv.os.vaseline.business.basic.api</feature>
+        <feature>vaseline-basics-logging-common</feature>
+        <bundle>mvn:com.github.amirmv2006.service.apis/ir.amv.os.vaseline.service.basic.def/${project.version}
+        </bundle>
+    </feature>
+    <feature name="ir.amv.os.vaseline.service.search.simple.api" version="${project.version}">
+        <feature>ir.amv.os.vaseline.service.basic.api</feature>
+        <bundle>mvn:com.github.amirmv2006.service.apis/ir.amv.os.vaseline.service.search.simple.api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="ir.amv.os.vaseline.service.search.simple.def" version="${project.version}">
+        <feature>ir.amv.os.vaseline.service.basic.def</feature>
+        <feature>ir.amv.os.vaseline.business.search.simple.api</feature>
+        <feature>ir.amv.os.vaseline.service.search.simple.api</feature>
+        <bundle>
+            mvn:com.github.amirmv2006.service.apis/ir.amv.os.vaseline.service.search.simple.def/${project.version}
+        </bundle>
+    </feature>
+    <feature name="ir.amv.os.vaseline.service.search.advanced.api" version="${project.version}">
+        <feature>ir.amv.os.vaseline.service.basic.api</feature>
+        <feature>ir.amv.os.vaseline.data.search.advanced.api</feature>
+        <bundle>mvn:com.github.amirmv2006.service.apis/ir.amv.os.vaseline.service.search.advanced.api/${project.version}
+        </bundle>
+    </feature>
+    <feature name="ir.amv.os.vaseline.service.search.advanced.def" version="${project.version}">
+        <feature>ir.amv.os.vaseline.service.search.advanced.api</feature>
+        <feature>ir.amv.os.vaseline.service.basic.def</feature>
+        <feature>ir.amv.os.vaseline.business.search.advanced.api</feature>
+        <bundle>
+            mvn:com.github.amirmv2006.service.apis/ir.amv.os.vaseline.service.search.advanced.def/${project.version}
+        </bundle>
+    </feature>
+    <feature name="ir.amv.os.vaseline.service.multidao.api" version="${project.version}">
+        <feature>ir.amv.os.vaseline.service.basic.api</feature>
+        <bundle>mvn:com.github.amirmv2006.service.apis/ir.amv.os.vaseline.service.multidao.api/${project.version}</bundle>
+    </feature>
+    <feature name="ir.amv.os.vaseline.service.multidao.def" version="${project.version}">
+        <feature>ir.amv.os.vaseline.service.multidao.api</feature>
+        <feature>ir.amv.os.vaseline.service.basic.def</feature>
+        <feature>ir.amv.os.vaseline.business.multidao.api</feature>
+        <bundle>mvn:com.github.amirmv2006.service.apis/ir.amv.os.vaseline.service.multidao.def/${project.version}
+        </bundle>
+    </feature>
+    <!-- vaseline service api end -->
+    <feature name='${project.artifactId}' description='${project.name}' version='${project.version}' start-level="80">
+        <details>${project.description}</details>
+        <!-- api beans -->
+        <feature>ir.amv.os.vaseline.service.search.simple.def</feature>
+        <feature>ir.amv.os.vaseline.service.search.advanced.def</feature>
+        <feature>ir.amv.os.vaseline.service.multidao.def</feature>
+    </feature>
+
+</features>

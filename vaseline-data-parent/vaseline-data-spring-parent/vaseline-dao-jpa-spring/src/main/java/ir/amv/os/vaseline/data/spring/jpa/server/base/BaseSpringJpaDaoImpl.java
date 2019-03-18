@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.data.spring.jpa.server.base;
 
-import ir.amv.os.vaseline.data.apis.dao.basic.server.base.defimpl.BaseDaoImpl;
-import ir.amv.os.vaseline.data.jpa.apis.dao.server.base.IBaseJpaDao;
+import ir.amv.os.vaseline.data.dao.basic.api.server.base.defimpl.BaseDaoImpl;
+import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.base.IBaseJpaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;

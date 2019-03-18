@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.ws.rest.api</groupId>
-            <artifactId>vaseline-ws-rest-basic-layerimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.ws.rest.basic.def</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

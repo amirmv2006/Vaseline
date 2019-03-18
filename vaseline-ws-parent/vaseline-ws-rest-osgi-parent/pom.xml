@@ -14,13 +14,13 @@
     <artifactId>vaseline-ws-rest-osgi-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-ws-rest-jersey-osgi</module>
-        <module>vaseline-ws-rest-gson-extension-osgi</module>
-        <module>vaseline-ws-rest-secured-spring-sec-osgi</module>
-        <module>vaseline-ws-rest-secured-oauth2-osgi</module>
-        <module>vaseline-ws-rest-client-jersey-osgi</module>
-        <module>vaseline-ws-rest-secured-oauth2-cache-hazelcast-osgi</module>
-        <module>vaseline-ws-rest-authorization-basic-osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.jersey.publisher.osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.gson.ext.osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.secured.spring.osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.secured.oauth2.osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.client.jersey.osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.secured.oauth2.cache.hazelcast.osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.authorization.basic.osgi</module>
         <module>vaseline-ws-rest-karaf-feature</module>
     </modules>
 

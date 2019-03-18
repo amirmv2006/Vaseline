@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.file.controllers.spring.server.download;
 
-import ir.amv.os.vaseline.file.apis.model.shared.base.IVaselineFileDto;
-import ir.amv.os.vaseline.file.apis.service.server.IVaselineFileService;
+import ir.amv.os.vaseline.file.model.api.shared.base.IVaselineFileDto;
+import ir.amv.os.vaseline.file.service.api.IVaselineFileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

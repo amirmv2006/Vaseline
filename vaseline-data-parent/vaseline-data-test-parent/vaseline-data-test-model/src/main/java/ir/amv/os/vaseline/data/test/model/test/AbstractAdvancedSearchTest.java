@@ -1,10 +1,10 @@
 package ir.amv.os.vaseline.data.test.model.test;
 
-import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
-import ir.amv.os.vaseline.data.apis.search.advanced.server.model.condition.PropertyConditions;
-import ir.amv.os.vaseline.data.apis.search.advanced.server.proxy.SearchObjectProxyFactory;
-import ir.amv.os.vaseline.data.apis.search.advanced.server.ro.IBaseAdvancedSearchDao;
+import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.shared.base.dto.sort.SortDto;
+import ir.amv.os.vaseline.data.search.advanced.api.server.model.condition.PropertyConditions;
+import ir.amv.os.vaseline.data.search.advanced.api.server.proxy.SearchObjectProxyFactory;
+import ir.amv.os.vaseline.data.search.advanced.api.server.ro.IBaseAdvancedSearchDao;
 import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
 import ir.amv.os.vaseline.data.test.model.shared.searchobject.ITestContinentSearchObject;
 import ir.amv.os.vaseline.data.test.model.shared.searchobject.ITestCountrySearchObject;

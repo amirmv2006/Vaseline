@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.ws.spring.rest.jersey.app;
 
-import ir.amv.os.vaseline.ws.rest.apis.basic.layerimpl.crud.IBaseImplementedCrudRestService;
+import ir.amv.os.vaseline.ws.rest.basic.def.crud.IBaseImplementedCrudRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

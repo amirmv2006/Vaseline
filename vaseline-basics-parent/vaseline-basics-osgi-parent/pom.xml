@@ -15,18 +15,18 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>vaseline-basics-ogsi-testing-util</module>
-        <module>vaseline-basics-logging-slf4j-osgi</module>
-        <module>vaseline-basics-core-osgi</module>
-        <module>vaseline-basics-json-gson-osgi</module>
-        <module>vaseline-basics-logging-log-service-osgi</module>
-        <module>vaseline-basics-logging-common-osgi</module>
-        <module>vaseline-basics-logging-pax-logging-osgi</module>
-        <module>vaseline-basics-base-bundle-osgi</module>
-        <module>vaseline-basics-i18n-osgi</module>
-        <module>vaseline-basics-mapper-dozer-osgi</module>
-        <module>vaseline-basics-validation-hibernate-validator-osgi</module>
-        <module>vaseline-basics-cache-hazelcast-osgi</module>
+        <module>ir.amv.os.vaseline.basics.testing.osgi</module>
+        <module>ir.amv.os.vaseline.basics.logging.slf4j.osgi</module>
+        <module>ir.amv.os.vaseline.basics.core.osgi</module>
+        <module>ir.amv.os.vaseline.basics.json.gson.osgi</module>
+        <module>ir.amv.os.vaseline.basics.logging.loggingservice.osgi</module>
+        <module>ir.amv.os.vaseline.basics.logging.common.osgi</module>
+        <module>ir.amv.os.vaseline.basics.logging.pax.osgi</module>
+        <module>ir.amv.os.vaseline.basics.base.osgi</module>
+        <module>ir.amv.os.vaseline.basics.i18n.osgi</module>
+        <module>ir.amv.os.vaseline.basics.mapper.dozer.osgi</module>
+        <module>ir.amv.os.vaseline.basics.validation.hibval.osgi</module>
+        <module>ir.amv.os.vaseline.basics.cache.hazelcast.osgi</module>
         <module>vaseline-basics-karaf-feature</module>
     </modules>
 

@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <feature.file.name>feature.xml</feature.file.name>
+        <feature.file.name>${project.artifactId}.xml</feature.file.name>
     </properties>
 
     <dependencyManagement>
@@ -33,7 +33,7 @@
         <!-- test deps -->
         <dependency>
             <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>vaseline-basics-ogsi-testing-util</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.testing.osgi</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>

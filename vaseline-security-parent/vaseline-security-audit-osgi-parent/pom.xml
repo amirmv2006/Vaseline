@@ -14,7 +14,7 @@
     <artifactId>vaseline-security-audit-osgi-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-security-audit-log-osgi</module>
+        <module>ir.amv.os.vaseline.security.audit.osgi.log</module>
         <module>vaseline-security-audit-karaf-feature</module>
     </modules>
 

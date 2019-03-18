@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.basics.apis</groupId>
-            <artifactId>vaseline-entity-jpa-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.dao.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

@@ -14,12 +14,12 @@
     <artifactId>vaseline-security-authentication-osgi-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-security-authentication-spring-security-osgi</module>
-        <module>vaseline-security-authentication-basic-osgi</module>
-        <module>vaseline-security-authentication-dao-jpa-osgi</module>
-        <module>vaseline-security-authentication-business-osgi</module>
-        <module>vaseline-security-authentication-service-osgi</module>
-        <module>vaseline-security-authentication-oauth2-spring-security-osgi</module>
+        <module>ir.amv.os.vaseline.security.authentication.spring.sec.osgi</module>
+        <module>ir.amv.os.vaseline.security.authentication.basic.osgi</module>
+        <module>ir.amv.os.vaseline.security.authentication.dao.jpa.osgi</module>
+        <module>ir.amv.os.vaseline.security.authentication.business.osgi</module>
+        <module>ir.amv.os.vaseline.security.authentication.service.osgi</module>
+        <module>ir.amv.os.vaseline.security.authentication.spring.sec.oauth2.osgi</module>
         <module>vaseline-security-authentication-karaf-feature</module>
     </modules>
 

@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.ws.spring.rest.jersey.app;
 
-import ir.amv.os.vaseline.ws.rest.apis.basic.layer.crud.IBaseCrudRestService;
+import ir.amv.os.vaseline.ws.rest.basic.api.crud.IBaseCrudRestService;
 
 import javax.ws.rs.Path;
 

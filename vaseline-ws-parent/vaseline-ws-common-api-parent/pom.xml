@@ -14,12 +14,12 @@
     <artifactId>vaseline-ws-common-api-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-ws-common-basic-layer-api</module>
-        <module>vaseline-ws-common-simple-search-layer-api</module>
-        <module>vaseline-ws-common-advanced-search-layer-api</module>
-        <module>vaseline-ws-common-basic-layerimpl-api</module>
-        <module>vaseline-ws-common-simple-search-layerimpl-api</module>
-        <module>vaseline-ws-common-advanced-search-layerimpl-api</module>
+        <module>ir.amv.os.vaseline.ws.common.basic.api</module>
+        <module>ir.amv.os.vaseline.ws.common.search.simple.api</module>
+        <module>ir.amv.os.vaseline.ws.common.search.advanced.api</module>
+        <module>ir.amv.os.vaseline.ws.common.basic.def</module>
+        <module>ir.amv.os.vaseline.ws.common.search.simple.def</module>
+        <module>ir.amv.os.vaseline.ws.common.search.advanced.def</module>
     </modules>
 
 </project>

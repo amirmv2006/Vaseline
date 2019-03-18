@@ -22,7 +22,7 @@
 <!--        </dependency>-->
         <dependency>
             <groupId>com.github.amirmv2006.basics.apis</groupId>
-            <artifactId>vaseline-entity-jpa-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.dao.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -49,13 +49,13 @@
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.business.apis</groupId>
-            <artifactId>vaseline-business-basic-layerimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.business.basic.def</artifactId>
             <version>${project.version}</version>
         </dependency>
         <!-- service -->
         <dependency>
             <groupId>com.github.amirmv2006.service.apis</groupId>
-            <artifactId>vaseline-service-basic-layerimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.service.basic.def</artifactId>
             <version>${project.version}</version>
         </dependency>
         <!-- rest -->

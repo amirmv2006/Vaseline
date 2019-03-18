@@ -14,10 +14,6 @@
     <artifactId>vaseline-ws-rest-karaf-feature</artifactId>
     <packaging>jar</packaging>
 
-    <properties>
-        <feature.file.name>vaseline-rest-feature.xml</feature.file.name>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.service.osgi</groupId>
@@ -28,12 +24,12 @@
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.ws.common.api</groupId>
-            <artifactId>vaseline-ws-common-simple-search-layerimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.ws.common.search.simple.def</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.ws.common.api</groupId>
-            <artifactId>vaseline-ws-common-advanced-search-layerimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.ws.common.search.advanced.def</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

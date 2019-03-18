@@ -14,8 +14,8 @@
     <artifactId>vaseline-security-audit-apis-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-security-audit-basic-api</module>
-        <module>vaseline-security-auditimpl-log-api</module>
+        <module>ir.amv.os.vaseline.security.audit.basic.api</module>
+        <module>ir.amv.os.vaseline.security.audit.def.log</module>
     </modules>
 
 

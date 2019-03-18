@@ -1,9 +1,9 @@
 package ir.amv.os.vaseline.file.layers.spring.basic.server.service;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.exc.handler.ICoreExceptionHandler;
-import ir.amv.os.vaseline.basics.apis.mapper.server.objmapper.IVaselineObjectMapper;
-import ir.amv.os.vaseline.file.apis.business.server.IVaselineFileApi;
-import ir.amv.os.vaseline.file.apis.serviceimpl.server.IImplementedVaselineFileService;
+import ir.amv.os.vaseline.basics.core.api.server.base.exc.handler.ICoreExceptionHandler;
+import ir.amv.os.vaseline.basics.mapper.api.server.objmapper.IVaselineObjectMapper;
+import ir.amv.os.vaseline.file.business.api.IVaselineFileApi;
+import ir.amv.os.vaseline.file.service.def.IImplementedVaselineFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.Validator;

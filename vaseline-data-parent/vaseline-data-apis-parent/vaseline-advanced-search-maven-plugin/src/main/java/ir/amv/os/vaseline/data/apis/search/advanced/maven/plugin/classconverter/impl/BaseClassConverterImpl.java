@@ -2,7 +2,7 @@ package ir.amv.os.vaseline.data.apis.search.advanced.maven.plugin.classconverter
 
 import ir.amv.os.vaseline.data.apis.search.advanced.maven.plugin.classconverter.IBaseClassConverter;
 import ir.amv.os.vaseline.data.apis.search.advanced.maven.plugin.fqnconverter.IBaseFqnConverter;
-import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBasePropertyCondition;
+import ir.amv.os.vaseline.data.search.advanced.api.server.model.IBasePropertyCondition;
 import org.jboss.forge.roaster.model.Field;
 import org.jboss.forge.roaster.model.Type;
 import org.jboss.forge.roaster.model.source.GenericCapableSource;

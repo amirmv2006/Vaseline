@@ -14,10 +14,6 @@
     <artifactId>vaseline-service-karaf-feature</artifactId>
     <packaging>jar</packaging>
 
-    <properties>
-        <feature.file.name>vaseline-service-feature.xml</feature.file.name>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.business.osgi</groupId>
@@ -28,17 +24,17 @@
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.service.apis</groupId>
-            <artifactId>vaseline-service-simple-search-layerimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.service.search.simple.def</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.service.apis</groupId>
-            <artifactId>vaseline-service-advanced-search-layerimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.service.search.advanced.def</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.service.apis</groupId>
-            <artifactId>vaseline-service-multidao-layerimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.service.multidao.def</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

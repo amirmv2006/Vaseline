@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.ws.spring.rest.jersey.multiparam.msgrw;
 
-import ir.amv.os.vaseline.basics.apis.json.server.converter.IVaselineJsonConverter;
-import ir.amv.os.vaseline.ws.rest.apis.basic.layerimpl.multiparam.jaxrs.IBaseImplementedMultiparamJsonReader;
-import ir.amv.os.vaseline.ws.rest.apis.basic.layerimpl.multiparam.jaxrs.IBaseImplementedMultiparamJsonWriter;
+import ir.amv.os.vaseline.basics.json.api.server.converter.IVaselineJsonConverter;
+import ir.amv.os.vaseline.ws.rest.basic.def.multiparam.jaxrs.IBaseImplementedMultiparamJsonReader;
+import ir.amv.os.vaseline.ws.rest.basic.def.multiparam.jaxrs.IBaseImplementedMultiparamJsonWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.Consumes;

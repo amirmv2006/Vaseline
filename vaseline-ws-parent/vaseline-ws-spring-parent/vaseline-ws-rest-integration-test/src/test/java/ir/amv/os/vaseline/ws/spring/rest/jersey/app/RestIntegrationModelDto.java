@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.ws.spring.rest.jersey.app;
 
-import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.baseimpl.BaseDtoImpl;
+import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.baseimpl.BaseDtoImpl;
 
 /**
  * @author Amir

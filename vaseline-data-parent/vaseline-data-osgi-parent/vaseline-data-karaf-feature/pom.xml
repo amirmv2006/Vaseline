@@ -14,10 +14,6 @@
     <artifactId>vaseline-data-karaf-feature</artifactId>
     <packaging>jar</packaging>
 
-    <properties>
-        <feature.file.name>vaseline-data-feature.xml</feature.file.name>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.basics.osgi</groupId>
@@ -34,17 +30,17 @@
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.data.jpa</groupId>
-            <artifactId>vaseline-jpa-basic-dao-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.data.jpa.dao.basic.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.data.jpa</groupId>
-            <artifactId>vaseline-jpa-simple-search-dao-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.data.jpa.search.simple.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.data.jpa</groupId>
-            <artifactId>vaseline-jpa-advanced-search-dao-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.data.jpa.search.advanced.api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

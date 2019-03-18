@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.data.spring.jpa.server.ro;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.entity.IBaseEntity;
-import ir.amv.os.vaseline.data.apis.dao.basic.server.ro.scroller.IVaselineDataScroller;
-import ir.amv.os.vaseline.data.jpa.apis.dao.server.ro.vendorspecific.IVendorSpecificDaoHelper;
+import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
+import ir.amv.os.vaseline.data.dao.basic.api.server.ro.scroller.IVaselineDataScroller;
+import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.vendorspecific.IVendorSpecificDaoHelper;
 import org.hibernate.Criteria;
 import org.hibernate.ScrollMode;
 import org.hibernate.ScrollableResults;

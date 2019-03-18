@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.file.jpa.spring.basic.config;
 
-import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.blob.IVaselineFileBlobDao;
-import ir.amv.os.vaseline.file.apis.dao.jpa.server.dao.base.path.IVaselineFilePathDao;
+import ir.amv.os.vaseline.file.dao.def.common.server.dao.base.blob.IVaselineFileBlobDao;
+import ir.amv.os.vaseline.file.dao.def.common.server.dao.base.path.IVaselineFilePathDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

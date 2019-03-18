@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.data.osgi.feature;
 
-import ir.amv.os.vaseline.basics.osgi.testing.util.AbstractBundleChecker;
-import ir.amv.os.vaseline.basics.osgi.testing.util.BundleStartedChecker;
+import ir.amv.os.vaseline.basics.testing.osgi.util.AbstractBundleChecker;
+import ir.amv.os.vaseline.basics.testing.osgi.util.BundleStartedChecker;
 import org.junit.Test;
 import org.osgi.framework.InvalidSyntaxException;
 
@@ -20,12 +20,12 @@ public class VaselineDataHibernateFeatureIntegrationTest
     public void testBundles() throws InvalidSyntaxException, ClassNotFoundException, InterruptedException {
         assertNotNull(bundleContext);
         List<AbstractBundleChecker> bundleCheckers = new ArrayList<>();
-        bundleCheckers.add(new BundleStartedChecker("vaseline-basic-dao-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-simple-search-dao-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-advanced-search-dao-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-hibernate-basic-dao-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-hibernate-simple-search-dao-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-hibernate-advanced-search-dao-api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.data.dao.basic.api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.data.search.simple.api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.data.search.advanced.api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.data.hibernate.dao.basic.api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.data.hibernate.search.simple.api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.data.hibernate.search.advanced.api"));
 
         for (AbstractBundleChecker bundleChecker : bundleCheckers) {
             bundleChecker.checkBundle(bundleContext);

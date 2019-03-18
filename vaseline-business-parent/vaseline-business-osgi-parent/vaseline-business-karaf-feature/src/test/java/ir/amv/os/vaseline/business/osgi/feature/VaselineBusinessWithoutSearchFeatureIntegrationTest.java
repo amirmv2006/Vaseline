@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.business.osgi.feature;
 
-import ir.amv.os.vaseline.basics.osgi.testing.util.AbstractBundleChecker;
-import ir.amv.os.vaseline.basics.osgi.testing.util.BundleStartedChecker;
+import ir.amv.os.vaseline.basics.testing.osgi.util.AbstractBundleChecker;
+import ir.amv.os.vaseline.basics.testing.osgi.util.BundleStartedChecker;
 import org.junit.Test;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.InvalidSyntaxException;
@@ -23,20 +23,20 @@ public class VaselineBusinessWithoutSearchFeatureIntegrationTest
     public void testBundles() throws InvalidSyntaxException, ClassNotFoundException, InterruptedException {
         assertNotNull(bundleContext);
         List<AbstractBundleChecker> bundleCheckers = new ArrayList<>();
-        bundleCheckers.add(new BundleStartedChecker("vaseline-business-basic-layer-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-business-basic-layerimpl-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-business-multidao-layer-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-business-multidao-layerimpl-api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.business.basic.api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.business.basic.def"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.business.multidao.api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.business.multidao.def"));
 
         for (AbstractBundleChecker bundleChecker : bundleCheckers) {
             bundleChecker.checkBundle(bundleContext);
         }
         Bundle[] bundles = bundleContext.getBundles();
         List<String> bannedBundles = Arrays.asList(
-                "vaseline-business-simple-search-layer-api",
-                "vaseline-business-simple-search-layerimpl-api",
-                "vaseline-business-advanced-search-layer-api",
-                "vaseline-business-advanced-search-layerimpl-api"
+                "ir.amv.os.vaseline.business.search.simple.api",
+                "ir.amv.os.vaseline.business.search.simple.def",
+                "ir.amv.os.vaseline.business.search.advanced.api",
+                "ir.amv.os.vaseline.business.search.advanced.def"
         );
         for (Bundle bundle : bundles) {
             if (bannedBundles.contains(bundle.getSymbolicName())) {
@@ -48,10 +48,10 @@ public class VaselineBusinessWithoutSearchFeatureIntegrationTest
     @Override
     protected String[] getTestFeatures() {
         return new String[]{
-                "vaseline-business-basic-layer-api",
-                "vaseline-business-basic-layerimpl-api",
-                "vaseline-business-multidao-layer-api",
-                "vaseline-business-multidao-layerimpl-api"
+                "ir.amv.os.vaseline.business.basic.api",
+                "ir.amv.os.vaseline.business.basic.def",
+                "ir.amv.os.vaseline.business.multidao.api",
+                "ir.amv.os.vaseline.business.multidao.def"
         };
     }
 }

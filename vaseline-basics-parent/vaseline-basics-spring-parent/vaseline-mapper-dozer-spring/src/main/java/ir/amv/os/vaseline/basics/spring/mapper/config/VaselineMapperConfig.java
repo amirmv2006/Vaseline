@@ -1,28 +1,21 @@
 package ir.amv.os.vaseline.basics.spring.mapper.config;
 
-import ir.amv.os.vaseline.basics.apis.core.server.polymorphysm.defimpl.VaselinePolymorphysmClassHolderImpl;
-import ir.amv.os.vaseline.basics.apis.mapper.server.exc.VaselineConvertException;
-import ir.amv.os.vaseline.basics.apis.mapper.server.objmapper.IVaselineObjectMapper;
-import ir.amv.os.vaseline.basics.spring.core.config.VaselineCoreConfig;
+import ir.amv.os.vaseline.basics.core.api.server.polymorphysm.defimpl.VaselinePolymorphysmClassHolderImpl;
+import ir.amv.os.vaseline.basics.mapper.api.server.exc.VaselineConvertException;
+import ir.amv.os.vaseline.basics.mapper.api.server.objmapper.IVaselineObjectMapper;
 import ir.amv.os.vaseline.basics.spring.mapper.config.custconv.BaseVaselineCustomConverterClassHolderImpl;
 import ir.amv.os.vaseline.basics.spring.mapper.config.custconv.IVaselineCustomConverterClassHolder;
 import ir.amv.os.vaseline.basics.spring.mapper.config.fieldmapper.VaselineCustomFieldMapper;
-import ir.amv.os.vaseline.basics.apis.mapper.shared.annot.ExcludeFromDozer;
-import ir.amv.os.vaseline.basics.apis.mapper.shared.annot.VaselineMapTo;
-import ir.amv.os.vaseline.basics.apis.core.server.polymorphysm.IVaselinePolymorphysmClassHolder;
+import ir.amv.os.vaseline.basics.mapper.api.shared.annot.ExcludeFromDozer;
+import ir.amv.os.vaseline.basics.mapper.api.shared.annot.VaselineMapTo;
+import ir.amv.os.vaseline.basics.core.api.server.polymorphysm.IVaselinePolymorphysmClassHolder;
 import org.dozer.CustomFieldMapper;
-import org.dozer.Mapper;
 import org.dozer.MappingException;
-import org.dozer.classmap.ClassMap;
-import org.dozer.fieldmap.FieldMap;
 import org.dozer.loader.api.BeanMappingBuilder;
 import org.dozer.loader.api.TypeMappingOption;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
 import java.util.ArrayList;

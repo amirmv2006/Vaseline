@@ -18,60 +18,56 @@
     <name>vaseline-basics-karaf-feature-feature</name>
     <description>vaseline-basics-karaf-feature details</description>
 
-    <properties>
-        <feature.file.name>vaseline-basics-feature.xml</feature.file.name>
-    </properties>
-
     <dependencies>
         <!-- add the artifact that should be in the feature in the dependencies set -->
         <dependency>
             <groupId>com.github.amirmv2006.basics.apis</groupId>
-            <artifactId>vaseline-jdbc-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.jdbc.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.basics.apis</groupId>
-            <artifactId>vaseline-entity-jpa-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.dao.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>vaseline-basics-i18n-osgi</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.i18n.osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>vaseline-basics-validation-hibernate-validator-osgi</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.validation.hibval.osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>vaseline-basics-cache-hazelcast-osgi</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.cache.hazelcast.osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>vaseline-basics-mapper-dozer-osgi</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.mapper.dozer.osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>vaseline-basics-logging-pax-logging-osgi</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.logging.pax.osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>vaseline-basics-logging-common-osgi</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.logging.common.osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>vaseline-basics-core-osgi</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.core.osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>vaseline-basics-json-gson-osgi</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.json.gson.osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

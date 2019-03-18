@@ -13,7 +13,7 @@
     <artifactId>vaseline-thirdparty</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-reflection-util</module>
+        <module>ir.amv.os.vaseline.thirdparty.shared.util.reflection</module>
     </modules>
 
 

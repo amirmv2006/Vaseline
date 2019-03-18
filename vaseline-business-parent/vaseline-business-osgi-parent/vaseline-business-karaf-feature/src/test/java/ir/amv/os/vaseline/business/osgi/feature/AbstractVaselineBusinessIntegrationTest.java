@@ -65,7 +65,7 @@ public abstract class AbstractVaselineBusinessIntegrationTest {
                         .start(),
                 mavenBundle()
                         .groupId("com.github.amirmv2006.basics.osgi")
-                        .artifactId("vaseline-basics-ogsi-testing-util")
+                        .artifactId("ir.amv.os.vaseline.basics.testing.osgi")
                         .version("1.0-SNAPSHOT")
                         .start(),
                 features(karafStandardRepo, getTestFeatures()),

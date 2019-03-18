@@ -14,9 +14,9 @@
     <artifactId>vaseline-data-jpa-api-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-jpa-basic-dao-api</module>
-        <module>vaseline-jpa-simple-search-dao-api</module>
-        <module>vaseline-jpa-advanced-search-dao-api</module>
+        <module>ir.amv.os.vaseline.data.jpa.dao.basic.api</module>
+        <module>ir.amv.os.vaseline.data.jpa.search.simple.api</module>
+        <module>ir.amv.os.vaseline.data.jpa.search.advanced.api</module>
     </modules>
 
 

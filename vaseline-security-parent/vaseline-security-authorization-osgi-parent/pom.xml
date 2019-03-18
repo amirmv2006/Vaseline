@@ -14,12 +14,12 @@
     <artifactId>vaseline-security-authorization-osgi-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-security-authorization-basic-osgi</module>
-        <module>vaseline-security-authorization-basic-layer-osgi</module>
-        <module>vaseline-security-authorization-rbac-dao-jpa-osgi</module>
-        <module>vaseline-security-authorization-rbac-business-osgi</module>
-        <module>vaseline-security-authorization-rbac-auto-user-adder-osgi</module>
-        <module>vaseline-security-authorization-rbac-auto-user-annot-osgi</module>
+        <module>ir.amv.os.vaseline.security.authorization.basic.osgi</module>
+        <module>ir.amv.os.vaseline.security.authorization.basic.osgi.interceptor</module>
+        <module>ir.amv.os.vaseline.security.authorization.rbac.dao.jpa.osgi</module>
+        <module>ir.amv.os.vaseline.security.authorization.rbac.business.osgi</module>
+        <module>ir.amv.os.vaseline.security.authorization.rbac.auto.user.adder.osgi</module>
+        <module>ir.amv.os.vaseline.security.authorization.rbac.auto.user.annot.osgi</module>
         <module>vaseline-security-authorization-karaf-feature</module>
     </modules>
 

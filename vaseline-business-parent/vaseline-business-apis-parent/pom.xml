@@ -14,15 +14,15 @@
     <artifactId>vaseline-business-apis-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-business-tx-api</module>
-        <module>vaseline-business-basic-layer-api</module>
-        <module>vaseline-business-multidao-layer-api</module>
-        <module>vaseline-business-basic-layerimpl-api</module>
-        <module>vaseline-business-simple-search-layer-api</module>
-        <module>vaseline-business-simple-search-layerimpl-api</module>
-        <module>vaseline-business-advanced-search-layer-api</module>
-        <module>vaseline-business-advanced-search-layerimpl-api</module>
-        <module>vaseline-business-multidao-layerimpl-api</module>
+        <module>ir.amv.os.vaseline.business.tx.api</module>
+        <module>ir.amv.os.vaseline.business.basic.api</module>
+        <module>ir.amv.os.vaseline.business.multidao.api</module>
+        <module>ir.amv.os.vaseline.business.basic.def</module>
+        <module>ir.amv.os.vaseline.business.search.simple.api</module>
+        <module>ir.amv.os.vaseline.business.search.simple.def</module>
+        <module>ir.amv.os.vaseline.business.search.advanced.api</module>
+        <module>ir.amv.os.vaseline.business.search.advanced.def</module>
+        <module>ir.amv.os.vaseline.business.multidao.def</module>
     </modules>
 
 

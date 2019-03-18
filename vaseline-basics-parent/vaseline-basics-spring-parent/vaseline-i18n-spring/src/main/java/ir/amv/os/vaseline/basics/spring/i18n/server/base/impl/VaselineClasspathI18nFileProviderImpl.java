@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.basics.spring.i18n.server.base.impl;
 
-import ir.amv.os.vaseline.basics.apis.i18n.server.file.resolver.IVaselineI18nFileProvider;
+import ir.amv.os.vaseline.basics.i18n.api.server.file.resolver.IVaselineI18nFileProvider;
 
 /**
  * Created by AMV on 2/10/2016.

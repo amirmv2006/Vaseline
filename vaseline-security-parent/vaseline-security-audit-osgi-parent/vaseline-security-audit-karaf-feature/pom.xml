@@ -13,10 +13,6 @@
     <groupId>com.github.amirmv2006.security.audit.osgi</groupId>
     <artifactId>vaseline-security-audit-karaf-feature</artifactId>
 
-    <properties>
-        <feature.file.name>vaseline-security-audit-feature.xml</feature.file.name>
-    </properties>
-
     <build>
         <plugins>
             <plugin>

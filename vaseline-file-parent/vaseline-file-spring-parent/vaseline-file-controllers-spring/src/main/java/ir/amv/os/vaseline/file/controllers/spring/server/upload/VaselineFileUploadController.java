@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.file.controllers.spring.server.upload;
 
-import ir.amv.os.vaseline.basics.apis.json.server.converter.IVaselineJsonConverter;
-import ir.amv.os.vaseline.file.apis.service.server.IVaselineFileService;
+import ir.amv.os.vaseline.basics.json.api.server.converter.IVaselineJsonConverter;
+import ir.amv.os.vaseline.file.service.api.IVaselineFileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

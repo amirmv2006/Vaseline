@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.service.osgi.feature;
 
-import ir.amv.os.vaseline.basics.osgi.testing.util.AbstractBundleChecker;
-import ir.amv.os.vaseline.basics.osgi.testing.util.BundleStartedChecker;
+import ir.amv.os.vaseline.basics.testing.osgi.util.AbstractBundleChecker;
+import ir.amv.os.vaseline.basics.testing.osgi.util.BundleStartedChecker;
 import org.junit.Test;
 import org.osgi.framework.InvalidSyntaxException;
 
@@ -20,14 +20,14 @@ public class VaselineServiceFeatureIntegrationTest
     public void testBundles() throws InvalidSyntaxException, ClassNotFoundException, InterruptedException {
         assertNotNull(bundleContext);
         List<AbstractBundleChecker> bundleCheckers = new ArrayList<>();
-        bundleCheckers.add(new BundleStartedChecker("vaseline-service-basic-layer-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-service-basic-layerimpl-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-service-simple-search-layer-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-service-simple-search-layerimpl-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-service-advanced-search-layer-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-service-advanced-search-layerimpl-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-service-multidao-layer-api"));
-        bundleCheckers.add(new BundleStartedChecker("vaseline-service-multidao-layerimpl-api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.service.basic.api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.service.basic.def"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.service.search.simple.api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.service.search.simple.def"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.service.search.advanced.api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.service.search.advanced.def"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.service.multidao.api"));
+        bundleCheckers.add(new BundleStartedChecker("ir.amv.os.vaseline.service.multidao.def"));
 
         for (AbstractBundleChecker bundleChecker : bundleCheckers) {
             bundleChecker.checkBundle(bundleContext);

@@ -14,15 +14,15 @@
     <artifactId>vaseline-file-apis-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-file-model-api</module>
-        <module>vaseline-file-dao-basic-api</module>
-        <module>vaseline-file-daoimpl-jpa-api</module>
-        <module>vaseline-file-daoimpl-hibernate-api</module>
-        <module>vaseline-file-dao-jpa-api</module>
-        <module>vaseline-file-business-api</module>
-        <module>vaseline-file-businessimpl-api</module>
-        <module>vaseline-file-service-api</module>
-        <module>vaseline-file-serviceimpl-api</module>
+        <module>ir.amv.os.vaseline.file.model.api</module>
+        <module>ir.amv.os.vaseline.file.dao.basic.api</module>
+        <module>ir.amv.os.vaseline.file.dao.def.jpa</module>
+        <module>ir.amv.os.vaseline.file.dao.def.hibernate</module>
+        <module>ir.amv.os.vaseline.file.dao.def.common</module>
+        <module>ir.amv.os.vaseline.file.business.api</module>
+        <module>ir.amv.os.vaseline.file.business.def</module>
+        <module>ir.amv.os.vaseline.file.service.api</module>
+        <module>ir.amv.os.vaseline.file.service.def</module>
     </modules>
 
 

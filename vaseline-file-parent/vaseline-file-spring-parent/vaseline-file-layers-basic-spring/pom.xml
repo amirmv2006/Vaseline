@@ -19,12 +19,12 @@
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.file.apis</groupId>
-            <artifactId>vaseline-file-serviceimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.file.service.def</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.file.apis</groupId>
-            <artifactId>vaseline-file-businessimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.file.business.def</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.ws.spring.rest.jersey.app;
 
-import ir.amv.os.vaseline.basics.apis.dao.server.ent.BaseEntityImpl;
+import ir.amv.os.vaseline.basics.dao.api.server.ent.BaseEntityImpl;
 
 import javax.persistence.Entity;
 

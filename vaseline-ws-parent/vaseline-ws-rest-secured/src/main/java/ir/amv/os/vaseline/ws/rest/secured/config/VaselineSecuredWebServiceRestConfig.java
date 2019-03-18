@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.ws.rest.secured.config;
 
-import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.IHttpSecurityConfigurer;
+import ir.amv.os.vaseline.security.authentication.spring.sec.api.config.IHttpSecurityConfigurer;
 import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.VaselineAuthenticationImplConfig;
 import ir.amv.os.vaseline.ws.rest.config.VaselineWebServiceRestConfig;
 import org.springframework.context.annotation.Bean;

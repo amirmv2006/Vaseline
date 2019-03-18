@@ -28,7 +28,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.basics.apis</groupId>
-            <artifactId>vaseline-core-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.core.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -63,7 +63,7 @@
         <!--</dependency>-->
         <dependency>
             <groupId>com.github.amirmv2006.thirdparty</groupId>
-            <artifactId>vaseline-reflection-util</artifactId>
+            <artifactId>ir.amv.os.vaseline.thirdparty.shared.util.reflection</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

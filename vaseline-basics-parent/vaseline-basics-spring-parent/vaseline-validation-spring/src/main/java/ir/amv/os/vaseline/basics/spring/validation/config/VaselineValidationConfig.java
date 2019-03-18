@@ -1,17 +1,13 @@
 package ir.amv.os.vaseline.basics.spring.validation.config;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.exc.handler.defimpl.CoreExceptionHandlerImpl;
-import ir.amv.os.vaseline.basics.apis.i18n.server.message.translator.IVaselineMessageTranslator;
-import ir.amv.os.vaseline.basics.apis.validation.server.exc.converter.VaselineValidationExceptionConverterImpl;
-import ir.amv.os.vaseline.basics.spring.core.config.VaselineCoreConfig;
-import ir.amv.os.vaseline.basics.spring.i18n.config.VaselineI18nConfig;
+import ir.amv.os.vaseline.basics.core.api.server.base.exc.handler.defimpl.CoreExceptionHandlerImpl;
+import ir.amv.os.vaseline.basics.i18n.api.server.message.translator.IVaselineMessageTranslator;
+import ir.amv.os.vaseline.basics.validation.api.server.exc.converter.VaselineValidationExceptionConverterImpl;
 import ir.amv.os.vaseline.basics.spring.validation.config.weblogic.patch.JPAIgnoreTraversableResolver;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.Profile;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import javax.validation.Validator;

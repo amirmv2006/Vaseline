@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.data.test.model.shared.searchobject;
 
-import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBaseSearchObject;
-import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBasePropertyCondition;
+import ir.amv.os.vaseline.data.search.advanced.api.server.model.IBaseSearchObject;
+import ir.amv.os.vaseline.data.search.advanced.api.server.model.IBasePropertyCondition;
 import java.util.Date;
 
 public interface ITestCountrySearchObject extends IBaseSearchObject {

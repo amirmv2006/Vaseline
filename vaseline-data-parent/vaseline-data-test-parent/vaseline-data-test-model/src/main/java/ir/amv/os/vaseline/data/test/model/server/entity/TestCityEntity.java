@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.test.model.server.entity;
 
-import ir.amv.os.vaseline.basics.apis.dao.server.ent.BaseEntityImpl;
+import ir.amv.os.vaseline.basics.dao.api.server.ent.BaseEntityImpl;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;

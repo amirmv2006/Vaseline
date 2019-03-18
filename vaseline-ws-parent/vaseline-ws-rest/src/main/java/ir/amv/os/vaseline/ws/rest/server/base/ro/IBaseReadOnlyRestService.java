@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.ws.rest.server.base.ro;
 
-import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.apis.core.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
+import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
 import ir.amv.os.vaseline.ws.rest.server.base.parent.IBaseRestService;
 
 import java.io.Serializable;

@@ -1,9 +1,9 @@
 package ir.amv.os.vaseline.basics.spring.i18n.config;
 
-import ir.amv.os.vaseline.basics.apis.i18n.server.exc.NoSuchMessageI18nException;
-import ir.amv.os.vaseline.basics.apis.i18n.server.file.resolver.IVaselineI18nFileProvider;
-import ir.amv.os.vaseline.basics.apis.i18n.server.message.translator.IVaselineMessageTranslator;
-import ir.amv.os.vaseline.basics.apis.i18n.server.message.translator.defimpl.BaseVaselineMessageTranslatorImpl;
+import ir.amv.os.vaseline.basics.i18n.api.server.exc.NoSuchMessageI18nException;
+import ir.amv.os.vaseline.basics.i18n.api.server.file.resolver.IVaselineI18nFileProvider;
+import ir.amv.os.vaseline.basics.i18n.api.server.message.translator.IVaselineMessageTranslator;
+import ir.amv.os.vaseline.basics.i18n.api.server.message.translator.defimpl.BaseVaselineMessageTranslatorImpl;
 import ir.amv.os.vaseline.basics.spring.i18n.server.base.impl.VaselineClasspathI18nFileProviderImpl;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.MessageSource;
