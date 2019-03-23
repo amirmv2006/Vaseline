@@ -2,7 +2,7 @@ package ir.amv.os.vaseline.security.authorization.rbac.business.osgi.user.defimp
 
 import ir.amv.os.vaseline.basics.core.api.server.proxyaware.IProxyAware;
 import ir.amv.os.vaseline.security.audit.basic.api.server.IAuditApi;
-import ir.amv.os.vaseline.security.authorization.rbac.business.def.user.IImplementedSecurityUserApi;
+import ir.amv.os.vaseline.security.authorization.rbac.business.def.user.IDefaultSecurityUserApi;
 import ir.amv.os.vaseline.security.authorization.rbac.business.osgi.BaseApiImpl;
 import ir.amv.os.vaseline.security.authorization.rbac.business.osgi.user.IVaselineSecurityUserApi;
 import ir.amv.os.vaseline.security.authorization.rbac.model.def.user.SecurityUserEntity;
@@ -22,7 +22,7 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class VaselineSecurityUserApiImpl
         extends BaseApiImpl<SecurityUserEntity, IVaselineSecurityUserDao>
-        implements IImplementedSecurityUserApi<SecurityUserEntity, IVaselineSecurityUserDao>,
+        implements IDefaultSecurityUserApi<SecurityUserEntity, IVaselineSecurityUserDao>,
         IVaselineSecurityUserApi {
     private IAuditApi auditApi;
     private IVaselineSecurityUserDao dao;

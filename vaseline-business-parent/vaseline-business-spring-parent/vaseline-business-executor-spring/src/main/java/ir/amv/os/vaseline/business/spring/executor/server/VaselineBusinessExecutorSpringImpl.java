@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.business.spring.executor.server;
 
 import ir.amv.os.vaseline.business.basic.api.server.action.executor.IVaselineBusinessExecutorInterceptor;
-import ir.amv.os.vaseline.business.basic.def.server.action.executor.IImplementedBusinessActionExecutor;
+import ir.amv.os.vaseline.business.basic.def.server.action.executor.IDefaultActionExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Component
 public class VaselineBusinessExecutorSpringImpl
-        implements IImplementedBusinessActionExecutor {
+        implements IDefaultActionExecutor {
     private List<IVaselineBusinessExecutorInterceptor> interceptors;
 
     @Override

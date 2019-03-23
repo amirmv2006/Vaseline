@@ -4,8 +4,8 @@ import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerExce
 import ir.amv.os.vaseline.basics.core.api.server.proxyaware.IProxyAware;
 import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineAllBuinessMetadata;
 import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.def.server.action.function.IBusinessFunctionZero;
-import ir.amv.os.vaseline.business.basic.def.server.crud.IBaseImplementedCrudApi;
+import ir.amv.os.vaseline.business.basic.def.server.action.function.IBusinessFunctionNoArg;
+import ir.amv.os.vaseline.business.basic.def.server.crud.IDefaultCrudApi;
 import ir.amv.os.vaseline.security.authorization.rbac.model.def.role.SecurityRoleEntity;
 import ir.amv.os.vaseline.security.authorization.rbac.business.osgi.BaseApiImpl;
 import ir.amv.os.vaseline.security.authorization.rbac.business.osgi.role.IVaselineSecurityRoleApi;
@@ -28,7 +28,7 @@ import javax.transaction.Transactional;
 public class VaselineSecurityRoleApiImpl
         extends BaseApiImpl<SecurityRoleEntity, IVaselineSecurityRoleDao>
         implements
-        IBaseImplementedCrudApi<SecurityRoleEntity, Long, IVaselineSecurityRoleDao>,
+        IDefaultCrudApi<SecurityRoleEntity, Long, IVaselineSecurityRoleDao>,
         IVaselineSecurityRoleApi {
 
     private IVaselineSecurityRoleDao dao;
@@ -49,7 +49,7 @@ public class VaselineSecurityRoleApiImpl
             VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
     })
     public SecurityRoleEntity getRoleByName(final String roleName) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionZero<SecurityRoleEntity>) () -> {
+        return doBusinessAction((IBusinessFunctionNoArg<SecurityRoleEntity>) () -> {
             SecurityRoleEntity findById = getDao().getByRoleName(roleName);
             postGet(findById);
             return findById;

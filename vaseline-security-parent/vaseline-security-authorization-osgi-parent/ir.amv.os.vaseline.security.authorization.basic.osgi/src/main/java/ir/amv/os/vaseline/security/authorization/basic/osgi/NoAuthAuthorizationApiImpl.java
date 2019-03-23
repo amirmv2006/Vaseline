@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.authorization.basic.osgi;
 
-import ir.amv.os.vaseline.security.authorization.basic.def.server.IImplementedNoAuthAuthorizationApi;
+import ir.amv.os.vaseline.security.authorization.basic.def.server.IDefaultNoAuthAuthorizationApi;
 import ir.amv.os.vaseline.security.authorization.basic.api.server.api.IAuthorizationActionApi;
 import ir.amv.os.vaseline.security.authorization.basic.api.server.api.IAuthorizationUserApi;
 import ir.amv.os.vaseline.security.authorization.basic.api.server.api.INoAuthAuthorizationApi;
@@ -15,7 +15,7 @@ import org.osgi.service.component.annotations.Reference;
         service = INoAuthAuthorizationApi.class
 )
 public class NoAuthAuthorizationApiImpl
-        implements IImplementedNoAuthAuthorizationApi,
+        implements IDefaultNoAuthAuthorizationApi,
         INoAuthAuthorizationApi {
     // avoiding cycle -> these api use crud apis which depend on authorization api
     private IAuthorizationUserApi authorizationUserApiTracker;

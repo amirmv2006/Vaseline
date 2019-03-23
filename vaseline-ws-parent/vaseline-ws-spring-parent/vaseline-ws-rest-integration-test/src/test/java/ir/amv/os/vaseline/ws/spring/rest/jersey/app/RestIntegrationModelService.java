@@ -2,7 +2,7 @@ package ir.amv.os.vaseline.ws.spring.rest.jersey.app;
 
 import ir.amv.os.vaseline.basics.core.api.server.base.exc.handler.ICoreExceptionHandler;
 import ir.amv.os.vaseline.basics.mapper.api.server.objmapper.IVaselineObjectMapper;
-import ir.amv.os.vaseline.service.basic.def.server.crud.IBaseImplementedCrudService;
+import ir.amv.os.vaseline.service.basic.def.server.crud.IDefaultCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import javax.validation.Validator;
 @Service
 public class RestIntegrationModelService
         implements IRestIntegrationModelService,
-        IBaseImplementedCrudService<RestIntegrationModelEntity, RestIntegrationModelDto, Long, IRestIntegrationModelApi> {
+        IDefaultCrudService<RestIntegrationModelEntity, RestIntegrationModelDto, Long, IRestIntegrationModelApi> {
     @Autowired
     private IRestIntegrationModelApi api;
     @Autowired

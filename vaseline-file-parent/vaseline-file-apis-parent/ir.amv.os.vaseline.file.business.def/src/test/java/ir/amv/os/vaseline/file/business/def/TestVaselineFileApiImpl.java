@@ -14,7 +14,7 @@ import java.util.List;
 
 public class TestVaselineFileApiImpl
         extends ProxyAwareImpl
-        implements IImplementedVaselineFileApi {
+        implements IDefaultVaselineFileApi {
     private List<IVaselineFileDao> fileDaoList;
     private IVaselineBusinessActionExecutor businessActionExecutor;
 

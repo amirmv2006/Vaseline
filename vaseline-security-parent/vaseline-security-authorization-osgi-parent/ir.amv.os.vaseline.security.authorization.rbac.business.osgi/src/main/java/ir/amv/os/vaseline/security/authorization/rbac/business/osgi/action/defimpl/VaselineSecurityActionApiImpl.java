@@ -4,9 +4,9 @@ import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerExce
 import ir.amv.os.vaseline.basics.core.api.server.proxyaware.IProxyAware;
 import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineAllBuinessMetadata;
 import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.def.server.action.function.IBusinessFunctionZero;
-import ir.amv.os.vaseline.business.basic.def.server.crud.IBaseImplementedCrudApi;
-import ir.amv.os.vaseline.security.authorization.rbac.business.def.action.IImplementedSecurityActionApi;
+import ir.amv.os.vaseline.business.basic.def.server.action.function.IBusinessFunctionNoArg;
+import ir.amv.os.vaseline.business.basic.def.server.crud.IDefaultCrudApi;
+import ir.amv.os.vaseline.security.authorization.rbac.business.def.action.IDefaultSecurityActionApi;
 import ir.amv.os.vaseline.security.authorization.rbac.business.osgi.BaseApiImpl;
 import ir.amv.os.vaseline.security.authorization.rbac.model.def.action.SecurityActionEntity;
 import ir.amv.os.vaseline.security.authorization.rbac.business.osgi.action.IVaselineSecurityActionApi;
@@ -28,8 +28,8 @@ import javax.transaction.Transactional;
 )
 public class VaselineSecurityActionApiImpl
         extends BaseApiImpl<SecurityActionEntity, IVaselineSecurityActionDao>
-        implements IImplementedSecurityActionApi<SecurityActionEntity, IVaselineSecurityActionDao>,
-        IBaseImplementedCrudApi<SecurityActionEntity, Long, IVaselineSecurityActionDao>,
+        implements IDefaultSecurityActionApi<SecurityActionEntity, IVaselineSecurityActionDao>,
+        IDefaultCrudApi<SecurityActionEntity, Long, IVaselineSecurityActionDao>,
         IVaselineSecurityActionApi{
 
     private IVaselineSecurityActionDao dao;
@@ -50,7 +50,7 @@ public class VaselineSecurityActionApiImpl
             VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
     })
     public SecurityActionEntity getActionByTreeName(final String actionTreeName) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionZero<SecurityActionEntity>) () -> {
+        return doBusinessAction((IBusinessFunctionNoArg<SecurityActionEntity>) () -> {
             SecurityActionEntity findById = getDao().getByActionTreeName(actionTreeName);
             postGet(findById);
             return findById;

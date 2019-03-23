@@ -2,7 +2,7 @@ package ir.amv.os.vaseline.security.authentication.spring.sec.osgi.server;
 
 import ir.amv.os.vaseline.security.authentication.service.api.server.base.IBaseUserService;
 import ir.amv.os.vaseline.security.authentication.spring.sec.api.config.IUserPermissionsProvider;
-import ir.amv.os.vaseline.security.authentication.spring.sec.def.IImplementedUserDetailsService;
+import ir.amv.os.vaseline.security.authentication.spring.sec.def.IDefaultUserDetailsService;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
         service = UserDetailsService.class
 )
 public class VaselineUserDetailsService
-        implements UserDetailsService, IImplementedUserDetailsService {
+        implements UserDetailsService, IDefaultUserDetailsService {
     private IBaseUserService baseUserService;
     private IUserPermissionsProvider userPermissionsProvider;
 

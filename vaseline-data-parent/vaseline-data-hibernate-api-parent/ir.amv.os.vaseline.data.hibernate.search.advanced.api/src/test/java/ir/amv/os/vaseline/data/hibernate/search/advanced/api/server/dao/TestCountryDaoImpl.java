@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.hibernate.search.advanced.api.server.dao;
 
-import ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.crud.IBaseImplementedHibernateCrudDao;
+import ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.crud.IDefaultHibernateCrudDao;
 import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
 import ir.amv.os.vaseline.data.test.model.shared.searchobject.ITestCountrySearchObject;
 import org.hibernate.SessionFactory;
@@ -9,8 +9,8 @@ import javax.inject.Inject;
 
 public class TestCountryDaoImpl
         implements ITestCountryDao,
-        IBaseImplementedHibernateCrudDao<TestCountryEntity, Long>,
-        IBaseImplementedHibernateAdvancedSearchDao<TestCountryEntity, ITestCountrySearchObject, Long>{
+        IDefaultHibernateCrudDao<TestCountryEntity, Long>,
+        IDefaultHibernateAdvancedSearchDao<TestCountryEntity, ITestCountrySearchObject, Long> {
 
     private SessionFactory sessionFactory;
 

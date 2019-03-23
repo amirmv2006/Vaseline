@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.security.authorization.rbac.business.osgi.action.defimpl;
 
 import ir.amv.os.vaseline.security.authorization.basic.api.server.api.IAuthorizationActionApi;
-import ir.amv.os.vaseline.security.authorization.rbac.business.def.action.IImplementedAuthorizationActionApi;
+import ir.amv.os.vaseline.security.authorization.rbac.business.def.action.IDefaultAuthorizationActionApi;
 import ir.amv.os.vaseline.security.authorization.rbac.dao.api.action.ISecurityActionDao;
 import ir.amv.os.vaseline.security.authorization.rbac.dao.jpa.osgi.action.IVaselineSecurityActionDao;
 import org.osgi.service.component.annotations.Component;
@@ -15,7 +15,7 @@ import org.osgi.service.component.annotations.Reference;
         service = IAuthorizationActionApi.class
 )
 public class VaselineAuthorizationActionApiImpl
-        implements IImplementedAuthorizationActionApi,
+        implements IDefaultAuthorizationActionApi,
         IAuthorizationActionApi {
     private IVaselineSecurityActionDao dao;
 

@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class TestCountryDaoImpl
-        implements IBaseImplementedHibernateSimpleSearchDao<TestCountryEntity, TestCountryDto, Long>, ITestCountryDao {
+        implements IDefaultHibernateSimpleSearchDao<TestCountryEntity, TestCountryDto, Long>, ITestCountryDao {
 
     private SessionFactory sessionFactory;
 

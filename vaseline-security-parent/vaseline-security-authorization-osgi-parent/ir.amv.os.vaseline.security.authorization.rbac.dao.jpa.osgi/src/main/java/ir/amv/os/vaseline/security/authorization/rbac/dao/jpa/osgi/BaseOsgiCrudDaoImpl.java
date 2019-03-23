@@ -2,7 +2,7 @@ package ir.amv.os.vaseline.security.authorization.rbac.dao.jpa.osgi;
 
 import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.data.dao.basic.api.server.base.defimpl.BaseDaoImpl;
-import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.crud.IBaseImplementedJpaCrudDao;
+import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.crud.IDefaultJpaCrudDao;
 import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.vendorspecific.IVendorSpecificDaoHelper;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.osgi.service.component.annotations.Reference;
@@ -21,7 +21,7 @@ import java.util.UUID;
  */
 public class BaseOsgiCrudDaoImpl<E extends IBaseEntity<Long>>
         extends BaseDaoImpl
-        implements IBaseImplementedJpaCrudDao<E, Long> {
+        implements IDefaultJpaCrudDao<E, Long> {
 
     // list didn't work because remove will call equals which needs a tx :\
     private Map<String, EntityManager> emMap = new HashMap<>();

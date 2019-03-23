@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.authorization.rbac.dao.jpa.osgi.role.defimpl;
 
-import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.crud.IBaseImplementedJpaCrudDao;
+import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.crud.IDefaultJpaCrudDao;
 import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.criteriaabstractor.IJpaCriteriaPrunerFunctionalInterface;
 import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.criteriaabstractor.JpaFetchProviderFacade;
 import ir.amv.os.vaseline.security.authorization.rbac.model.def.role.SecurityRoleEntity;
@@ -18,7 +18,7 @@ import org.osgi.service.component.annotations.Component;
 public class VaselineSecurityRoleOsgiCrudDaoImpl
         extends BaseOsgiCrudDaoImpl<SecurityRoleEntity>
         implements
-        IBaseImplementedJpaCrudDao<SecurityRoleEntity, Long>,
+        IDefaultJpaCrudDao<SecurityRoleEntity, Long>,
         IVaselineSecurityRoleDao {
     @Override
     public SecurityRoleEntity getByRoleName(final String roleName) {

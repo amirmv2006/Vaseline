@@ -2,7 +2,7 @@ package ir.amv.os.vaseline.security.authorization.rbac.dao.jpa.osgi.action.defim
 
 import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.criteriaabstractor.IJpaCriteriaPrunerFunctionalInterface;
 import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.criteriaabstractor.JpaFetchProviderFacade;
-import ir.amv.os.vaseline.security.authorization.rbac.dao.def.jpa.action.IImplementedSecurityActionJpaDao;
+import ir.amv.os.vaseline.security.authorization.rbac.dao.def.jpa.action.IDefaultSecurityActionJpaDao;
 import ir.amv.os.vaseline.security.authorization.rbac.model.def.action.SecurityActionEntity;
 import ir.amv.os.vaseline.security.authorization.rbac.dao.jpa.osgi.BaseOsgiCrudDaoImpl;
 import ir.amv.os.vaseline.security.authorization.rbac.dao.jpa.osgi.action.IVaselineSecurityActionDao;
@@ -17,7 +17,7 @@ import org.osgi.service.component.annotations.Component;
 )
 public class VaselineSecurityActionOsgiCrudDaoImpl
         extends BaseOsgiCrudDaoImpl<SecurityActionEntity>
-        implements IImplementedSecurityActionJpaDao<SecurityActionEntity>,
+        implements IDefaultSecurityActionJpaDao<SecurityActionEntity>,
         IVaselineSecurityActionDao {
 
     @Override

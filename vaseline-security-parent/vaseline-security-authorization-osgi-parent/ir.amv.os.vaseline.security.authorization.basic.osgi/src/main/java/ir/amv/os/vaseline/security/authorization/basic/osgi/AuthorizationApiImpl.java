@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.security.authorization.basic.osgi;
 
 import ir.amv.os.vaseline.security.authentication.basic.api.server.IAuthenticationApi;
-import ir.amv.os.vaseline.security.authorization.basic.def.server.IImplementedAuthorizationApi;
+import ir.amv.os.vaseline.security.authorization.basic.def.server.IDefaultAuthorizationApi;
 import ir.amv.os.vaseline.security.authorization.basic.api.server.api.IAuthorizationApi;
 import ir.amv.os.vaseline.security.authorization.basic.api.server.api.INoAuthAuthorizationApi;
 import org.osgi.service.component.annotations.Component;
@@ -15,7 +15,7 @@ import org.osgi.service.component.annotations.Reference;
         service = IAuthorizationApi.class
 )
 public class AuthorizationApiImpl
-        implements IImplementedAuthorizationApi,
+        implements IDefaultAuthorizationApi,
         IAuthorizationApi {
     private IAuthenticationApi authenticationApi;
     private INoAuthAuthorizationApi noAuthAuthorizationApi;

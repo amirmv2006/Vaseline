@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import javax.inject.Inject;
 
 public class TestFilePathDao
-        implements IImplementedVaselineFilePathHibernateDao {
+        implements IDefaultVaselineFilePathHibernateDao {
     private SessionFactory sessionFactory;
     private String baseFilePath;
 

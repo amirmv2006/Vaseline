@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.ws.rest.gson.ext.osgi;
 
 import ir.amv.os.vaseline.basics.json.api.server.converter.IVaselineJsonConverter;
-import ir.amv.os.vaseline.ws.rest.basic.def.multiparam.jaxrs.IBaseImplementedMultiparamJsonReader;
-import ir.amv.os.vaseline.ws.rest.basic.def.multiparam.jaxrs.IBaseImplementedMultiparamJsonWriter;
+import ir.amv.os.vaseline.ws.rest.basic.def.multiparam.jaxrs.IDefaultMultiparamJsonReader;
+import ir.amv.os.vaseline.ws.rest.basic.def.multiparam.jaxrs.IDefaultMultiparamJsonWriter;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
@@ -29,7 +29,7 @@ import javax.ws.rs.ext.Provider;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class VaselineOSGiMultiparamHandler implements MessageBodyWriter<Object>,
-        MessageBodyReader<Object>, IBaseImplementedMultiparamJsonReader, IBaseImplementedMultiparamJsonWriter {
+        MessageBodyReader<Object>, IDefaultMultiparamJsonReader, IDefaultMultiparamJsonWriter {
 
     private IVaselineJsonConverter vaselineJsonConverter;
 

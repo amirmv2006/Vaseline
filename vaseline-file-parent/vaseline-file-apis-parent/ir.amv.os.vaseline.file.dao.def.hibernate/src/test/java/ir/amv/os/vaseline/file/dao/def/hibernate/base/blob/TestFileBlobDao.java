@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import javax.inject.Inject;
 
 public class TestFileBlobDao
-        implements IImplementedVaselineFileBlobHibernateDao{
+        implements IDefaultVaselineFileBlobHibernateDao {
     private SessionFactory sessionFactory;
 
     @Override

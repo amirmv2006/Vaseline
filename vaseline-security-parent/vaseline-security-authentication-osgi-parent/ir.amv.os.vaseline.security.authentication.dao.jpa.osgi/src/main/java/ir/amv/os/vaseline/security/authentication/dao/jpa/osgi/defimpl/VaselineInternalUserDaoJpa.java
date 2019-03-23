@@ -1,9 +1,9 @@
 package ir.amv.os.vaseline.security.authentication.dao.jpa.osgi.defimpl;
 
-import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.crud.IBaseImplementedJpaCrudDao;
+import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.crud.IDefaultJpaCrudDao;
 import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.vendorspecific.IVendorSpecificDaoHelper;
 import ir.amv.os.vaseline.security.authentication.dao.basic.api.server.base.IBaseUserDao;
-import ir.amv.os.vaseline.security.authentication.dao.def.jpa.server.base.IImplementedBaseUserJpaDao;
+import ir.amv.os.vaseline.security.authentication.dao.def.jpa.server.base.IDefaultBaseUserJpaDao;
 import ir.amv.os.vaseline.security.authentication.model.def.server.base.VaselineInternalUserEntity;
 import ir.amv.os.vaseline.security.authentication.dao.jpa.osgi.IVaselineInternalUserDao;
 import org.osgi.service.component.annotations.Component;
@@ -30,8 +30,8 @@ import java.util.UUID;
 )
 public class VaselineInternalUserDaoJpa
         implements IVaselineInternalUserDao,
-        IImplementedBaseUserJpaDao<VaselineInternalUserEntity>,
-        IBaseImplementedJpaCrudDao<VaselineInternalUserEntity, Long> {
+        IDefaultBaseUserJpaDao<VaselineInternalUserEntity>,
+        IDefaultJpaCrudDao<VaselineInternalUserEntity, Long> {
     // list didn't work because remove will call equals which needs a tx :\
     private Map<String, EntityManager> emMap = new HashMap<>();
     private IVendorSpecificDaoHelper vendorSpecificDaoHelper;

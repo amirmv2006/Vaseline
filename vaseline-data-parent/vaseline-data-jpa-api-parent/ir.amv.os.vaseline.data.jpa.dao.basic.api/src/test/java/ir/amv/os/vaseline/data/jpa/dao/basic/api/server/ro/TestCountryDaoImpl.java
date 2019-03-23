@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro;
 
-import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.crud.IBaseImplementedJpaCrudDao;
+import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.crud.IDefaultJpaCrudDao;
 import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.vendorspecific.IVendorSpecificDaoHelper;
 import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
 
@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 public class TestCountryDaoImpl
-        implements IBaseImplementedJpaCrudDao<TestCountryEntity, Long>, ITestCountryDao {
+        implements IDefaultJpaCrudDao<TestCountryEntity, Long>, ITestCountryDao {
 
     private EntityManager em;
     private IVendorSpecificDaoHelper vendorSpecificDaoHelper;

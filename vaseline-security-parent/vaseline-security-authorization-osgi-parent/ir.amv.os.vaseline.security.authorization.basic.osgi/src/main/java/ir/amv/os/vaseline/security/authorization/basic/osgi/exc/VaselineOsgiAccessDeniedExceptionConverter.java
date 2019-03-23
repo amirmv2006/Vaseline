@@ -6,7 +6,7 @@ import ir.amv.os.vaseline.basics.core.api.server.base.exc.handler.ICoreException
 import ir.amv.os.vaseline.basics.i18n.api.server.message.translator.IVaselineMessageTranslator;
 import ir.amv.os.vaseline.security.authorization.basic.api.server.exception.VaselineAccessDeniedException;
 import ir.amv.os.vaseline.security.authorization.basic.api.shared.VaselineClientAccessDeniedException;
-import ir.amv.os.vaseline.security.authorization.basic.def.server.exc.IImplementedVaselineAccessDeniedExceptionConverter;
+import ir.amv.os.vaseline.security.authorization.basic.def.server.exc.IDefaultVaselineAccessDeniedExceptionConverter;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -19,7 +19,7 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class VaselineOsgiAccessDeniedExceptionConverter
         extends BaseExceptionConverterImpl<VaselineAccessDeniedException, VaselineClientAccessDeniedException>
-        implements IImplementedVaselineAccessDeniedExceptionConverter {
+        implements IDefaultVaselineAccessDeniedExceptionConverter {
 
     @Override
     @Reference

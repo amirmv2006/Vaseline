@@ -5,7 +5,7 @@ import ir.amv.os.vaseline.basics.core.api.server.proxyaware.defimpl.ProxyAwareIm
 import ir.amv.os.vaseline.basics.logging.api.server.logger.IVaselineLogger;
 import ir.amv.os.vaseline.business.basic.api.server.action.executor.IVaselineBusinessActionExecutor;
 import ir.amv.os.vaseline.security.audit.basic.api.server.IAuditApi;
-import ir.amv.os.vaseline.security.audit.def.log.server.basic.IImplementedAuditLogApi;
+import ir.amv.os.vaseline.security.audit.def.log.server.basic.IDefaultAuditLogApi;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -21,7 +21,7 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class VaselineAuditLogImpl
         extends ProxyAwareImpl
-        implements IAuditApi, IImplementedAuditLogApi{
+        implements IAuditApi, IDefaultAuditLogApi {
 
     private IVaselineLogger vaselineLogger;
     private IVaselineBusinessActionExecutor businessActionExecutor;

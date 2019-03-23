@@ -2,7 +2,7 @@ package ir.amv.os.vaseline.security.authentication.basic.osgi;
 
 import ir.amv.os.vaseline.security.authentication.basic.api.server.IAuthenticationApi;
 import ir.amv.os.vaseline.security.authentication.basic.def.listener.ICurrentUserListener;
-import ir.amv.os.vaseline.security.authentication.basic.def.server.IImplementedThreadLocalAuthenticationApi;
+import ir.amv.os.vaseline.security.authentication.basic.def.server.IDefaultThreadLocalAuthenticationApi;
 import ir.amv.os.vaseline.security.authentication.basic.def.server.ISetAuthenticationApi;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
@@ -26,7 +26,7 @@ import java.util.List;
         }
 )
 public class VaselineThreadLocalAuthenticationApiImpl
-        implements IImplementedThreadLocalAuthenticationApi, IAuthenticationApi {
+        implements IDefaultThreadLocalAuthenticationApi, IAuthenticationApi {
 
     private ThreadLocal<String> currentUsernameThreadLocal = new InheritableThreadLocal<>();
     private List<ICurrentUserListener> currentUserListeners = new ArrayList<>();

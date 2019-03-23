@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class TestCountryDaoImpl
-        implements IBaseImplementedHibernateReadOnlyDao<TestCountryEntity, Long>, ITestCountryDao {
+        implements IDefaultHibernateReadOnlyDao<TestCountryEntity, Long>, ITestCountryDao {
 
     private SessionFactory sessionFactory;
 
