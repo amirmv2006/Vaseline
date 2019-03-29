@@ -32,25 +32,15 @@
     <dependencies>
         <!-- test deps -->
         <dependency>
-            <groupId>com.github.amirmv2006.basics.osgi</groupId>
-            <artifactId>ir.amv.os.vaseline.basics.testing.osgi</artifactId>
+            <groupId>com.github.amirmv2006.testing.integration</groupId>
+            <artifactId>ir.amv.os.vaseline.testing.integration.bundle.checker</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- pax exam -->
         <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-container-karaf</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-junit4</artifactId>
+            <groupId>com.github.amirmv2006.thirdparty</groupId>
+            <artifactId>vaseline-it-karaf-helper</artifactId>
+            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

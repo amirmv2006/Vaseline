@@ -1,7 +1,8 @@
 package ir.amv.os.vaseline.basics.karaf.feature;
 
 import ir.amv.os.vaseline.basics.logging.api.server.logger.IVaselineLogger;
-import ir.amv.os.vaseline.basics.testing.osgi.util.BundleServiceChecker;
+import ir.amv.os.vaseline.testing.integration.bundle.checker.BundleServiceChecker;
+import ir.amv.os.vaseline.thirdparty.it.karaf.helper.AbstractVaselineKarafIntegrationTest;
 import org.junit.Test;
 import org.osgi.framework.InvalidSyntaxException;
 
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertNotNull;
 /**
  * @author Amir
  */
-public class VaselineLoggingServiceLogFeatureIntegrationTest extends AbstractVaselineBasicsIntegrationTest {
+public class VaselineLoggingServiceLogFeatureIntegrationTest extends AbstractVaselineKarafIntegrationTest {
 
     @Test
     public void testLoggingServiceFeature() throws InvalidSyntaxException, ClassNotFoundException,

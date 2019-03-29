@@ -1,7 +1,8 @@
 package ir.amv.os.vaseline.basics.karaf.feature;
 
 import ir.amv.os.vaseline.basics.logging.api.server.logger.IVaselineLogger;
-import ir.amv.os.vaseline.basics.testing.osgi.util.BundleServiceChecker;
+import ir.amv.os.vaseline.testing.integration.bundle.checker.BundleServiceChecker;
+import ir.amv.os.vaseline.thirdparty.it.karaf.helper.AbstractVaselineKarafIntegrationTest;
 import org.junit.Test;
 import org.osgi.framework.InvalidSyntaxException;
 
@@ -20,7 +21,7 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 /**
  * @author Amir
  */
-public class VaselineSlf4jLogFeatureIntegrationTest extends AbstractVaselineBasicsIntegrationTest {
+public class VaselineSlf4jLogFeatureIntegrationTest extends AbstractVaselineKarafIntegrationTest {
 
     @Test
     public void testSlf4jFeature() throws InvalidSyntaxException, ClassNotFoundException, InterruptedException {

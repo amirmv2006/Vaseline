@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.service.osgi.feature;
 
-import ir.amv.os.vaseline.basics.testing.osgi.util.AbstractBundleChecker;
-import ir.amv.os.vaseline.basics.testing.osgi.util.BundleStartedChecker;
+import ir.amv.os.vaseline.testing.integration.bundle.checker.AbstractBundleChecker;
+import ir.amv.os.vaseline.testing.integration.bundle.checker.BundleStartedChecker;
 import org.junit.Test;
 import org.osgi.framework.InvalidSyntaxException;
 

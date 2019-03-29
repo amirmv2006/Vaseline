@@ -48,9 +48,9 @@ public interface IDefaultVaselineLogger
             boolean interrupt = false;
             try {
                 log = logCategorizer.prepareLog(source, category, logLevel, formattedMessage, args);
-            } catch (LogInterruptOthersException ignored) {
+            } catch (LogInterruptOthersException logInterruptExc) {
                 interrupt = true;
-                log = ignored.getLogMessage();
+                log = logInterruptExc.getLogMessage();
             }
             if (log != null) {
                 doLogWithCategory(logCategorizer.getLoggerFor(source, category), category, logLevel, log);
@@ -65,6 +65,10 @@ public interface IDefaultVaselineLogger
     default String toLogString(Object object) {
         if (object == null) {
             return "null";
+        }
+        if (object instanceof ILogObject) { // first priority, instance of ILogObject
+            ILogObject logObject = (ILogObject) object;
+            return logObject.toLogString();
         }
         if (object instanceof Iterable) {
             Iterable iterable = (Iterable) object;
@@ -86,10 +90,6 @@ public interface IDefaultVaselineLogger
                 sb.append(ELEMENT_SEPARATOR);
             }
             return sb.substring(0, sb.length() - ELEMENT_SEPARATOR.length()) + "}";
-        }
-        if (object instanceof ILogObject) {
-            ILogObject logObject = (ILogObject) object;
-            return logObject.toLogString();
         }
         return object.toString();// maybe change this to json (there might be a loop)?
     }

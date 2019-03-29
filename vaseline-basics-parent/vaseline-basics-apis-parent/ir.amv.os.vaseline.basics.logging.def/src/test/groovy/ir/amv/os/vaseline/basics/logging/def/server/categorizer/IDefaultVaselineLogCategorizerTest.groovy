@@ -10,7 +10,7 @@ import static ir.amv.os.vaseline.basics.logging.api.server.logger.VaselineLogLev
 class IDefaultVaselineLogCategorizerTest extends Specification {
     def "Priority"() {
         given:
-        def underTest = new TestInnerIDefaultVaselineLogCategorizer()
+        IDefaultVaselineLogCategorizer underTest = Spy(IDefaultVaselineLogCategorizer)
         when:
         def result = underTest.priority()
         then:
@@ -20,7 +20,7 @@ class IDefaultVaselineLogCategorizerTest extends Specification {
     @Unroll
     def "GetLoggerFor for name='#name', category='#category'"() {
         given:
-        def underTest = new TestInnerIDefaultVaselineLogCategorizer()
+        def underTest = Spy(IDefaultVaselineLogCategorizer)
         when:
         def result = underTest.getLoggerFor(name, category)
         then:
@@ -34,7 +34,7 @@ class IDefaultVaselineLogCategorizerTest extends Specification {
     @Unroll
     def "PrepareLog for source='#source', category='#category', level='#level', msgFormat='#format', args='#args'"() {
         given:
-        def underTest = new TestInnerIDefaultVaselineLogCategorizer()
+        def underTest = Spy(IDefaultVaselineLogCategorizer)
         when:
         def result = underTest.prepareLog(source, category, level, msgFormat, args)
         then:
@@ -46,8 +46,4 @@ class IDefaultVaselineLogCategorizerTest extends Specification {
         "an arg message"                | ""        | "category"    | DEBUG     | "an %s message"           | "arg"
     }
 
-    class TestInnerIDefaultVaselineLogCategorizer
-            implements IDefaultVaselineLogCategorizer {
-
-    }
 }

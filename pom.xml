@@ -38,6 +38,7 @@
     </scm>
     <modules>
         <module>vaseline-parents-parent</module>
+        <module>vaseline-testing-parent</module>
         <module>vaseline-thirdparty</module>
         <module>vaseline-basics-parent</module>
         <module>vaseline-data-parent</module>

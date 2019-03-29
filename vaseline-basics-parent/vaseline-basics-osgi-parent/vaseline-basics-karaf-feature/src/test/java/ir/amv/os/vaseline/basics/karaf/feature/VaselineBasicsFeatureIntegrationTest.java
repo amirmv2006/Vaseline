@@ -11,10 +11,13 @@ import ir.amv.os.vaseline.basics.json.api.server.converter.IVaselineJsonConverte
 import ir.amv.os.vaseline.basics.logging.api.server.categorizer.IVaselineLogCategorizer;
 import ir.amv.os.vaseline.basics.logging.api.server.logger.IVaselineLogger;
 import ir.amv.os.vaseline.basics.mapper.api.server.objmapper.IVaselineObjectMapper;
-import ir.amv.os.vaseline.basics.testing.osgi.util.AbstractBundleChecker;
-import ir.amv.os.vaseline.basics.testing.osgi.util.BundleServiceChecker;
-import ir.amv.os.vaseline.basics.testing.osgi.util.BundleStartedChecker;
+import ir.amv.os.vaseline.testing.integration.bundle.checker.AbstractBundleChecker;
+import ir.amv.os.vaseline.testing.integration.bundle.checker.AbstractVaselineKarafIntegrationTestBasics;
+import ir.amv.os.vaseline.testing.integration.bundle.checker.BundleServiceChecker;
+import ir.amv.os.vaseline.testing.integration.bundle.checker.BundleStartedChecker;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.junit.PaxExam;
 import org.osgi.framework.InvalidSyntaxException;
 
 import javax.validation.Validator;
@@ -28,7 +31,8 @@ import static org.junit.Assert.assertNotNull;
 /**
  * @author Amir
  */
-public class VaselineBasicsFeatureIntegrationTest extends AbstractVaselineBasicsIntegrationTest {
+@RunWith(PaxExam.class)
+public class VaselineBasicsFeatureIntegrationTest extends AbstractVaselineKarafIntegrationTestBasics {
 
     @Test
     public void testBasicFeature() throws InvalidSyntaxException, ClassNotFoundException, InterruptedException {
