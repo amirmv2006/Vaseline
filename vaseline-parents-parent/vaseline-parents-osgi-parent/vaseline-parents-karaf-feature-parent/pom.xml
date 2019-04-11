@@ -15,6 +15,7 @@
 
     <properties>
         <feature.file.name>${project.artifactId}.xml</feature.file.name>
+        <depends-maven-plugin.version>1.2</depends-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -31,12 +32,6 @@
 
     <dependencies>
         <!-- test deps -->
-        <dependency>
-            <groupId>com.github.amirmv2006.testing.integration</groupId>
-            <artifactId>ir.amv.os.vaseline.testing.integration.bundle.checker</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.thirdparty</groupId>
             <artifactId>vaseline-it-karaf-helper</artifactId>
@@ -125,10 +120,8 @@
                         <systemProperties>
                             <org.apache.karaf.groupId>org.apache.karaf</org.apache.karaf.groupId>
                             <org.apache.karaf.artifactId>apache-karaf</org.apache.karaf.artifactId>
-                            <org.apache.karaf.version>${karaf.version}</org.apache.karaf.version>
                             <vasline.feature.under.test.groupId>${project.groupId}</vasline.feature.under.test.groupId>
                             <vasline.feature.under.test.artifactId>${project.artifactId}</vasline.feature.under.test.artifactId>
-                            <vasline.feature.under.test.version>${project.version}</vasline.feature.under.test.version>
                         </systemProperties>
                     </configuration>
                     <executions>
@@ -149,8 +142,62 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.servicemix.tooling</groupId>
+                    <artifactId>depends-maven-plugin</artifactId>
+                    <version>${depends-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>generate-depends-file</id>
+                            <goals>
+                                <goal>generate-depends-file</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
+
+    <profiles>
+        <profile>
+            <id>vaseline-karaf-features</id>
+            <activation>
+                <file>
+                    <exists>src/main/feature</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.servicemix.tooling</groupId>
+                        <artifactId>depends-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.karaf.tooling</groupId>
+                        <artifactId>karaf-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+            <dependencies>
+                <dependency>
+                    <groupId>com.github.amirmv2006.testing.integration</groupId>
+                    <artifactId>vaseline-testing-integration-cucumber-karaf</artifactId>
+                    <version>${project.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-jpa_2.1_spec</artifactId>
+                    <version>1.0-alpha-1</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 
 </project>

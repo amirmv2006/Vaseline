@@ -7,3 +7,5 @@
 *.iws
 target/
 
+
+dependency-reduced-pom.xml

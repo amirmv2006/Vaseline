@@ -18,6 +18,10 @@
     <name>vaseline-basics-karaf-feature-feature</name>
     <description>vaseline-basics-karaf-feature details</description>
 
+    <properties>
+        <vaseline-karaf-feature>true</vaseline-karaf-feature>
+    </properties>
+
     <dependencies>
         <!-- add the artifact that should be in the feature in the dependencies set -->
         <dependency>
@@ -70,23 +74,6 @@
             <artifactId>ir.amv.os.vaseline.basics.json.gson.osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.amirmv2006.testing.integration</groupId>
-            <artifactId>vaseline-testing-integration-cucumber-karaf</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.karaf.tooling</groupId>
-                <artifactId>karaf-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>

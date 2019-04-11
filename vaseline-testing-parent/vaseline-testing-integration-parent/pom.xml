@@ -13,7 +13,6 @@
     <artifactId>vaseline-testing-integration-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>ir.amv.os.vaseline.testing.integration.bundle.checker</module>
         <module>vaseline-testing-integration-cucumber-karaf</module>
         <module>cucumber-core-vaseline-patched</module>
     </modules>
