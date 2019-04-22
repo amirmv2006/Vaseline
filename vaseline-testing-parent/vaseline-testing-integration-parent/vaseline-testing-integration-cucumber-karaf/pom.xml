@@ -3,10 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>vaseline-parents-common-depmanager</artifactId>
-        <groupId>com.github.amirmv2006.parents.common</groupId>
+        <artifactId>vaseline-parents-osgi-depmanager</artifactId>
+        <groupId>com.github.amirmv2006.parents.osgi</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../../vaseline-parents-parent/vaseline-parents-common-parent/vaseline-parents-common-depmanager/pom.xml</relativePath>
+        <relativePath>../../../vaseline-parents-parent/vaseline-parents-osgi-parent/vaseline-parents-osgi-depmanager/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,13 +15,17 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.github.amirmv2006.testing.integration</groupId>
+            <artifactId>cucumber-core-vaseline-patched</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
             <artifactId>pax-exam-container-karaf</artifactId>
-            <version>4.13.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>javax.inject</groupId>
@@ -30,18 +34,14 @@
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
             <artifactId>pax-exam-junit4</artifactId>
-            <version>4.13.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
-            <version>6.0.0</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>4.2.5</version>
             <exclusions>
                 <exclusion>
                     <groupId>io.cucumber</groupId>
@@ -52,7 +52,6 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>4.2.5</version>
             <exclusions>
                 <exclusion>
                     <groupId>io.cucumber</groupId>
@@ -61,19 +60,12 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.testing.integration</groupId>
-            <artifactId>cucumber-core-vaseline-patched</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.ops4j.pax.url</groupId>
             <artifactId>pax-url-aether</artifactId>
-            <version>2.5.2</version>
         </dependency>
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
-            <version>3.2.4</version>
         </dependency>
     </dependencies>
 </project>
