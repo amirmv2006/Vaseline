@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.business.apis</groupId>
-            <artifactId>vaseline-business-basic-layerimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.business.basic.def</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

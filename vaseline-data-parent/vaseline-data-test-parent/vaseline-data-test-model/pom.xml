@@ -11,25 +11,39 @@
 
     <artifactId>vaseline-data-test-model</artifactId>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>1.10.7</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>1.4</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.data.apis</groupId>
-            <artifactId>vaseline-basic-dao-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.data.dao.basic.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.data.apis</groupId>
-            <artifactId>vaseline-simple-search-dao-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.data.search.simple.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.data.apis</groupId>
-            <artifactId>vaseline-advanced-search-dao-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.data.search.advanced.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.basics.apis</groupId>
-            <artifactId>vaseline-entity-jpa-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.dao.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -52,12 +66,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>${org.springframework.boot.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>el-api</artifactId>
@@ -72,12 +84,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>${org.springframework.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
-            <version>${org.springframework.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -86,7 +96,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.192</version>
         </dependency>
         <dependency>
             <groupId>commons-dbcp</groupId>
@@ -95,17 +104,10 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.1.4</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.5</version>
         </dependency>
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>postgresql</artifactId>
-            <version>1.4.3</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-io</artifactId>

@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.basics.apis</groupId>
-            <artifactId>vaseline-validation-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.validation.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -28,7 +28,7 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
         </dependency>
         <dependency>

@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.file.hibernate.spring.server.dao.base;
 
-import ir.amv.os.vaseline.file.apis.daoimpl.hibernate.server.base.blob.IImplementedVaselineFileBlobHibernateDao;
+import ir.amv.os.vaseline.file.dao.def.hibernate.base.blob.IDefaultVaselineFileBlobHibernateDao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Amir
  */
 public class VaselineFileBlobHibernateDaoImpl
-        implements IImplementedVaselineFileBlobHibernateDao {
+        implements IDefaultVaselineFileBlobHibernateDao {
 
     private SessionFactory sessionFactory;
 

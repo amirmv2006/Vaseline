@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.server.listener;
 
-import ir.amv.os.vaseline.basics.apis.core.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.security.apis.authentication.business.server.base.IBaseUserApi;
+import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.security.authentication.business.api.server.base.IBaseUserApi;
 import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.server.util.SpringSecurityAuthenticationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;

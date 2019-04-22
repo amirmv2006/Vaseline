@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.permissions.condition;
 
-import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.IUserPermissionsProvider;
+import ir.amv.os.vaseline.security.authentication.spring.sec.api.config.IUserPermissionsProvider;
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;

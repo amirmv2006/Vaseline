@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import ir.amv.os.vaseline.basics.apis.json.server.converter.IVaselineJsonConverter;
+import ir.amv.os.vaseline.basics.json.api.server.converter.IVaselineJsonConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Writer;

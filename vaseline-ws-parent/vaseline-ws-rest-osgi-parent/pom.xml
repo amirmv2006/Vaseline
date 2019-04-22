@@ -3,10 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>vaseline-bundle-parent</artifactId>
-        <groupId>com.github.amirmv2006.commonosgi.bundles</groupId>
+        <artifactId>vaseline-parents-bundle-parent</artifactId>
+        <groupId>com.github.amirmv2006.parents.osgi</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../vaseline-commonosgi-parent/vaseline-commonosgi-bundles-parent/vaseline-bundle-parent/pom.xml</relativePath>
+        <relativePath>../../vaseline-parents-parent/vaseline-parents-osgi-parent/vaseline-parents-bundle-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -14,15 +14,24 @@
     <artifactId>vaseline-ws-rest-osgi-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-ws-rest-jersey-osgi</module>
-        <module>vaseline-ws-rest-gson-extension-osgi</module>
-        <module>vaseline-ws-rest-secured-spring-sec-osgi</module>
-        <module>vaseline-ws-rest-secured-oauth2-osgi</module>
-        <module>vaseline-ws-rest-client-jersey-osgi</module>
-        <module>vaseline-ws-rest-secured-oauth2-cache-hazelcast-osgi</module>
-        <module>vaseline-ws-rest-authorization-basic-osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.jersey.publisher.osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.gson.ext.osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.secured.spring.osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.secured.oauth2.osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.client.jersey.osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.secured.oauth2.cache.hazelcast.osgi</module>
+        <module>ir.amv.os.vaseline.ws.rest.authorization.basic.osgi</module>
         <module>vaseline-ws-rest-karaf-feature</module>
     </modules>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
+    </dependencies>
 </project>

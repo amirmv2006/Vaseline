@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.data.apis.search.advanced.maven.plugin.classconverter.impl;
 
-import ir.amv.os.vaseline.basics.apis.dao.server.ent.BaseEntityImpl;
+import ir.amv.os.vaseline.basics.dao.api.server.ent.BaseEntityImpl;
 import ir.amv.os.vaseline.data.apis.search.advanced.maven.plugin.fqnconverter.impl.FqnEntityToISOConverterImpl;
-import ir.amv.os.vaseline.data.apis.search.advanced.server.model.IBaseSearchObject;
+import ir.amv.os.vaseline.data.search.advanced.api.server.model.IBaseSearchObject;
 import org.jboss.forge.roaster.Roaster;
 import org.jboss.forge.roaster.model.Field;
 import org.jboss.forge.roaster.model.source.FieldSource;

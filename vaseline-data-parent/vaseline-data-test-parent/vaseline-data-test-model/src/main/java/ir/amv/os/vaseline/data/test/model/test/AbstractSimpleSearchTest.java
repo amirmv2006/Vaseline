@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.data.test.model.test;
 
-import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.apis.core.shared.base.dto.sort.SortDto;
-import ir.amv.os.vaseline.data.apis.search.simple.server.ro.IBaseSimpleSearchDao;
+import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.shared.base.dto.sort.SortDto;
+import ir.amv.os.vaseline.data.search.simple.api.server.ro.IBaseSimpleSearchDao;
 import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
 import ir.amv.os.vaseline.data.test.model.shared.dto.TestCityDto;
 import ir.amv.os.vaseline.data.test.model.shared.dto.TestContinentDto;

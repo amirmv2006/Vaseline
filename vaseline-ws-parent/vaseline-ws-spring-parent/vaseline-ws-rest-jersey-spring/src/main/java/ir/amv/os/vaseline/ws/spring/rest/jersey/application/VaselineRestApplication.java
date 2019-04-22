@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.ws.spring.rest.jersey.application;
 
-import ir.amv.os.vaseline.ws.rest.apis.basic.layer.base.IBaseRestService;
+import ir.amv.os.vaseline.ws.rest.basic.api.base.IBaseRestService;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

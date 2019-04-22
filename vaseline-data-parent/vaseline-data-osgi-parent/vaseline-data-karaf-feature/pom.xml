@@ -3,20 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>vaseline-karaf-feature-parent</artifactId>
-        <groupId>com.github.amirmv2006.commonosgi.bundles</groupId>
+        <artifactId>vaseline-parents-karaf-feature-parent</artifactId>
+        <groupId>com.github.amirmv2006.parents.osgi</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../../vaseline-commonosgi-parent/vaseline-commonosgi-bundles-parent/vaseline-karaf-feature-parent/pom.xml</relativePath>
+        <relativePath>../../../vaseline-parents-parent/vaseline-parents-osgi-parent/vaseline-parents-karaf-feature-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.amirmv2006.data.osgi</groupId>
     <artifactId>vaseline-data-karaf-feature</artifactId>
     <packaging>jar</packaging>
-
-    <properties>
-        <feature.file.name>vaseline-data-feature.xml</feature.file.name>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -29,36 +25,23 @@
         <dependency>
             <groupId>org.apache.aries.jpa</groupId>
             <artifactId>jpa-features</artifactId>
-            <version>2.6.1</version>
             <classifier>features</classifier>
             <type>xml</type>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.data.jpa</groupId>
-            <artifactId>vaseline-jpa-basic-dao-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.data.jpa.dao.basic.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.data.jpa</groupId>
-            <artifactId>vaseline-jpa-simple-search-dao-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.data.jpa.search.simple.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.data.jpa</groupId>
-            <artifactId>vaseline-jpa-advanced-search-dao-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.data.jpa.search.advanced.api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.karaf.tooling</groupId>
-                <artifactId>karaf-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>

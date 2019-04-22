@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>vaseline-parents-osgi-depmanager</artifactId>
+        <groupId>com.github.amirmv2006.parents.osgi</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../vaseline-parents-osgi-depmanager/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>vaseline-parents-bundle-parent</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <!-- Manifest Header Properties Start -->
+        <bundle.exclude.dependencies>false</bundle.exclude.dependencies>
+        <bundle.symbolic.name>${project.artifactId}</bundle.symbolic.name>
+        <bundle.activator />
+
+        <bundle.import.before.defaults />
+        <bundle.import.defaults />
+        <bundle.import.additional />
+        <bundle.import.pkg>
+            ${bundle.import.before.defaults},
+            ${bundle.import.defaults},
+            ${bundle.import.additional},
+            *
+        </bundle.import.pkg>
+        <bundle.private.pkg>${project.artifactId}*.prv</bundle.private.pkg>
+        <bundle.dynamic.import.pkg />
+
+        <bundle.export.pkg>!*.prv;${bundle.base.pkg}*;-noimport:=true</bundle.export.pkg>
+        <bundle.base.pkg>${project.artifactId}</bundle.base.pkg>
+
+        <bundle.include.resource>{maven-resources}</bundle.include.resource>
+        <bundle.remove.headers>Ignore-Package,Include-Resource,Private-Package,Bundle-DocURL</bundle.remove.headers>
+        <bundle.failok>false</bundle.failok>
+        <!--suppress UnresolvedMavenProperty -->
+        <bundle.import.default.version>[$(version;==;$(@)),$(version;+;$(@)))</bundle.import.default.version>
+        <bundle.include></bundle.include>
+        <bundle.implementation.title>${project.name}</bundle.implementation.title>
+        <!-- Manifest Header Properties End -->
+    </properties>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>3.5.0</version>
+                    <extensions>true</extensions>
+                    <inherited>true</inherited>
+                    <configuration>
+                        <excludeDependencies>${bundle.exclude.dependencies}</excludeDependencies>
+                        <instructions>
+                            <obrRepository>NONE</obrRepository>
+                            <_include>${bundle.include}</_include>
+                            <Bundle-Name>${project.name}</Bundle-Name>
+                            <Bundle-SymbolicName>${bundle.symbolic.name}</Bundle-SymbolicName>
+                            <Bundle-Activator>${bundle.activator}</Bundle-Activator>
+                            <Export-Package>${bundle.export.pkg}</Export-Package>
+                            <Import-Package>${bundle.import.pkg}</Import-Package>
+                            <DynamicImport-Package>${bundle.dynamic.import.pkg}</DynamicImport-Package>
+                            <Private-Package>${bundle.private.pkg}</Private-Package>
+                            <Implementation-Title>${bundle.implementation.title}</Implementation-Title>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Bundle-Vendor>Vaseline</Bundle-Vendor>
+                            <Include-Resource>${bundle.include.resource}</Include-Resource>
+                            <_removeheaders>${bundle.remove.headers}}</_removeheaders>
+                            <_failok>${bundle.failok}</_failok>
+                            <_consumer-policy>${bundle.import.default.version}</_consumer-policy>
+                            <_provider-policy>$&lt;range;[==,=+)&gt;</_provider-policy>
+                            <_dsannotations-options>inherit</_dsannotations-options>
+                        </instructions>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>3.5.0</version>
+                <extensions>true</extensions>
+                <inherited>true</inherited>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>ianal-maven-plugin</artifactId>
+                <version>1.0-alpha-1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>verify-legal-files</goal>
+                        </goals>
+                        <configuration>
+                            <strict>false</strict> <!-- Workaround for build failure even when legal files are there -->
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

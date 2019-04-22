@@ -1,11 +1,11 @@
 package ir.amv.os.vaseline.file.layers.spring.basic.server.api;
 
-import ir.amv.os.vaseline.basics.apis.core.server.proxyaware.defimpl.ProxyAwareImpl;
-import ir.amv.os.vaseline.business.apis.basic.layer.server.action.executor.IVaselineBusinessActionExecutor;
-import ir.amv.os.vaseline.file.apis.business.server.daofinder.IVaselineFileDaoFinder;
-import ir.amv.os.vaseline.file.apis.businessimpl.server.IImplementedVaselineFileApi;
-import ir.amv.os.vaseline.file.apis.dao.basic.server.IVaselineFileDao;
-import ir.amv.os.vaseline.security.apis.authentication.basic.server.IAuthenticationApi;
+import ir.amv.os.vaseline.basics.core.api.server.proxyaware.defimpl.ProxyAwareImpl;
+import ir.amv.os.vaseline.business.basic.api.server.action.executor.IVaselineBusinessActionExecutor;
+import ir.amv.os.vaseline.file.business.api.daofinder.IVaselineFileDaoFinder;
+import ir.amv.os.vaseline.file.business.def.IDefaultVaselineFileApi;
+import ir.amv.os.vaseline.file.dao.basic.api.IVaselineFileDao;
+import ir.amv.os.vaseline.security.authentication.basic.api.server.IAuthenticationApi;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class VaselineFileApiImpl
         extends ProxyAwareImpl
-        implements IImplementedVaselineFileApi {
+        implements IDefaultVaselineFileApi {
 
     private IAuthenticationApi authenticationApi;
     private List<IVaselineFileDao> fileDaoList;

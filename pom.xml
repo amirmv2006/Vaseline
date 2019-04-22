@@ -2,6 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>2.1.3.RELEASE</version>
+        <relativePath/>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.amirmv2006</groupId>
@@ -31,7 +37,8 @@
         <developerConnection>scm:git:git@github.com:amirmv2006/Vaseline.git</developerConnection>
     </scm>
     <modules>
-        <module>vaseline-commonosgi-parent</module>
+        <module>vaseline-parents-parent</module>
+        <module>vaseline-testing-parent</module>
         <module>vaseline-thirdparty</module>
         <module>vaseline-basics-parent</module>
         <module>vaseline-data-parent</module>
@@ -40,7 +47,6 @@
         <module>vaseline-security-parent</module>
         <module>vaseline-ws-parent</module>
         <module>vaseline-file-parent</module>
-        <module>vaseline-aggregator-parent</module><!-- file business uses authentication api-->
     </modules>
 
     <properties>
@@ -49,364 +55,12 @@
         <!-- will be overwritten in profiles for windows to be false -->
         <docker.available>true</docker.available>
         <!-- VERSIONS -->
-        <org.springframework.boot.version>2.1.3.RELEASE</org.springframework.boot.version>
-        <org.springframework.version>5.1.5.RELEASE</org.springframework.version>
         <org.apache.servicemix.bundles.spring.version>5.1.4.RELEASE_1</org.apache.servicemix.bundles.spring.version>
         <org.apache.servicemix.bundles.spring.sec.version>5.1.3.RELEASE</org.apache.servicemix.bundles.spring.sec.version>
         <org.springframework.sec.version>5.1.4.RELEASE</org.springframework.sec.version>
-        <org.springframework.data.version>2.1.5.RELEASE</org.springframework.data.version>
-<!--        <org.apache.solr.version>4.10.4</org.apache.solr.version>-->
-        <org.hibernate.version>5.3.7.Final</org.hibernate.version>
-        <org.hibernate.validator.version>6.0.7.Final</org.hibernate.validator.version>
-        <net.sf.dozer.version>5.3.2</net.sf.dozer.version>
-        <net.sf.jasperreports.version>6.1.0</net.sf.jasperreports.version>
         <net.sf.ehcache.version>2.4.3</net.sf.ehcache.version>
         <org.apache.cxf.version>3.0.3</org.apache.cxf.version>
-        <quartz.version>2.2.1</quartz.version>
-        <org.activiti.version>5.14</org.activiti.version>
-        <org.drools.version>5.3.1.Final</org.drools.version>
-        <org.aspectj.version>1.6.12</org.aspectj.version>
-        <org.eclipse.persistence.version>2.1.0</org.eclipse.persistence.version>
-        <validation-api.version>2.0.0.Final</validation-api.version>
-        <javax.el-api.version>3.0.0</javax.el-api.version>
-        <karaf.version>4.1.2</karaf.version>
-        <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>
-        <org.osgi.core.version>6.0.0</org.osgi.core.version>
-        <javax.ws.rs-api.version>2.0.1</javax.ws.rs-api.version>
-        <jersey.version>5.3</jersey.version>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <!-- Spring Start -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context-support</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-orm</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-tx</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aop</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aspects</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
-                <version>${org.springframework.version}</version>
-            </dependency>
-            <!-- Spring End -->
-            <!-- Spring Security Start-->
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-web</artifactId>
-                <version>${org.springframework.sec.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-config</artifactId>
-                <version>${org.springframework.sec.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-core</artifactId>
-                <version>${org.springframework.sec.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-aspects</artifactId>
-                <version>${org.springframework.sec.version}</version>
-            </dependency>
-            <!-- Spring Security End-->
-            <!-- Spring Data Solr Start-->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.data</groupId>-->
-<!--                <artifactId>spring-data-solr</artifactId>-->
-<!--                <version>${org.springframework.data.version}</version>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>org.apache.solr</groupId>-->
-<!--                <artifactId>solr-solrj</artifactId>-->
-<!--                <version>${org.apache.solr.version}</version>-->
-<!--            </dependency>-->
-            <!-- Spring Data Solr End-->
-            <!-- Hibernate Start -->
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-core</artifactId>
-                <version>${org.hibernate.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-envers</artifactId>
-                <version>${org.hibernate.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cglib</groupId>
-                <artifactId>cglib-nodep</artifactId>
-                <version>2.2</version>
-            </dependency>
-            <dependency>
-                <groupId>org.javassist</groupId>
-                <artifactId>javassist</artifactId>
-                <version>3.18.1-GA</version>
-            </dependency>
-            <!-- Hibernate End -->
-            <!-- Hibernate Validation Start -->
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-validator</artifactId>
-                <version>${org.hibernate.validator.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.el</groupId>
-                <artifactId>javax.el-api</artifactId>
-                <version>${javax.el-api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish</groupId>
-                <artifactId>javax.el</artifactId>
-                <version>${javax.el-api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>${validation-api.version}</version>
-            </dependency>
-            <!-- Hibernate Validation END -->
-            <!-- rest Start -->
-            <dependency>
-                <groupId>javax.ws.rs</groupId>
-                <artifactId>javax.ws.rs-api</artifactId>
-                <version>${javax.ws.rs-api.version}</version>
-            </dependency>
-            <!-- rest End -->
-            <!-- jersey Start -->
-            <dependency>
-                <groupId>com.eclipsesource.jaxrs</groupId>
-                <artifactId>consumer</artifactId>
-                <version>${jersey.version}</version>
-            </dependency>
-            <!-- jersey End -->
-            <!-- CXF Start -->
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-core</artifactId>
-                <version>${org.apache.cxf.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-frontend-jaxws</artifactId>
-                <version>${org.apache.cxf.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-rt-frontend-jaxrs</artifactId>
-                <version>${org.apache.cxf.version}</version>
-            </dependency>
-            <!-- CXF End -->
-            <!-- Jasper Start -->
-            <dependency>
-                <groupId>net.sf.jasperreports</groupId>
-                <artifactId>jasperreports</artifactId>
-                <version>${net.sf.jasperreports.version}</version>
-            </dependency>
-            <!-- Jasper End -->
-            <!-- Activiti Start -->
-            <dependency>
-                <groupId>org.activiti</groupId>
-                <artifactId>activiti-engine</artifactId>
-                <version>${org.activiti.version}</version>
-                <type>jar</type>
-            </dependency>
-            <dependency>
-                <groupId>org.activiti</groupId>
-                <artifactId>activiti-spring</artifactId>
-                <version>${org.activiti.version}</version>
-            </dependency>
-            <!-- Activiti End -->
-            <dependency>
-                <groupId>javax.inject</groupId>
-                <artifactId>javax.inject</artifactId>
-                <version>1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.quartz-scheduler</groupId>
-                <artifactId>quartz</artifactId>
-                <version>${quartz.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>net.sf.dozer</groupId>
-                <artifactId>dozer</artifactId>
-                <version>${net.sf.dozer.version}</version>
-                <type>jar</type>
-            </dependency>
-            <dependency>
-                <groupId>net.sf.dozer</groupId>
-                <artifactId>dozer-osgi</artifactId>
-                <version>${net.sf.dozer.version}</version>
-                <type>jar</type>
-            </dependency>
-
-            <dependency>
-                <groupId>com.google.code.gson</groupId>
-                <artifactId>gson</artifactId>
-                <version>2.3.1</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjtools</artifactId>
-                <version>${org.aspectj.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjweaver</artifactId>
-                <version>${org.aspectj.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-codec</groupId>
-                <artifactId>commons-codec</artifactId>
-                <version>1.8</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-dbcp</groupId>
-                <artifactId>commons-dbcp</artifactId>
-                <version>1.4</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-fileupload</groupId>
-                <artifactId>commons-fileupload</artifactId>
-                <version>1.2.2</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>1.3.1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.persistence</groupId>
-                <artifactId>javax.persistence</artifactId>
-                <version>${org.eclipse.persistence.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-ehcache</artifactId>
-                <version>${org.hibernate.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>net.sf.ehcache</groupId>
-                <artifactId>ehcache-core</artifactId>
-                <version>${net.sf.ehcache.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <version>9.1-901-1.jdbc4</version>
-            </dependency>
-            <dependency>
-                <groupId>joda-time</groupId>
-                <artifactId>joda-time</artifactId>
-                <version>2.1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>1.7.7</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>3.0.1</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.annotation</groupId>
-                <artifactId>javax.annotation-api</artifactId>
-                <version>1.2</version>
-            </dependency>
-            <dependency>
-                <groupId>com.jcraft</groupId>
-                <artifactId>jsch</artifactId>
-                <version>0.1.53</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-vfs</groupId>
-                <artifactId>commons-vfs</artifactId>
-                <version>1.0</version>
-            </dependency>
-            <!-- osgi start -->
-            <dependency>
-                <groupId>org.osgi</groupId>
-                <artifactId>org.osgi.compendium</artifactId>
-                <version>${org.osgi.compendium.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.osgi</groupId>
-                <artifactId>org.osgi.core</artifactId>
-                <version>${org.osgi.core.version}</version>
-            </dependency>
-            <!-- osgi end -->
-            <dependency>
-                <groupId>javax.transaction</groupId>
-                <artifactId>javax.transaction-api</artifactId>
-                <version>1.2</version>
-            </dependency>
-
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.12</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <pluginManagement>
@@ -441,7 +95,6 @@
                         <systemProperties>
                             <docker.available>${docker.available}</docker.available>
                         </systemProperties>
-                        <skipTests>true</skipTests>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -516,6 +169,9 @@
         </profile>
         <profile>
             <id>deploy</id>
+            <properties>
+                <docker.available>false</docker.available>
+            </properties>
             <distributionManagement>
                 <repository>
                     <id>releases</id>
@@ -530,26 +186,4 @@
             </distributionManagement>
         </profile>
     </profiles>
-    <repositories>
-        <repository>
-            <id>jasper</id>
-            <url>http://jasperreports.sourceforge.net/maven2/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>jasper1</id>
-            <url>http://jaspersoft.artifactoryonline.com/jaspersoft/jaspersoft-repo/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 </project>

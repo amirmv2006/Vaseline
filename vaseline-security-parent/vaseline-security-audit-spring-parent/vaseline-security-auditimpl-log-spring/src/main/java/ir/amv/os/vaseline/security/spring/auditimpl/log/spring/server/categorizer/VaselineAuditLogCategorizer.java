@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.spring.auditimpl.log.spring.server.categorizer;
 
-import ir.amv.os.vaseline.security.apis.auditimpl.log.server.categorizer.IImplementedAuditLogCategorizer;
+import ir.amv.os.vaseline.security.audit.def.log.server.categorizer.IDefaultAuditLogCategorizer;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,5 +8,5 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class VaselineAuditLogCategorizer
-        implements IImplementedAuditLogCategorizer {
+        implements IDefaultAuditLogCategorizer {
 }

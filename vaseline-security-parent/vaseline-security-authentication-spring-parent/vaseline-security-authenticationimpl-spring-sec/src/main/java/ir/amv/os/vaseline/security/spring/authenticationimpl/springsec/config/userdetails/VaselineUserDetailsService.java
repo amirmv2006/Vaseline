@@ -1,15 +1,15 @@
 package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.config.userdetails;
 
-import ir.amv.os.vaseline.security.apis.authentication.service.server.base.IBaseUserService;
-import ir.amv.os.vaseline.security.apis.authentication.spring.sec.config.IUserPermissionsProvider;
-import ir.amv.os.vaseline.security.apis.authentication.spring.secimpl.IImplementedUserDetailsService;
+import ir.amv.os.vaseline.security.authentication.service.api.server.base.IBaseUserService;
+import ir.amv.os.vaseline.security.authentication.spring.sec.api.config.IUserPermissionsProvider;
+import ir.amv.os.vaseline.security.authentication.spring.sec.def.IDefaultUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by AMV on 2/28/2016.
  */
 public class VaselineUserDetailsService
-        implements IImplementedUserDetailsService {
+        implements IDefaultUserDetailsService {
 
     @Autowired
     IBaseUserService baseUserService;

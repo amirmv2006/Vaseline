@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.spring.hibernate.server.dozer.fieldmapper;
 
-import ir.amv.os.vaseline.data.hibernate.apis.dao.server.util.HibernateUtils;
+import ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.util.HibernateUtils;
 import org.dozer.CustomFieldMapper;
 import org.dozer.classmap.ClassMap;
 import org.dozer.fieldmap.FieldMap;

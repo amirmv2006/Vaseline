@@ -3,10 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>vaseline-bundle-parent</artifactId>
-        <groupId>com.github.amirmv2006.commonosgi.bundles</groupId>
+        <artifactId>vaseline-parents-bundle-parent</artifactId>
+        <groupId>com.github.amirmv2006.parents.osgi</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../vaseline-commonosgi-parent/vaseline-commonosgi-bundles-parent/vaseline-bundle-parent/pom.xml</relativePath>
+        <relativePath>../../vaseline-parents-parent/vaseline-parents-osgi-parent/vaseline-parents-bundle-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -14,17 +14,17 @@
     <artifactId>vaseline-security-authorization-apis-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-security-authorization-basic-api</module>
-        <module>vaseline-security-authorization-business-layer-api</module>
-        <module>vaseline-security-authorization-business-layerimpl-api</module>
-        <module>vaseline-security-authorization-rbac-model-api</module>
-        <module>vaseline-security-authorization-basicimpl-api</module>
-        <module>vaseline-security-authorization-rbac-modelimpl-api</module>
-        <module>vaseline-security-authorization-rbac-dao-api</module>
-        <module>vaseline-security-authorization-rbac-daoimpl-jpa-api</module>
-        <module>vaseline-security-authorization-rbac-daoimpl-hibernate-api</module>
-        <module>vaseline-security-authorization-rbac-business-api</module>
-        <module>vaseline-security-authorization-rbac-businessimpl-api</module>
+        <module>ir.amv.os.vaseline.security.authorization.basic.api</module>
+        <module>ir.amv.os.vaseline.security.authorization.business.api</module>
+        <module>ir.amv.os.vaseline.security.authorization.business.def</module>
+        <module>ir.amv.os.vaseline.security.authorization.rbac.model.api</module>
+        <module>ir.amv.os.vaseline.security.authorization.basic.def</module>
+        <module>ir.amv.os.vaseline.security.authorization.rbac.model.def</module>
+        <module>ir.amv.os.vaseline.security.authorization.rbac.dao.api</module>
+        <module>ir.amv.os.vaseline.security.authorization.rbac.dao.def.jpa</module>
+        <module>ir.amv.os.vaseline.security.authorization.rbac.dao.def.hibernate</module>
+        <module>ir.amv.os.vaseline.security.authorization.rbac.business.api</module>
+        <module>ir.amv.os.vaseline.security.authorization.rbac.business.def</module>
     </modules>
 
 

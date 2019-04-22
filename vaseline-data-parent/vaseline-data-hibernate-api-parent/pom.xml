@@ -3,10 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>vaseline-bundle-parent</artifactId>
-        <groupId>com.github.amirmv2006.commonosgi.bundles</groupId>
+        <artifactId>vaseline-parents-bundle-parent</artifactId>
+        <groupId>com.github.amirmv2006.parents.osgi</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../vaseline-commonosgi-parent/vaseline-commonosgi-bundles-parent/vaseline-bundle-parent/pom.xml</relativePath>
+        <relativePath>../../vaseline-parents-parent/vaseline-parents-osgi-parent/vaseline-parents-bundle-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -14,9 +14,9 @@
     <artifactId>vaseline-data-hibernate-api-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-hibernate-basic-dao-api</module>
-        <module>vaseline-hibernate-simple-search-dao-api</module>
-        <module>vaseline-hibernate-advanced-search-dao-api</module>
+        <module>ir.amv.os.vaseline.data.hibernate.dao.basic.api</module>
+        <module>ir.amv.os.vaseline.data.hibernate.search.simple.api</module>
+        <module>ir.amv.os.vaseline.data.hibernate.search.advanced.api</module>
     </modules>
 
 

@@ -1,9 +1,7 @@
 package ir.amv.os.vaseline.ws.spring.rest.jersey;
 
-import ir.amv.os.vaseline.basics.apis.json.server.converter.IVaselineJsonConverter;
-import ir.amv.os.vaseline.ws.spring.rest.jersey.application.VaselineRestApplication;
+import ir.amv.os.vaseline.basics.json.api.server.converter.IVaselineJsonConverter;
 import ir.amv.os.vaseline.ws.spring.rest.jersey.multiparam.msgrw.VaselineSpringMultiparamHandler;
-import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

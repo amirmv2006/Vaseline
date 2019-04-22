@@ -14,27 +14,27 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.security.authentication.apis</groupId>
-            <artifactId>vaseline-security-authentication-spring-securityimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.security.authentication.spring.sec.def</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.security.authentication.apis</groupId>
-            <artifactId>vaseline-security-authentication-service-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.security.authentication.service.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.security.authentication.apis</groupId>
-            <artifactId>vaseline-security-authentication-basic-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.security.authentication.basic.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.security.authentication.apis</groupId>
-            <artifactId>vaseline-security-authentication-businessimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.security.authentication.business.def</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.business.apis</groupId>
-            <artifactId>vaseline-business-basic-layerimpl-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.business.basic.def</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

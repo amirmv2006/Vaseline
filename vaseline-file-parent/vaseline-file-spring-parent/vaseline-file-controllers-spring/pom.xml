@@ -14,12 +14,12 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.file.apis</groupId>
-            <artifactId>vaseline-file-service-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.file.service.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.basics.apis</groupId>
-            <artifactId>vaseline-json-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.json.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

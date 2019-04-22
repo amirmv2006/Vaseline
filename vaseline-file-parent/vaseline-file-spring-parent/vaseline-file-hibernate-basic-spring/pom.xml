@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.file.apis</groupId>
-            <artifactId>vaseline-file-daoimpl-hibernate-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.file.dao.def.hibernate</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

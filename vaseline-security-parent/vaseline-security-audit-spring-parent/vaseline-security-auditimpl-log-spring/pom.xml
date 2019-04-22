@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.security.audit.apis</groupId>
-            <artifactId>vaseline-security-auditimpl-log-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.security.audit.def.log</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

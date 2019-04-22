@@ -25,7 +25,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.thirdparty</groupId>
-            <artifactId>vaseline-reflection-util</artifactId>
+            <artifactId>ir.amv.os.vaseline.thirdparty.shared.util.reflection</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -62,23 +62,21 @@
         <!--</dependency>-->
         <dependency>
             <groupId>com.github.amirmv2006.data.apis</groupId>
-            <artifactId>vaseline-advanced-search-dao-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.data.search.advanced.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.amirmv2006.basics.apis</groupId>
-            <artifactId>vaseline-entity-jpa-api</artifactId>
+            <artifactId>ir.amv.os.vaseline.basics.dao.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.5</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
