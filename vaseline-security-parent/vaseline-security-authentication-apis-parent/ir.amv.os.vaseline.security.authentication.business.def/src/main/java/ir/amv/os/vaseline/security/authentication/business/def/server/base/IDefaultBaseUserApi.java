@@ -1,9 +1,6 @@
 package ir.amv.os.vaseline.security.authentication.business.def.server.base;
 
 import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineAllBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.def.server.action.function.IBusinessFunctionNoArg;
 import ir.amv.os.vaseline.business.basic.def.server.ro.IDefaultReadOnlyApi;
 import ir.amv.os.vaseline.security.audit.basic.api.server.IAuditApi;
 import ir.amv.os.vaseline.security.authentication.business.api.server.base.IBaseUserApi;
@@ -22,15 +19,10 @@ public interface IDefaultBaseUserApi<U extends IBaseUserEntity, Dao extends IBas
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata(
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    )
     default U loadUserByUsername(String username) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<U>)() -> {
-            U user = getDao().getUserByUsername(username);
-            postGet(user);
-            return user;
-        });
+        U user = getDao().getUserByUsername(username);
+        postGet(user);
+        return user;
 //        try {
 //            IBaseUserDto user = baseUserApi.loadUserByUsername(username);
 //            if (user == null) {
@@ -75,25 +67,12 @@ public interface IDefaultBaseUserApi<U extends IBaseUserEntity, Dao extends IBas
     }
 
     @Override
-    @VaselineBuinessMetadata(
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    )
     default void authenticationSuccessful(String username) throws BaseVaselineServerException {
-        doBusinessAction((IBusinessFunctionNoArg<Void>)() -> {
-            getAuditApi().auditBusinessAction(username, "Authentication", "SUCCESS", null);
-            return null;
-        });
+        getAuditApi().auditBusinessAction(username, "Authentication", "SUCCESS", null);
     }
 
     @Override
-    @VaselineBuinessMetadata(
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    )
     default void authenticationFailure(String username) throws BaseVaselineServerException {
-        doBusinessAction((IBusinessFunctionNoArg<U>)() -> {
-            getAuditApi().auditBusinessAction(username, "Authentication", "FAIL", null);
-            return null;
-        });
-
+        getAuditApi().auditBusinessAction(username, "Authentication", "FAIL", null);
     }
 }

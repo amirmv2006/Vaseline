@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.authorization.rbac.business.osgi.user.defimpl;
 
-import ir.amv.os.vaseline.basics.core.api.server.proxyaware.IProxyAware;
+import ir.amv.os.vaseline.basics.core.api.server.proxy.IProxyAware;
 import ir.amv.os.vaseline.security.audit.basic.api.server.IAuditApi;
 import ir.amv.os.vaseline.security.authorization.rbac.business.def.user.IDefaultSecurityUserApi;
 import ir.amv.os.vaseline.security.authorization.rbac.business.osgi.BaseApiImpl;

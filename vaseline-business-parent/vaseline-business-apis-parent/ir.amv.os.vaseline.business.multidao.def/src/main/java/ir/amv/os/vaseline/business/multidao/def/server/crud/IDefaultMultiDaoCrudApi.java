@@ -2,13 +2,11 @@ package ir.amv.os.vaseline.business.multidao.def.server.crud;
 
 import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineAllBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.def.server.action.function.IBusinessFunctionNoArg;
 import ir.amv.os.vaseline.business.basic.def.server.crud.IDefaultCrudApi;
 import ir.amv.os.vaseline.business.multidao.def.server.ro.IDefaultMultiDaoReadOnlyApi;
 import ir.amv.os.vaseline.data.dao.basic.api.server.crud.IBaseCrudDao;
 
+import javax.transaction.Transactional;
 import java.io.Serializable;
 
 public interface IDefaultMultiDaoCrudApi<E extends IBaseEntity<Id>, Id extends Serializable, Category,
@@ -17,42 +15,28 @@ public interface IDefaultMultiDaoCrudApi<E extends IBaseEntity<Id>, Id extends S
     Category getCategoryForEntity(final E entity) throws BaseVaselineServerException;
 
     @Override
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
-    })
+    @Transactional
     default Id save(E entity) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<Id>) () -> {
-            preSave(entity);
-            Id id = getDaoFor(getCategoryForEntity(entity)).save(entity);
-            postSave(entity);
-            return id;
-        });
+        preSave(entity);
+        Id id = getDaoFor(getCategoryForEntity(entity)).save(entity);
+        postSave(entity);
+        return id;
     }
 
     @Override
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
-    })
+    @Transactional
     default void update(E entity) throws BaseVaselineServerException {
-        doBusinessAction((IBusinessFunctionNoArg<Void>) () -> {
-            preUpdate(entity);
-            getDaoFor(getCategoryForEntity(entity)).update(entity);
-            postUpdate(entity);
-            return null;
-        });
+        preUpdate(entity);
+        getDaoFor(getCategoryForEntity(entity)).update(entity);
+        postUpdate(entity);
     }
 
     @Override
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
-    })
+    @Transactional
     default void delete(E entity) throws BaseVaselineServerException {
-        doBusinessAction((IBusinessFunctionNoArg<Void>) () -> {
-            preDelete(entity);
-            getDaoFor(getCategoryForEntity(entity)).delete(entity);
-            postDelete(entity);
-            return null;
-        });
+        preDelete(entity);
+        getDaoFor(getCategoryForEntity(entity)).delete(entity);
+        postDelete(entity);
     }
 
 }

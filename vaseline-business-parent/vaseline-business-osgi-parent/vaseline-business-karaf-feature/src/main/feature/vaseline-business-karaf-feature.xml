@@ -61,11 +61,6 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     </feature>
     <!-- vaseline business api end -->
     <!-- vaseline business impl start-->
-    <feature name="vaseline-business-executor" version="${project.version}">
-        <feature>aries-proxy</feature>
-        <feature>ir.amv.os.vaseline.business.basic.def</feature>
-        <bundle>mvn:${project.groupId}/ir.amv.os.vaseline.business.basic.osgi/${project.version}</bundle>
-    </feature>
     <feature name="vaseline-businesss-aries-tx" version="${project.version}">
         <feature>transaction</feature>
         <feature>vaseline-basics-logging-common</feature>
@@ -80,7 +75,6 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>ir.amv.os.vaseline.business.search.simple.def</feature>
         <feature>ir.amv.os.vaseline.business.search.advanced.def</feature>
         <feature>ir.amv.os.vaseline.business.multidao.def</feature>
-        <feature>vaseline-business-executor</feature>
         <feature>vaseline-businesss-aries-tx</feature>
     </feature>
 

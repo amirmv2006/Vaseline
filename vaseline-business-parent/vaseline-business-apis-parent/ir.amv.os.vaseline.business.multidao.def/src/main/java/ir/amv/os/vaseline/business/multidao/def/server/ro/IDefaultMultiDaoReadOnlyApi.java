@@ -5,9 +5,6 @@ import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerExce
 import ir.amv.os.vaseline.basics.core.api.server.base.exc.notsupported.VaselineFeatureNotSupportedException;
 import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.core.api.shared.base.dto.sort.SortDto;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineAllBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.def.server.action.function.IBusinessFunctionNoArg;
 import ir.amv.os.vaseline.business.basic.def.server.ro.IDefaultReadOnlyApi;
 import ir.amv.os.vaseline.business.multidao.api.server.ro.IBaseMultiDaoReadOnlyApi;
 import ir.amv.os.vaseline.data.dao.basic.api.server.ro.IBaseReadOnlyDao;
@@ -31,16 +28,10 @@ public interface IDefaultMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, Id exten
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default E getById(Category category, Id id) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<E>) () -> {
-            E byId = getDaoFor(category).getById(id);
-            postGet(byId);
-            return byId;
-        });
-
+        E byId = getDaoFor(category).getById(id);
+        postGet(byId);
+        return byId;
     }
 
     @Override
@@ -49,11 +40,8 @@ public interface IDefaultMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, Id exten
     }
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default Long countAll(Category category) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<Long>) () -> getDaoFor(category).countAll());
+        return getDaoFor(category).countAll();
     }
 
     @Override
@@ -62,15 +50,10 @@ public interface IDefaultMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, Id exten
     }
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default List<E> getAll(Category category) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<List<E>>) () -> {
-            List<E> all = getDaoFor(category).getAll();
-            postGetList(all);
-            return all;
-        });
+        List<E> all = getDaoFor(category).getAll();
+        postGetList(all);
+        return all;
     }
 
     @Override
@@ -79,15 +62,10 @@ public interface IDefaultMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, Id exten
     }
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default List<E> getAll(Category category, PagingDto pagingDto) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<List<E>>) () -> {
-            List<E> all = getDaoFor(category).getAll(pagingDto);
-            postGetList(all);
-            return all;
-        });
+        List<E> all = getDaoFor(category).getAll(pagingDto);
+        postGetList(all);
+        return all;
     }
 
     @Override
@@ -97,15 +75,10 @@ public interface IDefaultMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, Id exten
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default IVaselineDataScroller<E> scrollAll(Category category, List<SortDto> sortList) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<IVaselineDataScroller<E>>) () -> {
-            IVaselineDataScroller<E> scroller = getDaoFor(category).scrollAll(sortList);
-            scroller.addAfterFetchObject(this::postGet);
-            return scroller;
-        });
+        IVaselineDataScroller<E> scroller = getDaoFor(category).scrollAll(sortList);
+        scroller.addAfterFetchObject(this::postGet);
+        return scroller;
     }
 
     /**

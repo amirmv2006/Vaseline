@@ -43,11 +43,6 @@
         </dependency>
         <!-- business -->
         <dependency>
-            <groupId>com.github.amirmv2006.business.spring</groupId>
-            <artifactId>vaseline-business-executor-spring</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.amirmv2006.business.apis</groupId>
             <artifactId>ir.amv.os.vaseline.business.basic.def</artifactId>
             <version>${project.version}</version>

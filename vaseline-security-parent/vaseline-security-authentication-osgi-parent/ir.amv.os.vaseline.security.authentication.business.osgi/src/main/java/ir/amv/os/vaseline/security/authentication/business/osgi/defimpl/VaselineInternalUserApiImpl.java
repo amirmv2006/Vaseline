@@ -1,8 +1,7 @@
 package ir.amv.os.vaseline.security.authentication.business.osgi.defimpl;
 
-import ir.amv.os.vaseline.basics.core.api.server.proxyaware.IProxyAware;
-import ir.amv.os.vaseline.basics.core.api.server.proxyaware.defimpl.ProxyAwareImpl;
-import ir.amv.os.vaseline.business.basic.api.server.action.executor.IVaselineBusinessActionExecutor;
+import ir.amv.os.vaseline.basics.core.api.server.proxy.IProxyAware;
+import ir.amv.os.vaseline.basics.core.api.server.proxy.defimpl.ProxyAwareImpl;
 import ir.amv.os.vaseline.business.basic.def.server.crud.IDefaultCrudApi;
 import ir.amv.os.vaseline.security.audit.basic.api.server.IAuditApi;
 import ir.amv.os.vaseline.security.authentication.business.api.server.base.IBaseUserApi;
@@ -32,7 +31,6 @@ public class VaselineInternalUserApiImpl
 
     private IAuditApi auditApi;
     private IVaselineInternalUserDao dao;
-    private IVaselineBusinessActionExecutor businessActionExecutor;
 
     @Override
     public IAuditApi getAuditApi() {
@@ -42,16 +40,6 @@ public class VaselineInternalUserApiImpl
     @Override
     public IVaselineInternalUserDao getDao() {
         return dao;
-    }
-
-    @Override
-    public IVaselineBusinessActionExecutor getBusinessActionExecutor() {
-        return businessActionExecutor;
-    }
-
-    @Reference
-    public void setBusinessActionExecutor(final IVaselineBusinessActionExecutor businessActionExecutor) {
-        this.businessActionExecutor = businessActionExecutor;
     }
 
     @Reference

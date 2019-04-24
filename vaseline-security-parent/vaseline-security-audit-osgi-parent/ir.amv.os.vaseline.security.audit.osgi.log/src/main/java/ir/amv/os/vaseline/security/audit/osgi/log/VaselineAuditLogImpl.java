@@ -1,9 +1,8 @@
 package ir.amv.os.vaseline.security.audit.osgi.log;
 
-import ir.amv.os.vaseline.basics.core.api.server.proxyaware.IProxyAware;
-import ir.amv.os.vaseline.basics.core.api.server.proxyaware.defimpl.ProxyAwareImpl;
+import ir.amv.os.vaseline.basics.core.api.server.proxy.IProxyAware;
+import ir.amv.os.vaseline.basics.core.api.server.proxy.defimpl.ProxyAwareImpl;
 import ir.amv.os.vaseline.basics.logging.api.server.logger.IVaselineLogger;
-import ir.amv.os.vaseline.business.basic.api.server.action.executor.IVaselineBusinessActionExecutor;
 import ir.amv.os.vaseline.security.audit.basic.api.server.IAuditApi;
 import ir.amv.os.vaseline.security.audit.def.log.server.basic.IDefaultAuditLogApi;
 import org.osgi.service.component.annotations.Component;
@@ -24,21 +23,10 @@ public class VaselineAuditLogImpl
         implements IAuditApi, IDefaultAuditLogApi {
 
     private IVaselineLogger vaselineLogger;
-    private IVaselineBusinessActionExecutor businessActionExecutor;
 
     @Override
     public IVaselineLogger getVaselineLogger() {
         return vaselineLogger;
-    }
-
-    @Override
-    public IVaselineBusinessActionExecutor getBusinessActionExecutor() {
-        return businessActionExecutor;
-    }
-
-    @Reference
-    public void setBusinessActionExecutor(final IVaselineBusinessActionExecutor businessActionExecutor) {
-        this.businessActionExecutor = businessActionExecutor;
     }
 
     @Reference

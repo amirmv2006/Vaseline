@@ -2,7 +2,7 @@ package ir.amv.os.vaseline.security.authorization.basic.osgi.interceptor;
 
 import ir.amv.os.vaseline.basics.logging.api.server.logger.VaselineLogLevel;
 import ir.amv.os.vaseline.basics.logging.common.osgi.server.helper.LOGGER;
-import ir.amv.os.vaseline.business.basic.api.server.action.IBusinessAction;
+import ir.amv.os.vaseline.basics.core.api.server.proxy.MethodExecution;
 import ir.amv.os.vaseline.business.basic.api.server.crud.IBaseCrudApi;
 import ir.amv.os.vaseline.business.basic.api.server.ro.IBaseReadOnlyApi;
 import ir.amv.os.vaseline.security.authorization.basic.api.server.api.IAuthorizationActionApi;
@@ -30,30 +30,30 @@ public class VaselineAuthorizationBasicLayerInterceptorImpl
     public static final String DELETE_ACTION_NAME = "delete";
 
     @Override
-    public <R> boolean isSecured(final IBusinessAction<R> businessAction) {
-        return getActionTreeName(businessAction) != null;
+    public <R> boolean isSecured(final MethodExecution methodExecution) {
+        return getActionTreeName(methodExecution) != null;
     }
 
     @Override
-    public <R> String getActionTreeName(final IBusinessAction<R> businessAction) {
-        ActionTreeName baseActionTreeNameAnnot = ReflectionUtil.getAnnotationInHierarchy(businessAction
-                        .getRunningClass(),
+    public <R> String getActionTreeName(final MethodExecution methodExecution) {
+        ActionTreeName baseActionTreeNameAnnot = ReflectionUtil.getAnnotationInHierarchy(methodExecution
+                        .getOriginalObject().getClass(),
                 ActionTreeName.class);
         String baseActionTreeName;
         if (baseActionTreeNameAnnot == null) {
             LOGGER.log(VaselineLogLevel.WARNING,
                     "can not get base action tree name for %s, did you forget to annotate your business class with " +
                             "@ActionTreeName?",
-                    businessAction.getRunningClass());
+                    methodExecution.getOriginalObject().getClass());
             baseActionTreeName = "unknown";
         } else {
             baseActionTreeName = baseActionTreeNameAnnot.value();
         }
-        String actionTreeName = getActionTreeName(IBaseReadOnlyApi.class, businessAction.getDeclaredMethod());
+        String actionTreeName = getActionTreeName(IBaseReadOnlyApi.class, methodExecution.getMethod());
         if (actionTreeName != null) {
             return baseActionTreeName + IAuthorizationActionApi.ACTION_TREE_NAME_SPLITTER + actionTreeName;
         }
-        actionTreeName = getActionTreeName(IBaseCrudApi.class, businessAction.getDeclaredMethod());
+        actionTreeName = getActionTreeName(IBaseCrudApi.class, methodExecution.getMethod());
         if (actionTreeName != null) {
             return baseActionTreeName + IAuthorizationActionApi.ACTION_TREE_NAME_SPLITTER + actionTreeName;
         }

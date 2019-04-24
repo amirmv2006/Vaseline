@@ -28,6 +28,10 @@
             <artifactId>ir.amv.os.vaseline.basics.base.osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.aries.proxy</groupId>
+            <artifactId>org.apache.aries.proxy.api</artifactId>
+        </dependency>
     </dependencies>
 
 

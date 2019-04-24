@@ -5,9 +5,6 @@ import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerExce
 import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
 import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.core.api.shared.base.dto.sort.SortDto;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineAllBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.def.server.action.function.IBusinessFunctionNoArg;
 import ir.amv.os.vaseline.business.basic.def.server.ro.IDefaultReadOnlyApi;
 import ir.amv.os.vaseline.business.search.simple.api.server.IBaseSimpleSearchApi;
 import ir.amv.os.vaseline.data.dao.basic.api.server.ro.scroller.IVaselineDataScroller;
@@ -21,48 +18,34 @@ public interface IDefaultSimpleSearchApi<E extends IBaseEntity<Id>, D extends IB
         Id extends Serializable, Dao extends IBaseSimpleSearchDao<E, D, Id>>
         extends IBaseSimpleSearchApi<E, D, Id>, IDefaultReadOnlyApi<E, Id, Dao> {
 
+    @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default Long countByExample(D example) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<Long>) () -> getDao().countByExample(example));
+        return getDao().countByExample(example);
     }
 
+    @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default List<E> searchByExample(D example) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<List<E>>) () -> {
-            List<E> searchByExample = getDao().searchByExample(example);
-            postGetList(searchByExample);
-            return searchByExample;
-        });
+        List<E> searchByExample = getDao().searchByExample(example);
+        postGetList(searchByExample);
+        return searchByExample;
     }
 
+    @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default IVaselineDataScroller<E> scrollByExample(D example, List<SortDto> sortList) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<IVaselineDataScroller<E>>) () -> {
-            IVaselineDataScroller<E> scroller = getDao().scrollByExample(example, sortList);
-            scroller.addAfterFetchObject(this::postGet);
-            return scroller;
-        });
+        IVaselineDataScroller<E> scroller = getDao().scrollByExample(example, sortList);
+        scroller.addAfterFetchObject(this::postGet);
+        return scroller;
     }
 
+    @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default List<E> searchByExample(D example, PagingDto pagingDto)
             throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<List<E>>) () -> {
-            List<E> searchByExample = getDao().searchByExample(example, pagingDto);
-            postGetList(searchByExample);
-            return searchByExample;
-        });
+        List<E> searchByExample = getDao().searchByExample(example, pagingDto);
+        postGetList(searchByExample);
+        return searchByExample;
     }
 }
