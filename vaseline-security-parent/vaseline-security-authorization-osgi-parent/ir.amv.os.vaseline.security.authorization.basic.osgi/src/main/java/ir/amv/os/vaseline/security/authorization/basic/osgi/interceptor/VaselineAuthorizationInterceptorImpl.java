@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.security.authorization.basic.osgi.interceptor;
 
 import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.business.basic.api.server.action.IBusinessAction;
-import ir.amv.os.vaseline.business.basic.api.server.action.executor.IVaselineBusinessExecutorInterceptor;
+import ir.amv.os.vaseline.basics.core.api.server.proxy.IProxyInterceptor;
+import ir.amv.os.vaseline.basics.core.api.server.proxy.MethodExecution;
 import ir.amv.os.vaseline.security.authorization.basic.api.server.api.IAuthorizationApi;
 import ir.amv.os.vaseline.security.authorization.basic.api.server.api.action.IBusinessActionSecurityChecker;
 import ir.amv.os.vaseline.security.authorization.basic.api.server.api.annot.NoAuthorization;
@@ -19,24 +19,24 @@ import java.util.List;
  */
 @Component(
         immediate = true,
-        service = IVaselineBusinessExecutorInterceptor.class
+        service = IProxyInterceptor.class
 )
 public class VaselineAuthorizationInterceptorImpl
-        implements IVaselineBusinessExecutorInterceptor<Void> {
+        implements IProxyInterceptor<Void> {
 
     private IAuthorizationApi authorizationApi;
     private List<IBusinessActionSecurityChecker> securityCheckers = new ArrayList<>();
 
     @Override
-    public <R> boolean appliesTo(final IBusinessAction<R> businessAction) {
+    public boolean appliesTo(final MethodExecution methodExecution) {
         NoAuthorization noAuthorization = ReflectionUtil.getMethodAnnotationInHierarchy(NoAuthorization.class,
-                businessAction.getRunningClass(), businessAction.getDeclaredMethod().getName(),
-                businessAction.getDeclaredMethod().getParameterTypes());
+                methodExecution.getOriginalObject().getClass(), methodExecution.getMethod().getName(),
+                methodExecution.getMethod().getParameterTypes());
         if (noAuthorization != null) {
             return false;
         }
         for (IBusinessActionSecurityChecker actionSecured : securityCheckers) {
-            if (actionSecured.isSecured(businessAction)) {
+            if (actionSecured.isSecured(methodExecution)) {
                 return true;
             }
         }
@@ -44,26 +44,21 @@ public class VaselineAuthorizationInterceptorImpl
     }
 
     @Override
-    public <R> Void preExecute(final IBusinessAction<R> businessAction) throws BaseVaselineServerException {
+    public Void preExecute(final MethodExecution methodExecution) throws BaseVaselineServerException {
         for (IBusinessActionSecurityChecker actionSecured : securityCheckers) {
-            if (actionSecured.isSecured(businessAction)) {
-                authorizationApi.checkAuthorization(actionSecured.getActionTreeName(businessAction));
+            if (actionSecured.isSecured(methodExecution)) {
+                authorizationApi.checkAuthorization(actionSecured.getActionTreeName(methodExecution));
             }
         }
         return null;
     }
 
     @Override
-    public <R> void postExecuteSuccessfully(final IBusinessAction<R> businessAction, final R returnedValue, final Void preExecResult) throws BaseVaselineServerException {
+    public <R> void postExecuteSuccessfully(final MethodExecution methodExecution, final R returnedValue, final Void preExecResult) throws BaseVaselineServerException {
     }
 
     @Override
-    public <R> void postExecuteException(final IBusinessAction<R> businessAction, final Throwable t, final Void preExecResult) throws BaseVaselineServerException {
-    }
-
-    @Override
-    public Class<Void> tokenClass() {
-        return Void.class;
+    public void postExecuteException(final MethodExecution methodExecution, final Throwable t, final Void preExecResult) throws BaseVaselineServerException {
     }
 
     @Reference(

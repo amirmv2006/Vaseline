@@ -2,10 +2,7 @@ package ir.amv.os.vaseline.business.basic.def.server.crud;
 
 import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineAllBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineBuinessMetadata;
 import ir.amv.os.vaseline.business.basic.api.server.crud.IBaseCrudApi;
-import ir.amv.os.vaseline.business.basic.def.server.action.function.IBusinessFunctionNoArg;
 import ir.amv.os.vaseline.business.basic.def.server.ro.IDefaultReadOnlyApi;
 import ir.amv.os.vaseline.data.dao.basic.api.server.crud.IBaseCrudDao;
 
@@ -23,107 +20,67 @@ public interface IDefaultCrudApi<E extends IBaseEntity<Id>, Id extends Serializa
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
-    })
     default Id save(E entity) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<Id>) () -> {
-            preSave(entity);
-            Id id = getDao().save(entity);
-            postSave(entity);
-            return id;
-        });
+        preSave(entity);
+        Id id = getDao().save(entity);
+        postSave(entity);
+        return id;
     }
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
-    })
     default List<Id> saveBatch(List<E> entities) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<List<Id>>) () -> {
-            List<Id> result = new ArrayList<>();
-            if (entities != null) {
-                for (E entity : entities) {
-                    Id id = save(entity);
-                    result.add(id);
-                }
+        List<Id> result = new ArrayList<>();
+        if (entities != null) {
+            for (E entity : entities) {
+                Id id = save(entity);
+                result.add(id);
             }
-            return result;
-        });
+        }
+        return result;
     }
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
-    })
     default void update(E entity) throws BaseVaselineServerException {
-        doBusinessAction((IBusinessFunctionNoArg<Void>) () -> {
-            preUpdate(entity);
-            getDao().update(entity);
-            postUpdate(entity);
-            return null;
-        });
+        preUpdate(entity);
+        getDao().update(entity);
+        postUpdate(entity);
     }
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
-    })
     default void updateBatch(List<E> entities) throws BaseVaselineServerException {
-        doBusinessAction((IBusinessFunctionNoArg<Void>) () -> {
-            if (entities != null) {
-                for (E entity : entities) {
-                    update(entity);
-                }
+        if (entities != null) {
+            for (E entity : entities) {
+                update(entity);
             }
-            return null;
-        });
+        }
     }
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
-    })
     default void delete(E entity) throws BaseVaselineServerException {
-        doBusinessAction((IBusinessFunctionNoArg<Void>) () -> {
-            preDelete(entity);
-            getDao().delete(entity);
-            postDelete(entity);
-            return null;
-        });
+        preDelete(entity);
+        getDao().delete(entity);
+        postDelete(entity);
     }
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
-    })
     default void deleteBatch(List<E> entities) throws BaseVaselineServerException {
-        doBusinessAction((IBusinessFunctionNoArg<Void>) () -> {
-            if (entities != null) {
-                for (E entity : entities) {
-                    delete(entity);
-                }
+        if (entities != null) {
+            for (E entity : entities) {
+                delete(entity);
             }
-            return null;
-        });
+        }
     }
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
-    })
     default void delete(Id id) throws BaseVaselineServerException {
-        doBusinessAction((IBusinessFunctionNoArg<Void>) () -> {
-            E byId = getById(id);
-            delete(byId);
-            return null;
-        });
+        E byId = getById(id);
+        delete(byId);
     }
 
 }

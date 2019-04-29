@@ -1,12 +1,10 @@
 package ir.amv.os.vaseline.business.tx.osgi.aries.executor;
 
 import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.core.api.server.proxy.IProxyInterceptor;
+import ir.amv.os.vaseline.basics.core.api.server.proxy.MethodExecution;
 import ir.amv.os.vaseline.basics.logging.api.server.logger.VaselineLogLevel;
 import ir.amv.os.vaseline.basics.logging.common.osgi.server.helper.LOGGER;
-import ir.amv.os.vaseline.business.basic.api.server.action.IBusinessAction;
-import ir.amv.os.vaseline.business.basic.api.server.action.executor.IVaselineBusinessExecutorInterceptor;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.IBusinessMetadata;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineAllBuinessMetadata;
 import ir.amv.os.vaseline.business.tx.osgi.aries.executor.txblueprint.TransactionAttribute;
 import ir.amv.os.vaseline.business.tx.osgi.aries.executor.txblueprint.TransactionToken;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
@@ -25,10 +23,10 @@ import javax.transaction.Transactional;
  */
 @Component(
         immediate = true,
-        service = IVaselineBusinessExecutorInterceptor.class
+        service = IProxyInterceptor.class
 )
 public class VaselineOsgiTxManagerBusinessExecutorInterceptorImpl
-        implements IVaselineBusinessExecutorInterceptor<TransactionToken> {
+        implements IProxyInterceptor<TransactionToken> {
 
     private TransactionManager tm;
     private Coordinator coordinator;
@@ -39,26 +37,22 @@ public class VaselineOsgiTxManagerBusinessExecutorInterceptorImpl
     }
 
     @Override
-    public <R> boolean appliesTo(final IBusinessAction<R> businessAction) {
-        IBusinessMetadata[] businessMetadata = businessAction.getBusinessMetadata();
-        if (businessMetadata != null) {
-            for (IBusinessMetadata businessMetadatum : businessMetadata) {
-                if (businessMetadatum.equals(VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY) ||
-                        businessMetadatum.equals(VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+    public boolean appliesTo(final MethodExecution methodExecution) {
+        Transactional buinessMetadata = ReflectionUtil.getMethodAnnotationInHierarchy(
+                Transactional.class,
+                methodExecution.getOriginalObject().getClass(),
+                methodExecution.getMethod().getName(),
+                methodExecution.getMethod().getParameterTypes());
+        return buinessMetadata != null;
     }
 
     @Override
-    public <R> TransactionToken preExecute(final IBusinessAction<R> businessAction) throws BaseVaselineServerException {
+    public TransactionToken preExecute(final MethodExecution methodExecution) throws BaseVaselineServerException {
         try {
-            Transactional txAnnot = getTxAnnotationFromBusinessAction(businessAction);
+            Transactional txAnnot = getTxAnnotationFromBusinessAction(methodExecution);
             TransactionAttribute txAttr = TransactionAttribute.fromValue(txAnnot.value());
             TransactionToken token = txAttr.begin(tm);
-            String coordName = "txInterceptor." + businessAction.getActionName();
+            String coordName = "txInterceptor." + methodExecution.getMethod().getName();
             Coordination coord = coordinator.begin(coordName, 0);
             token.setCoordination(coord);
             return token;
@@ -68,14 +62,14 @@ public class VaselineOsgiTxManagerBusinessExecutorInterceptorImpl
     }
 
     @Transactional(Transactional.TxType.REQUIRED)
-    private <R> Transactional getTxAnnotationFromBusinessAction(final IBusinessAction<R> businessAction) {
+    private <R> Transactional getTxAnnotationFromBusinessAction(final MethodExecution methodExecution) {
         Transactional transactional = ReflectionUtil.getMethodAnnotationInHierarchy(Transactional.class,
-                businessAction.getRunningClass(), businessAction.getDeclaredMethod().getName(), businessAction
-                        .getDeclaredMethod().getParameterTypes());
+                methodExecution.getOriginalObject().getClass(), methodExecution.getMethod().getName(), methodExecution
+                        .getMethod().getParameterTypes());
         if (transactional == null) {
             try {
                 transactional = VaselineOsgiTxManagerBusinessExecutorInterceptorImpl.class
-                        .getDeclaredMethod("getTxAnnotationFromBusinessAction", IBusinessAction.class)
+                        .getDeclaredMethod("getTxAnnotationFromBusinessAction", MethodExecution.class)
                         .getAnnotation(Transactional.class);
             } catch (NoSuchMethodException ignored) {
             }
@@ -85,12 +79,12 @@ public class VaselineOsgiTxManagerBusinessExecutorInterceptorImpl
 
     @Override
     public <R> void postExecuteSuccessfully(
-            final IBusinessAction<R> businessAction,
+            final MethodExecution methodExecution,
             final R returnedValue,
             final TransactionToken preExecResult) throws BaseVaselineServerException {
         try {
-            LOGGER.log(VaselineLogLevel.DEBUG, "PostCallWithReturn for bean {}, method {}.", businessAction
-                    .getActionName(), businessAction.getDeclaredMethod());
+            LOGGER.log(VaselineLogLevel.DEBUG, "PostCallWithReturn for bean {}, method {}.", methodExecution
+                    .getOriginalObject(), methodExecution.getMethod());
             // it is possible transaction is not involved at all
             if (preExecResult == null) {
                 return;
@@ -110,16 +104,16 @@ public class VaselineOsgiTxManagerBusinessExecutorInterceptorImpl
     }
 
     @Override
-    public <R> void postExecuteException(
-            final IBusinessAction<R> businessAction,
+    public void postExecuteException(
+            final MethodExecution methodExecution,
             final Throwable t,
             final TransactionToken preExecResult) throws BaseVaselineServerException {
         try {
-            LOGGER.log(VaselineLogLevel.DEBUG, "PostCallWithException for bean {}, method {}.", businessAction
-                    .getActionName(), businessAction.getDeclaredMethod().getName(), t);
+            LOGGER.log(VaselineLogLevel.DEBUG, "PostCallWithException for bean {}, method {}.", methodExecution
+                    .getOriginalObject(), methodExecution.getMethod().getName(), t);
             safeEndCoordination(preExecResult);
             Transaction tran = preExecResult.getActiveTransaction();
-            if (tran != null && isRollBackException(t, businessAction)) {
+            if (tran != null && isRollBackException(t, methodExecution)) {
                 tran.setRollbackOnly();
                 LOGGER.log(VaselineLogLevel.DEBUG, "Setting transaction to rollback only because of exception ", t);
             }
@@ -127,11 +121,6 @@ public class VaselineOsgiTxManagerBusinessExecutorInterceptorImpl
         } catch (Exception e) {
             throw new BaseVaselineServerException("Can not rollback", e);
         }
-    }
-
-    @Override
-    public Class<TransactionToken> tokenClass() {
-        return TransactionToken.class;
     }
 
     private void safeEndCoordination(final TransactionToken token) {
@@ -144,9 +133,9 @@ public class VaselineOsgiTxManagerBusinessExecutorInterceptorImpl
         }
     }
 
-    private boolean isRollBackException(Throwable ex, final IBusinessAction<?> businessAction) {
-        if (businessAction != null) {
-            Transactional txAnnot = getTxAnnotationFromBusinessAction(businessAction);
+    private boolean isRollBackException(Throwable ex, final MethodExecution methodExecution) {
+        if (methodExecution != null) {
+            Transactional txAnnot = getTxAnnotationFromBusinessAction(methodExecution);
             if (txAnnot == null) {
                 return isUncheckedException(ex);
             } else {

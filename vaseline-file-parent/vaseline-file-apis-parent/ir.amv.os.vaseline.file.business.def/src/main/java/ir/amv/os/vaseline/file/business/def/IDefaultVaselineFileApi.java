@@ -1,9 +1,6 @@
 package ir.amv.os.vaseline.file.business.def;
 
 import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineAllBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.def.server.action.function.IBusinessFunctionNoArg;
 import ir.amv.os.vaseline.business.multidao.def.server.crud.IDefaultMultiDaoCrudApi;
 import ir.amv.os.vaseline.file.business.api.IVaselineFileApi;
 import ir.amv.os.vaseline.file.business.api.daofinder.IVaselineFileDaoFinder;
@@ -32,51 +29,40 @@ public interface IDefaultVaselineFileApi
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
-    })
     default Long uploadFile(
             final String fileName,
             final String fileCategory,
             final Long fileSize,
             final String contentType,
             final InputStream inputStream) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<Long>) () -> {
-                String category = ((fileCategory == null) || fileCategory.trim().equals("")) ? DEFAULT_CATEGORY : fileCategory;
-                IVaselineFileDao<IVaselineFileEntity, IVaselineFileDto> dao = getDaoFor(category);
-                IVaselineFileEntity file = dao.createFile(category);
-                file.setFileName(fileName);
-                file.setCategory(category);
-                file.setContentType(contentType);
-                file.setFileSize(fileSize);
-                file.setOwner(getAuthenticationApi().getCurrentUsername());
-                preSave(file);
-                Long fileId;
-                try {
-                    fileId = dao.saveFileUsingStream(file, inputStream);
-                } catch (Exception e) {
-                    throw new BaseVaselineServerException("Error saving file", e);
-                }
-                postSave(file);
-                return fileId;
-            });
+        String category = ((fileCategory == null) || fileCategory.trim().equals("")) ? DEFAULT_CATEGORY : fileCategory;
+        IVaselineFileDao<IVaselineFileEntity, IVaselineFileDto> dao = getDaoFor(category);
+        IVaselineFileEntity file = dao.createFile(category);
+        file.setFileName(fileName);
+        file.setCategory(category);
+        file.setContentType(contentType);
+        file.setFileSize(fileSize);
+        file.setOwner(getAuthenticationApi().getCurrentUsername());
+        preSave(file);
+        Long fileId;
+        try {
+            fileId = dao.saveFileUsingStream(file, inputStream);
+        } catch (Exception e) {
+            throw new BaseVaselineServerException("Error saving file", e);
+        }
+        postSave(file);
+        return fileId;
     }
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_WRITE
-    })
     default void writeFileContent(String category, Long fileId, OutputStream outputStream) throws
             BaseVaselineServerException {
-        doBusinessAction((IBusinessFunctionNoArg<Void>) ()-> {
-            try {
-                this.getDaoFor(category).writeFileContent(fileId, outputStream);
-                return (Void) null;
-            } catch (Exception e) {
-                throw new BaseVaselineServerException(e);
-            }
-        });
+        try {
+            this.getDaoFor(category).writeFileContent(fileId, outputStream);
+        } catch (Exception e) {
+            throw new BaseVaselineServerException(e);
+        }
     }
 
     @Override

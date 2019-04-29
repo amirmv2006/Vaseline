@@ -13,9 +13,6 @@
     <groupId>com.github.amirmv2006.business.spring</groupId>
     <artifactId>vaseline-business-spring-parent</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>vaseline-business-executor-spring</module>
-    </modules>
 
     <dependencies>
         <dependency>

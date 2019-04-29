@@ -4,10 +4,7 @@ import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
 import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
 import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
 import ir.amv.os.vaseline.basics.core.api.shared.base.dto.sort.SortDto;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineAllBuinessMetadata;
-import ir.amv.os.vaseline.business.basic.api.server.action.metadata.VaselineBuinessMetadata;
 import ir.amv.os.vaseline.business.basic.api.server.ro.IBaseReadOnlyApi;
-import ir.amv.os.vaseline.business.basic.def.server.action.function.IBusinessFunctionNoArg;
 import ir.amv.os.vaseline.data.dao.basic.api.server.ro.IBaseReadOnlyDao;
 import ir.amv.os.vaseline.data.dao.basic.api.server.ro.scroller.IVaselineDataScroller;
 
@@ -23,72 +20,46 @@ public interface IDefaultReadOnlyApi<E extends IBaseEntity<Id>, Id extends Seria
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default E getById(Id id) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<E>) () -> {
-            E findById = getDao().getById(id);
-            postGet(findById);
-            return findById;
-        });
+        E findById = getDao().getById(id);
+        postGet(findById);
+        return findById;
     }
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default Long countAllApproximately() throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<Long>) () -> getDao().countAllApproximately());
+        return getDao().countAllApproximately();
     }
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default Long countAll() throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<Long>) () -> getDao().countAll());
+        return getDao().countAll();
     }
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default List<E> getAll() throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<List<E>>) () -> {
-            List<E> all = getDao().getAll();
-            postGetList(all);
-            return all;
-        });
+        List<E> all = getDao().getAll();
+        postGetList(all);
+        return all;
     }
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default IVaselineDataScroller<E> scrollAll(final List<SortDto> sortList) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<IVaselineDataScroller<E>>) () -> {
-            IVaselineDataScroller<E> scroller = getDao().scrollAll(sortList);
-            scroller.addAfterFetchObject(this::postGet);
-            return scroller;
-        });
+        IVaselineDataScroller<E> scroller = getDao().scrollAll(sortList);
+        scroller.addAfterFetchObject(this::postGet);
+        return scroller;
     }
 
     @Override
     @Transactional
-    @VaselineBuinessMetadata({
-            VaselineAllBuinessMetadata.VASELINE_DB_READ_ONLY
-    })
     default List<E> getAll(PagingDto pagingDto) throws BaseVaselineServerException {
-        return doBusinessAction((IBusinessFunctionNoArg<List<E>>) () -> {
-            List<E> all = getDao().getAll(pagingDto);
-            postGetList(all);
-            return all;
-        });
+        List<E> all = getDao().getAll(pagingDto);
+        postGetList(all);
+        return all;
     }
 
     default void postGetList(final List<E> list) throws BaseVaselineServerException {

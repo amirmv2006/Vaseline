@@ -62,6 +62,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <bundle>mvn:${project.groupId}/ir.amv.os.vaseline.basics.base.osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-basics-cache-hazelcast" version="${project.version}">
+        <feature>scr</feature>
         <feature>hazelcast</feature>
         <feature>ir.amv.os.vaseline.basics.cache.api</feature>
         <bundle>mvn:${project.groupId}/ir.amv.os.vaseline.basics.cache.hazelcast.osgi/${project.version}</bundle>
@@ -111,6 +112,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <bundle>mvn:${project.groupId}/ir.amv.os.vaseline.basics.logging.pax.osgi/${project.version}</bundle>
     </feature>
     <feature name="vaseline-core" version="${project.version}">
+        <feature>aries-proxy</feature>
         <feature>scr</feature>
         <feature>vaseline-basics-base-bundle</feature>
         <feature>ir.amv.os.vaseline.basics.core.api</feature>
