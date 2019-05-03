@@ -39,15 +39,9 @@ public class KarafSetupStepDefs {
 
     @Given("^feature with groupId=\"([^\"]*)\", artifactId=\"([^\"]*)\" and name=\"([^\"]*)\" is deployed")
     @SetupKaraf
-    public void installFeature(String featureGroupId, String featureArtifactId, String featureName) {
-        String[] features;
-        if (featureName.contains(",")) {
-            features = featureName.split(",");
-        } else {
-            features = new String[]{featureName};
-        }
+    public void installFeature(String featureGroupId, String featureArtifactId, String featureNames) {
         RemoteObjectFactory.remoteKarafEnvironment.addOption(
-                deployFeature(featureGroupId, featureArtifactId, features)
+                deployFeature(featureGroupId, featureArtifactId, featureNames)
         );
     }
 

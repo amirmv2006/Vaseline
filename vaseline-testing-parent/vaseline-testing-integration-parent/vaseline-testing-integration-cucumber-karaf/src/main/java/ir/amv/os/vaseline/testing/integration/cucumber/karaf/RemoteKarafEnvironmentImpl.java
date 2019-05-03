@@ -1,6 +1,5 @@
 package ir.amv.os.vaseline.testing.integration.cucumber.karaf;
 
-import ir.amv.os.vaseline.testing.integration.cucumber.karaf.helper.KarafOptionsHelper;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.InvocationHandler;
 import org.ops4j.pax.exam.ExamSystem;
@@ -19,7 +18,9 @@ import org.ops4j.store.intern.TemporaryStore;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 
 import static org.ops4j.pax.exam.spi.DefaultExamSystem.createTempDir;
 
@@ -61,6 +62,11 @@ public class RemoteKarafEnvironmentImpl
         }
     }
 
+    @Override
+    public void addExtraClasses(Class<?>... classes) {
+        stepProbeBuilder.addExtraClasses(classes);
+    }
+
     private boolean isLocalMethod(Method method) {
         return method.isAnnotationPresent(SetupKaraf.class);
     }
@@ -77,16 +83,22 @@ public class RemoteKarafEnvironmentImpl
                 testContainer.installProbe(stepProbeBuilder.build().getStream());
                 if (testContainer instanceof KarafTestContainer) {
                     KarafTestContainer karafTestContainer = (KarafTestContainer) testContainer;
-                    Field target = KarafTestContainer.class.getDeclaredField("target");
-                    target.setAccessible(true);
-                    RBCRemoteTarget o = (RBCRemoteTarget) target.get(karafTestContainer);
+                    RBCRemoteTarget o = forceGetField(karafTestContainer, "target");
                     clientRBC = o.getClientRBC();
+                    File targetFolder = forceGetField(karafTestContainer, "targetFolder");
+                    System.out.println("Karaf started in " + targetFolder.getName());
                 }
             }
             System.out.println("Started");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private <O> O forceGetField(KarafTestContainer karafTestContainer, String field) throws NoSuchFieldException, IllegalAccessException {
+        Field target = KarafTestContainer.class.getDeclaredField(field);
+        target.setAccessible(true);
+        return (O) target.get(karafTestContainer);
     }
 
     @Override

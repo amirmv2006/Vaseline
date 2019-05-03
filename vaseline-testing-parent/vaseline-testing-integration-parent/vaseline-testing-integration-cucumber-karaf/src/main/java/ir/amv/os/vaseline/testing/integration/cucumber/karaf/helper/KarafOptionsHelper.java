@@ -35,7 +35,13 @@ public class KarafOptionsHelper {
         );
     }
 
-    public static Option deployFeature(String featureGroupId, String featuresArtifactId, String... features) {
+    public static Option deployFeature(String featureGroupId, String featuresArtifactId, String featureNames) {
+        String[] features;
+        if (featureNames.contains(",")) {
+            features = featureNames.split(",");
+        } else {
+            features = new String[]{featureNames};
+        }
         MavenUrlReference karafStandardRepo = maven()
                 .groupId(featureGroupId)
                 .artifactId(featuresArtifactId)

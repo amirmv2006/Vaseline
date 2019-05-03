@@ -12,10 +12,6 @@
     <artifactId>ir.amv.os.vaseline.file.dao.def.jpa</artifactId>
     <packaging>bundle</packaging>
 
-    <properties>
-        <bundle.base.pkg>ir.amv.os.vaseline.file.apis.daoimpl.jpa</bundle.base.pkg>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.github.amirmv2006.file.apis</groupId>

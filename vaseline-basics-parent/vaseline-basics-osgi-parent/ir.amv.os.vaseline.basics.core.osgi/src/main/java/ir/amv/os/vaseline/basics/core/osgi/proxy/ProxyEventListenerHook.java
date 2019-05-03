@@ -37,7 +37,8 @@ public class ProxyEventListenerHook implements EventListenerHook {
     public void event(ServiceEvent serviceEvent, Map<BundleContext, Collection<ListenerHook.ListenerInfo>> map) {
         ServiceReference serviceReference = serviceEvent.getServiceReference();
 
-        if (serviceReference.getProperty(NEEDS_PROXY) != Boolean.FALSE &&
+        if (serviceReference.getProperty(NEEDS_PROXY) != null &&
+                (Boolean) serviceReference.getProperty(NEEDS_PROXY)&&
                 serviceReference.getProperty(PROXY) == null &&
                 serviceReference.getBundle().getBundleContext() != bc) {
             Bundle bundle = serviceReference.getBundle();

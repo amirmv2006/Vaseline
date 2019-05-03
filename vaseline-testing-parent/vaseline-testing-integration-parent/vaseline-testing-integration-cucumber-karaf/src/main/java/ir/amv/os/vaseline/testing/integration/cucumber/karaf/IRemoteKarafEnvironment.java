@@ -10,6 +10,7 @@ public interface IRemoteKarafEnvironment {
     void init();
 
     void addStepDefClass(Class<?> stepDefClass, Method method);
+    void addExtraClasses(Class<?>... classes);
 
     void startKaraf();
     void stopKaraf();

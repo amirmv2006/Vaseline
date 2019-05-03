@@ -11,9 +11,6 @@
 
     <artifactId>ir.amv.os.vaseline.data.jpa.search.simple.api</artifactId>
     <packaging>bundle</packaging>
-    <properties>
-        <bundle.base.pkg>ir.amv.os.vaseline.data.jpa.apis.simplesearch</bundle.base.pkg>
-    </properties>
 
     <dependencies>
         <dependency>

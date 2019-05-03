@@ -14,6 +14,7 @@
     <artifactId>vaseline-data-osgi-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>ir.amv.os.vaseline.data.osgi.test.jpa.model</module>
         <module>vaseline-data-karaf-feature</module>
     </modules>
 
