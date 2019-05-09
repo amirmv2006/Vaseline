@@ -26,7 +26,7 @@ import java.util.Map;
  * @param <Criterion>
  * @param <Projection>
  */
-public interface IBaseCriteriaExampleParser<Example, BaseExample, CriteriaBuilder, Criterion, Projection> {
+public interface IBaseCriteriaExampleParser<BaseExample, Example, CriteriaBuilder, Criterion, Projection> {
 
     SearchJoinType getJoinTypeFromExample(BaseExample object);
     Criterion getPropertyCriterion(Projection propertyAlias, Object propertyValue, CriteriaBuilder criteriaBuilder) throws InterceptionInterruptException;

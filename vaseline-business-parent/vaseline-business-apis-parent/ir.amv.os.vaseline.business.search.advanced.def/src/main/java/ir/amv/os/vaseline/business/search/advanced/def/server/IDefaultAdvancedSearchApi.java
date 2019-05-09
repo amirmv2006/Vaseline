@@ -15,7 +15,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface IDefaultAdvancedSearchApi<E extends IBaseEntity<Id>, SO extends IBaseSearchObject,
-        Id extends Serializable, Dao extends IBaseAdvancedSearchDao<E, SO, Id>>
+        Id extends Serializable, Dao extends IBaseAdvancedSearchDao<Id, E, SO>>
         extends IBaseAdvancedSearchApi<E, SO, Id>, IDefaultReadOnlyApi<E, Id, Dao> {
 
     @Transactional

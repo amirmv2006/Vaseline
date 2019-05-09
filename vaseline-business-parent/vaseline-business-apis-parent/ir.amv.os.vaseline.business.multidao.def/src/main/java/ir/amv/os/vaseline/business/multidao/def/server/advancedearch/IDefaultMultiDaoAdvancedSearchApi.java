@@ -15,7 +15,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface IDefaultMultiDaoAdvancedSearchApi<E extends IBaseEntity<Id>, SO extends IBaseSearchObject,
-        Id extends Serializable, Category, Dao extends IBaseAdvancedSearchDao<E, SO, Id>>
+        Id extends Serializable, Category, Dao extends IBaseAdvancedSearchDao<Id, E, SO>>
         extends IDefaultMultiDaoReadOnlyApi<E, Id, Category, Dao>, IDefaultAdvancedSearchApi<E, SO, Id,
                 Dao> {
     Category getCategoryForSearchObject(SO searchObject);

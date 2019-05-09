@@ -18,15 +18,15 @@ import java.util.List;
 /**
  * Created by AMV on 10/3/2017.
  */
-public interface IDefaultJpaSimpleSearchDao<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
-        extends IBaseSimpleSearchDao<E, D, Id>,
-        IDefaultJpaReadOnlyDao<E, Id> {
+public interface IDefaultJpaSimpleSearchDao<Id extends Serializable, E extends IBaseEntity<Id>, D extends IBaseDto<Id>>
+        extends IBaseSimpleSearchDao<Id, E, D>,
+        IDefaultJpaReadOnlyDao<Id, E> {
 
-    default IBaseJpaSimpleSearchParser<D, Id> getSimpleSearchExampleParser(D example) {
+    default IBaseJpaSimpleSearchParser<Id, D> getSimpleSearchExampleParser(D example) {
         return new DefaultJpaSimpleSearchParserImpl<>();
     }
 
-    default JpaFetchProviderFacade<E, Id> exampleJpaFetchProviderFacade(D example) {
+    default JpaFetchProviderFacade<Id, E> exampleJpaFetchProviderFacade(D example) {
         return new JpaFetchProviderFacade<>(jpaFetchProvider(),this, (criteriaBuilder, query, fromProvider) -> {
             Predicate criterion = getSimpleSearchExampleParser(example).getCriteriaFromExampleRecursively(example, IBaseDto.class, criteriaBuilder,
                     fromProvider, "");

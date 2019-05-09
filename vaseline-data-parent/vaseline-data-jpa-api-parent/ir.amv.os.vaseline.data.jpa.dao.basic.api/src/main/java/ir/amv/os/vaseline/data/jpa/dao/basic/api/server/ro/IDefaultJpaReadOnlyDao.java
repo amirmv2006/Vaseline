@@ -25,9 +25,9 @@ import javax.persistence.criteria.Predicate;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDefaultJpaReadOnlyDao<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends IDefaultGenericReadOnlyDao<E, Id>,
-        IBaseReadOnlyDao<E, Id>, IBaseJpaDao {
+public interface IDefaultJpaReadOnlyDao<I extends Serializable, E extends IBaseEntity<I>>
+        extends IDefaultGenericReadOnlyDao<I, E>,
+        IBaseReadOnlyDao<I, E>, IBaseJpaDao {
 
     IVendorSpecificDaoHelper getVendorSpecificDaoHelper();
 
@@ -70,7 +70,7 @@ public interface IDefaultJpaReadOnlyDao<E extends IBaseEntity<Id>, Id extends Se
         return criteriaBuilder.createQuery(queryResultClass);
     }
 
-    default IJpaFetchProvider<E, Id> jpaFetchProvider() {
+    default IJpaFetchProvider<I, E> jpaFetchProvider() {
         return new DefaultJpaFetchProviderImpl<>();
     }
 
@@ -95,13 +95,13 @@ public interface IDefaultJpaReadOnlyDao<E extends IBaseEntity<Id>, Id extends Se
         return null;
     }
 
-    default E getById(Id id) {
-        return new JpaFetchProviderFacade<E, Id>(jpaFetchProvider(), this, (criteriaBuilder, query, fromProvider) -> {
+    default E getById(I id) {
+        return new JpaFetchProviderFacade<I, E>(jpaFetchProvider(), this, (criteriaBuilder, query, fromProvider) -> {
             applyRootCondition(criteriaBuilder, fromProvider, query, criteriaBuilder.equal(fromProvider.getCriteriaParentProjection("id", null), id));
         }).unique();
     }
 
-    default E getByIdDetached(Id id) {
+    default E getByIdDetached(I id) {
         E byId = getById(id);
         getEntityManager().detach(byId);
         return byId;
@@ -123,7 +123,7 @@ public interface IDefaultJpaReadOnlyDao<E extends IBaseEntity<Id>, Id extends Se
         return allJpaCriteriaBuilderAbstractor().scroll(sortList);
     }
 
-    default JpaFetchProviderFacade<E, Id> allJpaCriteriaBuilderAbstractor() {
+    default JpaFetchProviderFacade<I, E> allJpaCriteriaBuilderAbstractor() {
         return new JpaFetchProviderFacade<>(jpaFetchProvider(), this, (criteriaBuilder, query, fromProvider) -> {
             applyRootCondition(criteriaBuilder, fromProvider, query, null);
         });

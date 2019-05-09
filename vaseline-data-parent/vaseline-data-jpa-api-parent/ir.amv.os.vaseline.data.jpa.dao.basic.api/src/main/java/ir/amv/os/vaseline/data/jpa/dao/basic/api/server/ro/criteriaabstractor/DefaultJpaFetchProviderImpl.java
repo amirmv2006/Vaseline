@@ -4,6 +4,6 @@ import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
 
 import java.io.Serializable;
 
-public class DefaultJpaFetchProviderImpl<E extends IBaseEntity<Id>, Id extends Serializable>
-        implements IJpaFetchProvider<E, Id> {
+public class DefaultJpaFetchProviderImpl<I extends Serializable, E extends IBaseEntity<I>>
+        implements IJpaFetchProvider<I, E> {
 }

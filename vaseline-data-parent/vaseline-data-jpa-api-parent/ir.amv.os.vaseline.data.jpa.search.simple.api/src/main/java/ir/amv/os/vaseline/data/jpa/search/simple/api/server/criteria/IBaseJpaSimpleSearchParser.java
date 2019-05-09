@@ -17,8 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public interface IBaseJpaSimpleSearchParser<D extends IBaseDto<Id>, Id extends Serializable>
-        extends IBaseCriteriaSimpleSearchParser<D, Id, CriteriaBuilder, Predicate, Path> {
+public interface IBaseJpaSimpleSearchParser<I extends Serializable, D extends IBaseDto<I>>
+        extends IBaseCriteriaSimpleSearchParser<I, D, CriteriaBuilder, Predicate, Path> {
 
     @Override
     default void addCriterionForProperty(CriteriaBuilder detachedCriteria, IBaseCriteriaFromProvider<Path> fromProvider, Map<String, Predicate> criterionListMap, String parentPTN, String propertyName, HashMap<String, Object> map, SearchJoinType joinType) throws InterceptionInterruptException {

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface IBaseCriteriaAdvancedSearchParser<SO extends IBaseSearchObject, CriteriaBuilder, Criterion, Projection>
-        extends IBaseCriteriaExampleParser<SO, IBaseSearchObject, CriteriaBuilder, Criterion, Projection> {
+        extends IBaseCriteriaExampleParser<IBaseSearchObject, SO, CriteriaBuilder, Criterion, Projection> {
 
     @Override
     default List<Class<?>> propertyClassesToBeIntercepted() {

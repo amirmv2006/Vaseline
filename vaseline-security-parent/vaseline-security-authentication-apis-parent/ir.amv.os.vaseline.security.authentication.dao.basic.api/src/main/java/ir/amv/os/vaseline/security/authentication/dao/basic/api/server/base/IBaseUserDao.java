@@ -7,7 +7,7 @@ import ir.amv.os.vaseline.security.authentication.model.api.server.base.IBaseUse
  * @author Amir
  */
 public interface IBaseUserDao<U extends IBaseUserEntity>
-        extends IBaseReadOnlyDao<U, Long>{
+        extends IBaseReadOnlyDao<Long, U>{
 
     U getUserByUsername(String username);
 }

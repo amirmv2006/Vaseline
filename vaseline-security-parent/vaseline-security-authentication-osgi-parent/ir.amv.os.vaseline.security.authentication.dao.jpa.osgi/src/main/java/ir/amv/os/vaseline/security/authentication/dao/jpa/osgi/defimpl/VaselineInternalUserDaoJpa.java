@@ -31,7 +31,7 @@ import java.util.UUID;
 public class VaselineInternalUserDaoJpa
         implements IVaselineInternalUserDao,
         IDefaultBaseUserJpaDao<VaselineInternalUserEntity>,
-        IDefaultJpaCrudDao<VaselineInternalUserEntity, Long> {
+        IDefaultJpaCrudDao<Long, VaselineInternalUserEntity> {
     // list didn't work because remove will call equals which needs a tx :\
     private Map<String, EntityManager> emMap = new HashMap<>();
     private IVendorSpecificDaoHelper vendorSpecificDaoHelper;

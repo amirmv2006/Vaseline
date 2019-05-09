@@ -43,7 +43,7 @@ public class TestBaseReadOnlyHibernateDaoImpl
     }
 
     @Override
-    protected IBaseReadOnlyDao<TestCountryEntity, Long> getCountryDao() {
+    protected IBaseReadOnlyDao<Long, TestCountryEntity> getCountryDao() {
         return countryDao;
     }
 

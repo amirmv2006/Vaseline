@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 public class TestCountryDaoImpl
-        implements IDefaultJpaCrudDao<TestCountryEntity, Long>, ITestCountryDao {
+        implements IDefaultJpaCrudDao<Long, TestCountryEntity>, ITestCountryDao {
 
     private EntityManager em;
     private IVendorSpecificDaoHelper vendorSpecificDaoHelper;

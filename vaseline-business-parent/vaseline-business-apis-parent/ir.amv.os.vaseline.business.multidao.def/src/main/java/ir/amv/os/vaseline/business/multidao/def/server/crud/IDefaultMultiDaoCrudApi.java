@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import java.io.Serializable;
 
 public interface IDefaultMultiDaoCrudApi<E extends IBaseEntity<Id>, Id extends Serializable, Category,
-        Dao extends IBaseCrudDao<E, Id>>
+        Dao extends IBaseCrudDao<Id, E>>
         extends IDefaultMultiDaoReadOnlyApi<E, Id, Category, Dao>, IDefaultCrudApi<E, Id, Dao> {
     Category getCategoryForEntity(final E entity) throws BaseVaselineServerException;
 

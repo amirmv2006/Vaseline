@@ -6,5 +6,5 @@ import ir.amv.os.vaseline.data.dao.basic.api.server.crud.IBaseCrudDao;
  * @author Amir
  */
 public interface IRestIntegrationModelDao
-        extends IBaseCrudDao<RestIntegrationModelEntity, Long> {
+        extends IBaseCrudDao<Long, RestIntegrationModelEntity> {
 }

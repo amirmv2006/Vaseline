@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface IDefaultReadOnlyApi<E extends IBaseEntity<Id>, Id extends Serializable, Dao extends
-        IBaseReadOnlyDao<E, Id>>
+        IBaseReadOnlyDao<Id, E>>
         extends IBaseReadOnlyApi<E, Id>, IDefaultEntityReadOnlyApi<E> {
 
     Dao getDao();

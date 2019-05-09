@@ -9,8 +9,8 @@ import java.io.Serializable;
  * TODO move to another module
  * @author Amir
  */
-public interface IDefaultGenericReadOnlyDao<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends IBaseReadOnlyDao<E, Id> {
+public interface IDefaultGenericReadOnlyDao<I extends Serializable, E extends IBaseEntity<I>>
+        extends IBaseReadOnlyDao<I, E> {
 
     @Override
     default E newEntity() throws IllegalAccessException, InstantiationException {

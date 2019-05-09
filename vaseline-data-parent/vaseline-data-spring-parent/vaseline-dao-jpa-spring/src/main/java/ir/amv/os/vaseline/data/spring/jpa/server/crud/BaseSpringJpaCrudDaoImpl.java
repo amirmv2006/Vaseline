@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author Amir
  */
-public class BaseSpringJpaCrudDaoImpl<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends BaseSpringJpaReadOnlyDaoImpl<E, Id>
-        implements IDefaultJpaCrudDao<E, Id> {
+public class BaseSpringJpaCrudDaoImpl<I extends Serializable, E extends IBaseEntity<I>>
+        extends BaseSpringJpaReadOnlyDaoImpl<I, E>
+        implements IDefaultJpaCrudDao<I, E> {
 }

@@ -21,7 +21,7 @@ import java.util.UUID;
  */
 public class BaseOsgiCrudDaoImpl<E extends IBaseEntity<Long>>
         extends BaseDaoImpl
-        implements IDefaultJpaCrudDao<E, Long> {
+        implements IDefaultJpaCrudDao<Long, E> {
 
     // list didn't work because remove will call equals which needs a tx :\
     private Map<String, EntityManager> emMap = new HashMap<>();

@@ -9,9 +9,9 @@ import java.io.Serializable;
 /**
  * @author Amir
  */
-public class BaseSpringHibernateCrudDaoImpl<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends BaseSpringHibernateReadOnlyDaoImpl<E, Id>
-        implements IDefaultHibernateCrudDao<E, Id> {
+public class BaseSpringHibernateCrudDaoImpl<I extends Serializable, E extends IBaseEntity<I>>
+        extends BaseSpringHibernateReadOnlyDaoImpl<I, E>
+        implements IDefaultHibernateCrudDao<I, E> {
 
 
 }

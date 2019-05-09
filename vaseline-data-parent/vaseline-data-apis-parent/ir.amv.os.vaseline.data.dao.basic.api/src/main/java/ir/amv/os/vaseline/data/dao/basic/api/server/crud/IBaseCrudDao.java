@@ -8,11 +8,11 @@ import java.io.Serializable;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IBaseCrudDao<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends IBaseReadOnlyDao<E, Id> {
+public interface IBaseCrudDao<I extends Serializable, E extends IBaseEntity<I>>
+        extends IBaseReadOnlyDao<I, E> {
 
     // CUD Operations
-    Id save(E entity);
+    I save(E entity);
 
     void update(E entity);
 

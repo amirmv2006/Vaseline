@@ -10,9 +10,9 @@ import java.io.Serializable;
 /**
  * @author Amir
  */
-public class BaseSpringJpaReadOnlyDaoImpl<E extends IBaseEntity<Id>, Id extends Serializable>
+public class BaseSpringJpaReadOnlyDaoImpl<I extends Serializable, E extends IBaseEntity<I>>
         extends BaseSpringJpaDaoImpl
-        implements IDefaultJpaReadOnlyDao<E, Id> {
+        implements IDefaultJpaReadOnlyDao<I, E> {
     @Override
     public IVendorSpecificDaoHelper getVendorSpecificDaoHelper() {
         return new SpringJpaVendorSpecificDaoHelperImpl();

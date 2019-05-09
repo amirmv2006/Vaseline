@@ -5,6 +5,6 @@ import ir.amv.os.vaseline.data.jpa.search.simple.api.server.criteria.IBaseJpaSim
 
 import java.io.Serializable;
 
-public class DefaultJpaSimpleSearchParserImpl<D extends IBaseDto<Id>, Id extends Serializable>
-        implements IBaseJpaSimpleSearchParser<D, Id>{
+public class DefaultJpaSimpleSearchParserImpl<I extends Serializable, D extends IBaseDto<I>>
+        implements IBaseJpaSimpleSearchParser<I, D>{
 }

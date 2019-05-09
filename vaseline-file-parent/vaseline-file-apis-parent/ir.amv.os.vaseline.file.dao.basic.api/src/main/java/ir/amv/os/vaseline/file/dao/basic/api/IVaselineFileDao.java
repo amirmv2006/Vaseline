@@ -12,7 +12,7 @@ import java.io.OutputStream;
  * Created by AMV on 2/8/2016.
  */
 public interface IVaselineFileDao<E extends IVaselineFileEntity, D extends IVaselineFileDto>
-        extends IBaseCrudDao<E, Long> {
+        extends IBaseCrudDao<Long, E> {
 
     Long saveFileUsingStream(E fileEntity, InputStream inputStream) throws Exception;
 

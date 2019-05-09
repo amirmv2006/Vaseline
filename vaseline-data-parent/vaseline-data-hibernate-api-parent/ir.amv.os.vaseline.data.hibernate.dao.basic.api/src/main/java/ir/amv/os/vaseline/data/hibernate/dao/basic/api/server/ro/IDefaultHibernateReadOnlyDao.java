@@ -29,9 +29,9 @@ import java.util.List;
 // note to future me: don't create the parent concrete class for these interfaces cause they will soon become
 // useless, a better idea would be to put the parent classes in the child project itself based on the feature set
 // that the child project is using
-public interface IDefaultHibernateReadOnlyDao<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends IDefaultGenericReadOnlyDao<E, Id>,
-        IBaseReadOnlyDao<E, Id>, IBaseHibernateDao {
+public interface IDefaultHibernateReadOnlyDao<I extends Serializable, E extends IBaseEntity<I>>
+        extends IDefaultGenericReadOnlyDao<I, E>,
+        IBaseReadOnlyDao<I, E>, IBaseHibernateDao {
 
     default boolean cacheAllCriterias() {
         return getEntityClass().isAnnotationPresent(Cacheable.class);
@@ -89,18 +89,18 @@ public interface IDefaultHibernateReadOnlyDao<E extends IBaseEntity<Id>, Id exte
         return new DefaultHibernateDataScroller<>(scroll);
     }
 
-    default IHibernateFetchProvider<E, Id> hibernateFetchProvider() {
+    default IHibernateFetchProvider<I, E> hibernateFetchProvider() {
         return new DefaultHibernateFetchProviderImpl<>();
     }
 
     // Read Only Dao Methods
-    default E getById(Id id) {
+    default E getById(I id) {
         return new HibernateFetchProviderFacade<>(hibernateFetchProvider(), this, detachedCriteria -> {
             detachedCriteria.add(Restrictions.idEq(id));
         }).unique();
     }
 
-    default E getByIdDetached(Id id) {
+    default E getByIdDetached(I id) {
         E byId = getById(id);
         Session currentSession = getCurrentSession();
         currentSession.evict(byId);
@@ -123,7 +123,7 @@ public interface IDefaultHibernateReadOnlyDao<E extends IBaseEntity<Id>, Id exte
         return allHibernateCriteriaBuilderAbstractor().scroll(sortList);
     }
 
-    default HibernateFetchProviderFacade<E, Id> allHibernateCriteriaBuilderAbstractor() {
+    default HibernateFetchProviderFacade<I, E> allHibernateCriteriaBuilderAbstractor() {
         return new HibernateFetchProviderFacade<>(hibernateFetchProvider(), this, detachedCriteria -> {
         });
     }

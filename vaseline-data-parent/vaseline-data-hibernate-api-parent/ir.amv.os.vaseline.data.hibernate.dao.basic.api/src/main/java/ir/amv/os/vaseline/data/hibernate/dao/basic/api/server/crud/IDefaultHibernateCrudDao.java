@@ -7,13 +7,13 @@ import org.hibernate.Session;
 
 import java.io.Serializable;
 
-public interface IDefaultHibernateCrudDao<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends IDefaultHibernateReadOnlyDao<E, Id>, IBaseCrudDao<E, Id> {
+public interface IDefaultHibernateCrudDao<I extends Serializable, E extends IBaseEntity<I>>
+        extends IDefaultHibernateReadOnlyDao<I, E>, IBaseCrudDao<I, E> {
 
     @Override
-    default Id save(E entity) {
+    default I save(E entity) {
         Session currentSession = getCurrentSession();
-        Id id = (Id) currentSession.save(entity);
+        I id = (I) currentSession.save(entity);
         currentSession.flush();
         return id;
     }

@@ -8,7 +8,7 @@ import ir.amv.os.vaseline.data.osgi.test.jpa.model.SampleSearchObject;
 import javax.persistence.EntityManager;
 
 public class SampleAdvancedSearchDao
-        implements IDefaultJpaAdvancedSearchDao<SampleEntity, SampleSearchObject, Long>,
+        implements IDefaultJpaAdvancedSearchDao<Long, SampleEntity, SampleSearchObject>,
         ISampleAdvancedSearchDao {
     private EntityManager em;
 

@@ -40,7 +40,7 @@ public class TestBaseJpaSimpleSearchDaoImpl extends AbstractSimpleSearchTest {
     }
 
     @Override
-    protected IBaseSimpleSearchDao<TestCountryEntity, TestCountryDto, Long> getCountryDao() {
+    protected IBaseSimpleSearchDao<Long, TestCountryEntity, TestCountryDto> getCountryDao() {
         return countryDao;
     }
 }

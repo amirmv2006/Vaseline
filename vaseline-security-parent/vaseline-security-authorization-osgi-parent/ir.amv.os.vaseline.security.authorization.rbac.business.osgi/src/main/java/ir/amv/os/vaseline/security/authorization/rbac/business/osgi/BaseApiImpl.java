@@ -9,7 +9,7 @@ import ir.amv.os.vaseline.security.authorization.business.def.IDefaultNotSecured
 /**
  * @author Amir
  */
-public abstract class BaseApiImpl<E extends IBaseEntity<Long>, Dao extends IBaseCrudDao<E, Long>>
+public abstract class BaseApiImpl<E extends IBaseEntity<Long>, Dao extends IBaseCrudDao<Long, E>>
         extends ProxyAwareImpl
         implements
         IDefaultCrudApi<E, Long, Dao>,

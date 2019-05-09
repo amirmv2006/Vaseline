@@ -14,7 +14,7 @@ import javax.persistence.EntityManager;
 )
 public class SampleBasicDao
         implements
-        IDefaultJpaCrudDao<SampleEntity, Long>, IBaseCrudDao<SampleEntity, Long>,
+        IDefaultJpaCrudDao<Long, SampleEntity>, IBaseCrudDao<Long, SampleEntity>,
         ISampleBasicDao {
 
     private final EntityManager entityManager;

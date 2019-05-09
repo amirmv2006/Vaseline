@@ -21,7 +21,7 @@ import static org.junit.Assert.assertTrue;
 public abstract class AbstractReadOnlyTest
         extends BaseDataModelTest {
 
-    protected abstract IBaseReadOnlyDao<TestCountryEntity, Long> getCountryDao();
+    protected abstract IBaseReadOnlyDao<Long, TestCountryEntity> getCountryDao();
 
     @Test
     public void testGetById() {

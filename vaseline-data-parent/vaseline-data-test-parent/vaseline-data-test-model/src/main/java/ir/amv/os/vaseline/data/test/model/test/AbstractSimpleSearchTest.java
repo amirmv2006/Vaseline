@@ -25,7 +25,7 @@ import static org.junit.Assert.assertEquals;
 public abstract class AbstractSimpleSearchTest
         extends BaseDataModelTest {
 
-    protected abstract IBaseSimpleSearchDao<TestCountryEntity, TestCountryDto, Long> getCountryDao();
+    protected abstract IBaseSimpleSearchDao<Long, TestCountryEntity, TestCountryDto> getCountryDao();
 
     @Test
     public void testCountByExample() {

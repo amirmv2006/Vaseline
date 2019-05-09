@@ -9,11 +9,11 @@ import ir.amv.os.vaseline.security.authentication.model.api.server.base.IBaseUse
  * @author Amir
  */
 public interface IDefaultBaseUserJpaDao<U extends IBaseUserEntity>
-        extends IDefaultJpaReadOnlyDao<U, Long>, IBaseUserDao<U> {
+        extends IDefaultJpaReadOnlyDao<Long, U>, IBaseUserDao<U> {
 
     @Override
     default U getUserByUsername(String username) {
-        return new JpaFetchProviderFacade<U, Long>(jpaFetchProvider(), this, (criteriaBuilder, query, fromProvider) -> {
+        return new JpaFetchProviderFacade<Long, U>(jpaFetchProvider(), this, (criteriaBuilder, query, fromProvider) -> {
             applyRootCondition(criteriaBuilder, fromProvider, query, criteriaBuilder.equal(fromProvider
                     .getCriteriaParentProjection("username", null), username));
         }).unique();

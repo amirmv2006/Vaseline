@@ -13,9 +13,8 @@ import java.util.List;
 /**
  * Created by AMV on 9/30/2017.
  */
-public interface IBaseAdvancedSearchDao<E extends IBaseEntity<Id>, SO extends IBaseSearchObject, Id extends
-        Serializable>
-        extends IBaseReadOnlyDao<E, Id> {
+public interface IBaseAdvancedSearchDao<I extends Serializable, E extends IBaseEntity<I>, SO extends IBaseSearchObject>
+        extends IBaseReadOnlyDao<I, E> {
 
     Long countBySearchObject(SO example);
     List<E> searchBySearchObject(SO example);

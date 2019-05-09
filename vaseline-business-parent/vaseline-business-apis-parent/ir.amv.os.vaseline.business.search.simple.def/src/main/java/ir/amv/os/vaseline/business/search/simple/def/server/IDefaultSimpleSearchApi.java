@@ -15,7 +15,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface IDefaultSimpleSearchApi<E extends IBaseEntity<Id>, D extends IBaseDto<Id>,
-        Id extends Serializable, Dao extends IBaseSimpleSearchDao<E, D, Id>>
+        Id extends Serializable, Dao extends IBaseSimpleSearchDao<Id, E, D>>
         extends IBaseSimpleSearchApi<E, D, Id>, IDefaultReadOnlyApi<E, Id, Dao> {
 
     @Override

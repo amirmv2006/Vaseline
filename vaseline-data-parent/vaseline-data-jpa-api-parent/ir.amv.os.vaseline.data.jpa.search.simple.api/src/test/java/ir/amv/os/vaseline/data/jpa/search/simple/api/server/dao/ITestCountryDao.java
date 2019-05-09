@@ -6,6 +6,6 @@ import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
 import ir.amv.os.vaseline.data.test.model.shared.dto.TestCountryDto;
 
 public interface ITestCountryDao
-        extends IBaseCrudDao<TestCountryEntity, Long>,
-        IBaseSimpleSearchDao<TestCountryEntity, TestCountryDto, Long> {
+        extends IBaseCrudDao<Long, TestCountryEntity>,
+        IBaseSimpleSearchDao<Long, TestCountryEntity, TestCountryDto> {
 }

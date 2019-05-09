@@ -18,15 +18,15 @@ import java.util.List;
 /**
  * Created by AMV on 10/3/2017.
  */
-public interface IDefaultJpaAdvancedSearchDao<E extends IBaseEntity<Id>, SO extends  IBaseSearchObject, Id extends Serializable>
-        extends IBaseAdvancedSearchDao<E, SO, Id>,
-        IDefaultJpaReadOnlyDao<E, Id> {
+public interface IDefaultJpaAdvancedSearchDao<I extends Serializable, E extends IBaseEntity<I>, SO extends  IBaseSearchObject>
+        extends IBaseAdvancedSearchDao<I, E, SO>,
+        IDefaultJpaReadOnlyDao<I, E> {
 
     default IBaseJpaAdvancedSearchParser<SO> getAdvancedSearchExampleParser(SO example) {
         return new DefaultJpaAdvancedSearchParserImpl<>();
     }
 
-    default JpaFetchProviderFacade<E, Id> advancedSearchJpaFetchProviderFacade(SO example) {
+    default JpaFetchProviderFacade<I, E> advancedSearchJpaFetchProviderFacade(SO example) {
         return new JpaFetchProviderFacade<>(jpaFetchProvider(),this, (criteriaBuilder, query, fromProvider) -> {
             Predicate criterion = getAdvancedSearchExampleParser(example).getCriteriaFromExampleRecursively(example, IBaseSearchObject.class, criteriaBuilder,
                     fromProvider, "");

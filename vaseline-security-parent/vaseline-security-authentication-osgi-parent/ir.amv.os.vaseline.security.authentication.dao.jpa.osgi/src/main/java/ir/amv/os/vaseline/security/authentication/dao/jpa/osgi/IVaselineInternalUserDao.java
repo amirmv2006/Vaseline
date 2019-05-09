@@ -8,5 +8,5 @@ import ir.amv.os.vaseline.security.authentication.model.def.server.base.Vaseline
  * @author Amir
  */
 public interface IVaselineInternalUserDao
-        extends IBaseUserDao<VaselineInternalUserEntity>, IBaseCrudDao<VaselineInternalUserEntity, Long> {
+        extends IBaseUserDao<VaselineInternalUserEntity>, IBaseCrudDao<Long, VaselineInternalUserEntity> {
 }

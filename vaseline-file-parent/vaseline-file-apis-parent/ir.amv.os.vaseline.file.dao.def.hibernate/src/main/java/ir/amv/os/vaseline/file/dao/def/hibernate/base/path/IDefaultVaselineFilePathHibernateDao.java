@@ -11,7 +11,7 @@ import java.io.*;
 import static ir.amv.os.vaseline.basics.core.api.shared.util.stream.StreamUtils.copyStreams;
 
 public interface IDefaultVaselineFilePathHibernateDao
-        extends IDefaultHibernateCrudDao<VaselineFilePathEntity, Long>, IVaselineFilePathDao {
+        extends IDefaultHibernateCrudDao<Long, VaselineFilePathEntity>, IVaselineFilePathDao {
 
     String getBaseFilePath();// vaseline.file.path.base
 

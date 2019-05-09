@@ -9,8 +9,8 @@ import javax.inject.Inject;
 
 public class TestCountryDaoImpl
         implements ITestCountryDao,
-        IDefaultHibernateCrudDao<TestCountryEntity, Long>,
-        IDefaultHibernateAdvancedSearchDao<TestCountryEntity, ITestCountrySearchObject, Long> {
+        IDefaultHibernateCrudDao<Long, TestCountryEntity>,
+        IDefaultHibernateAdvancedSearchDao<Long, TestCountryEntity, ITestCountrySearchObject> {
 
     private SessionFactory sessionFactory;
 

@@ -18,7 +18,7 @@ import org.osgi.service.component.annotations.Component;
 public class VaselineSecurityRoleOsgiCrudDaoImpl
         extends BaseOsgiCrudDaoImpl<SecurityRoleEntity>
         implements
-        IDefaultJpaCrudDao<SecurityRoleEntity, Long>,
+        IDefaultJpaCrudDao<Long, SecurityRoleEntity>,
         IVaselineSecurityRoleDao {
     @Override
     public SecurityRoleEntity getByRoleName(final String roleName) {

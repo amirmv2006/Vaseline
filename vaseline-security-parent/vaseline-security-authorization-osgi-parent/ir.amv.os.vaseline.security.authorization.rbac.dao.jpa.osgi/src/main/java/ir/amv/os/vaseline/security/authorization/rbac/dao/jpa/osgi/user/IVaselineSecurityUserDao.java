@@ -8,5 +8,5 @@ import ir.amv.os.vaseline.security.authorization.rbac.model.def.user.SecurityUse
  * @author Amir
  */
 public interface IVaselineSecurityUserDao
-        extends ISecurityUserDao<SecurityUserEntity>, IBaseCrudDao<SecurityUserEntity, Long> {
+        extends ISecurityUserDao<SecurityUserEntity>, IBaseCrudDao<Long, SecurityUserEntity> {
 }

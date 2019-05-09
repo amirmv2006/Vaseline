@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class RestIntegrationModelDao
-        extends BaseSpringJpaCrudDaoImpl<RestIntegrationModelEntity, Long>
+        extends BaseSpringJpaCrudDaoImpl<Long, RestIntegrationModelEntity>
         implements IRestIntegrationModelDao {
 }

@@ -9,15 +9,15 @@ import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.IDefaultJpaReadOnlyDa
 import java.io.Serializable;
 import java.util.List;
 
-public class JpaFetchProviderFacade<E extends IBaseEntity<Id>, Id extends Serializable> {
+public class JpaFetchProviderFacade<Id extends Serializable, E extends IBaseEntity<Id>> {
 
-    private IJpaFetchProvider<E, Id> abstractor;
-    private IDefaultJpaReadOnlyDao<E, Id> dao;
+    private IJpaFetchProvider<Id, E> abstractor;
+    private IDefaultJpaReadOnlyDao<Id, E> dao;
     private IJpaCriteriaPrunerFunctionalInterface criteriaPruner;
 
     public JpaFetchProviderFacade(
-            IJpaFetchProvider<E, Id> fetchProvider,
-            IDefaultJpaReadOnlyDao<E, Id> dao,
+            IJpaFetchProvider<Id, E> fetchProvider,
+            IDefaultJpaReadOnlyDao<Id, E> dao,
             IJpaCriteriaPrunerFunctionalInterface criteriaPruner) {
         this.abstractor = fetchProvider;
         this.dao = dao;

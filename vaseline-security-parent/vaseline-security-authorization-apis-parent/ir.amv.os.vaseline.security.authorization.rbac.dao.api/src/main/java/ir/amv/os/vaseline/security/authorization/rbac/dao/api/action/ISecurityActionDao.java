@@ -9,7 +9,7 @@ import java.util.List;
  * @author Amir
  */
 public interface ISecurityActionDao<A extends ISecurityAction<A>>
-        extends IBaseReadOnlyDao<A, Long> {
+        extends IBaseReadOnlyDao<Long, A> {
 
     List<String> getActionChildTreeNames(final String baseActionTN);
 }

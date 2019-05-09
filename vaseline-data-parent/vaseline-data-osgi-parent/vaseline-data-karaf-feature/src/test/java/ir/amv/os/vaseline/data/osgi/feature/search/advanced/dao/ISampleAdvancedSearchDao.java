@@ -5,5 +5,5 @@ import ir.amv.os.vaseline.data.osgi.test.jpa.model.SampleSearchObject;
 import ir.amv.os.vaseline.data.search.advanced.api.server.ro.IBaseAdvancedSearchDao;
 
 public interface ISampleAdvancedSearchDao
-        extends IBaseAdvancedSearchDao<SampleEntity, SampleSearchObject, Long> {
+        extends IBaseAdvancedSearchDao<Long, SampleEntity, SampleSearchObject> {
 }

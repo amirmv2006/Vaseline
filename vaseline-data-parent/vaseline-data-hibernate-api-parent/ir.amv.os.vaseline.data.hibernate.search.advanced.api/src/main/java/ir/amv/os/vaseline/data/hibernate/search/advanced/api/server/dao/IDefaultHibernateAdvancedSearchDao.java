@@ -17,9 +17,9 @@ import org.hibernate.criterion.Criterion;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDefaultHibernateAdvancedSearchDao<E extends IBaseEntity<Id>, SO extends  IBaseSearchObject, Id extends Serializable>
-        extends IBaseAdvancedSearchDao<E, SO, Id>,
-        IDefaultHibernateReadOnlyDao<E, Id> {
+public interface IDefaultHibernateAdvancedSearchDao<Id extends Serializable, E extends IBaseEntity<Id>, SO extends  IBaseSearchObject>
+        extends IBaseAdvancedSearchDao<Id, E, SO>,
+        IDefaultHibernateReadOnlyDao<Id, E> {
 
     default Class<SO> getSearchObjectClass() {
         Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(getClass());
@@ -37,7 +37,7 @@ public interface IDefaultHibernateAdvancedSearchDao<E extends IBaseEntity<Id>, S
         return new DefaultHibernateAdvancedSearchParserImpl<>();
     }
 
-    default HibernateFetchProviderFacade<E, Id> advancedSearchHibernateFetchProviderFacade(SO example) {
+    default HibernateFetchProviderFacade<Id, E> advancedSearchHibernateFetchProviderFacade(SO example) {
         return new HibernateFetchProviderFacade<>(hibernateFetchProvider(),this, detachedCriteria -> {
             Criterion criterion = getAdvancedSearchExampleParser(example).getCriteriaFromExampleRecursively(example, IBaseSearchObject.class, detachedCriteria,
                     new DefaultHibernateCriteriaProjectionProviderImpl(detachedCriteria, getEntityClass()), "");

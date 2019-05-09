@@ -8,6 +8,6 @@ import ir.amv.os.vaseline.security.authorization.rbac.model.def.action.SecurityA
  * @author Amir
  */
 public interface IVaselineSecurityActionDao
-        extends ISecurityActionDao<SecurityActionEntity>, IBaseCrudDao<SecurityActionEntity, Long> {
+        extends ISecurityActionDao<SecurityActionEntity>, IBaseCrudDao<Long, SecurityActionEntity> {
     SecurityActionEntity getByActionTreeName(String actionTreeName);
 }

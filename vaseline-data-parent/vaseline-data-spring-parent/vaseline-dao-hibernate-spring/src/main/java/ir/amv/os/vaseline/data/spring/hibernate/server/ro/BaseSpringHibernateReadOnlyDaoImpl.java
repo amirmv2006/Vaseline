@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author Amir
  */
-public class BaseSpringHibernateReadOnlyDaoImpl<E extends IBaseEntity<Id>, Id extends Serializable>
+public class BaseSpringHibernateReadOnlyDaoImpl<I extends Serializable, E extends IBaseEntity<I>>
         extends BaseSpringHibernateDaoImpl
-        implements IDefaultHibernateReadOnlyDao<E, Id> {
+        implements IDefaultHibernateReadOnlyDao<I, E> {
 }

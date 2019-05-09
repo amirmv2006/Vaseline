@@ -19,7 +19,7 @@ import java.sql.Blob;
 import static ir.amv.os.vaseline.basics.core.api.shared.util.stream.StreamUtils.copyStreams;
 
 public interface IDefaultVaselineFileBlobHibernateDao
-        extends IDefaultHibernateCrudDao<VaselineFileBlobEntity, Long>, IVaselineFileBlobDao {
+        extends IDefaultHibernateCrudDao<Long, VaselineFileBlobEntity>, IVaselineFileBlobDao {
 
     @Override
     default Long saveFileUsingStream(VaselineFileBlobEntity fileEntity, InputStream inputStream) throws Exception {

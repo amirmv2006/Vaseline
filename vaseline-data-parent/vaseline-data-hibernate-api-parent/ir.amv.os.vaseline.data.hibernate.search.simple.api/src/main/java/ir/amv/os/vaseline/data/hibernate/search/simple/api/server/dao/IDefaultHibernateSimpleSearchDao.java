@@ -17,9 +17,9 @@ import org.hibernate.criterion.Criterion;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDefaultHibernateSimpleSearchDao<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
-        extends IBaseSimpleSearchDao<E, D, Id>,
-        IDefaultHibernateReadOnlyDao<E, Id> {
+public interface IDefaultHibernateSimpleSearchDao<I extends Serializable, E extends IBaseEntity<I>, D extends IBaseDto<I>>
+        extends IBaseSimpleSearchDao<I, E, D>,
+        IDefaultHibernateReadOnlyDao<I, E> {
 
     default Class<D> getDtoClass() {
         Class<?>[] genericArgumentClasses = ReflectionUtil.getGenericArgumentClassesDeprecated(getClass());
@@ -33,11 +33,11 @@ public interface IDefaultHibernateSimpleSearchDao<E extends IBaseEntity<Id>, D e
         return null;
     }
 
-    default IBaseHibernateSimpleSearchParser<D, Id> getSimpleSearchExampleParser(D example) {
+    default IBaseHibernateSimpleSearchParser<I, D> getSimpleSearchExampleParser(D example) {
         return new DefaultHibernateSimpleSearchParserImpl<>();
     }
 
-    default HibernateFetchProviderFacade<E, Id> exampleHibernateFetchProviderFacade(D example) {
+    default HibernateFetchProviderFacade<I, E> exampleHibernateFetchProviderFacade(D example) {
         return new HibernateFetchProviderFacade<>(hibernateFetchProvider(),this, detachedCriteria -> {
             Criterion criterion = getSimpleSearchExampleParser(example).getCriteriaFromExampleRecursively(example, IBaseDto.class, detachedCriteria,
                     new DefaultHibernateCriteriaProjectionProviderImpl(detachedCriteria, getEntityClass()), "");

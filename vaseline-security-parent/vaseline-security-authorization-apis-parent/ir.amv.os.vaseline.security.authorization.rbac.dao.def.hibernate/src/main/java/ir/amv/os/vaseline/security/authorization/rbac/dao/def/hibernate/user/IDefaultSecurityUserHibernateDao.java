@@ -16,7 +16,7 @@ import java.util.List;
  * @author Amir
  */
 public interface IDefaultSecurityUserHibernateDao<U extends ISecurityUserWithRoleEntity<?>>
-        extends IDefaultHibernateReadOnlyDao<U, Long>,
+        extends IDefaultHibernateReadOnlyDao<Long, U>,
         ISecurityUserDao<U> {
 
     @Override

@@ -7,11 +7,11 @@ import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.IDefaultJpaReadOnlyDa
 import javax.persistence.EntityManager;
 import java.io.Serializable;
 
-public interface IDefaultJpaCrudDao<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends IDefaultJpaReadOnlyDao<E, Id>, IBaseCrudDao<E, Id> {
+public interface IDefaultJpaCrudDao<I extends Serializable, E extends IBaseEntity<I>>
+        extends IDefaultJpaReadOnlyDao<I, E>, IBaseCrudDao<I, E> {
 
     @Override
-    default Id save(E entity) {
+    default I save(E entity) {
         EntityManager em = getEntityManager();
         em.persist(entity);
         em.flush();

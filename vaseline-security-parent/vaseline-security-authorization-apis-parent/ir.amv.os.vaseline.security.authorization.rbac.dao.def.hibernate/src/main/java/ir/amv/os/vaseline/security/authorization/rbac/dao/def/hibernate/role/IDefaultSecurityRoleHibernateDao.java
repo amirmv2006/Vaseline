@@ -8,5 +8,5 @@ import ir.amv.os.vaseline.security.authorization.rbac.model.api.role.ISecurityRo
  * @author Amir
  */
 public interface IDefaultSecurityRoleHibernateDao<R extends ISecurityRole<?>>
-        extends IDefaultHibernateReadOnlyDao<R, Long>, ISecurityRoleDao<R> {
+        extends IDefaultHibernateReadOnlyDao<Long, R>, ISecurityRoleDao<R> {
 }

@@ -13,9 +13,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IJpaFetchProvider<E extends IBaseEntity<Id>, Id extends Serializable> {
+public interface IJpaFetchProvider<I extends Serializable, E extends IBaseEntity<I>> {
 
-    default Long count(IDefaultJpaReadOnlyDao<E, Id> dao, IJpaCriteriaPrunerFunctionalInterface<Number> criteriaPruner) {
+    default Long count(IDefaultJpaReadOnlyDao<I, E> dao, IJpaCriteriaPrunerFunctionalInterface<Number> criteriaPruner) {
         CriteriaBuilder criteriaBuilder = dao.createCriteriaBuilder();
         CriteriaQuery<Number> query = dao.createQuery(criteriaBuilder, Number.class);
         ProjectionMapProvider<E, Number> fromProvider = new ProjectionMapProvider<>(query, (Class<E>)dao.getEntityClass());
@@ -24,7 +24,7 @@ public interface IJpaFetchProvider<E extends IBaseEntity<Id>, Id extends Seriali
         return dao.getCountResult(query);
     }
 
-    default List<E> list(IDefaultJpaReadOnlyDao<E, Id> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner) {
+    default List<E> list(IDefaultJpaReadOnlyDao<I, E> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner) {
         CriteriaBuilder criteriaBuilder = dao.createCriteriaBuilder();
         CriteriaQuery<E> query = dao.createQuery(criteriaBuilder, (Class<E>)dao.getEntityClass());
         ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, (Class<E>)dao.getEntityClass());
@@ -34,7 +34,7 @@ public interface IJpaFetchProvider<E extends IBaseEntity<Id>, Id extends Seriali
         return dao.getListFromCriteria(typedQuery);
     }
 
-    default List<E> page(IDefaultJpaReadOnlyDao<E, Id> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner, PagingDto pagingDto) {
+    default List<E> page(IDefaultJpaReadOnlyDao<I, E> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner, PagingDto pagingDto) {
         CriteriaBuilder criteriaBuilder = dao.createCriteriaBuilder();
         CriteriaQuery<E> query = dao.createQuery(criteriaBuilder, (Class<E>)dao.getEntityClass());
         ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, (Class<E>)dao.getEntityClass());
@@ -44,7 +44,7 @@ public interface IJpaFetchProvider<E extends IBaseEntity<Id>, Id extends Seriali
         return dao.getListFromCriteria(typedQuery);
     }
 
-    default IVaselineDataScroller<E> scroll(IDefaultJpaReadOnlyDao<E, Id> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner, List<SortDto> sortList) {
+    default IVaselineDataScroller<E> scroll(IDefaultJpaReadOnlyDao<I, E> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner, List<SortDto> sortList) {
         CriteriaBuilder criteriaBuilder = dao.createCriteriaBuilder();
         CriteriaQuery<E> query = dao.createQuery(criteriaBuilder, (Class<E>)dao.getEntityClass());
         ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, (Class<E>)dao.getEntityClass());
@@ -54,7 +54,7 @@ public interface IJpaFetchProvider<E extends IBaseEntity<Id>, Id extends Seriali
         return dao.scrollCriteria(typedQuery);
     }
 
-    default E unique(IDefaultJpaReadOnlyDao<E, Id> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner) {
+    default E unique(IDefaultJpaReadOnlyDao<I, E> dao, IJpaCriteriaPrunerFunctionalInterface<E> criteriaPruner) {
         CriteriaBuilder criteriaBuilder = dao.createCriteriaBuilder();
         CriteriaQuery<E> query = dao.createQuery(criteriaBuilder, (Class<E>)dao.getEntityClass());
         ProjectionMapProvider<E, E> fromProvider = new ProjectionMapProvider<>(query, (Class<E>)dao.getEntityClass());

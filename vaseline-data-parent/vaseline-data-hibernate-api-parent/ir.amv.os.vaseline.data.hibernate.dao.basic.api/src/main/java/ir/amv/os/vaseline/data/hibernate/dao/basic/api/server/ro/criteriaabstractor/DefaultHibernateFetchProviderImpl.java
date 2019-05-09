@@ -5,6 +5,6 @@ import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
 
 import java.io.Serializable;
 
-public class DefaultHibernateFetchProviderImpl<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
-        implements IHibernateFetchProvider<E, Id> {
+public class DefaultHibernateFetchProviderImpl<I extends Serializable, E extends IBaseEntity<I>, D extends IBaseDto<I>>
+        implements IHibernateFetchProvider<I, E> {
 }

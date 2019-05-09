@@ -10,8 +10,8 @@ import javax.persistence.EntityManager;
 
 public class TestCountryDaoImpl
         implements ITestCountryDao,
-        IDefaultJpaSimpleSearchDao<TestCountryEntity, TestCountryDto, Long>,
-        IDefaultJpaCrudDao<TestCountryEntity, Long> {
+        IDefaultJpaSimpleSearchDao<Long, TestCountryEntity, TestCountryDto>,
+        IDefaultJpaCrudDao<Long, TestCountryEntity> {
 
     private EntityManager em;
     private IVendorSpecificDaoHelper vendorSpecificDaoHelper;

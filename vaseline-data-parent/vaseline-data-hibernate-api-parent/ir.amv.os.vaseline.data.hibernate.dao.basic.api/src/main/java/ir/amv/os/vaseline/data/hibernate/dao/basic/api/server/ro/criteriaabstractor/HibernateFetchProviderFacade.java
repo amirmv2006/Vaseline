@@ -9,15 +9,15 @@ import ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.ro.IDefaultHiberna
 import java.io.Serializable;
 import java.util.List;
 
-public class HibernateFetchProviderFacade<E extends IBaseEntity<Id>, Id extends Serializable> {
+public class HibernateFetchProviderFacade<I extends Serializable, E extends IBaseEntity<I>> {
 
-    private IHibernateFetchProvider<E, Id> abstractor;
-    private IDefaultHibernateReadOnlyDao<E, Id> dao;
+    private IHibernateFetchProvider<I, E> abstractor;
+    private IDefaultHibernateReadOnlyDao<I, E> dao;
     private IDetachedCriteriaPrunerFunctionalInterface criteriaPruner;
 
     public HibernateFetchProviderFacade(
-            IHibernateFetchProvider<E, Id> fetchProvider,
-            IDefaultHibernateReadOnlyDao<E, Id> dao,
+            IHibernateFetchProvider<I, E> fetchProvider,
+            IDefaultHibernateReadOnlyDao<I, E> dao,
             IDetachedCriteriaPrunerFunctionalInterface criteriaPruner) {
         this.abstractor = fetchProvider;
         this.dao = dao;

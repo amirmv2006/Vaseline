@@ -15,7 +15,7 @@ import java.util.List;
  * Created by AMV on 2/7/2016.
  */
 public interface IDefaultCrudApi<E extends IBaseEntity<Id>, Id extends Serializable, Dao extends
-        IBaseCrudDao<E, Id>>
+        IBaseCrudDao<Id, E>>
         extends IBaseCrudApi<E, Id>, IDefaultEntityCrudApi<E>, IDefaultReadOnlyApi<E, Id, Dao> {
 
     @Override

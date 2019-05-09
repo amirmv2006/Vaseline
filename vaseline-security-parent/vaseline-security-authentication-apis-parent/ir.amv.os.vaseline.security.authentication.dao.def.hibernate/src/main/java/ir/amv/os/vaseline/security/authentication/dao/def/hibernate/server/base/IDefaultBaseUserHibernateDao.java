@@ -10,7 +10,7 @@ import org.hibernate.criterion.Restrictions;
  * @author Amir
  */
 public interface IDefaultBaseUserHibernateDao<U extends IBaseUserEntity>
-        extends IDefaultHibernateReadOnlyDao<U, Long>, IBaseUserDao<U> {
+        extends IDefaultHibernateReadOnlyDao<Long, U>, IBaseUserDao<U> {
 
     @Override
     default U getUserByUsername(String username) {

@@ -5,6 +5,6 @@ import ir.amv.os.vaseline.data.hibernate.search.simple.api.server.criteria.IBase
 
 import java.io.Serializable;
 
-public class DefaultHibernateSimpleSearchParserImpl<D extends IBaseDto<Id>, Id extends Serializable>
-        implements IBaseHibernateSimpleSearchParser<D, Id>{
+public class DefaultHibernateSimpleSearchParserImpl<Id extends Serializable, D extends IBaseDto<Id>>
+        implements IBaseHibernateSimpleSearchParser<Id, D>{
 }

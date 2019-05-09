@@ -12,11 +12,11 @@ import java.util.List;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IBaseReadOnlyDao<E extends IBaseEntity<Id>, Id extends Serializable>
+public interface IBaseReadOnlyDao<I extends Serializable, E extends IBaseEntity<I>>
         extends IBaseDao {
 
-    E getById(Id id);
-    E getByIdDetached(Id id);
+    E getById(I id);
+    E getByIdDetached(I id);
 
     Long countAllApproximately();
 

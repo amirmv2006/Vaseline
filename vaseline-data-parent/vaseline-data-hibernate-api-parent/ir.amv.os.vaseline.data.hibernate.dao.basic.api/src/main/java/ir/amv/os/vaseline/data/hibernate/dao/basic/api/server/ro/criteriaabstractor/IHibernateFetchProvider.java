@@ -11,9 +11,9 @@ import org.hibernate.criterion.DetachedCriteria;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IHibernateFetchProvider<E extends IBaseEntity<Id>, Id extends Serializable> {
+public interface IHibernateFetchProvider<I extends Serializable, E extends IBaseEntity<I>> {
 
-    default Long count(IDefaultHibernateReadOnlyDao<E, Id> dao, IDetachedCriteriaPrunerFunctionalInterface criteriaPruner) {
+    default Long count(IDefaultHibernateReadOnlyDao<I, E> dao, IDetachedCriteriaPrunerFunctionalInterface criteriaPruner) {
         DetachedCriteria detachedCriteria = dao.createCriteria();
         criteriaPruner.pruneCriteria(detachedCriteria);
         detachedCriteria = dao.getCountCriteria(detachedCriteria);
@@ -21,14 +21,14 @@ public interface IHibernateFetchProvider<E extends IBaseEntity<Id>, Id extends S
         return dao.getCountResult(criteria);
     }
 
-    default List<E> list(IDefaultHibernateReadOnlyDao<E, Id> dao, IDetachedCriteriaPrunerFunctionalInterface criteriaPruner) {
+    default List<E> list(IDefaultHibernateReadOnlyDao<I, E> dao, IDetachedCriteriaPrunerFunctionalInterface criteriaPruner) {
         DetachedCriteria detachedCriteria = dao.createCriteria();
         criteriaPruner.pruneCriteria(detachedCriteria);
         Criteria criteria = dao.getCriteriaFromDetachedCriteria(detachedCriteria);
         return dao.getListFromCriteria(criteria);
     }
 
-    default List<E> page(IDefaultHibernateReadOnlyDao<E, Id> dao, IDetachedCriteriaPrunerFunctionalInterface criteriaPruner, PagingDto pagingDto) {
+    default List<E> page(IDefaultHibernateReadOnlyDao<I, E> dao, IDetachedCriteriaPrunerFunctionalInterface criteriaPruner, PagingDto pagingDto) {
         DetachedCriteria detachedCriteria = dao.createCriteria();
         criteriaPruner.pruneCriteria(detachedCriteria);
         Criteria criteria = dao.getCriteriaFromDetachedCriteria(detachedCriteria);
@@ -36,7 +36,7 @@ public interface IHibernateFetchProvider<E extends IBaseEntity<Id>, Id extends S
         return dao.getListFromCriteria(criteria);
     }
 
-    default IVaselineDataScroller<E> scroll(IDefaultHibernateReadOnlyDao<E, Id> dao, IDetachedCriteriaPrunerFunctionalInterface criteriaPruner, List<SortDto> sortList) {
+    default IVaselineDataScroller<E> scroll(IDefaultHibernateReadOnlyDao<I, E> dao, IDetachedCriteriaPrunerFunctionalInterface criteriaPruner, List<SortDto> sortList) {
         DetachedCriteria detachedCriteria = dao.createCriteria();
         criteriaPruner.pruneCriteria(detachedCriteria);
         Criteria criteria = dao.getCriteriaFromDetachedCriteria(detachedCriteria);
@@ -44,7 +44,7 @@ public interface IHibernateFetchProvider<E extends IBaseEntity<Id>, Id extends S
         return dao.scrollCriteria(criteria);
     }
 
-    default E unique(IDefaultHibernateReadOnlyDao<E, Id> dao, IDetachedCriteriaPrunerFunctionalInterface criteriaPruner) {
+    default E unique(IDefaultHibernateReadOnlyDao<I, E> dao, IDetachedCriteriaPrunerFunctionalInterface criteriaPruner) {
         DetachedCriteria detachedCriteria = dao.createCriteria();
         criteriaPruner.pruneCriteria(detachedCriteria);
         Criteria criteria = dao.getCriteriaFromDetachedCriteria(detachedCriteria);

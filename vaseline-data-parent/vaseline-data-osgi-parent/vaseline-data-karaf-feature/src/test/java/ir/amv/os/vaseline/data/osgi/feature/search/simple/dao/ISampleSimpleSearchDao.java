@@ -5,5 +5,5 @@ import ir.amv.os.vaseline.data.osgi.test.jpa.model.SampleEntity;
 import ir.amv.os.vaseline.data.search.simple.api.server.ro.IBaseSimpleSearchDao;
 
 public interface ISampleSimpleSearchDao
-        extends IBaseSimpleSearchDao<SampleEntity, SampleDto, Long> {
+        extends IBaseSimpleSearchDao<Long, SampleEntity, SampleDto> {
 }

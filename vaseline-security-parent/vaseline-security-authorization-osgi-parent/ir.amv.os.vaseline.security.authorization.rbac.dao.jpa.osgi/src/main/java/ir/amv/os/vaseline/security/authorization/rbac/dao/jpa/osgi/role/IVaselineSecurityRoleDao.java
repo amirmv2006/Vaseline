@@ -8,6 +8,6 @@ import ir.amv.os.vaseline.security.authorization.rbac.model.def.role.SecurityRol
  * @author Amir
  */
 public interface IVaselineSecurityRoleDao
-        extends ISecurityRoleDao<SecurityRoleEntity>, IBaseCrudDao<SecurityRoleEntity, Long> {
+        extends ISecurityRoleDao<SecurityRoleEntity>, IBaseCrudDao<Long, SecurityRoleEntity> {
     SecurityRoleEntity getByRoleName(String roleName);
 }

@@ -16,7 +16,7 @@ import java.util.List;
  * @author Amir
  */
 public interface IDefaultSecurityActionJpaDao<A extends ISecurityAction<A>>
-        extends IDefaultJpaReadOnlyDao<A, Long>,
+        extends IDefaultJpaReadOnlyDao<Long, A>,
         ISecurityActionDao<A> {
 
     @Override

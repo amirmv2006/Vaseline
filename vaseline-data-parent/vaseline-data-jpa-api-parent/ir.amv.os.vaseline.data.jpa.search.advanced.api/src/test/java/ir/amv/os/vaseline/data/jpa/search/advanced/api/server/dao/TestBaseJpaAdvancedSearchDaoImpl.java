@@ -40,7 +40,7 @@ public class TestBaseJpaAdvancedSearchDaoImpl
 
 
     @Override
-    protected IBaseAdvancedSearchDao<TestCountryEntity, ITestCountrySearchObject, Long> getCountryDao() {
+    protected IBaseAdvancedSearchDao<Long, TestCountryEntity, ITestCountrySearchObject> getCountryDao() {
         return countryDao;
     }
 }
