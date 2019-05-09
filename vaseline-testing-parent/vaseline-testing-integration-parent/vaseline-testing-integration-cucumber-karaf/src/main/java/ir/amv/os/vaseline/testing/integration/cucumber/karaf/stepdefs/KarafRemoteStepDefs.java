@@ -1,58 +1,52 @@
 package ir.amv.os.vaseline.testing.integration.cucumber.karaf.stepdefs;
 
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import ir.amv.os.vaseline.testing.integration.cucumber.karaf.RemoteObjectFactory;
-import ir.amv.os.vaseline.testing.integration.cucumber.karaf.SetupKaraf;
+import org.ops4j.pax.swissbox.tracker.ServiceLookupException;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
+import org.osgi.util.tracker.ServiceTracker;
 
 import javax.inject.Inject;
+import java.lang.reflect.Constructor;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 
-import static ir.amv.os.vaseline.testing.integration.cucumber.karaf.helper.KarafOptionsHelper.*;
-
-public class KarafSetupStepDefs {
+public class KarafRemoteStepDefs {
 
     private Bundle bundle;
 
-    public KarafSetupStepDefs() {
+    public KarafRemoteStepDefs() {
         System.out.println("Created");
-    }
-
-    @Given("^I have karaf$")
-    @SetupKaraf
-    public void iHaveKaraf() {
-        RemoteObjectFactory.remoteKarafEnvironment.addOptions(defaultOptions());
-    }
-
-    @Given("^start bundle with groupId=\"([^\"]*)\" and artifactId=\"([^\"]*)\" and version as in project$")
-    @SetupKaraf
-    public void mavenBundleWithVersionAsInProject(String groupId, String artifactId) {
-        RemoteObjectFactory.remoteKarafEnvironment.addOption(
-                mavenBundleVersionAsInProject(groupId, artifactId)
-        );
-    }
-
-    @Given("^feature with groupId=\"([^\"]*)\", artifactId=\"([^\"]*)\" and name=\"([^\"]*)\" is deployed")
-    @SetupKaraf
-    public void installFeature(String featureGroupId, String featureArtifactId, String featureNames) {
-        RemoteObjectFactory.remoteKarafEnvironment.addOption(
-                deployFeature(featureGroupId, featureArtifactId, featureNames)
-        );
-    }
-
-    @When("^start karaf$")
-    @SetupKaraf
-    public void runKaraf() {
-        RemoteObjectFactory.remoteKarafEnvironment.startKaraf();
     }
 
     @Inject
     BundleContext bundleContext;
+
+
+    public void registerService(String implClassName, String interfaceClassName) throws Exception {
+        Class<?> implClass = this.getClass().getClassLoader().loadClass(implClassName);
+        Class<?> interfaceClass = this.getClass().getClassLoader().loadClass(interfaceClassName);
+        Constructor<?> constructor = implClass.getConstructors()[0];
+        Class<?>[] parameterTypes = constructor.getParameterTypes();
+        List<Object> params = new ArrayList<>();
+        for (Class<?> parameterType : parameterTypes) {
+            String dependencyClassName = parameterType.getName();
+            ServiceTracker<Object, Object> tracker = new ServiceTracker<>(bundleContext, dependencyClassName, null);
+            tracker.open();
+            Object dependency = tracker.waitForService(10_000);
+            if (dependency == null) {
+                throw new ServiceLookupException("gave up waiting for service " + dependencyClassName);
+            }
+            params.add(dependency);
+        }
+        Object serviceInstance = constructor.newInstance(params.toArray());
+        Hashtable<String, Object> properties = new Hashtable<>();
+        bundleContext.registerService(interfaceClass.getName(), serviceInstance, properties);
+    }
 
     @Then("^bundle \"([^\"]*)\" is started$")
     public void bundleStarted(String bundleSymbolicName) throws InterruptedException {

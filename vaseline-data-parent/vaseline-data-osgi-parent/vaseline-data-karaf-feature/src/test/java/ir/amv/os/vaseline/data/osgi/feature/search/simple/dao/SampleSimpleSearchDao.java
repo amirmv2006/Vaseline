@@ -9,7 +9,8 @@ import javax.persistence.EntityManager;
 
 public class SampleSimpleSearchDao
         implements
-        IDefaultJpaSimpleSearchDao<SampleEntity, SampleDto, Long> {
+        IDefaultJpaSimpleSearchDao<SampleEntity, SampleDto, Long>,
+        ISampleSimpleSearchDao {
 
     private final EntityManager entityManager;
 

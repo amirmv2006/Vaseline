@@ -15,6 +15,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.github.amirmv2006.thirdparty</groupId>
+            <artifactId>ir.amv.os.vaseline.thirdparty.shared.util.reflection</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.amirmv2006.testing.integration</groupId>
             <artifactId>cucumber-core-vaseline-patched</artifactId>
             <version>${project.version}</version>

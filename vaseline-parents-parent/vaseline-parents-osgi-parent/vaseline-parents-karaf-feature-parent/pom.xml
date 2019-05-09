@@ -33,8 +33,8 @@
     <dependencies>
         <!-- test deps -->
         <dependency>
-            <groupId>com.github.amirmv2006.thirdparty</groupId>
-            <artifactId>vaseline-it-karaf-helper</artifactId>
+            <groupId>com.github.amirmv2006.testing.integration</groupId>
+            <artifactId>vaseline-testing-integration-cucumber-karaf</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
@@ -42,6 +42,12 @@
             <groupId>org.apache.karaf</groupId>
             <artifactId>apache-karaf</artifactId>
             <type>zip</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-jpa_2.1_spec</artifactId>
+            <version>1.0-alpha-1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -181,22 +187,18 @@
                         <groupId>org.apache.karaf.tooling</groupId>
                         <artifactId>karaf-maven-plugin</artifactId>
                     </plugin>
+                    <plugin>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>test-jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
                 </plugins>
             </build>
-            <dependencies>
-                <dependency>
-                    <groupId>com.github.amirmv2006.testing.integration</groupId>
-                    <artifactId>vaseline-testing-integration-cucumber-karaf</artifactId>
-                    <version>${project.version}</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.geronimo.specs</groupId>
-                    <artifactId>geronimo-jpa_2.1_spec</artifactId>
-                    <version>1.0-alpha-1</version>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
         </profile>
     </profiles>
 

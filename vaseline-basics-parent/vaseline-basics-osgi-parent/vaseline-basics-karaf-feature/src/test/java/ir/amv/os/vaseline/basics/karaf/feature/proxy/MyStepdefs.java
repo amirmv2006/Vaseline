@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import ir.amv.os.vaseline.basics.core.api.server.proxy.IProxyInterceptor;
 import ir.amv.os.vaseline.basics.core.osgi.constants.VaselineCoreOsgiConstants;
+import ir.amv.os.vaseline.testing.integration.cucumber.karaf.RequireClassRemotely;
 import org.osgi.framework.BundleContext;
 
 import javax.inject.Inject;
@@ -11,6 +12,7 @@ import java.util.Hashtable;
 
 import static org.junit.Assert.assertTrue;
 
+@RequireClassRemotely({ProxyInterceptor.class, ISampleOsgiService.class, SampleOsgiServiceImpl.class})
 public class MyStepdefs {
 
     @Inject

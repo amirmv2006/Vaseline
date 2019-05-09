@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.testing.integration.cucumber.karaf;
 
+import ir.amv.os.vaseline.testing.integration.cucumber.karaf.listener.IRemoteObjectListener;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.InvocationHandler;
 import org.ops4j.pax.exam.ExamSystem;
@@ -26,6 +27,7 @@ import static org.ops4j.pax.exam.spi.DefaultExamSystem.createTempDir;
 
 public class RemoteKarafEnvironmentImpl
         implements IRemoteKarafEnvironment {
+    private List<IRemoteObjectListener> listeners;
 
     private StepProbeBuilderImpl stepProbeBuilder;
     private List<Option> options;
@@ -45,6 +47,7 @@ public class RemoteKarafEnvironmentImpl
         TemporaryStore store = new TemporaryStore(workingDirectory, false);
         stepProbeBuilder = new StepProbeBuilderImpl(workingDirectory, store);
         options = new ArrayList<>();
+        listeners = new ArrayList<>();
     }
 
     @Override
@@ -68,7 +71,7 @@ public class RemoteKarafEnvironmentImpl
     }
 
     private boolean isLocalMethod(Method method) {
-        return method.isAnnotationPresent(SetupKaraf.class);
+        return method.isAnnotationPresent(RunLocally.class);
     }
 
     @Override
@@ -106,6 +109,8 @@ public class RemoteKarafEnvironmentImpl
         for (TestContainer testContainer : testContainers) {
             testContainer.stop();
         }
+        listeners.clear();
+
     }
 
     @Override
@@ -130,9 +135,18 @@ public class RemoteKarafEnvironmentImpl
             TestAddress address = stepProbeBuilder.getTests().stream()
                     .filter(testAddr -> testAddr.caption().equals(invocationCaption))
                     .findFirst().orElseThrow(() -> new RuntimeException("Can not find address"));
-            return getClientRBC().callStep(address, args);
+            Object result = getClientRBC().callStep(address, args);
+            listeners.forEach(l -> l.remoteMethodInvoked(o, method, args));
+            return result;
         });
-        return (O) enhancer.create();
+        O proxy = (O) enhancer.create();
+        listeners.forEach(l -> l.remoteObjectCreated(clazz, proxy));
+        return proxy;
+    }
+
+    @Override
+    public List<Class<?>> getAllRemoteClasses() {
+        return stepProbeBuilder.getAllRemoteClasses();
     }
 
     private RemoteBundleContextClient getClientRBC() {
@@ -149,5 +163,10 @@ public class RemoteKarafEnvironmentImpl
             workingDirectory.mkdirs();
             return workingDirectory;
         }
+    }
+
+    @Override
+    public void addRemoteObjectListener(IRemoteObjectListener listener) {
+        listeners.add(listener);
     }
 }

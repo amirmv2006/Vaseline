@@ -23,12 +23,6 @@
             <type>xml</type>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.data.osgi</groupId>
-            <artifactId>ir.amv.os.vaseline.data.osgi.test.jpa.model</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.aries.jpa</groupId>
             <artifactId>jpa-features</artifactId>
             <classifier>features</classifier>
@@ -49,10 +43,23 @@
             <artifactId>ir.amv.os.vaseline.data.jpa.search.advanced.api</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!-- test dependencies -->
+        <dependency>
+            <groupId>com.github.amirmv2006.basics.osgi</groupId>
+            <artifactId>vaseline-basics-karaf-feature</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+            <classifier>tests</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.data.osgi</groupId>
+            <artifactId>ir.amv.os.vaseline.data.osgi.test.jpa.model</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.ops4j.pax.jdbc</groupId>
             <artifactId>pax-jdbc-features</artifactId>
-            <version>1.3.5</version>
             <classifier>features</classifier>
             <type>xml</type>
             <scope>test</scope>
@@ -63,21 +70,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jpa_2.1_spec</artifactId>
-            <version>1.0-alpha-1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-extender-service</artifactId>
-            <version>${org.ops4j.pax.exam.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.aries.transaction</groupId>
             <artifactId>org.apache.aries.transaction.manager</artifactId>
-            <version>1.3.3</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 </project>

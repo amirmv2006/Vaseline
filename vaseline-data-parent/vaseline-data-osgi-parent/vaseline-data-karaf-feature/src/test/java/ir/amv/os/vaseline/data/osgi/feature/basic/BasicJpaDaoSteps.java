@@ -1,36 +1,33 @@
 package ir.amv.os.vaseline.data.osgi.feature.basic;
 
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import ir.amv.os.vaseline.data.dao.basic.api.server.crud.IBaseCrudDao;
+import ir.amv.os.vaseline.data.osgi.feature.basic.dao.ISampleBasicDao;
 import ir.amv.os.vaseline.data.osgi.feature.basic.dao.SampleBasicDao;
 import ir.amv.os.vaseline.data.osgi.test.jpa.model.SampleEntity;
+import ir.amv.os.vaseline.testing.integration.cucumber.karaf.RegisterService;
 import org.osgi.service.coordinator.Coordinator;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.transaction.TransactionManager;
 import java.util.List;
 
 import static ir.amv.os.vaseline.data.osgi.feature.helper.VaselineDataHelper.doTransactional;
 import static org.junit.Assert.*;
 
-public class JpaBasicDaoSteps {
+@RegisterService(
+        interfaceClass = ISampleBasicDao.class,
+        implClass = SampleBasicDao.class
+)
+public class BasicJpaDaoSteps {
 
-    @Inject
-    private EntityManager em;
     @Inject
     private TransactionManager tm;
     @Inject
     private Coordinator coordinator;
+    @Inject
+    private ISampleBasicDao underTest;
 
-    private IBaseCrudDao<SampleEntity, Long> underTest;
     private Long id;
-
-    @When("^register Sample Basic Dao$")
-    public void registerSampleDao() {
-        underTest = new SampleBasicDao(em);
-    }
 
     @Then("save Sample Entity with firstName={string} and lastName={string}")
     public void saveSampleEntityWithFirstNameAndLastName(String firstName, String lastName) throws Exception {

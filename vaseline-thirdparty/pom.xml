@@ -15,7 +15,6 @@
     <modules>
         <module>ir.amv.os.vaseline.thirdparty.shared.util.reflection</module>
         <module>vaseline-ut-helper</module>
-        <module>vaseline-it-karaf-helper</module>
     </modules>
 
 
