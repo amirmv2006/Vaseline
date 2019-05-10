@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IDefaultCrudApi<E extends IBaseEntity<Id>, Id extends Serializable, Dao extends
+public interface IDefaultCrudApi<Id extends Serializable, E extends IBaseEntity<Id>, Dao extends
         IBaseCrudDao<Id, E>>
-        extends IBaseCrudApi<E, Id>, IDefaultEntityCrudApi<E>, IDefaultReadOnlyApi<E, Id, Dao> {
+        extends IBaseCrudApi<Id, E>, IDefaultEntityCrudApi<E>, IDefaultReadOnlyApi<Id, E, Dao> {
 
     @Override
     @Transactional

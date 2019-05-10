@@ -12,7 +12,7 @@ import ir.amv.os.vaseline.security.authorization.rbac.model.def.action.SecurityA
 public interface IVaselineSecurityActionApi
         extends
         ISecurityActionApi<SecurityActionEntity>,
-        IBaseCrudApi<SecurityActionEntity, Long>,
+        IBaseCrudApi<Long, SecurityActionEntity>,
         IBaseNotSecuredCrudApi<SecurityActionEntity, Long> {
     SecurityActionEntity getActionByTreeName(String actionTreeName) throws BaseVaselineServerException;
 }

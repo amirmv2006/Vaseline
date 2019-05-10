@@ -7,5 +7,5 @@ import ir.amv.os.vaseline.security.authorization.rbac.model.api.role.ISecurityRo
  * @author Amir
  */
 public interface ISecurityRoleApi<R extends ISecurityRole<?>>
-        extends IBaseReadOnlyApi<R, Long>{
+        extends IBaseReadOnlyApi<Long, R>{
 }

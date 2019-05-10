@@ -19,8 +19,8 @@ import javax.ws.rs.core.MediaType;
 /**
  * @author Amir
  */
-public interface IBaseReadOnlyRestService<D extends IBaseDto<Id>, Id extends Serializable>
-        extends IBaseReadOnlyWebService<D, Id>, IBaseRestService {
+public interface IBaseReadOnlyRestService<Id extends Serializable, D extends IBaseDto<Id>>
+        extends IBaseReadOnlyWebService<Id, D>, IBaseRestService {
 
     @Override
     @GET

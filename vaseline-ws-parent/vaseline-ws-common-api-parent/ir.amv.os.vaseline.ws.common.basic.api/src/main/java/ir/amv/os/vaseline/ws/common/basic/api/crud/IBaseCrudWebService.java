@@ -9,8 +9,8 @@ import java.io.Serializable;
 /**
  * @author Amir
  */
-public interface IBaseCrudWebService<D extends IBaseDto<Id>, Id extends Serializable>
-        extends IBaseReadOnlyWebService<D, Id> {
+public interface IBaseCrudWebService<Id extends Serializable, D extends IBaseDto<Id>>
+        extends IBaseReadOnlyWebService<Id, D> {
 
     Id save(D t) throws BaseVaselineClientException;
 

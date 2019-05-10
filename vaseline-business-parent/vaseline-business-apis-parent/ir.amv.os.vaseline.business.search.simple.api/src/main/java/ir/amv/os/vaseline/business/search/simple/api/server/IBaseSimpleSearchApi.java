@@ -11,8 +11,8 @@ import ir.amv.os.vaseline.data.dao.basic.api.server.ro.scroller.IVaselineDataScr
 import java.io.Serializable;
 import java.util.List;
 
-public interface IBaseSimpleSearchApi<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends Serializable>
-        extends IBaseReadOnlyApi<E, Id> {
+public interface IBaseSimpleSearchApi<I extends Serializable, E extends IBaseEntity<I>, D extends IBaseDto<I>>
+        extends IBaseReadOnlyApi<I, E> {
 
     Long countByExample(D example) throws BaseVaselineServerException;
     List<E> searchByExample(D example) throws BaseVaselineServerException;

@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by AMV on 2/13/2016.
  */
-public class BaseReadOnlyRestServiceImpl<D extends IBaseDto<Id>, Id extends Serializable, S extends IBaseReadOnlyService<D, Id>>
+public class BaseReadOnlyRestServiceImpl<D extends IBaseDto<Id>, Id extends Serializable, S extends IBaseReadOnlyService<Id, D>>
         extends BaseRestServiceImpl
         implements IBaseReadOnlyRestService<D, Id>{
 

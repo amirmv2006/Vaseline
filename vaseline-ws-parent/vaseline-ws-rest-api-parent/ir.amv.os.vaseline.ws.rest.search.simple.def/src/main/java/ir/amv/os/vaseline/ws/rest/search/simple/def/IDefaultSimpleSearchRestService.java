@@ -14,11 +14,11 @@ import java.util.List;
 /**
  * @author Amir
  */
-public interface IDefaultSimpleSearchRestService<D extends IBaseDto<Id>, Id extends Serializable, Service extends
-        IBaseSimpleSearchService<D, Id>>
-        extends IBaseSimpleSearchRestService<D, Id>,
-        IDefaultReadOnlyRestService<D, Id, Service>,
-        IDefaultSimpleSearchWebService<D, Id, Service> {
+public interface IDefaultSimpleSearchRestService<Id extends Serializable, D extends IBaseDto<Id>, Service extends
+        IBaseSimpleSearchService<Id, D>>
+        extends IBaseSimpleSearchRestService<Id, D>,
+        IDefaultReadOnlyRestService<Id, D, Service>,
+        IDefaultSimpleSearchWebService<Id, D, Service> {
 
     @Override
     default Long countByExample(D example) throws BaseVaselineClientException {

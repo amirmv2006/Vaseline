@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * @author Amir
  */
-public interface IDefaultReadOnlyRestService<D extends IBaseDto<Id>, Id extends Serializable, Service extends
-        IBaseReadOnlyService<D, Id>>
-        extends IBaseReadOnlyRestService<D, Id>, IDefaultReadOnlyWebService<D, Id, Service> {
+public interface IDefaultReadOnlyRestService<Id extends Serializable, D extends IBaseDto<Id>, Service extends
+        IBaseReadOnlyService<Id, D>>
+        extends IBaseReadOnlyRestService<Id, D>, IDefaultReadOnlyWebService<Id, D, Service> {
 
     @Override
     default D getById(Id id) throws BaseVaselineClientException {

@@ -8,7 +8,7 @@ import ir.amv.os.vaseline.security.authentication.model.api.server.base.IBaseUse
  * @author Amir
  */
 public interface IBaseUserApi<U extends IBaseUserEntity>
-        extends IBaseReadOnlyApi<U, Long> {
+        extends IBaseReadOnlyApi<Long, U> {
 
     /**
      * method used for authentication loading the user with the given username

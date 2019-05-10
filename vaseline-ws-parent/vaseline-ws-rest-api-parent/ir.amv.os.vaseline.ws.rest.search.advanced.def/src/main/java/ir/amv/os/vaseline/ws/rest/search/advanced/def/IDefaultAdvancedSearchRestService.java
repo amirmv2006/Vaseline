@@ -15,11 +15,11 @@ import java.util.List;
 /**
  * @author Amir
  */
-public interface IDefaultAdvancedSearchRestService<D extends IBaseDto<Id>, SO extends IBaseSearchObject, Id
-        extends Serializable, Service extends IBaseAdvancedSearchService<D, SO, Id>>
-        extends IBaseAdvancedSearchRestService<D, SO, Id>,
-        IDefaultReadOnlyRestService<D, Id, Service>,
-        IDefaultAdvancedSearchWebService<D, SO, Id, Service> {
+public interface IDefaultAdvancedSearchRestService<Id
+        extends Serializable, D extends IBaseDto<Id>, SO extends IBaseSearchObject, Service extends IBaseAdvancedSearchService<Id, D, SO>>
+        extends IBaseAdvancedSearchRestService<Id, D, SO>,
+        IDefaultReadOnlyRestService<Id, D, Service>,
+        IDefaultAdvancedSearchWebService<Id, D, SO, Service> {
 
     @Override
     default Long countBySearchObject(SO searchObject) throws BaseVaselineClientException {

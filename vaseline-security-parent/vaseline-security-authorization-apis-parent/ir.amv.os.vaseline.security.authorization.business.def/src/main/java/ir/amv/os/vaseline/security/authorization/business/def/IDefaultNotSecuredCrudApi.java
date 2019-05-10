@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface IDefaultNotSecuredCrudApi<E extends IBaseEntity<Id>, Id extends Serializable, Dao extends
         IBaseCrudDao<Id, E>>
-        extends IDefaultCrudApi<E, Id, Dao>,
+        extends IDefaultCrudApi<Id, E, Dao>,
         IDefaultNotSecuredReadOnlyApi<E, Id, Dao>,
         IBaseNotSecuredCrudApi<E, Id> {
 

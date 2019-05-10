@@ -9,9 +9,9 @@ import ir.amv.os.vaseline.data.dao.basic.api.server.crud.IBaseCrudDao;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 
-public interface IDefaultMultiDaoCrudApi<E extends IBaseEntity<Id>, Id extends Serializable, Category,
+public interface IDefaultMultiDaoCrudApi<Category, Id extends Serializable, E extends IBaseEntity<Id>,
         Dao extends IBaseCrudDao<Id, E>>
-        extends IDefaultMultiDaoReadOnlyApi<E, Id, Category, Dao>, IDefaultCrudApi<E, Id, Dao> {
+        extends IDefaultMultiDaoReadOnlyApi<Category, Id, E, Dao>, IDefaultCrudApi<Id, E, Dao> {
     Category getCategoryForEntity(final E entity) throws BaseVaselineServerException;
 
     @Override

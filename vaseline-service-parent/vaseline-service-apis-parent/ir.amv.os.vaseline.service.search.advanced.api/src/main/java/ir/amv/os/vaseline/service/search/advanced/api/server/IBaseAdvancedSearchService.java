@@ -9,8 +9,8 @@ import ir.amv.os.vaseline.service.basic.api.server.ro.IBaseReadOnlyService;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IBaseAdvancedSearchService<D extends IBaseDto<Id>, SO extends IBaseSearchObject, Id extends Serializable>
-        extends IBaseReadOnlyService<D, Id> {
+public interface IBaseAdvancedSearchService<Id extends Serializable, D extends IBaseDto<Id>, SO extends IBaseSearchObject>
+        extends IBaseReadOnlyService<Id, D> {
 
     Long countBySearchObject(SO searchObject) throws BaseVaselineClientException;
     List<D> searchBySearchObject(SO searchObject) throws BaseVaselineClientException;

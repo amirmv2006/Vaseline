@@ -11,7 +11,7 @@ import java.io.OutputStream;
 /**
  * Created by AMV on 2/8/2016.
  */
-public interface IVaselineFileApi extends IBaseMultiDaoReadOnlyApi<IVaselineFileEntity, Long, String>, IBaseCrudApi<IVaselineFileEntity, Long> {
+public interface IVaselineFileApi extends IBaseMultiDaoReadOnlyApi<String, Long, IVaselineFileEntity>, IBaseCrudApi<Long, IVaselineFileEntity> {
 
     String DEFAULT_CATEGORY = "sloppy";
 

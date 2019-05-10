@@ -7,5 +7,5 @@ import ir.amv.os.vaseline.security.authorization.rbac.model.api.action.ISecurity
  * @author Amir
  */
 public interface ISecurityActionApi<A extends ISecurityAction<A>>
-        extends IBaseReadOnlyApi<A, Long> {
+        extends IBaseReadOnlyApi<Long, A> {
 }

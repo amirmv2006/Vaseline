@@ -11,10 +11,10 @@ import java.util.List;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IBaseReadOnlyService<D extends IBaseDto<Id>, Id extends Serializable>
+public interface IBaseReadOnlyService<I extends Serializable, D extends IBaseDto<I>>
         extends IBaseService {
 
-    D getById(Id id) throws BaseVaselineClientException;
+    D getById(I id) throws BaseVaselineClientException;
 
     Long countAll() throws BaseVaselineClientException;
     List<D> getAll() throws BaseVaselineClientException;

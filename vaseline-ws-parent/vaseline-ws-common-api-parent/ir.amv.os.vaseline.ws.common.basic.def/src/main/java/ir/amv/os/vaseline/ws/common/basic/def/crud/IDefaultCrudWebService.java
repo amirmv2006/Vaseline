@@ -11,9 +11,9 @@ import java.io.Serializable;
 /**
  * @author Amir
  */
-public interface IDefaultCrudWebService<D extends IBaseDto<Id>, Id extends Serializable, Service extends
-        IBaseCrudService<D, Id>>
-        extends IBaseCrudWebService<D, Id>, IDefaultReadOnlyWebService<D, Id, Service> {
+public interface IDefaultCrudWebService<Id extends Serializable, D extends IBaseDto<Id>, Service extends
+        IBaseCrudService<Id, D>>
+        extends IBaseCrudWebService<Id, D>, IDefaultReadOnlyWebService<Id, D, Service> {
 
     @Override
     default Id save(D t) throws BaseVaselineClientException {

@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IDefaultReadOnlyService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends
-        Serializable, Api extends IBaseReadOnlyApi<E, Id>>
-        extends IBaseReadOnlyService<D, Id>, IDefaultEntityReadOnlyService<E, D, Id, Api> {
+public interface IDefaultReadOnlyService<Id extends
+        Serializable, E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Api extends IBaseReadOnlyApi<Id, E>>
+        extends IBaseReadOnlyService<Id, D>, IDefaultEntityReadOnlyService<Id, E, D, Api> {
 
     @Override
     default D getById(Id id) throws BaseVaselineClientException {

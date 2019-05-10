@@ -12,10 +12,10 @@ import java.util.List;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IBaseReadOnlyApi<E extends IBaseEntity<Id>, Id extends Serializable>
+public interface IBaseReadOnlyApi<I extends Serializable, E extends IBaseEntity<I>>
         extends IBaseEntityReadOnlyApi<E> {
 
-    E getById(Id id) throws BaseVaselineServerException;
+    E getById(I id) throws BaseVaselineServerException;
 
     Long countAllApproximately() throws BaseVaselineServerException;
 

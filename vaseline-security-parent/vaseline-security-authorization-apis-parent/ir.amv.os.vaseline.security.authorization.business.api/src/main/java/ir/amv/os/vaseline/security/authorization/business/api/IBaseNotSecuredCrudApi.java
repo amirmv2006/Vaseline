@@ -12,7 +12,7 @@ import java.util.List;
  * @author Amir
  */
 public interface IBaseNotSecuredCrudApi<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends IBaseCrudApi<E, Id>, IBaseNotSecuredReadOnlyApi<E, Id> {
+        extends IBaseCrudApi<Id, E>, IBaseNotSecuredReadOnlyApi<E, Id> {
 
     @NoAuthorization
     Id saveNotSecured(E entity) throws BaseVaselineServerException;

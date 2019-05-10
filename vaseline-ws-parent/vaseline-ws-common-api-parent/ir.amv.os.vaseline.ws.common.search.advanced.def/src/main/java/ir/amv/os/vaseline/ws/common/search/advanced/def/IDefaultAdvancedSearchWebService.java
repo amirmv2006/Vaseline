@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * @author Amir
  */
-public interface IDefaultAdvancedSearchWebService<D extends IBaseDto<Id>, SO extends IBaseSearchObject, Id
-        extends Serializable, Service extends IBaseAdvancedSearchService<D, SO, Id>>
-        extends IBaseAdvancedSearchWebService<D, SO, Id>, IDefaultReadOnlyWebService<D, Id, Service> {
+public interface IDefaultAdvancedSearchWebService<Id
+        extends Serializable, D extends IBaseDto<Id>, SO extends IBaseSearchObject, Service extends IBaseAdvancedSearchService<Id, D, SO>>
+        extends IBaseAdvancedSearchWebService<Id, D, SO>, IDefaultReadOnlyWebService<Id, D, Service> {
 
     @Override
     default Long countBySearchObject(SO searchObject) throws BaseVaselineClientException {

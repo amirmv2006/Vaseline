@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author Amir
  */
-public interface IBaseReadOnlyWebService<D extends IBaseDto<Id>, Id extends Serializable>
+public interface IBaseReadOnlyWebService<Id extends Serializable, D extends IBaseDto<Id>>
         extends IBaseWebService {
 
     D getById(Id id) throws BaseVaselineClientException;

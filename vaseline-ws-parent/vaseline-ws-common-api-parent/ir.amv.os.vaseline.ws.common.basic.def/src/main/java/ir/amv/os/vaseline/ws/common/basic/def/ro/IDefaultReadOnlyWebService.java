@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * @author Amir
  */
-public interface IDefaultReadOnlyWebService<D extends IBaseDto<Id>, Id extends Serializable, Service extends
-        IBaseReadOnlyService<D, Id>>
-        extends IBaseReadOnlyWebService<D, Id>, IDefaultWebService {
+public interface IDefaultReadOnlyWebService<Id extends Serializable, D extends IBaseDto<Id>, Service extends
+        IBaseReadOnlyService<Id, D>>
+        extends IBaseReadOnlyWebService<Id, D>, IDefaultWebService {
 
     Service getService();
 

@@ -12,9 +12,9 @@ import ir.amv.os.vaseline.service.basic.def.server.ro.IDefaultReadOnlyService;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDefaultAdvancedSearchService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, SO extends
-        IBaseSearchObject, Id extends Serializable, Api extends IBaseAdvancedSearchApi<E, SO, Id>>
-        extends IDefaultReadOnlyService<E, D, Id, Api>, IBaseAdvancedSearchService<D, SO, Id> {
+public interface IDefaultAdvancedSearchService<Id extends Serializable, E extends IBaseEntity<Id>, D extends IBaseDto<Id>, SO extends
+        IBaseSearchObject, Api extends IBaseAdvancedSearchApi<Id, E, SO>>
+        extends IDefaultReadOnlyService<Id, E, D, Api>, IBaseAdvancedSearchService<Id, D, SO> {
 
     @Override
     default Long countBySearchObject(SO searchObject) throws BaseVaselineClientException {

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class RestIntegrationModelApi
         extends ProxyAwareImpl
         implements IRestIntegrationModelApi,
-        IDefaultCrudApi<RestIntegrationModelEntity, Long, IRestIntegrationModelDao> {
+        IDefaultCrudApi<Long, RestIntegrationModelEntity, IRestIntegrationModelDao> {
     @Autowired
     private IRestIntegrationModelDao dao;
 

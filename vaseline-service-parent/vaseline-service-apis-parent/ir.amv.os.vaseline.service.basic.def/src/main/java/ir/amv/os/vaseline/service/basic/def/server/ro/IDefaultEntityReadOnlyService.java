@@ -20,8 +20,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public interface IDefaultEntityReadOnlyService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends
-        Serializable, Api extends IBaseEntityReadOnlyApi<E>>
+public interface IDefaultEntityReadOnlyService<Id extends
+        Serializable, E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Api extends IBaseEntityReadOnlyApi<E>>
         extends IDefaultService {
     @Deprecated
     Api getApi();

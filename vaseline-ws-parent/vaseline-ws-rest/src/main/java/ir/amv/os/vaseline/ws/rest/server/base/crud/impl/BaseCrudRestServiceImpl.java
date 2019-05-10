@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
  * Created by AMV on 2/13/2016.
  */
-public class BaseCrudRestServiceImpl<D extends IBaseDto<Id>, Id extends Serializable, S extends IBaseCrudService<D, Id>>
+public class BaseCrudRestServiceImpl<D extends IBaseDto<Id>, Id extends Serializable, S extends IBaseCrudService<Id, D>>
         extends BaseReadOnlyRestServiceImpl<D, Id, S>
         implements IBaseCrudRestService<D, Id> {
 

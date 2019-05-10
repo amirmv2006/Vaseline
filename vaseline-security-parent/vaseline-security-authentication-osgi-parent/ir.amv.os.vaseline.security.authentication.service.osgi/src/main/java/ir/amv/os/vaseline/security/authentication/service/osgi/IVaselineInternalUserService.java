@@ -8,5 +8,5 @@ import ir.amv.os.vaseline.service.basic.api.server.crud.IBaseCrudService;
  * @author Amir
  */
 public interface IVaselineInternalUserService
-        extends IBaseUserService<VaselineInternalUserDto>, IBaseCrudService<VaselineInternalUserDto, Long> {
+        extends IBaseUserService<VaselineInternalUserDto>, IBaseCrudService<Long, VaselineInternalUserDto> {
 }

@@ -8,7 +8,7 @@ import ir.amv.os.vaseline.data.osgi.test.jpa.model.SampleSearchObject;
 
 public class SampleAdvancedSearchApi
         extends ProxyAwareImpl
-        implements IDefaultAdvancedSearchApi<SampleEntity, SampleSearchObject, Long, ISampleAdvancedSearchDao>,
+        implements IDefaultAdvancedSearchApi<Long, SampleEntity, SampleSearchObject, ISampleAdvancedSearchDao>,
         ISampleAdvancedSearchApi{
     private ISampleAdvancedSearchDao dao;
 

@@ -17,9 +17,9 @@ import java.util.List;
 /**
  * Created by AMV on 2/9/2016.
  */
-public interface IDefaultMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, Id extends Serializable, Category,
+public interface IDefaultMultiDaoReadOnlyApi<Category, Id extends Serializable, E extends IBaseEntity<Id>,
         Dao extends IBaseReadOnlyDao<Id, E>>
-        extends IBaseMultiDaoReadOnlyApi<E, Id, Category>, IDefaultReadOnlyApi<E, Id, Dao> {
+        extends IBaseMultiDaoReadOnlyApi<Category, Id, E>, IDefaultReadOnlyApi<Id, E, Dao> {
 
     @Override
     default E getById(Id id) throws BaseVaselineServerException {

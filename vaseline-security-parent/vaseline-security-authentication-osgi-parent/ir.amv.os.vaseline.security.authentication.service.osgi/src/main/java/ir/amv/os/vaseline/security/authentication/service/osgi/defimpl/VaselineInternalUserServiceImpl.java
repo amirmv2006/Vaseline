@@ -27,7 +27,7 @@ import javax.validation.Validator;
 public class VaselineInternalUserServiceImpl
         implements IVaselineInternalUserService,
         IDefaultBaseUserService<VaselineInternalUserEntity, VaselineInternalUserDto, IVaselineInternalUserApi>,
-        IDefaultCrudService<VaselineInternalUserEntity, VaselineInternalUserDto, Long, IVaselineInternalUserApi> {
+        IDefaultCrudService<Long, VaselineInternalUserEntity, VaselineInternalUserDto, IVaselineInternalUserApi> {
     private IVaselineInternalUserApi api;
     private IVaselineObjectMapper mapper;
     private Validator validator;

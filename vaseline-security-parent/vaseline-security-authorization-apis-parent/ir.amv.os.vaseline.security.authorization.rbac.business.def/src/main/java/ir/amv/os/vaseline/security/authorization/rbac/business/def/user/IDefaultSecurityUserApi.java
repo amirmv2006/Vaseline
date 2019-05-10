@@ -10,6 +10,6 @@ import ir.amv.os.vaseline.security.authorization.rbac.model.api.user.ISecurityUs
  * @author Amir
  */
 public interface IDefaultSecurityUserApi<U extends ISecurityUserWithRoleEntity<?>, Dao extends ISecurityUserDao<U>>
-        extends IDefaultReadOnlyApi<U, Long, Dao>, IDefaultBaseUserApi<U, Dao>, ISecurityUserApi<U> {
+        extends IDefaultReadOnlyApi<Long, U, Dao>, IDefaultBaseUserApi<U, Dao>, ISecurityUserApi<U> {
 
 }

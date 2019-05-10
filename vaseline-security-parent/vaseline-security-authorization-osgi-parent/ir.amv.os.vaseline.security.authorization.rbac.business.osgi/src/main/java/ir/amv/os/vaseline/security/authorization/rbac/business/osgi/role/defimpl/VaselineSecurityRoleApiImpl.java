@@ -25,7 +25,7 @@ import javax.transaction.Transactional;
 public class VaselineSecurityRoleApiImpl
         extends BaseApiImpl<SecurityRoleEntity, IVaselineSecurityRoleDao>
         implements
-        IDefaultCrudApi<SecurityRoleEntity, Long, IVaselineSecurityRoleDao>,
+        IDefaultCrudApi<Long, SecurityRoleEntity, IVaselineSecurityRoleDao>,
         IVaselineSecurityRoleApi {
 
     private IVaselineSecurityRoleDao dao;

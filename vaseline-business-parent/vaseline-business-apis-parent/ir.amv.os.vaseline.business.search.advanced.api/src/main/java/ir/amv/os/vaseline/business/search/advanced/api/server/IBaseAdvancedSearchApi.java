@@ -11,8 +11,8 @@ import ir.amv.os.vaseline.data.search.advanced.api.server.model.IBaseSearchObjec
 import java.io.Serializable;
 import java.util.List;
 
-public interface IBaseAdvancedSearchApi<E extends IBaseEntity<Id>, SO extends IBaseSearchObject, Id extends Serializable>
-        extends IBaseReadOnlyApi<E, Id> {
+public interface IBaseAdvancedSearchApi<I extends Serializable, E extends IBaseEntity<I>, SO extends IBaseSearchObject>
+        extends IBaseReadOnlyApi<I, E> {
 
     Long countBySearchObject(SO searchObject) throws BaseVaselineServerException;
     List<E> searchBySearchObject(SO searchObject) throws BaseVaselineServerException;

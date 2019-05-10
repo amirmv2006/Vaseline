@@ -14,9 +14,9 @@ import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDefaultSimpleSearchApi<E extends IBaseEntity<Id>, D extends IBaseDto<Id>,
-        Id extends Serializable, Dao extends IBaseSimpleSearchDao<Id, E, D>>
-        extends IBaseSimpleSearchApi<E, D, Id>, IDefaultReadOnlyApi<E, Id, Dao> {
+public interface IDefaultSimpleSearchApi<I extends Serializable, E extends IBaseEntity<I>, D extends IBaseDto<I>,
+        Dao extends IBaseSimpleSearchDao<I, E, D>>
+        extends IBaseSimpleSearchApi<I, E, D>, IDefaultReadOnlyApi<I, E, Dao> {
 
     @Override
     @Transactional

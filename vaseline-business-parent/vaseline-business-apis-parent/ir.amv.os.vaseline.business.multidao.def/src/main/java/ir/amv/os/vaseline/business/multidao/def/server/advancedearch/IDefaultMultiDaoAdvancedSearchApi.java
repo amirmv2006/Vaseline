@@ -14,10 +14,10 @@ import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDefaultMultiDaoAdvancedSearchApi<E extends IBaseEntity<Id>, SO extends IBaseSearchObject,
-        Id extends Serializable, Category, Dao extends IBaseAdvancedSearchDao<Id, E, SO>>
-        extends IDefaultMultiDaoReadOnlyApi<E, Id, Category, Dao>, IDefaultAdvancedSearchApi<E, SO, Id,
-                Dao> {
+public interface IDefaultMultiDaoAdvancedSearchApi<Category, Id extends Serializable, E extends IBaseEntity<Id>, SO extends IBaseSearchObject,
+        Dao extends IBaseAdvancedSearchDao<Id, E, SO>>
+        extends IDefaultMultiDaoReadOnlyApi<Category, Id, E, Dao>, IDefaultAdvancedSearchApi<Id, E, SO,
+        Dao> {
     Category getCategoryForSearchObject(SO searchObject);
 
     @Override

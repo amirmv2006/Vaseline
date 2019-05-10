@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * @author Amir
  */
-public interface IDefaultSimpleSearchWebService<D extends IBaseDto<Id>, Id extends Serializable, Service
-        extends IBaseSimpleSearchService<D, Id>>
-        extends IBaseSimpleSearchWebService<D, Id>, IDefaultReadOnlyWebService<D, Id, Service> {
+public interface IDefaultSimpleSearchWebService<Id extends Serializable, D extends IBaseDto<Id>, Service
+        extends IBaseSimpleSearchService<Id, D>>
+        extends IBaseSimpleSearchWebService<Id, D>, IDefaultReadOnlyWebService<Id, D, Service> {
 
     @Override
     default Long countByExample(D example) throws BaseVaselineClientException {

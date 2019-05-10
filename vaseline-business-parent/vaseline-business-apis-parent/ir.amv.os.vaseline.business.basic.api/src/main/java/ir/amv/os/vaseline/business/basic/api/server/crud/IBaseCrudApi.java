@@ -10,17 +10,17 @@ import java.util.List;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IBaseCrudApi<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends IBaseReadOnlyApi<E, Id>, IBaseEntityCrudApi<E> {
+public interface IBaseCrudApi<I extends Serializable, E extends IBaseEntity<I>>
+        extends IBaseReadOnlyApi<I, E>, IBaseEntityCrudApi<E> {
 
-    Id save(E entity) throws BaseVaselineServerException;
-    List<Id> saveBatch(List<E> entities) throws  BaseVaselineServerException;
+    I save(E entity) throws BaseVaselineServerException;
+    List<I> saveBatch(List<E> entities) throws  BaseVaselineServerException;
 
     void update(E entity) throws BaseVaselineServerException;
     void updateBatch(List<E> entities) throws  BaseVaselineServerException;
 
     void delete(E entity) throws BaseVaselineServerException;
     void deleteBatch(List<E> entities) throws  BaseVaselineServerException;
-    void delete(Id id) throws BaseVaselineServerException;
+    void delete(I id) throws BaseVaselineServerException;
 
 }

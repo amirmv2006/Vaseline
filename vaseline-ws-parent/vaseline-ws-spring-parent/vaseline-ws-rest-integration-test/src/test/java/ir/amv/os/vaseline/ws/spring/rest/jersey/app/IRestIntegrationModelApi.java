@@ -6,5 +6,5 @@ import ir.amv.os.vaseline.business.basic.api.server.crud.IBaseCrudApi;
  * @author Amir
  */
 public interface IRestIntegrationModelApi
-        extends IBaseCrudApi<RestIntegrationModelEntity, Long> {
+        extends IBaseCrudApi<Long, RestIntegrationModelEntity> {
 }

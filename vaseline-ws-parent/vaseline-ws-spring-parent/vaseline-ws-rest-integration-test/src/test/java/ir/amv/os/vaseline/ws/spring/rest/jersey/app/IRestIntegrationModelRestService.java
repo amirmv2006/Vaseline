@@ -9,5 +9,5 @@ import javax.ws.rs.Path;
  */
 @Path("/integrationTest")
 public interface IRestIntegrationModelRestService
-        extends IBaseCrudRestService<RestIntegrationModelDto, Long> {
+        extends IBaseCrudRestService<Long, RestIntegrationModelDto> {
 }

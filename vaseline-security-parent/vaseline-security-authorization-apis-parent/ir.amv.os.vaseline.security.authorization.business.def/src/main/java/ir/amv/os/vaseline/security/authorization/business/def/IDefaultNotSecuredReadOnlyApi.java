@@ -18,7 +18,7 @@ import java.util.List;
  */
 public interface IDefaultNotSecuredReadOnlyApi<E extends IBaseEntity<Id>, Id extends Serializable, Dao extends
         IBaseReadOnlyDao<Id, E>>
-        extends IDefaultReadOnlyApi<E, Id, Dao>,
+        extends IDefaultReadOnlyApi<Id, E, Dao>,
         IBaseNotSecuredReadOnlyApi<E, Id> {
 
     @Override

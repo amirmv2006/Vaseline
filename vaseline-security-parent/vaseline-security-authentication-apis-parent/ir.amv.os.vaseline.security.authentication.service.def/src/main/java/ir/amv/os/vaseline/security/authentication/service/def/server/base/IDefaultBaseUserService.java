@@ -12,7 +12,7 @@ import ir.amv.os.vaseline.service.basic.def.server.ro.IDefaultReadOnlyService;
  */
 public interface IDefaultBaseUserService<U extends IBaseUserEntity, UD extends IBaseUserDto, Api extends
         IBaseUserApi<U>>
-        extends IDefaultReadOnlyService<U, UD, Long, Api>, IBaseUserService<UD> {
+        extends IDefaultReadOnlyService<Long, U, UD, Api>, IBaseUserService<UD> {
 
     @Override
     default UD loadUserByUsername(String username) throws BaseVaselineClientException {

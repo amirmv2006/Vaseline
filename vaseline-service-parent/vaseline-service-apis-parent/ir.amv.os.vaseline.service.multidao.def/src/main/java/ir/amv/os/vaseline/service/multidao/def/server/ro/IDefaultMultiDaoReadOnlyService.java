@@ -11,9 +11,9 @@ import ir.amv.os.vaseline.service.multidao.api.server.ro.IBaseMultiDaoReadOnlySe
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDefaultMultiDaoReadOnlyService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends
-        Serializable, Category, Api extends IBaseMultiDaoReadOnlyApi<E, Id, Category>>
-        extends IBaseMultiDaoReadOnlyService<D, Id, Category>, IDefaultEntityReadOnlyService<E, D, Id, Api> {
+public interface IDefaultMultiDaoReadOnlyService<Category, Id extends
+        Serializable, E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Api extends IBaseMultiDaoReadOnlyApi<Category, Id, E>>
+        extends IBaseMultiDaoReadOnlyService<Category, Id, D>, IDefaultEntityReadOnlyService<Id, E, D, Api> {
 
     @Override
     default D getById(Category category, Id id) throws BaseVaselineClientException {

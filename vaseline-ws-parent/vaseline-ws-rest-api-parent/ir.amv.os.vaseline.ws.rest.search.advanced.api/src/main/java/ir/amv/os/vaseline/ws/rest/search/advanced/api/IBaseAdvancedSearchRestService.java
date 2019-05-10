@@ -17,8 +17,8 @@ import java.util.List;
 /**
  * @author Amir
  */
-public interface IBaseAdvancedSearchRestService<D extends IBaseDto<Id>, SO extends IBaseSearchObject, Id extends Serializable>
-        extends IBaseAdvancedSearchWebService<D, SO, Id>, IBaseReadOnlyRestService<D, Id> {
+public interface IBaseAdvancedSearchRestService<Id extends Serializable, D extends IBaseDto<Id>, SO extends IBaseSearchObject>
+        extends IBaseAdvancedSearchWebService<Id, D, SO>, IBaseReadOnlyRestService<Id, D> {
 
     @Override
     @POST

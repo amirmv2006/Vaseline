@@ -14,7 +14,7 @@ import javax.validation.Validator;
 @Service
 public class RestIntegrationModelService
         implements IRestIntegrationModelService,
-        IDefaultCrudService<RestIntegrationModelEntity, RestIntegrationModelDto, Long, IRestIntegrationModelApi> {
+        IDefaultCrudService<Long, RestIntegrationModelEntity, RestIntegrationModelDto, IRestIntegrationModelApi> {
     @Autowired
     private IRestIntegrationModelApi api;
     @Autowired

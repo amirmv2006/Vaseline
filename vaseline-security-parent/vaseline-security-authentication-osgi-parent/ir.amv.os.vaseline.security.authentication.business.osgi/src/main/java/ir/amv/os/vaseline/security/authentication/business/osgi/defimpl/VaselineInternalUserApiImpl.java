@@ -27,7 +27,7 @@ public class VaselineInternalUserApiImpl
         extends ProxyAwareImpl
         implements IVaselineInternalUserApi,
         IDefaultBaseUserApi<VaselineInternalUserEntity,IVaselineInternalUserDao>,
-        IDefaultCrudApi<VaselineInternalUserEntity, Long, IVaselineInternalUserDao> {
+        IDefaultCrudApi<Long, VaselineInternalUserEntity, IVaselineInternalUserDao> {
 
     private IAuditApi auditApi;
     private IVaselineInternalUserDao dao;

@@ -8,5 +8,5 @@ import ir.amv.os.vaseline.security.authentication.model.def.server.base.Vaseline
  * @author Amir
  */
 public interface IVaselineInternalUserApi
-        extends IBaseUserApi<VaselineInternalUserEntity>, IBaseCrudApi<VaselineInternalUserEntity, Long> {
+        extends IBaseUserApi<VaselineInternalUserEntity>, IBaseCrudApi<Long, VaselineInternalUserEntity> {
 }

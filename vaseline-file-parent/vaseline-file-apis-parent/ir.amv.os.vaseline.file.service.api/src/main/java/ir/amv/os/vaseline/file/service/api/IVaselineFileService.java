@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public interface IVaselineFileService
-        extends IBaseMultiDaoReadOnlyService<IVaselineFileDto, Long, String>, IBaseCrudService<IVaselineFileDto, Long>{
+        extends IBaseMultiDaoReadOnlyService<String, Long, IVaselineFileDto>, IBaseCrudService<Long, IVaselineFileDto>{
 
     Long uploadFile(final String fileName, final String fileCategory, final Long fileSize, final String contentType, InputStream inputStream) throws BaseVaselineClientException;
 

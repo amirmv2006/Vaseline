@@ -9,6 +9,6 @@ import ir.amv.os.vaseline.security.authorization.rbac.model.api.role.ISecurityRo
  * @author Amir
  */
 public interface IDefaultSecurityRoleApi<R extends ISecurityRole<?>, DAO extends ISecurityRoleDao<R>>
-        extends IDefaultReadOnlyApi<R, Long, DAO>,
+        extends IDefaultReadOnlyApi<Long, R, DAO>,
         ISecurityRoleApi<R> {
 }

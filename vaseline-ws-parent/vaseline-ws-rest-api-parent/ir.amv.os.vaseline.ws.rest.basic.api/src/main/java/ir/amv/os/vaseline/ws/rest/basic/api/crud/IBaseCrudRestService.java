@@ -14,8 +14,8 @@ import java.io.Serializable;
 /**
  * @author Amir
  */
-public interface IBaseCrudRestService<D extends IBaseDto<Id>, Id extends Serializable>
-        extends IBaseCrudWebService<D, Id>, IBaseReadOnlyWebService<D, Id> {
+public interface IBaseCrudRestService<Id extends Serializable, D extends IBaseDto<Id>>
+        extends IBaseCrudWebService<Id, D>, IBaseReadOnlyWebService<Id, D> {
 
     @POST
     @Path("/")

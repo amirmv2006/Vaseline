@@ -11,8 +11,8 @@ import java.util.List;
 /**
  * @author Amir
  */
-public interface IBaseSimpleSearchWebService<D extends IBaseDto<Id>, Id extends Serializable>
-        extends IBaseReadOnlyWebService<D, Id> {
+public interface IBaseSimpleSearchWebService<Id extends Serializable, D extends IBaseDto<Id>>
+        extends IBaseReadOnlyWebService<Id, D> {
 
     Long countByExample(D example) throws BaseVaselineClientException;
     List<D> searchByExample(D example) throws BaseVaselineClientException;

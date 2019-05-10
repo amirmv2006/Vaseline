@@ -8,7 +8,7 @@ import ir.amv.os.vaseline.service.basic.api.server.ro.IBaseReadOnlyService;
  * @author Amir
  */
 public interface IBaseUserService<UD extends IBaseUserDto>
-        extends IBaseReadOnlyService<UD, Long> {
+        extends IBaseReadOnlyService<Long, UD> {
 
     UD loadUserByUsername(String username) throws BaseVaselineClientException;
 }

@@ -12,11 +12,11 @@ import java.io.Serializable;
 /**
  * @author Amir
  */
-public interface IDefaultCrudRestService<D extends IBaseDto<Id>, Id extends Serializable, Service extends
-        IBaseCrudService<D, Id>>
-        extends IBaseCrudRestService<D, Id>,
-        IDefaultReadOnlyRestService<D, Id, Service>,
-        IDefaultCrudWebService<D, Id, Service> {
+public interface IDefaultCrudRestService<Id extends Serializable, D extends IBaseDto<Id>, Service extends
+        IBaseCrudService<Id, D>>
+        extends IBaseCrudRestService<Id, D>,
+        IDefaultReadOnlyRestService<Id, D, Service>,
+        IDefaultCrudWebService<Id, D, Service> {
 
     @Override
     default Id save(D t) throws BaseVaselineClientException {

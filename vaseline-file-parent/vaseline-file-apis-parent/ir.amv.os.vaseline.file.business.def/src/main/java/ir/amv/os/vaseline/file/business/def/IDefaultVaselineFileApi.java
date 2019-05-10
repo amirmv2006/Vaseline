@@ -17,7 +17,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public interface IDefaultVaselineFileApi
-        extends IDefaultMultiDaoCrudApi<IVaselineFileEntity, Long, String, IVaselineFileDao<IVaselineFileEntity, IVaselineFileDto>>, IVaselineFileApi {
+        extends IDefaultMultiDaoCrudApi<String, Long, IVaselineFileEntity, IVaselineFileDao<IVaselineFileEntity, IVaselineFileDto>>, IVaselineFileApi {
 
     String DEFAULT_CATEGORY = "CATEGORY_NOT_SPECIFIED";
 

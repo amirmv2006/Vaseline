@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RestIntegrationModelRestService
         implements IRestIntegrationModelRestService,
-        IDefaultCrudRestService<RestIntegrationModelDto, Long, IRestIntegrationModelService> {
+        IDefaultCrudRestService<Long, RestIntegrationModelDto, IRestIntegrationModelService> {
 
     @Autowired
     private IRestIntegrationModelService service;

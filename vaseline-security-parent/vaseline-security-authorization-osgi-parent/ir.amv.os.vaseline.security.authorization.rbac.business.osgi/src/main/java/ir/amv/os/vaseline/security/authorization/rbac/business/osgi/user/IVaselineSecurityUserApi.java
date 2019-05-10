@@ -11,6 +11,6 @@ import ir.amv.os.vaseline.security.authorization.rbac.model.def.user.SecurityUse
 public interface IVaselineSecurityUserApi
         extends
         ISecurityUserApi<SecurityUserEntity>,
-        IBaseCrudApi<SecurityUserEntity, Long>,
+        IBaseCrudApi<Long, SecurityUserEntity>,
         IBaseNotSecuredCrudApi<SecurityUserEntity, Long> {
 }

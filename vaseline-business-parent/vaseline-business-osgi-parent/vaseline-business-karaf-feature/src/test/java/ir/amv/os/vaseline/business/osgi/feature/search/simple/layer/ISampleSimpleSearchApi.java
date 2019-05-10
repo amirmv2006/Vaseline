@@ -4,5 +4,5 @@ import ir.amv.os.vaseline.business.search.simple.api.server.IBaseSimpleSearchApi
 import ir.amv.os.vaseline.data.osgi.test.jpa.model.SampleDto;
 import ir.amv.os.vaseline.data.osgi.test.jpa.model.SampleEntity;
 
-public interface ISampleSimpleSearchApi extends IBaseSimpleSearchApi<SampleEntity, SampleDto, Long> {
+public interface ISampleSimpleSearchApi extends IBaseSimpleSearchApi<Long, SampleEntity, SampleDto> {
 }

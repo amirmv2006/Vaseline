@@ -11,9 +11,9 @@ import ir.amv.os.vaseline.service.search.simple.api.server.IBaseSimpleSearchServ
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDefaultSimpleSearchService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends
-        Serializable, Api extends IBaseSimpleSearchApi<E, D, Id>>
-        extends IBaseSimpleSearchService<D, Id>, IDefaultReadOnlyService<E, D, Id, Api> {
+public interface IDefaultSimpleSearchService<Id extends
+        Serializable, E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Api extends IBaseSimpleSearchApi<Id, E, D>>
+        extends IBaseSimpleSearchService<Id, D>, IDefaultReadOnlyService<Id, E, D, Api> {
 
     @Override
     default Long countByExample(D example) throws BaseVaselineClientException {

@@ -12,15 +12,15 @@ import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDefaultReadOnlyApi<E extends IBaseEntity<Id>, Id extends Serializable, Dao extends
-        IBaseReadOnlyDao<Id, E>>
-        extends IBaseReadOnlyApi<E, Id>, IDefaultEntityReadOnlyApi<E> {
+public interface IDefaultReadOnlyApi<I extends Serializable, E extends IBaseEntity<I>, Dao extends
+        IBaseReadOnlyDao<I, E>>
+        extends IBaseReadOnlyApi<I, E>, IDefaultEntityReadOnlyApi<E> {
 
     Dao getDao();
 
     @Override
     @Transactional
-    default E getById(Id id) throws BaseVaselineServerException {
+    default E getById(I id) throws BaseVaselineServerException {
         E findById = getDao().getById(id);
         postGet(findById);
         return findById;

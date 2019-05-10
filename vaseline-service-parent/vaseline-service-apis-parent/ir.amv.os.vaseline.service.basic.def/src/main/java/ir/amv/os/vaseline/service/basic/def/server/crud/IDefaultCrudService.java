@@ -15,9 +15,9 @@ import java.io.Serializable;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IDefaultCrudService<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends
-        Serializable, Api extends IBaseCrudApi<E, Id>>
-        extends IBaseCrudService<D, Id>, IDefaultReadOnlyService<E, D, Id, Api> {
+public interface IDefaultCrudService<Id extends
+        Serializable, E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Api extends IBaseCrudApi<Id, E>>
+        extends IBaseCrudService<Id, D>, IDefaultReadOnlyService<Id, E, D, Api> {
 
     @Override
     default Id save(D t) throws BaseVaselineClientException {

@@ -14,9 +14,9 @@ import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDefaultAdvancedSearchApi<E extends IBaseEntity<Id>, SO extends IBaseSearchObject,
-        Id extends Serializable, Dao extends IBaseAdvancedSearchDao<Id, E, SO>>
-        extends IBaseAdvancedSearchApi<E, SO, Id>, IDefaultReadOnlyApi<E, Id, Dao> {
+public interface IDefaultAdvancedSearchApi<I extends Serializable, E extends IBaseEntity<I>, SO extends IBaseSearchObject,
+        Dao extends IBaseAdvancedSearchDao<I, E, SO>>
+        extends IBaseAdvancedSearchApi<I, E, SO>, IDefaultReadOnlyApi<I, E, Dao> {
 
     @Transactional
     default Long countBySearchObject(SO searchObject) throws BaseVaselineServerException {

@@ -13,7 +13,7 @@ import javax.transaction.Transactional;
  * @author Amir
  */
 public interface IDefaultBaseUserApi<U extends IBaseUserEntity, Dao extends IBaseUserDao<U>>
-        extends IDefaultReadOnlyApi<U, Long, Dao>, IBaseUserApi<U> {
+        extends IDefaultReadOnlyApi<Long, U, Dao>, IBaseUserApi<U> {
 
     IAuditApi getAuditApi();
 

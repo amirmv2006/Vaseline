@@ -14,8 +14,8 @@ import java.io.OutputStream;
 
 public interface IDefaultVaselineFileService
         extends IVaselineFileService,
-        IDefaultMultiDaoReadOnlyService<IVaselineFileEntity, IVaselineFileDto, Long, String, IVaselineFileApi>,
-        IDefaultCrudService<IVaselineFileEntity, IVaselineFileDto, Long, IVaselineFileApi> {
+        IDefaultMultiDaoReadOnlyService<String, Long, IVaselineFileEntity, IVaselineFileDto, IVaselineFileApi>,
+        IDefaultCrudService<Long, IVaselineFileEntity, IVaselineFileDto, IVaselineFileApi> {
 
     @Override
     default Long uploadFile(final String fileName, final String fileCategory, final Long fileSize, final String contentType, InputStream inputStream) throws BaseVaselineClientException {

@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 
 public class SampleBasicApiImpl
         extends ProxyAwareImpl
-        implements IDefaultCrudApi<SampleEntity, Long, ISampleBasicDao>,
+        implements IDefaultCrudApi<Long, SampleEntity, ISampleBasicDao>,
         ISampleBasicApi {
 
     private ISampleBasicDao dao;

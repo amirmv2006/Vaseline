@@ -8,7 +8,7 @@ import ir.amv.os.vaseline.service.basic.api.server.base.IBaseService;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IBaseMultiDaoReadOnlyService<D extends IBaseDto<Id>, Id extends Serializable, Category>
+public interface IBaseMultiDaoReadOnlyService<Category, Id extends Serializable, D extends IBaseDto<Id>>
         extends IBaseService {
 
     D getById(Category category, Id id) throws BaseVaselineClientException;

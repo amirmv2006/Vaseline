@@ -14,10 +14,10 @@ import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDefaultMultiDaoSimpleSearchApi<E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Id extends
-        Serializable, Category, Dao extends IBaseSimpleSearchDao<Id, E, D>>
-        extends IDefaultMultiDaoReadOnlyApi<E, Id, Category, Dao>, IDefaultSimpleSearchApi<E, D, Id,
-                Dao> {
+public interface IDefaultMultiDaoSimpleSearchApi<Category, Id extends
+        Serializable, E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Dao extends IBaseSimpleSearchDao<Id, E, D>>
+        extends IDefaultMultiDaoReadOnlyApi<Category, Id, E, Dao>, IDefaultSimpleSearchApi<Id, E, D,
+        Dao> {
 
     Category getCategoryForDto(D dto);
 

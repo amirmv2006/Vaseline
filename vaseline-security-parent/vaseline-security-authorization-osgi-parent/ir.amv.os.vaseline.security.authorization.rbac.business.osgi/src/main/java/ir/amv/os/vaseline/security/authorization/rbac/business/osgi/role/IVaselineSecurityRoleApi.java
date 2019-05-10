@@ -12,7 +12,7 @@ import ir.amv.os.vaseline.security.authorization.rbac.model.def.role.SecurityRol
 public interface IVaselineSecurityRoleApi
         extends
         ISecurityRoleApi<SecurityRoleEntity>,
-        IBaseCrudApi<SecurityRoleEntity, Long>,
+        IBaseCrudApi<Long, SecurityRoleEntity>,
         IBaseNotSecuredCrudApi<SecurityRoleEntity, Long> {
     SecurityRoleEntity getRoleByName(String roleName) throws BaseVaselineServerException;
 }

@@ -14,8 +14,8 @@ import java.util.List;
 /**
  * Created by AMV on 2/9/2016.
  */
-public interface IBaseMultiDaoReadOnlyApi<E extends IBaseEntity<Id>, Id extends Serializable, Category>
-        extends IBaseReadOnlyApi<E, Id> {
+public interface IBaseMultiDaoReadOnlyApi<Category, Id extends Serializable, E extends IBaseEntity<Id>>
+        extends IBaseReadOnlyApi<Id, E> {
 
     /**
      * @inheritDoc

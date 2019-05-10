@@ -15,7 +15,7 @@ import java.util.List;
  * @author Amir
  */
 public interface IBaseNotSecuredReadOnlyApi<E extends IBaseEntity<Id>, Id extends Serializable>
-        extends IBaseReadOnlyApi<E, Id> {
+        extends IBaseReadOnlyApi<Id, E> {
 
     @NoAuthorization
     E getByIdNotSecured(Id id) throws BaseVaselineServerException;
