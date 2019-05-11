@@ -3,9 +3,13 @@ package ir.amv.os.vaseline.business.osgi.feature.basic;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.core.osgi.constants.VaselineCoreOsgiConstants;
 import ir.amv.os.vaseline.business.osgi.feature.basic.layer.ISampleBasicApi;
+import ir.amv.os.vaseline.business.osgi.feature.basic.layer.SampleBasicApiImpl;
 import ir.amv.os.vaseline.data.osgi.test.jpa.model.SampleEntity;
-import ir.amv.os.vaseline.testing.integration.cucumber.karaf.RequireClassRemotely;
+import ir.amv.os.vaseline.testing.integration.cucumber.karaf.RegisterService;
+import ir.amv.os.vaseline.testing.integration.cucumber.karaf.RegisterServiceProperty;
+import ir.amv.os.vaseline.testing.integration.cucumber.karaf.RegisterServicePropertyTypeConstants;
 import org.junit.Assert;
 
 import javax.inject.Inject;
@@ -14,7 +18,15 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-@RequireClassRemotely(ISampleBasicApi.class)
+@RegisterService(
+        interfaceClass = ISampleBasicApi.class,
+        implClass = SampleBasicApiImpl.class,
+        properties = @RegisterServiceProperty(
+                propertyName = VaselineCoreOsgiConstants.NEEDS_PROXY,
+                propertyType = RegisterServicePropertyTypeConstants.BOOLEAN_PROPERTY_TYPE,
+                boolValue = true
+        )
+)
 public class BasicApiSteps {
 
     @Inject
@@ -56,5 +68,11 @@ public class BasicApiSteps {
         SampleEntity sampleEntity = new SampleEntity(firstName, lastName);
         sampleEntity.setId(id);
         sampleApi.update(sampleEntity);
+    }
+
+    @And("verify Basic Business is registered")
+    public void verifyBasicBusinessIsRegistered() {
+        assertNotNull(sampleApi);
+        assertNotNull(sampleApi.getProxy(ISampleBasicApi.class));
     }
 }

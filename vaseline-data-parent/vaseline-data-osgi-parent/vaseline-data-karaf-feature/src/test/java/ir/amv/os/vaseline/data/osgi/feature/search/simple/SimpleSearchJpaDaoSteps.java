@@ -1,6 +1,7 @@
 package ir.amv.os.vaseline.data.osgi.feature.search.simple;
 
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
 import ir.amv.os.vaseline.data.osgi.feature.search.simple.dao.ISampleSimpleSearchDao;
 import ir.amv.os.vaseline.data.osgi.feature.search.simple.dao.SampleSimpleSearchDao;
 import ir.amv.os.vaseline.data.osgi.test.jpa.model.SampleDto;
@@ -43,5 +44,10 @@ public class SimpleSearchJpaDaoSteps {
         assertEquals(1, sampleEntities.size());
         assertTrue(sampleEntities.stream().anyMatch(
                 sampleEntity -> sampleEntity.getFirstName().equals(firstName) && sampleEntity.getLastName().equals(lastName)));
+    }
+
+    @Then("verify SimpleSearch Dao is registered")
+    public void verifySimpleSearchDaoIsRegistered() {
+        assertNotNull(underTest);
     }
 }

@@ -67,4 +67,9 @@ public class BasicJpaDaoSteps {
             return null;
         });
     }
+
+    @Then("verify Basic Dao is registered")
+    public void verifyBasicDaoIsRegistered() {
+        assertNotNull(underTest);
+    }
 }

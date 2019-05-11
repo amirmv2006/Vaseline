@@ -7,4 +7,5 @@ import java.lang.annotation.RetentionPolicy;
 public @interface RegisterService {
     Class<?> implClass();
     Class<?> interfaceClass();
+    RegisterServiceProperty[] properties() default {};
 }

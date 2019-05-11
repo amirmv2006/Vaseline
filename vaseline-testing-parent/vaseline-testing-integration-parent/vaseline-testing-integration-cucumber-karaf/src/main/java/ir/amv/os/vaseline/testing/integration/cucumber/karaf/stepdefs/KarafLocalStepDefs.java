@@ -49,8 +49,9 @@ public class KarafLocalStepDefs {
                         if (registerService != null) {
                             try {
                                 System.out.println("Registering service for " + registerService.interfaceClass());
-                                remoteInstance.registerService(registerService.implClass().getName(), registerService.interfaceClass().getName());
-                            } catch (Exception ignored) {
+                                remoteInstance.registerServiceFor(objectClass.getName());
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
                         }
                     }

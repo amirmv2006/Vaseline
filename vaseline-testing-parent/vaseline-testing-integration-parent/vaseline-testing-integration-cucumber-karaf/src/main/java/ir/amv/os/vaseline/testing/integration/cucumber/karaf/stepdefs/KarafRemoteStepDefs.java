@@ -1,6 +1,9 @@
 package ir.amv.os.vaseline.testing.integration.cucumber.karaf.stepdefs;
 
 import cucumber.api.java.en.Then;
+import ir.amv.os.vaseline.testing.integration.cucumber.karaf.RegisterService;
+import ir.amv.os.vaseline.testing.integration.cucumber.karaf.RegisterServiceProperty;
+import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.ops4j.pax.swissbox.tracker.ServiceLookupException;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -27,9 +30,13 @@ public class KarafRemoteStepDefs {
     BundleContext bundleContext;
 
 
-    public void registerService(String implClassName, String interfaceClassName) throws Exception {
-        Class<?> implClass = this.getClass().getClassLoader().loadClass(implClassName);
-        Class<?> interfaceClass = this.getClass().getClassLoader().loadClass(interfaceClassName);
+    public void registerServiceFor(String classFqn) throws Exception {
+        Class<?> aClass = this.getClass().getClassLoader().loadClass(classFqn);
+        RegisterService registerService = ReflectionUtil.getAnnotationInHierarchy(aClass, RegisterService.class);
+        assert registerService != null;
+        Class<?> implClass = registerService.implClass();
+        Class<?> interfaceClass = registerService.interfaceClass();
+        RegisterServiceProperty[] props = registerService.properties();
         Constructor<?> constructor = implClass.getConstructors()[0];
         Class<?>[] parameterTypes = constructor.getParameterTypes();
         List<Object> params = new ArrayList<>();
@@ -45,6 +52,20 @@ public class KarafRemoteStepDefs {
         }
         Object serviceInstance = constructor.newInstance(params.toArray());
         Hashtable<String, Object> properties = new Hashtable<>();
+        for (RegisterServiceProperty prop : props) {
+            Object value;
+            switch (prop.propertyType()) {
+                case "BOOLEAN":
+                    value = prop.boolValue();
+                    break;
+                case "INTEGER":
+                    value = prop.intValue();
+                    break;
+                default:
+                    value = prop.strValue();
+            }
+            properties.put(prop.propertyName(), value);
+        }
         bundleContext.registerService(interfaceClass.getName(), serviceInstance, properties);
     }
 

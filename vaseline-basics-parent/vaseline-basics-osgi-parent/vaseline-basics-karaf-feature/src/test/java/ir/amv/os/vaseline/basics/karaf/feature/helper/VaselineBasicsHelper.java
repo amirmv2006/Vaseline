@@ -1,6 +1,7 @@
 package ir.amv.os.vaseline.basics.karaf.feature.helper;
 
 import ir.amv.os.vaseline.testing.integration.cucumber.karaf.RegisterService;
+import ir.amv.os.vaseline.testing.integration.cucumber.karaf.RegisterServiceProperty;
 import ir.amv.os.vaseline.testing.integration.cucumber.karaf.RemoteObjectFactory;
 import org.osgi.framework.BundleContext;
 
@@ -11,7 +12,11 @@ import static ir.amv.os.vaseline.testing.integration.cucumber.karaf.helper.Karaf
 public class VaselineBasicsHelper {
 
     public static void vaselineBasicsWithPrerequisites() {
-        RemoteObjectFactory.getInstance().getRemoteKarafEnvironment().addExtraClasses(VaselineBasicsHelper.class, RegisterService.class);
+        RemoteObjectFactory.getInstance().getRemoteKarafEnvironment().addExtraClasses(
+                VaselineBasicsHelper.class,
+                RegisterService.class,
+                RegisterServiceProperty.class
+                );
         RemoteObjectFactory.getInstance().getRemoteKarafEnvironment().addOptions(Collections.singletonList(
                 deployFeature("com.github.amirmv2006.basics.osgi", "vaseline-basics-karaf-feature", "vaseline-basics-karaf-feature")
         ));

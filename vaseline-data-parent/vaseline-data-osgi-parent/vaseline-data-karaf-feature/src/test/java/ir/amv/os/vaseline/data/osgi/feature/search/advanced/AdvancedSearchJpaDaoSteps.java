@@ -1,6 +1,7 @@
 package ir.amv.os.vaseline.data.osgi.feature.search.advanced;
 
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
 import ir.amv.os.vaseline.data.osgi.feature.search.advanced.dao.ISampleAdvancedSearchDao;
 import ir.amv.os.vaseline.data.osgi.feature.search.advanced.dao.SampleAdvancedSearchDao;
 import ir.amv.os.vaseline.data.osgi.test.jpa.model.SampleEntity;
@@ -43,5 +44,10 @@ public class AdvancedSearchJpaDaoSteps {
         assertEquals(1, sampleEntities.size());
         assertTrue(sampleEntities.stream().anyMatch(
                 sampleEntity -> sampleEntity.getFirstName().equals(firstName) && sampleEntity.getLastName().equals(lastName)));
+    }
+
+    @Then("verify AdvancedSearch Dao is registered")
+    public void verifyAdvancedSearchDaoIsRegistered() {
+        assertNotNull(underTest);
     }
 }
