@@ -7,6 +7,9 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberKarafRunner.class)
 @CucumberOptions(
         glue = {
+                "classpath:ir/amv/os/vaseline/service/osgi/feature",
+                "classpath:ir/amv/os/vaseline/business/osgi/feature",
+                "classpath:ir/amv/os/vaseline/data/osgi/feature",
                 "classpath:ir/amv/os/vaseline/testing/integration/cucumber/karaf/stepdefs"
         })
 public class VaselineServiceIntegrationTest {

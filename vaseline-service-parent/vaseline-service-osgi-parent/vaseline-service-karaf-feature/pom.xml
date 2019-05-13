@@ -37,19 +37,51 @@
             <artifactId>ir.amv.os.vaseline.service.multidao.def</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!-- test dependencies -->
+        <dependency>
+            <groupId>com.github.amirmv2006.data.osgi</groupId>
+            <artifactId>ir.amv.os.vaseline.data.osgi.test.jpa.model</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.basics.osgi</groupId>
+            <artifactId>vaseline-basics-karaf-feature</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+            <classifier>tests</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.data.osgi</groupId>
+            <artifactId>vaseline-data-karaf-feature</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+            <classifier>tests</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amirmv2006.business.osgi</groupId>
+            <artifactId>vaseline-business-karaf-feature</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+            <classifier>tests</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.jdbc</groupId>
+            <artifactId>pax-jdbc-features</artifactId>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.aries.transaction</groupId>
+            <artifactId>org.apache.aries.transaction.manager</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.karaf.tooling</groupId>
-                <artifactId>karaf-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

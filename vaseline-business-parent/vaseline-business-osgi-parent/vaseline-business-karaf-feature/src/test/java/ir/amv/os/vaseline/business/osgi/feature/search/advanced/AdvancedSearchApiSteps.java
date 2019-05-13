@@ -48,7 +48,7 @@ public class AdvancedSearchApiSteps {
 
     @Then("business layer searchBySearchObject works with firstName%={string} and lastName%={string} contains an entity with firstName={string} and lastName={string}")
     public void businessLayerSearchBySearchObjectWorksWithFirstNameAndLastNameContainsAnEntityWithFirstNameAndLastName(String criteriaFirstName, String criteriaLastName, String firstName, String lastName) throws BaseVaselineServerException {
-        SampleSearchObject searchSample = new SampleSearchObject(contains(firstName), contains(lastName));
+        SampleSearchObject searchSample = new SampleSearchObject(contains(criteriaFirstName), contains(criteriaLastName));
         List<SampleEntity> sampleEntities = api.searchBySearchObject(searchSample);
         assertEquals(1, sampleEntities.size());
         assertTrue(sampleEntities.stream().anyMatch(

@@ -39,7 +39,7 @@ public class AdvancedSearchJpaDaoSteps {
 
     @And("searchBySearchObject works with firstName%={string} and lastName%={string} contains an entity with firstName={string} and lastName={string}")
     public void searchbyexampleWorksWithFirstNameAndLastNameContainsAnEntityWithFirstNameAndLastName(String criteriaFirstName, String criteriaLastName, String firstName, String lastName) throws Exception {
-        SampleSearchObject searchSample = new SampleSearchObject(contains(firstName), contains(lastName));
+        SampleSearchObject searchSample = new SampleSearchObject(contains(criteriaFirstName), contains(criteriaLastName));
         List<SampleEntity> sampleEntities = doTransactional(tm, coordinator, () -> underTest.searchBySearchObject(searchSample));
         assertEquals(1, sampleEntities.size());
         assertTrue(sampleEntities.stream().anyMatch(
