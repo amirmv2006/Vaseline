@@ -22,6 +22,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.UUID;
 
 import static org.ops4j.pax.exam.spi.DefaultExamSystem.createTempDir;
 
@@ -42,7 +43,8 @@ public class RemoteKarafEnvironmentImpl
     @Override
     public void init() {
         cachedLocalObjects = new Hashtable<>();
-        WorkingDirectoryOption work = new WorkingDirectoryOption(createTemp(null).getAbsolutePath());
+        WorkingDirectoryOption work =
+                new WorkingDirectoryOption(createTemp(new File("target/" + UUID.randomUUID().toString())).getAbsolutePath());
         File workingDirectory = createTemp(new File(work.getWorkingDirectory()));
         TemporaryStore store = new TemporaryStore(workingDirectory, false);
         stepProbeBuilder = new StepProbeBuilderImpl(workingDirectory, store);
