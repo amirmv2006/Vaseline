@@ -79,6 +79,7 @@ public class RemoteKarafEnvironmentImpl
     @Override
     public void startKaraf() {
         try {
+            System.setProperty("org.ops4j.pax.url.mvn.localRepository", "target/mvnRepo");
             KarafTestContainerFactory containerFactory = new KarafTestContainerFactory();
             Option[] config = options.toArray(new Option[0]);
             ExamSystem examSystem = DefaultExamSystem.create(config);
@@ -97,6 +98,8 @@ public class RemoteKarafEnvironmentImpl
             System.out.println("Started");
         } catch (Exception e) {
             throw new RuntimeException(e);
+        } finally {
+            System.clearProperty("org.ops4j.pax.url.mvn.localRepository");
         }
     }
 
