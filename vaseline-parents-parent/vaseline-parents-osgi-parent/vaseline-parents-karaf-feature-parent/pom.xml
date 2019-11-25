@@ -120,6 +120,7 @@
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <configuration>
+                        <forkCount>0</forkCount> <!-- cannot run in parallel because of port conflicts -->
                         <excludes>
                             <exclude>**/*IntegrationTest.java</exclude>
                         </excludes>
