@@ -176,12 +176,12 @@
                 <repository>
                     <id>releases</id>
                     <name>releases</name>
-                    <url>http://${env.MAVEN_REPO_BASE_URL}/${env.MAVEN_RELEASES_REPO}/</url>
+                    <url>http://${env.MAVEN_REPO_BASE_URL}/${env.MAVEN_DEPLOY_RELEASE_REPO}/</url>
                 </repository>
                 <snapshotRepository>
                     <id>snapshots</id>
                     <name>snapshots</name>
-                    <url>http://${env.MAVEN_REPO_BASE_URL}/${env.MAVEN_SNAPSHOTS_REPO}/</url>
+                    <url>http://${env.MAVEN_REPO_BASE_URL}/${env.MAVEN_DEPLOY_SNAPSHOT_REPO}/</url>
                 </snapshotRepository>
             </distributionManagement>
         </profile>
