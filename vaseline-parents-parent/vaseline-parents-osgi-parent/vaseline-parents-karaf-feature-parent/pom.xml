@@ -50,6 +50,12 @@
             <version>1.0-alpha-1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.stephenc.jcip</groupId>
+            <artifactId>jcip-annotations</artifactId>
+            <version>1.0-1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -120,7 +126,6 @@
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <configuration>
-                        <forkCount>0</forkCount> <!-- cannot run in parallel because of port conflicts -->
                         <excludes>
                             <exclude>**/*IntegrationTest.java</exclude>
                         </excludes>
