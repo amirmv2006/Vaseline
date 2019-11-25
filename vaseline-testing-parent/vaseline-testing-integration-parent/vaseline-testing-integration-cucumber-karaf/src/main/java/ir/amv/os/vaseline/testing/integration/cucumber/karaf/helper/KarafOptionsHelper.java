@@ -30,8 +30,7 @@ public class KarafOptionsHelper {
                         .useDeployFolder(false),
                 keepRuntimeFolder(),
                 configureConsole().ignoreLocalConsole(),
-                logLevel(LogLevelOption.LogLevel.INFO),
-                debugConfiguration("5555", false)
+                logLevel(LogLevelOption.LogLevel.INFO)
         );
     }
 
