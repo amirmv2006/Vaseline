@@ -32,9 +32,9 @@
         </developer>
     </developers>
     <scm>
-        <url>git@github.com:amirmv2006/Vaseline.git</url>
-        <connection>scm:git:git@github.com:amirmv2006/Vaseline.git</connection>
-        <developerConnection>scm:git:git@github.com:amirmv2006/Vaseline.git</developerConnection>
+        <url>https://github.com/amirmv2006/Vaseline.git</url>
+        <connection>scm:git:https://github.com/amirmv2006/Vaseline.git</connection>
+        <developerConnection>scm:git:https://github.com/amirmv2006/Vaseline.git</developerConnection>
     </scm>
     <modules>
         <module>vaseline-parents-parent</module>
