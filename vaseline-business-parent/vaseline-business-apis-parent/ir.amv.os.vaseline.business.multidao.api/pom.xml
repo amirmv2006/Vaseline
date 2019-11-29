@@ -18,6 +18,10 @@
             <artifactId>ir.amv.os.vaseline.business.basic.api</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.interceptor</groupId>
+            <artifactId>javax.interceptor-api</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

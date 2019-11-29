@@ -18,7 +18,7 @@ public interface IBaseMultiDaoReadOnlyApi<Category, Id extends Serializable, E e
         extends IBaseReadOnlyApi<Id, E> {
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * @deprecated use {@link #getById(Object, Serializable)}
      */
     @Override
@@ -28,7 +28,7 @@ public interface IBaseMultiDaoReadOnlyApi<Category, Id extends Serializable, E e
     E getById(Category category, Id id) throws BaseVaselineServerException;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * @deprecated user {@link #countAll(Object)}
      */
     @Override
@@ -38,7 +38,7 @@ public interface IBaseMultiDaoReadOnlyApi<Category, Id extends Serializable, E e
     Long countAll(Category category) throws BaseVaselineServerException;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * @deprecated use {@link #getAll(Object)}
      */
     @Override
@@ -48,7 +48,7 @@ public interface IBaseMultiDaoReadOnlyApi<Category, Id extends Serializable, E e
     List<E> getAll(Category category) throws BaseVaselineServerException;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * @deprecated use {@link #getAll(Object, PagingDto)}
      */
     @Override
@@ -58,7 +58,7 @@ public interface IBaseMultiDaoReadOnlyApi<Category, Id extends Serializable, E e
     List<E> getAll(Category category, PagingDto pagingDto) throws BaseVaselineServerException;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * @deprecated use {@link #scrollAll(Object, List)}
      */
     @Override

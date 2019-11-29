@@ -23,6 +23,10 @@
             <artifactId>javax.transaction-api</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.interceptor</groupId>
+            <artifactId>javax.interceptor-api</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

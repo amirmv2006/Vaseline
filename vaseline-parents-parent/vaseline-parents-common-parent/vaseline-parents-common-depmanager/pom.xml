@@ -27,6 +27,7 @@
         <org.codehaus.gmavenplus.version>1.6</org.codehaus.gmavenplus.version>
         <io.cucumber.version>4.2.5</io.cucumber.version>
         <cglib.version>3.2.4</cglib.version>
+        <javax.interceptor-api.version>1.2</javax.interceptor-api.version>
     </properties>
 
     <dependencyManagement>
@@ -114,6 +115,11 @@
                 <groupId>cglib</groupId>
                 <artifactId>cglib</artifactId>
                 <version>${cglib.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.interceptor</groupId>
+                <artifactId>javax.interceptor-api</artifactId>
+                <version>${javax.interceptor-api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -40,6 +40,8 @@
 
 package ir.amv.os.vaseline.ws.rest.secured.oauth2.osgi.comp;
 
+import org.glassfish.jersey.client.oauth2.ClientIdentifier;
+
 /**
  * Class that contains definition od parameters used in OAuth2.
  *
@@ -49,7 +51,7 @@ package ir.amv.os.vaseline.ws.rest.secured.oauth2.osgi.comp;
 public final class OAuth2Parameters {
     /**
      * Parameter {@code client_id} that
-     * corresponds to ({@link org.glassfish.jersey.client.oauth2.ClientIdentifier#getClientId()}).
+     * corresponds to ({@link ClientIdentifier#getClientId()}).
      */
     public static final String CLIENT_ID = "client_id";
 

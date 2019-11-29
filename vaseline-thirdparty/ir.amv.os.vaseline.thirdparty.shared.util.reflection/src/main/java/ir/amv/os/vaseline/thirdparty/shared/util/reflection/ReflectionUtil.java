@@ -139,8 +139,9 @@ public class ReflectionUtil {
 
     /**
      * @param src              can be null!
-     * @param propertyTreeName
-     * @return
+     * @param propertyTreeName property tree name
+     * @param <T>              type of property
+     * @return the value of the property
      */
     @SuppressWarnings("unchecked")
     public static <T> T getPropertyByTreeName(Object src, String propertyTreeName) {
@@ -377,12 +378,12 @@ public class ReflectionUtil {
 
     /**
      * @apiNote do no search class annots cause we are searching on interfaces too, will get complicated
-     * @param annotationClass
-     * @param targetClass
-     * @param methodName
-     * @param paramsTypes
-     * @param <A>
-     * @return
+     * @param annotationClass the annotation class
+     * @param targetClass     the target class
+     * @param methodName      the method name
+     * @param paramsTypes     the method parameter types
+     * @param <A>             type of the annotation
+     * @return the annotation
      */
     public static <A extends Annotation> A getMethodAnnotationInHierarchy(
             Class<A> annotationClass,
@@ -469,9 +470,9 @@ public class ReflectionUtil {
     }
 
     /**
-     * @param genericClass
-     * @param parents
-     * @return
+     * @param genericClass generic class
+     * @param parents      parent classes
+     * @return array of generics passed to the <code>genericClass</code>
      * @deprecated use {@link #getGenericArgumentClasses}
      */
     public static Class<?>[] getGenericArgumentClassesDeprecated(Class<?> genericClass, Class<?>... parents) {

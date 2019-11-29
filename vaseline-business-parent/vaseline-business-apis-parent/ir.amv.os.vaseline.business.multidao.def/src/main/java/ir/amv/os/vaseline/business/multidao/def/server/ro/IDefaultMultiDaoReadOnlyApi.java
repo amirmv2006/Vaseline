@@ -82,7 +82,7 @@ public interface IDefaultMultiDaoReadOnlyApi<Category, Id extends Serializable, 
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      * @deprecated use {@link #getDaoFor(Object)}
      */
     @Override

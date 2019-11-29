@@ -59,7 +59,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * instances of it for performance reasons. Typically a system will only have one DozerBeanMapper instance per VM. If
  * you are using an IOC framework (i.e Spring), define the Mapper as singleton="true". If you are not using an IOC
  * framework, a DozerBeanMapperSingletonWrapper convenience class has been provided in the Dozer jar.
- * <p/>
+ *
  * It is technically possible to have multiple DozerBeanMapper instances initialized, but it will hinder internal
  * performance optimizations such as caching.
  *
