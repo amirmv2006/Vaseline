@@ -3,7 +3,7 @@
     <parent>
         <artifactId>vaseline-parents-karaf-feature-parent</artifactId>
         <groupId>com.github.amirmv2006.parents.osgi</groupId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
         <relativePath>../../../vaseline-parents-parent/vaseline-parents-osgi-parent/vaseline-parents-karaf-feature-parent/pom.xml</relativePath>
     </parent>
 
@@ -11,7 +11,7 @@
 
     <groupId>com.github.amirmv2006.basics.osgi</groupId>
     <artifactId>vaseline-basics-karaf-feature</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>vaseline-basics-karaf-feature-feature</name>

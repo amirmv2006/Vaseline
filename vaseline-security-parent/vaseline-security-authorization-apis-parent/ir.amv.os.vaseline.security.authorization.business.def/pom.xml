@@ -3,7 +3,7 @@
     <parent>
         <artifactId>vaseline-security-authorization-apis-parent</artifactId>
         <groupId>com.github.amirmv2006.security.authorization.apis</groupId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

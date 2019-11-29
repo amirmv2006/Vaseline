@@ -3,7 +3,7 @@
     <parent>
         <artifactId>vaseline-parents-osgi-depmanager</artifactId>
         <groupId>com.github.amirmv2006.parents.osgi</groupId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
         <relativePath>../../../vaseline-parents-parent/vaseline-parents-osgi-parent/vaseline-parents-osgi-depmanager/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>

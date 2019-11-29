@@ -3,12 +3,12 @@
     <parent>
         <artifactId>vaseline-basics-osgi-parent</artifactId>
         <groupId>com.github.amirmv2006.basics.osgi</groupId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ir.amv.os.vaseline.basics.logging.slf4j.osgi</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
     <dependencies>
