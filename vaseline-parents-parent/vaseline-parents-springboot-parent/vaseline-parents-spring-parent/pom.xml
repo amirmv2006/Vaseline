@@ -3,7 +3,7 @@
     <parent>
         <artifactId>vaseline-parents-springboot-depmanager</artifactId>
         <groupId>com.github.amirmv2006.parents.spring</groupId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
         <relativePath>../vaseline-parents-springboot-depmanager/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
