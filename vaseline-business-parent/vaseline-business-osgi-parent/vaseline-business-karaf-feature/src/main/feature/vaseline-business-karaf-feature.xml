@@ -3,28 +3,28 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
 http://karaf.apache.org/xmlns/features/v1.0.0 ">
-    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
-    <repository>mvn:com.github.amirmv2006.data.osgi/vaseline-data-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:ir.amv.os.vaseline.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:ir.amv.os.vaseline.data.osgi/vaseline-data-karaf-feature/${project.version}/xml/features</repository>
 
     <!-- vaseline business api start -->
     <feature name="ir.amv.os.vaseline.business.tx.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.basics.core.api</feature>
-        <bundle>mvn:com.github.amirmv2006.business.apis/ir.amv.os.vaseline.business.tx.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.business.apis/ir.amv.os.vaseline.business.tx.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.business.basic.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.basics.core.api</feature>
         <feature>ir.amv.os.vaseline.data.dao.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.business.apis/ir.amv.os.vaseline.business.basic.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.business.apis/ir.amv.os.vaseline.business.basic.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.business.basic.def" version="${project.version}">
         <feature>transaction-api</feature>
         <feature>ir.amv.os.vaseline.business.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.business.apis/ir.amv.os.vaseline.business.basic.def/${project.version}
+        <bundle>mvn:ir.amv.os.vaseline.business.apis/ir.amv.os.vaseline.business.basic.def/${project.version}
         </bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.business.search.simple.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.business.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.business.apis/ir.amv.os.vaseline.business.search.simple.api/${project.version}
+        <bundle>mvn:ir.amv.os.vaseline.business.apis/ir.amv.os.vaseline.business.search.simple.api/${project.version}
         </bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.business.search.simple.def" version="${project.version}">
@@ -32,13 +32,13 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>ir.amv.os.vaseline.business.search.simple.api</feature>
         <feature>ir.amv.os.vaseline.data.search.simple.api</feature>
         <bundle>
-            mvn:com.github.amirmv2006.business.apis/ir.amv.os.vaseline.business.search.simple.def/${project.version}
+            mvn:ir.amv.os.vaseline.business.apis/ir.amv.os.vaseline.business.search.simple.def/${project.version}
         </bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.business.search.advanced.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.business.basic.api</feature>
         <feature>ir.amv.os.vaseline.data.search.advanced.api</feature>
-        <bundle>mvn:com.github.amirmv2006.business.apis/ir.amv.os.vaseline.business.search.advanced.api/${project.version}
+        <bundle>mvn:ir.amv.os.vaseline.business.apis/ir.amv.os.vaseline.business.search.advanced.api/${project.version}
         </bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.business.search.advanced.def" version="${project.version}">
@@ -46,17 +46,17 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>ir.amv.os.vaseline.business.search.advanced.api</feature>
         <feature>ir.amv.os.vaseline.data.search.advanced.api</feature>
         <bundle>
-            mvn:com.github.amirmv2006.business.apis/ir.amv.os.vaseline.business.search.advanced.def/${project.version}
+            mvn:ir.amv.os.vaseline.business.apis/ir.amv.os.vaseline.business.search.advanced.def/${project.version}
         </bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.business.multidao.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.business.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.business.apis/ir.amv.os.vaseline.business.multidao.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.business.apis/ir.amv.os.vaseline.business.multidao.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.business.multidao.def" version="${project.version}">
         <feature>ir.amv.os.vaseline.business.basic.def</feature>
         <feature>ir.amv.os.vaseline.business.multidao.api</feature>
-        <bundle>mvn:com.github.amirmv2006.business.apis/ir.amv.os.vaseline.business.multidao.def/${project.version}
+        <bundle>mvn:ir.amv.os.vaseline.business.apis/ir.amv.os.vaseline.business.multidao.def/${project.version}
         </bundle>
     </feature>
     <!-- vaseline business api end -->

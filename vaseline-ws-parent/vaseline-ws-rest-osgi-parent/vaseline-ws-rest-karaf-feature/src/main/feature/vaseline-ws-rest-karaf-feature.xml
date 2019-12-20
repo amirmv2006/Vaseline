@@ -3,25 +3,25 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
 http://karaf.apache.org/xmlns/features/v1.0.0 ">
-    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
-    <repository>mvn:com.github.amirmv2006.service.osgi/vaseline-service-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:ir.amv.os.vaseline.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:ir.amv.os.vaseline.service.osgi/vaseline-service-karaf-feature/${project.version}/xml/features</repository>
     <repository>mvn:com.eclipsesource.jaxrs/features/${com.eclipsesource.jaxrs.publisher.version}/xml/features</repository>
-    <repository>mvn:com.github.amirmv2006.security.authentication.osgi/vaseline-security-authentication-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:ir.amv.os.vaseline.security.authentication.osgi/vaseline-security-authentication-karaf-feature/${project.version}/xml/features</repository>
 
     <!-- vaseline ws common api start -->
     <feature name="ir.amv.os.vaseline.ws.common.basic.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.basics.core.api</feature>
-        <bundle>mvn:com.github.amirmv2006.ws.common.api/ir.amv.os.vaseline.ws.common.basic.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.ws.common.api/ir.amv.os.vaseline.ws.common.basic.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.ws.common.basic.def" version="${project.version}">
         <feature>ir.amv.os.vaseline.ws.common.basic.api</feature>
         <feature>ir.amv.os.vaseline.service.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.ws.common.api/ir.amv.os.vaseline.ws.common.basic.def/${project.version}
+        <bundle>mvn:ir.amv.os.vaseline.ws.common.api/ir.amv.os.vaseline.ws.common.basic.def/${project.version}
         </bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.ws.common.search.simple.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.ws.common.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.ws.common.api/ir.amv.os.vaseline.ws.common.search.simple.api/${project.version}
+        <bundle>mvn:ir.amv.os.vaseline.ws.common.api/ir.amv.os.vaseline.ws.common.search.simple.api/${project.version}
         </bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.ws.common.search.simple.def" version="${project.version}">
@@ -29,13 +29,13 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>ir.amv.os.vaseline.ws.common.search.simple.api</feature>
         <feature>ir.amv.os.vaseline.service.search.simple.api</feature>
         <bundle>
-            mvn:com.github.amirmv2006.ws.common.api/ir.amv.os.vaseline.ws.common.search.simple.def/${project.version}
+            mvn:ir.amv.os.vaseline.ws.common.api/ir.amv.os.vaseline.ws.common.search.simple.def/${project.version}
         </bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.ws.common.search.advanced.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.ws.common.basic.api</feature>
         <feature>ir.amv.os.vaseline.data.search.advanced.api</feature>
-        <bundle>mvn:com.github.amirmv2006.ws.common.api/ir.amv.os.vaseline.ws.common.search.advanced.api/${project.version}
+        <bundle>mvn:ir.amv.os.vaseline.ws.common.api/ir.amv.os.vaseline.ws.common.search.advanced.api/${project.version}
         </bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.ws.common.search.advanced.def" version="${project.version}">
@@ -43,7 +43,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>ir.amv.os.vaseline.ws.common.basic.def</feature>
         <feature>ir.amv.os.vaseline.service.search.advanced.api</feature>
         <bundle>
-            mvn:com.github.amirmv2006.ws.common.api/ir.amv.os.vaseline.ws.common.search.advanced.def/${project.version}
+            mvn:ir.amv.os.vaseline.ws.common.api/ir.amv.os.vaseline.ws.common.search.advanced.def/${project.version}
         </bundle>
     </feature>
     <!-- vaseline ws common end -->
@@ -51,35 +51,35 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <!-- vaseline ws rest start -->
     <feature name="ir.amv.os.vaseline.ws.rest.basic.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.ws.common.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.ws.rest.api/ir.amv.os.vaseline.ws.rest.basic.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.ws.rest.api/ir.amv.os.vaseline.ws.rest.basic.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.ws.rest.basic.def" version="${project.version}">
         <feature>ir.amv.os.vaseline.ws.rest.basic.api</feature>
         <feature>ir.amv.os.vaseline.ws.common.basic.def</feature>
         <feature>ir.amv.os.vaseline.basics.json.api</feature>
-        <bundle>mvn:com.github.amirmv2006.ws.rest.api/ir.amv.os.vaseline.ws.rest.basic.def/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.ws.rest.api/ir.amv.os.vaseline.ws.rest.basic.def/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.ws.rest.search.simple.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.ws.rest.basic.api</feature>
         <feature>ir.amv.os.vaseline.ws.common.search.simple.api</feature>
-        <bundle>mvn:com.github.amirmv2006.ws.rest.api/ir.amv.os.vaseline.ws.rest.search.simple.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.ws.rest.api/ir.amv.os.vaseline.ws.rest.search.simple.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.ws.rest.search.simple.def" version="${project.version}">
         <feature>ir.amv.os.vaseline.ws.rest.search.simple.api</feature>
         <feature>ir.amv.os.vaseline.ws.rest.basic.def</feature>
         <feature>ir.amv.os.vaseline.ws.common.search.simple.def</feature>
-        <bundle>mvn:com.github.amirmv2006.ws.rest.api/ir.amv.os.vaseline.ws.rest.search.simple.def/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.ws.rest.api/ir.amv.os.vaseline.ws.rest.search.simple.def/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.ws.rest.search.advanced.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.ws.rest.basic.api</feature>
         <feature>ir.amv.os.vaseline.ws.common.search.advanced.api</feature>
-        <bundle>mvn:com.github.amirmv2006.ws.rest.api/ir.amv.os.vaseline.ws.rest.search.advanced.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.ws.rest.api/ir.amv.os.vaseline.ws.rest.search.advanced.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.ws.rest.search.advanced.def" version="${project.version}">
         <feature>ir.amv.os.vaseline.ws.rest.search.advanced.api</feature>
         <feature>ir.amv.os.vaseline.ws.rest.basic.def</feature>
         <feature>ir.amv.os.vaseline.ws.common.search.advanced.def</feature>
-        <bundle>mvn:com.github.amirmv2006.ws.rest.api/ir.amv.os.vaseline.ws.rest.search.advanced.def/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.ws.rest.api/ir.amv.os.vaseline.ws.rest.search.advanced.def/${project.version}</bundle>
     </feature>
     <!-- vaseline ws rest end -->
 

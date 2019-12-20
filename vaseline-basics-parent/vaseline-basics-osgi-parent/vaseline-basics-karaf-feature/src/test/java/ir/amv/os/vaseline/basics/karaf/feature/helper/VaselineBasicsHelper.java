@@ -18,7 +18,7 @@ public class VaselineBasicsHelper {
                 RegisterServiceProperty.class
                 );
         RemoteObjectFactory.getInstance().getRemoteKarafEnvironment().addOptions(Collections.singletonList(
-                deployFeature("com.github.amirmv2006.basics.osgi", "vaseline-basics-karaf-feature", "vaseline-basics-karaf-feature")
+                deployFeature("ir.amv.os.vaseline.basics.osgi", "vaseline-basics-karaf-feature", "vaseline-basics-karaf-feature")
         ));
     }
 

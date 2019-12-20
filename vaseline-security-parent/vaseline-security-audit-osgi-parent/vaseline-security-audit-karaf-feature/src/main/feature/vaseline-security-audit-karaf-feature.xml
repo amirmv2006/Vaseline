@@ -3,19 +3,19 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
 http://karaf.apache.org/xmlns/features/v1.0.0 ">
-    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
-    <repository>mvn:com.github.amirmv2006.business.osgi/vaseline-business-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:ir.amv.os.vaseline.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:ir.amv.os.vaseline.business.osgi/vaseline-business-karaf-feature/${project.version}/xml/features</repository>
 
     <!-- vaseline-security-audit-apis start -->
     <feature name="ir.amv.os.vaseline.security.audit.basic.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.business.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.audit.apis/ir.amv.os.vaseline.security.audit.basic.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.security.audit.apis/ir.amv.os.vaseline.security.audit.basic.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.security.audit.def.log" version="${project.version}">
         <feature>ir.amv.os.vaseline.basics.logging.def</feature>
         <feature>ir.amv.os.vaseline.business.basic.def</feature>
         <feature>ir.amv.os.vaseline.security.audit.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.audit.apis/ir.amv.os.vaseline.security.audit.def.log/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.security.audit.apis/ir.amv.os.vaseline.security.audit.def.log/${project.version}</bundle>
     </feature>
     <!-- vaseline-security-audit-apis end -->
 

@@ -38,10 +38,10 @@ public class VaselineDataHelper {
                 mavenBundleVersionAsInProject("com.h2database", "h2"),
                 mavenBundleVersionAsInProject("org.apache.aries.transaction", "org.apache.aries.transaction.manager"),
                 deployFeature("org.apache.karaf.features", "enterprise", "jpa"),
-                deployFeature("com.github.amirmv2006.data.osgi", "vaseline-data-karaf-feature", "hibernate-orm"),
-                deployFeature("com.github.amirmv2006.data.osgi", "vaseline-data-karaf-feature", "vaseline-data-karaf-feature-jpa"),
+                deployFeature("ir.amv.os.vaseline.data.osgi", "vaseline-data-karaf-feature", "hibernate-orm"),
+                deployFeature("ir.amv.os.vaseline.data.osgi", "vaseline-data-karaf-feature", "vaseline-data-karaf-feature-jpa"),
                 mavenBundleVersionAsInProject("org.apache.geronimo.specs", "geronimo-jpa_2.1_spec"),
-                mavenBundleVersionAsInProject("com.github.amirmv2006.data.osgi", "ir.amv.os.vaseline.data.osgi.test.jpa.model")
+                mavenBundleVersionAsInProject("ir.amv.os.vaseline.data.osgi", "ir.amv.os.vaseline.data.osgi.test.jpa.model")
         ));
     }
 

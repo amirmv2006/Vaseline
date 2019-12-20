@@ -3,67 +3,67 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
 http://karaf.apache.org/xmlns/features/v1.0.0 ">
-    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
-    <repository>mvn:com.github.amirmv2006.data.osgi/vaseline-data-karaf-feature/${project.version}/xml/features</repository>
-    <repository>mvn:com.github.amirmv2006.business.osgi/vaseline-business-karaf-feature/${project.version}/xml/features</repository>
-    <repository>mvn:com.github.amirmv2006.security.audit.osgi/vaseline-security-audit-karaf-feature/${project.version}/xml/features</repository>
-    <repository>mvn:com.github.amirmv2006.security.authentication.osgi/vaseline-security-authentication-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:ir.amv.os.vaseline.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:ir.amv.os.vaseline.data.osgi/vaseline-data-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:ir.amv.os.vaseline.business.osgi/vaseline-business-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:ir.amv.os.vaseline.security.audit.osgi/vaseline-security-audit-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:ir.amv.os.vaseline.security.authentication.osgi/vaseline-security-authentication-karaf-feature/${project.version}/xml/features</repository>
     <repository>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</repository>
 
     <!-- vaseline-security-authorization-apis start -->
     <feature name="ir.amv.os.vaseline.security.authorization.basic.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.business.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/ir.amv.os.vaseline.security.authorization.basic.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.security.authorization.apis/ir.amv.os.vaseline.security.authorization.basic.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.security.authorization.basic.def" version="${project.version}">
         <feature>ir.amv.os.vaseline.business.basic.def</feature>
         <feature>ir.amv.os.vaseline.security.authentication.basic.api</feature>
         <feature>ir.amv.os.vaseline.security.authorization.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/ir.amv.os.vaseline.security.authorization.basic.def/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.security.authorization.apis/ir.amv.os.vaseline.security.authorization.basic.def/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.security.authorization.business.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.business.basic.api</feature>
         <feature>ir.amv.os.vaseline.security.authorization.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/ir.amv.os.vaseline.security.authorization.business.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.security.authorization.apis/ir.amv.os.vaseline.security.authorization.business.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.security.authorization.business.def" version="${project.version}">
         <feature>transaction-api</feature> <!-- why do I have both transaction and transaction-api -->
         <feature>ir.amv.os.vaseline.business.basic.def</feature>
         <feature>ir.amv.os.vaseline.security.authorization.business.api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/ir.amv.os.vaseline.security.authorization.business.def/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.security.authorization.apis/ir.amv.os.vaseline.security.authorization.business.def/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.security.authorization.rbac.model.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.security.authentication.model.api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.model.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.model.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.security.authorization.rbac.model.def" version="${project.version}">
         <feature>ir.amv.os.vaseline.basics.dao.api</feature>
         <feature>ir.amv.os.vaseline.security.authentication.model.def</feature>
         <feature>ir.amv.os.vaseline.security.authorization.rbac.model.api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.model.def/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.model.def/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.security.authorization.rbac.dao.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.data.dao.basic.api</feature>
         <feature>ir.amv.os.vaseline.security.authentication.dao.basic.api</feature>
         <feature>ir.amv.os.vaseline.security.authorization.rbac.model.api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.dao.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.dao.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.security.authorization.rbac.dao.def.hibernate" version="${project.version}">
         <feature>ir.amv.os.vaseline.data.hibernate.dao.basic.api</feature>
         <feature>ir.amv.os.vaseline.security.authorization.rbac.dao.api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.dao.def.hibernate/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.dao.def.hibernate/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.security.authorization.rbac.dao.def.jpa" version="${project.version}">
         <feature>ir.amv.os.vaseline.data.jpa.dao.basic.api</feature>
         <feature>ir.amv.os.vaseline.security.authorization.rbac.dao.api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.dao.def.jpa/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.dao.def.jpa/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.security.authorization.rbac.business.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.business.basic.api</feature>
         <feature>ir.amv.os.vaseline.security.authentication.business.api</feature>
         <feature>ir.amv.os.vaseline.security.authorization.rbac.model.api</feature>
         <feature>ir.amv.os.vaseline.security.authorization.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.business.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.business.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.security.authorization.rbac.business.def" version="${project.version}">
         <feature>transaction-api</feature>
@@ -71,7 +71,7 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>ir.amv.os.vaseline.security.authentication.business.def</feature>
         <feature>ir.amv.os.vaseline.security.authorization.rbac.dao.api</feature>
         <feature>ir.amv.os.vaseline.security.authorization.rbac.business.api</feature>
-        <bundle>mvn:com.github.amirmv2006.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.business.def/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.security.authorization.apis/ir.amv.os.vaseline.security.authorization.rbac.business.def/${project.version}</bundle>
     </feature>
     <!-- vaseline-security-authentication-apis end -->
 

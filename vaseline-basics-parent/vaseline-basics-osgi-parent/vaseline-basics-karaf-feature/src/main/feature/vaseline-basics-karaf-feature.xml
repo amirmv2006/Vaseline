@@ -7,47 +7,47 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <!--<repository>mvn:org.apache.karaf.cellar/apache-karaf-cellar/4.0.0/xml/features</repository>-->
 
     <feature name="ir.amv.os.vaseline.thirdparty.shared.util.reflection" version="${project.version}">
-        <bundle>mvn:com.github.amirmv2006.thirdparty/ir.amv.os.vaseline.thirdparty.shared.util.reflection/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.thirdparty/ir.amv.os.vaseline.thirdparty.shared.util.reflection/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.basics.cache.api" version="${project.version}">
         <bundle>mvn:javax.cache/cache-api/${javax-cache.version}</bundle>
-        <bundle>mvn:com.github.amirmv2006.basics.apis/ir.amv.os.vaseline.basics.cache.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.basics.apis/ir.amv.os.vaseline.basics.cache.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.basics.i18n.api" version="${project.version}">
-        <bundle>mvn:com.github.amirmv2006.basics.apis/ir.amv.os.vaseline.basics.i18n.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.basics.apis/ir.amv.os.vaseline.basics.i18n.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.basics.jdbc.api" version="${project.version}">
-        <bundle>mvn:com.github.amirmv2006.basics.apis/ir.amv.os.vaseline.basics.jdbc.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.basics.apis/ir.amv.os.vaseline.basics.jdbc.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.basics.json.api" version="${project.version}">
-        <bundle>mvn:com.github.amirmv2006.basics.apis/ir.amv.os.vaseline.basics.json.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.basics.apis/ir.amv.os.vaseline.basics.json.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.basics.logging.api" version="${project.version}">
-        <bundle>mvn:com.github.amirmv2006.basics.apis/ir.amv.os.vaseline.basics.logging.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.basics.apis/ir.amv.os.vaseline.basics.logging.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.basics.logging.def" version="${project.version}">
         <feature>ir.amv.os.vaseline.basics.logging.api</feature>
-        <bundle>mvn:com.github.amirmv2006.basics.apis/ir.amv.os.vaseline.basics.logging.def/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.basics.apis/ir.amv.os.vaseline.basics.logging.def/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.basics.core.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.thirdparty.shared.util.reflection</feature>
         <feature>ir.amv.os.vaseline.basics.i18n.api</feature>
         <bundle dependency="true">mvn:javax.validation/validation-api/${javax-validation.version}</bundle>
         <bundle dependency="true">mvn:joda-time/joda-time/${joda-time.version}</bundle>
-        <bundle>mvn:com.github.amirmv2006.basics.apis/ir.amv.os.vaseline.basics.core.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.basics.apis/ir.amv.os.vaseline.basics.core.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.basics.dao.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.basics.core.api</feature>
         <bundle>mvn:javax.persistence/javax.persistence-api/${javax-persistence.version}</bundle>
-        <bundle>mvn:com.github.amirmv2006.basics.apis/ir.amv.os.vaseline.basics.dao.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.basics.apis/ir.amv.os.vaseline.basics.dao.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.basics.mapper.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.basics.core.api</feature>
-        <bundle>mvn:com.github.amirmv2006.basics.apis/ir.amv.os.vaseline.basics.mapper.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.basics.apis/ir.amv.os.vaseline.basics.mapper.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.basics.validation.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.basics.core.api</feature>
-        <bundle>mvn:com.github.amirmv2006.basics.apis/ir.amv.os.vaseline.basics.validation.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.basics.apis/ir.amv.os.vaseline.basics.validation.api/${project.version}</bundle>
     </feature>
 
     <feature name="hazelcast" description="In memory data grid" version="3.8.5">

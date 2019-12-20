@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>vaseline-data-test-parent</artifactId>
-        <groupId>com.github.amirmv2006.data.test</groupId>
+        <groupId>ir.amv.os.vaseline.data.test</groupId>
         <version>2.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -25,27 +25,27 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>com.github.amirmv2006.data.apis</groupId>
+            <groupId>ir.amv.os.vaseline.data.apis</groupId>
             <artifactId>ir.amv.os.vaseline.data.dao.basic.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.data.apis</groupId>
+            <groupId>ir.amv.os.vaseline.data.apis</groupId>
             <artifactId>ir.amv.os.vaseline.data.search.simple.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.data.apis</groupId>
+            <groupId>ir.amv.os.vaseline.data.apis</groupId>
             <artifactId>ir.amv.os.vaseline.data.search.advanced.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.basics.apis</groupId>
+            <groupId>ir.amv.os.vaseline.basics.apis</groupId>
             <artifactId>ir.amv.os.vaseline.basics.dao.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.basics.spring</groupId>
+            <groupId>ir.amv.os.vaseline.basics.spring</groupId>
             <artifactId>vaseline-validation-spring</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -122,7 +122,7 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.github.amirmv2006.data.apis</groupId>
+                <groupId>ir.amv.os.vaseline.data.apis</groupId>
                 <artifactId>vaseline-advanced-search-maven-plugin</artifactId>
                 <version>${project.version}</version>
                 <executions>

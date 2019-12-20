@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>vaseline-security-authorization-osgi-parent</artifactId>
-        <groupId>com.github.amirmv2006.security.authorization.osgi</groupId>
+        <groupId>ir.amv.os.vaseline.security.authorization.osgi</groupId>
         <version>2.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -12,22 +12,22 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.amirmv2006.basics.osgi</groupId>
+            <groupId>ir.amv.os.vaseline.basics.osgi</groupId>
             <artifactId>ir.amv.os.vaseline.basics.base.osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.security.authentication.apis</groupId>
+            <groupId>ir.amv.os.vaseline.security.authentication.apis</groupId>
             <artifactId>ir.amv.os.vaseline.security.authentication.basic.def</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.security.authorization.osgi</groupId>
+            <groupId>ir.amv.os.vaseline.security.authorization.osgi</groupId>
             <artifactId>ir.amv.os.vaseline.security.authorization.rbac.business.osgi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.amirmv2006.basics.osgi</groupId>
+            <groupId>ir.amv.os.vaseline.basics.osgi</groupId>
             <artifactId>ir.amv.os.vaseline.basics.logging.common.osgi</artifactId>
             <version>${project.version}</version>
         </dependency>

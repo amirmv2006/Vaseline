@@ -2,21 +2,21 @@ Feature: Vaseline Basics
 
   Scenario: Check Feature vaseline-logger-slf4j
     Given I have karaf
-    And feature with groupId="com.github.amirmv2006.basics.osgi", artifactId="vaseline-basics-karaf-feature" and name="vaseline-basics-logging-common,vaseline-logger-slf4j" is deployed
+    And feature with groupId="ir.amv.os.vaseline.basics.osgi", artifactId="vaseline-basics-karaf-feature" and name="vaseline-basics-logging-common,vaseline-logger-slf4j" is deployed
     When start karaf
     Then bundle "ir.amv.os.vaseline.basics.logging.slf4j.osgi" is started
     And Service of type "ir.amv.os.vaseline.basics.logging.api.server.logger.IVaselineLogger" is registered
 
   Scenario: Check Feature vaseline-basics-logging-log-service
     Given I have karaf
-    And feature with groupId="com.github.amirmv2006.basics.osgi", artifactId="vaseline-basics-karaf-feature" and name="vaseline-basics-logging-common,vaseline-basics-logging-log-service" is deployed
+    And feature with groupId="ir.amv.os.vaseline.basics.osgi", artifactId="vaseline-basics-karaf-feature" and name="vaseline-basics-logging-common,vaseline-basics-logging-log-service" is deployed
     When start karaf
     Then bundle "ir.amv.os.vaseline.basics.logging.loggingservice.osgi" is started
     And Service of type "ir.amv.os.vaseline.basics.logging.api.server.logger.IVaselineLogger" is registered
 
   Scenario: Check Feature vaseline-basics-karaf-feature
     Given I have karaf
-    And feature with groupId="com.github.amirmv2006.basics.osgi", artifactId="vaseline-basics-karaf-feature" and name="vaseline-basics-karaf-feature" is deployed
+    And feature with groupId="ir.amv.os.vaseline.basics.osgi", artifactId="vaseline-basics-karaf-feature" and name="vaseline-basics-karaf-feature" is deployed
     When start karaf
     Then bundle "ir.amv.os.vaseline.thirdparty.shared.util.reflection" is started
     And bundle "ir.amv.os.vaseline.basics.i18n.api" is started

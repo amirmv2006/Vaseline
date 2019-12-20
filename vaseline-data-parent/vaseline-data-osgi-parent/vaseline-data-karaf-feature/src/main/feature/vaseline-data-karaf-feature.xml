@@ -3,7 +3,7 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0
 http://karaf.apache.org/xmlns/features/v1.0.0 ">
-    <repository>mvn:com.github.amirmv2006.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
+    <repository>mvn:ir.amv.os.vaseline.basics.osgi/vaseline-basics-karaf-feature/${project.version}/xml/features</repository>
     <repository>mvn:org.apache.aries.jpa/jpa-features/2.6.1/xml/features</repository>
     <repository>mvn:org.hibernate/hibernate-osgi/${hibernate.version}/xml/karaf</repository>
 
@@ -11,16 +11,16 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
     <feature name="ir.amv.os.vaseline.data.dao.basic.api" version="${project.version}">
         <feature>aries-blueprint</feature>
         <feature>ir.amv.os.vaseline.basics.core.api</feature>
-        <bundle>mvn:com.github.amirmv2006.data.apis/ir.amv.os.vaseline.data.dao.basic.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.data.apis/ir.amv.os.vaseline.data.dao.basic.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.data.search.simple.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.thirdparty.shared.util.reflection</feature>
         <feature>ir.amv.os.vaseline.data.dao.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.data.apis/ir.amv.os.vaseline.data.search.simple.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.data.apis/ir.amv.os.vaseline.data.search.simple.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.data.search.advanced.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.data.dao.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.data.apis/ir.amv.os.vaseline.data.search.advanced.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.data.apis/ir.amv.os.vaseline.data.search.advanced.api/${project.version}</bundle>
     </feature>
     <!-- vaseline data api end -->
 
@@ -29,17 +29,17 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>ir.amv.os.vaseline.basics.core.api</feature>
         <feature>ir.amv.os.vaseline.basics.jdbc.api</feature>
         <feature>ir.amv.os.vaseline.data.dao.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.data.jpa/ir.amv.os.vaseline.data.jpa.dao.basic.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.data.jpa/ir.amv.os.vaseline.data.jpa.dao.basic.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.data.jpa.search.simple.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.data.jpa.dao.basic.api</feature>
         <feature>ir.amv.os.vaseline.data.search.simple.api</feature>
-        <bundle>mvn:com.github.amirmv2006.data.jpa/ir.amv.os.vaseline.data.jpa.search.simple.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.data.jpa/ir.amv.os.vaseline.data.jpa.search.simple.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.data.jpa.search.advanced.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.data.jpa.dao.basic.api</feature>
         <feature>ir.amv.os.vaseline.data.search.advanced.api</feature>
-        <bundle>mvn:com.github.amirmv2006.data.jpa/ir.amv.os.vaseline.data.jpa.search.advanced.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.data.jpa/ir.amv.os.vaseline.data.jpa.search.advanced.api/${project.version}</bundle>
     </feature>
     <feature name='${project.artifactId}-jpa' description='${project.name}' version='${project.version}'
              start-level="60">
@@ -57,17 +57,17 @@ http://karaf.apache.org/xmlns/features/v1.0.0 ">
         <feature>ir.amv.os.vaseline.basics.jdbc.api</feature>
         <feature>ir.amv.os.vaseline.basics.dao.api</feature>
         <feature>ir.amv.os.vaseline.data.dao.basic.api</feature>
-        <bundle>mvn:com.github.amirmv2006.data.hibernate/ir.amv.os.vaseline.data.hibernate.dao.basic.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.data.hibernate/ir.amv.os.vaseline.data.hibernate.dao.basic.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.data.hibernate.search.simple.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.data.hibernate.dao.basic.api</feature>
         <feature>ir.amv.os.vaseline.data.search.simple.api</feature>
-        <bundle>mvn:com.github.amirmv2006.data.hibernate/ir.amv.os.vaseline.data.hibernate.search.simple.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.data.hibernate/ir.amv.os.vaseline.data.hibernate.search.simple.api/${project.version}</bundle>
     </feature>
     <feature name="ir.amv.os.vaseline.data.hibernate.search.advanced.api" version="${project.version}">
         <feature>ir.amv.os.vaseline.data.hibernate.dao.basic.api</feature>
         <feature>ir.amv.os.vaseline.data.search.advanced.api</feature>
-        <bundle>mvn:com.github.amirmv2006.data.hibernate/ir.amv.os.vaseline.data.hibernate.search.advanced.api/${project.version}</bundle>
+        <bundle>mvn:ir.amv.os.vaseline.data.hibernate/ir.amv.os.vaseline.data.hibernate.search.advanced.api/${project.version}</bundle>
     </feature>
     <feature name='${project.artifactId}-hibernate' description='${project.name}' version='${project.version}'
              start-level="60">
