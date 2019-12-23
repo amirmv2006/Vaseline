@@ -13,7 +13,7 @@
     <modules>
         <module>vaseline-data-apis-parent</module>
         <module>vaseline-data-test-parent</module>
-        <module>vaseline-data-jpa-api-parent</module>
+        <module>vaseline-data-jpa-impl-parent</module>
         <module>vaseline-data-hibernate-api-parent</module>
         <module>vaseline-data-spring-parent</module>
     </modules>

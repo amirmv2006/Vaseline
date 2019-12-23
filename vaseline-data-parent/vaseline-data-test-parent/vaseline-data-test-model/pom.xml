@@ -25,28 +25,13 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>ir.amv.os.vaseline.data.apis</groupId>
-            <artifactId>vaseline-data-basic-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ir.amv.os.vaseline.data.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.data.search.simple.api</artifactId>
+            <groupId>ir.amv.os.vaseline.data.jpa</groupId>
+            <artifactId>vaseline-data-jpa-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>ir.amv.os.vaseline.data.apis</groupId>
             <artifactId>vaseline-data-advanced-search-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ir.amv.os.vaseline.basics.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.basics.dao.api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ir.amv.os.vaseline.basics.spring</groupId>
-            <artifactId>vaseline-validation-spring</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

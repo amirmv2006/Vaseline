@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.data.test.model.test;
 
-import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.paging.PagingDto;
-import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.sort.SortDto;
+import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.impl.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.impl.sort.SortDto;
 import ir.amv.os.vaseline.data.search.advanced.api.server.model.condition.PropertyConditions;
 import ir.amv.os.vaseline.data.search.advanced.api.server.proxy.SearchObjectProxyFactory;
 import ir.amv.os.vaseline.data.search.advanced.api.server.ro.IBaseAdvancedSearchRepository;

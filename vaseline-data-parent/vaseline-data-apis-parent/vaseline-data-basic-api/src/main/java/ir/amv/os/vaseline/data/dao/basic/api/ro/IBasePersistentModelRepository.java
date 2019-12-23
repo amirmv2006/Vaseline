@@ -11,6 +11,6 @@ import java.io.Serializable;
 public interface IBasePersistentModelRepository<I extends Serializable, E extends IBasePersistenceModel<I>>
         extends IBaseRepository {
 
-    Class<? extends E> getPersistentModelClass();
+    Class<E> getPersistentModelClass();
     E newPersistentModel() throws IllegalAccessException, InstantiationException;
 }

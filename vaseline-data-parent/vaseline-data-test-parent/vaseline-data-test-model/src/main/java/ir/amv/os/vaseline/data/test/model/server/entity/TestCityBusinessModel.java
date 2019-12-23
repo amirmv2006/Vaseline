@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.test.model.server.entity;
 
-import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.model.BaseBusinessModelImpl;
+import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.model.BaseEntityImpl;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -11,7 +11,7 @@ import java.util.Objects;
 @Entity
 @Access(AccessType.FIELD)
 public class TestCityBusinessModel
-    extends BaseBusinessModelImpl<Long> {
+    extends BaseEntityImpl<Long> {
 
     @Column(unique = true)
     private String cityName;

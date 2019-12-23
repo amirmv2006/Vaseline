@@ -12,7 +12,7 @@
     <dependencies>
         <dependency>
             <groupId>ir.amv.os.vaseline.data.jpa</groupId>
-            <artifactId>ir.amv.os.vaseline.data.jpa.dao.basic.api</artifactId>
+            <artifactId>vaseline-data-jpa-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
