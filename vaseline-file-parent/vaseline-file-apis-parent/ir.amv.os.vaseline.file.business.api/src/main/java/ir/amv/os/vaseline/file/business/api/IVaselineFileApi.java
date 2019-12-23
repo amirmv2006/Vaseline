@@ -1,9 +1,9 @@
 package ir.amv.os.vaseline.file.business.api;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.business.basic.api.server.crud.IBaseCrudApi;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.exc.BaseBusinessException;
+import ir.amv.os.vaseline.business.basic.api.layer.crud.IBaseCrudApi;
 import ir.amv.os.vaseline.business.multidao.api.server.ro.IBaseMultiDaoReadOnlyApi;
-import ir.amv.os.vaseline.file.model.api.server.base.IVaselineFileEntity;
+import ir.amv.os.vaseline.file.model.api.server.base.IVaselineFileBusinessModel;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -11,13 +11,13 @@ import java.io.OutputStream;
 /**
  * Created by AMV on 2/8/2016.
  */
-public interface IVaselineFileApi extends IBaseMultiDaoReadOnlyApi<String, Long, IVaselineFileEntity>, IBaseCrudApi<Long, IVaselineFileEntity> {
+public interface IVaselineFileApi extends IBaseMultiDaoReadOnlyApi<String, Long, IVaselineFileBusinessModel>, IBaseCrudApi<Long, IVaselineFileBusinessModel> {
 
     String DEFAULT_CATEGORY = "sloppy";
 
     Long uploadFile(final String fileName, final String fileCategory, final Long fileSize, final String contentType,
-                     InputStream inputStream) throws BaseVaselineServerException;
+                     InputStream inputStream) throws BaseBusinessException;
 
-    void writeFileContent(String category, Long fileId, OutputStream outputStream) throws BaseVaselineServerException;
+    void writeFileContent(String category, Long fileId, OutputStream outputStream) throws BaseBusinessException;
 
 }

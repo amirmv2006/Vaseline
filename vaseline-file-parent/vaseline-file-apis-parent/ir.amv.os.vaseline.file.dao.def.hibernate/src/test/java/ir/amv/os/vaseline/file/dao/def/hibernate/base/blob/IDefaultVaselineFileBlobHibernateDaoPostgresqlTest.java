@@ -3,7 +3,7 @@ package ir.amv.os.vaseline.file.dao.def.hibernate.base.blob;
 import ir.amv.os.vaseline.file.dao.basic.api.AbstractVaselineFileDaoTest;
 import ir.amv.os.vaseline.file.dao.basic.api.IVaselineFileDao;
 import ir.amv.os.vaseline.file.dao.def.common.server.dao.base.blob.IVaselineFileBlobDao;
-import ir.amv.os.vaseline.file.dao.def.common.server.model.base.blob.VaselineFileBlobEntity;
+import ir.amv.os.vaseline.file.dao.def.common.server.model.base.blob.VaselineFileBlobBusinessModel;
 import ir.amv.os.vaseline.file.dao.def.common.shared.model.blob.VaselineFileBlobDto;
 import ir.amv.os.vaseline.file.dao.def.hibernate.base.TestFileDaoHibernatePostgresqlConfig;
 import org.junit.Assume;
@@ -21,7 +21,7 @@ import javax.transaction.Transactional;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestFileDaoHibernatePostgresqlConfig.class)
 public class IDefaultVaselineFileBlobHibernateDaoPostgresqlTest
-        extends AbstractVaselineFileDaoTest<VaselineFileBlobEntity, VaselineFileBlobDto> {
+        extends AbstractVaselineFileDaoTest<VaselineFileBlobBusinessModel, VaselineFileBlobDto> {
 
 
     @Value("classpath:test.data")
@@ -44,7 +44,7 @@ public class IDefaultVaselineFileBlobHibernateDaoPostgresqlTest
     }
 
     @Override
-    public IVaselineFileDao<VaselineFileBlobEntity, VaselineFileBlobDto> getFileDao() {
+    public IVaselineFileDao<VaselineFileBlobBusinessModel, VaselineFileBlobDto> getFileDao() {
         return fileBlobDao;
     }
 

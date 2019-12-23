@@ -2,7 +2,7 @@ package ir.amv.os.vaseline.security.authorization.rbac.dao.def.jpa.action;
 
 import ir.amv.os.vaseline.data.dao.basic.api.server.from.SearchJoinType;
 import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.projection.ProjectionMapProvider;
-import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.IDefaultJpaReadOnlyDao;
+import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.IDefaultJpaReadOnlyRepository;
 import ir.amv.os.vaseline.security.authorization.rbac.dao.api.action.ISecurityActionDao;
 import ir.amv.os.vaseline.security.authorization.rbac.model.api.action.ISecurityAction;
 
@@ -16,7 +16,7 @@ import java.util.List;
  * @author Amir
  */
 public interface IDefaultSecurityActionJpaDao<A extends ISecurityAction<A>>
-        extends IDefaultJpaReadOnlyDao<Long, A>,
+        extends IDefaultJpaReadOnlyRepository<Long, A>,
         ISecurityActionDao<A> {
 
     @Override

@@ -1,11 +1,11 @@
 package ir.amv.os.vaseline.service.basic.def.server.base;
 
 import ir.amv.os.vaseline.basics.core.api.server.base.exc.handler.ICoreExceptionHandler;
-import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.exc.BaseExternalException;
 import ir.amv.os.vaseline.basics.core.api.shared.util.ds.list.IVaselineConvertableList;
 import ir.amv.os.vaseline.basics.mapper.api.server.exc.VaselineConvertException;
 import ir.amv.os.vaseline.basics.mapper.api.server.objmapper.IVaselineObjectMapper;
-import ir.amv.os.vaseline.basics.validation.api.server.exc.VaselineValidationServerException;
+import ir.amv.os.vaseline.service.basic.api.validation.exc.ValidationException;
 import ir.amv.os.vaseline.service.basic.api.server.base.IBaseService;
 
 import javax.validation.ConstraintViolation;
@@ -25,22 +25,22 @@ public interface IDefaultService
 
 
     default <S, D> D convert(S source, Class<D> destinationClass, Class<?>... validationGroups) throws
-            VaselineConvertException, VaselineValidationServerException {
+            VaselineConvertException, ValidationException {
         validate(source, validationGroups);
         return source == null ? null : getMapper().map(source, destinationClass);
     }
 
-    default <S> void validate(S source, Class<?>... validationGroups) throws VaselineConvertException, VaselineValidationServerException {
+    default <S> void validate(S source, Class<?>... validationGroups) throws VaselineConvertException, ValidationException {
         if (source != null) {
             Set<ConstraintViolation<S>> validate = getValidator().validate(source, validationGroups);
             if (!validate.isEmpty()) {
-                throw new VaselineValidationServerException(new HashSet<ConstraintViolation<?>>(validate));
+                throw new ValidationException(new HashSet<ConstraintViolation<?>>(validate));
             }
         }
     }
 
     default <S, D> List<D> convertList(Collection<S> source,
-                                       Class<D> destinationClass, Class<?>... validationGroups) throws VaselineConvertException, VaselineValidationServerException {
+                                       Class<D> destinationClass, Class<?>... validationGroups) throws VaselineConvertException, ValidationException {
         if (source == null) {
             return null;
         }
@@ -58,7 +58,7 @@ public interface IDefaultService
         return destList;
     }
 
-    default BaseVaselineClientException convertException(Exception e) {
+    default BaseExternalException convertException(Exception e) {
         return getCoreExceptionHandler().convertException(e);
     }
 

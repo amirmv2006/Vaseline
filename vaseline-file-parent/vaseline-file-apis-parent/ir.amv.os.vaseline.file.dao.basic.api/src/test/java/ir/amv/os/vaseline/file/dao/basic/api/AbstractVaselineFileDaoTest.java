@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.file.dao.basic.api;
 
-import ir.amv.os.vaseline.file.model.api.server.base.IVaselineFileEntity;
+import ir.amv.os.vaseline.file.model.api.server.base.IVaselineFileBusinessModel;
 import ir.amv.os.vaseline.file.model.api.shared.base.IVaselineFileDto;
 import org.apache.commons.io.IOUtils;
 import org.junit.Ignore;
@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @Ignore
-public abstract class AbstractVaselineFileDaoTest<E extends IVaselineFileEntity, D extends IVaselineFileDto> {
+public abstract class AbstractVaselineFileDaoTest<E extends IVaselineFileBusinessModel, D extends IVaselineFileDto> {
 
     protected abstract IVaselineFileDao<E, D> getFileDao();
     protected abstract Resource getTestData();

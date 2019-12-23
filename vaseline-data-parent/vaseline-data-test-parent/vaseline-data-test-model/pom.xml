@@ -26,7 +26,7 @@
     <dependencies>
         <dependency>
             <groupId>ir.amv.os.vaseline.data.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.data.dao.basic.api</artifactId>
+            <artifactId>vaseline-data-basic-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -36,7 +36,7 @@
         </dependency>
         <dependency>
             <groupId>ir.amv.os.vaseline.data.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.data.search.advanced.api</artifactId>
+            <artifactId>vaseline-data-advanced-search-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

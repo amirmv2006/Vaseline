@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.file.business.def;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.exc.BaseBusinessException;
 import ir.amv.os.vaseline.file.business.api.IVaselineFileApi;
 import ir.amv.os.vaseline.file.dao.def.common.server.dao.base.blob.IVaselineFileBlobDao;
 import ir.amv.os.vaseline.file.dao.def.common.server.dao.base.path.IVaselineFilePathDao;
@@ -67,7 +67,7 @@ public abstract class BaseVaselineFileApiTest {
         assertTrue(IOUtils.contentEquals(new FileInputStream(tempFile), writeData.getInputStream()));
     }
 
-    private Long testSaveFile(String testFileName, String testFileCategory, Resource resource) throws IOException, BaseVaselineServerException {
+    private Long testSaveFile(String testFileName, String testFileCategory, Resource resource) throws IOException, BaseBusinessException {
         Long testFileSize = resource.contentLength();
         String testContentType = "text";
         InputStream testInputStream = resource.getInputStream();

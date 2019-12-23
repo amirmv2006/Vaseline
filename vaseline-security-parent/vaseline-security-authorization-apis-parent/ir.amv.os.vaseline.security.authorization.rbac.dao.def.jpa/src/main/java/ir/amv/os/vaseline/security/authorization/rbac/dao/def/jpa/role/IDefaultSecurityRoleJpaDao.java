@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.authorization.rbac.dao.def.jpa.role;
 
-import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.IDefaultJpaReadOnlyDao;
+import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.IDefaultJpaReadOnlyRepository;
 import ir.amv.os.vaseline.security.authorization.rbac.dao.api.role.ISecurityRoleDao;
 import ir.amv.os.vaseline.security.authorization.rbac.model.api.role.ISecurityRole;
 
@@ -8,5 +8,5 @@ import ir.amv.os.vaseline.security.authorization.rbac.model.api.role.ISecurityRo
  * @author Amir
  */
 public interface IDefaultSecurityRoleJpaDao<R extends ISecurityRole<?>>
-        extends IDefaultJpaReadOnlyDao<Long, R>, ISecurityRoleDao<R> {
+        extends IDefaultJpaReadOnlyRepository<Long, R>, ISecurityRoleDao<R> {
 }

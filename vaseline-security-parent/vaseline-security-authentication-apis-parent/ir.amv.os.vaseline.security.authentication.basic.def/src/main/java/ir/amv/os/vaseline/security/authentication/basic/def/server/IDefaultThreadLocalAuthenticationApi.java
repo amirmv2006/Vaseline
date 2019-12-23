@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.authentication.basic.def.server;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.exc.BaseBusinessException;
 import ir.amv.os.vaseline.security.authentication.basic.api.server.IAuthenticationApi;
 
 /**
@@ -12,7 +12,7 @@ public interface IDefaultThreadLocalAuthenticationApi
     ThreadLocal<String> getCurrentUsernameThreadLocal();
 
     @Override
-    default String getCurrentUsername() throws BaseVaselineServerException {
+    default String getCurrentUsername() throws BaseBusinessException {
         return getCurrentUsernameThreadLocal().get();
     }
 

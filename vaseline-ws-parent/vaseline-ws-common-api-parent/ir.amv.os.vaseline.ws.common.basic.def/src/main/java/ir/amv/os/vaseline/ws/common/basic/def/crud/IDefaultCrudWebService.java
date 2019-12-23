@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.ws.common.basic.def.crud;
 
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.IBaseDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.exc.BaseExternalException;
 import ir.amv.os.vaseline.service.basic.api.server.crud.IBaseCrudService;
 import ir.amv.os.vaseline.ws.common.basic.api.crud.IBaseCrudWebService;
 import ir.amv.os.vaseline.ws.common.basic.def.ro.IDefaultReadOnlyWebService;
@@ -16,22 +16,22 @@ public interface IDefaultCrudWebService<Id extends Serializable, D extends IBase
         extends IBaseCrudWebService<Id, D>, IDefaultReadOnlyWebService<Id, D, Service> {
 
     @Override
-    default Id save(D t) throws BaseVaselineClientException {
+    default Id save(D t) throws BaseExternalException {
         return getService().save(t);
     }
 
     @Override
-    default void update(D t) throws BaseVaselineClientException {
+    default void update(D t) throws BaseExternalException {
         getService().update(t);
     }
 
     @Override
-    default void delete(D id) throws BaseVaselineClientException {
+    default void delete(D id) throws BaseExternalException {
         getService().delete(id);
     }
 
     @Override
-    default void deleteById(Id id) throws BaseVaselineClientException {
+    default void deleteById(Id id) throws BaseExternalException {
         getService().deleteById(id);
     }
 }

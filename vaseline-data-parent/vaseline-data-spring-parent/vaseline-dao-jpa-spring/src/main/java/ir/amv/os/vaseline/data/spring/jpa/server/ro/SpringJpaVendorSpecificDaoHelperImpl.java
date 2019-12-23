@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.spring.jpa.server.ro;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.model.IBaseBusinessModel;
 import ir.amv.os.vaseline.data.dao.basic.api.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.vendorspecific.IVendorSpecificDaoHelper;
 import org.hibernate.Criteria;
@@ -17,7 +17,7 @@ import javax.persistence.TypedQuery;
 public class SpringJpaVendorSpecificDaoHelperImpl
         implements IVendorSpecificDaoHelper{
     @Override
-    public <E extends IBaseEntity<?>> IVaselineDataScroller<E> scrollQuery(final EntityManager em, final TypedQuery<E> query) {
+    public <E extends IBaseBusinessModel<?>> IVaselineDataScroller<E> scrollQuery(final EntityManager em, final TypedQuery<E> query) {
         Session session = em.unwrap(Session.class);
         Criteria unwrap = query.unwrap(Criteria.class);
         ScrollableResults scroll = unwrap.setReadOnly(true).scroll(ScrollMode.SCROLL_INSENSITIVE);

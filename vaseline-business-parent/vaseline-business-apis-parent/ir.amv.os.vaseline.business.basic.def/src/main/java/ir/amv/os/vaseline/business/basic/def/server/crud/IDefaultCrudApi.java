@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.business.basic.def.server.crud;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
-import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.business.basic.api.server.crud.IBaseCrudApi;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.exc.BaseBusinessException;
+import ir.amv.os.vaseline.business.basic.api.layer.crud.IBaseCrudApi;
 import ir.amv.os.vaseline.business.basic.def.server.ro.IDefaultReadOnlyApi;
 import ir.amv.os.vaseline.data.dao.basic.api.server.crud.IBaseCrudDao;
 
@@ -14,13 +14,13 @@ import java.util.List;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IDefaultCrudApi<Id extends Serializable, E extends IBaseEntity<Id>, Dao extends
+public interface IDefaultCrudApi<Id extends Serializable, E extends IBaseBusinessModel<Id>, Dao extends
         IBaseCrudDao<Id, E>>
         extends IBaseCrudApi<Id, E>, IDefaultEntityCrudApi<E>, IDefaultReadOnlyApi<Id, E, Dao> {
 
     @Override
     @Transactional
-    default Id save(E entity) throws BaseVaselineServerException {
+    default Id save(E entity) throws BaseBusinessException {
         preSave(entity);
         Id id = getDao().save(entity);
         postSave(entity);
@@ -29,7 +29,7 @@ public interface IDefaultCrudApi<Id extends Serializable, E extends IBaseEntity<
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
-    default List<Id> saveBatch(List<E> entities) throws BaseVaselineServerException {
+    default List<Id> saveBatch(List<E> entities) throws BaseBusinessException {
         List<Id> result = new ArrayList<>();
         if (entities != null) {
             for (E entity : entities) {
@@ -42,7 +42,7 @@ public interface IDefaultCrudApi<Id extends Serializable, E extends IBaseEntity<
 
     @Override
     @Transactional
-    default void update(E entity) throws BaseVaselineServerException {
+    default void update(E entity) throws BaseBusinessException {
         preUpdate(entity);
         getDao().update(entity);
         postUpdate(entity);
@@ -50,7 +50,7 @@ public interface IDefaultCrudApi<Id extends Serializable, E extends IBaseEntity<
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
-    default void updateBatch(List<E> entities) throws BaseVaselineServerException {
+    default void updateBatch(List<E> entities) throws BaseBusinessException {
         if (entities != null) {
             for (E entity : entities) {
                 update(entity);
@@ -60,7 +60,7 @@ public interface IDefaultCrudApi<Id extends Serializable, E extends IBaseEntity<
 
     @Override
     @Transactional
-    default void delete(E entity) throws BaseVaselineServerException {
+    default void delete(E entity) throws BaseBusinessException {
         preDelete(entity);
         getDao().delete(entity);
         postDelete(entity);
@@ -68,7 +68,7 @@ public interface IDefaultCrudApi<Id extends Serializable, E extends IBaseEntity<
 
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
-    default void deleteBatch(List<E> entities) throws BaseVaselineServerException {
+    default void deleteBatch(List<E> entities) throws BaseBusinessException {
         if (entities != null) {
             for (E entity : entities) {
                 delete(entity);
@@ -78,7 +78,7 @@ public interface IDefaultCrudApi<Id extends Serializable, E extends IBaseEntity<
 
     @Override
     @Transactional
-    default void delete(Id id) throws BaseVaselineServerException {
+    default void delete(Id id) throws BaseBusinessException {
         E byId = getById(id);
         delete(byId);
     }

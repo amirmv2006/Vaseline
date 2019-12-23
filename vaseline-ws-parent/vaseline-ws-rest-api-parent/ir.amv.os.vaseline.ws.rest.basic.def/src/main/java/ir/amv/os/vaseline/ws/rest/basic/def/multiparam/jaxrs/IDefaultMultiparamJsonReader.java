@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.ws.rest.basic.def.multiparam.jaxrs;
 
-import ir.amv.os.vaseline.basics.core.api.shared.util.stream.StreamUtils;
+import ir.amv.os.vaseline.basics.core.api.utils.io.IOUtils;
 import ir.amv.os.vaseline.basics.json.api.server.converter.IVaselineJsonConverter;
 import ir.amv.os.vaseline.ws.rest.basic.api.base.multiparam.annot.JsonMultParam;
 import ir.amv.os.vaseline.ws.rest.basic.api.base.multiparam.annot.JsonParam;
@@ -38,7 +38,7 @@ public interface IDefaultMultiparamJsonReader extends MessageBodyReader<Object> 
             final MediaType mediaType,
             final MultivaluedMap<String, String> multivaluedMap,
             final InputStream entityStream) throws IOException, WebApplicationException {
-        String json = StreamUtils.inputStreamToString(entityStream);
+        String json = IOUtils.inputStreamToString(entityStream);
         if (annotations.length > 0) {
             JsonMultParam jsonParam = null;
             for (Annotation annotation : annotations) {

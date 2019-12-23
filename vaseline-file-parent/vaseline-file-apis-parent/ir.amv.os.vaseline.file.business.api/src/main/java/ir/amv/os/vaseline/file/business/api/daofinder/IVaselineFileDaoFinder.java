@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.file.business.api.daofinder;
 
 import ir.amv.os.vaseline.file.dao.basic.api.IVaselineFileDao;
-import ir.amv.os.vaseline.file.model.api.server.base.IVaselineFileEntity;
+import ir.amv.os.vaseline.file.model.api.server.base.IVaselineFileBusinessModel;
 import ir.amv.os.vaseline.file.model.api.shared.base.IVaselineFileDto;
 
 import java.util.List;
@@ -13,6 +13,6 @@ public interface IVaselineFileDaoFinder {
 
     Integer priority();
 
-    IVaselineFileDao<IVaselineFileEntity, IVaselineFileDto> getDaoFor(String category, List<IVaselineFileDao> fileDaos);
+    IVaselineFileDao<IVaselineFileBusinessModel, IVaselineFileDto> getDaoFor(String category, List<IVaselineFileDao> fileDaos);
 
 }

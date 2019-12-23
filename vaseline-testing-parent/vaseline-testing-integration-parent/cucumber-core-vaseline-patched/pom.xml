@@ -4,7 +4,7 @@
         <artifactId>vaseline-parents-common-depmanager</artifactId>
         <groupId>ir.amv.os.vaseline.parents.common</groupId>
         <version>2.0-SNAPSHOT</version>
-        <relativePath>../../../vaseline-parents-parent/vaseline-parents-common-parent/vaseline-parents-common-depmanager/pom.xml</relativePath>
+        <relativePath>../../../vaseline-parents-parent/vaseline-parents-common/vaseline-parents-common-depmanager/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

@@ -1,13 +1,13 @@
 package ir.amv.os.vaseline.data.hibernate.search.advanced.api.server.dao;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.sort.SortDto;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.sort.SortDto;
 import ir.amv.os.vaseline.data.dao.basic.api.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.hibernate.search.advanced.api.server.criteria.IBaseHibernateAdvancedSearchParser;
 import ir.amv.os.vaseline.data.hibernate.search.advanced.api.server.criteria.defimpl.DefaultHibernateAdvancedSearchParserImpl;
 import ir.amv.os.vaseline.data.search.advanced.api.server.model.IBaseSearchObject;
-import ir.amv.os.vaseline.data.search.advanced.api.server.ro.IBaseAdvancedSearchDao;
+import ir.amv.os.vaseline.data.search.advanced.api.server.ro.IBaseAdvancedSearchRepository;
 import ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.projection.DefaultHibernateCriteriaProjectionProviderImpl;
 import ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.ro.IDefaultHibernateReadOnlyDao;
 import ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.ro.criteriaabstractor.HibernateFetchProviderFacade;
@@ -17,8 +17,8 @@ import org.hibernate.criterion.Criterion;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDefaultHibernateAdvancedSearchDao<Id extends Serializable, E extends IBaseEntity<Id>, SO extends  IBaseSearchObject>
-        extends IBaseAdvancedSearchDao<Id, E, SO>,
+public interface IDefaultHibernateAdvancedSearchDao<Id extends Serializable, E extends IBaseBusinessModel<Id>, SO extends  IBaseSearchObject>
+        extends IBaseAdvancedSearchRepository<Id, E, SO>,
         IDefaultHibernateReadOnlyDao<Id, E> {
 
     default Class<SO> getSearchObjectClass() {

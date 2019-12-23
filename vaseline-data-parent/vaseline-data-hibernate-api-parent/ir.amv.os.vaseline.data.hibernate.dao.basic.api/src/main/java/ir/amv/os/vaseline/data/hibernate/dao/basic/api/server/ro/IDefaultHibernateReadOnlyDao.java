@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.ro;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.sort.SortDto;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.sort.SortDto;
 import ir.amv.os.vaseline.basics.jdbc.api.dialect.IVaselineJdbcDialect;
 import ir.amv.os.vaseline.data.dao.basic.api.server.ro.IDefaultGenericReadOnlyDao;
 import ir.amv.os.vaseline.data.dao.basic.api.server.ro.IBaseReadOnlyDao;
@@ -29,7 +29,7 @@ import java.util.List;
 // note to future me: don't create the parent concrete class for these interfaces cause they will soon become
 // useless, a better idea would be to put the parent classes in the child project itself based on the feature set
 // that the child project is using
-public interface IDefaultHibernateReadOnlyDao<I extends Serializable, E extends IBaseEntity<I>>
+public interface IDefaultHibernateReadOnlyDao<I extends Serializable, E extends IBaseBusinessModel<I>>
         extends IDefaultGenericReadOnlyDao<I, E>,
         IBaseReadOnlyDao<I, E>, IBaseHibernateDao {
 

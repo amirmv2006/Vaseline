@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.projection;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.model.IBaseBusinessModel;
 import ir.amv.os.vaseline.data.dao.basic.api.server.from.SearchJoinType;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 import org.hibernate.criterion.DetachedCriteria;
@@ -47,7 +47,7 @@ public class DefaultHibernateCriteriaProjectionProviderImpl
             }
             PropertyDescriptor propertyDescriptor = ReflectionUtil.getPropertyDescriptorByTreeName(entityClass,
                     propertyPtn);
-            Class<?> propertyType = ReflectionUtil.searchMethodReturnType(propertyDescriptor.getReadMethod(), IBaseEntity.class);
+            Class<?> propertyType = ReflectionUtil.searchMethodReturnType(propertyDescriptor.getReadMethod(), IBaseBusinessModel.class);
             if (propertyPtn.contains(".")) {
                 int lastIndexOfDot = propertyPtn.lastIndexOf('.');
                 String parentPtn = propertyPtn.substring(0, lastIndexOfDot);

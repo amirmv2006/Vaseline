@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration = \
-  ir.amv.os.vaseline.basics.osgi.logging.slf4j.activator.VaselineLoggingSlf4jConfig

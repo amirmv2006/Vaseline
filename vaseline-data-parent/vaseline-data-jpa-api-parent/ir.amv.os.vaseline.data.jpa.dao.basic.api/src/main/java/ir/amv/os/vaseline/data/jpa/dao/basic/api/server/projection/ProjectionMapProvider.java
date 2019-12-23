@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.data.jpa.dao.basic.api.server.projection;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
-import ir.amv.os.vaseline.data.dao.basic.api.server.from.SearchJoinType;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.data.dao.basic.api.from.SearchJoinType;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 
 import javax.persistence.criteria.CriteriaQuery;
@@ -56,7 +56,7 @@ public class ProjectionMapProvider<E, Q>
                     }
                 }
                 PropertyDescriptor propertyDescriptor = ReflectionUtil.getPropertyDescriptorByTreeName(entityClass, propTN);
-                Class<?> propertyType = ReflectionUtil.searchMethodReturnType(propertyDescriptor.getReadMethod(), IBaseEntity.class);
+                Class<?> propertyType = ReflectionUtil.searchMethodReturnType(propertyDescriptor.getReadMethod(), IBaseBusinessModel.class);
                 if (propertyType != null) {
                     path = ((From) getCriteriaParentProjection(parent)).join(child, jpaJoinType);
                 } else {

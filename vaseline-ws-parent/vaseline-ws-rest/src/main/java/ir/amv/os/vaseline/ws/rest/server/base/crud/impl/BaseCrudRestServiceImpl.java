@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.ws.rest.server.base.crud.impl;
 
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.IBaseDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.exc.BaseExternalException;
 import ir.amv.os.vaseline.service.basic.api.server.crud.IBaseCrudService;
 import ir.amv.os.vaseline.ws.rest.server.base.crud.IBaseCrudRestService;
 import ir.amv.os.vaseline.ws.rest.server.base.ro.impl.BaseReadOnlyRestServiceImpl;
@@ -16,22 +16,22 @@ public class BaseCrudRestServiceImpl<D extends IBaseDto<Id>, Id extends Serializ
         implements IBaseCrudRestService<D, Id> {
 
     @Override
-    public Id save(D t) throws BaseVaselineClientException {
+    public Id save(D t) throws BaseExternalException {
         return service.save(t);
     }
 
     @Override
-    public void update(D t) throws BaseVaselineClientException {
+    public void update(D t) throws BaseExternalException {
         service.update(t);
     }
 
     @Override
-    public void delete(D id) throws BaseVaselineClientException {
+    public void delete(D id) throws BaseExternalException {
         service.delete(id);
     }
 
     @Override
-    public void deleteById(Id id) throws BaseVaselineClientException {
+    public void deleteById(Id id) throws BaseExternalException {
         service.deleteById(id);
     }
 }

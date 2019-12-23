@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.server.listener;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.exc.BaseBusinessException;
 import ir.amv.os.vaseline.security.authentication.business.api.server.base.IBaseUserApi;
 import ir.amv.os.vaseline.security.spring.authenticationimpl.springsec.server.util.SpringSecurityAuthenticationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class VaselineSpringSecAuthenticationListener
             } else if (event instanceof AbstractAuthenticationFailureEvent) {
                 baseUserApi.authenticationFailure(username);
             }
-        } catch (BaseVaselineServerException e) {
+        } catch (BaseBusinessException e) {
             e.printStackTrace();
         }
     }

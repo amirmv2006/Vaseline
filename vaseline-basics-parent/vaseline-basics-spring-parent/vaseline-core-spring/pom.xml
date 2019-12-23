@@ -26,12 +26,7 @@
     <dependencies>
         <dependency>
             <groupId>ir.amv.os.vaseline.basics.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.basics.core.api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ir.amv.os.vaseline.basics.spring</groupId>
-            <artifactId>vaseline-i18n-spring</artifactId>
+            <artifactId>vaseline-basics-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -61,7 +56,7 @@
         <!--</dependency>-->
         <dependency>
             <groupId>ir.amv.os.vaseline.thirdparty</groupId>
-            <artifactId>ir.amv.os.vaseline.thirdparty.shared.util.reflection</artifactId>
+            <artifactId>vaseline-thirdparty-reflection</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

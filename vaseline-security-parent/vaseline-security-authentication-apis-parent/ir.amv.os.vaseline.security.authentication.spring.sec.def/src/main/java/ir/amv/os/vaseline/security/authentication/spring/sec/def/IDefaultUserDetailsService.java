@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.authentication.spring.sec.def;
 
-import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.exc.BaseExternalException;
 import ir.amv.os.vaseline.security.authentication.model.api.shared.base.IBaseHasPasswordUserDto;
 import ir.amv.os.vaseline.security.authentication.model.api.shared.base.IBaseUserDto;
 import ir.amv.os.vaseline.security.authentication.service.api.server.base.IBaseUserService;
@@ -33,7 +33,7 @@ public interface IDefaultUserDetailsService
             } else {
                 throw new UsernameNotFoundException("Can not get password for " + user);
             }
-        } catch (BaseVaselineClientException e) {
+        } catch (BaseExternalException e) {
             UsernameNotFoundException usernameNotFoundException = new UsernameNotFoundException(e.getMessage());
 //            ServletRequestAttributes currentRequestAttributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 //            currentRequestAttributes.getRequest().getSession(true).setAttribute("loginError", usernameNotFoundException);

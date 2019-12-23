@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.jpa.search.advanced.api.server.dao;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.model.IBaseBusinessModel;
 import ir.amv.os.vaseline.data.dao.basic.api.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.vendorspecific.IVendorSpecificDaoHelper;
 import ir.amv.os.vaseline.data.test.model.config.TestDataModelJpaConfig;
@@ -25,7 +25,7 @@ public class TestJpaAdvancedSearchSpringConfig {
     IVendorSpecificDaoHelper vendorSpecificDaoHelper() {
         return new IVendorSpecificDaoHelper() {
             @Override
-            public <E extends IBaseEntity<?>> IVaselineDataScroller<E> scrollQuery(final EntityManager em, final TypedQuery<E> typedQuery) {
+            public <E extends IBaseBusinessModel<?>> IVaselineDataScroller<E> scrollQuery(final EntityManager em, final TypedQuery<E> typedQuery) {
                 Query hibQuery = typedQuery.unwrap(Query.class);
                 ScrollableResults scroll = hibQuery.scroll();
                 return new TestHibernateDataScroller<>(scroll);

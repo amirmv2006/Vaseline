@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.ws.rest.basic.api.crud;
 
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.IBaseDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.exc.BaseExternalException;
 import ir.amv.os.vaseline.ws.common.basic.api.crud.IBaseCrudWebService;
 import ir.amv.os.vaseline.ws.common.basic.api.ro.IBaseReadOnlyWebService;
 
@@ -19,17 +19,17 @@ public interface IBaseCrudRestService<Id extends Serializable, D extends IBaseDt
 
     @POST
     @Path("/")
-    Id save(D t) throws BaseVaselineClientException;
+    Id save(D t) throws BaseExternalException;
 
     @PUT
     @Path("/")
-    void update(D t) throws BaseVaselineClientException;
+    void update(D t) throws BaseExternalException;
 
     @POST
     @Path("/deleteEntity")
-    void delete(D id) throws BaseVaselineClientException;
+    void delete(D id) throws BaseExternalException;
 
     @DELETE
     @Path("/{id}")
-    void deleteById(Id id) throws BaseVaselineClientException;
+    void deleteById(Id id) throws BaseExternalException;
 }

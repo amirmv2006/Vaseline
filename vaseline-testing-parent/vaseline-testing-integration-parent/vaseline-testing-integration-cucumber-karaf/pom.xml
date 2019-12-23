@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>ir.amv.os.vaseline.thirdparty</groupId>
-            <artifactId>ir.amv.os.vaseline.thirdparty.shared.util.reflection</artifactId>
+            <artifactId>vaseline-thirdparty-reflection</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

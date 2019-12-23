@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>vaseline-parents-bundle-parent</artifactId>
-        <groupId>ir.amv.os.vaseline.parents.osgi</groupId>
+        <artifactId>vaseline-parents-apis</artifactId>
+        <groupId>ir.amv.os.vaseline.parents.apis</groupId>
         <version>2.0-SNAPSHOT</version>
-        <relativePath>../../vaseline-parents-parent/vaseline-parents-osgi-parent/vaseline-parents-bundle-parent/pom.xml</relativePath>
+        <relativePath>../../vaseline-parents-parent/vaseline-parents-apis/vaseline-parents-apis-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -16,8 +16,6 @@
         <module>ir.amv.os.vaseline.business.basic.api</module>
         <module>ir.amv.os.vaseline.business.multidao.api</module>
         <module>ir.amv.os.vaseline.business.basic.def</module>
-        <module>ir.amv.os.vaseline.business.search.simple.api</module>
-        <module>ir.amv.os.vaseline.business.search.simple.def</module>
         <module>ir.amv.os.vaseline.business.search.advanced.api</module>
         <module>ir.amv.os.vaseline.business.search.advanced.def</module>
         <module>ir.amv.os.vaseline.business.multidao.def</module>

@@ -2,10 +2,10 @@ package ir.amv.os.vaseline.data.test.model.test;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import ir.amv.os.vaseline.data.test.model.server.entity.TestCityEntity;
-import ir.amv.os.vaseline.data.test.model.server.entity.TestContinentEntity;
-import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
-import ir.amv.os.vaseline.data.test.model.server.entity.TestStateEntity;
+import ir.amv.os.vaseline.data.test.model.server.entity.TestCityBusinessModel;
+import ir.amv.os.vaseline.data.test.model.server.entity.TestContinentBusinessModel;
+import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryBusinessModel;
+import ir.amv.os.vaseline.data.test.model.server.entity.TestStateBusinessModel;
 import ir.amv.os.vaseline.data.test.model.server.repository.IBaseTestRepository;
 import ir.amv.os.vaseline.data.test.model.server.repository.ITestCityRepository;
 import ir.amv.os.vaseline.data.test.model.server.repository.ITestContinentRepository;
@@ -32,26 +32,26 @@ public class BaseDataModelTest {
     @Inject
     protected ITestCityRepository cityRepository;
 
-    protected Map<String, TestContinentEntity> continentsMap = new HashMap<>();
-    protected Map<String, TestCountryEntity> countriesMap = new HashMap<>();
-    protected Map<String, TestStateEntity> statesMap = new HashMap<>();
-    protected Map<String, TestCityEntity> citiesMap = new HashMap<>();
+    protected Map<String, TestContinentBusinessModel> continentsMap = new HashMap<>();
+    protected Map<String, TestCountryBusinessModel> countriesMap = new HashMap<>();
+    protected Map<String, TestStateBusinessModel> statesMap = new HashMap<>();
+    protected Map<String, TestCityBusinessModel> citiesMap = new HashMap<>();
 
     public void setupDataFromJson(InputStream is) {
         Gson gson = new Gson();
-        ArrayList<TestCountryEntity> countries = gson.fromJson(new InputStreamReader(is), new TypeToken<ArrayList<TestCountryEntity>>(){}.getType());
-        for (TestCountryEntity country : countries) {
-            TestContinentEntity continent = country.getContinent();
+        ArrayList<TestCountryBusinessModel> countries = gson.fromJson(new InputStreamReader(is), new TypeToken<ArrayList<TestCountryBusinessModel>>(){}.getType());
+        for (TestCountryBusinessModel country : countries) {
+            TestContinentBusinessModel continent = country.getContinent();
             if (!continentsMap.containsKey(continent.getContinentName())) {
                 continentRepository.save(continent);
                 continentsMap.put(continent.getContinentName(), continent);
             } else {
                 country.setContinent(continentsMap.get(continent.getContinentName()));
             }
-            Set<TestStateEntity> states = country.getStates();
-            for (TestStateEntity state : states) {
-                Set<TestCityEntity> cities = state.getCities();
-                for (TestCityEntity city : cities) {
+            Set<TestStateBusinessModel> states = country.getStates();
+            for (TestStateBusinessModel state : states) {
+                Set<TestCityBusinessModel> cities = state.getCities();
+                for (TestCityBusinessModel city : cities) {
                     if (!citiesMap.containsKey(city.getCityName())) {
                         cityRepository.save(city);
                         citiesMap.put(city.getCityName(), city);

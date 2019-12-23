@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.authentication.model.def.shared.base;
 
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.baseimpl.BaseDtoImpl;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.BaseDtoImpl;
 import ir.amv.os.vaseline.security.authentication.model.api.shared.base.IBaseUserDto;
 
 /**

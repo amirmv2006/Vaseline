@@ -1,14 +1,14 @@
 package ir.amv.os.vaseline.data.jpa.search.advanced.api.server.dao;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.sort.SortDto;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.sort.SortDto;
 import ir.amv.os.vaseline.data.dao.basic.api.server.ro.scroller.IVaselineDataScroller;
 import ir.amv.os.vaseline.data.jpa.search.advanced.api.server.criteria.IBaseJpaAdvancedSearchParser;
 import ir.amv.os.vaseline.data.jpa.search.advanced.api.server.criteria.defimpl.DefaultJpaAdvancedSearchParserImpl;
 import ir.amv.os.vaseline.data.search.advanced.api.server.model.IBaseSearchObject;
-import ir.amv.os.vaseline.data.search.advanced.api.server.ro.IBaseAdvancedSearchDao;
-import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.IDefaultJpaReadOnlyDao;
+import ir.amv.os.vaseline.data.search.advanced.api.server.ro.IBaseAdvancedSearchRepository;
+import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.IDefaultJpaReadOnlyRepository;
 import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.criteriaabstractor.JpaFetchProviderFacade;
 
 import javax.persistence.criteria.Predicate;
@@ -18,9 +18,9 @@ import java.util.List;
 /**
  * Created by AMV on 10/3/2017.
  */
-public interface IDefaultJpaAdvancedSearchDao<I extends Serializable, E extends IBaseEntity<I>, SO extends  IBaseSearchObject>
-        extends IBaseAdvancedSearchDao<I, E, SO>,
-        IDefaultJpaReadOnlyDao<I, E> {
+public interface IDefaultJpaAdvancedSearchDao<I extends Serializable, E extends IBaseBusinessModel<I>, SO extends  IBaseSearchObject>
+        extends IBaseAdvancedSearchRepository<I, E, SO>,
+        IDefaultJpaReadOnlyRepository<I, E> {
 
     default IBaseJpaAdvancedSearchParser<SO> getAdvancedSearchExampleParser(SO example) {
         return new DefaultJpaAdvancedSearchParserImpl<>();

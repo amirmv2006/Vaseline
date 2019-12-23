@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.file.business.def;
 
-import ir.amv.os.vaseline.basics.core.api.server.proxy.defimpl.ProxyAwareImpl;
+import ir.amv.os.vaseline.basics.core.api.proxy.impl.ProxyAwareImpl;
 import ir.amv.os.vaseline.file.business.api.daofinder.IVaselineFileDaoFinder;
 import ir.amv.os.vaseline.file.dao.basic.api.IVaselineFileDao;
 import ir.amv.os.vaseline.file.dao.def.common.server.dao.base.blob.IVaselineFileBlobDao;

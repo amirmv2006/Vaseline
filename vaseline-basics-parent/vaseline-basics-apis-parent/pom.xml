@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>vaseline-parents-bundle-parent</artifactId>
-        <groupId>ir.amv.os.vaseline.parents.osgi</groupId>
+        <artifactId>vaseline-parents-apis-parent</artifactId>
+        <groupId>ir.amv.os.vaseline.parents.apis</groupId>
         <version>2.0-SNAPSHOT</version>
-        <relativePath>../../vaseline-parents-parent/vaseline-parents-osgi-parent/vaseline-parents-bundle-parent/pom.xml</relativePath>
+        <relativePath>../../vaseline-parents-parent/vaseline-parents-apis/vaseline-parents-apis-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -12,16 +12,7 @@
     <artifactId>vaseline-basics-apis-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>ir.amv.os.vaseline.basics.cache.api</module>
-        <module>ir.amv.os.vaseline.basics.i18n.api</module>
-        <module>ir.amv.os.vaseline.basics.jdbc.api</module>
-        <module>ir.amv.os.vaseline.basics.json.api</module>
-        <module>ir.amv.os.vaseline.basics.logging.api</module>
-        <module>ir.amv.os.vaseline.basics.logging.def</module>
-        <module>ir.amv.os.vaseline.basics.core.api</module>
-        <module>ir.amv.os.vaseline.basics.dao.api</module>
-        <module>ir.amv.os.vaseline.basics.mapper.api</module>
-        <module>ir.amv.os.vaseline.basics.validation.api</module>
+        <module>vaseline-basics-core-api</module>
     </modules>
 
 </project>

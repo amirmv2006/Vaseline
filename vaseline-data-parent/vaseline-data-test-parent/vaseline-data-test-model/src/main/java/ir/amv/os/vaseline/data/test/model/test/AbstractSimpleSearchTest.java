@@ -1,9 +1,9 @@
 package ir.amv.os.vaseline.data.test.model.test;
 
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.sort.SortDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.sort.SortDto;
 import ir.amv.os.vaseline.data.search.simple.api.server.ro.IBaseSimpleSearchDao;
-import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
+import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryBusinessModel;
 import ir.amv.os.vaseline.data.test.model.shared.dto.TestCityDto;
 import ir.amv.os.vaseline.data.test.model.shared.dto.TestContinentDto;
 import ir.amv.os.vaseline.data.test.model.shared.dto.TestCountryDto;
@@ -25,7 +25,7 @@ import static org.junit.Assert.assertEquals;
 public abstract class AbstractSimpleSearchTest
         extends BaseDataModelTest {
 
-    protected abstract IBaseSimpleSearchDao<Long, TestCountryEntity, TestCountryDto> getCountryDao();
+    protected abstract IBaseSimpleSearchDao<Long, TestCountryBusinessModel, TestCountryDto> getCountryDao();
 
     @Test
     public void testCountByExample() {
@@ -44,7 +44,7 @@ public abstract class AbstractSimpleSearchTest
     @Test
     public void testSearchByExample() {
         TestCountryDto searchExample = new TestCountryDto();
-        List<TestCountryEntity> searchResult = getCountryDao().searchByExample(searchExample);
+        List<TestCountryBusinessModel> searchResult = getCountryDao().searchByExample(searchExample);
         assertEquals(3, searchResult.size());
         searchExample.setCountryName("an");
         searchExample.setAreRacist(false);
@@ -99,7 +99,7 @@ public abstract class AbstractSimpleSearchTest
         TestCountryDto searchExample = new TestCountryDto();
         searchExample.setCountryName("an");
         searchExample.setAreRacist(false);
-        List<TestCountryEntity> page = getCountryDao().getAll(pagingDto);
+        List<TestCountryBusinessModel> page = getCountryDao().getAll(pagingDto);
         assertEquals(1, page.size());
         assertEquals("Canada", page.get(0).getCountryName());
     }

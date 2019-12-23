@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.ws.rest.search.advanced.def;
 
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.IBaseDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.exc.BaseExternalException;
 import ir.amv.os.vaseline.data.search.advanced.api.server.model.IBaseSearchObject;
 import ir.amv.os.vaseline.service.search.advanced.api.server.IBaseAdvancedSearchService;
 import ir.amv.os.vaseline.ws.common.search.advanced.def.IDefaultAdvancedSearchWebService;
@@ -22,17 +22,17 @@ public interface IDefaultAdvancedSearchRestService<Id
         IDefaultAdvancedSearchWebService<Id, D, SO, Service> {
 
     @Override
-    default Long countBySearchObject(SO searchObject) throws BaseVaselineClientException {
+    default Long countBySearchObject(SO searchObject) throws BaseExternalException {
         return IDefaultAdvancedSearchWebService.super.countBySearchObject(searchObject);
     }
 
     @Override
-    default List<D> searchBySearchObject(SO searchObject) throws BaseVaselineClientException {
+    default List<D> searchBySearchObject(SO searchObject) throws BaseExternalException {
         return IDefaultAdvancedSearchWebService.super.searchBySearchObject(searchObject);
     }
 
     @Override
-    default List<D> searchBySearchObject(SO searchObject, PagingDto pagingDto) throws BaseVaselineClientException {
+    default List<D> searchBySearchObject(SO searchObject, PagingDto pagingDto) throws BaseExternalException {
         return IDefaultAdvancedSearchWebService.super.searchBySearchObject(searchObject, pagingDto);
     }
 

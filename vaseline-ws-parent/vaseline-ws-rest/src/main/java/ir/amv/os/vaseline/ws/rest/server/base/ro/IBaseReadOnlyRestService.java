@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.ws.rest.server.base.ro;
 
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.IBaseDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.exc.BaseExternalException;
 import ir.amv.os.vaseline.ws.rest.server.base.parent.IBaseRestService;
 
 import java.io.Serializable;
@@ -14,13 +14,13 @@ import java.util.List;
 public interface IBaseReadOnlyRestService<D extends IBaseDto<Id>, Id extends Serializable>
         extends IBaseRestService {
 
-    D getById(Id id) throws BaseVaselineClientException;
+    D getById(Id id) throws BaseExternalException;
 
-    Long countAll() throws BaseVaselineClientException;
+    Long countAll() throws BaseExternalException;
 
-    List<D> getAll() throws BaseVaselineClientException;
+    List<D> getAll() throws BaseExternalException;
 
-    List<D> getAll(PagingDto pagingDto) throws BaseVaselineClientException;
+    List<D> getAll(PagingDto pagingDto) throws BaseExternalException;
 
 
 }

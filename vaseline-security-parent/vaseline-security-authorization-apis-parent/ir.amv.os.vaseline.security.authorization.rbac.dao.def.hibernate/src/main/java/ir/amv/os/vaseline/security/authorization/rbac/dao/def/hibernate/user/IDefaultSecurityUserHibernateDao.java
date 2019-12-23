@@ -3,7 +3,7 @@ package ir.amv.os.vaseline.security.authorization.rbac.dao.def.hibernate.user;
 import ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.projection.DefaultHibernateCriteriaProjectionProviderImpl;
 import ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.ro.IDefaultHibernateReadOnlyDao;
 import ir.amv.os.vaseline.security.authorization.rbac.dao.api.user.ISecurityUserDao;
-import ir.amv.os.vaseline.security.authorization.rbac.model.api.user.ISecurityUserWithRoleEntity;
+import ir.amv.os.vaseline.security.authorization.rbac.model.api.user.ISecurityUserWithRoleBusinessModel;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Disjunction;
@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * @author Amir
  */
-public interface IDefaultSecurityUserHibernateDao<U extends ISecurityUserWithRoleEntity<?>>
+public interface IDefaultSecurityUserHibernateDao<U extends ISecurityUserWithRoleBusinessModel<?>>
         extends IDefaultHibernateReadOnlyDao<Long, U>,
         ISecurityUserDao<U> {
 

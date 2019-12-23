@@ -8,22 +8,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ir.amv.os.vaseline.data.jpa.dao.basic.api</artifactId>
-    <packaging>bundle</packaging>
 
     <dependencies>
         <dependency>
             <groupId>ir.amv.os.vaseline.basics.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.basics.core.api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ir.amv.os.vaseline.basics.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.basics.jdbc.api</artifactId>
+            <artifactId>vaseline-basics-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>ir.amv.os.vaseline.data.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.data.dao.basic.api</artifactId>
+            <artifactId>vaseline-data-basic-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

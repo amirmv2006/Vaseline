@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.base;
 
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.sort.SortDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.sort.SortDto;
 import ir.amv.os.vaseline.data.dao.basic.api.server.base.IBaseDao;
 import org.hibernate.Criteria;
 import org.hibernate.Session;

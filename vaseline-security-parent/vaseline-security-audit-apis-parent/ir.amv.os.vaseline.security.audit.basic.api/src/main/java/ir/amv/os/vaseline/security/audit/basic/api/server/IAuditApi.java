@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.audit.basic.api.server;
 
-import ir.amv.os.vaseline.business.basic.api.server.base.IBaseApi;
+import ir.amv.os.vaseline.business.basic.api.layer.base.IBaseApi;
 
 import java.util.Map;
 

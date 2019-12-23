@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro;
 
-import ir.amv.os.vaseline.data.dao.basic.api.server.ro.IBaseReadOnlyDao;
-import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
+import ir.amv.os.vaseline.data.dao.basic.api.ro.IBasePersistentModelRepository;
+import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryBusinessModel;
 import ir.amv.os.vaseline.data.test.model.test.AbstractReadOnlyTest;
 import org.junit.After;
 import org.junit.Before;
@@ -25,7 +25,7 @@ public class TestBaseReadOnlyJpaDaoImpl
     private Resource testData;
 
     @Inject
-    private ITestCountryDao countryDao;
+    private ITestCountryRepository countryDao;
 
     @Before
     public void setup() throws IOException {
@@ -38,7 +38,7 @@ public class TestBaseReadOnlyJpaDaoImpl
     }
 
     @Override
-    protected IBaseReadOnlyDao<Long, TestCountryEntity> getCountryDao() {
+    protected IBasePersistentModelRepository<Long, TestCountryBusinessModel> getCountryDao() {
         return countryDao;
     }
 

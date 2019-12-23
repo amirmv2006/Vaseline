@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.authorization.basic.def.server;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.exc.BaseBusinessException;
 import ir.amv.os.vaseline.security.authentication.basic.api.server.IAuthenticationApi;
 import ir.amv.os.vaseline.security.authorization.basic.api.server.api.IAuthorizationApi;
 import ir.amv.os.vaseline.security.authorization.basic.api.server.api.INoAuthAuthorizationApi;
@@ -36,7 +36,7 @@ public interface IDefaultAuthorizationApi
             return getNoAuthAuthorizationApi().getAuthorizedActionTreeNames(currentUsername);
         } catch (VaselineAuthorizationException e) {
             throw e;
-        } catch (BaseVaselineServerException e) {
+        } catch (BaseBusinessException e) {
             throw new VaselineAuthorizationException(e);
         }
     }

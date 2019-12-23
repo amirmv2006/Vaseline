@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.ro;
 
 import ir.amv.os.vaseline.data.dao.basic.api.server.ro.IBaseReadOnlyDao;
-import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
+import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryBusinessModel;
 import ir.amv.os.vaseline.data.test.model.test.AbstractReadOnlyTest;
 import org.junit.After;
 import org.junit.Before;
@@ -43,7 +43,7 @@ public class TestBaseReadOnlyHibernateDaoImpl
     }
 
     @Override
-    protected IBaseReadOnlyDao<Long, TestCountryEntity> getCountryDao() {
+    protected IBaseReadOnlyDao<Long, TestCountryBusinessModel> getCountryDao() {
         return countryDao;
     }
 

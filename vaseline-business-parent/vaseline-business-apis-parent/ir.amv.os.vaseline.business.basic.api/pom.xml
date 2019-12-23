@@ -13,12 +13,12 @@
     <dependencies>
         <dependency>
             <groupId>ir.amv.os.vaseline.basics.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.basics.core.api</artifactId>
+            <artifactId>vaseline-basics-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>ir.amv.os.vaseline.data.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.data.dao.basic.api</artifactId>
+            <artifactId>vaseline-data-basic-api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

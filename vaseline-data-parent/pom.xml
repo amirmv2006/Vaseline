@@ -16,7 +16,6 @@
         <module>vaseline-data-jpa-api-parent</module>
         <module>vaseline-data-hibernate-api-parent</module>
         <module>vaseline-data-spring-parent</module>
-        <module>vaseline-data-osgi-parent</module>
     </modules>
 
 

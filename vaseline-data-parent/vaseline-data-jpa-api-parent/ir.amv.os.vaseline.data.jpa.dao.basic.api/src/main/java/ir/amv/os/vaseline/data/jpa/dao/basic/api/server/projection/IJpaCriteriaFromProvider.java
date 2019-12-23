@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.jpa.dao.basic.api.server.projection;
 
-import ir.amv.os.vaseline.data.dao.basic.api.server.from.IBaseCriteriaFromProvider;
+import ir.amv.os.vaseline.data.dao.basic.api.from.IBaseCriteriaFromProvider;
 
 import javax.persistence.criteria.Path;
 

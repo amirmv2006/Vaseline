@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.ws.rest.search.simple.def;
 
 import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.paging.PagingDto;
 import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
 import ir.amv.os.vaseline.service.search.simple.api.server.IBaseSimpleSearchService;
 import ir.amv.os.vaseline.ws.common.search.simple.def.IDefaultSimpleSearchWebService;

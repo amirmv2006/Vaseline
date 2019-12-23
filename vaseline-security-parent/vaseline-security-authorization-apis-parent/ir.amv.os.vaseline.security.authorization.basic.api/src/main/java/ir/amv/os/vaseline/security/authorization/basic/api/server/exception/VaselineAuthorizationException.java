@@ -1,12 +1,12 @@
 package ir.amv.os.vaseline.security.authorization.basic.api.server.exception;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.exc.BaseBusinessException;
 
 /**
  * @author Amir
  */
 public class VaselineAuthorizationException
-        extends BaseVaselineServerException {
+        extends BaseBusinessException {
 
     public VaselineAuthorizationException() {
     }

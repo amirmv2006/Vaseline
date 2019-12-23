@@ -23,7 +23,7 @@
     <dependencies>
         <dependency>
             <groupId>ir.amv.os.vaseline.thirdparty</groupId>
-            <artifactId>ir.amv.os.vaseline.thirdparty.shared.util.reflection</artifactId>
+            <artifactId>vaseline-thirdparty-reflection</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -60,12 +60,7 @@
         <!--</dependency>-->
         <dependency>
             <groupId>ir.amv.os.vaseline.data.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.data.search.advanced.api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ir.amv.os.vaseline.basics.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.basics.dao.api</artifactId>
+            <artifactId>vaseline-data-advanced-search-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

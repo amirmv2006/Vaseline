@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.ws.spring.rest.jersey.app;
 
-import ir.amv.os.vaseline.basics.dao.api.server.ent.BaseEntityImpl;
+import ir.amv.os.vaseline.basics.dao.api.server.ent.BaseBusinessModelImpl;
 
 import javax.persistence.Entity;
 
@@ -8,7 +8,7 @@ import javax.persistence.Entity;
  * @author Amir
  */
 @Entity
-public class RestIntegrationModelEntity extends BaseEntityImpl<Long> {
+public class RestIntegrationModelEntity extends BaseBusinessModelImpl<Long> {
 
     private String name;
     private String description;

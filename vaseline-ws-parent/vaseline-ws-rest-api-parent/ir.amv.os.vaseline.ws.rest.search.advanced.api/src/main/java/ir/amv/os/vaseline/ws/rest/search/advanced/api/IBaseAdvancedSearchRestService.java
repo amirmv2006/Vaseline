@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.ws.rest.search.advanced.api;
 
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.IBaseDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.exc.BaseExternalException;
 import ir.amv.os.vaseline.data.search.advanced.api.server.model.IBaseSearchObject;
 import ir.amv.os.vaseline.ws.common.search.advanced.api.IBaseAdvancedSearchWebService;
 import ir.amv.os.vaseline.ws.rest.basic.api.ro.IBaseReadOnlyRestService;
@@ -24,12 +24,12 @@ public interface IBaseAdvancedSearchRestService<Id extends Serializable, D exten
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/query/count")
-    Long countBySearchObject(SO searchObject) throws BaseVaselineClientException;
+    Long countBySearchObject(SO searchObject) throws BaseExternalException;
     @Override
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/query/all")
-    List<D> searchBySearchObject(SO searchObject) throws BaseVaselineClientException;
+    List<D> searchBySearchObject(SO searchObject) throws BaseExternalException;
     @Override
-    List<D> searchBySearchObject(SO searchObject, PagingDto pagingDto) throws BaseVaselineClientException;
+    List<D> searchBySearchObject(SO searchObject, PagingDto pagingDto) throws BaseExternalException;
 }

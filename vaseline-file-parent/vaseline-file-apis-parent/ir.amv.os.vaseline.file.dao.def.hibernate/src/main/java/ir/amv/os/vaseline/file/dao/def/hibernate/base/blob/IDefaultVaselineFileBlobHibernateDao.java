@@ -1,10 +1,10 @@
 package ir.amv.os.vaseline.file.dao.def.hibernate.base.blob;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.exc.BaseBusinessException;
 import ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.crud.IDefaultHibernateCrudDao;
 import ir.amv.os.vaseline.file.dao.def.common.server.dao.base.blob.IVaselineFileBlobDao;
-import ir.amv.os.vaseline.file.dao.def.common.server.model.base.blob.VaselineFileBlobEntity;
-import ir.amv.os.vaseline.file.model.api.server.base.IVaselineFileEntity;
+import ir.amv.os.vaseline.file.dao.def.common.server.model.base.blob.VaselineFileBlobBusinessModel;
+import ir.amv.os.vaseline.file.model.api.server.base.IVaselineFileBusinessModel;
 import org.hibernate.Criteria;
 import org.hibernate.LobHelper;
 import org.hibernate.Session;
@@ -16,13 +16,13 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.sql.Blob;
 
-import static ir.amv.os.vaseline.basics.core.api.shared.util.stream.StreamUtils.copyStreams;
+import static ir.amv.os.vaseline.basics.core.api.utils.io.IOUtils.copyStreams;
 
 public interface IDefaultVaselineFileBlobHibernateDao
-        extends IDefaultHibernateCrudDao<Long, VaselineFileBlobEntity>, IVaselineFileBlobDao {
+        extends IDefaultHibernateCrudDao<Long, VaselineFileBlobBusinessModel>, IVaselineFileBlobDao {
 
     @Override
-    default Long saveFileUsingStream(VaselineFileBlobEntity fileEntity, InputStream inputStream) throws Exception {
+    default Long saveFileUsingStream(VaselineFileBlobBusinessModel fileEntity, InputStream inputStream) throws Exception {
         long dataSize;
         dataSize = inputStream.available();
         Session session = getSessionFactory().openSession();
@@ -43,15 +43,15 @@ public interface IDefaultVaselineFileBlobHibernateDao
         Session session = getSessionFactory().openSession();
         session.beginTransaction();
         Criteria criteria = detCriteria.getExecutableCriteria(session);
-        IVaselineFileEntity entity = getEntityFromCriteria(criteria);
-        InputStream inputStream = ((VaselineFileBlobEntity) entity).getFileContent().getBinaryStream();
+        IVaselineFileBusinessModel entity = getEntityFromCriteria(criteria);
+        InputStream inputStream = ((VaselineFileBlobBusinessModel) entity).getFileContent().getBinaryStream();
         copyStreams(inputStream, outputStream);
         session.getTransaction().commit();
         session.close();
     }
 
     @Override
-    default VaselineFileBlobEntity createFile(String category) throws BaseVaselineServerException {
-        return new VaselineFileBlobEntity();
+    default VaselineFileBlobBusinessModel createFile(String category) throws BaseBusinessException {
+        return new VaselineFileBlobBusinessModel();
     }
 }

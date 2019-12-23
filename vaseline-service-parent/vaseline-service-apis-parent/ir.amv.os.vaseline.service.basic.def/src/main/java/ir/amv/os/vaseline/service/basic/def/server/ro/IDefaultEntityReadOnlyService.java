@@ -1,15 +1,15 @@
 package ir.amv.os.vaseline.service.basic.def.server.ro;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
-import ir.amv.os.vaseline.basics.core.api.shared.validation.IEntitySearchValidation;
-import ir.amv.os.vaseline.basics.core.api.shared.validation.IEntityShowValidation;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.IBaseDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.exc.BaseExternalException;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.validation.IEntitySearchValidation;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.validation.IEntityShowValidation;
 import ir.amv.os.vaseline.basics.logging.api.server.logger.VaselineLogLevel;
 import ir.amv.os.vaseline.basics.mapper.api.server.exc.VaselineConvertException;
-import ir.amv.os.vaseline.basics.validation.api.server.exc.VaselineValidationServerException;
+import ir.amv.os.vaseline.service.basic.api.validation.exc.ValidationException;
 import ir.amv.os.vaseline.basics.logging.common.osgi.server.helper.LOGGER;
-import ir.amv.os.vaseline.business.basic.api.server.ro.IBaseEntityReadOnlyApi;
+import ir.amv.os.vaseline.business.basic.api.layer.ro.IBaseEntityReadOnlyApi;
 import ir.amv.os.vaseline.service.basic.def.server.base.IDefaultService;
 import ir.amv.os.vaseline.thirdparty.shared.util.reflection.ReflectionUtil;
 
@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public interface IDefaultEntityReadOnlyService<Id extends
-        Serializable, E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Api extends IBaseEntityReadOnlyApi<E>>
+        Serializable, E extends IBaseBusinessModel<Id>, D extends IBaseDto<Id>, Api extends IBaseEntityReadOnlyApi<E>>
         extends IDefaultService {
     @Deprecated
     Api getApi();
@@ -36,7 +36,7 @@ public interface IDefaultEntityReadOnlyService<Id extends
         return null;
     }
 
-    default Api getApiProxy() throws BaseVaselineClientException {
+    default Api getApiProxy() throws BaseExternalException {
         ExecutorService executor = Executors.newFixedThreadPool(1);
         Future<Api> future = executor.submit(() -> {
             Api proxy;
@@ -58,7 +58,7 @@ public interface IDefaultEntityReadOnlyService<Id extends
     default Class<? extends E> getEntityClass() {
         try {
             return getApiProxy().getEntityClass();
-        } catch (BaseVaselineClientException e) {
+        } catch (BaseExternalException e) {
             return null;
         }
     }
@@ -77,21 +77,21 @@ public interface IDefaultEntityReadOnlyService<Id extends
 
     // BASE METHODS
     default E convertDtoToEntity(D d, Class<?>... validationGroups) throws VaselineConvertException,
-            VaselineValidationServerException {
+            ValidationException {
         return convert(d, getEntityClass(), validationGroups);
     }
 
     default List<E> convertDtoToEntity(Collection<D> list, Class<?>... validationGroups) throws
-            VaselineConvertException, VaselineValidationServerException {
+            VaselineConvertException, ValidationException {
         return convertList(list, (Class<E>)getEntityClass(), validationGroups);
     }
 
-    default D convertEntityToDTO(E e, Class<?>... validationGroups) throws VaselineConvertException, VaselineValidationServerException {
+    default D convertEntityToDTO(E e, Class<?>... validationGroups) throws VaselineConvertException, ValidationException {
         return convert(e, getDtoClass(), validationGroups);
     }
 
     default List<D> convertEntityToDTO(Collection<E> list, Class<?>... validationGroups) throws VaselineConvertException,
-            VaselineValidationServerException {
+            ValidationException {
         return convertList(list, getDtoClass(), validationGroups);
     }
 

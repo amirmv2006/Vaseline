@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.ws.common.basic.def.ro;
 
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.IBaseDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.exc.BaseExternalException;
 import ir.amv.os.vaseline.service.basic.api.server.ro.IBaseReadOnlyService;
 import ir.amv.os.vaseline.ws.common.basic.api.ro.IBaseReadOnlyWebService;
 import ir.amv.os.vaseline.ws.common.basic.def.base.IDefaultWebService;
@@ -20,22 +20,22 @@ public interface IDefaultReadOnlyWebService<Id extends Serializable, D extends I
     Service getService();
 
     @Override
-    default D getById(Id id) throws BaseVaselineClientException {
+    default D getById(Id id) throws BaseExternalException {
         return getService().getById(id);
     }
 
     @Override
-    default Long countAll() throws BaseVaselineClientException {
+    default Long countAll() throws BaseExternalException {
         return getService().countAll();
     }
 
     @Override
-    default List<D> getAll() throws BaseVaselineClientException {
+    default List<D> getAll() throws BaseExternalException {
         return getService().getAll();
     }
 
     @Override
-    default List<D> getAll(PagingDto pagingDto) throws BaseVaselineClientException {
+    default List<D> getAll(PagingDto pagingDto) throws BaseExternalException {
         return getService().getAll(pagingDto);
     }
 }

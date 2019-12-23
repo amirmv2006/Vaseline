@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.ws.rest.basic.api.ro;
 
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.IBaseDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.exc.BaseExternalException;
 import ir.amv.os.vaseline.ws.common.basic.api.ro.IBaseReadOnlyWebService;
 import ir.amv.os.vaseline.ws.rest.basic.api.base.IBaseRestService;
 
@@ -26,24 +26,24 @@ public interface IBaseReadOnlyRestService<Id extends Serializable, D extends IBa
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
-    D getById(@PathParam("id") Id id) throws BaseVaselineClientException;
+    D getById(@PathParam("id") Id id) throws BaseExternalException;
 
     @Override
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/count")
-    Long countAll() throws BaseVaselineClientException;
+    Long countAll() throws BaseExternalException;
 
     @Override
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/")
-    List<D> getAll() throws BaseVaselineClientException;
+    List<D> getAll() throws BaseExternalException;
 
     @Override
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/page")
-    List<D> getAll(PagingDto pagingDto) throws BaseVaselineClientException;
+    List<D> getAll(PagingDto pagingDto) throws BaseExternalException;
 
 }

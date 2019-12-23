@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.security.spring.auditimpl.log.spring.server.basic;
 
-import ir.amv.os.vaseline.basics.core.api.server.proxy.defimpl.ProxyAwareImpl;
+import ir.amv.os.vaseline.basics.core.api.proxy.impl.ProxyAwareImpl;
 import ir.amv.os.vaseline.basics.logging.api.server.logger.IVaselineLogger;
 import ir.amv.os.vaseline.security.audit.def.log.server.basic.IDefaultAuditLogApi;
 import org.springframework.beans.factory.annotation.Autowired;

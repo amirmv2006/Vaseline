@@ -1,25 +1,25 @@
 package ir.amv.os.vaseline.security.authentication.business.def.server.base;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.exc.BaseBusinessException;
 import ir.amv.os.vaseline.business.basic.def.server.ro.IDefaultReadOnlyApi;
 import ir.amv.os.vaseline.security.audit.basic.api.server.IAuditApi;
 import ir.amv.os.vaseline.security.authentication.business.api.server.base.IBaseUserApi;
 import ir.amv.os.vaseline.security.authentication.dao.basic.api.server.base.IBaseUserDao;
-import ir.amv.os.vaseline.security.authentication.model.api.server.base.IBaseUserEntity;
+import ir.amv.os.vaseline.security.authentication.model.api.server.base.IBaseUserBusinessModel;
 
 import javax.transaction.Transactional;
 
 /**
  * @author Amir
  */
-public interface IDefaultBaseUserApi<U extends IBaseUserEntity, Dao extends IBaseUserDao<U>>
+public interface IDefaultBaseUserApi<U extends IBaseUserBusinessModel, Dao extends IBaseUserDao<U>>
         extends IDefaultReadOnlyApi<Long, U, Dao>, IBaseUserApi<U> {
 
     IAuditApi getAuditApi();
 
     @Override
     @Transactional
-    default U loadUserByUsername(String username) throws BaseVaselineServerException {
+    default U loadUserByUsername(String username) throws BaseBusinessException {
         U user = getDao().getUserByUsername(username);
         postGet(user);
         return user;
@@ -67,12 +67,12 @@ public interface IDefaultBaseUserApi<U extends IBaseUserEntity, Dao extends IBas
     }
 
     @Override
-    default void authenticationSuccessful(String username) throws BaseVaselineServerException {
+    default void authenticationSuccessful(String username) throws BaseBusinessException {
         getAuditApi().auditBusinessAction(username, "Authentication", "SUCCESS", null);
     }
 
     @Override
-    default void authenticationFailure(String username) throws BaseVaselineServerException {
+    default void authenticationFailure(String username) throws BaseBusinessException {
         getAuditApi().auditBusinessAction(username, "Authentication", "FAIL", null);
     }
 }

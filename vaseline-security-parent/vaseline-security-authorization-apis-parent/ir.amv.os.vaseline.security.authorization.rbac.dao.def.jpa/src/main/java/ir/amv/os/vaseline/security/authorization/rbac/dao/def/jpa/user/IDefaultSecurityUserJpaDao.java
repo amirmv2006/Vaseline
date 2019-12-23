@@ -2,9 +2,9 @@ package ir.amv.os.vaseline.security.authorization.rbac.dao.def.jpa.user;
 
 import ir.amv.os.vaseline.data.dao.basic.api.server.from.SearchJoinType;
 import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.projection.ProjectionMapProvider;
-import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.IDefaultJpaReadOnlyDao;
+import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.ro.IDefaultJpaReadOnlyRepository;
 import ir.amv.os.vaseline.security.authorization.rbac.dao.api.user.ISecurityUserDao;
-import ir.amv.os.vaseline.security.authorization.rbac.model.api.user.ISecurityUserWithRoleEntity;
+import ir.amv.os.vaseline.security.authorization.rbac.model.api.user.ISecurityUserWithRoleBusinessModel;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -17,8 +17,8 @@ import java.util.List;
 /**
  * @author Amir
  */
-public interface IDefaultSecurityUserJpaDao<U extends ISecurityUserWithRoleEntity<?>>
-        extends IDefaultJpaReadOnlyDao<Long, U>,
+public interface IDefaultSecurityUserJpaDao<U extends ISecurityUserWithRoleBusinessModel<?>>
+        extends IDefaultJpaReadOnlyRepository<Long, U>,
         ISecurityUserDao<U> {
 
     @Override

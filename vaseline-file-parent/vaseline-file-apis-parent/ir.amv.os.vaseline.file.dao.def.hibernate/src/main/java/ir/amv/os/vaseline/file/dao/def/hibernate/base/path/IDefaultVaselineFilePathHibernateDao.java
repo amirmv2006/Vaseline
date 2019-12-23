@@ -1,22 +1,22 @@
 package ir.amv.os.vaseline.file.dao.def.hibernate.base.path;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
-import ir.amv.os.vaseline.basics.core.api.shared.util.file.FileUtils;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.exc.BaseBusinessException;
+import ir.amv.os.vaseline.basics.core.api.utils.file.FileUtils;
 import ir.amv.os.vaseline.data.hibernate.dao.basic.api.server.crud.IDefaultHibernateCrudDao;
 import ir.amv.os.vaseline.file.dao.def.common.server.dao.base.path.IVaselineFilePathDao;
-import ir.amv.os.vaseline.file.dao.def.common.server.model.base.path.VaselineFilePathEntity;
+import ir.amv.os.vaseline.file.dao.def.common.server.model.base.path.VaselineFilePathBusinessModel;
 
 import java.io.*;
 
-import static ir.amv.os.vaseline.basics.core.api.shared.util.stream.StreamUtils.copyStreams;
+import static ir.amv.os.vaseline.basics.core.api.utils.io.IOUtils.copyStreams;
 
 public interface IDefaultVaselineFilePathHibernateDao
-        extends IDefaultHibernateCrudDao<Long, VaselineFilePathEntity>, IVaselineFilePathDao {
+        extends IDefaultHibernateCrudDao<Long, VaselineFilePathBusinessModel>, IVaselineFilePathDao {
 
     String getBaseFilePath();// vaseline.file.path.base
 
     @Override
-    default Long saveFileUsingStream(VaselineFilePathEntity fileEntity, InputStream inputStream) throws Exception {
+    default Long saveFileUsingStream(VaselineFilePathBusinessModel fileEntity, InputStream inputStream) throws Exception {
         String absoluteFilePath = resolveFilePath(fileEntity);
         FileOutputStream fileOutputStream = FileUtils.openOutputStream(new File(absoluteFilePath), false);
         copyStreams(inputStream, fileOutputStream);
@@ -26,7 +26,7 @@ public interface IDefaultVaselineFilePathHibernateDao
         return save(fileEntity);
     }
 
-    default String resolveFilePath(VaselineFilePathEntity filePathEntity) {
+    default String resolveFilePath(VaselineFilePathBusinessModel filePathEntity) {
         String baseFilePath = getBaseFilePath();
         String pathSeparator = File.separator;
         if (!baseFilePath.endsWith(pathSeparator)) {
@@ -40,7 +40,7 @@ public interface IDefaultVaselineFilePathHibernateDao
 
     @Override
     default void writeFileContent(Long fileId, OutputStream outputStream) throws Exception {
-        VaselineFilePathEntity fileEntity = getById(fileId);
+        VaselineFilePathBusinessModel fileEntity = getById(fileId);
         String absoluteFilePath = fileEntity.getFilePath();
         try (FileInputStream fileInputStream = new FileInputStream(absoluteFilePath)) {
             copyStreams(fileInputStream, outputStream);
@@ -48,7 +48,7 @@ public interface IDefaultVaselineFilePathHibernateDao
     }
 
     @Override
-    default VaselineFilePathEntity createFile(String category) throws BaseVaselineServerException {
-        return new VaselineFilePathEntity();
+    default VaselineFilePathBusinessModel createFile(String category) throws BaseBusinessException {
+        return new VaselineFilePathBusinessModel();
     }
 }

@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.business.tx.api;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.exc.BaseVaselineServerException;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.exc.BaseBusinessException;
 
 import java.util.function.Supplier;
 
@@ -9,5 +9,5 @@ import java.util.function.Supplier;
  */
 public interface ITransactionTemplateApi {
 
-    <R> R doInATransaction(final String actionName, Supplier<R> transactionalAction) throws BaseVaselineServerException;
+    <R> R doInATransaction(final String actionName, Supplier<R> transactionalAction) throws BaseBusinessException;
 }

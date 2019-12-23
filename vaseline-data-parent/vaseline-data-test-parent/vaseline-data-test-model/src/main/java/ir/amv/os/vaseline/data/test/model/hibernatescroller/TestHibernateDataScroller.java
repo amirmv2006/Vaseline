@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.data.test.model.hibernatescroller;
 
 import ir.amv.os.vaseline.basics.core.api.shared.util.callback.IBaseCallback;
-import ir.amv.os.vaseline.data.dao.basic.api.server.ro.scroller.IVaselineDataScroller;
+import ir.amv.os.vaseline.data.dao.basic.api.ro.scroller.IVaselineDataScroller;
 import org.hibernate.ScrollableResults;
 
 import java.math.BigDecimal;

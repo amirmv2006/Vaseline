@@ -11,9 +11,9 @@
     <artifactId>vaseline-parents-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-parents-common-parent</module>
-        <module>vaseline-parents-osgi-parent</module>
-        <module>vaseline-parents-springboot-parent</module>
+        <module>vaseline-parents-common</module>
+        <module>vaseline-parents-springboot</module>
+        <module>vaseline-parents-apis</module>
     </modules>
 
 </project>

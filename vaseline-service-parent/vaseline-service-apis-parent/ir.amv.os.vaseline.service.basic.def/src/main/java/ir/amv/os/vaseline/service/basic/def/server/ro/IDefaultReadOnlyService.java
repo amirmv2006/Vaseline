@@ -1,10 +1,10 @@
 package ir.amv.os.vaseline.service.basic.def.server.ro;
 
-import ir.amv.os.vaseline.basics.core.api.server.base.entity.IBaseEntity;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.base.IBaseDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.dto.paging.PagingDto;
-import ir.amv.os.vaseline.basics.core.api.shared.base.exc.BaseVaselineClientException;
-import ir.amv.os.vaseline.business.basic.api.server.ro.IBaseReadOnlyApi;
+import ir.amv.os.vaseline.basics.core.api.bizlayer.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.IBaseDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.model.impl.paging.PagingDto;
+import ir.amv.os.vaseline.basics.core.api.extsvclayer.exc.BaseExternalException;
+import ir.amv.os.vaseline.business.basic.api.layer.ro.IBaseReadOnlyApi;
 import ir.amv.os.vaseline.service.basic.api.server.ro.IBaseReadOnlyService;
 
 import java.io.Serializable;
@@ -14,11 +14,11 @@ import java.util.List;
  * Created by AMV on 2/7/2016.
  */
 public interface IDefaultReadOnlyService<Id extends
-        Serializable, E extends IBaseEntity<Id>, D extends IBaseDto<Id>, Api extends IBaseReadOnlyApi<Id, E>>
+        Serializable, E extends IBaseBusinessModel<Id>, D extends IBaseDto<Id>, Api extends IBaseReadOnlyApi<Id, E>>
         extends IBaseReadOnlyService<Id, D>, IDefaultEntityReadOnlyService<Id, E, D, Api> {
 
     @Override
-    default D getById(Id id) throws BaseVaselineClientException {
+    default D getById(Id id) throws BaseExternalException {
         try {
             E byId = getApiProxy().getById(id);
             return convertEntityToDTO(byId, validationGroupsForShow());
@@ -28,7 +28,7 @@ public interface IDefaultReadOnlyService<Id extends
     }
 
     @Override
-    default Long countAll() throws BaseVaselineClientException {
+    default Long countAll() throws BaseExternalException {
         try {
             return getApiProxy().countAll();
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public interface IDefaultReadOnlyService<Id extends
     }
 
     @Override
-    default List<D> getAll() throws BaseVaselineClientException {
+    default List<D> getAll() throws BaseExternalException {
         try {
             List<E> all = getApiProxy().getAll();
             return convertEntityToDTO(all, validationGroupsForShow());
@@ -47,7 +47,7 @@ public interface IDefaultReadOnlyService<Id extends
     }
 
     @Override
-    default List<D> getAll(PagingDto pagingDto) throws BaseVaselineClientException {
+    default List<D> getAll(PagingDto pagingDto) throws BaseExternalException {
         try {
             List<E> sortedPaged = getApiProxy().getAll(pagingDto);
             return convertEntityToDTO(sortedPaged, validationGroupsForShow());
