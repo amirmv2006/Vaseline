@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-business-spring</module>
+        <module>vaseline-business-basic-spring</module>
     </modules>
 
     <dependencies>

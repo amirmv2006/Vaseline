@@ -20,7 +20,7 @@ public interface IDefaultBaseUserApi<U extends IBaseUserBusinessModel, Dao exten
     @Override
     @Transactional
     default U loadUserByUsername(String username) throws BaseBusinessException {
-        U user = getDao().getUserByUsername(username);
+        U user = getRepository().getUserByUsername(username);
         postGet(user);
         return user;
 //        try {

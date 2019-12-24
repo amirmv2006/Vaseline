@@ -23,7 +23,7 @@
         </dependency>
         <dependency>
             <groupId>ir.amv.os.vaseline.business.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.business.basic.api</artifactId>
+            <artifactId>vaseline-business-basic-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

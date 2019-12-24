@@ -17,7 +17,7 @@ public class RestIntegrationModelApi
     private IRestIntegrationModelDao dao;
 
     @Override
-    public IRestIntegrationModelDao getDao() {
+    public IRestIntegrationModelDao getRepository() {
         return dao;
     }
 

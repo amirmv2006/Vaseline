@@ -17,8 +17,8 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ir.amv.os.vaseline.business.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.business.basic.def</artifactId>
+            <groupId>ir.amv.os.vaseline.business.spring</groupId>
+            <artifactId>vaseline-business-basic-spring</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

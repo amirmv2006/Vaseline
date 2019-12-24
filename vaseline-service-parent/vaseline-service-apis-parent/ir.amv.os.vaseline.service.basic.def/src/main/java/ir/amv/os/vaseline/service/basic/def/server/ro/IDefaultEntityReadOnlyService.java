@@ -57,7 +57,7 @@ public interface IDefaultEntityReadOnlyService<Id extends
 
     default Class<? extends E> getEntityClass() {
         try {
-            return getApiProxy().getEntityClass();
+            return getApiProxy().getModelClass();
         } catch (BaseExternalException e) {
             return null;
         }

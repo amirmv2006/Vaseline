@@ -7,7 +7,10 @@ import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.projection.IJpaCriteriaF
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
+import javax.persistence.criteria.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +18,6 @@ public interface IBaseJpaRepository
         extends IBaseRepository {
 
     EntityManager getEntityManager();
-
-    // FIXME remove?
-    default Predicate andAllPredicatesList(CriteriaBuilder cb, List<Predicate> predicates) {
-        return predicates.size() == 1 ? predicates.get(0) : cb.and(predicates.toArray(new Predicate[predicates.size()]));
-    }
 
     default <Q> TypedQuery<Q> paginateCriteria(
             EntityManager em,
