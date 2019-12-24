@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.data.jpa.search.advanced.api.server.dao;
 
 import ir.amv.os.vaseline.data.search.advanced.api.server.ro.IBaseAdvancedSearchRepository;
-import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryBusinessModel;
+import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
 import ir.amv.os.vaseline.data.test.model.shared.searchobject.ITestCountrySearchObject;
 import ir.amv.os.vaseline.data.test.model.test.AbstractAdvancedSearchTest;
 import org.junit.After;
@@ -40,7 +40,7 @@ public class TestBaseJpaAdvancedSearchDaoImpl
 
 
     @Override
-    protected IBaseAdvancedSearchRepository<Long, TestCountryBusinessModel, ITestCountrySearchObject> getCountryDao() {
+    protected IBaseAdvancedSearchRepository<Long, TestCountryEntity, ITestCountrySearchObject> getCountryDao() {
         return countryDao;
     }
 }

@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.data.jpa.search.advanced.api.server.dao;
 
-import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryBusinessModel;
+import ir.amv.os.vaseline.data.test.model.server.entity.TestCountryEntity;
 import ir.amv.os.vaseline.data.test.model.shared.searchobject.ITestCountrySearchObject;
 
 import javax.inject.Inject;
@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 
 public class TestCountryDaoImpl
         implements ITestCountryDao,
-        IDefaultJpaAdvancedSearchDao<Long, TestCountryBusinessModel, ITestCountrySearchObject> {
+        IDefaultJpaAdvancedSearchDao<Long, TestCountryEntity, ITestCountrySearchObject> {
 
     private EntityManager em;
 
@@ -18,8 +18,8 @@ public class TestCountryDaoImpl
     }
 
     @Override
-    public Class<TestCountryBusinessModel> getPersistentModelClass() {
-        return TestCountryBusinessModel.class;
+    public Class<TestCountryEntity> getPersistentModelClass() {
+        return TestCountryEntity.class;
     }
 
     @Override

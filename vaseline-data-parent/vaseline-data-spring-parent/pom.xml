@@ -14,6 +14,7 @@
     <modules>
         <module>vaseline-dao-jpa-spring</module>
         <module>vaseline-data-common-spring</module>
+        <module>vaseline-data-itest</module>
     </modules>
 
 

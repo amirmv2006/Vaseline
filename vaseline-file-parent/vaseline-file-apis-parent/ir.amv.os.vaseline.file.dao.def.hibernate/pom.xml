@@ -29,12 +29,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ir.amv.os.vaseline.data.jpa</groupId>
-            <artifactId>vaseline-data-test-helper</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <scope>test</scope>

@@ -12,7 +12,6 @@
     <artifactId>vaseline-data-jpa-impl-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-data-test-helper</module>
         <module>vaseline-data-jpa-impl</module>
         <module>vaseline-data-advanced-search-jpa-impl</module>
     </modules>
