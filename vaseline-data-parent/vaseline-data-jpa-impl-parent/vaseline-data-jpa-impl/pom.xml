@@ -28,8 +28,8 @@
 
         <!-- test dependencies -->
         <dependency>
-            <groupId>ir.amv.os.vaseline.data.test</groupId>
-            <artifactId>vaseline-data-test-model</artifactId>
+            <groupId>ir.amv.os.vaseline.data.jpa</groupId>
+            <artifactId>vaseline-data-test-helper</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>

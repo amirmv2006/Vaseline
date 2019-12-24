@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration = \
-  ir.amv.os.vaseline.basics.spring.core.config.VaselineCoreConfig
+  ir.amv.os.vaseline.basics.spring.core.VaselineCoreConfig

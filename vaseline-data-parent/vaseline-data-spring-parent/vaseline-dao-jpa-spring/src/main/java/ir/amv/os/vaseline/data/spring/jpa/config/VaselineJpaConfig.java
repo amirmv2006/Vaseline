@@ -1,6 +1,5 @@
 package ir.amv.os.vaseline.data.spring.jpa.config;
 
-import ir.amv.os.vaseline.data.spring.jpa.server.dozer.fieldmapper.JpaLazyFieldMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -35,13 +34,5 @@ public class VaselineJpaConfig {
         TransactionTemplate transactionTemplate = new TransactionTemplate();
         transactionTemplate.setTransactionManager(transactionManager);
         return transactionTemplate;
-    }
-
-
-
-    @Bean
-    @ConditionalOnMissingBean(name = "hibernateLazyFieldMapper")
-    public JpaLazyFieldMapper hibernateLazyFieldMapper() {
-        return new JpaLazyFieldMapper();
     }
 }

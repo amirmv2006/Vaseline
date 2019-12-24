@@ -12,8 +12,6 @@
     <artifactId>vaseline-data-spring-parent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vaseline-jdbc-dbcp-spring</module>
-        <module>vaseline-dao-hibernate-spring</module>
         <module>vaseline-dao-jpa-spring</module>
     </modules>
 
