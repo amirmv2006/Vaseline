@@ -25,8 +25,8 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>ir.amv.os.vaseline.data.jpa</groupId>
-            <artifactId>vaseline-data-jpa-impl</artifactId>
+            <groupId>ir.amv.os.vaseline.data.apis</groupId>
+            <artifactId>vaseline-data-basic-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

@@ -1,11 +1,13 @@
 package ir.amv.os.vaseline.data.test.model.server.entity;
 
-import ir.amv.os.vaseline.data.jpa.dao.basic.api.server.model.BaseEntityImpl;
+import ir.amv.os.vaseline.basics.core.api.layers.persistent.model.IBasePersistenceModel;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.Date;
@@ -15,7 +17,11 @@ import java.util.Set;
 @Entity
 @Access(AccessType.FIELD)
 public class TestCountryBusinessModel
-        extends BaseEntityImpl<Long> {
+        implements IBasePersistenceModel<Long> {
+
+    @Id
+    @GeneratedValue
+    private Long id;
 
     @Column(unique = true)
     private String countryName;
@@ -27,6 +33,16 @@ public class TestCountryBusinessModel
     private TestContinentBusinessModel continent;
     @OneToMany
     private Set<TestStateBusinessModel> states;
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCountryName() {
         return countryName;
