@@ -2,7 +2,7 @@ package ir.amv.os.vaseline.data.spring.common.repo;
 
 import ir.amv.os.vaseline.basics.core.api.layers.persistent.model.IBasePersistenceModel;
 import ir.amv.os.vaseline.data.dao.basic.api.ro.IBasePersistentModelRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.io.Serializable;
 
@@ -15,5 +15,5 @@ import java.io.Serializable;
  */
 public interface SpringRepository<I extends Serializable, E extends IBasePersistenceModel<I>> extends
         IBasePersistentModelRepository<I, E>,
-        PagingAndSortingRepository<E, I> {
+        JpaRepository<E, I> {
 }
