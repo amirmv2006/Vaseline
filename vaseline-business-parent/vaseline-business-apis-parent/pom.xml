@@ -14,7 +14,6 @@
     <modules>
         <module>vaseline-business-basic-api</module>
         <module>vaseline-business-advanced-search-api</module>
-        <module>ir.amv.os.vaseline.business.search.advanced.def</module>
     </modules>
 
 

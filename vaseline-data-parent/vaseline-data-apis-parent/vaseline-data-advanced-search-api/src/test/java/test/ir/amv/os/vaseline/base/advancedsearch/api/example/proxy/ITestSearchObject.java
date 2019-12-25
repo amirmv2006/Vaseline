@@ -1,6 +1,6 @@
 package test.ir.amv.os.vaseline.base.advancedsearch.api.example.proxy;
 
-import ir.amv.os.vaseline.data.search.advanced.api.server.model.IBasePropertyCondition;
+import ir.amv.os.vaseline.data.advanced.search.api.model.IBasePropertyCondition;
 
 /**
  * Created by amv on 12/8/16.

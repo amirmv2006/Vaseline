@@ -11,7 +11,7 @@ import java.util.List;
  * Created by AMV on 2/7/2016.
  */
 public interface IBaseCrudApi<I extends Serializable, E extends IBaseBusinessModel<I>>
-        extends IBaseReadOnlyApi<I, E>, IBaseModelCrudApi<E> {
+        extends IBaseReadOnlyApi<I, E>, IBaseModelWriteApi<E> {
 
     I save(E entity) throws BaseBusinessException;
     List<I> saveBatch(List<E> entities) throws BaseBusinessException;

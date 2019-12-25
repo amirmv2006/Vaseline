@@ -1,13 +1,13 @@
 package test.ir.amv.os.vaseline.base.advancedsearch.api.example.proxy;
 
-import ir.amv.os.vaseline.data.search.advanced.api.server.proxy.SearchObjectProxyFactory;
-import ir.amv.os.vaseline.data.search.advanced.api.server.model.IBasePropertyCondition;
-import ir.amv.os.vaseline.data.search.advanced.api.server.model.condition.oneop.OneOperandComparableConditionImpl;
-import ir.amv.os.vaseline.data.search.advanced.api.server.model.condition.oneop.OneOperandGeneralConditionImpl;
+import ir.amv.os.vaseline.data.advanced.search.api.proxy.SearchObjectProxyFactory;
+import ir.amv.os.vaseline.data.advanced.search.api.model.IBasePropertyCondition;
+import ir.amv.os.vaseline.data.advanced.search.api.model.condition.oneop.OneOperandComparableConditionImpl;
+import ir.amv.os.vaseline.data.advanced.search.api.model.condition.oneop.OneOperandGeneralConditionImpl;
 import org.junit.Test;
 
-import static ir.amv.os.vaseline.data.search.advanced.api.server.model.condition.PropertyConditions.equlas;
-import static ir.amv.os.vaseline.data.search.advanced.api.server.model.condition.PropertyConditions.greaterThan;
+import static ir.amv.os.vaseline.data.advanced.search.api.model.condition.PropertyConditions.equlas;
+import static ir.amv.os.vaseline.data.advanced.search.api.model.condition.PropertyConditions.greaterThan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 

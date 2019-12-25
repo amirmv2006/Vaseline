@@ -12,8 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-data-apis-parent</module>
-        <module>vaseline-data-jpa-impl-parent</module>
-        <module>vaseline-data-spring-parent</module>
+        <module>vaseline-data-spring-jpa-parent</module>
     </modules>
 
 

@@ -16,8 +16,13 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ir.amv.os.vaseline.data.spring</groupId>
-            <artifactId>vaseline-data-common-spring</artifactId>
+            <groupId>ir.amv.os.vaseline.data.apis</groupId>
+            <artifactId>vaseline-data-basic-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ir.amv.os.vaseline.basics.spring</groupId>
+            <artifactId>vaseline-core-spring</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

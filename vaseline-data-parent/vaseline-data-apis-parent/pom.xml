@@ -14,7 +14,7 @@
     <modules>
         <module>vaseline-data-basic-api</module>
         <module>vaseline-data-advanced-search-api</module>
-        <module>vaseline-advanced-search-maven-plugin</module>
+        <module>vaseline-data-advanced-search-maven-plugin</module>
     </modules>
 
 

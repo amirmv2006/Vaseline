@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration = \
+  ir.amv.os.vaseline.data.jpa.spring.advanced.search.VaselineDataAdvancedSearchConfig

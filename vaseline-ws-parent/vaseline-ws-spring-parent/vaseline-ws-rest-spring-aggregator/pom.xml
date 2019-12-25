@@ -36,7 +36,7 @@
         <!-- data -->
         <dependency>
             <groupId>ir.amv.os.vaseline.data.spring</groupId>
-            <artifactId>vaseline-dao-jpa-spring</artifactId>
+            <artifactId>vaseline-data-basic-spring-jpa</artifactId>
             <version>${project.version}</version>
         </dependency>
         <!-- business -->
