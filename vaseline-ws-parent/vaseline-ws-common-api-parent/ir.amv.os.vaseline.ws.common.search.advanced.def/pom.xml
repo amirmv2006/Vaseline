@@ -23,7 +23,7 @@
         </dependency>
         <dependency>
             <groupId>ir.amv.os.vaseline.service.apis</groupId>
-            <artifactId>ir.amv.os.vaseline.service.search.advanced.api</artifactId>
+            <artifactId>vaseline-exposed-service-advanced-search-api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

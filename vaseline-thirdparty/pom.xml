@@ -12,7 +12,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-thirdparty-reflection</module>
-        <module>vaseline-ut-helper</module>
     </modules>
 
 

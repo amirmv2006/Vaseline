@@ -42,7 +42,7 @@
         <module>vaseline-basics-parent</module>
         <module>vaseline-data-parent</module>
         <module>vaseline-business-parent</module>
-        <module>vaseline-service-parent</module>
+        <module>vaseline-exposed-service-parent</module>
         <module>vaseline-security-parent</module>
         <module>vaseline-ws-parent</module>
         <module>vaseline-file-parent</module>
