@@ -1,7 +1,7 @@
-package ir.amv.os.vaseline.data.jpa.spring.itest.domain;
+package ir.amv.os.vaseline.service.rest.itest.domain;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SharedConfig {
+public class ITestRestSharedConfig {
 }

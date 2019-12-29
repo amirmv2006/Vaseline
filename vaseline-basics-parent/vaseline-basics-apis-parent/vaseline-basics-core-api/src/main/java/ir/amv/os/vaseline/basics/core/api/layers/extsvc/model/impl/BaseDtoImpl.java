@@ -1,26 +1,21 @@
 package ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.impl;
 
+import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.IBaseDto;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.validation.IEntityDeleteValidation;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.validation.IEntityUpdateValidation;
-import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.IBaseDto;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
 
 /**
  * Created by AMV on 2/14/2016.
  */
-public class BaseDtoImpl<Id> extends BaseEmptyDtoImpl implements IBaseDto<Id> {
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class BaseDtoImpl<I> extends BaseEmptyDtoImpl implements IBaseDto<I> {
 
     @NotNull(groups = {IEntityUpdateValidation.class, IEntityDeleteValidation.class})
-    private Id id;
+    private I id;
 
-    @Override
-    public Id getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Id id) {
-        this.id = id;
-    }
 }

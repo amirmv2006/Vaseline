@@ -13,6 +13,7 @@
     <modules>
         <module>vaseline-parents-springboot-depmanager</module>
         <module>vaseline-parents-springboot-parent</module>
+        <module>vaseline-parents-springboot-itest-parent</module>
     </modules>
 
 

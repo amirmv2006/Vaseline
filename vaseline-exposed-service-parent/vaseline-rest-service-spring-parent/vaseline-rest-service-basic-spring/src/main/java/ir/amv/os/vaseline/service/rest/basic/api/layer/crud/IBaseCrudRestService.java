@@ -15,18 +15,18 @@ public interface IBaseCrudRestService<I extends Serializable, D extends IBaseDto
         extends IBaseCrudService<I, D>, IBaseReadOnlyRestService<I, D> {
 
     @Override
-    @PostMapping(path = "/")
+    @PostMapping
     I save(D t) throws BaseExternalException;
 
     @Override
-    @PutMapping(path = "/")
+    @PutMapping
     void update(D t) throws BaseExternalException;
 
     @Override
-    @PostMapping(path = "/delete")
+    @PostMapping(path = "delete")
     void delete(D id) throws BaseExternalException;
 
     @Override
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "{id}")
     void deleteById(@PathVariable("id") I id) throws BaseExternalException;
 }

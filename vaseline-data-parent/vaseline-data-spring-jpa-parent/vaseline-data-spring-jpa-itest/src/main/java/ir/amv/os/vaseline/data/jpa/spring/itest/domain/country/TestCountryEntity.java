@@ -10,6 +10,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -32,8 +33,9 @@ public class TestCountryEntity
     private Date birthDate;
 
     @ManyToOne
+    @JoinColumn(name = "CONTINENT_ID")
     private TestContinentEntity continent;
-    @OneToMany
+    @OneToMany(mappedBy = "country")
     private Set<TestStateEntity> states;
 
 }

@@ -49,6 +49,10 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.dozermapper</groupId>
+            <artifactId>dozer-core</artifactId>
+        </dependency>
         <!-- use locale based api, handled in i18n maybe?-->
         <!--<dependency>-->
             <!--<groupId>ir.amv.thirdparties</groupId>-->

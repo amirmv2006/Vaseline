@@ -16,6 +16,7 @@
     <modules>
         <module>vaseline-rest-service-basic-spring</module>
         <module>vaseline-rest-service-spring-itest</module>
+        <module>vaseline-rest-service-advanced-search-spring</module>
     </modules>
 
 

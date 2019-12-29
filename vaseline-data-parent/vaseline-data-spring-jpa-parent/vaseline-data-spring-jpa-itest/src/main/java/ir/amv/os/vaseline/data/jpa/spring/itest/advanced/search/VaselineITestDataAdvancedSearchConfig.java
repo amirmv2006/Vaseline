@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.data.jpa.spring.itest.advanced.search;
 
 import ir.amv.os.vaseline.data.jpa.spring.advanced.search.repo.VaselineAdvancedSearchRepositoryFactory;
-import ir.amv.os.vaseline.data.jpa.spring.itest.domain.SharedConfig;
+import ir.amv.os.vaseline.data.jpa.spring.itest.domain.VaselineITestDataSharedConfig;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -11,6 +11,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         basePackages = "ir.amv.os.vaseline.data.jpa.spring.itest.domain",
         repositoryFactoryBeanClass = VaselineAdvancedSearchRepositoryFactory.class
 )
-@Import(SharedConfig.class)
-public class VaselineDataAdvancedSearchITestConfig {
+@Import(VaselineITestDataSharedConfig.class)
+public class VaselineITestDataAdvancedSearchConfig {
 }

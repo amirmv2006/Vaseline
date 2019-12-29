@@ -6,6 +6,7 @@ import ir.amv.os.vaseline.service.basic.api.layer.ro.IBaseReadOnlyService;
 import ir.amv.os.vaseline.service.rest.basic.api.layer.base.IBaseRestService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,18 +18,18 @@ public interface IBaseReadOnlyRestService<I extends Serializable, D extends IBas
         extends IBaseReadOnlyService<I, D>, IBaseRestService {
 
     @Override
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "{id}")
     D getById(@PathVariable("id") I id) throws BaseExternalException;
 
     @Override
-    @GetMapping(path = "/count")
+    @GetMapping(path = "count")
     Long countAll() throws BaseExternalException;
 
     @Override
-    @GetMapping(path = "/")
+    @GetMapping
     List<D> getAll() throws BaseExternalException;
 
     @Override
-    @PostMapping(path = "/page")
+    @PostMapping(path = "page")
     Page<D> getAll(Pageable pagingDto) throws BaseExternalException;
 }
