@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.service.basic.def.server.ro;
 
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity;
 import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.IBaseDto;
 import ir.amv.os.vaseline.business.basic.api.layer.ro.IBaseReadOnlyApi;
@@ -8,16 +9,15 @@ import ir.amv.os.vaseline.service.basic.api.layer.ro.IBaseReadOnlyService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by AMV on 2/7/2016.
  */
 public interface IDefaultReadOnlyService<
-            I extends Serializable,
+            I extends IBaseBusinessModel<I>,
             D extends IBaseDto<I>,
-            M extends IBaseBusinessModel<I>,
+            M extends IBaseBusinessEntity<I, M>,
             A extends IBaseReadOnlyApi<I, M>
         >
         extends IBaseReadOnlyService<I, D>, IDefaultEntityReadOnlyService<I, D, M, A> {

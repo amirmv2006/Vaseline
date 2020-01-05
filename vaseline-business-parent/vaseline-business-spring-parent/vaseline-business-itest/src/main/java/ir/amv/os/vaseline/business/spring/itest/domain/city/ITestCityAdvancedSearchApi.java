@@ -4,5 +4,5 @@ import ir.amv.os.vaseline.business.search.advanced.api.server.IBaseAdvancedSearc
 import ir.amv.os.vaseline.data.jpa.spring.itest.domain.city.ITestCitySearchObject;
 
 public interface ITestCityAdvancedSearchApi
-        extends IBaseAdvancedSearchApi<Long, TestCityBusinessModel, ITestCitySearchObject> {
+        extends IBaseAdvancedSearchApi<Long, TestCityBusinessEntity, ITestCitySearchObject> {
 }

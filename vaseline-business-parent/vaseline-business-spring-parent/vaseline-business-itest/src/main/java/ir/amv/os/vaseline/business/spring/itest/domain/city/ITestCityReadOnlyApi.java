@@ -5,7 +5,7 @@ import ir.amv.os.vaseline.business.basic.api.layer.ro.IBaseReadOnlyApi;
 
 import java.util.List;
 
-public interface ITestCityReadOnlyApi extends IBaseReadOnlyApi<Long, TestCityBusinessModel> {
+public interface ITestCityReadOnlyApi extends IBaseReadOnlyApi<Long, TestCityBusinessEntity> {
 
-    List<TestCityBusinessModel> getCitiesOfState(String stateName) throws BaseBusinessException;
+    List<TestCityBusinessEntity> getCitiesOfState(String stateName) throws BaseBusinessException;
 }

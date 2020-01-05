@@ -1,8 +1,6 @@
 package ir.amv.os.vaseline.basics.core.api.layers.business.model;
 
-public interface IBaseBusinessModel<I> {
+public interface IBaseBusinessModel<M> {
 
-	I getId();
-	void setId(I id);
-
+    boolean isSameAs(M other);
 }

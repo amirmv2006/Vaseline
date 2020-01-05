@@ -1,8 +1,8 @@
 package ir.amv.os.vaseline.business.spring.basic.crud;
 
-import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
-import ir.amv.os.vaseline.basics.core.api.layers.business.model.hascreatedate.IBaseHasCreateDateBusinessModel;
-import ir.amv.os.vaseline.basics.core.api.layers.business.model.hasmodifydate.IBaseHasModifyDateBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity;
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.hascreatedate.IBaseHasCreateDateBusinessEntity;
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.hasmodifydate.IBaseHasModifyDateBusinessEntity;
 import ir.amv.os.vaseline.business.basic.api.exc.BaseBusinessException;
 import ir.amv.os.vaseline.business.basic.api.layer.crud.IBaseModelWriteApi;
 
@@ -11,13 +11,14 @@ import java.util.Date;
 /**
  * Created by AMV on 2/9/2016.
  */
-public interface IDefaultModelCrudApi<E extends IBaseBusinessModel<?>>
+public interface IDefaultModelCrudApi<E extends IBaseBusinessEntity<?, E>>
         extends IBaseModelWriteApi<E> {
 
     @Override
     default void preSave(E entity) throws BaseBusinessException {
-        if (entity instanceof IBaseHasCreateDateBusinessModel<?>) {
-            IBaseHasCreateDateBusinessModel<?> hasCreateDateEntity = (IBaseHasCreateDateBusinessModel<?>) entity;
+        if (entity instanceof IBaseHasCreateDateBusinessEntity<?, ?>) {
+            IBaseHasCreateDateBusinessEntity<?, ?> hasCreateDateEntity =
+                    (IBaseHasCreateDateBusinessEntity<?, ?>) entity;
             hasCreateDateEntity.setCreateDate(new Date());
         }
     }
@@ -28,8 +29,9 @@ public interface IDefaultModelCrudApi<E extends IBaseBusinessModel<?>>
 
     @Override
     default void preUpdate(E entity) throws BaseBusinessException {
-        if (entity instanceof IBaseHasModifyDateBusinessModel<?>) {
-            IBaseHasModifyDateBusinessModel<?> hasModifyDateEntity = (IBaseHasModifyDateBusinessModel<?>) entity;
+        if (entity instanceof IBaseHasModifyDateBusinessEntity<?, ?>) {
+            IBaseHasModifyDateBusinessEntity<?, ?> hasModifyDateEntity =
+                    (IBaseHasModifyDateBusinessEntity<?, ?>) entity;
             hasModifyDateEntity.setModifyDate(new Date());
         }
     }

@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.business.basic.api.layer.ro;
 
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity;
 import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
 import ir.amv.os.vaseline.business.basic.api.exc.BaseBusinessException;
 import org.springframework.data.domain.Page;
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IBaseReadOnlyApi<I extends Serializable, E extends IBaseBusinessModel<I>>
+public interface IBaseReadOnlyApi<I extends IBaseBusinessModel<I>, E extends IBaseBusinessEntity<I, E>>
         extends IBaseModelReadApi<E> {
 
     E getById(I id) throws BaseBusinessException;

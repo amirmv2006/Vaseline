@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.business.spring.basic.ro;
 
 import ir.amv.os.vaseline.basics.core.api.crosslayers.converter.api.IModelConverter;
-import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity;
 import ir.amv.os.vaseline.basics.core.api.layers.persistent.model.IBasePersistenceModel;
 import ir.amv.os.vaseline.basics.spring.core.utils.reflection.GenericUtils;
 import ir.amv.os.vaseline.business.basic.api.exc.BaseBusinessException;
@@ -17,7 +17,7 @@ import java.util.List;
 
 public interface IDefaultReadOnlyApi<
             I extends Serializable,
-            M extends IBaseBusinessModel<I>,
+            M extends IBaseBusinessEntity<I, M>,
             E extends IBasePersistenceModel<I>,
             R extends IBaseReadOnlyRepository<I, E>
         >

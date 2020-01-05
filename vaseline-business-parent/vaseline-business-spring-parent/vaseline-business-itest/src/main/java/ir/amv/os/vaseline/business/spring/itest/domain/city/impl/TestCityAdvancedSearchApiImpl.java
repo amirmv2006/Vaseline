@@ -5,7 +5,7 @@ import ir.amv.os.vaseline.basics.spring.core.crosslayers.converter.api.IDefaultC
 import ir.amv.os.vaseline.basics.spring.core.crosslayers.converter.api.IDefaultModelConverter;
 import ir.amv.os.vaseline.business.spring.advanced.search.IDefaultAdvancedSearchApi;
 import ir.amv.os.vaseline.business.spring.itest.domain.city.ITestCityAdvancedSearchApi;
-import ir.amv.os.vaseline.business.spring.itest.domain.city.TestCityBusinessModel;
+import ir.amv.os.vaseline.business.spring.itest.domain.city.TestCityBusinessEntity;
 import ir.amv.os.vaseline.data.jpa.spring.itest.domain.city.ITestCityAdvancedSearchRepo;
 import ir.amv.os.vaseline.data.jpa.spring.itest.domain.city.ITestCitySearchObject;
 import ir.amv.os.vaseline.data.jpa.spring.itest.domain.city.TestCityEntity;
@@ -14,8 +14,8 @@ import org.springframework.core.convert.ConversionService;
 public class TestCityAdvancedSearchApiImpl
         extends ProxyAwareImpl
         implements ITestCityAdvancedSearchApi,
-        IDefaultAdvancedSearchApi<Long, TestCityBusinessModel, TestCityEntity, ITestCitySearchObject, ITestCityAdvancedSearchRepo>,
-        IDefaultModelConverter<TestCityBusinessModel, TestCityEntity>,
+        IDefaultAdvancedSearchApi<Long, TestCityBusinessEntity, TestCityEntity, ITestCitySearchObject, ITestCityAdvancedSearchRepo>,
+        IDefaultModelConverter<TestCityBusinessEntity, TestCityEntity>,
         IDefaultConverterSpringApi {
 
     private final ConversionService conversionService;

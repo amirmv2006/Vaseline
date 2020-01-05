@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.service.rest.advanced.search.layer.impl;
 
-import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.IBaseDto;
 import ir.amv.os.vaseline.business.search.advanced.api.server.IBaseAdvancedSearchApi;
 import ir.amv.os.vaseline.data.advanced.search.api.model.IBaseSearchObject;
@@ -19,7 +19,7 @@ import java.util.List;
 public class BaseAdvancedSearchRestServiceImpl<
         I extends Serializable,
         D extends IBaseDto<I>,
-        M extends IBaseBusinessModel<I>,
+        M extends IBaseBusinessEntity<I, M>,
         S extends IBaseSearchObject,
         A extends IBaseAdvancedSearchApi<I, M, S>>
         extends BaseReadOnlyRestServiceImpl<I, D, M, A>

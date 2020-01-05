@@ -3,6 +3,6 @@
  * nightmare. For example, you could use entity as both
  *
  * {@link ir.amv.os.vaseline.basics.core.api.layers.persistent.model.IBasePersistenceModel} and
- * {@link ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel}.
+ * {@link ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity}.
  */
 package ir.amv.os.vaseline.basics.core.api.layers;

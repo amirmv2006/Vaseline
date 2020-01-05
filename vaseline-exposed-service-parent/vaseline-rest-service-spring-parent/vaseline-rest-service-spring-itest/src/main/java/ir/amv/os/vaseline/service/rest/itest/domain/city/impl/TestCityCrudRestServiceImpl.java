@@ -1,7 +1,7 @@
 package ir.amv.os.vaseline.service.rest.itest.domain.city.impl;
 
 import ir.amv.os.vaseline.business.spring.itest.domain.city.ITestCityCrudApi;
-import ir.amv.os.vaseline.business.spring.itest.domain.city.TestCityBusinessModel;
+import ir.amv.os.vaseline.business.spring.itest.domain.city.TestCityBusinessEntity;
 import ir.amv.os.vaseline.service.rest.basic.api.layer.crud.impl.BaseCrudRestServiceImpl;
 import ir.amv.os.vaseline.service.rest.itest.domain.city.ITestCityCrudRestService;
 import ir.amv.os.vaseline.service.rest.itest.domain.city.TestCityDto;
@@ -16,7 +16,7 @@ import javax.validation.Validator;
 @Profile("basic")
 @RequestMapping("cityCrud")
 public class TestCityCrudRestServiceImpl
-        extends BaseCrudRestServiceImpl<Long, TestCityDto, TestCityBusinessModel, ITestCityCrudApi>
+        extends BaseCrudRestServiceImpl<Long, TestCityDto, TestCityBusinessEntity, ITestCityCrudApi>
         implements ITestCityCrudRestService {
 
     public TestCityCrudRestServiceImpl(Validator validator, ConversionService conversionService, ITestCityCrudApi api) {

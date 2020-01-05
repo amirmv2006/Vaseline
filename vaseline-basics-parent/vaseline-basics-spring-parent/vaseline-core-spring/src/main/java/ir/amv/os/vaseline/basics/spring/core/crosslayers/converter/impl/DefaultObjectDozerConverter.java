@@ -1,20 +1,19 @@
 package ir.amv.os.vaseline.basics.spring.core.crosslayers.converter.impl;
 
-import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.IBaseDto;
 import ir.amv.os.vaseline.basics.core.api.layers.persistent.model.IBasePersistenceModel;
 import ir.amv.os.vaseline.basics.core.api.utils.hibernate.HibernateUtils;
 import org.dozer.DozerBeanMapperBuilder;
 import org.dozer.Mapper;
 import org.springframework.core.convert.TypeDescriptor;
-import org.springframework.core.convert.converter.GenericConverter;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public class DefaultObjectDozerConverter
-        implements GenericConverter {
+        implements AutoDetectableGenericConverter {
 
     private final Mapper mapper;
 
@@ -30,10 +29,10 @@ public class DefaultObjectDozerConverter
     @Override
     public Set<ConvertiblePair> getConvertibleTypes() {
         return new HashSet<>(Arrays.asList(
-                new ConvertiblePair(IBaseDto.class, IBaseBusinessModel.class),
-                new ConvertiblePair(IBaseBusinessModel.class, IBasePersistenceModel.class),
-                new ConvertiblePair(IBasePersistenceModel.class, IBaseBusinessModel.class),
-                new ConvertiblePair(IBaseBusinessModel.class, IBaseDto.class)
+                new ConvertiblePair(IBaseDto.class, IBaseBusinessEntity.class),
+                new ConvertiblePair(IBaseBusinessEntity.class, IBasePersistenceModel.class),
+                new ConvertiblePair(IBasePersistenceModel.class, IBaseBusinessEntity.class),
+                new ConvertiblePair(IBaseBusinessEntity.class, IBaseDto.class)
         ));
     }
 

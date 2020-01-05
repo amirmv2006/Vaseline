@@ -1,10 +1,11 @@
 package ir.amv.os.vaseline.service.basic.def.server.exc.converter;
 
+import ir.amv.os.vaseline.basics.spring.core.crosslayers.converter.impl.NeedsBeansGenericConverter;
 import ir.amv.os.vaseline.service.basic.api.translate.IVaselineMessageTranslator;
 import ir.amv.os.vaseline.service.basic.api.validation.exc.ValidationExternalException;
 import ir.amv.os.vaseline.service.basic.def.server.exc.ValidationRawException;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.convert.TypeDescriptor;
-import org.springframework.core.convert.converter.GenericConverter;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Path;
@@ -15,12 +16,10 @@ import java.util.Set;
  * Created by AMV on 4/11/2017.
  */
 public class VaselineValidationExceptionConverterImpl
-        implements GenericConverter {
+        extends NeedsBeansGenericConverter {
 
-    private final IVaselineMessageTranslator messageTranslator;
-
-    public VaselineValidationExceptionConverterImpl(IVaselineMessageTranslator messageTranslator) {
-        this.messageTranslator = messageTranslator;
+    protected VaselineValidationExceptionConverterImpl(ApplicationContext applicationContext) {
+        super(applicationContext);
     }
 
     @Override
@@ -37,13 +36,17 @@ public class VaselineValidationExceptionConverterImpl
             for (ConstraintViolation<?> constraintViolation : constraintViolations) {
                 Path propertyPath = constraintViolation.getPropertyPath();
                 Class<?> rootBeanClass = constraintViolation.getRootBeanClass();
-                String translatedProperty = messageTranslator.translateProperty(rootBeanClass, propertyPath.toString());
+                String translatedProperty = getMessageTranslator().translateProperty(rootBeanClass, propertyPath.toString());
                 sb.append(translatedProperty).append(" ").append(constraintViolation.getMessage());
                 sb.append(System.getProperty("line.separator"));
             }
             return new ValidationExternalException(sb.toString());
         }
         return null;
+    }
+
+    public IVaselineMessageTranslator getMessageTranslator() {
+        return getBean(IVaselineMessageTranslator.class);
     }
 
 }

@@ -1,6 +1,7 @@
 package ir.amv.os.vaseline.service.basic.def.server.ro;
 
 import ir.amv.os.vaseline.basics.core.api.crosslayers.converter.api.IModelConverter;
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity;
 import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.IBaseDto;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.validation.IEntitySearchValidation;
@@ -18,9 +19,9 @@ import java.util.Collections;
 import java.util.List;
 
 public interface IDefaultEntityReadOnlyService<
-            I extends Serializable,
+            I extends IBaseBusinessModel<I>,
             D extends IBaseDto<I>,
-            M extends IBaseBusinessModel<I>,
+            M extends IBaseBusinessEntity<I, M>,
             A extends IBaseModelReadApi<M>
         >
         extends IDefaultService, IModelConverter<D, M> {

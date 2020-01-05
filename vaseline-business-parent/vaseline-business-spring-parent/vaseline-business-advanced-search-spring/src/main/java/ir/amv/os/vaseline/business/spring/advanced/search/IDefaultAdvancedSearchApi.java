@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.business.spring.advanced.search;
 
-import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity;
 import ir.amv.os.vaseline.basics.core.api.layers.persistent.model.IBasePersistenceModel;
 import ir.amv.os.vaseline.business.basic.api.exc.BaseBusinessException;
 import ir.amv.os.vaseline.business.search.advanced.api.server.IBaseAdvancedSearchApi;
@@ -17,7 +17,7 @@ import java.util.List;
 
 public interface IDefaultAdvancedSearchApi<
         I extends Serializable,
-        M extends IBaseBusinessModel<I>,
+        M extends IBaseBusinessEntity<I, M>,
         E extends IBasePersistenceModel<I>,
         S extends IBaseSearchObject,
         R extends IBaseAdvancedSearchRepository<I, E, S>>

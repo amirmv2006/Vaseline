@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.service.basic.def.server.crud;
 
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity;
 import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.IBaseDto;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.validation.IEntityDeleteValidation;
@@ -10,15 +11,13 @@ import ir.amv.os.vaseline.service.basic.api.exc.BaseExternalException;
 import ir.amv.os.vaseline.service.basic.api.layer.crud.IBaseCrudService;
 import ir.amv.os.vaseline.service.basic.def.server.ro.IDefaultReadOnlyService;
 
-import java.io.Serializable;
-
 /**
  * Created by AMV on 2/7/2016.
  */
 public interface IDefaultCrudService<
-            I extends Serializable,
+            I extends IBaseBusinessModel<I>,
             D extends IBaseDto<I>,
-            M extends IBaseBusinessModel<I>,
+            M extends IBaseBusinessEntity<I, M>,
             A extends IBaseCrudApi<I, M>
         >
         extends IBaseCrudService<I, D>, IDefaultReadOnlyService<I, D, M, A> {

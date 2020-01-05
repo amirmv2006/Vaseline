@@ -5,7 +5,7 @@ import ir.amv.os.vaseline.basics.spring.core.crosslayers.converter.api.IDefaultC
 import ir.amv.os.vaseline.basics.spring.core.crosslayers.converter.api.IDefaultModelConverter;
 import ir.amv.os.vaseline.business.spring.basic.crud.IDefaultCrudApi;
 import ir.amv.os.vaseline.business.spring.itest.domain.city.ITestCityCrudApi;
-import ir.amv.os.vaseline.business.spring.itest.domain.city.TestCityBusinessModel;
+import ir.amv.os.vaseline.business.spring.itest.domain.city.TestCityBusinessEntity;
 import ir.amv.os.vaseline.data.jpa.spring.itest.domain.city.ITestCityCrudRepo;
 import ir.amv.os.vaseline.data.jpa.spring.itest.domain.city.TestCityEntity;
 import org.springframework.core.convert.ConversionService;
@@ -13,8 +13,8 @@ import org.springframework.core.convert.ConversionService;
 public class TestCityCrudApiImpl
         extends ProxyAwareImpl
         implements ITestCityCrudApi,
-        IDefaultCrudApi<Long, TestCityBusinessModel, TestCityEntity, ITestCityCrudRepo>,
-        IDefaultModelConverter<TestCityBusinessModel, TestCityEntity>,
+        IDefaultCrudApi<Long, TestCityBusinessEntity, TestCityEntity, ITestCityCrudRepo>,
+        IDefaultModelConverter<TestCityBusinessEntity, TestCityEntity>,
         IDefaultConverterSpringApi {
 
     private final ConversionService conversionService;

@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>vaseline-core-spring</module>
+        <module>vaseline-basics-cassandra</module>
     </modules>
 
     <dependencies>

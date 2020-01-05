@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.service.rest.basic.api.layer.ro.impl;
 
-import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.IBaseDto;
 import ir.amv.os.vaseline.business.basic.api.layer.ro.IBaseReadOnlyApi;
 import ir.amv.os.vaseline.service.basic.api.exc.BaseExternalException;
@@ -17,7 +17,7 @@ import java.util.List;
 public class BaseReadOnlyRestServiceImpl<
             I extends Serializable,
             D extends IBaseDto<I>,
-            M extends IBaseBusinessModel<I>,
+            M extends IBaseBusinessEntity<I, M>,
             A extends IBaseReadOnlyApi<I, M>
         >
         extends BaseReadOnlyServiceImpl<I, D, M, A>

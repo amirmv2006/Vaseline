@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.service.basic.def.server.ro.impl;
 
-import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.IBaseDto;
 import ir.amv.os.vaseline.basics.spring.core.crosslayers.converter.api.IDefaultModelConverter;
 import ir.amv.os.vaseline.business.basic.api.layer.ro.IBaseReadOnlyApi;
@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class BaseReadOnlyServiceImpl<
             I extends Serializable,
             D extends IBaseDto<I>,
-            M extends IBaseBusinessModel<I>,
+            M extends IBaseBusinessEntity<I, M>,
             A extends IBaseReadOnlyApi<I, M>
         >
         extends BaseServiceImpl

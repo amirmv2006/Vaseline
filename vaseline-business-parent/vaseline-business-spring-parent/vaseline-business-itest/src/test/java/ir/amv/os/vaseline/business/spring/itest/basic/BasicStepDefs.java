@@ -4,7 +4,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import ir.amv.os.vaseline.business.basic.api.exc.BaseBusinessException;
 import ir.amv.os.vaseline.business.spring.itest.domain.city.ITestCityReadOnlyApi;
-import ir.amv.os.vaseline.business.spring.itest.domain.city.TestCityBusinessModel;
+import ir.amv.os.vaseline.business.spring.itest.domain.city.TestCityBusinessEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +25,7 @@ public class BasicStepDefs {
     @Autowired
     ITestCityReadOnlyApi cityReadOnlyApi;
 
-    private List<TestCityBusinessModel> getAllResult;
+    private List<TestCityBusinessEntity> getAllResult;
 
     @When("I call getAll on Business Layer")
     public void iCallGetAllOnBusinessLayer() throws BaseBusinessException {
@@ -41,7 +41,7 @@ public class BasicStepDefs {
 
     @Then("The lazy property \"state\" for these cities is not loaded")
     public void theLazyPropertyForTheseCitiesIsNotLoaded() {
-        for (TestCityBusinessModel resultCity : getAllResult) {
+        for (TestCityBusinessEntity resultCity : getAllResult) {
             assertNull("Lazy property 'state' should not be loaded", resultCity.getState());
         }
     }

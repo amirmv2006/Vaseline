@@ -6,7 +6,7 @@ import ir.amv.os.vaseline.basics.spring.core.crosslayers.converter.api.IDefaultM
 import ir.amv.os.vaseline.business.basic.api.exc.BaseBusinessException;
 import ir.amv.os.vaseline.business.spring.basic.ro.IDefaultReadOnlyApi;
 import ir.amv.os.vaseline.business.spring.itest.domain.city.ITestCityReadOnlyApi;
-import ir.amv.os.vaseline.business.spring.itest.domain.city.TestCityBusinessModel;
+import ir.amv.os.vaseline.business.spring.itest.domain.city.TestCityBusinessEntity;
 import ir.amv.os.vaseline.data.jpa.spring.itest.domain.city.ITestCityReadOnlyRepo;
 import ir.amv.os.vaseline.data.jpa.spring.itest.domain.city.TestCityEntity;
 import org.springframework.core.convert.ConversionService;
@@ -14,13 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class TestCityReadOnlyApiImpl
         extends ProxyAwareImpl
         implements ITestCityReadOnlyApi,
-        IDefaultReadOnlyApi<Long, TestCityBusinessModel, TestCityEntity, ITestCityReadOnlyRepo>,
-        IDefaultModelConverter<TestCityBusinessModel, TestCityEntity>,
+        IDefaultReadOnlyApi<Long, TestCityBusinessEntity, TestCityEntity, ITestCityReadOnlyRepo>,
+        IDefaultModelConverter<TestCityBusinessEntity, TestCityEntity>,
         IDefaultConverterSpringApi {
 
     private final ConversionService conversionService;
@@ -43,8 +42,8 @@ public class TestCityReadOnlyApiImpl
 
     @Override
     @Transactional
-    public List<TestCityBusinessModel> getCitiesOfState(String stateName) throws BaseBusinessException {
-        List<TestCityBusinessModel> result = new ArrayList<>();
+    public List<TestCityBusinessEntity> getCitiesOfState(String stateName) throws BaseBusinessException {
+        List<TestCityBusinessEntity> result = new ArrayList<>();
         try {
             repository.findByStateName(stateName).get().forEach(pm -> result.add(convertFrom(pm)));
         } catch (Exception e) {

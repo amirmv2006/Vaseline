@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.business.basic.api.layer.crud;
 
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity;
 import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
 import ir.amv.os.vaseline.business.basic.api.exc.BaseBusinessException;
 import ir.amv.os.vaseline.business.basic.api.layer.ro.IBaseReadOnlyApi;
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IBaseCrudApi<I extends Serializable, E extends IBaseBusinessModel<I>>
+public interface IBaseCrudApi<I extends IBaseBusinessModel<I>, E extends IBaseBusinessEntity<I, E>>
         extends IBaseReadOnlyApi<I, E>, IBaseModelWriteApi<E> {
 
     I save(E entity) throws BaseBusinessException;

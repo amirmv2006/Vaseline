@@ -1,5 +1,6 @@
 package ir.amv.os.vaseline.service.basic.api.layer.ro;
 
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.IBaseDto;
 import ir.amv.os.vaseline.service.basic.api.exc.BaseExternalException;
 import ir.amv.os.vaseline.service.basic.api.layer.base.IBaseService;
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  * Created by AMV on 2/7/2016.
  */
-public interface IBaseReadOnlyService<I extends Serializable, D extends IBaseDto<I>>
+public interface IBaseReadOnlyService<I extends IBaseBusinessModel<I>, D extends IBaseDto<I>>
         extends IBaseService {
 
     D getById(I id) throws BaseExternalException;

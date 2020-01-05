@@ -1,6 +1,6 @@
 package ir.amv.os.vaseline.service.basic.def.server.crud.impl;
 
-import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessModel;
+import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseBusinessEntity;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.IBaseDto;
 import ir.amv.os.vaseline.business.basic.api.layer.crud.IBaseCrudApi;
 import ir.amv.os.vaseline.service.basic.def.server.crud.IDefaultCrudService;
@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class BaseCrudServiceImpl<
         I extends Serializable,
         D extends IBaseDto<I>,
-        M extends IBaseBusinessModel<I>,
+        M extends IBaseBusinessEntity<I, M>,
         A extends IBaseCrudApi<I, M>
         >
         extends BaseReadOnlyServiceImpl<I, D, M, A>
