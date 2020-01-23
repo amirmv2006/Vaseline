@@ -36,13 +36,8 @@
       <tag>HEAD</tag>
   </scm>
     <modules>
-        <module>vaseline-parents-parent</module>
-        <module>vaseline-thirdparty</module>
+        <module>vaseline-parents</module>
         <module>vaseline-basics-parent</module>
-        <module>vaseline-data-parent</module>
-        <module>vaseline-business-parent</module>
-        <module>vaseline-exposed-service-parent</module>
-<!--        <module>vaseline-security-parent</module>-->
     </modules>
 
     <properties>
