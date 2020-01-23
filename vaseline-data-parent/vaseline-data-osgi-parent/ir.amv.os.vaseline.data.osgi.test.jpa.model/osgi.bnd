@@ -1,4 +1,0 @@
-Meta-Persistence: \
-    META-INF/persistence.xml
-
--contract: JavaJPA

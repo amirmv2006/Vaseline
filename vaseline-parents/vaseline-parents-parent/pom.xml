@@ -2,21 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>ir.amv.os.vaseline.parents</groupId>
-        <artifactId>vaseline-parents-parent</artifactId>
+        <artifactId>vaseline-parents-depmanager</artifactId>
         <version>2.0-SNAPSHOT</version>
-        <relativePath>../vaseline-parents/vaseline-parents-parent/pom.xml</relativePath>
+        <relativePath>../vaseline-parents-depmanager/pom.xml</relativePath>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ir.amv.os.vaseline.basics</groupId>
-    <artifactId>vaseline-basics-parent</artifactId>
+    <artifactId>vaseline-parents-parent</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>vaseline-basics-core-api</module>
-        <module>vaseline-core-spring</module>
-        <module>vaseline-basics-cassandra</module>
-    </modules>
-
 
 </project>

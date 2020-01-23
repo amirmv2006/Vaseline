@@ -8,10 +8,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.amirmv2006</groupId>
+    <groupId>ir.amv.os.vaseline</groupId>
     <artifactId>vaseline-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.1-SNAPSHOT</version>
+    <version>2.0-SNAPSHOT</version>
     <name>VaselineCore</name>
     <description>An Open Source Framework for Enterprise Projects</description>
     <url>https://github.com/amirmv2006/Vaseline</url>
@@ -36,16 +36,8 @@
       <tag>HEAD</tag>
   </scm>
     <modules>
-        <module>vaseline-parents-parent</module>
-        <module>vaseline-testing-parent</module>
-        <module>vaseline-thirdparty</module>
+        <module>vaseline-parents</module>
         <module>vaseline-basics-parent</module>
-        <module>vaseline-data-parent</module>
-        <module>vaseline-business-parent</module>
-        <module>vaseline-service-parent</module>
-        <module>vaseline-security-parent</module>
-        <module>vaseline-ws-parent</module>
-        <module>vaseline-file-parent</module>
     </modules>
 
     <properties>
