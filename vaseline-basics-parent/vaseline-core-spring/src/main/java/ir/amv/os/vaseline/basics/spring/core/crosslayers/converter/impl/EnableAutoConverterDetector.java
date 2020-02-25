@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import(ConverterDetector.class)
+@Import({ConverterAutoDetectorConfig.class, ConverterAutoDetector.class})
 public @interface EnableAutoConverterDetector {
 
     String basePackage();
