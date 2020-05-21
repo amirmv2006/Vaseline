@@ -1,4 +1,4 @@
-package ir.amv.os.vaseline.basics.spring.core.crosslayers.converter.impl;
+package ir.amv.os.vaseline.basics.spring.core.crosslayers.converter.dozer;
 
 import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseEntity;
 import ir.amv.os.vaseline.basics.core.api.layers.extsvc.model.IBaseDto;
@@ -7,13 +7,17 @@ import ir.amv.os.vaseline.basics.core.api.utils.hibernate.HibernateUtils;
 import org.dozer.DozerBeanMapperBuilder;
 import org.dozer.Mapper;
 import org.springframework.core.convert.TypeDescriptor;
+import org.springframework.core.convert.converter.GenericConverter;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * TODO implement a way to use this! (using annotations maybe?)
+ */
 public class DefaultObjectDozerConverter
-        implements AutoDetectableGenericConverter {
+        implements GenericConverter {
 
     private final Mapper mapper;
 
