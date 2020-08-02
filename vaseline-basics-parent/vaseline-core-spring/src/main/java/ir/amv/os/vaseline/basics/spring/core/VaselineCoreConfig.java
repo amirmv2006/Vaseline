@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Import;
  * Created by AMV on 2/2/2016.
  */
 @Configuration
-@Import(ConversionServiceConfig.class)
 public class VaselineCoreConfig {
 
     @Bean

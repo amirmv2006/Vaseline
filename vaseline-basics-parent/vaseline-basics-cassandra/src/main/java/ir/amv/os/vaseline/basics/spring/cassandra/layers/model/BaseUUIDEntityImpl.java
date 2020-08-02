@@ -1,6 +1,5 @@
 package ir.amv.os.vaseline.basics.spring.cassandra.layers.model;
 
-import com.datastax.driver.core.DataType;
 import ir.amv.os.vaseline.basics.core.api.layers.business.model.impl.AbstractEntityImpl;
 import ir.amv.os.vaseline.basics.core.api.layers.business.model.impl.EntityUUID;
 import org.springframework.data.cassandra.core.mapping.CassandraType;
@@ -10,7 +9,7 @@ public class BaseUUIDEntityImpl<I extends EntityUUID<I>, M extends BaseUUIDEntit
         extends AbstractEntityImpl<I, M> {
 
     @PrimaryKey("id")
-    @CassandraType(type = DataType.Name.UUID)
+    @CassandraType(type = CassandraType.Name.UUID)
     private final I identity;
 
     public BaseUUIDEntityImpl(final I identity) {
