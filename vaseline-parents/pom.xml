@@ -14,6 +14,7 @@
         <module>vaseline-parents-depmanager</module>
         <module>vaseline-parents-parent</module>
         <module>vaseline-parents-itest</module>
+        <module>vaseline-parents-common</module>
     </modules>
 
 </project>

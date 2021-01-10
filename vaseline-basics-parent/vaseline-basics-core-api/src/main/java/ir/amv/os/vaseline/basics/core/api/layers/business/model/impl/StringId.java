@@ -3,17 +3,16 @@ package ir.amv.os.vaseline.basics.core.api.layers.business.model.impl;
 import ir.amv.os.vaseline.basics.core.api.layers.business.model.IBaseValueObject;
 
 import java.util.Objects;
-import java.util.UUID;
 
-public abstract class EntityUUID<M extends EntityUUID<M>> implements IBaseValueObject<M> {
+public class StringId<M extends StringId<M>> implements IBaseValueObject<M> {
 
-    private final UUID id;
+    private final String id;
 
-    public EntityUUID(UUID id) {
+    public StringId(String id) {
         this.id = id;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
@@ -35,8 +34,4 @@ public abstract class EntityUUID<M extends EntityUUID<M>> implements IBaseValueO
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        return id.toString();
-    }
 }
