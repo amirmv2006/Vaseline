@@ -156,34 +156,12 @@
                 </plugins>
             </build>
         </profile>
-        <profile>
-            <id>running-on-windows</id>
-            <activation>
-                <os>
-                    <family>windows</family>
-                </os>
-            </activation>
-            <properties>
-                <docker.available>false</docker.available>
-            </properties>
-        </profile>
-        <profile>
-            <id>deploy</id>
-            <properties>
-                <docker.available>false</docker.available>
-            </properties>
-            <distributionManagement>
-                <repository>
-                    <id>releases</id>
-                    <name>releases</name>
-                    <url>http://${env.MAVEN_REPO_BASE_URL}/${env.MAVEN_DEPLOY_RELEASE_REPO}/</url>
-                </repository>
-                <snapshotRepository>
-                    <id>snapshots</id>
-                    <name>snapshots</name>
-                    <url>http://${env.MAVEN_REPO_BASE_URL}/${env.MAVEN_DEPLOY_SNAPSHOT_REPO}/</url>
-                </snapshotRepository>
-            </distributionManagement>
-        </profile>
     </profiles>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/amirmv2006/Vaseline</url>
+        </repository>
+    </distributionManagement>
 </project>
