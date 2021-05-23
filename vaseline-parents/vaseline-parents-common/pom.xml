@@ -5,7 +5,7 @@
     <parent>
         <groupId>ir.amv.os.vaseline.parents</groupId>
         <artifactId>vaseline-parents-depmanager</artifactId>
-        <version>2.2.1</version>
+        <version>2.5.0</version>
         <relativePath>../vaseline-parents-depmanager/pom.xml</relativePath>
     </parent>
 
